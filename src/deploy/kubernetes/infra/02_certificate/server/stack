@@ -13,14 +13,14 @@ function create_secret() {
 
 
 function read_servername() {
-    read -p "server name (<localhost>): " _Values_server_name < /dev/tty
-    _Values_server_name="${_Values_server_name:=localhost}"
+    read -p "server name (<localhost>): " _Values_host_name < /dev/tty
+    _Values_host_name="${_Values_host_name:=localhost}"
 
     kubectl delete --ignore-not-found configmap cluster-config -n default
-    kubectl create configmap cluster-config -n default --from-literal=servername=${_Values_server_name}
-    export _Values_server_name=`kubectl get configmaps cluster-config -o jsonpath='{.data.servername}' -n default`
-    [ -z "$_Values_server_name" ] && echo "Server Name is empty" && exit
-    echo Server Name is: ${_Values_server_name}
+    kubectl create configmap cluster-config -n default --from-literal=servername=${_Values_host_name}
+    export _Values_host_name=`kubectl get configmaps cluster-config -o jsonpath='{.data.servername}' -n default`
+    [ -z "$_Values_host_name" ] && echo "Server Name is empty" && exit
+    echo Server Name is: ${_Values_host_name}
 }
 
 if [ "${COMMAND}" = "init" ]
