@@ -12,11 +12,11 @@ metadata:
 spec:
   tls:
     - hosts:
-        - goafabric.org
+        - kubernetes
       secretName: server-certificate-secret
   rules:
-#    - host: goafabric.org
-    - http:
+    - host: kubernetes
+      http:
         paths:
           - path: /welcome(/|$)(.*)
             pathType: Prefix

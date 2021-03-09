@@ -21,7 +21,7 @@ function prune() {
     [ -d "./templates/pvc/" ] && kubectl delete --ignore-not-found -f ./templates/pvc/ -n ${NAMESPACE}
 }
 
-if [ "${COMMAND}" = "init" ]
+if [ "${COMMAND}" = "up" ]
 then
     up
 elif [ "${COMMAND}" = "prune" ]
