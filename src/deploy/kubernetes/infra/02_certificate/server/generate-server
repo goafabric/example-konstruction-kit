@@ -1,13 +1,15 @@
 #!/bin/bash
+[ -z "$_Values_server_name" ] && echo "Server Name is empty" && exit
+sed -i '' 's/SERVER_NAME/'"${_Values_server_name}"'/g' ./config/san.cnf
 
 #variables
 export DAYS_VALID="365"
-export ROOT_FILE="../root/config/goafabric-root"
-export SERVER_FILE="config/goafabric-server"
+export ROOT_FILE="../root/config/root"
+export SERVER_FILE="./config/server"
 
 # create key, won't ask for password because no encryption applied
 openssl genrsa\
-        -out config/goafabric-server.key\
+        -out ${SERVER_FILE}.key\
         4096
 
 # create signing request (csr)
@@ -28,4 +30,5 @@ openssl x509 -req -sha512 -days ${DAYS_VALID}\
 
 
 # remove csr
-rm config/goafabric-server.csr
+rm ${SERVER_FILE}.csr
+cp ./config/san.org ./config/san.cnf

@@ -3,9 +3,9 @@ kind: Ingress
 metadata:
   name: pgadmin-application-ingress
   annotations:
-    deploy.kubernetes.io/ingress.class: "nginx"
-    nginx.ingress.deploy.kubernetes.io/rewrite-target: /$2
-    nginx.ingress.deploy.kubernetes.io/configuration-snippet: |
+    kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+    nginx.ingress.kubernetes.io/configuration-snippet: |
       proxy_set_header X-Script-Name /pgadmin;
 #      proxy_set_header Host $host;
 #      proxy_pass http://localhost:5050/;

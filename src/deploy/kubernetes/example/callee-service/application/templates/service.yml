@@ -1,12 +1,14 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: callee-service-application
+  name: ${_Values_app_name}
 spec:
   selector:
-    app: callee-service-application
-  type: ClusterIP #NodePort
+    app: ${_Values_app_name}
+  type: ${_Values_service_type}
   ports:
-    - protocol: TCP
-      port: 50100
-#      nodePort: 30800 
+    - port: ${_Values_service_port}
+      nodePort: ${_Values_service_nodePort}
+      targetPort: transport
+      protocol: TCP
+      name: transport

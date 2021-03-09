@@ -16,7 +16,7 @@ microk8s enable dns dashboard ingress storage
 
 ## Step 2
 #Hack the Kubernetes dashboard (O is for insert line)
-microk8s.kubectl edit deployment/deploy.kubernetes-dashboard --namespace=kube-system
+microk8s.kubectl edit deployment/kubernetes-dashboard --namespace=kube-system
 - args:
 - --enable-skip-login
 

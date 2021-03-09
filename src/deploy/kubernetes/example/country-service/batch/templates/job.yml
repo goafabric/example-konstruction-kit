@@ -1,14 +1,10 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: batch/v1
+kind: Job
 metadata:
   name: ${_Values_app_name}
 spec:
-  selector:
-    matchLabels:
-      app: ${_Values_app_name}
-  replicas: 1
-  strategy:
-    type: Recreate #RollingUpdate
+  backoffLimit: 0
+  activeDeadlineSeconds: 240
   template:
     metadata:
       annotations:
@@ -16,11 +12,12 @@ spec:
       labels:
         app: ${_Values_app_name}
     spec:
+      restartPolicy: Never
       initContainers:
         - name: check-db-ready
           image: postgres:13.2
           command: ['sh', '-c',
-              'until pg_isready -h ${_Values_root_name}-postgres -p 5432;
+                    'until pg_isready -h ${_Values_root_name}-postgres -p 5432;
                      do echo waiting for database; sleep 2; done;']
       imagePullSecrets:
         - name: ${_Values_image_pullSecrets}
@@ -28,13 +25,6 @@ spec:
         - name: ${_Values_app_name}
           image: "${_Values_image_repository}${_Values_server_arch}:${_Values_image_tag}"
           imagePullPolicy: IfNotPresent #Always
-          ports:
-            - name: transport
-              containerPort: ${_Values_service_port}
-              protocol: TCP
-            - name: jmx
-              containerPort: 1099
-              protocol: TCP
           envFrom:
             - configMapRef:
                 name: ${_Values_app_name}-config
@@ -52,23 +42,6 @@ spec:
               memory: "${_Values_resources_requests_memory}"
               cpu: "${_Values_resources_requests_cpu}"
 
-          readinessProbe:
-            httpGet:
-              path: /actuator/health
-              port: transport
-            initialDelaySeconds: ${_Values_readinessProbe_initialDelaySeconds}
-            periodSeconds: 10
-            timeoutSeconds: 10
-            failureThreshold: 3
-          livenessProbe:
-            httpGet:
-              path: /actuator/health
-              port: transport
-            initialDelaySeconds: ${_Values_readinessProbe_initialDelaySeconds}
-            periodSeconds: 10
-            timeoutSeconds: 10
-            failureThreshold: 3
-
           volumeMounts:
             - mountPath: /usr/share/logs
               name: ${_Values_app_name}-applogs
@@ -76,6 +49,9 @@ spec:
               name: ${_Values_app_name}-config-files-volume
             - mountPath: /usr/share/profiler
               name: ${_Values_app_name}-profiler-volume
+
+            - mountPath: src/deploy/config/application/demodata
+              name: ${_Values_app_name}-data-files-volume
 
       volumes:
         - name: ${_Values_app_name}-applogs
@@ -86,3 +62,7 @@ spec:
         - name: ${_Values_app_name}-profiler-volume
           ${_Values_volume_type_profiler}
           ${_Values_volume_path_profiler}
+
+        - name: ${_Values_app_name}-data-files-volume
+          configMap:
+            name: ${_Values_app_name}-data-files

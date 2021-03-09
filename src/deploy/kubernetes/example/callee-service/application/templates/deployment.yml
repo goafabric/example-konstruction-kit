@@ -1,73 +1,82 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: callee-service-application
+  name: ${_Values_app_name}
 spec:
   selector:
     matchLabels:
-      app: callee-service-application
+      app: ${_Values_app_name}
   replicas: 1
   strategy:
     type: Recreate #RollingUpdate
   template:
     metadata:
       annotations:
-        linkerd.io/inject: enabled
+        linkerd.io/inject: disabled
       labels:
-        app: callee-service-application
+        app: ${_Values_app_name}
     spec:
+      imagePullSecrets:
+        - name: ${_Values_image_pullSecrets}
       containers:
-        - name: callee-service-application
-#          image: goafabric/calle-service:1.0.0-SNAPSHOT
-#          image: goafabric/calle-service-arm64v8:1.0.0-SNAPSHOT
-          image: " "
+        - name: ${_Values_app_name}
+          image: "${_Values_image_repository}${_Values_server_arch}:${_Values_image_tag}"
           imagePullPolicy: IfNotPresent #Always
           ports:
-            - containerPort: 50100
-          env:
-            - name: server.port
-              value: "50100"
+            - name: transport
+              containerPort: ${_Values_service_port}
+              protocol: TCP
+            - name: jmx
+              containerPort: 1099
+              protocol: TCP
           envFrom:
             - configMapRef:
-                name: callee-service-application-configmap
+                name: ${_Values_app_name}-config
+            - configMapRef:
+                name: ${_Values_app_name}-config-log
             - secretRef:
-                name: callee-service-application-secret
+                name: ${_Values_app_name}-config-external
 
-          command: ["java", "-Xms128M", "-Xmx128M",
-                    "-Djava.security.egd=file:/dev/./urandom", "-cp", "/app/resources:/app/classes:/app/libs/*",
-                    "org.goafabric.calleservice.Application"]
+          command: ["java", "-Xms${_Values_resources_requests_memory}", "-Xmx${_Values_resources_requests_memory}", "-Djava.security.egd=file:/dev/./urandom",
+                    ${_Values_profiler_command}
+                    "-cp", "/app/resources:/app/classes:/app/libs/*",
+                    "${_Values_command}"]
           resources:
             requests:
-              memory: "128M"
-              cpu: "250m"
+              memory: "${_Values_resources_requests_memory}"
+              cpu: "${_Values_resources_requests_cpu}"
 
           readinessProbe:
             httpGet:
-              path: /actuator/health/readiness
-              port: 50100
-            initialDelaySeconds: 5
+              path: /actuator/health
+              port: transport
+            initialDelaySeconds: ${_Values_readinessProbe_initialDelaySeconds}
             periodSeconds: 10
             timeoutSeconds: 10
-            failureThreshold: 5
+            failureThreshold: 3
           livenessProbe:
             httpGet:
-              path: /actuator/health/liveness
-              port: 50100
-            initialDelaySeconds: 5
+              path: /actuator/health
+              port: transport
+            initialDelaySeconds: ${_Values_readinessProbe_initialDelaySeconds}
             periodSeconds: 10
             timeoutSeconds: 10
-            failureThreshold: 5
+            failureThreshold: 3
 
           volumeMounts:
             - mountPath: /usr/share/logs
-              name: callee-service-applogs
+              name: ${_Values_app_name}-applogs
             - mountPath: /usr/share/config/
-              name: callee-service-application-config-files-volume
+              name: ${_Values_app_name}-config-files-volume
+            - mountPath: /usr/share/profiler
+              name: ${_Values_app_name}-profiler-volume
 
       volumes:
-        - name: callee-service-applogs
+        - name: ${_Values_app_name}-applogs
           emptyDir: {}
-        # generated from local file system via "kubectl create configmap" inside stack
-        - name: callee-service-application-config-files-volume
+        - name: ${_Values_app_name}-config-files-volume
           configMap:
-            name: callee-service-application-config-files
+            name: ${_Values_app_name}-config-files
+        - name: ${_Values_app_name}-profiler-volume
+          ${_Values_volume_type_profiler}
+          ${_Values_volume_path_profiler}

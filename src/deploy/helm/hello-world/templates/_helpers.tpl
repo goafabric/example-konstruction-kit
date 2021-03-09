@@ -34,20 +34,20 @@ Create chart name and version as used by the chart label.
 Common labels
 */}}
 {{- define "hello-world.labels" -}}
-deploy.helm.sh/chart: {{ include "hello-world.chart" . }}
+helm.sh/chart: {{ include "hello-world.chart" . }}
 {{ include "hello-world.selectorLabels" . }}
 {{- if .Chart.AppVersion }}
-app.deploy.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
+app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}
-app.deploy.kubernetes.io/managed-by: {{ .Release.Service }}
+app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{- end }}
 
 {{/*
 Selector labels
 */}}
 {{- define "hello-world.selectorLabels" -}}
-app.deploy.kubernetes.io/name: {{ include "hello-world.name" . }}
-app.deploy.kubernetes.io/instance: {{ .Release.Name }}
+app.kubernetes.io/name: {{ include "hello-world.name" . }}
+app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 
 {{/*

@@ -1,8 +1,8 @@
 #Minikube Remote Dashboard
 && sudo kubectl proxy --address='0.0.0.0' --disable-filter=true
-http://SERVERNAME:8001/api/v1/namespaces/deploy.kubernetes-dashboard/services/http:deploy.kubernetes-dashboard:/proxy/#/overview?namespace=default
+http://SERVERNAME:8001/api/v1/namespaces/kubernetes-dashboard/services/http:kubernetes-dashboard:/proxy/#/overview?namespace=default
 #Microk8s Remote Dashboard
-http://deploy.kubernetes:8001/api/v1/namespaces/kube-system/services/https:deploy.kubernetes-dashboard:/proxy/#/login
+http://kubernetes:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/#/login
 
 ## Minikube Debug
 minikube start --alsologtostderr --v=2
@@ -33,5 +33,5 @@ https://www.cncf.io/wp-content/uploads/2019/07/The-Illustrated-Childrens-Guide-t
 https://www.cncf.io/wp-content/uploads/2018/12/Phippy-Goes-To-The-Zoo.pdf
 
 #Kubectl run
-sudo kubectl run -i --tty example-service --image=goafabric/spring-boot-exampleservice:1.0.4
-sudo kubectl run -i --tty example-service --image=goafabric/spring-boot-exampleservice-arm64v8:1.0.4
+sudo kubectl run -i --tty example-service --image=goafabric/spring-boot-exampleservice:1.0.5-SNAPSHOT
+sudo kubectl run -i --tty example-service --image=goafabric/spring-boot-exampleservice-arm64v8:1.0.5-SNAPSHOT

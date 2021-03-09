@@ -1,56 +1,60 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: country-service-postgres
+  name: ${_Values_app_name}
 spec:
   selector:
     matchLabels:
-      app: country-service-postgres
+      app: ${_Values_app_name}
   replicas: 1
   strategy:
     type: Recreate #RollingUpdate
   template:
     metadata:
       annotations:
-        linkerd.io/inject: enabled
+        linkerd.io/inject: disabled
       labels:
-        app: country-service-postgres
+        app: ${_Values_app_name}
     spec:
       containers:
-        - name: country-service-postgres
-          image: postgres:13.1
+        - name: ${_Values_app_name}
+          image: "postgres:13.2"
           imagePullPolicy: IfNotPresent #Always
           ports:
-            - containerPort: 5432
+            - name: transport
+              containerPort: ${_Values_service_port}
+              protocol: TCP
           envFrom:
+            - configMapRef:
+                name: ${_Values_app_name}-config
             - secretRef:
-                name: country-service-postgres-secret
+                name: ${_Values_app_name}-config-external
 
-          args:
-            - postgres
-            - -c
-            - shared_buffers=128MB
-            - -c
-            - max_connections=30
-            - -c
-            - shared_preload_libraries=pg_stat_statements
+          args: ["postgres",
+                 "-c", "shared_preload_libraries=pg_stat_statements",
+                 "-c", "shared_buffers=${_Values_resources_requests_memory}B",
+                 "-c", "max_connections=${_Values_postgres_max_connections}"]
           resources:
             requests:
-              memory: "128M"
-              cpu: "250m"
+              memory: "${_Values_resources_requests_memory}"
+              cpu: "${_Values_resources_requests_cpu}"
             limits:
-              cpu: "500m"
+              cpu: "${_Values_resources_limits_cpu}"
 
           volumeMounts:
-            - mountPath: /docker-entrypoint-initdb.d/
-              name: country-service-postgres-initdb-volume
             - mountPath: /var/lib/postgresql/data
-              name: country-service-postgres-pvc-volume
+              name: ${_Values_app_name}-pvc-volume
+
+            - mountPath: /docker-entrypoint-initdb.d/
+              name: ${_Values_app_name}-initdb-volume
 
       volumes:
-        - name: country-service-postgres-initdb-volume
-          configMap:
-            name: country-service-postgres-data-files
-        - name: country-service-postgres-pvc-volume
+        - name: ${_Values_app_name}-pvc-volume
           persistentVolumeClaim:
-            claimName: country-service-postgres-pvc
+            claimName: ${_Values_app_name}-pvc
+
+        - name: ${_Values_app_name}-initdb-volume
+          configMap:
+            name: ${_Values_app_name}-data-files
+
+
