@@ -17,9 +17,8 @@ function read_servername() {
     _Values_host_name="${_Values_host_name:=kubernetes}"
 
     kubectl delete --ignore-not-found configmap cluster-config -n default
-    kubectl create configmap cluster-config -n default --from-literal=servername=${_Values_host_name}
-    export _Values_host_name=`kubectl get configmaps cluster-config -o jsonpath='{.data.servername}' -n default`
-    [ -z "$_Values_host_name" ] && echo "Server Name is empty" && exit
+    kubectl create configmap cluster-config -n default --from-literal=hostname=${_Values_host_name}
+    export _Values_host_name=`kubectl get configmaps cluster-config -o jsonpath='{.data.hostname}' -n default` && [ -z "$_Values_host_name" ] && echo "Server Name is empty" && exit
     echo Server Name is: ${_Values_host_name}
 }
 
