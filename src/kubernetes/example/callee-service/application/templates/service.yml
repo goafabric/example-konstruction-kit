@@ -1,0 +1,12 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: callee-service-application
+spec:
+  selector:
+    app: callee-service-application
+  type: ClusterIP #NodePort
+  ports:
+    - protocol: TCP
+      port: 50100
+#      nodePort: 30800 

@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: callee-service-application-configmap
+data:
+  TZ: Europe/Berlin
+  spring.config.location: /usr/share/config/application.yml
+  logging.config: /usr/share/config/logback-rollingfile-spring.xml
+
+  #monitoring
+  server.forward-headers-strategy: FRAMEWORK
+  management.database.monitoring.enabled: "true"
+  management.endpoints.web.exposure.include: "info,health,heapdump,circuitbreakers,prometheus"
+
+  #stageing
+  server.tomcat.threads.max: "20"
+
+---
+
+apiVersion: v1
+kind: Secret
+metadata:
+  name: callee-service-application-secret
+data:
+
+

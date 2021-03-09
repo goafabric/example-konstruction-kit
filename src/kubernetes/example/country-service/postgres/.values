@@ -1,0 +1,5 @@
+#!/bin/bash
+source ../../../.values
+
+export NAMESPACE="example"
+export DEPLOYMENT_NAME="country-service-postgres"

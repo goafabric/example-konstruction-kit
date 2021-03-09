@@ -1,0 +1,84 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: country-service-application
+spec:
+  selector:
+    matchLabels:
+      app: country-service-application
+  replicas: 1
+  strategy:
+    type: Recreate #RollingUpdate
+  template:
+    metadata:
+      annotations:
+        linkerd.io/inject: enabled
+        config.linkerd.io/trace-collector: linkerd-collector.linkerd:55678
+        config.alpha.linkerd.io/trace-collector-service-account: linkerd-collector
+      labels:
+        app: country-service-application
+    spec:
+      initContainers:
+        - name: check-db-ready
+          image: postgres:13.1
+          command: ['sh', '-c',
+                    'until pg_isready -h country-service-postgres -p 5432;
+                     do echo waiting for database; sleep 2; done;']
+      containers:
+        - name: country-service-application
+#          image: goafabric/spring-boot-exampleservice:1.0.4
+#          image: goafabric/spring-boot-exampleservice-arm64v8:1.0.4
+          image: " "
+          imagePullPolicy: IfNotPresent #Always
+          ports:
+            - containerPort: 50100
+          env:
+            - name: server.port
+              value: "50100"
+          envFrom:
+            - configMapRef:
+                name: country-service-application-configmap
+            - secretRef:
+                name: country-service-application-secret
+
+          command: ["java", "-Xms256M", "-Xmx256M",
+                    "-Djava.security.egd=file:/dev/./urandom", "-cp", "/app/resources:/app/classes:/app/libs/*","org.goafabric.spring.boot.exampleservice.Application"]
+          resources:
+            requests:
+              memory: "256M"
+              cpu: "250m"
+
+          readinessProbe:
+            httpGet:
+              path: /actuator/health/readiness
+              port: 50100
+            initialDelaySeconds: 15
+            periodSeconds: 10
+            timeoutSeconds: 10
+            failureThreshold: 5
+          livenessProbe:
+            httpGet:
+              path: /actuator/health/liveness
+              port: 50100
+            initialDelaySeconds: 15
+            periodSeconds: 10
+            timeoutSeconds: 10
+            failureThreshold: 5
+
+          volumeMounts:
+            - mountPath: /usr/share/logs
+              name: country-service-applogs
+            - mountPath: /usr/share/config/
+              name: country-service-application-config-files-volume
+            - mountPath: src/deploy/config/application/demodata
+              name: country-service-application-demodata-files-volume
+
+      volumes:
+        - name: country-service-applogs
+          emptyDir: {}
+        - name: country-service-application-config-files-volume
+          configMap:
+            name: country-service-application-config-files
+        - name: country-service-application-demodata-files-volume
+          configMap:
+            name: country-service-application-data-files

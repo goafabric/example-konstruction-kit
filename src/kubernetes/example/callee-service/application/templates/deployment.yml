@@ -1,0 +1,73 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: callee-service-application
+spec:
+  selector:
+    matchLabels:
+      app: callee-service-application
+  replicas: 1
+  strategy:
+    type: Recreate #RollingUpdate
+  template:
+    metadata:
+      annotations:
+        linkerd.io/inject: enabled
+      labels:
+        app: callee-service-application
+    spec:
+      containers:
+        - name: callee-service-application
+#          image: goafabric/calle-service:1.0.0-SNAPSHOT
+#          image: goafabric/calle-service-arm64v8:1.0.0-SNAPSHOT
+          image: " "
+          imagePullPolicy: IfNotPresent #Always
+          ports:
+            - containerPort: 50100
+          env:
+            - name: server.port
+              value: "50100"
+          envFrom:
+            - configMapRef:
+                name: callee-service-application-configmap
+            - secretRef:
+                name: callee-service-application-secret
+
+          command: ["java", "-Xms128M", "-Xmx128M",
+                    "-Djava.security.egd=file:/dev/./urandom", "-cp", "/app/resources:/app/classes:/app/libs/*",
+                    "org.goafabric.calleservice.Application"]
+          resources:
+            requests:
+              memory: "128M"
+              cpu: "250m"
+
+          readinessProbe:
+            httpGet:
+              path: /actuator/health/readiness
+              port: 50100
+            initialDelaySeconds: 5
+            periodSeconds: 10
+            timeoutSeconds: 10
+            failureThreshold: 5
+          livenessProbe:
+            httpGet:
+              path: /actuator/health/liveness
+              port: 50100
+            initialDelaySeconds: 5
+            periodSeconds: 10
+            timeoutSeconds: 10
+            failureThreshold: 5
+
+          volumeMounts:
+            - mountPath: /usr/share/logs
+              name: callee-service-applogs
+            - mountPath: /usr/share/config/
+              name: callee-service-application-config-files-volume
+
+      volumes:
+        - name: callee-service-applogs
+          emptyDir: {}
+        # generated from local file system via "kubectl create configmap" inside stack
+        - name: callee-service-application-config-files-volume
+          configMap:
+            name: callee-service-application-config-files

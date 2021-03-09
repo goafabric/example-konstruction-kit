@@ -1,0 +1,22 @@
+server:
+  port: 50900
+  tomcat:
+    threads:
+      max: 20
+
+management:
+    endpoint:
+      health:
+        show-details: always
+    endpoints:
+      web:
+        exposure:
+          include: "info,health"
+
+info:
+    status: ok
+
+
+security:
+  authentication:
+    enabled: false

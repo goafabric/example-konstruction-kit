@@ -1,0 +1,12 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: country-service-application
+spec:
+  selector:
+    app: country-service-application
+  type: ClusterIP #NodePort
+  ports:
+    - protocol: TCP
+      port: 50100
+#      nodePort: 30900
