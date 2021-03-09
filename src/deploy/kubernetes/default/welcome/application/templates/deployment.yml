@@ -1,43 +1,55 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: welcome-board-application
+  name: ${_Values_app_name}
 spec:
   selector:
     matchLabels:
-      app: welcome-board-application
+      app: ${_Values_app_name}
   replicas: 1
   strategy:
     type: Recreate #RollingUpdate
   template:
     metadata:
+      annotations:
+        linkerd.io/inject: disabled
       labels:
-        app: welcome-board-application
+        app: ${_Values_app_name}
     spec:
-      # initcontainers justs accepts a docker image, and uses postgres client to check readyness
+      imagePullSecrets:
+        - name: ${_Values_image_pullSecrets}
       containers:
-        - name: welcome-board-application
+        - name: ${_Values_app_name}
           image: nginx:1.17.10
-          imagePullPolicy: IfNotPresent
+          imagePullPolicy: IfNotPresent #Always
           ports:
-            - containerPort: 8080
+            - name: transport
+              containerPort: ${_Values_service_port}
+              protocol: TCP
+            - name: jmx
+              containerPort: 1099
+              protocol: TCP
+          envFrom:
+            - configMapRef:
+                name: ${_Values_app_name}-config
+            - secretRef:
+                name: ${_Values_app_name}-config-external
 
           volumeMounts:
             - mountPath: /var/log/nginx/logs/
-              name: welcome-board-application-applogs
+              name: ${_Values_app_name}-applogs
             - mountPath: /etc/nginx/nginx.conf
               subPath: nginx.conf
-              name: welcome-board-application-config-files-volume
+              name: ${_Values_app_name}-config-files-volume
             - mountPath: /www/data
-              name: welcome-board-application-data-files-volume
+              name: ${_Values_app_name}-data-files-volume
 
       volumes:
-        - name: welcome-board-application-applogs
+        - name: ${_Values_app_name}-applogs
           emptyDir: {}
-        - name: welcome-board-application-config-files-volume
+        - name: ${_Values_app_name}-config-files-volume
           configMap:
-            name: welcome-board-application-config-files
-        - name: welcome-board-application-data-files-volume
+            name: ${_Values_app_name}-config-files
+        - name: ${_Values_app_name}-data-files-volume
           configMap:
-            name: welcome-board-application-data-files
-            
+            name: ${_Values_app_name}-data-files

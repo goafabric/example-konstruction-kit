@@ -1,11 +1,14 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: welcome-board-application
+  name: ${_Values_app_name}
 spec:
   selector:
-    app: welcome-board-application
-  type: ClusterIP
+    app: ${_Values_app_name}
+  type: ${_Values_service_type}
   ports:
-    - protocol: TCP
-      port: 8080
+    - port: ${_Values_service_port}
+      nodePort: ${_Values_service_nodePort}
+      targetPort: transport
+      protocol: TCP
+      name: transport
