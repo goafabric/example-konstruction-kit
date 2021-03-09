@@ -15,10 +15,10 @@ metadata:
 spec:
   tls:
     - hosts:
-        - kubernetes
+        - ${_Values_host_name}
       secretName: server-certificate-secret
   rules:
-    - host: kubernetes
+    - host: ${_Values_host_name}
       http:
         paths:
           - path: /${_Values_ingress_name}(/|$)(.*)
