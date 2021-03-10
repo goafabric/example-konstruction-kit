@@ -5,6 +5,6 @@ _Values_ingress_name=welcome
 
 _Values_service_type=ClusterIP
 _Values_service_port=8080
-_Values_service_nodePort_dev=30800
+_Values_service_nodePort_dev=30000
 
 
