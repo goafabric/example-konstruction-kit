@@ -4,6 +4,7 @@ COMMAND=$1
 PROFILE=$2
 
 kubectl version | grep "Server Version" | grep "linux/arm64" > /dev/null && _Values_server_arch="-arm64v8"
+_Values_host_name=`kubectl get configmaps cluster-config -o jsonpath='{.data.hostname}' -n default` && [ -z "$_Values_host_name" ] && echo "Hostname is empty" && exit
 
 [ "${PROFILE}" = "-dev" ] && _Values_service_type=NodePort && _Values_service_nodePort=${_Values_service_nodePort_dev}
 [ "${COMMAND}" = "jmx" ] && _Values_profiler_command='"-Dcom.sun.management.jmxremote.port=1099","-Dcom.sun.management.jmxremote.rmi.port=1099","-Dcom.sun.management.jmxremote","-Djava.rmi.server.hostname=0.0.0.0","-Dcom.sun.management.jmxremote.authenticate=false","-Dcom.sun.management.jmxremote.ssl=false",'
