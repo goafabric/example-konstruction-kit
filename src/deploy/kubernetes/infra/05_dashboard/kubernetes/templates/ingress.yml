@@ -12,16 +12,16 @@ metadata:
     nginx.ingress.kubernetes.io/auth-secret: authentication-secret
 
   name: dashboard
-  namespace: kube-system
+  namespace: kubernetes-dashboard
 
 spec:
   tls:
     - hosts:
-        - goafabric.org
+        - kubernetes
       secretName: server-certificate-secret
   rules:
-#    - host: goafabric.org
-    - http:
+    - host: kubernetes
+      http:
         paths:
           - path: /dashboard(/|$)(.*)
             pathType: Prefix
