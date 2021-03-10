@@ -64,4 +64,6 @@ elif [ "${COMMAND}" = "jmx" ]; then down && forward 1099;
 elif [ "${COMMAND}" = "profile" ]; then down && forward 1099;
 elif [ "${COMMAND}" = "proxy" ]; then forward ${_Values_service_port};
 
+elif [ "${COMMAND}" = "init" ] && [ -f "./templates/deployment.yml" ]; then up;
+
 else echo Doing nothing !; fi

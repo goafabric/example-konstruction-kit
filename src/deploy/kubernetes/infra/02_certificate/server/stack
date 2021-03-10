@@ -7,12 +7,10 @@ function delete_secret() {
 }
 
 function create_secret() {
-    delete_secret $1
-    kubectl create secret tls server-certificate-secret --cert=./config/server.pem --key=./config/server.key -n $1
+    delete_secret $1 && kubectl create secret tls server-certificate-secret --cert=./config/server.pem --key=./config/server.key -n $1
 }
 
-
-function read_servername() {
+function read_secret() {
     read -p "server name <kubernetes>: " _Values_host_name < /dev/tty
     _Values_host_name="${_Values_host_name:=kubernetes}"
 
@@ -24,24 +22,16 @@ function read_servername() {
 
 if [ "${COMMAND}" = "init" ]
 then
-    read_servername
-    ./generate-server
+    #read_secret
 
-    if kubectl get --ignore-not-found namespace linkerd | grep -q Active; then create_secret linkerd; fi
-    create_secret kube-system
-
-    for val in ${namespaces[@]}; do
-      create_secret $val
+    for val in ${namespaces_secret[@]}; do
+        if kubectl get --ignore-not-found namespace $val | grep -q Active; then echo namespace: $val && create_secret $val; fi
     done
 elif [ "${COMMAND}" = "prune" ]
 then
-    if kubectl get --ignore-not-found namespace linkerd | grep -q Active; then delete_secret linkerd; fi
-    delete_secret kube-system
-
-    for val in ${namespaces[@]}; do
-      delete_secret $val
+    for val in ${namespaces_secret[@]}; do
+        if kubectl get --ignore-not-found namespace $val | grep -q Active; then echo namespace: $val && delete_secret $val; fi
     done
 else
     echo Doing nothing !
 fi
-

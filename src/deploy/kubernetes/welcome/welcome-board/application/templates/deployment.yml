@@ -16,8 +16,6 @@ spec:
       labels:
         app: ${_Values_app_name}
     spec:
-      imagePullSecrets:
-        - name: ${_Values_image_pullSecrets}
       containers:
         - name: ${_Values_app_name}
           image: nginx:1.17.10

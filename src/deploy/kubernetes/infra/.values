@@ -1,2 +1,2 @@
-#!/bin/bash
-declare -a namespaces=("example" "welcome")
+namespaces=("example" "welcome")
+namespaces_secret=("${namespaces[@]}" "kube-system" "linkerd")
