@@ -1,4 +1,4 @@
-_Release_namespace=default
+_Release_namespace=welcome
 _Values_root_name=welcome-board
 _Values_app_name=${_Values_root_name}-application
 _Values_ingress_name=welcome
