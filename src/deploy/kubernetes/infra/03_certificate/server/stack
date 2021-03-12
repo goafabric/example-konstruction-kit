@@ -18,11 +18,12 @@ function read_secret() {
     kubectl create configmap cluster-config -n default --from-literal=hostname=${_Values_host_name}
     export _Values_host_name=`kubectl get configmaps cluster-config -o jsonpath='{.data.hostname}' -n default` && [ -z "$_Values_host_name" ] && echo "Server Name is empty" && exit
     echo Server Name is: ${_Values_host_name}
+#    ./generate-server
 }
 
 if [ "${COMMAND}" = "init" ]
 then
-    #read_secret
+    read_secret
 
     for val in ${namespaces_secret[@]}; do
         if kubectl get --ignore-not-found namespace $val | grep -q Active; then echo namespace: $val && create_secret $val; fi
