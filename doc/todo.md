@@ -6,9 +6,9 @@
 - Keycloak
 
 # Ops 
+- Linkerd Upgrade to 2.10 on Openstack
 - Jaeger
 - Statefulsets
-- Linkerd Upgrade to 2.10 on Openstack
 
 - Monitoring (Prometheus, Graphana ...)
 - Helm 
