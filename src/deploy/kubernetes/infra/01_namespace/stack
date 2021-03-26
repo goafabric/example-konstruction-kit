@@ -1,17 +1,13 @@
 #!/bin/bash
 source ../.values
-export COMMAND=$1
+COMMAND=$1
 
 if [ "${COMMAND}" = "init" ]
 then
-    for val in ${namespaces[@]}; do
-        if ! kubectl get --ignore-not-found namespace $val | grep -q Active; then kubectl create namespace $val; fi
-    done
+    ./namespace-manager create
 elif [ "${COMMAND}" = "prune-force" ]
 then
-    for val in ${namespaces[@]}; do
-        if kubectl get --ignore-not-found namespace $val | grep -q Active; then kubectl delete namespace $val; fi
-    done
+    ./namespace-manager delete
 else
     echo Doing nothing !
 fi
