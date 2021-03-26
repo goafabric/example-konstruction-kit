@@ -1,2 +1,4 @@
-namespaces=("kubernetes-dashboard" "example" "welcome")
-namespaces_secret=("${namespaces[@]}" "linkerd")
+namespaces=("example")
+
+namespaces=("${namespaces[@]}" "kubernetes-dashboard" "linkerd" "welcome")
+namespaces_secret=("${namespaces[@]}")
