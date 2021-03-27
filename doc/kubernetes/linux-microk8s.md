@@ -8,11 +8,11 @@ sudo snap install microk8s --classic --channel=1.19
 sudo usermod -a -G microk8s admin && sudo chown -f -R admin ~/.kube
 su - admin
 
-#Kubectl Alias
-sudo sh -c 'echo "#!/bin/bash \n microk8s kubectl "\$1" "\$2" "\$3" "\$4" "\$5" "\$6" "\$7" "\$8" "\$9" " > /usr/local/bin/kubectl' && sudo chmod +x /usr/local/bin/kubectl
-
 #Microk8s Configure
 microk8s enable dns dashboard ingress storage
+
+#Kubectl Alias
+sudo sh -c 'echo "#!/bin/bash \n microk8s kubectl "\$1" "\$2" "\$3" "\$4" "\$5" "\$6" "\$7" "\$8" "\$9" " > /usr/local/bin/kubectl' && sudo chmod +x /usr/local/bin/kubectl
 
 ## Step 2
 #Hack the Kubernetes dashboard (O is for insert line)
