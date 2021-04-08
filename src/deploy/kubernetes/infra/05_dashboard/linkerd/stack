@@ -3,6 +3,7 @@ source .values
 COMMAND=$1
 PROFILE=$2
 
+exit
 if ! kubectl get --ignore-not-found namespace linkerd | grep -q Active; then exit; fi
 
 kubectl version | grep "Server Version" | grep "linux/arm64" > /dev/null && _Values_server_arch="-arm64v8"
