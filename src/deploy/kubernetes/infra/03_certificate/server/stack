@@ -2,37 +2,23 @@
 source ../../.values
 export COMMAND=$1
 
-function delete_secret() {
-    kubectl delete secret --ignore-not-found server-certificate-secret -n $1
-}
-
-function create_secret() {
-    delete_secret $1 && kubectl create secret tls server-certificate-secret --cert=./config/server.pem --key=./config/server.key -n $1
-}
-
 function read_secret() {
     read -p "server name <kubernetes>: " _Values_host_name < /dev/tty
     _Values_host_name="${_Values_host_name:=kubernetes}"
 
     kubectl delete --ignore-not-found configmap cluster-config -n default
     kubectl create configmap cluster-config -n default --from-literal=hostname=${_Values_host_name}
-    export _Values_host_name=`kubectl get configmaps cluster-config -o jsonpath='{.data.hostname}' -n default` && [ -z "$_Values_host_name" ] && echo "Server Name is empty" && exit
+    _Values_host_name=`kubectl get configmaps cluster-config -o jsonpath='{.data.hostname}' -n default` && [ -z "$_Values_host_name" ] && echo "Server Name is empty" && exit
     echo Server Name is: ${_Values_host_name}
-#    ./generate-server
 }
 
 if [ "${COMMAND}" = "init" ]
 then
     read_secret
-
-    for val in ${namespaces[@]}; do
-        if kubectl get --ignore-not-found namespace $val | grep -q Active; then echo namespace: $val && create_secret $val; fi
-    done
+    ./secret-manager create ${_Values_host_name}
 elif [ "${COMMAND}" = "prune" ]
 then
-    for val in ${namespaces[@]}; do
-        if kubectl get --ignore-not-found namespace $val | grep -q Active; then echo namespace: $val && delete_secret $val; fi
-    done
+    ./secret-manager delete
 else
     echo Doing nothing !
 fi
