@@ -4,6 +4,8 @@ metadata:
   name: ${_Values_app_name}-ingress
   annotations:
     kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    #rewrites 
     nginx.ingress.kubernetes.io/rewrite-target: /\$2
     nginx.ingress.kubernetes.io/configuration-snippet: |
       rewrite ^(/${_Values_ingress_name})$ \$1/ redirect; #Redirect if traling slash is missing
@@ -11,7 +13,6 @@ metadata:
     # basic auth
     nginx.ingress.kubernetes.io/auth-type: basic
     nginx.ingress.kubernetes.io/auth-secret: authentication-secret
-    nginx.ingress.kubernetes.io/ssl-redirect: "true"
 
 spec:
   tls:
