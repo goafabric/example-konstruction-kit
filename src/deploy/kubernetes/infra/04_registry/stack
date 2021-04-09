@@ -1,9 +1,9 @@
 #!/bin/bash
 source ../.values
-export COMMAND=$1
+COMMAND=$1
 
 function delete_secret_sub() {
-    kubectl -n $1 delete secret --ignore-not-found docker-registry $2 $ 3
+    kubectl -n $1 delete secret --ignore-not-found docker-registry $2
 }
 
 function create_secret_sub() {
@@ -16,18 +16,18 @@ function create_secret_sub() {
 }
 
 function delete_secret() {
-  delete_secret_sub $1 secret-name registry-name
+  kubectl -n $1 delete secret --ignore-not-found docker-registry $2
 }
 
 function create_secret() {
-  create_secret_sub $1 secret-name registry-name
+  create_secret_sub $1 $2 $2
 }
 
 function input_secret() {
   echo We now need the credentials to login to artifactory docker registry
-  read -p "email: " mailVar
+  read -p "email: " mailVar < /dev/tty
   printf "password: "
-  while IFS= read -p "$prompt" -r -s -n 1 char; do
+  while IFS= read -p "$prompt" -r -s -n 1 char < /dev/tty; do
     if [[ $char == $'\0' ]]; then
       break
     fi
@@ -41,17 +41,22 @@ if [ "${COMMAND}" = "init" ]
 then
     input_secret
 
-    for val in ${namespaces[@]}; do
-        create_secret $val
+    for namespace in ${namespaces_own[@]}; do
+        for registry in ${registries[@]}; do
+            create_secret $namespace $registry
+        done
     done
 elif [ "${COMMAND}" = "prune" ]
 then
-    for val in ${namespaces[@]}; do
-        delete_secret $val
+    for namespace in ${namespaces_own[@]}; do
+        for registry in ${registries[@]}; do
+            delete_secret $namespace $registry
+        done
     done
 else
     echo Doing nothing !
 fi
+
 
 
 

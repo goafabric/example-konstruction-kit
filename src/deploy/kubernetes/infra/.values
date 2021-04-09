@@ -1,3 +1,4 @@
-namespaces=("example")
+namespaces_own=("example")
+namespaces_all=("${namespaces_own[@]}" "kubernetes-dashboard" "linkerd" "welcome")
 
-namespaces=("${namespaces[@]}" "kubernetes-dashboard" "linkerd" "welcome")
+registries=("registry-docker.io")

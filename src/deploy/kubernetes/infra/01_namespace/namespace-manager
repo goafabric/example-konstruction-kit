@@ -4,12 +4,12 @@ COMMAND=$1
 
 if [ "${COMMAND}" = "create" ]
 then
-    for val in ${namespaces[@]}; do
+    for val in ${namespaces_all[@]}; do
         if ! kubectl get --ignore-not-found namespace $val | grep -q Active; then kubectl create namespace $val; fi
     done
 elif [ "${COMMAND}" = "delete" ]
 then
-    for val in ${namespaces[@]}; do
+    for val in ${namespaces_all[@]}; do
         if kubectl get --ignore-not-found namespace $val | grep -q Active; then kubectl delete namespace $val; fi
     done
 else
