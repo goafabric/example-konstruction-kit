@@ -2,12 +2,12 @@
 source ../.values
 COMMAND=$1
 
-function delete_secret_sub() {
-    kubectl -n $1 delete secret --ignore-not-found docker-registry $2
+function delete_secret() {
+  kubectl -n $1 delete secret --ignore-not-found docker-registry $2
 }
 
 function create_secret_sub() {
-  delete_secret_sub $1 $2 $3
+  delete_secret $1 $2 $3
   kubectl -n $1 create secret docker-registry $2 \
     --docker-server=$3 \
     --docker-username=$mailVar \
@@ -15,13 +15,10 @@ function create_secret_sub() {
     --docker-email=$mailVar
 }
 
-function delete_secret() {
-  kubectl -n $1 delete secret --ignore-not-found docker-registry $2
-}
-
 function create_secret() {
   create_secret_sub $1 $2 $2
 }
+
 
 function input_secret() {
   echo We now need the credentials to login to artifactory docker registry
@@ -39,7 +36,9 @@ function input_secret() {
 
 if [ "${COMMAND}" = "init" ]
 then
-    input_secret
+    #input_secret
+    mailVar="yo"
+    pwVar="yo"
 
     for namespace in ${namespaces_own[@]}; do
         for registry in ${registries[@]}; do
