@@ -3,20 +3,16 @@ source ../.values
 COMMAND=$1
 
 function delete_secret() {
-  kubectl -n $1 delete secret --ignore-not-found docker-registry $2
-}
-
-function create_secret_sub() {
-  delete_secret $1 $2 $3
-  kubectl -n $1 create secret docker-registry $2 \
-    --docker-server=$3 \
-    --docker-username=$mailVar \
-    --docker-password=$pwVar \
-    --docker-email=$mailVar
+  kubectl -n $1 delete secret --ignore-not-found docker-registry "$2"-secret
 }
 
 function create_secret() {
-  create_secret_sub $1 $2 $2
+  delete_secret $1 "$2"-secret
+  kubectl -n $1 create secret docker-registry "$2"-secret \
+    --docker-server=$2 \
+    --docker-username=$mailVar \
+    --docker-password=$pwVar \
+    --docker-email=$mailVar
 }
 
 
