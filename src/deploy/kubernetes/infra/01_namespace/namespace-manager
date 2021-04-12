@@ -7,6 +7,13 @@ then
     for val in ${namespaces_all[@]}; do
         if ! kubectl get --ignore-not-found namespace $val | grep -q Active; then kubectl create namespace $val; fi
     done
+
+    if kubectl get --ignore-not-found namespace istio-system | grep -q Active
+    then
+        for val in ${namespaces_own[@]}; do
+            kubectl label namespace $val istio-injection=enabled --overwrite
+        done
+    fi
 elif [ "${COMMAND}" = "delete" ]
 then
     for val in ${namespaces_all[@]}; do
