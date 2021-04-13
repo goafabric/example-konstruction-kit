@@ -10,6 +10,7 @@ data:
   server.forward-headers-strategy: FRAMEWORK
   management.database.monitoring.enabled: "true"
   management.endpoints.web.exposure.include: "info,health,heapdump,circuitbreakers,prometheus"
+  management.endpoint.health.show-details: always
 
   server.tomcat.threads.max: "20"
   security.authentication.enabled: "false"
