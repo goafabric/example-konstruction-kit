@@ -1,3 +1,8 @@
+#Links
+https://istio.io/latest/docs/setup/getting-started/
+https://linkerd.io/2.10/getting-started/
+
+
 # Istio
 ##doc
 https://istio.io/latest/docs/setup/getting-started/
