@@ -1,6 +1,9 @@
 #Links
 https://istio.io/latest/docs/setup/getting-started/
+istioctl dashboard kiali
+
 https://linkerd.io/2.10/getting-started/
+linkerd viz dashboard
 
 
 # Istio
