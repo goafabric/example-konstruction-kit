@@ -1,41 +1,14 @@
-#Links
-https://istio.io/latest/docs/setup/getting-started/
-istioctl dashboard kiali
-
-https://linkerd.io/2.10/getting-started/
-linkerd viz dashboard
-
-
 # Istio
-##doc
-https://istio.io/latest/docs/setup/getting-started/
+- Download Istioctl CLI: https://istio.io/latest/docs/setup/getting-started/
+- infra/06_addon/istio ./xstack init
 
-##install
-istioctl install  --set profile=default -y
+- istioctl dashboard kiali
+       
+# Linkerd
+- Download Linkerd CLI: https://linkerd.io/2.10/getting-started/
+- infra/06_addon/linkerd ./xstack init
 
-##dashboard
-kubectl apply -f samples/addons
-istioctl dashboard kiali
-infra/05_dashboard/istio/ ./xstack up
-
-##uninstall
-istioctl manifest generate --set profile=demo | kubectl delete --ignore-not-found=true -f -
-kubectl delete namespace istio-system &&  kubectl delete namespace istio-operator
-kubectl delete -f samples/addons
-
-##arm64
-https://github.com/querycap/istio
-
---
-
-
-#Linkerd
-microk8s enable linkerd
-linkerd install | kubectl apply -f -
-linkerd uninstall | kubectl delete -f -
-
-#Linkerd CLI download
-https://github.com/linkerd/linkerd2/releases/
+- linkerd viz dashboard
 
 #Linkerd Dashboard (dd remove line, O insert -enforced-host=)
 microk8s.kubectl edit deployment/linkerd-web --namespace=linkerd

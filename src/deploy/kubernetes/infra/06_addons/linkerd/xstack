@@ -17,13 +17,15 @@ done
 }
 
 function init() {
-    #linkerd install | kubectl apply -f -
-    #linkerd viz install | kubectl apply -f -
-    dynKubectl apply ./templates
+    linkerd install | kubectl apply -f -
+    linkerd viz install | kubectl apply -f -
+    #dynKubectl apply ./templates
 }
 
 function prune() {
-    dynKubectl "delete --ignore-not-found" ./templates
+    linkerd viz uninstall | kubectl delete -f -
+    linkerd uninstall | kubectl delete -f -
+    #dynKubectl "delete --ignore-not-found" ./templates
 }
 
 [ ! -f "/usr/local/bin/linkerd" ] && echo "linkerd not found in /usr/local/bin, cannot continue" && exit
