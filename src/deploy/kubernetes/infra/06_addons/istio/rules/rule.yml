@@ -10,10 +10,13 @@ spec:
       mode: ISTIO_MUTUAL
     connectionPool:
       tcp:
-#        maxConnections: 100
         connectTimeout: 1ms
+#        maxConnections: 1
+      http:
+#        http1MaxPendingRequests: 1
+#        maxRequestsPerConnection: 1
     outlierDetection:
-      consecutive5xxErrors: 5
+      consecutive5xxErrors: 1
       interval: 10s #sliding window
       baseEjectionTime: 30s #time until the cb keeps open
       maxEjectionPercent: 100

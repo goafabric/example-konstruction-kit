@@ -32,9 +32,9 @@ stringData:
   #adapter
   adapter.calleeservice.url: "http://callee-service-application:8080"
 
-  adapter.timeout: "10000"
+  adapter.timeout: "20000"
   resilience4j.circuitbreaker.configs.default.minimumNumberOfCalls: "1"
-  resilience4j.circuitbreaker.configs.default.slowCallDurationThreshold: "10000"
+  resilience4j.circuitbreaker.configs.default.slowCallDurationThreshold: "20000"
 #  resilience4j.circuitbreaker.configs.default.ignoreExceptions: "java.lang.Exception"
 
 data:
