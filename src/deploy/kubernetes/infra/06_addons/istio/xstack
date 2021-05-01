@@ -1,0 +1,37 @@
+#!/bin/bash
+source .values
+COMMAND=$1
+PROFILE=$2
+
+kubectl version | grep "Server Version" | grep "linux/arm64" > /dev/null && _Values_server_arch="-arm64v8"
+_Values_host_name=`kubectl get configmaps cluster-config -o jsonpath='{.data.hostname}' -n default` && [ -z "$_Values_host_name" ] && echo "Hostname is empty" && exit
+
+function dynKubectl() {
+for filename in $2/*.yml; do
+eval "cat <<EOF
+$(<$filename)
+EOF
+" | kubectl $1 -n ${_Release_namespace} -f -
+done
+}
+
+function init() {
+    istioctl operator init --hub=docker.io/querycapistio --tag=1.9.2
+    kubectl apply -f ./operator/templates
+    kubectl apply -f ./addons
+    dynKubectl apply ./dashboard/templates
+}
+
+function prune() {
+    istioctl manifest generate --set profile=default | kubectl delete --ignore-not-found=true -f -
+    kubectl delete namespace istio-operator
+    kubectl delete -f ./addons
+    #kubectl delete namespace istio-system
+    dynKubectl "delete --ignore-not-found" ./dashboard/templates
+}
+
+
+if   [ "${COMMAND}" = "init" ] ; then init;
+elif [ "${COMMAND}" = "prune" ]; then prune;
+
+else echo Doing nothing !; fi
