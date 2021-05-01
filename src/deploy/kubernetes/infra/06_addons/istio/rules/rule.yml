@@ -2,6 +2,7 @@ apiVersion: networking.istio.io/v1alpha3
 kind: DestinationRule
 metadata:
   name: callee-service-policy
+  namespace: example
 spec:
   host: callee-service-application.example
   trafficPolicy:
@@ -10,7 +11,7 @@ spec:
     connectionPool:
       tcp:
 #        maxConnections: 100
-        connectTimeout: 10s
+        connectTimeout: 1ms
     outlierDetection:
       consecutive5xxErrors: 5
       interval: 10s #sliding window
