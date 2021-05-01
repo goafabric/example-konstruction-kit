@@ -5,10 +5,10 @@
 - istioctl dashboard kiali
        
 # Linkerd
-- Download Linkerd CLI: https://linkerd.io/2.10/getting-started/
+- Download Linkerd CLI: https://linkerd.io/2.9/getting-started/, https://linkerd.io/2.10/getting-started/
 - infra/06_addon/linkerd ./xstack init
 
-- linkerd viz dashboard
+- linkerd (viz) dashboard
 
 #Linkerd Dashboard (dd remove line, O insert -enforced-host=)
 microk8s.kubectl edit deployment/linkerd-web --namespace=linkerd

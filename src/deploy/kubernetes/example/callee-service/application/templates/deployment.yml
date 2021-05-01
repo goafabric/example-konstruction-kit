@@ -12,7 +12,7 @@ spec:
   template:
     metadata:
       annotations:
-        linkerd.io/inject: disabled
+        linkerd.io/inject: enabled
         sidecar.istio.io/inject: "true"
       labels:
         app: ${_Values_app_name}
