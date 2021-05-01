@@ -16,8 +16,9 @@ done
 }
 
 function init() {
-    istioctl operator init --hub=docker.io/querycapistio --tag=1.9.2
-    kubectl apply -f ./operator/templates
+    [ "${_Values_server_arch}" = "-arm64v8" ] && _Values_hub="--hub=docker.io/querycapistio" && echo "arm64 detected"
+    istioctl operator init ${Values_hub} --tag=1.9.2
+    kubectl apply -f ./operator/templates/operator${_Values_server_arch}.yml
     kubectl apply -f ./addons
     dynKubectl apply ./kiali-ingress/templates
 }
@@ -30,6 +31,7 @@ function prune() {
     dynKubectl "delete --ignore-not-found" ./kiali-ingress/templates
 }
 
+[ ! -f "/usr/local/bin/istioctl" ] && echo "istioctl not found in /usr/local/bin, cannot continue" && exit
 
 if   [ "${COMMAND}" = "init" ] ; then init;
 elif [ "${COMMAND}" = "prune" ]; then prune;
