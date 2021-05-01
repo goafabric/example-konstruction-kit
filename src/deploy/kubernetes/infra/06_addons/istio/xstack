@@ -19,7 +19,7 @@ function init() {
     istioctl operator init --hub=docker.io/querycapistio --tag=1.9.2
     kubectl apply -f ./operator/templates
     kubectl apply -f ./addons
-    dynKubectl apply ./dashboard/templates
+    dynKubectl apply ./kiali-ingress/templates
 }
 
 function prune() {
@@ -27,7 +27,7 @@ function prune() {
     kubectl delete namespace istio-operator
     kubectl delete -f ./addons
     #kubectl delete namespace istio-system
-    dynKubectl "delete --ignore-not-found" ./dashboard/templates
+    dynKubectl "delete --ignore-not-found" ./kiali-ingress/templates
 }
 
 
