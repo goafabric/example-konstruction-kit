@@ -5,7 +5,7 @@ metadata:
   labels:
     app: ${_Values_app_name}
 spec:
-  storageClassName: "standard" #microk8s-hostpath
+  storageClassName: "standard"
   capacity:
   accessModes:
     - ReadWriteOnce

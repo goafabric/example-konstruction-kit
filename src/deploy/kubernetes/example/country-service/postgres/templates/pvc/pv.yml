@@ -6,11 +6,11 @@ metadata:
     app: ${_Values_app_name}
     type: local
 spec:
-  storageClassName: "standard" #microk8s-hostpath
+  storageClassName: "standard"
   capacity:
     storage: 1Gi
   accessModes:
     - ReadWriteOnce
-  persistentVolumeReclaimPolicy: Recycle
+#  persistentVolumeReclaimPolicy: Recycle
   hostPath:
     path: "/var/data"
