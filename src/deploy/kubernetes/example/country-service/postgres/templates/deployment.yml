@@ -51,7 +51,7 @@ spec:
       volumes:
         - name: ${_Values_app_name}-pvc-volume
           persistentVolumeClaim:
-            claimName: ${_Values_app_name}-pvc
+            claimName: ${_Values_app_name}-pv-claim
 
         - name: ${_Values_app_name}-initdb-volume
           configMap:
