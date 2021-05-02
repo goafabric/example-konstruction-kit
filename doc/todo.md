@@ -14,5 +14,4 @@
 - Monitoring (Prometheus, Graphana ...)
 - Helm
 - Postgres Statefulsets / Operator
-    - https://contentlab.io/postgresql-on-kubernetes/
     - https://medium.com/@suyashmohan/setting-up-postgresql-database-on-kubernetes-24a2a192e962
