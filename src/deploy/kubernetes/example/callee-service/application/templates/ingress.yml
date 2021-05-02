@@ -7,7 +7,7 @@ metadata:
     nginx.ingress.kubernetes.io/ssl-redirect: "false"
     #rewrites URI from /* to /callee/*
     nginx.ingress.kubernetes.io/rewrite-target: /\$2
-    #rewrite URI from /callee to /calle/ to add missing trailing slash
+    #rewrite URI from /callee to /callee/ to add missing trailing slash
     nginx.ingress.kubernetes.io/configuration-snippet: |
       rewrite ^(/${_Values_ingress_name})$ \$1/ redirect;
     #rewrites CONTENT of HTML like links from /* to /callee/*
