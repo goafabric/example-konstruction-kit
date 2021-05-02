@@ -5,6 +5,7 @@ metadata:
   annotations:
     kubernetes.io/ingress.class: "nginx"
     nginx.ingress.kubernetes.io/ssl-redirect: "false"
+
     #rewrites URI from /* to /callee/*
     nginx.ingress.kubernetes.io/rewrite-target: /\$2
     #rewrite URI from /callee to /callee/ to add missing trailing slash
@@ -12,11 +13,13 @@ metadata:
       rewrite ^(/${_Values_ingress_name})$ \$1/ redirect;
     #rewrites CONTENT of HTML like links from /* to /callee/*
     nginx.ingress.kubernetes.io/x-forwarded-prefix: "/${_Values_ingress_name}"
+
     # basic auth
     nginx.ingress.kubernetes.io/auth-type: basic
     nginx.ingress.kubernetes.io/auth-secret: authentication-secret
 
-#    nginx.ingress.kubernetes.io/enable-modsecurity: "true"
+    #mod security logging
+    nginx.ingress.kubernetes.io/enable-modsecurity: "true"
 #    nginx.ingress.kubernetes.io/enable-owasp-core-rules: "true"
 spec:
   tls:
