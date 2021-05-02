@@ -57,4 +57,3 @@ spec:
           configMap:
             name: ${_Values_app_name}-data-files
 
-
