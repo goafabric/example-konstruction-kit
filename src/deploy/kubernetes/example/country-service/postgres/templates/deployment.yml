@@ -7,7 +7,7 @@ spec:
   selector:
     matchLabels:
       app: ${_Values_app_name}
-  replicas: 1
+  replicas: 2
   template:
     metadata:
       annotations:
