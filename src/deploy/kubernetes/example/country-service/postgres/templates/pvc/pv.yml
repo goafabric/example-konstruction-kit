@@ -1,3 +1,5 @@
+#TODO: do we need an extra volume definition ?
+#TODO: also stack prune hangs and gives " deleting cluster-scoped resources, not scoped to the provided namespace
 kind: PersistentVolume
 apiVersion: v1
 metadata:
@@ -6,7 +8,7 @@ metadata:
     app: ${_Values_app_name}
     type: local
 spec:
-  storageClassName: "standard"
+  storageClassName: "standard" #TODO: is standard correct ?
   capacity:
     storage: 1Gi
   accessModes:
