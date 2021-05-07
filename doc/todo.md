@@ -1,16 +1,21 @@
-# Security
-- Certmanager for Certs (https://tinyurl.com/1wjhxz9m)
+# Ops
+- Statefulsets
+- Istio CB
+- Linkerd 2.10
+- Jaeger  
 - Networks Seperation (https://gardener.cloud/documentation/guides/applications/network-isolation/)
-- Outbound SSL
+
+# Security
 - Keycloak (https://kubernetes.github.io/ingress-nginx/examples/auth/oauth-external-auth)
+- Certmanager for Certs (https://tinyurl.com/1wjhxz9m)
+- Outbound SSL
+
+# Ops
+- Helm
+- Monitoring (Elk, Prometheus, Graphana ...)
 
 #Ingress
 - Nginx Versionsanzeige abschalten (https://www.cyberciti.biz/faq/hide-nginx-version-in-linux-and-unix/#Hiding_Nginx_version)
-
-# Ops
-- Istio CB
-- Monitoring (Jaeger, Elk, Prometheus, Graphana ...)
-- Helm
   
 # Activated but needs further Investigation
 - Mod Security https://awkwardferny.medium.com/enabling-modsecurity-in-the-kubernetes-ingress-nginx-controller-111f9c877998
