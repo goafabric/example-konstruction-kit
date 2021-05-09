@@ -1,0 +1,15 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: country-service-batch-data-files
+  namespace: example
+data:
+  V1000__demo_data.sql: >-
+    INSERT INTO country (id, tenant_id, iso_code, name, information, secret)
+    values('1', '10', 'de', 'Germany', 'North Europe', null);
+
+    INSERT INTO country (id, tenant_id, iso_code, name, information, secret)
+    values('2', '10','es', 'Spain', 'West Europe', null);
+
+    INSERT INTO country (id, tenant_id, iso_code, name, information, secret)
+    values('3', '10','it', 'Italy', 'South Europe', null);

@@ -19,15 +19,11 @@ done
 }
 
 function up() {
-    [ -d "./config/" ] && kubectl create configmap ${_Values_app_name}-config-files --from-file=./config/ -n ${_Release_namespace}
-    [ -d "./data/" ] && kubectl create configmap ${_Values_app_name}-data-files --from-file=./data/ -n ${_Release_namespace}
     [ -d "./templates/pvc/" ] && dynKubectl apply ./templates/pvc
     dynKubectl apply ./templates
 }
 
 function down() {
-    [ -d "./config/" ] && kubectl delete --ignore-not-found configmap ${_Values_app_name}-config-files -n ${_Release_namespace}
-    [ -d "./data/" ] && kubectl delete --ignore-not-found configmap ${_Values_app_name}-data-files -n ${_Release_namespace}
     dynKubectl "delete --ignore-not-found" ./templates
 }
 
