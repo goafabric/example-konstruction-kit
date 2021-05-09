@@ -5,10 +5,9 @@ metadata:
 spec:
   selector:
     app: ${_Values_app_name}
-  type: ${_Values_service_type}
+  type: ClusterIP
   ports:
     - port: ${_Values_service_port}
-      nodePort: ${_Values_service_nodePort}
       targetPort: transport
       protocol: TCP
       name: transport
