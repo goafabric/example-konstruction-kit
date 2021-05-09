@@ -7,7 +7,6 @@ data:
   server.port: "${_Values_service_port}"
 
   #monitoring
-  server.forward-headers-strategy: FRAMEWORK
   management.database.monitoring.enabled: "true"
   management.endpoints.web.exposure.include: "info,health,heapdump,circuitbreakers,prometheus"
   management.endpoint.health.show-details: always

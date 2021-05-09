@@ -11,8 +11,6 @@ metadata:
     #rewrite URI from /callee to /callee/ to add missing trailing slash
     nginx.ingress.kubernetes.io/configuration-snippet: |
       rewrite ^(/${_Values_ingress_name})$ \$1/ redirect;
-    #rewrites CONTENT of HTML like links from /* to /callee/*
-    nginx.ingress.kubernetes.io/x-forwarded-prefix: "/${_Values_ingress_name}"
 
     # basic auth
     nginx.ingress.kubernetes.io/auth-type: basic
