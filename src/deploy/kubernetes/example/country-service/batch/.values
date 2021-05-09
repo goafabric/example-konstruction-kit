@@ -3,7 +3,7 @@ _Values_root_name=country-service
 _Values_app_name=${_Values_root_name}-batch
 
 _Values_image_repository="goafabric/spring-boot-exampleservice"
-_Values_image_tag="1.0.4"
+_Values_image_tag="1.0.5-SNAPSHOT"
 
 _Values_resources_requests_memory=256M
 _Values_resources_requests_cpu=250m
