@@ -1,7 +1,7 @@
 # Ops
 - Istio CB
 - Linkerd 2.10
-- Jaeger  
+- Jaeger Ingress
 - Networks Seperation (https://gardener.cloud/documentation/guides/applications/network-isolation/)
 - Postgres, Statefulsets / Operator
 
