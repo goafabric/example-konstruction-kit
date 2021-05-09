@@ -33,6 +33,7 @@ stringData:
 
   adapter.timeout: "10000"
   resilience4j.circuitbreaker.configs.default.slowCallDurationThreshold: "10000"
+  failureRateThreshold: "50"
 #  resilience4j.circuitbreaker.configs.default.ignoreExceptions: "java.lang.Exception"
 
 data:
