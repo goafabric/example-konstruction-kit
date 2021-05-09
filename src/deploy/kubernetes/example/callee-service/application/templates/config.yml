@@ -21,5 +21,9 @@ kind: Secret
 metadata:
   name: ${_Values_app_name}-config-external
 data:
+stringData:
+  #jaeger
+  opentracing.jaeger.disabled: "true"
+
 
 
