@@ -8,7 +8,6 @@ _Values_image_repository=goafabric/spring-boot-exampleservice
 _Values_image_tag=1.0.4
 
 _Values_service_port=8080
-
 _Values_resources_requests_memory=256M
 _Values_resources_requests_cpu=250m
 _Values_readinessProbe_initialDelaySeconds=10
