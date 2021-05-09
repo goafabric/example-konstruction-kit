@@ -36,9 +36,6 @@ stringData:
   failureRateThreshold: "50"
 #  resilience4j.circuitbreaker.configs.default.ignoreExceptions: "java.lang.Exception"
 
-  #jaeger
-  opentracing.jaeger.disabled: "true"
-  
 data:
   spring.datasource.username: ZXhhbXBsZS1zZXJ2aWNl
   spring.datasource.password: Y3JOYjJaNm12QnlTUkt3dQ==
