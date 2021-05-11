@@ -1,9 +1,11 @@
 # Ops
+- Istio Addon Init
+- Jaeger Library mix (FHIR)
 - Istio CB
+
 - Linkerd 2.10
-- Jaeger Ingress
 - Networks Seperation (https://gardener.cloud/documentation/guides/applications/network-isolation/)
-- Postgres, Statefulsets / Operator
+
 
 # Security
 - Keycloak (https://kubernetes.github.io/ingress-nginx/examples/auth/oauth-external-auth)
