@@ -1,6 +1,8 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
+  name: dashboard
+  namespace: kubernetes-dashboard
   annotations:
     kubernetes.io/ingress.class: nginx
     nginx.ingress.kubernetes.io/ssl-redirect: "false"
@@ -12,9 +14,6 @@ metadata:
     # basic auth
     nginx.ingress.kubernetes.io/auth-type: basic
     nginx.ingress.kubernetes.io/auth-secret: authentication-secret
-
-  name: dashboard
-  namespace: kubernetes-dashboard
 
 spec:
   tls:
