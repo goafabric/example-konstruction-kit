@@ -15,7 +15,7 @@
 - Monitoring (Elk, Prometheus, Graphana ...)
 
 #Ingress
-- Nginx Versionsanzeige abschalten (https://www.cyberciti.biz/faq/hide-nginx-version-in-linux-and-unix/#Hiding_Nginx_version)
+- Nginx Versionsanzeige abschalten (nginx.ingress.kubernetes.io/server-tokens: "false" / snippet: more_clear_headers "Server" / https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/configmap/)
   
 # Activated but needs further Investigation
 - Mod Security https://awkwardferny.medium.com/enabling-modsecurity-in-the-kubernetes-ingress-nginx-controller-111f9c877998
