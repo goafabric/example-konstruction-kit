@@ -1,37 +1,24 @@
 #!/bin/bash
-source .values
 COMMAND=$1
 PROFILE=$2
+
+[ ! -f "/usr/local/bin/istioctl" ] && echo "istioctl not found in /usr/local/bin, cannot continue" && exit
 
 kubectl version | grep "Server Version" | grep "linux/arm64" > /dev/null && _Values_server_arch="-arm64v8"
 _Values_host_name=`kubectl get configmaps cluster-config -o jsonpath='{.data.hostname}' -n default` && [ -z "$_Values_host_name" ] && echo "Hostname is empty" && exit
 
-function dynKubectl() {
-for filename in $2/*.yml; do
-eval "cat <<EOF
-$(<$filename)
-EOF
-" | kubectl $1 -n ${_Release_namespace} -f -
-done
-}
 
 function init() {
     [ "${_Values_server_arch}" = "-arm64v8" ] && _Values_hub="--hub=docker.io/querycapistio" && echo "arm64 detected"
     istioctl operator init ${Values_hub} --tag=1.9.2
-    kubectl apply -f ./operator/templates/operator${_Values_server_arch}.yml
-    kubectl apply -f ./addons
-    dynKubectl apply ./kiali-ingress/templates
+    kubectl apply -f ./templates/operator${_Values_server_arch}.yml
 }
 
 function prune() {
     istioctl manifest generate --set profile=default | kubectl delete --ignore-not-found=true -f -
     kubectl delete namespace istio-operator
-    kubectl delete -f ./addons
     #kubectl delete namespace istio-system
-    dynKubectl "delete --ignore-not-found" ./kiali-ingress/templates
 }
-
-[ ! -f "/usr/local/bin/istioctl" ] && echo "istioctl not found in /usr/local/bin, cannot continue" && exit
 
 if   [ "${COMMAND}" = "init" ] ; then init;
 elif [ "${COMMAND}" = "prune" ]; then prune;
