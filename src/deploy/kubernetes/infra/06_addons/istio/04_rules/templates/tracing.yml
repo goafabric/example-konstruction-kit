@@ -1,0 +1,9 @@
+#https://istio.io/latest/docs/tasks/observability/distributed-tracing/configurability/
+apiVersion: install.istio.io/v1alpha1
+kind: IstioOperator
+spec:
+  meshConfig:
+    enableTracing: true
+    defaultConfig:
+      tracing:
+        sampling: 100

@@ -1,6 +1,6 @@
 # Istio
 - Download Istioctl CLI: https://istio.io/latest/docs/setup/getting-started/
-- infra/06_addon/istio ./xstack init
+- infra/06_addon/istio ./stack init
 
 - istioctl dashboard kiali
        

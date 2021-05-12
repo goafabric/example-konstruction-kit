@@ -1,3 +1,4 @@
+#https://istio.io/latest/docs/reference/config/networking/destination-rule/
 apiVersion: networking.istio.io/v1alpha3
 kind: DestinationRule
 metadata:
@@ -22,4 +23,3 @@ spec:
       maxEjectionPercent: 100
 
 
-#https://istio.io/latest/docs/reference/config/networking/destination-rule/
