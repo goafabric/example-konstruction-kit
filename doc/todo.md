@@ -4,7 +4,7 @@
 
 - Linkerd 2.10
 - Networks Seperation (https://gardener.cloud/documentation/guides/applications/network-isolation/)
-
+- Prometheus Dashboard for Kiali (https://kiali.io/documentation/latest/runtimes-monitoring/)
 
 # Security
 - Keycloak (https://kubernetes.github.io/ingress-nginx/examples/auth/oauth-external-auth)
