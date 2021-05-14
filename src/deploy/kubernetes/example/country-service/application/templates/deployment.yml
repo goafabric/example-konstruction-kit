@@ -20,7 +20,7 @@ spec:
         prometheus.io/port: "8080"
         prometheus.io/scheme: "http"
         prometheus.io/path: "/actuator/prometheus"
-        kiali.io/runtimes: springboot-jvm,springboot-jvm-pool #,springboot-tomcat
+#        kiali.io/runtimes: springboot-jvm,springboot-jvm-pool #,springboot-tomcat
       labels:
         app: ${_Values_app_name}
         version: v1
