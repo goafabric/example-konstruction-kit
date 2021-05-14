@@ -16,11 +16,11 @@ spec:
         linkerd.io/inject: enabled
         sidecar.istio.io/inject: "true"
 
-#        prometheus.io/scrape: "true"
-#        prometheus.io/port: "8080"
-#        prometheus.io/scheme: "http"
-#        prometheus.io/path: "/actuator/prometheus"
-#        kiali.io/runtimes: springboot-tomcat,springboot-jvm,springboot-jvm-pool
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "8080"
+        prometheus.io/scheme: "http"
+        prometheus.io/path: "/actuator/prometheus"
+        kiali.io/runtimes: springboot-tomcat,springboot-jvm,springboot-jvm-pool
       labels:
         app: ${_Values_app_name}
         version: v1
