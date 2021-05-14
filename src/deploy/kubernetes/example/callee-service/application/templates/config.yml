@@ -14,6 +14,9 @@ data:
   server.tomcat.threads.max: "20"
   security.authentication.enabled: "false"
 
+  #zipkin
+#  spring.zipkin.baseUrl: "http://zipkin.istio-system:9411"
+#  spring.zipkin.service.name: "callee-service"
 ---
 
 apiVersion: v1
