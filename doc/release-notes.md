@@ -7,4 +7,6 @@
 
 ##added
 - Istio and linkerd now as addons inside 06_addons
-- This includes dist tracing via Jaeger, JVM Dashboards in Kiali, Possibility for CB
+- This includes mTLS, dist Tracing via Jaeger, JVM Dashboards in Kiali, Possibility for CB
+- Mod Security in passive mode (log only)
+- Nginx Server Version Hiding works, where standard nginx-controller is used
