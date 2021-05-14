@@ -3,11 +3,11 @@ COMMAND=$1
 PROFILE=$2
 
 function up() {
-    istioctl apply -f ./templates/tracing.yml
+    istioctl install -f ./templates/tracing.yml
 }
 
 function down() {
-    istioctl delete -f ./templates/tracing.yml
+    #istioctl uninstall -f ./templates/tracing.yml
 }
 
 
