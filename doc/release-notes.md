@@ -6,7 +6,8 @@
 - dynamic configmap creation removed
 
 ##added
-- Istio and linkerd now as addons inside 06_addons
-- This includes mTLS, dist Tracing via Jaeger, JVM Dashboards in Kiali, Possibility for CB
+- HTTPS for all Services via Ingress
+- Istio as Addon including:
+    - mTLS, dist Tracing via Jaeger, JVM Dashboards in Kiali, Possibility for CB
 - Mod Security in passive mode (log only)
 - Nginx Server Version Hiding works, where standard nginx-controller is used
