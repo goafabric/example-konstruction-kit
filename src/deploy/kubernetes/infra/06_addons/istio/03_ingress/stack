@@ -1,4 +1,5 @@
 #!/bin/bash
+source .values
 COMMAND=$1
 PROFILE=$2
 
