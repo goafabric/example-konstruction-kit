@@ -1,7 +1,6 @@
 # Ops
 - Istio CB
 - Networks Separation (https://gardener.cloud/documentation/guides/applications/network-isolation/)
-- Linkerd 2.10
 
 # Security
 - Keycloak (https://kubernetes.github.io/ingress-nginx/examples/auth/oauth-external-auth)
