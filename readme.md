@@ -10,6 +10,8 @@
     - credentials
     - server name (for local installations just kubernetes)
     - the certificate password (also kubernetes)
+  
+#Examples
 - To start the example applications go to "src/deploy/kubernetes/example" and do ./stack up && ./stack import
 
 #Welcome
