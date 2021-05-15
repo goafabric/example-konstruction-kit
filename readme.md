@@ -10,8 +10,10 @@
     - credentials
     - server name (for local installations just kubernetes)
     - the certificate password (also kubernetes)
+- To start the example applications go to "src/deploy/kubernetes/example" and do ./stack up && ./stack import
+
+#Welcome
 - And that's basically it just navigate to http(s)://kubernetes/welcome and you see the Welcome Page
-- To start the example applications go to "src/deploy/kubernetes/example" and to ./stack up && ./stack import
 
 #Uninstall
 - Go to "src/deploy/kubernetes/infra"

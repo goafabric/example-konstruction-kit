@@ -20,6 +20,10 @@ spec:
           command: ['sh', '-c',
                     'until pg_isready -h ${_Values_root_name}-postgres -p 5432;
                      do echo waiting for database; sleep 2; done;']
+#        - name: wait-for-webserver
+#          image: curlimages/curl:7.75.0
+#          command: ["/bin/sh","-c"]
+#          args: ["while [ \$(curl -sw '%{http_code}' --fail --connect-timeout 1 http://${_Values_root_name}-application:8080/actuator/health -o /dev/null) -ne 200 ]; do sleep 2; done"]
 #      imagePullSecrets:
 #        - name: ${_Values_image_pullSecrets}
       containers:
