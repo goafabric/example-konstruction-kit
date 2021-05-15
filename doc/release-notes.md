@@ -12,5 +12,5 @@
 - Mod Security in passive mode (log only)
 - Nginx Server Version Hiding works, where standard nginx-controller is used
 
-#0.5
+#0.4
 - initial release
