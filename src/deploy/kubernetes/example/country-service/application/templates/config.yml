@@ -8,7 +8,7 @@ data:
 
   #monitoring
   management.database.monitoring.enabled: "true"
-  management.endpoints.web.exposure.include: "info,health,heapdump,circuitbreakers,prometheus"
+  management.endpoints.web.exposure.include: "health,heapdump,circuitbreakers,prometheus"
   management.endpoint.health.show-details: always
 
   server.tomcat.threads.max: "20"

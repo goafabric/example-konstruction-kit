@@ -7,9 +7,8 @@ data:
   server.port: "${_Values_service_port}"
 
   #monitoring
-  server.forward-headers-strategy: FRAMEWORK
   management.database.monitoring.enabled: "true"
-  management.endpoints.web.exposure.include: "info,health,heapdump,circuitbreakers,prometheus"
+  management.endpoints.web.exposure.include: "health,heapdump,circuitbreakers,prometheus"
 
   #stageing
   server.tomcat.threads.max: "20"

@@ -14,6 +14,7 @@
 
 #Welcome
 - And that's basically it just navigate to http(s)://kubernetes/welcome and you see the Welcome Page
+- Password is currently just admin/admin 
 
 #Uninstall
 - Go to "src/deploy/kubernetes/infra"
