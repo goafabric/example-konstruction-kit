@@ -21,3 +21,4 @@
 #Uninstall
 - Go to "src/deploy/kubernetes/infra"
 - ./stack prune-force => this will eradicate everything
+- Note: More complex Addons like Istio or Linkerd should be uninstalled manually via ./stack prune inside there addon dirs
