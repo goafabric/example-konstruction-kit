@@ -1,7 +1,7 @@
 # Ops
 - Istio CB
-- Linkerd 2.10
 - Networks Separation (https://gardener.cloud/documentation/guides/applications/network-isolation/)
+- Linkerd 2.10
 
 # Security
 - Keycloak (https://kubernetes.github.io/ingress-nginx/examples/auth/oauth-external-auth)
@@ -10,7 +10,7 @@
 
 # Ops
 - Helm
-- Monitoring (Elk, Prometheus, Graphana ...)
+- Elk
 
 # Activated but needs further Investigation
 - Hide Nginx version, by installing standard nginx-controller 0.44.0
