@@ -5,7 +5,7 @@ PROFILE=$2
 function up() {
     kubectl apply -f <(istioctl kube-inject -f samples/httpbin/httpbin.yaml)
     kubectl apply -f <(istioctl kube-inject -f samples/httpbin/sample-client/fortio-deploy.yaml)
-    kubectl apply -f ./templates
+    kubectl apply -f ./templates/destrule.yml
 }
 
 function down() {

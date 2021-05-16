@@ -3,7 +3,7 @@ COMMAND=$1
 PROFILE=$2
 
 function up() {
-    istioctl install -f ./templates/tracing.yml
+    istioctl install -f ./templates
 }
 
 function down() {
