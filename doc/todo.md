@@ -1,6 +1,6 @@
 # Ops
 - Istio CB
-- Networks Separation (https://gardener.cloud/documentation/guides/applications/network-isolation/, https://github.com/ahmetb/kubernetes-network-policy-recipes/blob/master/06-allow-traffic-from-a-namespace.md)
+- Networks Separation (https://gardener.cloud/documentation/guides/applications/network-isolation/, https://kubernetes.io/docs/concepts/services-networking/network-policies/, https://github.com/ahmetb/kubernetes-network-policy-recipes/blob/master/06-allow-traffic-from-a-namespace.md)
 
 # Security
 - Keycloak (https://kubernetes.github.io/ingress-nginx/examples/auth/oauth-external-auth)
