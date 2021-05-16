@@ -1,0 +1,22 @@
+#!/bin/bash
+COMMAND=$1
+PROFILE=$2
+
+function up() {
+    kubectl apply -f <(istioctl kube-inject -f samples/httpbin/httpbin.yaml)
+    kubectl apply -f <(istioctl kube-inject -f samples/httpbin/sample-client/fortio-deploy.yaml)
+    kubectl apply -f ./templates
+}
+
+function down() {
+    kubectl delete destinationrule httpbin
+    kubectl delete deploy httpbin fortio-deploy
+    kubectl delete svc httpbin fortio
+}
+
+
+if   [ "${COMMAND}" = "init" ] ; then up;
+elif [ "${COMMAND}" = "restart" ] ; then down && up;
+elif [ "${COMMAND}" = "prune" ]; then down;
+
+else echo Doing nothing !; fi
