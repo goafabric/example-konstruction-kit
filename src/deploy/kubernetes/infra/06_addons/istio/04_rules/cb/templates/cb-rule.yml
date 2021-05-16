@@ -5,10 +5,10 @@ metadata:
   name: callee-service-policy
   namespace: example
 spec:
-  host: callee-service-application.example
+  host: callee-service-application
   trafficPolicy:
-    tls:
-      mode: ISTIO_MUTUAL
+#    tls:
+#      mode: ISTIO_MUTUAL
     connectionPool:
       tcp:
         maxConnections: 1

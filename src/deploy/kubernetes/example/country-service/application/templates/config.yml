@@ -34,7 +34,7 @@ stringData:
   adapter.timeout: "10000"
   resilience4j.circuitbreaker.configs.default.slowCallDurationThreshold: "10000"
   resilience4j.circuitbreaker.configs.default.failureRateThreshold: "50"
-#  resilience4j.circuitbreaker.configs.default.ignoreExceptions: "java.lang.Exception"
+  resilience4j.circuitbreaker.configs.default.ignoreExceptions: "java.lang.Exception"
 
 data:
   spring.datasource.username: ZXhhbXBsZS1zZXJ2aWNl
