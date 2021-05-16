@@ -11,11 +11,11 @@ spec:
       mode: ISTIO_MUTUAL
     connectionPool:
       tcp:
-        connectTimeout: 1000ms
-        maxConnections: 1
-      http:
-        http1MaxPendingRequests: 1
-        maxRequestsPerConnection: 1
+        connectTimeout: 100ms
+#        maxConnections: 1
+#      http:
+#        http1MaxPendingRequests: 1
+#        maxRequestsPerConnection: 1
     outlierDetection:
       consecutive5xxErrors: 1
       interval: 10s
