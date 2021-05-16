@@ -20,6 +20,7 @@ done
 
 function up() {
     [ -d "./templates/pvc/" ] && dynKubectl apply ./templates/pvc
+    dynKubectl apply ./templates
 }
 
 function down() {
