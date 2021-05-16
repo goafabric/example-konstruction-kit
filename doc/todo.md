@@ -20,6 +20,5 @@
 - Jaeger as library (https://softwarehandwerk.com/distributed-tracing-mit-spring-cloud-sleuth-und-jaeger-auf-openshift/)
 
 #links
-https://kubernetes.github.io/ingress-nginx/user-guide/third-party-addons/opentracing/
 https://gardener.cloud/documentation/guides/applications/network-isolation/
 https://github.com/ahmetb/kubernetes-network-policy-recipes/blob/master/06-allow-traffic-from-a-namespace.md
