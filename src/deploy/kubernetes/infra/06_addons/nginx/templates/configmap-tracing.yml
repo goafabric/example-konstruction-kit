@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ingress-nginx-controller
+  namespace: ingress-nginx
+data:
+  enable-opentracing: "true"
+
+## specific ingresses also need annotations
+#    nginx.ingress.kubernetes.io/enable-opentracing: "true"
+#    zipkin-collector-host: zipkin.istio-system
