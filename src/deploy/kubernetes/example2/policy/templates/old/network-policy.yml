@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
-  namespace: example
+  namespace: example2
   name: deny-from-other-namespaces
 spec:
   podSelector:
