@@ -7,7 +7,7 @@ function up() {
 }
 
 function down() {
-    kubectl delete -f ./templates/
+    kubectl delete --ignore-not-found -f ./templates/
 }
 
 
