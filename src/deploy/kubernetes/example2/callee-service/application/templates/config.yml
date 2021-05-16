@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ${_Values_app_name}-config
+data:
+  TZ: Europe/Berlin
+  server.port: "${_Values_service_port}"
+
+  #monitoring
+  management.database.monitoring.enabled: "true"
+  management.endpoints.web.exposure.include: "health,heapdump,circuitbreakers,prometheus"
+  management.endpoint.health.show-details: always
+
+  server.tomcat.threads.max: "20"
+  security.authentication.enabled: "false"
+
+  #zipkin
+#  spring.zipkin.baseUrl: "http://zipkin.istio-system:9411"
+#  spring.zipkin.service.name: "callee-service"
+---
+
+apiVersion: v1
+kind: Secret
+metadata:
+  name: ${_Values_app_name}-config-external
+data:
+
+
+
