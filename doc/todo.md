@@ -1,6 +1,6 @@
 # Ops
 - Istio CB
-- Networks Separation (https://gardener.cloud/documentation/guides/applications/network-isolation/)
+- Networks Separation (https://gardener.cloud/documentation/guides/applications/network-isolation/, https://github.com/ahmetb/kubernetes-network-policy-recipes/blob/master/06-allow-traffic-from-a-namespace.md)
 
 # Security
 - Keycloak (https://kubernetes.github.io/ingress-nginx/examples/auth/oauth-external-auth)
@@ -18,7 +18,3 @@
 - Postgres Statefulsets / Operator (https://github.com/CrunchyData/postgres-operator, https://medium.com/@suyashmohan/setting-up-postgresql-database-on-kubernetes-24a2a192e962, https://contentlab.io/postgresql-on-kubernetes/)
 
 - Jaeger as library (https://softwarehandwerk.com/distributed-tracing-mit-spring-cloud-sleuth-und-jaeger-auf-openshift/)
-
-#links
-https://gardener.cloud/documentation/guides/applications/network-isolation/
-https://github.com/ahmetb/kubernetes-network-policy-recipes/blob/master/06-allow-traffic-from-a-namespace.md
