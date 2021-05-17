@@ -1,6 +1,7 @@
 # Istio
 - Download Istioctl CLI: https://istio.io/latest/docs/setup/getting-started/
 - infra/06_addon/istio ./stack init
+=> you may have to do this twice at least for the kiali spring boot dashboards
 
 - istioctl dashboard kiali
        

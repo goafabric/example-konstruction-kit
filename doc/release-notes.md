@@ -10,7 +10,7 @@
     - mTLS, dist Tracing via Jaeger, JVM Dashboards in Kiali, Possibility for CB
 - Mod Security in passive mode (log only)
 - Nginx Server Version Hiding works, where standard nginx-controller is used
-- Dashboard Metrics Server
+- Kiali can now show JVM Metrics for Spring Boot Services
 
 #0.4
 - initial release
