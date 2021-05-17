@@ -29,6 +29,7 @@ spec:
       containers:
         - name: ${_Values_app_name}
           image: "${_Values_image_repository}${_Values_server_arch}:${_Values_image_tag}"
+#          image: "${_Values_image_repository}-native:${_Values_image_tag}"
           imagePullPolicy: IfNotPresent #Always
           ports:
             - name: transport
