@@ -20,7 +20,6 @@ spec:
         prometheus.io/port: "8080"
         prometheus.io/scheme: "http"
         prometheus.io/path: "/actuator/prometheus"
-#        kiali.io/runtimes: springboot-jvm,springboot-jvm-pool #,springboot-tomcat
       labels:
         app: ${_Values_app_name}
         version: v1
@@ -50,6 +49,7 @@ spec:
                     ${_Values_profiler_command}
                     "-cp", "/app/resources:/app/classes:/app/libs/*",
                     "${_Values_command}"]
+          #command: ["/workspace/org.goafabric.calleservice.Application", "-Xmx64m"]
           resources:
             requests:
               memory: "${_Values_resources_requests_memory}"
