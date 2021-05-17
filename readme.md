@@ -17,7 +17,7 @@
 
 #Examples
 - To start specific applications change to the folder representing the namespace (e.g. src/deploy/kubernetes/example)
-- And do "./stack up && ./stack import"
+- And do "./stack up" and "/stack import"
 - To shut everything down do "./stack down"
 
 #Proxy
