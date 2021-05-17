@@ -17,8 +17,12 @@
 
 #Examples
 - To start specific applications change to the folder representing the namespace (e.g. src/deploy/kubernetes/example)
-- And do ./stack up && ./stack import
-- To everything done "./stack down"
+- And do "./stack up && ./stack import"
+- To shut everything down do "./stack down"
+
+#Proxy
+- In case you need a localhost direct connection to your pod do "./stack proxy" (e.g. connecting with a frontend)
+- "./stack jmx" or "./stack profile" will give you the options to profile the app
 
 #Uninstall
 - Go to "src/deploy/kubernetes/infra"
