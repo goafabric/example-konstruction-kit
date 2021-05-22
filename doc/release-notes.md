@@ -1,3 +1,6 @@
+#0.8.1
+- changes to Istio
+
 #0.8
 ##modified
 - DEV Profile removed due to security reasons, just use ingress or ./stack proxy instead
