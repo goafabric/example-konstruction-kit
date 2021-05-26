@@ -35,6 +35,7 @@ spec:
       containers:
         - name: ${_Values_app_name}
           image: "${_Values_image_repository}${_Values_server_arch}:${_Values_image_tag}"
+#         image: "${_Values_image_repository}-native:${_Values_image_tag}"
           imagePullPolicy: IfNotPresent #Always
           ports:
             - name: transport
@@ -55,6 +56,7 @@ spec:
                     ${_Values_profiler_command}
                     "-cp", "/app/resources:/app/classes:/app/libs/*",
                     "${_Values_command}"]
+          #command: ["/workspace/org.goafabric.calleservice.Application", "-Xmx64m"]
           resources:
             requests:
               memory: "${_Values_resources_requests_memory}"
