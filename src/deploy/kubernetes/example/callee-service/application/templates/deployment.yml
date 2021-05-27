@@ -50,7 +50,7 @@ spec:
                     ${_Values_profiler_command}
                     "-cp", "/app/resources:/app/classes:/app/libs/*",
                     "${_Values_command}"]
-          #command: ["/workspace/org.goafabric.calleservice.Application", "-Xmx64m"]
+          #command: ["/workspace/${_Values_command}", "-Xms${_Values_resources_requests_memory}", "-Xmx${_Values_resources_requests_memory}"]
           resources:
             requests:
               memory: "${_Values_resources_requests_memory}"
