@@ -5,14 +5,13 @@ metadata:
 data:
   TZ: Europe/Berlin
   server.port: "${_Values_service_port}"
+  server.tomcat.threads.max: "20"
+  security.authentication.enabled: "false"
 
   #monitoring
   management.database.monitoring.enabled: "true"
   management.endpoints.web.exposure.include: "health,heapdump,circuitbreakers,prometheus"
   management.endpoint.health.show-details: always
-
-  server.tomcat.threads.max: "20"
-  security.authentication.enabled: "false"
 
 ---
 
