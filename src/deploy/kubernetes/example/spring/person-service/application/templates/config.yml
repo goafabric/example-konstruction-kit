@@ -1,0 +1,35 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ${_Values_app_name}-config
+data:
+  TZ: Europe/Berlin
+  server.port: "${_Values_service_port}"
+  server.tomcat.threads.max: "20"
+  security.authentication.enabled: "false"
+
+  #monitoring
+  management.database.monitoring.enabled: "true"
+  management.endpoints.web.exposure.include: "health,heapdump,circuitbreakers,prometheus"
+  management.endpoint.health.show-details: always
+
+---
+
+apiVersion: v1
+kind: Secret
+metadata:
+  name: ${_Values_app_name}-config-external
+stringData:
+  #datasource
+  database.provisioning.goals: -migrate
+
+  spring.datasource.url: "jdbc:postgresql://person-service-postgres:5432/person"
+  spring.datasource.hikari.maximum-pool-size: "10"
+  spring.datasource.hikari.connection-timeout: "10000"
+
+data:
+  spring.datasource.username: ZXhhbXBsZS1zZXJ2aWNl
+  spring.datasource.password: Y3JOYjJaNm12QnlTUkt3dQ==
+
+  adapter.calleeservice.user: ZXhhbXBsZXVzZXI=
+  adapter.calleeservice.password: RU5DKExnQ1Q0a3JXNU5EclFrZkdQUEVZdzdYT3Z6dWZ2SUFOV0ZxM3ZIb3crU3BoZDZBQ3RhdmFoVzhhTDI4TkRubVpleDUrUG56MTRORWVEdVIrWkk5MHNRPT0p

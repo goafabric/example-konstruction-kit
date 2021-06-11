@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ${_Values_app_name}-config
+data:
+  #application
+  TZ: Europe/Berlin
+  quarkus.http.port: "${_Values_service_port}"
+  quarkus.http.io-threads: "20"
+
+---
+
+apiVersion: v1
+kind: Secret
+metadata:
+  name: ${_Values_app_name}-config-external
+data:
+
+
+
