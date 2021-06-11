@@ -9,7 +9,11 @@ data:
 #  quarkus.log.category."org.flywaydb.core".level: "INFO"
 #  quarkus.log.category."org.hibernate".level: "INFO"
 
-  #log standard settings
+  #log file settings
+  quarkus.log.file.enable: "true"
+  quarkus.log.file.rotation.max-file-size: "10M"
+  quarkus.log.file.path: "/usr/share/logs/application.log"
+  quarkus.log.file.format: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n%throwable"
 
 ---
 
