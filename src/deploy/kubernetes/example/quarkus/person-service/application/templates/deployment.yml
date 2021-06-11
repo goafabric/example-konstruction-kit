@@ -35,7 +35,6 @@ spec:
       containers:
         - name: ${_Values_app_name}
           image: "${_Values_image_repository}${_Values_server_arch}:${_Values_image_tag}"
-#          image: "${_Values_image_repository}-native:${_Values_image_tag}"
           imagePullPolicy: IfNotPresent #Always
           ports:
             - name: transport
@@ -52,8 +51,7 @@ spec:
             - secretRef:
                 name: ${_Values_app_name}-config-external
 
-          command: ["java", "-Xms${_Values_resources_requests_memory}", "-Xmx${_Values_resources_requests_memory}", ${_Values_profiler_command} "-cp", "/app/resources:/app/classes:/app/libs/*", "${_Values_command}"]
-#          args: ["-Xmx${_Values_resources_requests_memory}"]
+          args: ["-Xmx${_Values_resources_requests_memory}"]
           resources:
             requests:
               memory: "${_Values_resources_requests_memory}"

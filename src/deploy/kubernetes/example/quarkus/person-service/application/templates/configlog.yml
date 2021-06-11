@@ -4,19 +4,12 @@ metadata:
   name: ${_Values_app_name}-config-log
 data:
   #log levels
-  logging.level.root: "WARN"
-  logging.level.org.goafabric: "INFO"
-
-  logging.level.org.springframework: "INFO"
-  logging.level.org.flywaydb.core: "INFO"
-  logging.level.org.hibernate.SQL: "INFO"
+  quarkus.log.level: "INFO"
+  #  quarkus.log.category."org.goafabric".level: "INFO"
+  #  quarkus.log.category."org.flywaydb.core".level: "INFO"
+  #  quarkus.log.category."org.hibernate".level: "INFO"
 
   #log standard settings
-  logging.file.max-size: "10MB"
-  logging.file.name: "/usr/share/logs/application.log"
-  logging.pattern.file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n%throwable"
-#  logging.pattern.console: "%white(%d{ISO8601}) %highlight(%-5level) [%blue(%t)] %yellow(%C{1.}): %msg%n%throwable"
-
 
 ---
 
@@ -25,7 +18,3 @@ kind: ConfigMap
 metadata:
   name: ${_Values_app_name}-config-files
 data:
-#  logging.config: "/usr/share/config/logback-spring.xml"
-#  logback-spring.xml: >-
-#    <?xml version="1.0" encoding="UTF-8"?><configuration><include resource="org/springframework/boot/logging/logback/default.xml"/><include resource="org/springframework/boot/logging/logback/console-appender.xml" /><include resource="org/springframework/boot/logging/logback/file-appender.xml" />
-#    <root level="WARN"><appender-ref ref="CONSOLE" /><appender-ref ref="FILE" /></root></configuration>
