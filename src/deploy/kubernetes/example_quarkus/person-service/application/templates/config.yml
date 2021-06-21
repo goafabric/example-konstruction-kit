@@ -20,6 +20,8 @@ stringData:
   quarkus.datasource.jdbc.url: "jdbc:postgresql://person-service-postgres:5432/person"
   quarkus.datasource.jdbc.max-size: "10"
 
+  database.provisioning.goals: "-import-demo-data"
+  
   #adapter
   adapter.calleeservice.url: "http://callee-service-application.example:8080"
   adapter.timeout: "10000"
