@@ -8,6 +8,9 @@ data:
   quarkus.http.port: "${_Values_service_port}"
   quarkus.http.io-threads: "20"
 
+  #security
+  security.authentication.enabled: "false"
+
 ---
 
 apiVersion: v1
@@ -18,12 +21,16 @@ stringData:
   #persistence
   quarkus.datasource.jdbc.url: "jdbc:postgresql://person-service-postgres:5432/person"
   quarkus.datasource.jdbc.max-size: "10"
-  spring.datasource.hikari.connection-timeout: "10000"
+
+  #adapter
+  adapter.calleeservice.url: "http://callee-service-application.example:8080"
+  adapter.timeout: "10000"
+  adapter.failureRate: "0.5"
+  adapter.openDuration: "30000"
 
 data:
   quarkus.datasource.username: ZXhhbXBsZS1zZXJ2aWNl
   quarkus.datasource.password: Y3JOYjJaNm12QnlTUkt3dQ==
 
-  #adapter
-  adapter.calleeservice.user: ZXhhbXBsZXVzZXI=
-  adapter.calleeservice.password: RU5DKExnQ1Q0a3JXNU5EclFrZkdQUEVZdzdYT3Z6dWZ2SUFOV0ZxM3ZIb3crU3BoZDZBQ3RhdmFoVzhhTDI4TkRubVpleDUrUG56MTRORWVEdVIrWkk5MHNRPT0p
+  adapter.calleeservice.user: WVdSdGFXND0=
+  adapter.calleeservice.password: WVdSdGFXND0=

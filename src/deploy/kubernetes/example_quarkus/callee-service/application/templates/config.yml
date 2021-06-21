@@ -8,6 +8,9 @@ data:
   quarkus.http.port: "${_Values_service_port}"
   quarkus.http.io-threads: "20"
 
+  #security
+  security.authentication.enabled: "false"
+
 ---
 
 apiVersion: v1
