@@ -1,0 +1,47 @@
+#application
+server:
+  port: 50800
+  tomcat.max-threads: 20
+
+#monitoring
+management:
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: "health,prometheus,heapdump"
+
+security:
+  authentication:
+    enabled: true
+
+#persistence
+spring.datasource.url: jdbc:h2:mem:persondb
+spring.datasource.hikari.maximum-pool-size: "10"
+spring.datasource.hikari.connection-timeout: "10000"
+
+spring.datasource.initialization-mode: always
+spring.datasource.schema: classpath*:db/migration/V1__init.sql
+spring.jpa.hibernate.ddl-auto: none
+
+database.provisioning.goals: -import-demo-data
+
+#adapter
+adapter:
+  timeout: 10000
+  calleeservice:
+    url: http://localhost:50900
+    user: YWRtaW4=
+    password: YWRtaW4=
+
+#logging
+logging.level.root: "WARN"
+logging.level.org.springframework: "INFO"
+
+logging.level.org.goafabric: "INFO"
+logging.level.org.flywaydb.core: "INFO"
+logging.level.org.hibernate.SQL: "INFO"
+
+#logging.pattern.console: "%white(%d{ISO8601}) %highlight(%-5level) [%blue(%t)] %yellow(%C{1.}): %msg%n%throwable"
