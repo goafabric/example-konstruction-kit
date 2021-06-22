@@ -7,10 +7,14 @@
 - GraalVM => Java Virtual Machine Alternative by Oracle that ALSO allows AOT
 - AOT => Ahead of Time compilation, dev compiler translates Sourcecode to Machine Code (like c++)
     => Optimization need to be predicted upfront
-  
+
+- Quarkus => Framework that combines Eclipse Microprofile, Vertx, Graalvm to build Cloud Native Applications  
+- Spring Boot => Framework to build Microservices  
+
 #Resource Usage in Kubernetes
 - Show Spring Boot JVM
 - Show Quarkus
+- Startup Times
  
 #Load Tests Results
 - Quarkus and Spring Boot JVM
@@ -33,5 +37,20 @@
 #Source Code Compare 
 - Spring vs Quarkus Project
 - Very similar ...
-- Spring still has better support for Databeses (Spring Data Elastic, Mongo ...)
+- Spring still has better support for Databases (Spring Data Elastic, Mongo ...)
 - Quarkus Documentation is easier to swallow: https://quarkus.io/guides/
+
+#Features
+- Web, Health, Prometheus, ExceptionHandler
+- Lombok, Mapstruct
+- Security
+- Swagger
+
+- JPA, Bean Validation
+- Flyway
+- Cache
+- Resilience
+
+- Jaspyt Database Encryption
+- Auditing
+- Multi Tenancy
