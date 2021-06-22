@@ -44,9 +44,9 @@
 - Web, Health, Prometheus, ExceptionHandler
 - Lombok, Mapstruct
 - Security
-- Swagger
-
 - JPA, Bean Validation
+
+- Swagger
 - Flyway
 - Cache
 - Resilience
