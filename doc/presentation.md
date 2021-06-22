@@ -50,6 +50,7 @@
 - Flyway
 - Cache
 - Resilience
+- Duration Logger Aspect
 
 - Jaspyt Database Encryption
 - Auditing
