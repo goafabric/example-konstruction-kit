@@ -1,5 +1,6 @@
 #0.8.1
 - changes to Istio
+- Added PersonService and CalleeService as a Replacement for Exampleservice, as Spring and Quarkus Stack
 
 #0.8
 ##modified
