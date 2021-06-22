@@ -44,7 +44,7 @@ function forward() {
 
 function wait_until_running() {
     echo waiting for application to start ...
-    while ! kubectl get pods -n ${_Release_namespace} | grep ${_Values_app_name} | grep Running > /dev/null ; do sleep 1; done
+    while kubectl get pods -n ${_Release_namespace} | grep ${_Values_app_name} | grep Init > /dev/null ; do sleep 1; done
 }
 
 if   [ "${COMMAND}" = "up" ] && [ -f "./templates/deployment.yml" ]; then up;
