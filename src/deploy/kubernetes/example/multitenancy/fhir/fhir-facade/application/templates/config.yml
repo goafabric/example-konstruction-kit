@@ -22,8 +22,10 @@ metadata:
 
 stringData:
   #adapter
-  adapter.personservice.url: "http://person-service-application.example:8080"
+  adapter.personservice.url: "http://person-service-application.example-tenant-%TENANT_ID%:8080"
   adapter.timeout: "10000"
+
+  multi.tenancy.enabled: "true"
 
 data:
   adapter.personservice.user: WVdSdGFXND0=
