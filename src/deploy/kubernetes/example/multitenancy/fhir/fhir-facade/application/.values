@@ -13,5 +13,3 @@ _Values_resources_requests_cpu=250m
 _Values_readinessProbe_initialDelaySeconds=2
 
 _Values_command=org.goafabric.example.fhir.Application
-
-
