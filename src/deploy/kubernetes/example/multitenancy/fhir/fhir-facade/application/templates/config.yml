@@ -28,6 +28,7 @@ stringData:
   resilience4j.circuitbreaker.configs.default.waitDurationInOpenState: "30s"
   resilience4j.circuitbreaker.configs.default.failureRateThreshold: "50"
   resilience4j.circuitbreaker.configs.default.minimumNumberOfCalls: "1"
+#  resilience4j.circuitbreaker.configs.default.ignoreExceptions: "java.lang.Exception"
 
   multi.tenancy.enabled: "true"
 
