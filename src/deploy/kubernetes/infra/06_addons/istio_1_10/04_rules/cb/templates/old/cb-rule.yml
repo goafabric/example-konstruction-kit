@@ -1,0 +1,25 @@
+#https://istio.io/latest/docs/reference/config/networking/destination-rule/
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: callee-service-policy
+  namespace: example
+spec:
+  host: callee-service-application.example
+  trafficPolicy:
+    tls:
+      mode: ISTIO_MUTUAL
+    connectionPool:
+      tcp:
+        connectTimeout: 1000ms
+        maxConnections: 1
+      http:
+        http1MaxPendingRequests: 1
+        maxRequestsPerConnection: 1
+    outlierDetection:
+      consecutive5xxErrors: 1
+      interval: 10s #sliding window
+      baseEjectionTime: 30s #time until the cb keeps open
+      maxEjectionPercent: 100
+
+

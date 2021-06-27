@@ -1,0 +1,13 @@
+#https://banzaicloud.com/blog/istio-sidecar/
+#https://medium.com/geekculture/watch-out-for-this-istio-proxy-sidecar-memory-pitfall-8dbd99ea7e9d
+#curl http://callee-service-application.example:8080/actuator/health 
+apiVersion: networking.istio.io/v1alpha3
+kind: Sidecar
+metadata:
+  name: default
+  namespace: example2
+spec:
+  egress:
+    - hosts:
+        - ./*
+        - istio-system/*
