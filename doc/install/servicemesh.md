@@ -14,7 +14,9 @@
     
 linkerd install | kubectl apply -f -
 linkerd viz install | kubectl apply -f -
+linkerd jaeger install | kubectl apply -f -
 
 xlinkerd viz uninstall | kubectl delete -f -
+linkerd jaeger uninstall | kubectl delete -f -
 linkerd uninstall | kubectl delete -f -
 
