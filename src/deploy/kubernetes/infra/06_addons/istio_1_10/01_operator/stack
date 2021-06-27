@@ -16,6 +16,7 @@ function init() {
 
 function prune() {
     istioctl manifest generate --set profile=default | kubectl delete --ignore-not-found=true -f -
+    istioctl operator remove
     kubectl delete namespace istio-operator
     kubectl delete namespace istio-system
 }
