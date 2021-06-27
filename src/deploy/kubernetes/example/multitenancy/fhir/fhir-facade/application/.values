@@ -5,7 +5,7 @@ _Values_ingress_name=fhir
 _Values_host_name=
 
 _Values_image_repository=goafabric/fhir-facade
-_Values_image_tag=1.0.1
+_Values_image_tag=1.0.2-SNAPSHOT
 
 _Values_service_port=8080
 _Values_resources_requests_memory=128M
