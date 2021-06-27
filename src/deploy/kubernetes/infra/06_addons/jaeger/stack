@@ -1,0 +1,46 @@
+#!/bin/bash
+#source .values
+COMMAND=$1
+PROFILE=$2
+
+kubectl version | grep "Server Version" | grep "linux/arm64" > /dev/null && _Values_server_arch="-arm64v8"
+_Values_host_name=`kubectl get configmaps cluster-config -o jsonpath='{.data.hostname}' -n default` && [ -z "$_Values_host_name" ] && echo "Hostname is empty" && exit
+
+
+function dynKubectl() {
+for filename in $2/*.yml; do
+eval "cat <<EOF
+$(<$filename)
+EOF
+" | kubectl $1 -n ${_Release_namespace} -f -
+done
+}
+
+#https://github.com/jaegertracing/jaeger-operator
+
+function init() {
+    kubectl create namespace observability
+
+    kubectl create -n observability -f https://raw.githubusercontent.com/jaegertracing/jaeger-operator/master/deploy/crds/jaegertracing.io_jaegers_crd.yaml
+    kubectl create -n observability -f https://raw.githubusercontent.com/jaegertracing/jaeger-operator/master/deploy/service_account.yaml
+    kubectl create -n observability -f https://raw.githubusercontent.com/jaegertracing/jaeger-operator/master/deploy/role.yaml
+    kubectl create -n observability -f https://raw.githubusercontent.com/jaegertracing/jaeger-operator/master/deploy/role_binding.yaml
+    kubectl create -n observability -f https://raw.githubusercontent.com/jaegertracing/jaeger-operator/master/deploy/operator.yaml
+
+kubectl apply -n observability -f - <<EOF
+apiVersion: jaegertracing.io/v1
+kind: Jaeger
+metadata:
+  name: simplest
+EOF
+}
+
+function prune() {
+  kubectl delete namespace observability
+}
+
+
+if   [ "${COMMAND}" = "init" ] ; then init;
+elif [ "${COMMAND}" = "prune" ]; then prune;
+
+else echo Doing nothing !; fi
