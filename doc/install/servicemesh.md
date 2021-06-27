@@ -8,15 +8,9 @@
 # Linkerd
 - Download Linkerd CLI: https://linkerd.io/2.10/getting-started/
 - infra/06_addon/linkerd ./stack init
-- linkerd (viz) dashboard
+- linkerd viz dashboard
 
 # Linkerd Manual
-    
-linkerd install | kubectl apply -f -
-linkerd viz install | kubectl apply -f -
-linkerd jaeger install | kubectl apply -f -
-
-xlinkerd viz uninstall | kubectl delete -f -
-linkerd jaeger uninstall | kubectl delete -f -
-linkerd uninstall | kubectl delete -f -
+- linkerd install | kubectl apply -f -
+- linkerd uninstall | kubectl delete -f -
 
