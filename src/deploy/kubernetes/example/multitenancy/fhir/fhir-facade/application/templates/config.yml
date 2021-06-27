@@ -32,6 +32,12 @@ stringData:
 
   multi.tenancy.enabled: "true"
 
+  #zipkin/jaeger
+#  spring.zipkin.baseUrl: "http://zipkin.istio-system:9411"
+#  spring.zipkin.service.name: "fhir-facade-internal"
+#  spring.sleuth.enabled: "true"
+#  spring.zipkin.enabled: "true"
+
 data:
   adapter.personservice.user: WVdSdGFXND0=
   adapter.personservice.password: WVdSdGFXND0=
