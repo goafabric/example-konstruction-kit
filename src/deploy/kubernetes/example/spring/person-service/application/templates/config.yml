@@ -27,7 +27,7 @@ stringData:
   database.provisioning.goals: "-import-demo-data"
 
   #adapter
-  adapter.calleeservice.url: "http://callee-service-application.example:8080"
+  adapter.calleeservice.url: "http://callee-service-application:8080"
   
 data:
   spring.datasource.username: ZXhhbXBsZS1zZXJ2aWNl

@@ -23,7 +23,7 @@ stringData:
   database.provisioning.goals: "-import-demo-data -terminate"
   
   #adapter
-  adapter.calleeservice.url: "http://callee-service-application.example:8080"
+  adapter.calleeservice.url: "http://callee-service:8080"
   adapter.timeout: "10000"
   adapter.failureRate: "0.5"
   adapter.openDuration: "30000"
