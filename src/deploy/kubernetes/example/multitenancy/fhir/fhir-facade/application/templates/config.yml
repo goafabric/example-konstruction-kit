@@ -34,6 +34,8 @@ stringData:
 
   #zipkin/jaeger
 #  spring.zipkin.baseUrl: "http://zipkin.istio-system:9411"
+#  spring.zipkin.baseUrl: "http://collector.linkerd-jaeger:9411"
+
 #  spring.zipkin.service.name: "fhir-facade-internal"
 #  spring.sleuth.enabled: "true"
 #  spring.zipkin.enabled: "true"
