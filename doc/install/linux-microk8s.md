@@ -17,3 +17,6 @@ sudo sh -c 'echo "#!/bin/bash \n microk8s kubectl "\$1" "\$2" "\$3" "\$4" "\$5" 
 #Client Kubectl
 microk8s config > config (should be put to ~/.kube on client machine)
 
+#Registry Mirror
+https://microk8s.io/docs/registry-private
+https://github.com/containerd/cri/blob/master/docs/registry.md
