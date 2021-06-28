@@ -1,3 +1,5 @@
+#0.8.3
+
 #0.8.2
 - upgrade to istio 1.10
 - multi tenancy examples added
