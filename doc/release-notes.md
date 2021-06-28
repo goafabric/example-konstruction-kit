@@ -1,4 +1,5 @@
 #0.8.2
+- upgrade to istio 1.10
 
 #0.8.1
 - changes to Istio
