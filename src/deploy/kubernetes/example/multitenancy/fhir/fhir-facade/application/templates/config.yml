@@ -9,6 +9,8 @@ data:
   server.tomcat.threads.max: "20"
   security.authentication.enabled: "false"
 
+  spring.profiles.active: "remote"
+
   #monitoring
   management.endpoint.health.show-details: always
   management.endpoints.web.exposure.include: "health,heapdump,circuitbreakers,prometheus"
