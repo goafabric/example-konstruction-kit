@@ -3,7 +3,7 @@ _Values_tenant_id=5a2f
 _Release_namespace=example-tenant-${_Values_tenant_id}
 _Values_root_name=callee-service
 _Values_app_name=${_Values_root_name}-application
-_Values_ingress_name=callee-${_Values_tenant_id}
+_Values_ingress_name=callee/${_Values_tenant_id}
 _Values_host_name=
 
 _Values_image_repository=goafabric/callee-service-quarkus
