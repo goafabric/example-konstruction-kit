@@ -19,7 +19,7 @@ metadata:
   name: ${_Values_app_name}-config-external
 stringData:
   #adapter
-  adapter.personservice.url: "http://person-service-application:8080"
+  adapter.personservice.url: "http://person-service-application.example-tenant-%TENANT_ID%:8080"
   adapter.timeout: "10000"
   adapter.failureRate: "0.5"
   adapter.openDuration: "30000"
