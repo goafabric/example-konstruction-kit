@@ -24,6 +24,12 @@ stringData:
   adapter.failureRate: "0.5"
   adapter.openDuration: "30000"
 
+  #jaeger
+  quarkus.jaeger.enabled: "true"
+  quarkus.jaeger.propagation: "b3"
+  quarkus.jaeger.service-name: "fhir-facade-internal"
+  quarkus.jaeger.endpoint: "http://jaeger.istio-system:14268/api/traces"
+
 data:
   adapter.personservice.user: WVdSdGFXND0=
   adapter.personservice.password: WVdSdGFXND0=
