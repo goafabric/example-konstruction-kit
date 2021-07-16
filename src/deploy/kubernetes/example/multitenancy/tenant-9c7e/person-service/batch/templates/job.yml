@@ -1,48 +1,35 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: batch/v1
+kind: Job
 metadata:
   name: ${_Values_app_name}
 spec:
-  selector:
-    matchLabels:
-      app: ${_Values_app_name}
-      version: v1
-  replicas: 1
-  strategy:
-    type: Recreate #RollingUpdate
+  backoffLimit: 0
+  activeDeadlineSeconds: 240
   template:
     metadata:
       annotations:
-        linkerd.io/inject: enabled
+        linkerd.io/inject: disabled
         sidecar.istio.io/inject: "true"
-
-        prometheus.io/scrape: "true"
-        prometheus.io/port: "8080"
-        prometheus.io/scheme: "http"
-        prometheus.io/path: "/actuator/prometheus"
       labels:
         app: ${_Values_app_name}
-        version: v1
     spec:
+      restartPolicy: Never
       initContainers:
         - name: check-db-ready
           image: postgres:13.2
           command: ['sh', '-c',
-              'until pg_isready -h ${_Values_root_name}-postgres -p 5432;
+                    'until pg_isready -h ${_Values_root_name}-postgres -p 5432;
                      do echo waiting for database; sleep 2; done;']
+#        - name: wait-for-webserver
+#          image: curlimages/curl:7.75.0
+#          command: ["/bin/sh","-c"]
+#          args: ["while [ \$(curl -sw '%{http_code}' --fail --connect-timeout 1 http://${_Values_root_name}-application:8080/actuator/health -o /dev/null) -ne 200 ]; do sleep 2; done"]
 #      imagePullSecrets:
 #        - name: ${_Values_image_pullSecrets}
       containers:
         - name: ${_Values_app_name}
           image: "${_Values_image_repository}${_Values_server_arch}:${_Values_image_tag}"
           imagePullPolicy: IfNotPresent #Always
-          ports:
-            - name: transport
-              containerPort: ${_Values_service_port}
-              protocol: TCP
-            - name: jmx
-              containerPort: 1099
-              protocol: TCP
           envFrom:
             - configMapRef:
                 name: ${_Values_app_name}-config
@@ -56,23 +43,6 @@ spec:
             requests:
               memory: "${_Values_resources_requests_memory}"
               cpu: "${_Values_resources_requests_cpu}"
-
-          readinessProbe:
-            httpGet:
-              path: /actuator/health
-              port: transport
-            initialDelaySeconds: ${_Values_readinessProbe_initialDelaySeconds}
-            periodSeconds: 10
-            timeoutSeconds: 10
-            failureThreshold: 3
-          livenessProbe:
-            httpGet:
-              path: /actuator/health
-              port: transport
-            initialDelaySeconds: ${_Values_readinessProbe_initialDelaySeconds}
-            periodSeconds: 10
-            timeoutSeconds: 10
-            failureThreshold: 3
 
           volumeMounts:
             - mountPath: /usr/share/logs
