@@ -1,5 +1,5 @@
 _Release_namespace=example
-_Values_root_name=fhir-facade-quarkus
+_Values_root_name=fhir-facade
 _Values_app_name=${_Values_root_name}-application
 _Values_ingress_name=fhir
 _Values_host_name=

@@ -1,4 +1,5 @@
 #0.8.4
+- fhir facade quarkus added
 
 #0.8.3
 - upgrade to latest person-service 1.0.5 and callee-service 1.0.7
