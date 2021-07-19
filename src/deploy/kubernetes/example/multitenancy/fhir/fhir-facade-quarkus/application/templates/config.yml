@@ -25,7 +25,6 @@ stringData:
   adapter.openDuration: "30000"
 
   #jaeger
-  quarkus.jaeger.enabled: "true"
   quarkus.jaeger.propagation: "b3"
   quarkus.jaeger.service-name: "fhir-facade-internal"
   quarkus.jaeger.endpoint: "http://jaeger-collector.istio-system:14268/api/traces"
