@@ -1,4 +1,5 @@
 #0.8.5
+- jaeger added to multiple services
 
 #0.8.4
 - fhir facade quarkus added
