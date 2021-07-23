@@ -9,6 +9,11 @@ data:
   quarkus.http.io-threads: "20"
   security.authentication.enabled: "false"
 
+  #jaeger
+  quarkus.jaeger.propagation: "b3"
+  quarkus.jaeger.service-name: "person-service-internal"
+  quarkus.jaeger.endpoint: "http://jaeger-collector.istio-system:14268/api/traces"
+
 ---
 
 apiVersion: v1
@@ -27,11 +32,6 @@ stringData:
   adapter.timeout: "10000"
   adapter.failureRate: "0.5"
   adapter.openDuration: "30000"
-
-  #jaeger
-  quarkus.jaeger.propagation: "b3"
-  quarkus.jaeger.service-name: "person-service-internal"
-  quarkus.jaeger.endpoint: "http://jaeger-collector.istio-system:14268/api/traces"
 
 data:
   quarkus.datasource.username: ZXhhbXBsZS1zZXJ2aWNl
