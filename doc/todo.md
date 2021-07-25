@@ -9,7 +9,7 @@
 
 # Ops
 - Helm
-- Elk
+- Elk/Loki
 
 # Activated but needs further Investigation
 - Hide Nginx version, by installing standard nginx-controller 0.44.0
