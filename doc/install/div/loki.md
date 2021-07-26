@@ -6,15 +6,16 @@ helm uninstall loki --namespace=loki
 ##repo
 helm repo add grafana https://grafana.github.io/helm-charts
 helm repo update
-
-##install
 kubectl create namespace loki
 
-helm upgrade --install loki --namespace=loki grafana/loki-stack  --set grafana.enabled=true,prometheus.enabled=true,prometheus.alertmanager.persistentVolume.enabled=false,prometheus.server.persistentVolume.enabled=false
+##install
+helm upgrade --install loki --namespace=loki grafana/loki-stack  --set grafana.enabled=false,prometheus.enabled=true,prometheus.alertmanager.persistentVolume.enabled=false,prometheus.server.persistentVolume.enabled=false
+kubectl delete deployment loki-prometheus-server --namespace=loki
+kubectl delete deployment loki-kube-state-metrics --namespace=loki
 
-helm upgrade --install loki --namespace=loki grafana/loki
-helm upgrade --install promtail --namespace=loki grafana/promtail --set "loki.serviceName=loki"
-
+http://prometheus.istio-system:9090 => configmap "loki-loki-stack"
+http://loki.loki:3000 => Grafana Loki Datasource
+                                
 ##uninstall
 helm uninstall loki --namespace=loki
 helm uninstall promtail --namespace=loki
