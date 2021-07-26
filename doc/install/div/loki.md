@@ -17,6 +17,9 @@ helm upgrade --install loki grafana/loki-stack  --set grafana.enabled=true,prome
 ##dashboard
 kubectl port-forward service/loki-grafana 3000:80 --namespace=loki
 kubectl get secret --namespace loki loki-grafana -o jsonpath="{.data.admin-password}" | base64 --decode ; echo
-                  
+              
+#query
+{container="person-service-application",namespace="example-tenant-0"}
+
 #doc
 https://grafana.com/docs/loki/latest/installation/helm/
