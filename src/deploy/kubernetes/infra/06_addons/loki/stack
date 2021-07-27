@@ -14,10 +14,7 @@ function up() {
     helm repo add grafana https://grafana.github.io/helm-charts
     helm repo update
     
-    helm upgrade --install loki grafana/loki-stack --namespace=${_Release_namespace} --set grafana.enabled=false,prometheus.enabled=true,prometheus.alertmanager.persistentVolume.enabled=false,prometheus.server.persistentVolume.enabled=false
-    kubectl delete deployment loki-prometheus-server --namespace=${_Release_namespace}
-    kubectl delete deployment loki-kube-state-metrics --namespace=${_Release_namespace}
-
+    helm upgrade --install loki grafana/loki-stack --namespace=${_Release_namespace} --set grafana.enabled=false,prometheus.enabled=false,prometheus.alertmanager.persistentVolume.enabled=false,prometheus.server.persistentVolume.enabled=false
     kubectl apply -f templates/configmap.yml --namespace=${_Release_namespace}
 
     echo .
