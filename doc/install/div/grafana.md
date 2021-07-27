@@ -1,7 +1,8 @@
 #helm
 helm repo add grafana https://grafana.github.io/helm-charts
-helm repo update
-helm search repo grafana
+helm repo update   
+
+helm search repo grafana --versions
 helm show values grafana/grafana
 
 #grafana
@@ -27,3 +28,8 @@ helm repo update
 
 helm install kiali kiali/kiali-server --set auth.strategy="anonymous" --version v1.34.0 --namespace istio-system
 helm uninstall kiali --namespace istio-system
+                
+#jaeger
+helm repo add jaegertracing https://jaegertracing.github.io/helm-charts
+helm install jaeger jaegertracing/jaeger --version v0.39.8 --namespace istio-system
+helm uninstall jaeger --namespace istio-system
