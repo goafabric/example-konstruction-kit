@@ -18,7 +18,6 @@ http://loki.loki:3000 => Grafana Loki Datasource
                                 
 ##uninstall
 helm uninstall loki --namespace=loki
-helm uninstall promtail --namespace=loki
 
 ##dashboard
 kubectl port-forward service/loki-grafana 3000:80 --namespace=loki
