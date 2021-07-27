@@ -18,9 +18,8 @@ function up() {
     kubectl apply -f templates/configmap.yml --namespace=${_Release_namespace}
 
     echo .
-    echo Add http://loki.${_Release_namespace}:3100 as a Loki datasource in Grafana
+    echo Add http://loki.loki:3100 as a Loki datasource in Grafana
 
-    #http://prometheus.istio-system:9090
     #Sample query: {namespace="example-tenant-0",container="callee-service-application"}
 }
 
