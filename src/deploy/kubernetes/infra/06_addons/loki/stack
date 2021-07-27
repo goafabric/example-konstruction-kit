@@ -20,6 +20,8 @@ function up() {
 
     echo .
     echo Add http://loki.${_Release_namespace}:3000 as a Loki datasource in Grafana
+
+    #Sample query: {namespace="example-tenant-0",container="person-service-application"}
 }
 
 function down() {
