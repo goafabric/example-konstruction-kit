@@ -4,9 +4,10 @@ helm uninstall loki --namespace=loki
 
 #loki
 ##repo
+kubectl create namespace loki
 helm repo add grafana https://grafana.github.io/helm-charts
 helm repo update
-kubectl create namespace loki
+
 
 ##install
 helm upgrade --install loki --namespace=loki grafana/loki-stack  --set grafana.enabled=false,prometheus.enabled=true,prometheus.alertmanager.persistentVolume.enabled=false,prometheus.server.persistentVolume.enabled=false
