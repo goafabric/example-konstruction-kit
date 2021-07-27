@@ -50,6 +50,15 @@ data:
       orgId: 1
       type: prometheus
       url: http://prometheus:9090
+    - access: proxy
+      editable: true
+      isDefault: false
+      jsonData:
+        timeInterval: 5s
+      name: Loki
+      orgId: 1
+      type: loki
+      url: http://loki.loki:3100
   dashboardproviders.yaml: |
     apiVersion: 1
     providers:
