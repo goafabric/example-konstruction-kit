@@ -1,6 +1,7 @@
 #0.8.5
 - jaeger added to multiple services
 - person-service upgrade to 1.0.6
+- loki added
 
 #0.8.4
 - fhir facade quarkus added
