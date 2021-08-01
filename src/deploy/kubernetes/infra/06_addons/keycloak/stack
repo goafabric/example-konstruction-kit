@@ -19,6 +19,7 @@ done
 
 function up() {
     dynKubectl apply ./templates
+    sleep 5
     kubectl port-forward deployment/keycloak 8080:8080 -n keycloak
 }
 
