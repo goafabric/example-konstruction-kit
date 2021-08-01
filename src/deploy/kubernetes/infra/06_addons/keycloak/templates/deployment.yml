@@ -18,7 +18,10 @@ spec:
       containers:
       - name: keycloak
 #        image: alemairebe/keycloak:14.0.0
-        image: simaofsilva/keycloak:15.0.0
+#        image: simaofsilva/keycloak:15.0.0
+        
+        image: svefors/keycloak-x:12.0.2
+#        image: rwxproject/keycloak-x:12.0.1
         env:
         - name: KEYCLOAK_USER
           value: "admin"
@@ -31,8 +34,10 @@ spec:
           containerPort: 8080
         - name: https
           containerPort: 8443
-        readinessProbe:
-          httpGet:
-            path: /auth/realms/master
-            port: 8080
-          initialDelaySeconds: 10
+        args: ["start-dev"]
+
+#        readinessProbe:
+#          httpGet:
+#            path: /auth/realms/master
+#            port: 8080
+#          initialDelaySeconds: 10
