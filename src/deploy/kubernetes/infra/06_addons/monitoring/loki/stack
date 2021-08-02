@@ -1,0 +1,41 @@
+#!/bin/bash
+source .values
+COMMAND=$1
+PROFILE=$2
+
+[ ! -f "/usr/local/bin/helm" ] && echo "helm not found in /usr/local/bin, cannot continue" && exit
+
+kubectl version | grep "Server Version" | grep "linux/arm64" > /dev/null && _Values_server_arch="-arm64v8"
+_Values_host_name=`kubectl get configmaps cluster-config -o jsonpath='{.data.hostname}' -n default` && [ -z "$_Values_host_name" ] && echo "Hostname is empty" && exit
+
+function dynKubectl() {
+for filename in $2/*.yml; do
+eval "cat <<EOF
+$(<$filename)
+EOF
+" | kubectl $1 -f -
+done
+}
+
+function up() {
+    helm repo add grafana https://grafana.github.io/helm-charts
+    helm upgrade --install loki grafana/loki-stack --namespace=monitoring --version v2.4.1 --set grafana.enabled=false,prometheus.enabled=false,prometheus.alertmanager.persistentVolume.enabled=false,prometheus.server.persistentVolume.enabled=false # --set env.GF_AUTH_ANONYMOUS_ENABLED=true
+
+    dynKubectl apply ./templates
+    kubectl apply -f templates2/grafana.yml
+}
+
+function down() {
+    helm uninstall loki --namespace=monitoring
+    dynKubectl delete ./templates
+    kubectl delete --ignore-not-found -f templates2/grafana.yml
+}
+
+
+if   [ "${COMMAND}" = "init" ] ; then up;
+elif [ "${COMMAND}" = "restart" ] ; then down && up;
+elif [ "${COMMAND}" = "prune" ]; then down;
+
+else echo Doing nothing !; fi
+
+#Sample query: {namespace="example-tenant-5a2f",container="callee-service-application"}
