@@ -5,3 +5,15 @@ metadata:
   name: example-istiocontrolplane
 spec:
   profile: default
+
+  meshConfig:
+    enableTracing: true
+    defaultConfig:
+      tracing:
+        zipkin:
+          address: zipkin.monitoring:9411
+  values:
+    global:
+      tracer:
+        zipkin:
+          address: zipkin.monitoring:9411

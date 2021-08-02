@@ -2,7 +2,7 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: kiali-ingress
-  namespace: monitoring
+  namespace: istio-system
   annotations:
     kubernetes.io/ingress.class: nginx
     nginx.ingress.kubernetes.io/ssl-redirect: "false"
@@ -27,7 +27,7 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: kiali.istio-system
+                name: kiali
                 port:
                   number: 20001
            
