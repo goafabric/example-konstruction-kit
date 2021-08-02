@@ -21,14 +21,14 @@ function up() {
     helm repo add grafana https://grafana.github.io/helm-charts
     helm upgrade --install loki grafana/loki-stack --namespace=monitoring --version v2.4.1 --set grafana.enabled=false,prometheus.enabled=false,prometheus.alertmanager.persistentVolume.enabled=false,prometheus.server.persistentVolume.enabled=false # --set env.GF_AUTH_ANONYMOUS_ENABLED=true
 
-    dynKubectl apply ./templates
-    kubectl apply -f templates2/grafana.yml
+    kubectl apply -f templates/grafana.yml
+    dynKubectl apply ./ingress
 }
 
 function down() {
     helm uninstall loki --namespace=monitoring
-    dynKubectl delete ./templates
-    kubectl delete --ignore-not-found -f templates2/grafana.yml
+    dynKubectl delete ./ingress
+    kubectl delete --ignore-not-found -f templates/grafana.yml
 }
 
 
