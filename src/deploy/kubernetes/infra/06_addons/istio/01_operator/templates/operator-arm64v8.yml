@@ -5,7 +5,7 @@ metadata:
   name: example-istiocontrolplane
 spec:
   hub: docker.io/querycapistio
-  profile: default
+  profile: minimal
 
   meshConfig:
     enableTracing: true

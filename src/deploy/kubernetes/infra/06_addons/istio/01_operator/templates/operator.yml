@@ -4,7 +4,7 @@ metadata:
   namespace: istio-system
   name: example-istiocontrolplane
 spec:
-  profile: default
+  profile: minimal
 
   meshConfig:
     enableTracing: true
