@@ -1,4 +1,5 @@
 #0.8.6
+- extra namespace for monitoring, includes loki and jaeger
 
 #0.8.5
 - jaeger added to multiple services
