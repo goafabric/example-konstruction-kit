@@ -9,7 +9,7 @@ spec:
     metadata:
       annotations:
         linkerd.io/inject: disabled
-        sidecar.istio.io/inject: "false"
+        sidecar.istio.io/inject: "true"
       labels:
         app: ${_Values_app_name}
     spec:
