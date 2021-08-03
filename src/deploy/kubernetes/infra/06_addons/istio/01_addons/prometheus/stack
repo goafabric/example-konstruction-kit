@@ -17,13 +17,11 @@ done
 }
 
 function up() {
-    kubectl apply -f ./templates -n istio-system
-    dynKubectl apply ./ingress
+    kubectl apply -f ./templates
 }
 
 function down() {
-    kubectl delete --ignore-not-found -f ./templates -n istio-system
-    dynKubectl delete ./ingress
+    kubectl delete --ignore-not-found -f ./templates
 }
 
 
