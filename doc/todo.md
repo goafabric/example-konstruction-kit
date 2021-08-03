@@ -8,7 +8,7 @@
 - Outbound SSL
 
 # Helm
-- Use Charts for KubeDash, Kiali, Prometheus, Grafana
+- Use Charts for KubeDash, Nginx, Kiali, Prometheus, Grafana
 - Charts for Own Services
 
 # Activated but needs further Investigation
