@@ -19,6 +19,7 @@ data:
   spring.zipkin.service.name: "person-service-internal"
   spring.sleuth.enabled: "true"
   spring.zipkin.enabled: "true"
+#  spring.sleuth.sampler.probability: "1"
 
 ---
 
