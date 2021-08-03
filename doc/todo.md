@@ -1,12 +1,15 @@
 # Ops
 - Istio CB
 - Networks Separation (https://gardener.cloud/documentation/guides/applications/network-isolation/, https://kubernetes.io/docs/concepts/services-networking/network-policies/, https://github.com/ahmetb/kubernetes-network-policy-recipes/blob/master/06-allow-traffic-from-a-namespace.md), curl callee-service-application.example2:8080/actuator/health
-- Helm
 
 # Security
 - Keycloak (https://kubernetes.github.io/ingress-nginx/examples/auth/oauth-external-auth, https://blog.ramjee.uk/istio-api-security-with-keycloak-in-kubernetes/)
 - Certmanager for Certs (https://tinyurl.com/1wjhxz9m)
 - Outbound SSL
+
+# Helm
+- Use Charts for KubeDash, Kiali, Prometheus, Grafana
+- Charts for Own Services
 
 # Activated but needs further Investigation
 - Hide Nginx version, by installing standard nginx-controller 0.44.0
