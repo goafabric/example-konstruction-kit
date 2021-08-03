@@ -35,3 +35,8 @@ helm uninstall kiali --namespace istio-system
 helm repo add jaegertracing https://jaegertracing.github.io/helm-charts
 helm install jaeger jaegertracing/jaeger --version v0.39.8 --namespace istio-system
 helm uninstall jaeger --namespace istio-system
+
+#nginx
+helm repo add nginx-stable https://helm.nginx.com/stable
+helm install nginx nginx-stable/nginx-ingress --version 0.10.0 
+helm uninstall nginx 
