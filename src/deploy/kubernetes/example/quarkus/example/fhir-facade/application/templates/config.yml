@@ -12,9 +12,12 @@ data:
   profiles.active: "remote"
 
   #jaeger
-  quarkus.jaeger.propagation: "b3"
   quarkus.jaeger.service-name: "fhir-facade-internal"
+
   quarkus.jaeger.endpoint: "http://jaeger-collector.monitoring:14268/api/traces"
+  quarkus.jaeger.sampler-type: "probabilistic"
+  quarkus.jaeger.sampler-param: "1"
+  quarkus.jaeger.propagation: "b3"
 
 ---
 

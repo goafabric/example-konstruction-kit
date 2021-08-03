@@ -14,7 +14,7 @@ spec:
     metadata:
       annotations:
         linkerd.io/inject: enabled
-        sidecar.istio.io/inject: "true"
+        sidecar.istio.io/inject: "false"
 
         prometheus.io/scrape: "true"
         prometheus.io/port: "8080"
