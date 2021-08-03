@@ -19,7 +19,9 @@ kubectl get secret --namespace istio-system grafana -o jsonpath="{.data.admin-pa
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
 helm repo update
 
-helm install prometheus prometheus-community/prometheus --version v13.6.0 --set pushgateway.enabled=false --set alertmanager.enabled=false --set nodeExporter.enabled=false --set kubeStateMetrics.enabled=false --namespace istio-system
+helm install prometheus prometheus-community/prometheus --version v13.6.0 --set pushgateway.enabled=false --set alertmanager.enabled=false --set nodeExporter.enabled=false --set kubeStateMetrics.enabled=false \
+--set server.fullnameOverride=prometheus --set server.service.servicePort=9090 --namespace istio-system
+
 helm uninstall prometheus --namespace istio-system
 
 #kiali
