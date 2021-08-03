@@ -16,5 +16,6 @@ spec:
   values:
     global:
       tracer:
+#        sampling: 1
         zipkin:
           address: zipkin.monitoring:9411
