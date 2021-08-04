@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
         - name: ${_Values_app_name}
-          image: "postgres:13.3"
+          image: "postgres:13.2"
           imagePullPolicy: IfNotPresent #Always
           ports:
             - name: transport
@@ -43,6 +43,22 @@ spec:
               cpu: "${_Values_resources_requests_cpu}"
             limits:
               cpu: "${_Values_resources_limits_cpu}"
+
+          readinessProbe:
+            exec:
+              command: ['sh', '-c', 'pg_isready']
+            initialDelaySeconds: ${_Values_readinessProbe_initialDelaySeconds}
+            periodSeconds: 2
+            timeoutSeconds: 2
+            failureThreshold: 3
+
+          livenessProbe:
+            exec:
+              command: ['sh', '-c', 'pg_isready']
+            initialDelaySeconds: ${_Values_readinessProbe_initialDelaySeconds}
+            periodSeconds: 2
+            timeoutSeconds: 2
+            failureThreshold: 3
 
           volumeMounts:
             - mountPath: /var/lib/postgresql/data

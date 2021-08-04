@@ -16,10 +16,10 @@ spec:
       restartPolicy: Never
       initContainers:
         - name: check-db-ready
-          image: postgres:13.2
+          image: postgres:13.3
           command: ['sh', '-c',
                     'until pg_isready -h ${_Values_root_name}-postgres -p 5432;
-                     do echo waiting for database; sleep 2; done;']
+                     do echo waiting for database; sleep 1; done;']
 #        - name: wait-for-webserver
 #          image: curlimages/curl:7.75.0
 #          command: ["/bin/sh","-c"]
