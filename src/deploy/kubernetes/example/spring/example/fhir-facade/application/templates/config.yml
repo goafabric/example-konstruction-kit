@@ -19,7 +19,7 @@ data:
   spring.zipkin.baseUrl: "http://zipkin.monitoring:9411"
 #  spring.zipkin.baseUrl: "http://collector.linkerd-jaeger:9411"
 
-  spring.zipkin.service.name: "fhir-facade-internal"
+  spring.zipkin.service.name: "fhir-facade"
   spring.sleuth.enabled: "true"
   spring.zipkin.enabled: "true"
 

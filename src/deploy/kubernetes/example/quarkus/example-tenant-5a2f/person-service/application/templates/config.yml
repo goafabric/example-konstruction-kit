@@ -10,7 +10,7 @@ data:
   security.authentication.enabled: "false"
 
   #jaeger
-  quarkus.jaeger.service-name: "person-service-internal-tenant-${_Values_tenant_id}"
+  quarkus.jaeger.service-name: "person-service-tenant-${_Values_tenant_id}"
 
   quarkus.jaeger.endpoint: "http://jaeger-collector.monitoring:14268/api/traces"
   quarkus.jaeger.sampler-type: "probabilistic"
