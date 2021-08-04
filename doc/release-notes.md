@@ -2,6 +2,7 @@
 - extra namespace for monitoring, includes loki and jaeger
 - restructuring of quarkus and spring directories
 - postgres 13.3 update
+- CalleeService Upgrade to 1.0.8
 
 #0.8.5
 - jaeger added to multiple services
