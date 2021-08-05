@@ -1,3 +1,5 @@
+#0.8.7
+
 #0.8.6
 - extra namespace for monitoring, includes loki and jaeger
 - restructuring of quarkus and spring directories
