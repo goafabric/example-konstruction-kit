@@ -1,4 +1,5 @@
 #0.8.7
+- Upgrade all versions to 1.1.0
 
 #0.8.6
 - extra namespace for monitoring, includes loki and jaeger
