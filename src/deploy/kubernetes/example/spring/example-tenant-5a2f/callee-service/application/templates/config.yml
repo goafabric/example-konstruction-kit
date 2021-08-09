@@ -7,6 +7,8 @@ data:
   TZ: Europe/Berlin
   server.port: "${_Values_service_port}"
   server.tomcat.threads.max: "20"
+
+  #security
   security.authentication.enabled: "false"
 
   #monitoring

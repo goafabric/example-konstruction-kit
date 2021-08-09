@@ -3,10 +3,14 @@ kind: ConfigMap
 metadata:
   name: ${_Values_app_name}-config
 data:
+  #application
   TZ: Europe/Berlin
   server.port: "${_Values_service_port}"
   server.tomcat.threads.max: "20"
+
+  #security
   security.authentication.enabled: "false"
+  security.encryption.key: "203fef90-aead-45ca-830e-ca878bb4e987" #this needs to be changed during first deployment to an unique value
 
   #monitoring
   management.endpoint.health.show-details: always

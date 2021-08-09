@@ -7,6 +7,8 @@ data:
   TZ: Europe/Berlin
   quarkus.http.port: "${_Values_service_port}"
   quarkus.http.io-threads: "20"
+
+  #security
   security.authentication.enabled: "false"
 
   profiles.active: "remote"
