@@ -9,3 +9,9 @@ docker run --name=keycloak -e KEYCLOAK_ADMIN=admin -e KEYCLOAK_ADMIN_PASSWORD=ad
 # Standard Keycloak-X 15 Offical, X86
 #docker run -e KEYCLOAK_ADMIN=admin -e KEYCLOAK_ADMIN_PASSWORD=admin -p8080:8080 quay.io/keycloak/keycloak-x:15.0.1 start-dev
 
+# Adduser 
+docker exec keycloak-application \
+/opt/jboss/keycloak/bin/add-user-keycloak.sh \
+-u admin \
+-p admin \
+&& docker restart keycloak-application
