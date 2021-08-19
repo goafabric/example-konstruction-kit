@@ -17,7 +17,6 @@ services:
       - KEYCLOAK_PASSSWORD=admin
       - KEYCLOAK_ADMIN=admin
       - KEYCLOAK_ADMIN_PASSSWORD=admin
-      - PROXY_ADDRESS_FORWARDING=true
       #Database
       - DB_VENDOR=POSTGRES
       - DB_ADDR=keycloak-postgres
