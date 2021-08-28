@@ -3,7 +3,7 @@ version: "3.7"
 services:
   person-service:
     container_name: ${_Values_root_name}-application
-    image: simaofsilva/keycloak:15.0.0
+    image: simaofsilva/keycloak:15.0.2
 #    image: svefors/keycloak-x:12.0.2
     restart: 'no'
     ports:
