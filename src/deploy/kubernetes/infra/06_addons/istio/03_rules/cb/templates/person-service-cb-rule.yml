@@ -2,20 +2,13 @@
 apiVersion: networking.istio.io/v1alpha3
 kind: DestinationRule
 metadata:
-  name: callee-service-policy
+  name: person-service-policy
   namespace: example-tenant-0
 spec:
-  host: callee-service-application
+  host: person-service-application
   trafficPolicy:
     tls:
       mode: ISTIO_MUTUAL
-#    connectionPool:
-#      tcp:
-#        connectTimeout: 100ms
-#        maxConnections: 1
-#      http:
-#        http1MaxPendingRequests: 1
-#        maxRequestsPerConnection: 1
     outlierDetection:
       consecutive5xxErrors: 1
       interval: 10s
