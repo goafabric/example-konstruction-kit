@@ -37,6 +37,7 @@ stringData:
   adapter.timeout: "10000"
   adapter.failureRate: "0.5"
   adapter.openDuration: "30000"
+  adapter.circuitBreaker.enabled: "true"
 
 data:
   quarkus.datasource.username: ZXhhbXBsZS1zZXJ2aWNl
