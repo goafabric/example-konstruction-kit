@@ -1,5 +1,4 @@
 # Istio
-- Istio CB
 - Networks Separation (https://gardener.cloud/documentation/guides/applications/network-isolation/, https://kubernetes.io/docs/concepts/services-networking/network-policies/, https://github.com/ahmetb/kubernetes-network-policy-recipes/blob/master/06-allow-traffic-from-a-namespace.md)
 
 # Security
