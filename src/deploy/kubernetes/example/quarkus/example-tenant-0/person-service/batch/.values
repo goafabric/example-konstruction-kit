@@ -5,7 +5,7 @@ _Values_root_name=person-service
 _Values_app_name=${_Values_root_name}-batch
 
 _Values_image_repository=goafabric/person-service-quarkus
-_Values_image_tag=1.1.0
+_Values_image_tag=1.1.1
 
 _Values_service_port=8080
 _Values_resources_requests_memory=32M
