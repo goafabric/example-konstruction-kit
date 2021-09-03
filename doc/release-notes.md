@@ -1,3 +1,5 @@
+#0.8.8
+
 #0.8.7
 - Upgrade all versions to 1.1.0+
 - Istio: Circuitbreaker and Namespace Isolation added
