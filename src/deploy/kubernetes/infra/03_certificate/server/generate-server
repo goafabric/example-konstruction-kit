@@ -20,6 +20,8 @@ openssl genrsa\
         -out ${SERVER_FILE}.key\
         4096
 
+echo signing ...
+
 # create signing request (csr)
 openssl req -new -sha512\
         -key ${SERVER_FILE}.key\
@@ -27,6 +29,7 @@ openssl req -new -sha512\
         -config config/san.cnf\
         -extensions SAN
 
+echo server cert
 # create end entity certificate
 openssl x509 -req -sha512 -days ${DAYS_VALID}\
         -in ${SERVER_FILE}.csr\
@@ -34,7 +37,8 @@ openssl x509 -req -sha512 -days ${DAYS_VALID}\
         -CAkey ${ROOT_FILE}.key\
         -CAcreateserial -out ${SERVER_FILE}.pem\
         -extfile config/san.cnf\
-        -extensions SAN
+        -extensions SAN\
+        -passin pass:kubernetes #this should be changed, because we have a hardcoded password here
 
 
 # remove csr
