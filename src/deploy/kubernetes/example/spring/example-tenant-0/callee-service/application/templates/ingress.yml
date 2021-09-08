@@ -12,9 +12,11 @@ metadata:
     nginx.ingress.kubernetes.io/configuration-snippet: |
       rewrite ^(/${_Values_ingress_name})$ \$1/ redirect;
 
+    nginx.ingress.kubernetes.io/x-forwarded-prefix: "/${_Values_ingress_name}"
+
     # basic auth
-    nginx.ingress.kubernetes.io/auth-type: basic
-    nginx.ingress.kubernetes.io/auth-secret: authentication-secret
+#    nginx.ingress.kubernetes.io/auth-type: basic
+#    nginx.ingress.kubernetes.io/auth-secret: authentication-secret
 
     #mod security logging
     nginx.ingress.kubernetes.io/enable-modsecurity: "true"
