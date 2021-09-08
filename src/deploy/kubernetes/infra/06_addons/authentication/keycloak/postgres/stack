@@ -47,7 +47,7 @@ function wait_until_running() {
     while kubectl get pods -n ${_Release_namespace} | grep ${_Values_app_name} | grep Init > /dev/null ; do sleep 1; done
 }
 
-if   [ "${COMMAND}" = "up" ] && [ -f "./templates/deployment.yml" ]; then up;
+if   [ "${COMMAND}" = "init" ] && [ -f "./templates/deployment.yml" ]; then up;
 elif [ "${COMMAND}" = "restart" ] && [ -f "./templates/deployment.yml" ]; then down && up;
 elif [ "${COMMAND}" = "down" ]; then down;
 elif [ "${COMMAND}" = "prune" ]; then prune;

@@ -28,7 +28,7 @@ function down() {
 }
 
 
-if   [ "${COMMAND}" = "up" ] ; then up;
+if   [ "${COMMAND}" = "init" ] ; then up;
 elif [ "${COMMAND}" = "restart" ] ; then down && up;
 elif [ "${COMMAND}" = "down" ]; then down;
 elif [ "${COMMAND}" = "prune" ]; then down;
