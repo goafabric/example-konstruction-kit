@@ -1,0 +1,36 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ${_Values_app_name}-config
+  namespace: ${_Release_namespace}
+data:
+  #application
+  TZ: Europe/Berlin
+
+  PROXY_ADDRESS_FORWARDING: "true"
+  KEYCLOAK_FRONTEND_URL: "https://${_Values_host_name}/${_Values_ingress_name}/auth"
+
+  #database
+  DB_VENDOR: "POSTGRES"
+  DB_ADDR: "keycloak-postgres"
+
+---
+
+apiVersion: v1
+kind: Secret
+metadata:
+  name: ${_Values_app_name}-config-external
+  namespace: ${_Release_namespace}
+data:
+  #keycloak admin user
+  ${_Values_app_name}_USER: "YWRtaW4K"
+  ${_Values_app_name}_PASSWORD: "YWRtaW4K"
+
+  #keycloak.x admin user
+  ${_Values_app_name}_ADMIN: "YWRtaW4K"
+  ${_Values_app_name}_ADMIN_PASSWORD: "YWRtaW4K"
+
+  #database user
+  DB_USER: "a2V5Y2xvYWs="
+  DB_PASSWORD: "a2V5Y2xvYWs="
+
