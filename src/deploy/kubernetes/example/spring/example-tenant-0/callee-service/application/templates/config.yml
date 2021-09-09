@@ -14,6 +14,13 @@ data:
   security.authentication.type: "keycloak"
   keycloak.auth-server-url: "http://keycloak-application.keycloak:8080/auth/"
 
+  #oauth
+  spring.security.oauth2.client.provider.keycloak.authorization-uri: "https://${_Values_host_name}/authentication/auth/realms/goafabric/protocol/openid-connect/auth"
+
+  spring.security.oauth2.client.provider.keycloak.token-uri: "http://keycloak-application.keycloak:8080/auth/realms/goafabric/protocol/openid-connect/token"
+  spring.security.oauth2.client.provider.keycloak.userinfo-uri: "http://keycloak-application.keycloak:8080/auth/realms/goafabric/protocol/openid-connect/userinfo"
+
+
   #monitoring
   management.endpoint.health.show-details: always
   management.endpoints.web.exposure.include: "health,heapdump,circuitbreakers,prometheus"
