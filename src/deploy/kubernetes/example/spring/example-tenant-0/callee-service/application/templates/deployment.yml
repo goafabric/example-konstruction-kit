@@ -53,22 +53,22 @@ spec:
               memory: "${_Values_resources_requests_memory}"
               cpu: "${_Values_resources_requests_cpu}"
 
-#          readinessProbe:
-#            httpGet:
-#              path: /actuator/health
-#              port: transport
-#            initialDelaySeconds: ${_Values_readinessProbe_initialDelaySeconds}
-#            periodSeconds: 10
-#            timeoutSeconds: 10
-#            failureThreshold: 3
-#          livenessProbe:
-#            httpGet:
-#              path: /actuator/health
-#              port: transport
-#            initialDelaySeconds: ${_Values_readinessProbe_initialDelaySeconds}
-#            periodSeconds: 10
-#            timeoutSeconds: 10
-#            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: /actuator/health
+              port: transport
+            initialDelaySeconds: ${_Values_readinessProbe_initialDelaySeconds}
+            periodSeconds: 10
+            timeoutSeconds: 10
+            failureThreshold: 3
+          livenessProbe:
+            httpGet:
+              path: /actuator/health
+              port: transport
+            initialDelaySeconds: ${_Values_readinessProbe_initialDelaySeconds}
+            periodSeconds: 10
+            timeoutSeconds: 10
+            failureThreshold: 3
 
           volumeMounts:
             - mountPath: /usr/share/logs
