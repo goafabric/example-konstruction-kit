@@ -16,7 +16,7 @@ data:
 
   #oauth
   security.authentication.type: "oauth2"
-  spring.security.oauth2.client.provider.keycloak.authorization-uri: "https://${_Values_host_name}/authentication/auth/realms/goafabric/protocol/openid-connect/auth"
+  spring.security.oauth2.client.provider.keycloak.authorization-uri: "https://${_Values_host_name}/oidc/auth/realms/goafabric/protocol/openid-connect/auth"
 
   spring.security.oauth2.client.provider.keycloak.token-uri: "http://keycloak-application.oidc:8080/auth/realms/goafabric/protocol/openid-connect/token"
   spring.security.oauth2.client.provider.keycloak.userinfo-uri: "http://keycloak-application.oidc:8080/auth/realms/goafabric/protocol/openid-connect/userinfo"
