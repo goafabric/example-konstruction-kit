@@ -1,3 +1,4 @@
+clear
 export realm=goafabric
 export access_token=$(\
 curl -s -X POST http://localhost:30100/auth/realms/$realm/protocol/openid-connect/token \
