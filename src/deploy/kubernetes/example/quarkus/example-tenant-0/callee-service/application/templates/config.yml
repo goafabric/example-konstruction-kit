@@ -14,7 +14,8 @@ data:
 
   quarkus.oidc.auth-server-url: "http://keycloak-application.oidc:8080/auth/realms/goafabric"
   quarkus.http.proxy.enable-forwarded-prefix: "true"
-  
+  quarkus.oidc.application-type: "hybrid"
+
   #jaeger
   quarkus.jaeger.service-name: "callee-service-tenant-${_Values_tenant_id}"
 
