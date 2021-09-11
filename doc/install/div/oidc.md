@@ -1,7 +1,8 @@
+#token
 clear
 export realm=goafabric
 export access_token=$(\
-curl -s -X POST http://localhost:30100/auth/realms/$realm/protocol/openid-connect/token \
+curl -s -X POST https://kubernetes/oidc/auth/realms/$realm/protocol/openid-connect/token \
 -H "Content-Type: application/x-www-form-urlencoded" \
 -d "username=user" \
 -d "password=user" \
