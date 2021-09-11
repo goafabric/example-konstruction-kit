@@ -1,4 +1,4 @@
-#token
+#bearer token (vs authorization code flow)
 clear
 export realm=goafabric
 export access_token=$(\
