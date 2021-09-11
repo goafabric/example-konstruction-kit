@@ -8,9 +8,12 @@ curl -s -X POST http://localhost:30100/auth/realms/$realm/protocol/openid-connec
 -d "client_id=example-app" \
 | jq --raw-output '.access_token' \
 )
-
 echo access token is: $access_token
 
+#kubernetes
 curl -v "https://kubernetes/callee/0/callees/sayMyName?name=Heisenberg"
-
 curl -v -H "Authorization: Bearer $access_token" "https://kubernetes/callee/0/callees/sayMyName?name=Heisenberg"
+ 
+#localhost
+curl -v "http://localhost:50900/callees/sayMyName?name=Heisenberg"
+curl -v -H "Authorization: Bearer $access_token" "http://localhost:50900/callees/sayMyName?name=Heisenberg"
