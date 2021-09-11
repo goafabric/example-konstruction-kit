@@ -23,12 +23,12 @@ metadata:
   namespace: ${_Release_namespace}
 data:
   #keycloak admin user
-  ${_Values_app_name}_USER: "YWRtaW4K"
-  ${_Values_app_name}_PASSWORD: "YWRtaW4K"
+  KEYCLOAK_USER: "YWRtaW4="
+  KEYCLOAK_PASSWORD: "YWRtaW4="
 
   #keycloak.x admin user
-  ${_Values_app_name}_ADMIN: "YWRtaW4K"
-  ${_Values_app_name}_ADMIN_PASSWORD: "YWRtaW4K"
+  KEYCLOAK_ADMIN: "YWRtaW4="
+  KEYCLOAK_ADMIN_PASSWORD: "YWRtaW4="
 
   #database user
   DB_USER: "a2V5Y2xvYWs="

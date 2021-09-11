@@ -1,4 +1,4 @@
-_Release_namespace=keycloak
+_Release_namespace=oidc
 _Values_root_name=keycloak
 _Values_app_name=${_Values_root_name}-postgres
 
