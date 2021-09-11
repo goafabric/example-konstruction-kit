@@ -12,7 +12,7 @@ data:
   security.authentication.enabled: "true"
   quarkus.http.auth.basic: "false"
 
-  quarkus.oidc.auth-server-url: "http://keycloak-application.keycloak:8080/auth/realms/goafabric"
+  quarkus.oidc.auth-server-url: "http://keycloak-application.oidc:8080/auth/realms/goafabric"
   quarkus.http.proxy.enable-forwarded-prefix: "true"
   
   #jaeger

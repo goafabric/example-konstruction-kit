@@ -10,7 +10,7 @@ spec:
         - ./*
         - istio-system/*
         - monitoring/*
-        - keycloak/*
+        - oidc/*
   outboundTrafficPolicy:
     mode: REGISTRY_ONLY
 
