@@ -10,6 +10,7 @@ spec:
         - ./*
         - istio-system/*
         - monitoring/*
+        - oidc/*
   outboundTrafficPolicy:
     mode: REGISTRY_ONLY
 
