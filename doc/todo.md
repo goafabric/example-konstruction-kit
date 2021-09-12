@@ -11,3 +11,4 @@
 - Certmanager for Certs (https://tinyurl.com/1wjhxz9m)
 - Upgrade to Microk8s 1.20+ (problem with NGINX Class that needs to be named "public")
 - Helm
+- Postgres init containers not working with 2 fast Quarkus Apps (unknown hosts exception seems not to wait):  until pg_isready -h person-service-postgres.example-tenant-5a2f -p 5432; do echo waiting for database; sleep 1; done;
