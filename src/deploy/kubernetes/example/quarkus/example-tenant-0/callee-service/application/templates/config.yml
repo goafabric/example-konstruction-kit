@@ -13,8 +13,6 @@ data:
   quarkus.http.proxy.enable-forwarded-prefix: "true"
   quarkus.oidc.auth-server-url: "http://keycloak-application.oidc:8080/auth/realms/tenant-0"
 
-  security.encryption.key: "203fef90-aead-45ca-830e-ca878bb4e987" #this needs to be changed during first deployment to an unique value
-
   #jaeger
   quarkus.jaeger.service-name: "callee-service-tenant-${_Values_tenant_id}"
 
