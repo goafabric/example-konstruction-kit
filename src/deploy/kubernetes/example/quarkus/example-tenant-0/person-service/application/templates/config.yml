@@ -11,7 +11,7 @@ data:
   #security
   security.authentication.enabled: "true"
   quarkus.http.proxy.enable-forwarded-prefix: "true"
-  quarkus.oidc.auth-server-url: "http://keycloak-application.oidc:8080/auth/realms/tenant-0"
+  quarkus.oidc.auth-server-url: "http://keycloak-application.oidc:8080/auth/realms/tenant-"
 
   #jaeger
   quarkus.jaeger.service-name: "person-service-tenant-${_Values_tenant_id}"
