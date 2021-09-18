@@ -8,8 +8,11 @@ data:
   server.port: "${_Values_service_port}"
   server.tomcat.threads.max: "20"
 
+  server.forward-headers-strategy: FRAMEWORK
+
   #security
-  security.authentication.enabled: "false"
+  security.authentication.enabled: "true"
+  keycloak.auth-server-url: "http://keycloak-application.oidc:8080/auth/
 
   #monitoring
   management.endpoint.health.show-details: always

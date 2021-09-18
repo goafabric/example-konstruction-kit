@@ -12,7 +12,6 @@ data:
 
   #security
   security.authentication.enabled: "true"
-
   keycloak.auth-server-url: "http://keycloak-application.oidc:8080/auth/"
 
   #oauth
