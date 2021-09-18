@@ -11,11 +11,11 @@ data:
   server.forward-headers-strategy: FRAMEWORK
 
   #security
-#  security.authentication.type: "keycloak"
-#  keycloak.auth-server-url: "http://keycloak-application.oidc:8080/auth/"
+  security.authentication.enabled: "true"
+
+  keycloak.auth-server-url: "http://keycloak-application.oidc:8080/auth/"
 
   #oauth
-  security.authentication.type: "oauth2"
   spring.security.oauth2.client.provider.keycloak.authorization-uri: "https://${_Values_host_name}/oidc/auth/realms/goafabric/protocol/openid-connect/auth"
 
   spring.security.oauth2.client.provider.keycloak.token-uri: "http://keycloak-application.oidc:8080/auth/realms/goafabric/protocol/openid-connect/token"
