@@ -22,3 +22,6 @@ curl -v -H "Authorization: Bearer $access_token" "https://kubernetes/callee/0/ca
 #localhost service request
 curl -v "http://localhost:50900/callees/sayMyName?name=Heisenberg"
 curl -v -H "Authorization: Bearer $access_token" "http://localhost:50900/callees/sayMyName?name=Heisenberg"
+                             
+#localhost personservice
+curl -v -H "Authorization: Bearer $access_token" "http://localhost:50800/persons/sayMyName?name=Heisenberg"
