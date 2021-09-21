@@ -15,6 +15,9 @@ data:
 
   keycloak.auth-server-url: "http://keycloak-application.oidc:8080/auth/"
 
+  spring.security.oauth2.client.provider.keycloak.authorization-uri: "https://${_Values_host_name}/oidc/auth/realms/tenant-0/protocol/openid-connect/auth"
+  spring.security.oauth2.resourceserver.jwt.issuer-uri: "http://keycloak-application.oidc:8080/auth/realms/tenant-0"
+
   #monitoring
   management.endpoint.health.show-details: always
   management.endpoints.web.exposure.include: "health,heapdump,circuitbreakers,prometheus"
