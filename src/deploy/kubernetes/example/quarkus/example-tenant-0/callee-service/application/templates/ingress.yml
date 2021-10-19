@@ -13,8 +13,11 @@ metadata:
       rewrite ^(/${_Values_ingress_name})$ \$1/ redirect;
 
     # basic auth
-    nginx.ingress.kubernetes.io/auth-type: basic
-    nginx.ingress.kubernetes.io/auth-secret: authentication-secret
+    #nginx.ingress.kubernetes.io/auth-type: basic
+    #nginx.ingress.kubernetes.io/auth-secret: authentication-secret
+
+    nginx.ingress.kubernetes.io/auth-url: "https://$host/oauth2/auth"
+    nginx.ingress.kubernetes.io/auth-signin: "https://$host/oauth2/start?rd=$escaped_request_uri"
 
     #mod security logging
     nginx.ingress.kubernetes.io/enable-modsecurity: "true"

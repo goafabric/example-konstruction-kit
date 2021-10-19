@@ -1,0 +1,18 @@
+#!/bin/bash
+COMMAND=$1
+PROFILE=$2
+
+function up() {
+    kubectl apply -f ./templates/
+}
+
+function down() {
+    kubectl delete -f ./templates/
+}
+
+
+if   [ "${COMMAND}" = "init" ] ; then up;
+elif [ "${COMMAND}" = "restart" ] ; then down && up;
+elif [ "${COMMAND}" = "prune" ]; then down;
+
+else echo Doing nothing !; fi
