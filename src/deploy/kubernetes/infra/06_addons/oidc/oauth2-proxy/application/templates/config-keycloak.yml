@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: oauth2-proxy-config
+  namespace: oidc
+data:
+  #application
+  TZ: Europe/Berlin
+
+  #PROXY
+  OAUTH2_PROXY_PROVIDER: "keycloak"
+  OAUTH2_PROXY_CLIENT_ID: "oauth2-proxy"
+  OAUTH2_PROXY_CLIENT_SECRET: "2d79fbf8d9a4f1c0861fc8aa5b41d835d760212b"
+  OAUTH2_PROXY_LOGIN_URL: "
+
+
