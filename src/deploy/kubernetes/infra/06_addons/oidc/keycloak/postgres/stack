@@ -50,7 +50,7 @@ function wait_until_running() {
 if   [ "${COMMAND}" = "init" ] && [ -f "./templates/deployment.yml" ]; then up;
 elif [ "${COMMAND}" = "restart" ] && [ -f "./templates/deployment.yml" ]; then down && up;
 elif [ "${COMMAND}" = "down" ]; then down;
-#elif [ "${COMMAND}" = "prune" ]; then prune;
+elif [ "${COMMAND}" = "prune" ]; then down;
 
 elif [ "${COMMAND}" = "prov" ] && [ -d "./templates/pvc/" ]; then up;
 elif [ "${COMMAND}" = "import" ] && [ -f "./templates/job.yml" ]; then import;
