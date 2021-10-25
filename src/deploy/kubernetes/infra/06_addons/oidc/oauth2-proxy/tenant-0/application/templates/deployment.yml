@@ -29,4 +29,5 @@ spec:
             - --upstream=file:///dev/null
             - --http-address=0.0.0.0:4180
             - --reverse-proxy=true
+            - --pass-user-headers
             - --proxy-prefix=/${_Values_ingress_name}
