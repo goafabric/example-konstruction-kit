@@ -1,25 +1,27 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: oauth2-proxy-ingress
-  namespace: oidc
+  name: ${_Values_root_name}-ingress
+  namespace: ${_Release_namespace}
   annotations:
-    kubernetes.io/ingress.class: "nginx"
+    kubernetes.io/ingress.class: nginx
     nginx.ingress.kubernetes.io/ssl-redirect: "false"
 
 spec:
   tls:
     - hosts:
-        - kubernetes
+        - ${_Values_host_name}
       secretName: server-certificate-secret
   rules:
-    - host: kubernetes
+    - host: ${_Values_host_name}
       http:
         paths:
-          - path: /oauth2
+          - path: /${_Values_ingress_name}
             pathType: Prefix
             backend:
               service:
                 name: oauth2-proxy
                 port:
-                  number: 4180
+                  name: http
+           
+
