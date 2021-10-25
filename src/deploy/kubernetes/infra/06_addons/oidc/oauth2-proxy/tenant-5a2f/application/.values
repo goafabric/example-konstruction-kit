@@ -1,0 +1,12 @@
+_Values_tenant_id=5a2f
+
+_Release_namespace=oidc
+_Values_root_name=oauth2-proxy-${_Values_tenant_id}
+_Values_app_name=${_Values_root_name}-application
+
+_Values_ingress_name=oauth2/${_Values_tenant_id}
+
+_Values_proxy_client_secret="5963cfa3-e9c7-42fb-a0e3-76695c502339"
+_Values_proxy_cookie_secret="RCHJ7SoVM9u4D68rXSKPcA=="
+
+_Values_host_name=
