@@ -1,7 +1,9 @@
+_Values_tenant_id=0
+
 _Release_namespace=oidc
 _Values_root_name=oauth2-proxy
 _Values_app_name=${_Values_root_name}-application
 
-_Values_ingress_name=oauth2
+_Values_ingress_name=oauth2/${_Values_tenant_id}
 
 _Values_host_name=
