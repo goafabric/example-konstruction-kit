@@ -20,7 +20,7 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: oauth2-proxy
+                name: ${_Values_app_name}
                 port:
                   name: http
            
