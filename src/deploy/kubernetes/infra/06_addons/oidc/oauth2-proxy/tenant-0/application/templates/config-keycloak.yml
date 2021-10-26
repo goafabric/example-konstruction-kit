@@ -14,7 +14,7 @@ data:
   OAUTH2_PROXY_REDEEM_URL: "http://keycloak-application.oidc:8080/auth/realms/tenant-${_Values_tenant_id}/protocol/openid-connect/token"
   OAUTH2_PROXY_PROFILE_URL: "http://keycloak-application.oidc:8080/auth/realms/tenant-${_Values_tenant_id}/protocol/openid-connect/userinfo"
   OAUTH2_PROXY_VALIDATE_URL: "http://keycloak-application.oidc:8080/auth/realms/tenant-${_Values_tenant_id}/protocol/openid-connect/userinfo"
-  OAUTH2_PROXY_SCOPE: "email"
+  OAUTH2_PROXY_SCOPE: "openid"
   OAUTH2_PROXY_CLIENT_SECRET: ${_Values_proxy_client_secret}
   OAUTH2_PROXY_COOKIE_SECRET: ${_Values_proxy_cookie_secret}
 
