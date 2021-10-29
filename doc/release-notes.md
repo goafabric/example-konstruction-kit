@@ -1,5 +1,7 @@
 #0.8.8
 - upgrade of kubernetes dashboard and metrics servers
+- upgrade of nginx controller
+- oidc possibility via ouauth2-proxy added
 
 #0.8.7
 - Upgrade all versions to 1.1.0+
