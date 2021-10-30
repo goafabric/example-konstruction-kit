@@ -1,6 +1,6 @@
 #0.8.8
 - upgrade of kubernetes dashboard and metrics servers
-- upgrade of nginx controller 1.0.4
+- upgrade tp nginx controller 1.0.4
 - upgrade to istio 1.11.4
 - oidc possibility via ouauth2-proxy added
 
