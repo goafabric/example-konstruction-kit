@@ -20,7 +20,6 @@ metadata:
     #nginx.ingress.kubernetes.io/auth-url: "https://\$host/oauth2/\$http_x_tenantid/auth" #"http://oauth2-proxy-\$http_x_tenantid-application.oidc.svc.cluster.local:4180/oauth2/\$http_x_tenantid/auth"
     #nginx.ingress.kubernetes.io/auth-response-headers: "x-auth-request-user, x-auth-request-email"
 
-
     #mod security logging
     nginx.ingress.kubernetes.io/enable-modsecurity: "true"
 
