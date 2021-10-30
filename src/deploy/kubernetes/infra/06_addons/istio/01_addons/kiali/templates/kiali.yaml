@@ -80,7 +80,8 @@ data:
       custom_dashboards:
         enabled: true
       tracing:
-        in_cluster_url: 'http://tracing.monitoring/jaeger'
+        in_cluster_url: 'http://tracing.monitoring:16685/jaeger'
+        use_grpc: true
     identity:
       cert_file: ""
       private_key_file: ""
