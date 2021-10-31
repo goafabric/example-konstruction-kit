@@ -6,7 +6,7 @@ _Values_app_name=${_Values_root_name}-application
 
 _Values_ingress_name=oauth2/${_Values_tenant_id}
 
-_Values_proxy_client_secret="bm9uZQ=="
+_Values_proxy_client_secret="bm9uZQ==" #none encoded as base64 for public, for confidential clients generate a secret and do bas64 encoding
 _Values_proxy_cookie_secret="U3ZKSVVncUJLeE9ZU3hKd0ZSRWlPZz09"
 
 _Values_host_name=
