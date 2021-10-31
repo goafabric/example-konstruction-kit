@@ -6,7 +6,7 @@ _Values_app_name=${_Values_root_name}-application
 
 _Values_ingress_name=oauth2/${_Values_tenant_id}
 
-_Values_proxy_client_secret="6c9b6bb8-dcb1-4e96-b034-f7c477b05c5e"
-_Values_proxy_cookie_secret="SvJIUgqBKxOYSxJwFREiOg=="
+_Values_proxy_client_secret="bm9uZQ=="
+_Values_proxy_cookie_secret="U3ZKSVVncUJLeE9ZU3hKd0ZSRWlPZz09"
 
 _Values_host_name=
