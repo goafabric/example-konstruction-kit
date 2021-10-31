@@ -1,6 +1,6 @@
 # Security
-- Keycloak (https://kubernetes.github.io/ingress-nginx/examples/auth/oauth-external-auth)
 - Outbound SSL
+- Oidc User Forward
 
 # Activated but needs further Investigation
 - Hide Nginx version
