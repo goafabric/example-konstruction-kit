@@ -12,5 +12,7 @@ microk8s enable dns ingress storage
 
 sudo iptables -P FORWARD ACCEPT
 
+kubectl edit daemonset nginx-ingress-microk8s-controller -n ingress
+
 
 
