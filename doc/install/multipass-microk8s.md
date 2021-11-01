@@ -7,6 +7,8 @@ https://microk8s.io/docs
 sudo snap install microk8s --classic --channel=1.19
 sudo usermod -a -G microk8s ubuntu && sudo chown -f -R ubuntu ~/.kube
 
+microk8s enable dns ingress storage
+
 sudo iptables -P FORWARD ACCEPT
 
 
