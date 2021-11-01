@@ -4,7 +4,7 @@ metadata:
   name: keycloak-ingress
   namespace: ${_Release_namespace}
   annotations:
-    kubernetes.io/ingress.class: nginx
+    #kubernetes.io/ingress.class: nginx
     nginx.ingress.kubernetes.io/ssl-redirect: "false"
 #    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
 
