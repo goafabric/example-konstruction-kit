@@ -1,5 +1,3 @@
-##Step 1
-
 #documentation
 https://microk8s.io/docs
 
@@ -17,6 +15,12 @@ sudo sh -c 'echo "#!/bin/bash \n microk8s kubectl "\$1" "\$2" "\$3" "\$4" "\$5" 
 #Client Kubectl
 microk8s config > config (should be put to ~/.kube on client machine)
 
-#Registry Mirror
-https://microk8s.io/docs/registry-private
-https://github.com/containerd/cri/blob/master/docs/registry.md
+
+
+#Microk8s 1.22 Upgrade
+sudo snap install microk8s --classic --channel=1.22/stable
+=> This works now, however the nginx-ingress deamonset has to be changed "--ingress-class=public => --ingress-class=nginx"
+
+#Port Forward
+sudo iptables -P FORWARD ACCEPT
+=> may be needed for som systems
