@@ -1,6 +1,5 @@
 #Ops
 - Certmanager for Certs (https://tinyurl.com/1wjhxz9m)
-- Upgrade to Microk8s 1.20+ (problem with NGINX Class that needs to be named "public")
 - Helm
 
 # Security
