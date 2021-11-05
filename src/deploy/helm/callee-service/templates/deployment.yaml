@@ -58,4 +58,17 @@ spec:
             initialDelaySeconds: {{ .Values.readinessProbe.initialDelaySeconds }}
             periodSeconds: 10
             timeoutSeconds: 10
-            failureThreshold: 3              
+            failureThreshold: 3
+
+          volumeMounts:
+            - mountPath: /usr/share/logs
+              name: {{ include "application.name" . }}-applogs
+#            - mountPath: /usr/share/config/
+#              name: {{ include "application.name" .}}-config-files-volume
+
+      volumes:
+        - name: {{ include "application.name" . }}-applogs
+          emptyDir: {}
+#        - name: {{ include "application.name" . }}-config-files-volume
+#          configMap:
+#            name: {{ include "application.name" . }}-config-files
