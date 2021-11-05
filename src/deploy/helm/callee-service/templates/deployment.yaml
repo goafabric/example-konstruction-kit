@@ -16,10 +16,10 @@ spec:
       app.kubernetes.io/instance: {{ .Release.Name }}
   template:
     metadata:
+      {{- with .Values.podAnnotations }}
       annotations:
-        linkerd.io/inject: enabled
-        sidecar.istio.io/inject: "true"
-
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
         prometheus.io/scrape: "true"
         prometheus.io/port: "8080"
         prometheus.io/scheme: "http"

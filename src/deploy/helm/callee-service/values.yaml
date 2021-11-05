@@ -10,3 +10,7 @@ service:
   port: 8080
 ingress:
   enabled: false
+
+podAnnotations:
+  linkerd.io/inject: enabled
+  sidecar.istio.io/inject: "true"
