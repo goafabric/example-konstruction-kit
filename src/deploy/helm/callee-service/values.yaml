@@ -1,0 +1,10 @@
+replicaCount: 1
+image:
+  repository: "goafabric/callee-service-quarkus"
+  tag: "1.1.1"
+  pullPolicy: IfNotPresent
+service:
+  type: ClusterIP
+  port: 8080
+ingress:
+  enabled: false
