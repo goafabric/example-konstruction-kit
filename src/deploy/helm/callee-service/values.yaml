@@ -1,4 +1,6 @@
 replicaCount: 1
+tenantId: 5a2f
+namespace: example-tenant-5a2f
 image:
   repository: "goafabric/callee-service-quarkus"
   tag: "1.1.1"
