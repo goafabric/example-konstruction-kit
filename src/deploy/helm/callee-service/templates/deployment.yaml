@@ -36,3 +36,26 @@ spec:
             - name: http
               containerPort: 8080
               protocol: TCP
+              
+          args: ["-Xmx{{ .Values.resources.requests.memory }}"]
+          resources:
+            requests:
+              memory: "{{ .Values.resources.requests.memory }}"
+              cpu: "{{ .Values.resources.requests.cpu }}"
+
+          readinessProbe:
+            httpGet:
+              path: /actuator/health
+              port: transport
+            initialDelaySeconds: {{ .Values.readinessProbe.initialDelaySeconds }}
+            periodSeconds: 10
+            timeoutSeconds: 10
+            failureThreshold: 3
+          livenessProbe:
+            httpGet:
+              path: /actuator/health
+              port: transport
+            initialDelaySeconds: {{ .Values.readinessProbe.initialDelaySeconds }}
+            periodSeconds: 10
+            timeoutSeconds: 10
+            failureThreshold: 3              

@@ -11,9 +11,19 @@ service:
   type: ClusterIP
   port: 8080
 
-ingress:
-  enabled: false
-
 podAnnotations:
   linkerd.io/inject: enabled
   sidecar.istio.io/inject: "true"
+
+resources:
+  requests:
+    memory: 16M
+    cpu: 250m
+
+readinessProbe:
+  initialDelaySeconds: 1
+
+ingress:
+  enabled: false
+
+
