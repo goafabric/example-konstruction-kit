@@ -27,6 +27,7 @@ spec:
       labels:
         app.kubernetes.io/name: {{ include "application.name" . }}
         app.kubernetes.io/instance: {{ .Release.Name }}
+        version: v1
     spec:
       containers:
         - name: {{ .Chart.Name }}
@@ -36,7 +37,15 @@ spec:
             - name: http
               containerPort: 8080
               protocol: TCP
-              
+
+          envFrom:
+            - configMapRef:
+                name: {{ include "application.fullname" . }}-config
+            - configMapRef:
+                name: {{ include "application.fullname" . }}-config-log
+#            - secretRef:
+#                name: {{ include "application.fullname" . }}-config-external
+
           args: ["-Xmx{{ .Values.resources.requests.memory }}"]
           resources:
             requests:
@@ -46,7 +55,7 @@ spec:
           readinessProbe:
             httpGet:
               path: /actuator/health
-              port: transport
+              port: http
             initialDelaySeconds: {{ .Values.readinessProbe.initialDelaySeconds }}
             periodSeconds: 10
             timeoutSeconds: 10
@@ -54,7 +63,7 @@ spec:
           livenessProbe:
             httpGet:
               path: /actuator/health
-              port: transport
+              port: http
             initialDelaySeconds: {{ .Values.readinessProbe.initialDelaySeconds }}
             periodSeconds: 10
             timeoutSeconds: 10
@@ -62,13 +71,8 @@ spec:
 
           volumeMounts:
             - mountPath: /usr/share/logs
-              name: {{ include "application.name" . }}-applogs
-#            - mountPath: /usr/share/config/
-#              name: {{ include "application.name" .}}-config-files-volume
+              name: {{ include "application.fullname" . }}-applogs
 
       volumes:
-        - name: {{ include "application.name" . }}-applogs
+        - name: {{ include "application.fullname" . }}-applogs
           emptyDir: {}
-#        - name: {{ include "application.name" . }}-config-files-volume
-#          configMap:
-#            name: {{ include "application.name" . }}-config-files
