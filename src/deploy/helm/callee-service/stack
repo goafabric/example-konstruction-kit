@@ -17,5 +17,6 @@ if   [ "${COMMAND}" = "up" ]; then up;
 elif [ "${COMMAND}" = "down" ]; then down;
 elif [ "${COMMAND}" = "prune" ]; then down;
 elif [ "${COMMAND}" = "restart" ]; then down && up;
+elif [ "${COMMAND}" = "lint" ]; then helm lint ./;
 
 else echo Doing nothing !; fi
