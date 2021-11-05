@@ -1,12 +1,10 @@
 #!/bin/bash
 COMMAND=$1
 
-kubectl version | grep "Server Version" | grep "linux/arm64" > /dev/null && _Values_server_arch="-arm64v8"
-_Values_host_name=`kubectl get configmaps cluster-config -o jsonpath='{.data.hostname}' -n default` && [ -z "$_Values_host_name" ] && echo "Hostname is empty" && exit
-
 function up() {
     helm install \
     --set image.arch=`kubectl version | grep "Server Version" | grep "linux/arm64" > /dev/null && echo "-arm64v8"` \
+    --set host.name=`kubectl get configmaps cluster-config -o jsonpath='{.data.hostname}' -n default` \
     callee-service-application ./
 }
 
