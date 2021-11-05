@@ -5,7 +5,9 @@ kubectl version | grep "Server Version" | grep "linux/arm64" > /dev/null && _Val
 _Values_host_name=`kubectl get configmaps cluster-config -o jsonpath='{.data.hostname}' -n default` && [ -z "$_Values_host_name" ] && echo "Hostname is empty" && exit
 
 function up() {
-    helm install --set image.arch=${_Values_server_arch} callee-service-application ./
+    helm install \
+    --set image.arch=`kubectl version | grep "Server Version" | grep "linux/arm64" > /dev/null && echo "-arm64v8"` \
+    callee-service-application ./
 }
 
 function down() {
