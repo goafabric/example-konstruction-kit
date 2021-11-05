@@ -3,6 +3,11 @@ kind: ConfigMap
 metadata:
   name: {{ include "application.fullname" . }}-config-log
   namespace: {{ .Values.namespace }}
+  labels:
+    app.kubernetes.io/name: {{ include "application.name" . }}-config-log
+    helm.sh/chart: {{ include "application.chart" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
 data:
   #log levels
   quarkus.log.level: "INFO"
