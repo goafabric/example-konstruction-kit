@@ -6,7 +6,7 @@ image:
   repository: "goafabric/callee-service-quarkus"
   tag: "1.1.1"
   pullPolicy: IfNotPresent
-  arch: "-arm64v8"
+#  arch: "-arm64v8"
 
 
 service:
