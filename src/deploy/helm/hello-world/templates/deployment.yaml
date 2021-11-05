@@ -1,23 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "hello-world.fullname" . }}
+  name: {{ include "my-application.fullname" . }}
   namespace: example
   labels:
-    app.kubernetes.io/name: {{ include "hello-world.name" . }}
-    helm.sh/chart: {{ include "hello-world.chart" . }}
+    app.kubernetes.io/name: {{ include "my-application.name" . }}
+    helm.sh/chart: {{ include "my-application.chart" . }}
     app.kubernetes.io/instance: {{ .Release.Name }}
     app.kubernetes.io/managed-by: {{ .Release.Service }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app.kubernetes.io/name: {{ include "hello-world.name" . }}
+      app.kubernetes.io/name: {{ include "my-application.name" . }}
       app.kubernetes.io/instance: {{ .Release.Name }}
   template:
     metadata:
       labels:
-        app.kubernetes.io/name: {{ include "hello-world.name" . }}
+        app.kubernetes.io/name: {{ include "my-application.name" . }}
         app.kubernetes.io/instance: {{ .Release.Name }}
     spec:
       containers:
