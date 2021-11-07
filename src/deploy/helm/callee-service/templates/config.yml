@@ -30,7 +30,7 @@ data:
 apiVersion: v1
 kind: Secret
 metadata:
-  name: {{ include "application.fullname" . }}-config-external
+  name: {{ .Release.Name }}-config-external
   labels:
     app.kubernetes.io/name: {{ include "application.name" . }}-config-external
     helm.sh/chart: {{ include "application.chart" . }}

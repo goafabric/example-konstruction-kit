@@ -40,11 +40,11 @@ spec:
 
           envFrom:
             - configMapRef:
-                name: {{ include "application.name" . }}-config
+                name: {{ .Release.Name }}-config
             - configMapRef:
-                name: {{ include "application.name" . }}-config-log
+                name: {{ .Release.Name }}-config-log
 #            - secretRef:
-#                name: {{ include "application.name" . }}-config-external
+#                name: {{ .Release.Name }}-config-external
 
           args: ["-Xmx{{ .Values.resources.requests.memory }}"]
           resources:
@@ -71,8 +71,8 @@ spec:
 
           volumeMounts:
             - mountPath: /usr/share/logs
-              name: {{ include "application.name" . }}-applogs
+              name: {{ .Release.Name }}-applogs
 
       volumes:
-        - name: {{ include "application.name" . }}-applogs
+        - name: {{ .Release.Name }}-applogs
           emptyDir: {}
