@@ -14,16 +14,3 @@ data:
   #echo -n example-user | base64
   #echo -n crNb2Z6mvBySRKwu | base64
   #echo -n Y3JOYjJaNm12QnlTUkt3dQ== | base64 -d
-
----
-
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: {{ .Release.Name }}-config-files
-  namespace: {{ .Values.namespace }}
-  labels:
-    {{- include "application.labels" . | nindent 4 }}
-data:
-  00_pg_statements.sql: |-
-    CREATE EXTENSION pg_stat_statements;
