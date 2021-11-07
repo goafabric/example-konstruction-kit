@@ -1,3 +1,1 @@
-- config-external / secrets
 - tenant-id in values.yml
-- ingress
