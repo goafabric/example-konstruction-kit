@@ -2,6 +2,9 @@ replicaCount: 1
 tenantId: 0
 namespace: example-tenant-0
 
+ingress:
+  name: callee/0
+
 host:
   name: ""
 
@@ -26,7 +29,6 @@ service:
   type: ClusterIP
   port: 8080
 
-ingress:
-  name: callee/0
+
 
 
