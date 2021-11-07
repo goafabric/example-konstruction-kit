@@ -31,13 +31,12 @@ apiVersion: v1
 kind: Secret
 metadata:
   name: {{ .Release.Name }}-config-external
+  namespace: {{ .Values.namespace }}
   labels:
     app.kubernetes.io/name: {{ include "application.name" . }}-config-external
     helm.sh/chart: {{ include "application.chart" . }}
     app.kubernetes.io/instance: {{ .Release.Name }}
     app.kubernetes.io/managed-by: {{ .Release.Service }}
-stringData:
-  quarkus.jaeger.propagation: "b3"
 
 
 

@@ -43,8 +43,8 @@ spec:
                 name: {{ .Release.Name }}-config
             - configMapRef:
                 name: {{ .Release.Name }}-config-log
-#            - secretRef:
-#                name: {{ .Release.Name }}-config-external
+            - secretRef:
+                name: {{ .Release.Name }}-config-external
 
           args: ["-Xmx{{ .Values.resources.requests.memory }}"]
           resources:
