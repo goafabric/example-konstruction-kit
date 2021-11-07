@@ -29,3 +29,6 @@ readinessProbe:
 service:
   type: ClusterIP
   port: 5432
+
+postgres:
+  maxConnections: 30

@@ -20,7 +20,7 @@ data:
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: {{ .Release.Name }}-config-data-files
+  name: {{ .Release.Name }}-config-files
   namespace: {{ .Values.namespace }}
   labels:
     {{- include "application.labels" . | nindent 4 }}

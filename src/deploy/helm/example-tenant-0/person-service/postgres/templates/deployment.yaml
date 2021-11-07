@@ -29,7 +29,7 @@ spec:
 
       containers:
         - name: {{ .Chart.Name }}
-          image: "{{ .Values.image.repository }}{{ .Values.image.arch }}:{{ .Values.image.tag }}"
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - name: tcp
@@ -39,15 +39,13 @@ spec:
           envFrom:
             - configMapRef:
                 name: {{ .Release.Name }}-config
-            - configMapRef:
-                name: {{ .Release.Name }}-config-log
             - secretRef:
                 name: {{ .Release.Name }}-config-external
 
           args: ["postgres",
                  "-c", "shared_preload_libraries=pg_stat_statements",
-                 "-c", "shared_buffers=${_Values_resources_requests_memory}B",
-                 "-c", "max_connections=${_Values_postgres_max_connections}"]
+                 "-c", "shared_buffers={{ .Values.resources.requests.memory }}B",
+                 "-c", "max_connections={{ .Values.postgres.maxConnections }}"]
           resources:
             requests:
               memory: "{{ .Values.resources.requests.memory }}"
@@ -69,4 +67,4 @@ spec:
 
         - name: {{ .Release.Name }}-initdb-volume
           configMap:
-            name: {{ .Release.Name }}-data-files
+            name: {{ .Release.Name }}-config-files
