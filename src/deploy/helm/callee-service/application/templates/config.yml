@@ -4,10 +4,7 @@ metadata:
   name: {{ include "application.fullname" . }}-config
   namespace: {{ .Values.namespace }}
   labels:
-    app.kubernetes.io/name: {{ include "application.name" . }}-config
-    helm.sh/chart: {{ include "application.chart" . }}
-    app.kubernetes.io/instance: {{ .Release.Name }}
-    app.kubernetes.io/managed-by: {{ .Release.Service }}
+    {{- include "application.labels" . | nindent 4 }}
 data:
   #application
   TZ: Europe/Berlin
@@ -33,10 +30,7 @@ metadata:
   name: {{ .Release.Name }}-config-external
   namespace: {{ .Values.namespace }}
   labels:
-    app.kubernetes.io/name: {{ include "application.name" . }}-config-external
-    helm.sh/chart: {{ include "application.chart" . }}
-    app.kubernetes.io/instance: {{ .Release.Name }}
-    app.kubernetes.io/managed-by: {{ .Release.Service }}
+    {{- include "application.labels" . | nindent 4 }}
 
 
 

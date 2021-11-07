@@ -4,10 +4,7 @@ metadata:
   name: {{ include "application.fullname" . }}
   namespace: {{ .Values.namespace }}
   labels:
-    app.kubernetes.io/name: {{ include "application.name" . }}
-    helm.sh/chart: {{ include "application.chart" . }}
-    app.kubernetes.io/instance: {{ .Release.Name }}
-    app.kubernetes.io/managed-by: {{ .Release.Service }}
+    {{- include "application.labels" . | nindent 4 }}
 spec:
   type: {{ .Values.service.type }}
   ports:
