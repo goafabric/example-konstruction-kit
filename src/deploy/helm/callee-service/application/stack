@@ -9,7 +9,7 @@ function up() {
 }
 
 function down() {
-    helm uninstall callee-service-application;
+    helm uninstall callee-service-application
 }
 
 if   [ "${COMMAND}" = "up" ]; then up;
