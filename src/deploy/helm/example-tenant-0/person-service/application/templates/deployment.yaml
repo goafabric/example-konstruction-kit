@@ -26,10 +26,10 @@ spec:
         app.kubernetes.io/instance: {{ .Release.Name }}
         version: v1
     spec:
+      {{- with .Values.initContainers }}
       initContainers:
-        - name: check-db-ready
-          image: postgres:14.0
-          command: ['sh', '-c','until pg_isready -h {{ .rootName }}-postgres -p 5432;do echo waiting for database; sleep 1; done;']
+        {{- toYaml . | nindent 8 }}
+        {{- end }}
 
       containers:
         - name: {{ .Chart.Name }}

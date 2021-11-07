@@ -29,6 +29,10 @@ service:
   type: ClusterIP
   port: 8080
 
+initContainers:
+  - name: check-db-ready
+    image: postgres:14.0
+    command: ['sh', '-c','until pg_isready -h {{ .rootName }}-postgres -p 5432;do echo waiting for database; sleep 1; done;']
 
 
 
