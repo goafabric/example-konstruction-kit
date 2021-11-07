@@ -18,8 +18,10 @@ podAnnotations:
 
 resources:
   requests:
-    memory: 16M
+    memory: 128M
     cpu: 250m
+  limits:
+    cpu: 500m
 
 readinessProbe:
   initialDelaySeconds: 1

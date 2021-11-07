@@ -17,10 +17,6 @@ spec:
       annotations:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-        prometheus.io/scrape: "true"
-        prometheus.io/port: "{{ .Values.service.port }}"
-        prometheus.io/scheme: "http"
-        prometheus.io/path: "/actuator/prometheus"
       labels:
         app.kubernetes.io/name: {{ include "application.name" . }}
         app.kubernetes.io/instance: {{ .Release.Name }}
@@ -36,7 +32,7 @@ spec:
           image: "{{ .Values.image.repository }}{{ .Values.image.arch }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
-            - name: http
+            - name: tcp
               containerPort: {{ .Values.service.port }}
               protocol: TCP
 
@@ -48,33 +44,29 @@ spec:
             - secretRef:
                 name: {{ .Release.Name }}-config-external
 
-          args: ["-Xmx{{ .Values.resources.requests.memory }}"]
+          args: ["postgres",
+                 "-c", "shared_preload_libraries=pg_stat_statements",
+                 "-c", "shared_buffers=${_Values_resources_requests_memory}B",
+                 "-c", "max_connections=${_Values_postgres_max_connections}"]
           resources:
             requests:
               memory: "{{ .Values.resources.requests.memory }}"
               cpu: "{{ .Values.resources.requests.cpu }}"
-
-          readinessProbe:
-            httpGet:
-              path: /actuator/health
-              port: http
-            initialDelaySeconds: {{ .Values.readinessProbe.initialDelaySeconds }}
-            periodSeconds: 10
-            timeoutSeconds: 10
-            failureThreshold: 3
-          livenessProbe:
-            httpGet:
-              path: /actuator/health
-              port: http
-            initialDelaySeconds: {{ .Values.readinessProbe.initialDelaySeconds }}
-            periodSeconds: 10
-            timeoutSeconds: 10
-            failureThreshold: 3
+            limits:
+              cpu: "{{ .Values.resources.limits.cpu }}"
 
           volumeMounts:
-            - mountPath: /usr/share/logs
-              name: {{ .Release.Name }}-applogs
+            - mountPath: /var/lib/postgresql/data
+              name: {{ .Release.Name }}-pvc-volume
+
+            - mountPath: /docker-entrypoint-initdb.d/
+              name: {{ .Release.Name }}-initdb-volume
 
       volumes:
-        - name: {{ .Release.Name }}-applogs
-          emptyDir: {}
+        - name: {{ .Release.Name }}-pvc-volume
+          persistentVolumeClaim:
+            claimName: {{ .Release.Name }}-pvc
+
+        - name: {{ .Release.Name }}-initdb-volume
+          configMap:
+            name: {{ .Release.Name }}-data-files
