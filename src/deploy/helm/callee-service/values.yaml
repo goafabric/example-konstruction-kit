@@ -1,6 +1,9 @@
 replicaCount: 1
-tenantId: 5a2f
-namespace: example-tenant-5a2f
+tenantId: 0
+namespace: example-tenant-0
+
+host:
+  name: ""
 
 image:
   repository: "goafabric/callee-service-quarkus"
@@ -24,6 +27,6 @@ service:
   port: 8080
 
 ingress:
-  enabled: false
+  name: callee/0
 
 
