@@ -17,13 +17,6 @@ resources:
     memory: 16M
     cpu: 250m
 
-readinessProbe:
-  initialDelaySeconds: 1
-
-service:
-  type: ClusterIP
-  port: 8080
-
 initContainers:
   - name: check-db-ready
     image: postgres:14.0

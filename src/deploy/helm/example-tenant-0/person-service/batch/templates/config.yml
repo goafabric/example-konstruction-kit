@@ -8,8 +8,3 @@ metadata:
 data:
   #application
   TZ: Europe/Berlin
-  quarkus.http.port: "{{ .Values.service.port }}"
-  quarkus.http.io-threads: "20"
-
-  #security
-  security.authentication.enabled: "false"
