@@ -1,3 +1,2 @@
 - tenant-id in values.yml
 - batch
-- pvc handling
