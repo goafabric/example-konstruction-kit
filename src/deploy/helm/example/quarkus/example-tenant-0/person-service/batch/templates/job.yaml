@@ -2,7 +2,7 @@ apiVersion: batch/v1
 kind: Job
 metadata:
   name: {{ include "application.fullname" . }}
-  namespace: {{ .Values.namespace }}
+
   labels:
     {{- include "application.labels" . | nindent 4 }}
 spec:
