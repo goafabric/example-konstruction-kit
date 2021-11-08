@@ -2,7 +2,6 @@ replicaCount: 1
 
 tenantId: 0
 namespace: example-tenant-0
-rootName: callee-service
 ingressName: callee/0
 
 host:

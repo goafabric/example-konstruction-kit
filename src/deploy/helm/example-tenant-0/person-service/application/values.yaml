@@ -2,7 +2,6 @@ replicaCount: 1
 
 tenantId: 0
 namespace: example-tenant-0
-rootName: person-service
 ingressName: person/0
 
 host:
