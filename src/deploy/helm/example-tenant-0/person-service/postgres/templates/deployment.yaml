@@ -38,9 +38,9 @@ spec:
 
           envFrom:
             - configMapRef:
-                name: {{ .Release.Name }}-config
+                name: {{ include "application.fullname" . }}-config
             - secretRef:
-                name: {{ .Release.Name }}-config-external
+                name: {{ include "application.fullname" . }}-config-external
 
           args: ["postgres",
                  "-c", "shared_preload_libraries=pg_stat_statements",
@@ -55,16 +55,16 @@ spec:
 
           volumeMounts:
             - mountPath: /var/lib/postgresql/data
-              name: {{ .Release.Name }}-volume
+              name: {{ include "application.fullname" . }}-volume
 
             - mountPath: /docker-entrypoint-initdb.d/
-              name: {{ .Release.Name }}-initdb-volume
+              name: {{ include "application.fullname" . }}-initdb-volume
 
       volumes:
-        - name: {{ .Release.Name }}-volume
+        - name: {{ include "application.fullname" . }}-volume
           persistentVolumeClaim:
-            claimName: {{ .Release.Name }}-pvc
+            claimName: {{ include "application.fullname" . }}-pvc
 
-        - name: {{ .Release.Name }}-initdb-volume
+        - name: {{ include "application.fullname" . }}-initdb-volume
           configMap:
-            name: {{ .Release.Name }}-config-files
+            name: {{ include "application.fullname" . }}-config-files
