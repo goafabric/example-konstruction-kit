@@ -3,9 +3,6 @@ replicaCount: 1
 tenantId: 0
 namespace: example-tenant-0
 
-host:
-  name: ""
-
 image:
   repository: "postgres"
   tag: "14.0"
