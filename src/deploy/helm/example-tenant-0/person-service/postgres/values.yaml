@@ -13,7 +13,7 @@ image:
 
 podAnnotations:
   linkerd.io/inject: enabled
-  sidecar.istio.io/inject: "true"
+  sidecar.istio.io/inject: "false"
 
 resources:
   requests:
