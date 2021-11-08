@@ -26,7 +26,8 @@ spec:
       initContainers:
         {{- toYaml . | nindent 8 }}
         {{- end }}
-
+      imagePullSecrets:
+        - name: {{ .Values.image.pullPolicy }}
       containers:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"

@@ -11,6 +11,7 @@ image:
   repository: "goafabric/callee-service-quarkus"
   tag: "1.1.1"
   pullPolicy: IfNotPresent
+  pullSecrets: 
 
 podAnnotations:
   linkerd.io/inject: enabled

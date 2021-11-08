@@ -7,6 +7,7 @@ image:
   repository: "goafabric/person-service-quarkus"
   tag: "1.1.1"
   pullPolicy: IfNotPresent
+  pullSecrets:
 
 podAnnotations:
   linkerd.io/inject: disable
