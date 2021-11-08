@@ -44,23 +44,6 @@ spec:
               memory: "{{ .Values.resources.requests.memory }}"
               cpu: "{{ .Values.resources.requests.cpu }}"
 
-          readinessProbe:
-            httpGet:
-              path: /actuator/health
-              port: http
-            initialDelaySeconds: {{ .Values.readinessProbe.initialDelaySeconds }}
-            periodSeconds: 10
-            timeoutSeconds: 10
-            failureThreshold: 3
-          livenessProbe:
-            httpGet:
-              path: /actuator/health
-              port: http
-            initialDelaySeconds: {{ .Values.readinessProbe.initialDelaySeconds }}
-            periodSeconds: 10
-            timeoutSeconds: 10
-            failureThreshold: 3
-
           volumeMounts:
             - mountPath: /usr/share/logs
               name: {{ .Release.Name }}-applogs
