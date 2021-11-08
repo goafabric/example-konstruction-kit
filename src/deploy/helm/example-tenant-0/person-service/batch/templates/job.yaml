@@ -8,6 +8,7 @@ metadata:
 spec:
   backoffLimit: 0
   activeDeadlineSeconds: 240
+  ttlSecondsAfterFinished: 60
   template:
     metadata:
       {{- with .Values.podAnnotations }}
