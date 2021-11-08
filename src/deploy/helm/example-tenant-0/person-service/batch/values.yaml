@@ -23,7 +23,7 @@ resources:
 #    command: ['sh', '-c','until pg_isready -h person-service-postgres -p 5432;do echo waiting for database; sleep 1; done;']
 
 initContainers:
-  - name: wait-for-applicatin
+  - name: wait-for-application
     image: curlimages/curl:7.75.0
     command: ["/bin/sh","-c"]
     args: ["while [ $(curl -sw '%{http_code}' --fail --connect-timeout 1 http://person-service-application:8080/actuator/health -o /dev/null) -ne 200 ]; do sleep 2; done"]
