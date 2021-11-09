@@ -1,0 +1,29 @@
+replicaCount: 1
+
+namespace: example
+ingressName: fhir
+
+host:
+  name: ""
+
+image:
+  repository: "goafabric/fhir-facade-quarkus"
+  tag: "1.0.5"
+  pullPolicy: IfNotPresent
+  pullSecrets: 
+
+podAnnotations:
+  linkerd.io/inject: enabled
+  sidecar.istio.io/inject: "true"
+
+resources:
+  requests:
+    memory: 32M
+    cpu: 250m
+
+readinessProbe:
+  initialDelaySeconds: 1
+
+service:
+  type: ClusterIP
+  port: 8080
