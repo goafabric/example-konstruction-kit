@@ -1,0 +1,29 @@
+replicaCount: 1
+
+namespace: example
+ingressName: fhir
+
+host:
+  name: ""
+
+image:
+  repository: "goafabric/fhir-facade"
+  tag: "1.0.4"
+  pullPolicy: IfNotPresent
+  pullSecrets: 
+
+podAnnotations:
+  linkerd.io/inject: enabled
+  sidecar.istio.io/inject: "false"
+
+resources:
+  requests:
+    memory: 128M
+    cpu: 250m
+
+readinessProbe:
+  initialDelaySeconds: 1
+
+service:
+  type: ClusterIP
+  port: 8080
