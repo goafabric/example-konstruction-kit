@@ -1,3 +1,5 @@
+#0.8.9
+
 #0.8.8
 - upgrade of kubernetes dashboard and metrics servers
 - upgrade tp nginx controller 1.0.4
