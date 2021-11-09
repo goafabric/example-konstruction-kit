@@ -13,6 +13,7 @@ stringData:
 
   #adapter
   adapter.calleeservice.url: "http://callee-service-application:8080"
+
   adapter.timeout: "10000"
   adapter.failureRate: "0.5"
   adapter.openDuration: "30000"
