@@ -3,6 +3,7 @@
 - upgrade tp nginx controller 1.0.4
 - upgrade to istio 1.11.4
 - oidc possibility via ouauth2-proxy added
+- upgrade to Postgres 14.0
 
 #0.8.7
 - Upgrade all versions to 1.1.0+
