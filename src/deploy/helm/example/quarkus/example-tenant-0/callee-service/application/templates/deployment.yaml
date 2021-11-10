@@ -21,7 +21,6 @@ spec:
         prometheus.io/path: "/actuator/prometheus"
       labels:
         {{- include "application.selectorLabels" . | nindent 8 }}
-        version: v1
     spec:
       {{- with .Values.initContainers }}
       initContainers:

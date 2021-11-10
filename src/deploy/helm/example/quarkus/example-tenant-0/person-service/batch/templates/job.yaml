@@ -16,7 +16,6 @@ spec:
       {{- end }}
       labels:
         {{- include "application.selectorLabels" . | nindent 8 }}
-        version: v1
     spec:
       restartPolicy: Never
       {{- with .Values.initContainers }}
