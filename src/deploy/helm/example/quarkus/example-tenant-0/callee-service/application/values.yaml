@@ -2,10 +2,10 @@ replicaCount: 1
 
 tenantId: 0
 namespace: example-tenant-0
-ingressName: callee/0
+ingress:
+  paths: /callee/0
+  hosts: ""
 
-host:
-  name: ""
 
 image:
   repository: "goafabric/callee-service-quarkus"

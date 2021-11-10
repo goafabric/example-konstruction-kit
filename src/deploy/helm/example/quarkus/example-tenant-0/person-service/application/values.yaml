@@ -2,7 +2,9 @@ replicaCount: 1
 
 tenantId: 0
 namespace: example-tenant-0
-ingressName: person/0
+ingress:
+  paths: /person/0
+  hosts: ""
 
 host:
   name: ""
