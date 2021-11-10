@@ -33,7 +33,7 @@ spec:
         - name: {{ .Values.image.pullPolicy }}
       containers:
         - name: {{ .Chart.Name }}
-          image: "{{ .Values.image.repository }}{{ .Values.image.arch }}:{{ .Values.image.tag }}"
+          image: "{{ .Values.image.repository }}{{ .Values.image.arch }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - name: http

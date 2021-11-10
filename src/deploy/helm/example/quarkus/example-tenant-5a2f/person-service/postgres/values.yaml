@@ -5,7 +5,6 @@ namespace: example-tenant-5a2f
 
 image:
   repository: "postgres"
-  tag: "14.0"
   pullPolicy: IfNotPresent
   pullSecrets:
 
