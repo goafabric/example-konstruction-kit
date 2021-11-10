@@ -3,14 +3,16 @@ replicaCount: 1
 tenantId: 0
 namespace: example-tenant-0
 ingress:
-  paths: /callee/0
+  paths: /person/0
   hosts: ""
 
+host:
+  name: ""
 
 image:
-  repository: "goafabric/callee-service"
+  repository: "goafabric/person-service"
   pullPolicy: IfNotPresent
-  pullSecrets: 
+  pullSecrets:
 
 podAnnotations:
   linkerd.io/inject: enabled
@@ -18,7 +20,7 @@ podAnnotations:
 
 resources:
   requests:
-    memory: 128M
+    memory: 256M
     cpu: 250m
 
 readinessProbe:
@@ -28,6 +30,7 @@ service:
   type: ClusterIP
   port: 8080
 
-
-
-
+initContainers:
+  - name: check-db-ready
+    image: postgres:14.0
+    command: ['sh', '-c','until pg_isready -h person-service-postgres -p 5432;do echo waiting for database; sleep 1; done;']

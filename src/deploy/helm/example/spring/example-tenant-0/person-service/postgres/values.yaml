@@ -1,27 +1,30 @@
 replicaCount: 1
 
-namespace: example
-ingress:
-  paths: /fhir
-  hosts: ""
+tenantId: 0
+namespace: example-tenant-0
 
 image:
-  repository: "goafabric/fhir-facade"
+  repository: "postgres"
   pullPolicy: IfNotPresent
-  pullSecrets: 
+  pullSecrets:
 
 podAnnotations:
   linkerd.io/inject: enabled
-  sidecar.istio.io/inject: "true"
+  sidecar.istio.io/inject: "false"
 
 resources:
   requests:
     memory: 128M
     cpu: 250m
+  limits:
+    cpu: 500m
 
 readinessProbe:
   initialDelaySeconds: 2
 
 service:
   type: ClusterIP
-  port: 8080
+  port: 5432
+
+postgres:
+  maxConnections: 30
