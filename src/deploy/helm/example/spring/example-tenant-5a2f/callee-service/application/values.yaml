@@ -1,0 +1,33 @@
+replicaCount: 1
+
+tenantId: 5a2f
+namespace: example-tenant-5a2f
+ingress:
+  paths: /callee/5a2f
+  hosts: ""
+
+
+image:
+  repository: "goafabric/callee-service"
+  pullPolicy: IfNotPresent
+  pullSecrets: 
+
+podAnnotations:
+  linkerd.io/inject: enabled
+  sidecar.istio.io/inject: "true"
+
+resources:
+  requests:
+    memory: 128M
+    cpu: 250m
+
+readinessProbe:
+  initialDelaySeconds: 2
+
+service:
+  type: ClusterIP
+  port: 8080
+
+
+
+

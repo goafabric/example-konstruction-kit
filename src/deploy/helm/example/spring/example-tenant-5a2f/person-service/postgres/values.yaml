@@ -1,0 +1,30 @@
+replicaCount: 1
+
+tenantId: 5a2f
+namespace: example-tenant-5a2f
+
+image:
+  repository: "postgres"
+  pullPolicy: IfNotPresent
+  pullSecrets:
+
+podAnnotations:
+  linkerd.io/inject: enabled
+  sidecar.istio.io/inject: "false"
+
+resources:
+  requests:
+    memory: 128M
+    cpu: 250m
+  limits:
+    cpu: 500m
+
+readinessProbe:
+  initialDelaySeconds: 2
+
+service:
+  type: ClusterIP
+  port: 5432
+
+postgres:
+  maxConnections: 30

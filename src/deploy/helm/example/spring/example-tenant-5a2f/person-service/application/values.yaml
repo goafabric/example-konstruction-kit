@@ -1,0 +1,36 @@
+replicaCount: 1
+
+tenantId: 5a2f
+namespace: example-tenant-5a2f
+ingress:
+  paths: /person/5a2f
+  hosts: ""
+
+host:
+  name: ""
+
+image:
+  repository: "goafabric/person-service"
+  pullPolicy: IfNotPresent
+  pullSecrets:
+
+podAnnotations:
+  linkerd.io/inject: enabled
+  sidecar.istio.io/inject: "true"
+
+resources:
+  requests:
+    memory: 256M
+    cpu: 250m
+
+readinessProbe:
+  initialDelaySeconds: 2
+
+service:
+  type: ClusterIP
+  port: 8080
+
+initContainers:
+  - name: check-db-ready
+    image: postgres:14.0
+    command: ['sh', '-c','until pg_isready -h person-service-postgres -p 5432;do echo waiting for database; sleep 1; done;']
