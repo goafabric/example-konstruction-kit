@@ -6,7 +6,6 @@ ingress:
   paths: /callee/0
   hosts: ""
 
-
 image:
   repository: "goafabric/callee-service-quarkus"
   pullPolicy: IfNotPresent
