@@ -8,8 +8,7 @@ spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app.kubernetes.io/name: {{ include "application.name" . }}
-      app.kubernetes.io/instance: {{ .Release.Name }}
+      {{- include "application.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       {{- with .Values.podAnnotations }}
@@ -21,8 +20,7 @@ spec:
         prometheus.io/scheme: "http"
         prometheus.io/path: "/actuator/prometheus"
       labels:
-        app.kubernetes.io/name: {{ include "application.name" . }}
-        app.kubernetes.io/instance: {{ .Release.Name }}
+        {{- include "application.selectorLabels" . | nindent 8 }}
         version: v1
     spec:
       {{- with .Values.initContainers }}
