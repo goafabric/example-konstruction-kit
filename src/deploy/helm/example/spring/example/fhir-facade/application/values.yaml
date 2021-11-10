@@ -20,7 +20,7 @@ resources:
     cpu: 250m
 
 readinessProbe:
-  initialDelaySeconds: 1
+  initialDelaySeconds: 2
 
 service:
   type: ClusterIP
