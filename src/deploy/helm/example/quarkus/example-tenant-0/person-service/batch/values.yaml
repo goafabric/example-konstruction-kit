@@ -17,11 +17,6 @@ resources:
     memory: 16M
     cpu: 250m
 
-#initContainers:
-#  - name: check-db-ready
-#    image: postgres:14.0
-#    command: ['sh', '-c','until pg_isready -h person-service-postgres -p 5432;do echo waiting for database; sleep 1; done;']
-
 initContainers:
   - name: wait-for-application
     image: curlimages/curl:7.75.0
