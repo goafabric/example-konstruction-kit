@@ -45,12 +45,10 @@ spec:
             - secretRef:
                 name: {{ include "application.fullname" . }}-config-external
 
+          {{- with .Values.resourcesAnnotations }}
           resources:
-            requests:
-              memory: "{{ .Values.resources.requests.memory }}"
-              cpu: "{{ .Values.resources.requests.cpu }}"
-
-          command: ["java", "-Xms{{ .Values.resources.requests.memory }}", "-Xmx{{ .Values.resources.requests.memory }}", "-cp", "/app/resources:/app/classes:/app/libs/*", "{{ .Values.command }}"]
+            {{- toYaml . | nindent 12 }}
+            {{- end }}
 
           readinessProbe:
             httpGet:

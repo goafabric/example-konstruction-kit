@@ -16,7 +16,7 @@ podAnnotations:
   linkerd.io/inject: enabled
   sidecar.istio.io/inject: "true"
 
-resources:
+resourcesAnnotations:
   requests:
     memory: 128M
     cpu: 250m
