@@ -23,6 +23,8 @@ resources:
     memory: 256M
     cpu: 250m
 
+command: org.goafabric.personservice.Application
+
 readinessProbe:
   initialDelaySeconds: 2
 

@@ -21,6 +21,8 @@ resources:
     memory: 128M
     cpu: 250m
 
+command: org.goafabric.calleeservice.Application
+
 readinessProbe:
   initialDelaySeconds: 2
 
