@@ -37,11 +37,10 @@ spec:
             - secretRef:
                 name: {{ include "application.fullname" . }}-config-external
 
-          args: ["-Xmx{{ .Values.resources.requests.memory }}"]
-          resources:
-            requests:
-              memory: "{{ .Values.resources.requests.memory }}"
-              cpu: "{{ .Values.resources.requests.cpu }}"
+          #resources and commands and args
+          {{- with .Values.resourcesAnnotations }}
+          {{- toYaml . | nindent 10 }}
+          {{- end }}
 
           volumeMounts:
             - mountPath: /usr/share/logs

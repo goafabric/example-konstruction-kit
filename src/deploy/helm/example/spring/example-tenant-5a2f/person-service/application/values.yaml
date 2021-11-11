@@ -18,12 +18,13 @@ podAnnotations:
   linkerd.io/inject: enabled
   sidecar.istio.io/inject: "true"
 
-resources:
-  requests:
-    memory: 256M
-    cpu: 250m
+resourcesAnnotations:
+  resources:
+    requests:
+      memory: 256M
+      cpu: 250m
 
-command: org.goafabric.personservice.Application
+  command: ["java", "-Xms256M", "-Xmx256M", "-cp", "/app/resources:/app/classes:/app/libs/*", "org.goafabric.personservice.Application"]
 
 readinessProbe:
   initialDelaySeconds: 2
