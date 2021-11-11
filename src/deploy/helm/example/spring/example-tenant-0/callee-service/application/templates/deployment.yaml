@@ -45,7 +45,7 @@ spec:
             - secretRef:
                 name: {{ include "application.fullname" . }}-config-external
 
-          #resources
+          #resources and commands and args
           {{- with .Values.resourcesAnnotations }}
             {{- toYaml . | nindent 10 }}
             {{- end }}
