@@ -17,11 +17,12 @@ podAnnotations:
   sidecar.istio.io/inject: "true"
 
 resourcesAnnotations:
-  requests:
-    memory: 128M
-    cpu: 250m
+  resources:
+    requests:
+      memory: 128M
+      cpu: 250m
 
-command: org.goafabric.calleeservice.Application
+  command: ["java", "-Xms128M", "-Xmx128M", "-cp", "/app/resources:/app/classes:/app/libs/*", "org.goafabric.calleeservice.Application"]
 
 readinessProbe:
   initialDelaySeconds: 2
