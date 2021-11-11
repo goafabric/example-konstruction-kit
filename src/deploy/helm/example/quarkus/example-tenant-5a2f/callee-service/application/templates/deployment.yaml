@@ -47,8 +47,8 @@ spec:
 
           #resources and commands and args
           {{- with .Values.resourcesAnnotations }}
-          {{- toYaml . | nindent 10 }}
-          {{- end }}
+            {{- toYaml . | nindent 10 }}
+            {{- end }}
 
           readinessProbe:
             httpGet:
