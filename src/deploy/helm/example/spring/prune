@@ -1,0 +1,4 @@
+#!/bin/bash
+./stack down
+kubectl delete pvc person-service-postgres-pvc -n example-tenant-0
+kubectl delete pvc person-service-postgres-pvc -n example-tenant-5a2f
