@@ -12,10 +12,13 @@ podAnnotations:
   linkerd.io/inject: disable
   sidecar.istio.io/inject: "false"
 
-resources:
-  requests:
-    memory: 16M
-    cpu: 250m
+resourcesAnnotations:
+  resources:
+    requests:
+      memory: 16M
+      cpu: 250m
+
+  args: ["-Xmx16M"]
 
 initContainers:
   - name: wait-for-application

@@ -14,10 +14,13 @@ podAnnotations:
   linkerd.io/inject: enabled
   sidecar.istio.io/inject: "true"
 
-resources:
-  requests:
-    memory: 32M
-    cpu: 250m
+resourcesAnnotations:
+  resources:
+    requests:
+      memory: 16M
+      cpu: 250m
+
+  args: ["-Xmx32M"]
 
 readinessProbe:
   initialDelaySeconds: 1
