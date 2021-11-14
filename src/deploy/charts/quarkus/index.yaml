@@ -3,56 +3,56 @@ entries:
   callee-service-application:
   - apiVersion: v2
     appVersion: 1.1.1
-    created: "2021-11-14T10:51:23.705745+01:00"
+    created: "2021-11-14T11:13:08.522522+01:00"
     description: callee-service-application
-    digest: 1a668016cd237c8c75a47de440e3135b785fc2a56b498d69dadd8766fe2cdda6
+    digest: dd93c8cb1f9e543f5d04b21a214de049c6eb4dcd13f585530ead40e67daf7c25
     name: callee-service-application
     type: application
     urls:
-    - https://github.com/goafabric/example-konstruction-kit/tree/refactoring/src/deploy/charts/quarkus/callee-service-application-1.0.0.tgz
+    - https://goafabric.github.io/example-konstruction-kit/src/deploy/charts/quarkus/callee-service-application-1.0.0.tgz
     version: 1.0.0
   fhir-facade-application:
   - apiVersion: v2
     appVersion: 1.0.5
-    created: "2021-11-14T10:51:23.706243+01:00"
+    created: "2021-11-14T11:13:08.523108+01:00"
     description: A Helm chart for Kubernetes
-    digest: abc9877794c001aac3ef3e44fe9846dee8134e07516d83a1bdfb2789439bb1e6
+    digest: 836cd0925a8c48a7335c0a7a86c66250e5a3ffacd5675d44777c4c361747693c
     name: fhir-facade-application
     type: application
     urls:
-    - https://github.com/goafabric/example-konstruction-kit/tree/refactoring/src/deploy/charts/quarkus/fhir-facade-application-1.0.0.tgz
+    - https://goafabric.github.io/example-konstruction-kit/src/deploy/charts/quarkus/fhir-facade-application-1.0.0.tgz
     version: 1.0.0
   person-service-application:
   - apiVersion: v2
     appVersion: 1.1.1
-    created: "2021-11-14T10:51:23.706825+01:00"
+    created: "2021-11-14T11:13:08.523573+01:00"
     description: person-service-application
-    digest: 6305e1e97e789c47f82e454a69a0a4e2a5fe734004cc817e1f6cfdd29f7bb10c
+    digest: 0a08fe3c4b3daf8bad7b77d08443e78545f7e84e68c3cec89c8dea8c2d949a26
     name: person-service-application
     type: application
     urls:
-    - https://github.com/goafabric/example-konstruction-kit/tree/refactoring/src/deploy/charts/quarkus/person-service-application-1.0.0.tgz
+    - https://goafabric.github.io/example-konstruction-kit/src/deploy/charts/quarkus/person-service-application-1.0.0.tgz
     version: 1.0.0
   person-service-batch:
   - apiVersion: v2
     appVersion: 1.1.1
-    created: "2021-11-14T10:51:23.707723+01:00"
+    created: "2021-11-14T11:13:08.523819+01:00"
     description: person-service-batch
-    digest: ccdf0bbc5114ef009a111d5cec4125382dd7caa36d1be592437d9a8bbb6650ec
+    digest: 2a432e102fb67dd88fc6dddaac807e18f71ce16fbb167c180aa6d61ef369dd38
     name: person-service-batch
     type: application
     urls:
-    - https://github.com/goafabric/example-konstruction-kit/tree/refactoring/src/deploy/charts/quarkus/person-service-batch-1.0.0.tgz
+    - https://goafabric.github.io/example-konstruction-kit/src/deploy/charts/quarkus/person-service-batch-1.0.0.tgz
     version: 1.0.0
   person-service-postgres:
   - apiVersion: v2
     appVersion: "14.0"
-    created: "2021-11-14T10:51:23.707962+01:00"
+    created: "2021-11-14T11:13:08.524046+01:00"
     description: person-service-postgres
-    digest: 8710b4010efda1ac75deeab99989f5891dc9738c80541406070562ce67c3360f
+    digest: 48a8fb0ae6828d643a9e87c72b449fa37e3a1d9bf24c38389a278c5427363a51
     name: person-service-postgres
     type: application
     urls:
-    - https://github.com/goafabric/example-konstruction-kit/tree/refactoring/src/deploy/charts/quarkus/person-service-postgres-1.0.0.tgz
+    - https://goafabric.github.io/example-konstruction-kit/src/deploy/charts/quarkus/person-service-postgres-1.0.0.tgz
     version: 1.0.0
-generated: "2021-11-14T10:51:23.705402+01:00"
+generated: "2021-11-14T11:13:08.522159+01:00"

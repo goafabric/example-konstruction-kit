@@ -1,0 +1,11 @@
+#!/bin/bash
+
+helm repo add example-quarkus https://goafabric.github.io/example-konstruction-kit/src/deploy/charts/quarkus/
+helm search repo example-quarkus
+
+
+helm install fhir-facade-application example-quarkus/fhir-facade-application  \
+--set image.arch=`kubectl version | grep "Server Version" | grep "linux/arm64" > /dev/null && echo "-arm64v8"` \
+--set ingress.hosts=`kubectl get configmaps cluster-config -o jsonpath='{.data.hostname}' -n default` \
+--namespace=example
+--version 1.0.0

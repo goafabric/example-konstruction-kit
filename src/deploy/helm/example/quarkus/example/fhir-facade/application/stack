@@ -19,7 +19,7 @@ function down() {
 function package() {
   [ -z "$1" ] && echo "target directory not set" && exit
   helm package ./ -d ../../../../../../charts/$1/
-  helm repo index ../../../../../../charts/$1/ --url https://github.com/goafabric/example-konstruction-kit/tree/refactoring/src/deploy/charts/quarkus
+  helm repo index ../../../../../../charts/$1/ --url https://goafabric.github.io/example-konstruction-kit/src/deploy/charts/quarkus
 }
 
 if   [ "${COMMAND}" = "up" ]; then up;
