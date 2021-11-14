@@ -14,3 +14,15 @@ NAMESPACE=example-tenant-0
 helm install callee-service-application example-quarkus/callee-service-application  \
 --set image.arch=$IMAGE_ARCH --set ingress.hosts=$INGRESS_HOSTS --namespace=$NAMESPACE \
 --version 1.0.0
+
+helm install person-service-application example-quarkus/person-service-application  \
+--set image.arch=$IMAGE_ARCH --set ingress.hosts=$INGRESS_HOSTS --namespace=$NAMESPACE \
+--version 1.0.0
+
+helm install person-service-batch example-quarkus/person-service-batch  \
+--set image.arch=$IMAGE_ARCH --set ingress.hosts=$INGRESS_HOSTS --namespace=$NAMESPACE \
+--version 1.0.0
+
+helm install person-service-postgres example-quarkus/person-service-postgres  \
+--set image.arch=$IMAGE_ARCH --set ingress.hosts=$INGRESS_HOSTS --namespace=$NAMESPACE \
+--version 1.0.0
