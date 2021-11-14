@@ -1,28 +1,20 @@
 #!/bin/bash
 
-IMAGE_ARCH=`kubectl version | grep "Server Version" | grep "linux/arm64" > /dev/null && echo "-arm64v8"`
-INGRESS_HOSTS=`kubectl get configmaps cluster-config -o jsonpath='{.data.hostname}' -n default`
+function helm_install() {
+  helm install $1 example-quarkus/$1  \
+  --version $2 \
+  --namespace=$NAMESPACE \
+  --set image.arch=`kubectl version | grep "Server Version" | grep "linux/arm64" > /dev/null && echo "-arm64v8"` \
+  --set ingress.hosts=`kubectl get configmaps cluster-config -o jsonpath='{.data.hostname}' -n default`
+}
 
 NAMESPACE=example
 
-helm install fhir-facade-application example-quarkus/fhir-facade-application  \
---set image.arch=$IMAGE_ARCH --set ingress.hosts=$INGRESS_HOSTS --namespace=$NAMESPACE \
---version 1.0.0
+helm_install fhir-facade-application 1.0.0
 
 NAMESPACE=example-tenant-0
 
-helm install callee-service-application example-quarkus/callee-service-application  \
---set image.arch=$IMAGE_ARCH --set ingress.hosts=$INGRESS_HOSTS --namespace=$NAMESPACE \
---version 1.0.0
-
-helm install person-service-application example-quarkus/person-service-application  \
---set image.arch=$IMAGE_ARCH --set ingress.hosts=$INGRESS_HOSTS --namespace=$NAMESPACE \
---version 1.0.0
-
-helm install person-service-batch example-quarkus/person-service-batch  \
---set image.arch=$IMAGE_ARCH --set ingress.hosts=$INGRESS_HOSTS --namespace=$NAMESPACE \
---version 1.0.0
-
-helm install person-service-postgres example-quarkus/person-service-postgres  \
---set image.arch=$IMAGE_ARCH --set ingress.hosts=$INGRESS_HOSTS --namespace=$NAMESPACE \
---version 1.0.0
+helm_install callee-service-application 1.0.0
+helm_install person-service-application 1.0.0
+helm_install person-service-batch 1.0.0
+helm_install person-service-postgres 1.0.0
