@@ -1,0 +1,6 @@
+#!/bin/bash
+
+helm repo add example-quarkus https://goafabric.github.io/example-konstruction-kit/src/deploy/charts/quarkus/
+helm repo update
+helm search repo example-quarkus
+

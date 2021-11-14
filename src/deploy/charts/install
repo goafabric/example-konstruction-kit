@@ -1,0 +1,16 @@
+#!/bin/bash
+
+IMAGE_ARCH=`kubectl version | grep "Server Version" | grep "linux/arm64" > /dev/null && echo "-arm64v8"`
+INGRESS_HOSTS=`kubectl get configmaps cluster-config -o jsonpath='{.data.hostname}' -n default`
+
+NAMESPACE=example
+
+helm install fhir-facade-application example-quarkus/fhir-facade-application  \
+--set image.arch=$IMAGE_ARCH --set ingress.hosts=$INGRESS_HOSTS --namespace=$NAMESPACE \
+--version 1.0.0
+
+NAMESPACE=example-tenant-0
+
+helm install callee-service-application example-quarkus/callee-service-application  \
+--set image.arch=$IMAGE_ARCH --set ingress.hosts=$INGRESS_HOSTS --namespace=$NAMESPACE \
+--version 1.0.0

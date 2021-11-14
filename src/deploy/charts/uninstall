@@ -1,0 +1,8 @@
+#!/bin/bash
+
+NAMESPACE=example
+
+helm uninstall fhir-facade-application -n $NAMESPACE
+
+NAMESPACE=example-tenant-0
+helm uninstall callee-service-application -n $NAMESPACE
