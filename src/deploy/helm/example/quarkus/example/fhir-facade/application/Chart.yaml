@@ -1,6 +1,6 @@
 apiVersion: v2
 name: fhir-facade-application
-description: A Helm chart for Kubernetes
+description: fhir-facade-application
 
 type: application
 
