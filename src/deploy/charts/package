@@ -1,0 +1,5 @@
+#!/bin/bash
+find ../helm/example/quarkus/example -not -path "." -type d -print0 | sort -hz | xargs -0 -I '{}' bash -c "[ -f '{}'/Chart.yaml ] && echo '{}' && helm package '{}' -d ./quarkus"
+find ../helm/example/quarkus/example-tenant-0 -not -path "." -type d -print0 | sort -hz | xargs -0 -I '{}' bash -c "[ -f '{}'/Chart.yaml ] && echo '{}' && helm package '{}' -d ./quarkus"
+
+helm repo index ./quarkus --url https://goafabric.github.io/example-konstruction-kit/src/deploy/charts/quarkus
