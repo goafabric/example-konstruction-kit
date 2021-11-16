@@ -1,6 +1,5 @@
 replicaCount: 1
 
-tenantId: 5a2f
 namespace: example-tenant-5a2f
 
 image:
