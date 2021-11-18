@@ -6,7 +6,6 @@ metadata:
     {{- include "application.labels" . | nindent 4 }}
   annotations:
     "helm.sh/hook": post-install
-
 spec:
   backoffLimit: 0
   activeDeadlineSeconds: 240
