@@ -1,2 +1,0 @@
-- tenant-id in values.yml
-- batch
