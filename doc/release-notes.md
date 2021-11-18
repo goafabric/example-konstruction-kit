@@ -1,4 +1,5 @@
-#0.8.9
+#0.9.0
+- migration to helm charts
 
 #0.8.8
 - upgrade of kubernetes dashboard and metrics servers
