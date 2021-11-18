@@ -16,16 +16,9 @@ function down() {
     `cat ./Chart.yaml | grep "name" | cut -d':' -f2 | xargs`
 }
 
-function package() {
-  [ -z "$1" ] && echo "target directory not set" && exit
-  helm package ./ -d ../../../../../../charts/$1/
-  helm repo index ../../../../../../charts/$1/ --url https://goafabric.github.io/example-konstruction-kit/src/deploy/charts/quarkus
-}
-
 if   [ "${COMMAND}" = "up" ]; then up;
 elif [ "${COMMAND}" = "down" ]; then down;
 elif [ "${COMMAND}" = "restart" ]; then down && up;
 elif [ "${COMMAND}" = "lint" ]; then helm lint ./;
-elif [ "${COMMAND}" = "package" ]; then package $OPTS;
 
 else echo Doing nothing !; fi
