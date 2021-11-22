@@ -8,3 +8,7 @@ ingress:
   hosts:
     - "kubernetes"
   path: "/grafana"
+  tls:
+    - hosts:
+      - "kubernetes"
+      secretName: "server-certificate-secret"
