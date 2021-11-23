@@ -1,5 +1,5 @@
 #Ops
-- Helm
+- Helm Infra Charts
 - Certmanager for Certs (https://tinyurl.com/1wjhxz9m)
 
 # Security
