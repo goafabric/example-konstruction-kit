@@ -1,7 +1,7 @@
 #!/bin/bash
 
 helm repo add example-infra https://goafabric.github.io/example-konstruction-kit/helm/charts/infra/infra
-helm repo update
+#helm repo update
 
 function helm_install() {
   helm install $1 example-infra/$1  \
