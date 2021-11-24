@@ -3,12 +3,12 @@ entries:
   jaeger-all:
   - apiVersion: v2
     appVersion: 1.24.0
-    created: "2021-11-24T16:05:57.869135+01:00"
+    created: "2021-11-24T16:27:02.27406+01:00"
     description: jaeger-all
-    digest: 1a221549ae8413ab81d56bce3e60d9847a34359dda0fc8523d355f67e73412cf
+    digest: d9f605db127fdd6827dc7defd78b6f7e75a7593572548fcdfcbfce4a8d63320e
     name: jaeger-all
     type: application
     urls:
-    - https://goafabric.github.io/example-konstruction-kit/helm/charts/infra/jaeger-all-1.24.0.tgz
+    - https://goafabric.github.io/example-konstruction-kit/helm/charts/infra/infra/jaeger-all-1.24.0.tgz
     version: 1.24.0
-generated: "2021-11-24T16:05:57.86854+01:00"
+generated: "2021-11-24T16:27:02.273748+01:00"
