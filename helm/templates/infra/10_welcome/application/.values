@@ -1,0 +1,10 @@
+_Release_namespace=welcome
+_Values_root_name=welcome-board
+_Values_app_name=${_Values_root_name}-application
+_Values_ingress_name=welcome
+
+_Values_service_type=ClusterIP
+_Values_service_port=8080
+_Values_service_nodePort_dev=30000
+
+

@@ -1,0 +1,32 @@
+#!/bin/bash
+COMMAND=$1
+PROFILE=$2
+
+[ ! -f "/usr/local/bin/istioctl" ] && echo "istioctl not found in /usr/local/bin, cannot continue" && exit
+
+kubectl version | grep "Server Version" | grep "linux/arm64" > /dev/null && _Values_server_arch="-arm64v8"
+_Values_host_name=`kubectl get configmaps cluster-config -o jsonpath='{.data.hostname}' -n default` && [ -z "$_Values_host_name" ] && echo "Hostname is empty" && exit
+
+function dynKubectl() {
+for filename in $2/*.yml; do
+eval "cat <<EOF
+$(<$filename)
+EOF
+" | kubectl $1 -f -
+done
+}
+
+function up() {
+    kubectl apply -f ./templates
+}
+
+function down() {
+    kubectl delete --ignore-not-found -f ./templates
+}
+
+
+if   [ "${COMMAND}" = "init" ] ; then up;
+elif [ "${COMMAND}" = "restart" ] ; then down && up;
+elif [ "${COMMAND}" = "prune" ]; then down;
+
+else echo Doing nothing !; fi

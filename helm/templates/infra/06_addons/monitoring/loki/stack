@@ -1,0 +1,26 @@
+#!/bin/bash
+COMMAND=$1
+PROFILE=$2
+
+[ ! -f "/usr/local/bin/helm" ] && echo "helm not found in /usr/local/bin, cannot continue" && exit
+
+function up() {
+    helm repo add grafana https://grafana.github.io/helm-charts
+
+    helm install loki grafana/loki-stack --namespace=monitoring --version v2.5.0 --set grafana.enabled=false,prometheus.enabled=false,prometheus.alertmanager.persistentVolume.enabled=false,prometheus.server.persistentVolume.enabled=false
+    helm install grafana grafana/grafana --namespace=monitoring --version 6.17.6 -f ./values.yaml --set ingress.hosts[0]=kubernetes
+}
+
+function down() {
+    helm uninstall loki --namespace=monitoring
+    helm uninstall grafana --namespace=monitoring
+}
+
+
+if   [ "${COMMAND}" = "init" ] ; then up;
+elif [ "${COMMAND}" = "restart" ] ; then down && up;
+elif [ "${COMMAND}" = "prune" ]; then down;
+
+else echo Doing nothing !; fi
+
+#Sample query: {namespace="example-tenant-5a2f",container="callee-service-application"}
