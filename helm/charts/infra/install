@@ -4,20 +4,21 @@ helm repo add example-infra https://goafabric.github.io/example-konstruction-kit
 helm repo update
 
 function helm_install() {
-  helm install $1 example-quarkus/$1  \
+  helm install $1 example-infra/$1  \
   --version $2 \
   --namespace=$NAMESPACE \
   --set image.arch=`kubectl version | grep "Server Version" | grep "linux/arm64" > /dev/null && echo "-arm64v8"` \
   --set ingress.hosts=`kubectl get configmaps cluster-config -o jsonpath='{.data.hostname}' -n default`
 }
 
-NAMESPACE=example
+HOST=`kubectl get configmaps cluster-config -o jsonpath='{.data.hostname}' -n default`
 
-helm_install fhir-facade-application 1.0.0
+NAMESPACE=monitoring
 
-NAMESPACE=example-tenant-0
+#loki
+helm repo add grafana https://grafana.github.io/helm-charts
+helm install loki grafana/loki-stack --namespace=$NAMESPACE --version v2.5.0 --set grafana.enabled=false,prometheus.enabled=false,prometheus.alertmanager.persistentVolume.enabled=false,prometheus.server.persistentVolume.enabled=false
+helm install grafana grafana/grafana --namespace=$NAMESPACE --version 6.17.6 -f ./values.yaml --set ingress.hosts[0]=kubernetes
 
-helm_install callee-service-application 1.0.0
-helm_install person-service-application 1.0.0
-helm_install person-service-batch 1.0.0
-helm_install person-service-postgres 1.0.0
+#jaeger
+helm_install jaeger-all 1.24.0

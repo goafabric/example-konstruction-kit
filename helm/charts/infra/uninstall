@@ -1,0 +1,7 @@
+#!/bin/bash
+
+NAMESPACE=monitoring
+
+helm uninstall loki -n $NAMESPACE
+helm uninstall grafana -n $NAMESPACE
+helm uninstall jaeger-all -n $NAMESPACE
