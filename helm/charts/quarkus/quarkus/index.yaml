@@ -3,56 +3,56 @@ entries:
   callee-service-application:
   - apiVersion: v2
     appVersion: 1.1.1
-    created: "2021-11-18T08:10:55.904552+01:00"
+    created: "2021-11-24T16:39:42.614736+01:00"
     description: callee-service-application
-    digest: dc59bdd0d334b65e036b7228c80e361e5908562679cf6fbdd0cbf45d8427135d
+    digest: 5c00dce467a37dbac9c62bf72024b6c774441d9819a24083b9f61d3e5b896de0
     name: callee-service-application
     type: application
     urls:
-    - https://goafabric.github.io/example-konstruction-kit/helm/charts/quarkus/callee-service-application-1.0.0.tgz
+    - https://goafabric.github.io/example-konstruction-kit/helm/charts/quarkus/quarkus/callee-service-application-1.0.0.tgz
     version: 1.0.0
   fhir-facade-application:
   - apiVersion: v2
     appVersion: 1.0.5
-    created: "2021-11-18T08:10:55.904827+01:00"
+    created: "2021-11-24T16:39:42.614953+01:00"
     description: fhir-facade-application
-    digest: bbcede2ee086b608a441d914d8d61d8979182cdaa596848fd2152d74532b207e
+    digest: 66327827b5d491fa5cb6ffbc40626c2f951e003a89b4eb2acce1eb41aef2813b
     name: fhir-facade-application
     type: application
     urls:
-    - https://goafabric.github.io/example-konstruction-kit/helm/charts/quarkus/fhir-facade-application-1.0.0.tgz
+    - https://goafabric.github.io/example-konstruction-kit/helm/charts/quarkus/quarkus/fhir-facade-application-1.0.0.tgz
     version: 1.0.0
   person-service-application:
   - apiVersion: v2
     appVersion: 1.1.1
-    created: "2021-11-18T08:10:55.905109+01:00"
+    created: "2021-11-24T16:39:42.615199+01:00"
     description: person-service-application
-    digest: d802f4226b5fba8a665584add20d5419a7fea5b3b74639a4c87c3c3c525d3ab6
+    digest: 6e02bea552243f83bc6f0307e37095c5c7030384ed58c4d3f0539cfbba4a6883
     name: person-service-application
     type: application
     urls:
-    - https://goafabric.github.io/example-konstruction-kit/helm/charts/quarkus/person-service-application-1.0.0.tgz
+    - https://goafabric.github.io/example-konstruction-kit/helm/charts/quarkus/quarkus/person-service-application-1.0.0.tgz
     version: 1.0.0
   person-service-batch:
   - apiVersion: v2
     appVersion: 1.1.1
-    created: "2021-11-18T08:10:55.905329+01:00"
+    created: "2021-11-24T16:39:42.615389+01:00"
     description: person-service-batch
-    digest: eb439577aa8fb0fae6fbd406450945e6ad35465663551bf41fae2c39bfd8f452
+    digest: c6586fc6fcc4a1808bd20c3273418b52b1f26b21c4e7414db3859461676977ad
     name: person-service-batch
     type: application
     urls:
-    - https://goafabric.github.io/example-konstruction-kit/helm/charts/quarkus/person-service-batch-1.0.0.tgz
+    - https://goafabric.github.io/example-konstruction-kit/helm/charts/quarkus/quarkus/person-service-batch-1.0.0.tgz
     version: 1.0.0
   person-service-postgres:
   - apiVersion: v2
     appVersion: "14.0"
-    created: "2021-11-18T08:10:55.905528+01:00"
+    created: "2021-11-24T16:39:42.61558+01:00"
     description: person-service-postgres
-    digest: d4a94c2497cfdcf6b91e827c1297601b13045be6bd0d0a849a804758a11bfa5c
+    digest: 1e67c6e9c68ab32197abf9c19841e285f7bdb755c7d3ac452c89f810696880f0
     name: person-service-postgres
     type: application
     urls:
-    - https://goafabric.github.io/example-konstruction-kit/helm/charts/quarkus/person-service-postgres-1.0.0.tgz
+    - https://goafabric.github.io/example-konstruction-kit/helm/charts/quarkus/quarkus/person-service-postgres-1.0.0.tgz
     version: 1.0.0
-generated: "2021-11-18T08:10:55.903858+01:00"
+generated: "2021-11-24T16:39:42.614389+01:00"
