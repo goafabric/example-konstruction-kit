@@ -17,8 +17,8 @@ NAMESPACE=monitoring
 
 #loki
 helm repo add grafana https://grafana.github.io/helm-charts
-#helm install loki grafana/loki-stack --namespace=$NAMESPACE --version v2.5.0 --set grafana.enabled=false,prometheus.enabled=false,prometheus.alertmanager.persistentVolume.enabled=false,prometheus.server.persistentVolume.enabled=false
-#helm install grafana grafana/grafana --namespace=$NAMESPACE --version 6.17.6 -f ./values.yaml --set ingress.hosts[0]=kubernetes
+helm install loki grafana/loki-stack --namespace=$NAMESPACE --version v2.5.0 --set grafana.enabled=false,prometheus.enabled=false,prometheus.alertmanager.persistentVolume.enabled=false,prometheus.server.persistentVolume.enabled=false
+helm install grafana grafana/grafana --namespace=$NAMESPACE --version 6.17.6 -f ./values.yaml --set ingress.hosts[0]=kubernetes
 
 #jaeger
 helm_install jaeger-all 1.24.0
