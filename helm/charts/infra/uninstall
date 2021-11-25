@@ -2,6 +2,8 @@
 
 NAMESPACE=monitoring
 
+helm uninstall welcome-board -n $NAMESPACE
+helm uninstall jaeger-all -n $NAMESPACE
+
 helm uninstall loki -n $NAMESPACE
 helm uninstall grafana -n $NAMESPACE
-helm uninstall jaeger-all -n $NAMESPACE
