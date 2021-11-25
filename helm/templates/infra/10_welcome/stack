@@ -5,7 +5,8 @@ OPTS=$2
 NAMESPACE=`cat ./values.yaml | grep "namespace" | cut -d':' -f2 | xargs`
 
 function up() {
-    kubectl create configmap welcome-board-data-files --from-file=./data/ -n $NAMESPACE #-o yaml > ./templates/configdata.yaml
+    kubectl create configmap welcome-board-data-files --from-file=./data/ -n $NAMESPACE -o yaml > ./templates/configdata.yaml
+    kubectl delete configmap welcome-board-data-files -n $NAMESPACE
 
     helm install \
     --set image.arch=`kubectl version | grep "Server Version" | grep "linux/arm64" > /dev/null && echo "-arm64v8"` \
