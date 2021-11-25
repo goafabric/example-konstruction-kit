@@ -20,10 +20,11 @@ NAMESPACE=monitoring
 helm_install welcome-board 1.0.0
 
 #jaeger
-helm_install jaeger-all 1.24.0
+#helm_install jaeger-all 1.24.0
 
 #loki
 helm repo add grafana https://grafana.github.io/helm-charts
-helm install loki grafana/loki-stack --namespace=monitoring --version v2.5.0 --set grafana.enabled=false,prometheus.enabled=false,prometheus.alertmanager.persistentVolume.enabled=false,prometheus.server.persistentVolume.enabled=false
-helm install grafana grafana/grafana --namespace=monitoring --version 6.17.6 --set ingress.hosts[0]=$HOST,ingress.tls[0].hosts[0]=$HOST -f ./values.yaml
+#helm install loki grafana/loki-stack --namespace=monitoring --version v2.5.0 --set grafana.enabled=false,prometheus.enabled=false,prometheus.alertmanager.persistentVolume.enabled=false,prometheus.server.persistentVolume.enabled=false
+#helm install grafana grafana/grafana --namespace=monitoring --version 6.17.6 --set ingress.hosts[0]=$HOST,ingress.tls[0].hosts[0]=$HOST -f ./values.yaml
+
 #helm install grafana grafana/grafana --namespace=monitoring --version 6.17.6 --set ingress.hosts[0]=$HOST,ingress.tls[0].hosts[0]=$HOST -f - <<EOF
