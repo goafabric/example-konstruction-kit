@@ -16,6 +16,9 @@ function helm_install() {
 
 NAMESPACE=monitoring
 
+#welcome
+
+
 #loki
 helm repo add grafana https://grafana.github.io/helm-charts
 helm install loki grafana/loki-stack --namespace=monitoring --version v2.5.0 --set grafana.enabled=false,prometheus.enabled=false,prometheus.alertmanager.persistentVolume.enabled=false,prometheus.server.persistentVolume.enabled=false
