@@ -2,7 +2,7 @@ replicaCount: 1
 
 namespace: welcome
 ingress:
-  paths: /callee/0
+  paths: /welcome
   hosts: ""
 
 image:

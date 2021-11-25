@@ -46,7 +46,6 @@ spec:
             {{- toYaml . | nindent 10 }}
             {{- end }}
 
-
  
           volumeMounts:
             - mountPath: /var/log/nginx/logs/

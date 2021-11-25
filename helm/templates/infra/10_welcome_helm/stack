@@ -3,6 +3,8 @@ COMMAND=$1
 OPTS=$2
 
 function up() {
+    kubectl create configmap welcome-board-data-files --from-file=./data/ -n welcome
+
     helm install \
     --set image.arch=`kubectl version | grep "Server Version" | grep "linux/arm64" > /dev/null && echo "-arm64v8"` \
     --set ingress.hosts=`kubectl get configmaps cluster-config -o jsonpath='{.data.hostname}' -n default` \
