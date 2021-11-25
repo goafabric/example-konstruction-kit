@@ -2,13 +2,15 @@
 COMMAND=$1
 PROFILE=$2
 
+HOST=`kubectl get configmaps cluster-config -o jsonpath='{.data.hostname}'`
+
 [ ! -f "/usr/local/bin/helm" ] && echo "helm not found in /usr/local/bin, cannot continue" && exit
 
 function up() {
     helm repo add grafana https://grafana.github.io/helm-charts
 
     helm install loki grafana/loki-stack --namespace=monitoring --version v2.5.0 --set grafana.enabled=false,prometheus.enabled=false,prometheus.alertmanager.persistentVolume.enabled=false,prometheus.server.persistentVolume.enabled=false
-    helm install grafana grafana/grafana --namespace=monitoring --version 6.17.6 -f ./values.yaml --set ingress.hosts[0]=kubernetes,ingress.tls[0].hosts[0]=kubernetes
+    helm install grafana grafana/grafana --namespace=monitoring --version 6.17.6 -f ./values.yaml --set ingress.hosts[0]=$HOST,ingress.tls[0].hosts[0]=$HOST
 }
 
 function down() {
