@@ -3,7 +3,7 @@ COMMAND=$1
 OPTS=$2
 
 function up() {
-    kubectl create configmap welcome-board-data-files --from-file=./data/ -n welcome #-o yaml > ./templates/configdata.yaml
+    kubectl create configmap welcome-board-data-files --from-file=./data/ -n monitoring #-o yaml > ./templates/configdata.yaml
 
     helm install \
     --set image.arch=`kubectl version | grep "Server Version" | grep "linux/arm64" > /dev/null && echo "-arm64v8"` \
@@ -19,8 +19,8 @@ function down() {
     `cat ./Chart.yaml | grep "name" | cut -d':' -f2 | xargs`
 }
 
-if   [ "${COMMAND}" = "up" ]; then up;
-elif [ "${COMMAND}" = "down" ]; then down;
+if   [ "${COMMAND}" = "init" ]; then up;
+elif [ "${COMMAND}" = "prune" ]; then down;
 elif [ "${COMMAND}" = "restart" ]; then down && up;
 elif [ "${COMMAND}" = "lint" ]; then helm lint ./;
 

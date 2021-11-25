@@ -1,6 +1,6 @@
 replicaCount: 1
 
-namespace: welcome
+namespace: monitoring
 ingress:
   paths: /welcome
   hosts: ""
