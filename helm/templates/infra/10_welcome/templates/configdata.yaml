@@ -199,7 +199,7 @@ data:
     </html>
 kind: ConfigMap
 metadata:
-  creationTimestamp: "2021-11-25T13:24:45Z"
+  creationTimestamp: "2021-11-26T07:34:08Z"
   managedFields:
   - apiVersion: v1
     fieldsType: FieldsV1
@@ -223,8 +223,8 @@ metadata:
         f:index.html: {}
     manager: kubectl-create
     operation: Update
-    time: "2021-11-25T13:24:45Z"
+    time: "2021-11-26T07:34:08Z"
   name: welcome-board-data-files
   namespace: monitoring
-  resourceVersion: "2540911"
-  uid: f153d6fe-70d3-4ff0-8364-bff9166a3f49
+  resourceVersion: "2556874"
+  uid: 4eebfec6-88f5-440b-bd06-f283ca32c536
