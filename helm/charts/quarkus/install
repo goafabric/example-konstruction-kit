@@ -18,6 +18,8 @@ helm_install fhir-facade-application 1.0.0
 NAMESPACE=example-tenant-0
 
 helm_install callee-service-application 1.0.0
+
 helm_install person-service-application 1.0.0
-helm_install person-service-batch 1.0.0
 helm_install person-service-postgres 1.0.0
+helm_install person-service-batch 1.0.0
+
