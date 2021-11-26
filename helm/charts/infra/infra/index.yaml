@@ -3,9 +3,9 @@ entries:
   jaeger-all:
   - apiVersion: v2
     appVersion: 1.24.0
-    created: "2021-11-25T14:26:49.766699+01:00"
+    created: "2021-11-26T15:50:35.314496+01:00"
     description: jaeger-all
-    digest: 7ab7c132468e881abf6426ca7dcdac5c1051f055d7a389d54545f1debaac4813
+    digest: 463d48127bbde7f47ecd3371c09c069d9f11099304532da20adcbfc1c0814741
     name: jaeger-all
     type: application
     urls:
@@ -14,12 +14,12 @@ entries:
   welcome-board:
   - apiVersion: v2
     appVersion: 1.17.10
-    created: "2021-11-25T14:26:49.768466+01:00"
+    created: "2021-11-26T15:50:35.316234+01:00"
     description: welcome-board
-    digest: 80ba3722e4f929e61caf38b2a5577df27e802e073891515f34714111ae3682d2
+    digest: 71ba5bdc5d2e2dc325bbc10fc500165240ac330ad67a76ba29263da7840846ec
     name: welcome-board
     type: application
     urls:
     - https://goafabric.github.io/example-konstruction-kit/helm/charts/infra/infra/welcome-board-1.0.0.tgz
     version: 1.0.0
-generated: "2021-11-25T14:26:49.766197+01:00"
+generated: "2021-11-26T15:50:35.313434+01:00"
