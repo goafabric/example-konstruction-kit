@@ -1,0 +1,34 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: viz-ingress
+  namespace: linkerd-viz
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+
+    nginx.ingress.kubernetes.io/upstream-vhost: $service_name.$namespace.svc.cluster.local:8084
+    nginx.ingress.kubernetes.io/configuration-snippet: |
+      proxy_set_header Origin "";
+      proxy_hide_header l5d-remote-ip;
+      proxy_hide_header l5d-server-id;
+    # basic auth
+#    nginx.ingress.kubernetes.io/auth-type: basic
+#    nginx.ingress.kubernetes.io/auth-secret: authentication-secret
+
+spec:
+  tls:
+    - hosts:
+        - ${_Values_host_name}
+      secretName: server-certificate-secret
+  rules:
+    - host: ${_Values_host_name}
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: web
+                port:
+                  number: 8084

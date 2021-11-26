@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ${_Values_app_name}-config
+  namespace: ${_Release_namespace}
+data:
+  #application
+  TZ: Europe/Berlin
+
+  #PROXY
+  OAUTH2_PROXY_PROVIDER: "keycloak"
+  OAUTH2_PROXY_CLIENT_ID: "oauth2-proxy"
+  OAUTH2_PROXY_LOGIN_URL: "https://${_Values_host_name}/oidc/auth/realms/tenant-${_Values_tenant_id}/protocol/openid-connect/auth"
+  OAUTH2_PROXY_REDEEM_URL: "http://keycloak-application.oidc:8080/auth/realms/tenant-${_Values_tenant_id}/protocol/openid-connect/token"
+  OAUTH2_PROXY_PROFILE_URL: "http://keycloak-application.oidc:8080/auth/realms/tenant-${_Values_tenant_id}/protocol/openid-connect/userinfo"
+  OAUTH2_PROXY_VALIDATE_URL: "http://keycloak-application.oidc:8080/auth/realms/tenant-${_Values_tenant_id}/protocol/openid-connect/userinfo"
+  OAUTH2_PROXY_SCOPE: "openid"
+
+---
+
+apiVersion: v1
+kind: Secret
+metadata:
+  name: ${_Values_app_name}-config-external
+  namespace: ${_Release_namespace}
+data:
+  OAUTH2_PROXY_CLIENT_SECRET: ${_Values_proxy_client_secret}
+  OAUTH2_PROXY_COOKIE_SECRET: ${_Values_proxy_cookie_secret}
+

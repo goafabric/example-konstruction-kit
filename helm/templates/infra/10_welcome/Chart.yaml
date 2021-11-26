@@ -1,0 +1,9 @@
+apiVersion: v2
+name: welcome-board
+description: welcome-board
+
+type: application
+
+version: 1.0.0
+
+appVersion: "1.17.10"

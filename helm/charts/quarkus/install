@@ -1,0 +1,23 @@
+#!/bin/bash
+
+helm repo add example-quarkus https://goafabric.github.io/example-konstruction-kit/helm/charts/quarkus/quarkus
+helm repo update
+
+function helm_install() {
+  helm install $1 example-quarkus/$1  \
+  --version $2 \
+  --namespace=$NAMESPACE \
+  --set image.arch=`kubectl version | grep "Server Version" | grep "linux/arm64" > /dev/null && echo "-arm64v8"` \
+  --set ingress.hosts=`kubectl get configmaps cluster-config -o jsonpath='{.data.hostname}' -n default`
+}
+
+NAMESPACE=example
+
+helm_install fhir-facade-application 1.0.0
+
+NAMESPACE=example-tenant-0
+
+helm_install callee-service-application 1.0.0
+helm_install person-service-application 1.0.0
+helm_install person-service-batch 1.0.0
+helm_install person-service-postgres 1.0.0

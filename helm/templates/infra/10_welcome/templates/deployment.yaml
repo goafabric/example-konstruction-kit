@@ -1,0 +1,67 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "application.fullname" . }}
+  labels:
+    {{- include "application.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "application.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "application.selectorLabels" . | nindent 8 }}
+    spec:
+      {{- with .Values.initContainers }}
+      initContainers:
+        {{- toYaml . | nindent 8 }}
+        {{- end }}
+      imagePullSecrets:
+        - name: {{ .Values.image.pullPolicy }}
+      containers:
+        - name: {{ .Chart.Name }}
+          image: "nginx:1.17.10"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - name: http
+              containerPort: {{ .Values.service.port }}
+              protocol: TCP
+
+          envFrom:
+            - configMapRef:
+                name: {{ include "application.fullname" . }}-config
+            - configMapRef:
+                name: {{ include "application.fullname" . }}-config-log
+            - secretRef:
+                name: {{ include "application.fullname" . }}-config-external
+
+          #resources and commands and args
+          {{- with .Values.resourcesAnnotations }}
+            {{- toYaml . | nindent 10 }}
+            {{- end }}
+
+ 
+          volumeMounts:
+            - mountPath: /var/log/nginx/logs/
+              name: {{ include "application.fullname" . }}-applogs
+            - mountPath: /etc/nginx/nginx.conf
+              subPath: nginx.conf
+              name: {{ include "application.fullname" . }}-config-files-volume
+            - mountPath: /www/data
+              name: {{ include "application.fullname" . }}-data-files-volume
+
+      volumes:
+        - name: {{ include "application.fullname" . }}-applogs
+          emptyDir: {}
+        - name: {{ include "application.fullname" . }}-config-files-volume
+          configMap:
+            name: {{ include "application.fullname" . }}-config-files
+        - name: {{ include "application.fullname" . }}-data-files-volume
+          configMap:
+            name: {{ include "application.fullname" . }}-data-files

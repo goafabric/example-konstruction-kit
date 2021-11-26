@@ -1,0 +1,16 @@
+replicaCount: 1
+
+namespace: monitoring
+ingress:
+  paths: /welcome
+  hosts: ""
+
+image:
+  repository: "nginx"
+  pullPolicy: IfNotPresent
+  pullSecrets: 
+
+
+service:
+  type: ClusterIP
+  port: 8080
