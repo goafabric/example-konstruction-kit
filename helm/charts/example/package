@@ -2,4 +2,4 @@
 find ../../templates/example/quarkus/example -not -path "." -type d -print0 | sort -hz | xargs -0 -I '{}' bash -c "echo '{}' && helm package '{}' -d ./quarkus"
 find ../../templates/example/quarkus/example-tenant-0 -not -path "." -type d -print0 | sort -hz | xargs -0 -I '{}' bash -c "echo '{}' && helm package '{}' -d ./quarkus"
 
-helm repo index ./quarkus --url https://goafabric.github.io/example-konstruction-kit/helm/charts/quarkus/quarkus
+helm repo index ./quarkus --url https://goafabric.github.io/example-konstruction-kit/helm/charts/example/quarkus
