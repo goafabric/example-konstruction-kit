@@ -27,3 +27,6 @@ service:
 
 postgres:
   maxConnections: 30
+
+persistence:
+  storageClassName:
