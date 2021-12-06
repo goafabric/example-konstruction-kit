@@ -52,6 +52,7 @@ spec:
 
           volumeMounts:
             - mountPath: /var/lib/postgresql/data
+              subPath: pgdata
               name: {{ include "application.fullname" . }}-volume
 
             - mountPath: /docker-entrypoint-initdb.d/
