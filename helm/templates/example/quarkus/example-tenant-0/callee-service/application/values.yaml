@@ -5,6 +5,7 @@ namespace: example-tenant-0
 ingress:
   paths: /callee/0
   hosts: ""
+  enabled: true
 
 image:
   repository: "goafabric/callee-service-quarkus"

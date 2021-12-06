@@ -4,6 +4,7 @@ namespace: example
 ingress:
   paths: /fhir
   hosts: ""
+  enabled: true
 
 image:
   repository: "goafabric/fhir-facade"

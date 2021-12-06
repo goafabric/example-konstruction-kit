@@ -5,6 +5,7 @@ namespace: example-tenant-0
 ingress:
   paths: /person/0
   hosts: ""
+  enabled: true
 
 host:
   name: ""
