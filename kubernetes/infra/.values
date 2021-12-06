@@ -1,4 +1,0 @@
-namespaces_own=("example" "example-tenant-0" "example-tenant-5a2f")
-namespaces_all=("${namespaces_own[@]}" "kubernetes-dashboard" "monitoring" "istio-system" "oidc" "welcome")
-
-#registries=("registry-docker.io")

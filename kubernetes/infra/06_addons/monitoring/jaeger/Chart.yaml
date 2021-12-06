@@ -1,9 +1,0 @@
-apiVersion: v2
-name: jaeger-all
-description: jaeger-all
-
-type: application
-
-version: 1.24.0
-
-appVersion: "1.24.0"

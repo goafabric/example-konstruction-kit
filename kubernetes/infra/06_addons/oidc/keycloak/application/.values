@@ -1,7 +1,0 @@
-_Release_namespace=oidc
-_Values_root_name=keycloak
-_Values_app_name=${_Values_root_name}-application
-
-_Values_ingress_name=oidc
-
-_Values_host_name=
