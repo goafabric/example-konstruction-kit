@@ -29,4 +29,4 @@ postgres:
   maxConnections: 30
 
 persistence:
-  storageClassName: yo
+  storageClassName:
