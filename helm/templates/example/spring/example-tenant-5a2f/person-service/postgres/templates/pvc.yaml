@@ -12,4 +12,6 @@ spec:
   resources:
     requests:
       storage: 1Gi
-  # storageClassName: {{ .Values.persistence.storageClassName }}
+{{ if .Values.persistence.storageClassName }}
+  storageClassName: {{ .Values.persistence.storageClassName }}
+{{- end }}
