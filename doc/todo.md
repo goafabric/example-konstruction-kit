@@ -1,5 +1,5 @@
 #Ops
-- Helm Infra, Postgres
+- Helm Secrets, Timeout, Postgres, Infra
 - Certmanager for Certs (https://tinyurl.com/1wjhxz9m)
 
 # Security
