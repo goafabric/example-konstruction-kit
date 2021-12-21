@@ -6,3 +6,5 @@
 - Outbound SSL
 - Oidc User Forward
 
+# Container
+- Working Swagger Endpoint, Better Handling for Native Images
