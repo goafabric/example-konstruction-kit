@@ -22,8 +22,11 @@ spec:
       initContainers:
         {{- toYaml . | nindent 8 }}
         {{- end }}
+
+      {{ if .Values.image.pullSecrets }}
       imagePullSecrets:
         - name: {{ .Values.image.pullSecrets }}
+      {{- end }}
       containers:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
@@ -37,7 +40,7 @@ spec:
             - configMapRef:
                 name: {{ include "application.fullname" . }}-config
             - secretRef:
-                name: {{ include "application.fullname" . }}-config-external
+                name: {{ include "application.fullname" . }}-secret
 
           args: ["postgres",
                  "-c", "shared_preload_libraries=pg_stat_statements",
