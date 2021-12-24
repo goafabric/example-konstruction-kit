@@ -4,7 +4,6 @@ tenantId: 0
 namespace: example-tenant-0
 ingress:
   paths: /callee/{{ .Values.tenantId }}
-  hosts: ""
   enabled: true
 
 image:
