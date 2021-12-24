@@ -3,8 +3,8 @@ replicaCount: 1
 tenantId: 0
 namespace: example
 ingress:
-#  paths: /fhir
-  paths: /fhir/{{ .Values.tenantId }}
+  paths: /fhir
+#  paths: /fhir/{{ .Values.tenantId }}
   hosts: ""
   enabled: true
 
