@@ -1,5 +1,6 @@
 #0.9.0
 - migration to helm charts
+- upgrade of person-service and callee-service to 1.2.0
 
 #0.8.8
 - upgrade of kubernetes dashboard and metrics servers
