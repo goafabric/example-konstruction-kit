@@ -6,9 +6,6 @@ ingress:
   paths: /person/{{ .Values.tenantId }}
   enabled: true
 
-host:
-  name: ""
-
 image:
   repository: "goafabric/person-service"
   pullPolicy: IfNotPresent
