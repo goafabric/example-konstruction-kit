@@ -9,6 +9,7 @@ data:
   TZ: Europe/Berlin
   server.port: "{{ .Values.service.port }}"
   server.tomcat.threads.max: "20"
+#  server.forward-headers-strategy: FRAMEWORK
 
   #security
   security.authentication.enabled: "false"
