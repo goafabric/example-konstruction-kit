@@ -4,7 +4,6 @@ metadata:
   name: viz-ingress
   namespace: linkerd-viz
   annotations:
-    kubernetes.io/ingress.class: "nginx"
     nginx.ingress.kubernetes.io/ssl-redirect: "false"
 
     nginx.ingress.kubernetes.io/upstream-vhost: $service_name.$namespace.svc.cluster.local:8084
@@ -17,6 +16,7 @@ metadata:
 #    nginx.ingress.kubernetes.io/auth-secret: authentication-secret
 
 spec:
+  ingressClassName: nginx
   tls:
     - hosts:
         - ${_Values_host_name}
