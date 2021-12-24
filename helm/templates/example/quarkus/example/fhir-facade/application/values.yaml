@@ -5,7 +5,6 @@ namespace: example
 ingress:
   paths: /fhir
 #  paths: /fhir/{{ .Values.tenantId }}
-  hosts: ""
   enabled: true
 
 image:
