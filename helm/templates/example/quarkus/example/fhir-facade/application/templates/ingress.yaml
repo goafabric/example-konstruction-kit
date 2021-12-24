@@ -34,7 +34,7 @@ spec:
     - host: {{ .Values.ingress.hosts}}
       http:
         paths:
-          - path: {{ .Values.ingress.paths }}(/|$)(.*)
+          - path: {{- tpl (toYaml .Values.ingress.paths) . | nindent 14 }}(/|$)(.*)
             pathType: Prefix
             backend:
               service:
