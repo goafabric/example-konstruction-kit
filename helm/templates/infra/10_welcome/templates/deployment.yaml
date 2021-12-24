@@ -39,7 +39,7 @@ spec:
             - configMapRef:
                 name: {{ include "application.fullname" . }}-config-log
             - secretRef:
-                name: {{ include "application.fullname" . }}-config-external
+                name: {{ include "application.fullname" . }}-secret
 
           #resources and commands and args
           {{- with .Values.resourcesAnnotations }}
