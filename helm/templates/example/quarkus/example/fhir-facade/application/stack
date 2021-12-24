@@ -1,6 +1,5 @@
 #!/bin/bash
 COMMAND=$1
-OPTS=$2
 
 function up() {
     helm install \
@@ -16,16 +15,16 @@ function down() {
     `cat ./Chart.yaml | grep "name" | cut -d':' -f2 | xargs`
 }
 
-function package() {
-  [ -z "$1" ] && echo "target directory not set" && exit
-  helm package ./ -d ../../../../../../charts/$1/
-  helm repo index ../../../../../../charts/$1/ --url https://goafabric.github.io/example-konstruction-kit/src/deploy/charts/quarkus
+function proxy() {
+    kubectl port-forward deployment/`cat ./Chart.yaml | grep "name" | cut -d':' -f2 | xargs` \
+    `cat ./values.yaml | grep "port" | cut -d':' -f2 | xargs`:`cat ./values.yaml | grep "port" | cut -d':' -f2 | xargs` \
+    -n `cat ./values.yaml | grep "namespace" | cut -d':' -f2 | xargs`
 }
 
 if   [ "${COMMAND}" = "up" ]; then up;
 elif [ "${COMMAND}" = "down" ]; then down;
 elif [ "${COMMAND}" = "restart" ]; then down && up;
 elif [ "${COMMAND}" = "lint" ]; then helm lint ./;
-elif [ "${COMMAND}" = "package" ]; then package $OPTS;
+elif [ "${COMMAND}" = "proxy" ]; then proxy;
 
 else echo Doing nothing !; fi
