@@ -6,13 +6,10 @@ metadata:
   labels:
     {{- include "application.labels" . | nindent 4 }}
   annotations:
-    kubernetes.io/ingress.class: "nginx"
     nginx.ingress.kubernetes.io/ssl-redirect: "true"
-
     nginx.ingress.kubernetes.io/rewrite-target: /$2
-    #rewrite URI from /callee to /callee/ to add missing trailing slash
-    nginx.ingress.kubernetes.io/configuration-snippet: |
-      rewrite ^({{ .Values.ingress.paths }})$ $1/ redirect;
+
+    nginx.ingress.kubernetes.io/enable-modsecurity: "true"
 
     # basic auth
     nginx.ingress.kubernetes.io/auth-type: "basic"
@@ -22,10 +19,8 @@ metadata:
     #nginx.ingress.kubernetes.io/auth-signin: "https://$host/oauth2/$http_x_tenantid/start?rd=$escaped_request_uri"
     #nginx.ingress.kubernetes.io/auth-url: "https://$host/oauth2/$http_x_tenantid/auth" #"http://oauth2-proxy-$http_x_tenantid-application.oidc.svc.cluster.local:4180/oauth2/$http_x_tenantid/auth"
 
-    #mod security logging
-    nginx.ingress.kubernetes.io/enable-modsecurity: "true"
-
 spec:
+  ingressClassName: nginx
   tls:
     - hosts:
         - {{ .Values.ingress.hosts}}
@@ -34,7 +29,7 @@ spec:
     - host: {{ .Values.ingress.hosts}}
       http:
         paths:
-          - path: {{ .Values.ingress.paths }}(/|$)(.*)
+          - path: {{- tpl (toYaml .Values.ingress.paths) . | nindent 14 }}(/|$)(.*)
             pathType: Prefix
             backend:
               service:

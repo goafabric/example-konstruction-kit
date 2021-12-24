@@ -3,7 +3,6 @@ replicaCount: 1
 namespace: example
 ingress:
   paths: /fhir
-  hosts: ""
   enabled: true
 
 image:

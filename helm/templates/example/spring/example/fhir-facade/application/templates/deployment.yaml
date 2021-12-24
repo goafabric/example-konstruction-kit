@@ -26,8 +26,11 @@ spec:
       initContainers:
         {{- toYaml . | nindent 8 }}
         {{- end }}
+
+      {{ if .Values.image.pullSecrets }}
       imagePullSecrets:
         - name: {{ .Values.image.pullSecrets }}
+      {{- end }}
       containers:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}{{ .Values.image.arch }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
@@ -43,7 +46,7 @@ spec:
             - configMapRef:
                 name: {{ include "application.fullname" . }}-config-log
             - secretRef:
-                name: {{ include "application.fullname" . }}-config-external
+                name: {{ include "application.fullname" . }}-secret
 
           #resources and commands and args
           {{- with .Values.resourcesAnnotations }}
