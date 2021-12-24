@@ -20,3 +20,17 @@ data:
   quarkus.jaeger.sampler-type: "probabilistic"
   quarkus.jaeger.sampler-param: "1"
   quarkus.jaeger.propagation: "b3"
+
+  #persistence
+  quarkus.datasource.jdbc.url: "jdbc:postgresql://person-service-postgres:5432/person"
+  quarkus.datasource.jdbc.max-size: "10"
+
+  database.provisioning.goals: " "
+
+  #adapter
+  adapter.calleeservice.url: "http://callee-service-application:8080"
+
+  adapter.timeout: "10000"
+  adapter.failureRate: "0.5"
+  adapter.openDuration: "30000"
+  adapter.circuitBreaker.enabled: "true"

@@ -4,7 +4,6 @@ tenantId: 0
 namespace: example
 ingress:
   paths: /fhir
-#  paths: /fhir/{{ .Values.tenantId }}
   enabled: true
 
 image:

@@ -1,6 +1,5 @@
 #!/bin/bash
 COMMAND=$1
-OPTS=$2
 
 function up() {
     helm install \
@@ -16,9 +15,16 @@ function down() {
     `cat ./Chart.yaml | grep "name" | cut -d':' -f2 | xargs`
 }
 
+function proxy() {
+    kubectl port-forward deployment/`cat ./Chart.yaml | grep "name" | cut -d':' -f2 | xargs` \
+    `cat ./values.yaml | grep "port" | cut -d':' -f2 | xargs`:`cat ./values.yaml | grep "port" | cut -d':' -f2 | xargs` \
+    -n `cat ./values.yaml | grep "namespace" | cut -d':' -f2 | xargs`
+}
+
 if   [ "${COMMAND}" = "up" ]; then up;
 elif [ "${COMMAND}" = "down" ]; then down;
 elif [ "${COMMAND}" = "restart" ]; then down && up;
 elif [ "${COMMAND}" = "lint" ]; then helm lint ./;
+elif [ "${COMMAND}" = "proxy" ]; then proxy;
 
 else echo Doing nothing !; fi
