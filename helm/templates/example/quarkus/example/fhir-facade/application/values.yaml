@@ -29,6 +29,3 @@ readinessProbe:
 service:
   type: ClusterIP
   port: 8080
-
-adapter:
-  timeout: 10000
