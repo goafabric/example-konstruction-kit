@@ -9,7 +9,9 @@ data:
   TZ: Europe/Berlin
   quarkus.http.port: "{{ .Values.service.port }}"
   quarkus.http.io-threads: "20"
+
 #  quarkus.http.proxy.enable-forwarded-prefix: "true"
+#  quarkus.http.proxy-address-forwarding: "true"
 
   #security
   security.authentication.enabled: "false"
