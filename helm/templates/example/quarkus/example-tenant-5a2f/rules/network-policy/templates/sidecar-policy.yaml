@@ -1,0 +1,18 @@
+#curl http://callee-service-application.example-tenant-5a2f:8080/actuator/health
+apiVersion: networking.istio.io/v1alpha3
+kind: Sidecar
+metadata:
+  name: sidecar-policy
+spec:
+  egress:
+    - hosts:
+        - ./*
+        - istio-system/*
+        - monitoring/*
+        - oidc/*
+  outboundTrafficPolicy:
+    mode: REGISTRY_ONLY
+
+
+
+
