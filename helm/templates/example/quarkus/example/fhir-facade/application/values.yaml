@@ -1,7 +1,6 @@
 replicaCount: 1
 
 tenantId: 0
-namespace: example
 ingress:
   paths: /fhir
   enabled: true

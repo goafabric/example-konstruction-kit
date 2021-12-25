@@ -1,7 +1,5 @@
 replicaCount: 1
 
-namespace: example-tenant-0
-
 image:
   repository: "postgres"
   pullPolicy: IfNotPresent
