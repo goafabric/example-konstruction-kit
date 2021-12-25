@@ -2,8 +2,6 @@
 COMMAND=$1
 IMAGE_ARCH=$2 && [ -z "$IMAGE_ARCH" ] && IMAGE_ARCH=`kubectl version | grep "Server Version" | grep "linux/arm64" > /dev/null && echo "-arm64v8"`
 
-echo $IMAGE_ARCH
-
 function up() {
     helm install \
     --set image.arch=$IMAGE_ARCH \
