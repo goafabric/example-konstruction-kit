@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "application.fullname" . }}-config
+  labels:
+    {{- include "application.labels" . | nindent 4 }}
+data:
+  #application
+  TZ: Europe/Berlin
+  server.port: "{{ .Values.service.port }}"
+  server.tomcat.threads.max: "20"
+  server.forward-headers-strategy: FRAMEWORK
+
+  #security
+  security.authentication.enabled: "false"
+
+  #monitoring
+  management.endpoint.health.show-details: always
+  management.endpoints.web.exposure.include: "health,heapdump,circuitbreakers,prometheus"
+
+  #zipkin/jaeger
+  spring.zipkin.service.name: "callee-service-tenant-{{ .Values.tenantId }}"
+
+  spring.zipkin.baseUrl: "http://zipkin.monitoring:9411"
+  spring.sleuth.enabled: "true"
+  spring.zipkin.enabled: "true"
