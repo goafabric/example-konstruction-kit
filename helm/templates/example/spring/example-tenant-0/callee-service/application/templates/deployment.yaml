@@ -49,10 +49,12 @@ spec:
                 name: {{ include "application.fullname" . }}-secret
 
           #resources and commands and args
-          {{- with .Values.resourcesAnnotations }}
-            {{- toYaml . | nindent 10 }}
-            {{- end }}
-
+          {{ if ne .Values.image.arch "-native" }}
+            {{- with .Values.resourcesAnnotations }}
+              {{- toYaml . | nindent 10 }}
+              {{- end }}
+          {{- end }}
+          
           readinessProbe:
             httpGet:
               path: /actuator/health
