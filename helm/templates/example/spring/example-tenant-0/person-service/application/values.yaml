@@ -22,6 +22,14 @@ resourcesAnnotations:
 
   command: ["java", "-Xms256M", "-Xmx256M", "-cp", "/app/resources:/app/classes:/app/libs/*", "org.goafabric.personservice.Application"]
 
+nativeAnnotations:
+  resources:
+    requests:
+      memory: 64M
+      cpu: 250m
+
+  args: ["-Xmx64M"]
+
 readinessProbe:
   initialDelaySeconds: 2
 

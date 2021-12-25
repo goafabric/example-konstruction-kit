@@ -7,7 +7,7 @@ metadata:
   annotations:
     "helm.sh/hook": post-install
 spec:
-  backoffLimit: 0
+  backoffLimit: 3
   activeDeadlineSeconds: 240
   ttlSecondsAfterFinished: 60
   template:
@@ -43,9 +43,17 @@ spec:
                 name: {{ include "application.fullname" . }}-secret
 
           #resources and commands and args
-          {{- with .Values.resourcesAnnotations }}
+          {{ if ne .Values.image.arch "-native" }}
+            {{- with .Values.resourcesAnnotations }}
             {{- toYaml . | nindent 10 }}
             {{- end }}
+          {{- end }}
+
+          {{ if eq .Values.image.arch "-native" }}
+            {{- with .Values.nativeAnnotations }}
+            {{- toYaml . | nindent 10 }}
+            {{- end }}
+          {{- end }}
 
           volumeMounts:
             - mountPath: /usr/share/logs
