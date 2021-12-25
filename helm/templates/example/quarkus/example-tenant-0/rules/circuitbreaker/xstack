@@ -3,11 +3,11 @@ COMMAND=$1
 PROFILE=$2
 
 function up() {
-    kubectl apply -f ./templates/
+    kubectl apply -f ./templates/ --namespace `pwd | rev | cut -d '/' -f2 | rev`
 }
 
 function down() {
-    kubectl delete --ignore-not-found -f ./templates/
+    kubectl delete --ignore-not-found -f ./templates/ --namespace `pwd | rev | cut -d '/' -f2 | rev`
 }
 
 

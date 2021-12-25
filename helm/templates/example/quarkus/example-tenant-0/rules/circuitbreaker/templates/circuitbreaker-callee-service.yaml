@@ -2,7 +2,6 @@ apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
   name: callee-service-virtual
-  namespace: example-tenant-0
 spec:
   hosts:
     - callee-service-application
