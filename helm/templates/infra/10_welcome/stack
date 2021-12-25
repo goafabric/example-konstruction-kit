@@ -5,13 +5,13 @@ function up() {
     helm install \
     --set image.arch=`kubectl version | grep "Server Version" | grep "linux/arm64" > /dev/null && echo "-arm64v8"` \
     --set ingress.hosts=`kubectl get configmaps cluster-config -o jsonpath='{.data.hostname}' -n default` \
-    --namespace `cat ./values.yaml | grep "namespace" | cut -d':' -f2 | xargs` \
+    --namespace monitoring \
     `cat ./Chart.yaml | grep "name" | cut -d':' -f2 | xargs` ./
 }
 
 function down() {
     helm uninstall \
-    --namespace `cat ./values.yaml | grep "namespace" | cut -d':' -f2 | xargs` \
+    --namespace monitoring \
     `cat ./Chart.yaml | grep "name" | cut -d':' -f2 | xargs`
 }
 
