@@ -6,7 +6,7 @@ PROFILE=$2
 
 
 function up() {
-    helm install jaeger-all ./ --namespace=monitoring --version 1.24.0 \
+    helm install jaeger-all ./ --namespace=monitoring --version 1.29.0 \
     --set ingress.hosts=`kubectl get configmaps cluster-config -o jsonpath='{.data.hostname}' -n default` 
 }
 
