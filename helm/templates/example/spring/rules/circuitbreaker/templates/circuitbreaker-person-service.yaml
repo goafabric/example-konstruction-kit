@@ -18,7 +18,6 @@ apiVersion: networking.istio.io/v1beta1
 kind: DestinationRule
 metadata:
   name: person-service-destination
-  namespace: example-tenant-0
 spec:
   host: person-service-application
   subsets:
