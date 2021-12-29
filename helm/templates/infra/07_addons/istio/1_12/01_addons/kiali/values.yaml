@@ -7,3 +7,5 @@ external_services:
   tracing:
     in_cluster_url: 'http://tracing.monitoring:16685/jaeger'
     use_grpc: true
+#  prometheus:
+#    url: 'http://prometheus-server.istio-system:80'
