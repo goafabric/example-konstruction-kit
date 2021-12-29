@@ -1,0 +1,9 @@
+auth:
+  strategy: anonymous
+
+external_services:
+  custom_dashboards:
+    enabled: true
+  tracing:
+    in_cluster_url: 'http://tracing.monitoring:16685/jaeger'
+    use_grpc: true

@@ -2,10 +2,10 @@
 COMMAND=$1
 PROFILE=$2
 
-[ ! -f "/usr/local/bin/istioctl" ] && echo "istioctl not found in /usr/local/bin, cannot continue" && exit
-
-kubectl version | grep "Server Version" | grep "linux/arm64" > /dev/null && _Values_server_arch="-arm64v8"
+HOST=`kubectl get configmaps cluster-config -o jsonpath='{.data.hostname}'`
 _Values_host_name=`kubectl get configmaps cluster-config -o jsonpath='{.data.hostname}' -n default` && [ -z "$_Values_host_name" ] && echo "Hostname is empty" && exit
+
+[ ! -f "/usr/local/bin/helm" ] && echo "helm not found in /usr/local/bin, cannot continue" && exit
 
 function dynKubectl() {
 for filename in $2/*.yaml; do
@@ -17,12 +17,13 @@ done
 }
 
 function up() {
-    kubectl apply -f ./templates
+    helm repo add kiali https://kiali.org/helm-charts
+    helm install kiali-server kiali/kiali-server --namespace istio-system --version 1.44.0 -f ./values.yaml
     dynKubectl apply ./ingress
 }
 
 function down() {
-    kubectl delete --ignore-not-found -f ./templates
+    helm uninstall kiali-server --namespace=istio-system
     dynKubectl delete ./ingress
 }
 
@@ -32,3 +33,5 @@ elif [ "${COMMAND}" = "restart" ] ; then down && up;
 elif [ "${COMMAND}" = "prune" ]; then down;
 
 else echo Doing nothing !; fi
+
+#Sample query: {namespace="example-tenant-5a2f",container="callee-service-application"}
