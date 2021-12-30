@@ -8,19 +8,19 @@ kubectl version | grep "Server Version" | grep "linux/arm64" > /dev/null && _Val
 _Values_host_name=`kubectl get configmaps cluster-config -o jsonpath='{.data.hostname}' -n default` && [ -z "$_Values_host_name" ] && echo "Hostname is empty" && exit
 
 function up() {
-    #helm repo add kubernetes-dashboard https://kubernetes.github.io/dashboard/
+    helm repo add kubernetes-dashboard https://kubernetes.github.io/dashboard/ > /dev/null
+    helm repo add metrics-server https://kubernetes-sigs.github.io/metrics-server/ > /dev/null
 
     helm install kubernetes-dashboard kubernetes-dashboard/kubernetes-dashboard --namespace kubernetes-dashboard --version 5.0.4 \
     -f ./values.yaml --set ingress.hosts[0]=$_Values_host_name,ingress.tls[0].hosts[0]=$_Values_host_name
 
-    kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/download/v0.5.1/components.yaml
-    kubectl patch deployment metrics-server -n kube-system --type 'json' -p '[{"op": "add", "path": "/spec/template/spec/containers/0/args/-", "value": "--kubelet-insecure-tls"}]'
+    helm install metrics-server metrics-server/metrics-server --namespace kube-system --version 3.7.0 \
+    --set args[0]='--kubelet-insecure-tls'
 }
 
 function down() {
     helm uninstall kubernetes-dashboard --namespace=kubernetes-dashboard
-
-    kubectl delete -f https://github.com/kubernetes-sigs/metrics-server/releases/download/v0.5.1/components.yaml
+    helm uninstall metrics-server --namespace kube-system
 }
 
 function proxy() {
