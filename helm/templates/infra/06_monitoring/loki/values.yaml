@@ -25,10 +25,12 @@ datasources:
       
 ingress:
   enabled: true
+  ingressClassName: nginx
   annotations:
     nginx.ingress.kubernetes.io/auth-secret: authentication-secret
     nginx.ingress.kubernetes.io/auth-type: basic
     nginx.ingress.kubernetes.io/rewrite-target: /$1
     nginx.ingress.kubernetes.io/ssl-redirect: 'false'
   path: /grafana/?(.*)
-  ingressClassName: nginx
+  tls:
+    - secretName: "server-certificate-secret"
