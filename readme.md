@@ -1,10 +1,10 @@
 #Prerequisites
 - For specific installation instructions concerning linux and mac please see doc/install
 - For local installations you need an entry in /etc/hosts like "127.0.0.1 kubernetes"
-- For https to work you need to import src/deploy/kubernetes/infra/03_certificate/root/config/root.pem
+- For https to work you need to import helm/templates/infra/infra/03_certificate/root/config/root.pem
 
 #Installation
-- Go to "src/deploy/kubernetes/infra"
+- Go to "helm/templates/infra"
 - ./stack init
 - You might be asked for
   - credentials
@@ -16,7 +16,7 @@
 - Password is currently just admin/admin
 
 #Examples
-- To start specific applications change to the folder representing the namespace (e.g. src/deploy/kubernetes/example)
+- To start specific applications change to the folder representing the namespace (e.g. helm/templates/example)
 - And do "./stack up" and "/stack import"
 - To shut everything down do "./stack down"
 
