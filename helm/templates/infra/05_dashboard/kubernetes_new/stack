@@ -10,17 +10,16 @@ _Values_host_name=`kubectl get configmaps cluster-config -o jsonpath='{.data.hos
 function up() {
     #helm repo add kubernetes-dashboard https://kubernetes.github.io/dashboard/
 
-    helm install kubernetes-dashboard kubernetes-dashboard/kubernetes-dashboard --namespace default --version 5.0.4 \
-    -f ./values.yaml --set ingress.hosts[0]=$_Values_host_name
-    #,ingress.tls[0].hosts[0]=$_Values_host_name
+    helm install kubernetes-dashboard kubernetes-dashboard/kubernetes-dashboard --namespace kubernetes-dashboard --version 5.0.4 \
+    -f ./values.yaml --set ingress.hosts[0]=$_Values_host_name,ingress.tls[0].hosts[0]=$_Values_host_name
 }
 
 function down() {
-    helm uninstall kubernetes-dashboard --namespace=default
+    helm uninstall kubernetes-dashboard --namespace=kubernetes-dashboard
 }
 
 function proxy() {
-  open http://localhost:8001/api/v1/namespaces/default/services/https:kubernetes-dashboard:https/proxy/ && kubectl proxy
+  open http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:https/proxy/ && kubectl proxy
 }
 
 
