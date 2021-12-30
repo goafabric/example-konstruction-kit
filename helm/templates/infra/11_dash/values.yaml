@@ -1,0 +1,17 @@
+ingress:
+  enabled: true
+  className: nginx
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+    nginx.ingress.kubernetes.io/ssl-redirect: 'false'
+  paths:
+    - /dashboard2(/|$)(.*)
+#  tls:
+#    - hosts:
+#        - "kubernetes"
+#      secretName: "server-certificate-secret"
+
+      
+extraArgs:
+  - --enable-skip-login
+
