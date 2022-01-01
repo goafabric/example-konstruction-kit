@@ -10,7 +10,7 @@ _Values_host_name=`kubectl get configmaps cluster-config -o jsonpath='{.data.hos
 
 function init() {
     [ "${_Values_server_arch}" = "-arm64v8" ] && _Values_hub="--hub=docker.io/querycapistio" && echo "arm64 detected"
-    istioctl operator init ${_Values_hub} --tag=1.12.1
+    istioctl operator init ${_Values_hub} --tag=1.11.4
     kubectl apply -f ./templates/operator${_Values_server_arch}.yaml
 }
 
