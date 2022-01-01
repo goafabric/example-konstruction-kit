@@ -4,10 +4,12 @@ COMMAND=$1
 
 if [ "${COMMAND}" = "init" ]
 then
-    ./namespace-manager create
+    kubectl apply -f ./templates
+#    ./namespace-manager create
 elif [ "${COMMAND}" = "prune-force" ]
 then
-    ./namespace-manager delete
+    kubectl delete -f ./templates
+ #   ./namespace-manager delete
 else
     echo Doing nothing !
 fi

@@ -1,0 +1,24 @@
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: example
+  labels:
+    istio-injection: enabled
+
+---
+
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: example-tenant-0
+  labels:
+    istio-injection: enabled
+
+---
+
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: example-tenant-5a2f
+  labels:
+    istio-injection: enabled
