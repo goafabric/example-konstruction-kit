@@ -1,5 +1,4 @@
 #!/bin/bash
-source ../../.values
 export COMMAND=$1
 
 function read_secret() {

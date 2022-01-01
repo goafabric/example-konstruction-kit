@@ -1,15 +1,13 @@
 #!/bin/bash
-source ../.values
 COMMAND=$1
 
 if [ "${COMMAND}" = "init" ]
 then
-    kubectl apply -f ./templates
-#    ./namespace-manager create
+    helm install namespaces ./
+
 elif [ "${COMMAND}" = "prune-force" ]
 then
-    kubectl delete -f ./templates
- #   ./namespace-manager delete
+    helm uninstall namespaces
 else
     echo Doing nothing !
 fi

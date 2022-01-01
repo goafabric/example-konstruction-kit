@@ -1,5 +1,4 @@
 #!/bin/bash
-source ../.values
 COMMAND=$1
 
 function input_secret() {
