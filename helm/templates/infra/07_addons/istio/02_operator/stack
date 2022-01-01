@@ -10,13 +10,15 @@ _Values_host_name=`kubectl get configmaps cluster-config -o jsonpath='{.data.hos
 
 function init() {
     [ "${_Values_server_arch}" = "-arm64v8" ] && _Values_hub="--hub=docker.io/querycapistio" && echo "arm64 detected"
-    istioctl operator init ${Values_hub} --tag=1.12.1
+    echo istioctl operator init ${_Values_hub} --tag=1.12.1
+    istioctl operator init ${_Values_hub} --tag=1.12.1
     kubectl apply -f ./templates/operator${_Values_server_arch}.yaml
 }
 
 function prune() {
     istioctl operator remove --force && kubectl delete namespace istio-operator
     istioctl manifest generate --set profile=minimal | kubectl delete --ignore-not-found=true -f -
+#    kubectl delete -f ./templates/operator${_Values_server_arch}.yaml
 }
 
 if   [ "${COMMAND}" = "init" ] ; then init;
