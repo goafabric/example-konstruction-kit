@@ -15,3 +15,12 @@ ingress:
 extraArgs:
   - --enable-skip-login
 
+metrics-server:
+  enabled: true
+  args:
+    - --kubelet-insecure-tls
+
+metricsScraper:
+  enabled: true
+
+
