@@ -21,8 +21,8 @@ function proxy() {
     -n `cat ./values.yaml | grep "namespace" | cut -d':' -f2 | xargs`
 }
 
-if   [ "${COMMAND}" = "up" ]; then up;
-elif [ "${COMMAND}" = "down" ]; then down;
+if   [ "${COMMAND}" = "init" ]; then up;
+elif [ "${COMMAND}" = "prune" ]; then down;
 elif [ "${COMMAND}" = "restart" ]; then down && up;
 elif [ "${COMMAND}" = "lint" ]; then helm lint ./;
 elif [ "${COMMAND}" = "proxy" ]; then proxy;
