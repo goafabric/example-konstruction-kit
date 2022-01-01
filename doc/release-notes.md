@@ -1,7 +1,6 @@
 #0.9.0
 - migration to helm charts
 - upgrade of person-service and callee-service to 1.2.0
-- upgrade to Istio 1.12.1
 
 #0.8.8
 - upgrade of kubernetes dashboard and metrics servers
