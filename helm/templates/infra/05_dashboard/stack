@@ -11,16 +11,12 @@ function up() {
     helm repo add kubernetes-dashboard https://kubernetes.github.io/dashboard/ > /dev/null
     helm repo add metrics-server https://kubernetes-sigs.github.io/metrics-server/ > /dev/null
 
-    helm install kubernetes-dashboard kubernetes-dashboard/kubernetes-dashboard --namespace kubernetes-dashboard --version 5.0.4 \
+    helm install kubernetes-dashboard kubernetes-dashboard/kubernetes-dashboard --namespace monitoring --version 5.0.4 \
     -f ./values.yaml --set ingress.hosts[0]=$_Values_host_name,ingress.tls[0].hosts[0]=$_Values_host_name
-
-    #helm install metrics-server metrics-server/metrics-server --namespace kube-system --version 3.7.0 \
-    #--set args[0]='--kubelet-insecure-tls'
 }
 
 function down() {
-    helm uninstall kubernetes-dashboard --namespace=kubernetes-dashboard
-    #helm uninstall metrics-server --namespace kube-system
+    helm uninstall kubernetes-dashboard --namespace=monitoring
 }
 
 function proxy() {

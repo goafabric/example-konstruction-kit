@@ -1,16 +1,6 @@
 kind: Namespace
 apiVersion: v1
 metadata:
-  name: kubernetes-dashboard
-  labels:
-    istio-injection: disabled
-    secret-sync: enabled
-
----
-
-kind: Namespace
-apiVersion: v1
-metadata:
   name: monitoring
   labels:
     istio-injection: disabled
@@ -26,12 +16,3 @@ metadata:
     istio-injection: disabled
     secret-sync: enabled
 
----
-
-kind: Namespace
-apiVersion: v1
-metadata:
-  name: istio-system
-  labels:
-    istio-injection: disabled
-    secret-sync: enabled
