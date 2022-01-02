@@ -9,3 +9,6 @@ external_services:
     use_grpc: true
 #  prometheus:
 #    url: 'http://prometheus-server.istio-system:80'
+
+server:
+  web_root: "/kiali"
