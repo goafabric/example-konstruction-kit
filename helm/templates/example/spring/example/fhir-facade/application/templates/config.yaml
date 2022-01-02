@@ -21,7 +21,7 @@ data:
   #zipkin/jaeger
   spring.zipkin.baseUrl: "http://zipkin.monitoring:9411"
 
-  spring.zipkin.service.name: "fhir-facade"
+  spring.zipkin.service.name: "{{ include "application.fullname" . }}"
   spring.sleuth.enabled: "true"
   spring.zipkin.enabled: "true"
 

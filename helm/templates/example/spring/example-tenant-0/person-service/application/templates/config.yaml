@@ -19,7 +19,7 @@ data:
   management.endpoints.web.exposure.include: "health,heapdump,circuitbreakers,prometheus"
 
   #zipkin/jaeger
-  spring.zipkin.service.name: "person-service-tenant-{{ .Values.tenantId }}"
+  spring.zipkin.service.name: "{{ include "application.fullname" . }}-tenant-{{ .Values.tenantId }}"
 
   spring.zipkin.baseUrl: "http://zipkin.monitoring:9411"
   spring.sleuth.enabled: "true"
