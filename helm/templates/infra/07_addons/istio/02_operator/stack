@@ -15,8 +15,8 @@ function init() {
 }
 
 function prune() {
-    istioctl operator remove --force && kubectl delete namespace istio-operator
     istioctl manifest generate --set profile=minimal | kubectl delete --ignore-not-found=true -f -
+    istioctl operator remove && kubectl delete namespace istio-operator
 #    kubectl delete -f ./templates/operator${_Values_server_arch}.yaml
 }
 
