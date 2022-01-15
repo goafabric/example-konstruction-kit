@@ -15,10 +15,9 @@ function init() {
 }
 
 function prune() {
-#    istioctl manifest generate --set profile=minimal | kubectl delete --ignore-not-found=true -f -
-    istioctl x uninstall --purge
-    istioctl operator remove && kubectl delete namespace istio-operator
-#    kubectl delete -f ./templates/operator${_Values_server_arch}.yaml
+    istioctl x uninstall -y --purge
+    kubectl delete namespace istio-operator && kubectl delete namespace istio-system
+#    istioctl operator remove && kubectl delete namespace istio-operator
 }
 
 if   [ "${COMMAND}" = "init" ] ; then init;
