@@ -1,4 +1,6 @@
 #creates a role binding that ties the ServiceAccount created by the helm shart with the existing ClusterRole from your Kubernetes
+#https://github.com/kubernetes/dashboard/blob/master/docs/user/access-control/README.md
+
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
