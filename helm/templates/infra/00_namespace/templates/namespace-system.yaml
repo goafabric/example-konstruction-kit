@@ -4,7 +4,7 @@ metadata:
   name: monitoring
   labels:
     istio-injection: disabled
-    secret-sync: enabled
+#    secret-sync: enabled
 
 ---
 
@@ -14,5 +14,5 @@ metadata:
   name: oidc
   labels:
     istio-injection: disabled
-    secret-sync: enabled
+#    secret-sync: enabled
 

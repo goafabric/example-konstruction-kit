@@ -4,7 +4,7 @@ metadata:
   name: example
   labels:
     istio-injection: enabled
-    secret-sync: enabled
+#    secret-sync: enabled
 
 ---
 
@@ -14,7 +14,7 @@ metadata:
   name: example-tenant-0
   labels:
     istio-injection: enabled
-    secret-sync: enabled
+#    secret-sync: enabled
 
 ---
 
@@ -24,4 +24,4 @@ metadata:
   name: example-tenant-5a2f
   labels:
     istio-injection: enabled
-    secret-sync: enabled
+#    secret-sync: enabled
