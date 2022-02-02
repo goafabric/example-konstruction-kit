@@ -10,7 +10,7 @@ _Values_host_name=`kubectl get configmaps cluster-config -o jsonpath='{.data.hos
 [ "${COMMAND}" = "profile" ] && _Values_volume_type_profiler="hostPath:" && _Values_volume_path_profiler="  path: /home/admin/jprofiler" && _Values_profiler_command='"-agentpath:/usr/share/profiler/bin/linux'${_Values_server_arch}'/libjprofilerti.so=port=1099",'
 
 function dynKubectl() {
-for filename in $2/*.yml; do
+for filename in $2/*.yaml; do
 eval "cat <<EOF
 $(<$filename)
 EOF
