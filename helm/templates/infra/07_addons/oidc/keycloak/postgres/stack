@@ -47,16 +47,9 @@ function wait_until_running() {
     while kubectl get pods -n ${_Release_namespace} | grep ${_Values_app_name} | grep Init > /dev/null ; do sleep 1; done
 }
 
-if   [ "${COMMAND}" = "init" ] && [ -f "./templates/deployment.yml" ]; then up;
-elif [ "${COMMAND}" = "restart" ] && [ -f "./templates/deployment.yml" ]; then down && up;
+if   [ "${COMMAND}" = "init" ]; then up;
+elif [ "${COMMAND}" = "restart" ]; then down && up;
 elif [ "${COMMAND}" = "down" ]; then down;
 elif [ "${COMMAND}" = "prune" ]; then down;
-
-elif [ "${COMMAND}" = "prov" ] && [ -d "./templates/pvc/" ]; then up;
-elif [ "${COMMAND}" = "import" ] && [ -f "./templates/job.yml" ]; then import;
-
-elif [ "${COMMAND}" = "jmx" ]; then down && forward 1099;
-elif [ "${COMMAND}" = "profile" ]; then down && forward 1099;
-elif [ "${COMMAND}" = "proxy" ]; then forward ${_Values_service_port};
 
 else echo Doing nothing !; fi
