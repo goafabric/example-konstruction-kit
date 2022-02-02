@@ -10,11 +10,11 @@ spec:
   - name: http
     port: 8080
     targetPort: 8080
-    nodePort: 30101
+    nodePort: 30100
   - name: https
     port: 8443
     targetPort: 8443
-    nodePort: 30102
+    nodePort: 30101
   selector:
     app: ${_Values_app_name}
   type: NodePort
