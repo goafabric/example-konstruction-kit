@@ -1,3 +1,5 @@
+#0.9.2
+
 #0.9.1
 - fixes for oidc / keycloak
 
