@@ -1,4 +1,5 @@
 #0.9.1
+- fixes for oidc / keycloak
 
 #0.9.0
 - migration to helm charts
