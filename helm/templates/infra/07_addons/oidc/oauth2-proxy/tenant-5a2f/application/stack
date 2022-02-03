@@ -9,7 +9,7 @@ kubectl version | grep "Server Version" | grep "linux/arm64" > /dev/null && _Val
 _Values_host_name=`kubectl get configmaps cluster-config -o jsonpath='{.data.hostname}' -n default` && [ -z "$_Values_host_name" ] && echo "Hostname is empty" && exit
 
 function dynKubectl() {
-for filename in $2/*.yml; do
+for filename in $2/*.yaml; do
 eval "cat <<EOF
 $(<$filename)
 EOF

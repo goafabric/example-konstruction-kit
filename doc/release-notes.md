@@ -1,3 +1,6 @@
+#0.9.1
+- fixes for oidc / keycloak
+
 #0.9.0
 - migration to helm charts
 - upgrade of person-service and callee-service to 1.2.0
