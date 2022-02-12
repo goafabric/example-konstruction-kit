@@ -1,4 +1,5 @@
 #0.9.2
+- update to kubernetes-dashboard 2.5.0
 
 #0.9.1
 - fixes for oidc / keycloak
