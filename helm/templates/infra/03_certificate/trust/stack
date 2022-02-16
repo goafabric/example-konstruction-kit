@@ -1,0 +1,12 @@
+#!/bin/bash
+export COMMAND=$1
+
+if [ "${COMMAND}" = "init" ]
+then
+    ./secret-manager create
+elif [ "${COMMAND}" = "prune" ]
+then
+    ./secret-manager delete
+else
+    echo Doing nothing !
+fi
