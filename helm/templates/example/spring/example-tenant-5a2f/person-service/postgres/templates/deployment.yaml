@@ -53,6 +53,22 @@ spec:
             limits:
               cpu: "{{ .Values.resources.limits.cpu }}"
 
+          readinessProbe:
+            exec:
+              command: ['sh', '-c', 'pg_isready']
+            initialDelaySeconds: {{ .Values.readinessProbe.initialDelaySeconds }}
+            periodSeconds: 2
+            timeoutSeconds: 2
+            failureThreshold: 3
+
+          livenessProbe:
+            exec:
+              command: ['sh', '-c', 'pg_isready']
+            initialDelaySeconds: {{ .Values.readinessProbe.initialDelaySeconds }}
+            periodSeconds: 2
+            timeoutSeconds: 2
+            failureThreshold: 3
+
           volumeMounts:
             - mountPath: /var/lib/postgresql/data
               subPath: pgdata
