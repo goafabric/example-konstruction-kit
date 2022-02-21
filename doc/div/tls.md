@@ -11,6 +11,7 @@ openssl pkcs12 -export -in root.pem -inkey root.key -out root.p12
 curl https://kubernetes:8080
 
 curl --cacert /usr/share/truststore/root.pem https://callee-service-application:8080
+curl -u admin:admin --cacert /usr/share/truststore/root.pem https://kubernetes/callee/0
 
 #links
 https://www.baeldung.com/spring-boot-https-self-signed-certificate
