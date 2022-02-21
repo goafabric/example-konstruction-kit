@@ -36,5 +36,7 @@ data:
   adapter.calleeservice.url: "http://callee-service-application:8080"
 
 #  adapter.calleeservice.url: "https://kubernetes/callee/0"
+#  my.trust-store: "/usr/share/truststore/root.p12"
+#  my.trust-store-password: "goafabric"
 #  server.ssl.trust-store: "/usr/share/truststore/root.p12"
-#  server.ssl.trust-store.password: "goafabric"
+#  server.ssl.trust-store-password: "goafabric"
