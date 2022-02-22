@@ -33,10 +33,13 @@ data:
   database.provisioning.goals: ""
 
   #adapter
-#  adapter.calleeservice.url: "http://callee-service-application:8080"
 
-  adapter.calleeservice.url: "https://kubernetes/callee/0"
+  adapter.calleeservice.url: "https://callee-service-application:8080"
+  #adapter.calleeservice.url: "https://kubernetes/callee/0"
+
   my.trust-store: "classpath:truststore/root.p12"
+  my.trust-store-password: "goafabric"
+  
 #  my.trust-store: "/usr/share/truststore/root.p12"
 #  my.trust-store-password: "goafabric"
 #  server.ssl.trust-store: "/usr/share/truststore/root.p12"
