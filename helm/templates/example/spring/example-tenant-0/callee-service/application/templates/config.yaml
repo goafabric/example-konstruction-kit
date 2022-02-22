@@ -24,3 +24,6 @@ data:
   spring.zipkin.baseUrl: "http://zipkin.monitoring:9411"
   spring.sleuth.enabled: "true"
   spring.zipkin.enabled: "true"
+
+  server.ssl.key-store: "classpath:keystore/callee-service-application.p12"
+  server.ssl.key-store-password: "goafabric"
