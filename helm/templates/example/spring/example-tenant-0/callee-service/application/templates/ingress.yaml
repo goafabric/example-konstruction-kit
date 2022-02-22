@@ -11,7 +11,7 @@ metadata:
     nginx.ingress.kubernetes.io/x-forwarded-prefix: "{{- tpl (toYaml .Values.ingress.paths) . }}"
 
     nginx.ingress.kubernetes.io/enable-modsecurity: "true"
-    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+#    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
 
     # basic auth
     nginx.ingress.kubernetes.io/auth-type: "basic"
