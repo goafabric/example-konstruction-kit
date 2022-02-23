@@ -28,7 +28,7 @@ data:
   database.provisioning.goals: " "
 
   #adapter
-  adapter.calleeservice.url: "http://callee-service-application:8080"
+  adapter.calleeservice.url: "https://callee-service-application:8080"
 
   adapter.timeout: "10000"
   adapter.failureRate: "0.5"
