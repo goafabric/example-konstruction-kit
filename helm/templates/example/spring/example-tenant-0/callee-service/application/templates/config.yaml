@@ -26,8 +26,8 @@ data:
   spring.zipkin.enabled: "true"
 
   #ssl
-  {{ if eq .Values.readinessProbe.scheme "HTTPS" }}
+  {{ if .Values.readinessProbe.scheme }} {{ if eq .Values.readinessProbe.scheme "HTTPS" }}
   server.ssl.key-store: "/usr/share/truststore/callee-service-application.p12"
   server.ssl.key-store-password: "goafabric"
-  {{ end }}
+  {{ end }} {{ end }}
 
