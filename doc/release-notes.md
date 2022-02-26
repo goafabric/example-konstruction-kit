@@ -1,6 +1,7 @@
 #0.9.2
 - update to kubernetes-dashboard 2.5.0
 - trust store added
+- configurable ingress authentication added
 
 #0.9.1
 - fixes for oidc / keycloak
