@@ -25,5 +25,6 @@ data:
   spring.sleuth.enabled: "true"
   spring.zipkin.enabled: "true"
 
+  #ssl
   server.ssl.key-store: "/usr/share/truststore/callee-service-application.p12"
   server.ssl.key-store-password: "goafabric"
