@@ -20,7 +20,8 @@ resourcesAnnotations:
       memory: 16M
       cpu: 250m
 
-  args: ["-Xmx16M"]
+  args: ["-Xmx16M", "-Djavax.net.ssl.trustStore=/usr/share/truststore/root.p12","-Djavax.net.ssl.trustStorePassword=goafabric" ]
+
 
 readinessProbe:
   initialDelaySeconds: 1

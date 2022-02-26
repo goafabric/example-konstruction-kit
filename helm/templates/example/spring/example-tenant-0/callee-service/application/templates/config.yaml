@@ -24,3 +24,10 @@ data:
   spring.zipkin.baseUrl: "http://zipkin.monitoring:9411"
   spring.sleuth.enabled: "true"
   spring.zipkin.enabled: "true"
+
+  #ssl
+  {{ if .Values.readinessProbe.scheme }} {{ if eq .Values.readinessProbe.scheme "HTTPS" }}
+  server.ssl.key-store: "/usr/share/truststore/callee-service-application.p12"
+  server.ssl.key-store-password: "goafabric"
+  {{ end }} {{ end }}
+

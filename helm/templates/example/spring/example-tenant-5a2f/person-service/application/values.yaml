@@ -20,7 +20,9 @@ resourcesAnnotations:
       memory: 256M
       cpu: 250m
 
-  command: ["java", "-Xms256M", "-Xmx256M", "-cp", "/app/resources:/app/classes:/app/libs/*", "org.goafabric.personservice.Application"]
+  command: ["java", "-Xms256M", "-Xmx256M", "-cp", "/app/resources:/app/classes:/app/libs/*",
+            "-Djavax.net.ssl.trustStore=/usr/share/truststore/root.p12","-Djavax.net.ssl.trustStorePassword=goafabric",
+            "org.goafabric.personservice.Application"]
 
 nativeAnnotations:
   resources:
@@ -28,7 +30,7 @@ nativeAnnotations:
       memory: 64M
       cpu: 250m
 
-  args: ["-Xmx64M"]
+  args: ["-Xmx64M", "-Djavax.net.ssl.trustStore=/usr/share/truststore/root.p12","-Djavax.net.ssl.trustStorePassword=goafabric"]
 
 readinessProbe:
   initialDelaySeconds: 2

@@ -34,6 +34,3 @@ data:
 
   #adapter
   adapter.calleeservice.url: "http://callee-service-application:8080"
-
-#  my.trust-store: "/usr/share/truststore/root.p12"
-#  my.trust-store-password: "goafabric"
