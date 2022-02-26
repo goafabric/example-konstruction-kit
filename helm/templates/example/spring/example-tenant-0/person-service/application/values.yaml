@@ -4,6 +4,7 @@ tenantId: 0
 ingress:
   paths: /person/{{ .Values.tenantId }}
   enabled: true
+  authentication: basic
 
 image:
   repository: "goafabric/person-service"

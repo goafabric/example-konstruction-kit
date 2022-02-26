@@ -3,6 +3,7 @@ replicaCount: 1
 ingress:
   paths: /fhir
   enabled: true
+  authentication: basic
 
 image:
   repository: "goafabric/fhir-facade"
