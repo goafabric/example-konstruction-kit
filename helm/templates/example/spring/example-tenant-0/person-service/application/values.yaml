@@ -30,7 +30,7 @@ nativeAnnotations:
       memory: 64M
       cpu: 250m
 
-  args: ["-Xmx64M"]
+  args: ["-Xmx64M", "-Djavax.net.ssl.trustStore=/usr/share/truststore/root.p12","-Djavax.net.ssl.trustStorePassword=goafabric", "-Djavax.net.ssl.trustStoreType=pkcs12"]
 
 readinessProbe:
   initialDelaySeconds: 2
