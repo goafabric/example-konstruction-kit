@@ -1,0 +1,19 @@
+#!/bin/bash
+COMMAND=$1
+_Values_host_name=$2
+
+function create() {
+    cp ../root/config/* ./config
+    openssl pkcs12 -export -in config/root.pem -inkey config/root.key -out config/root.p12 -passin pass:kubernetes -passout pass:goafabric
+    rm config/root.key
+}
+
+if [ "${COMMAND}" = "create" ]
+then
+    create
+elif [ "${COMMAND}" = "delete" ]
+then
+    echo Doing nothing !
+else
+    echo Doing nothing !
+fi

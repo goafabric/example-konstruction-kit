@@ -3,6 +3,7 @@ export COMMAND=$1
 
 if [ "${COMMAND}" = "init" ]
 then
+    ./example-certs-manager create
     ./secret-manager create
 elif [ "${COMMAND}" = "prune" ]
 then
