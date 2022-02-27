@@ -12,6 +12,8 @@ curl --cacert /usr/share/truststore/example-root.pem https://callee-service-appl
 
 curl -u admin:admin --cacert /usr/share/truststore/example-root.pem https://kubernetes/callee/0
 
+curl -ik --cert ./config/client.pem  --key ./config/client.key https://kubernetes:50900
+
 #links
 https://www.baeldung.com/spring-boot-https-self-signed-certificate
 https://www.baeldung.com/x-509-authentication-in-spring-security
