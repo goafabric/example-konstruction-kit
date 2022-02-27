@@ -13,7 +13,7 @@ fi
 
 #variables
 export DAYS_VALID="365"
-export ROOT_FILE="../root/config/root"
+export ROOT_FILE="../../root/config/root"
 export SERVER_FILE="./config/client"
 
 # create key, won't ask for password because no encryption applied
