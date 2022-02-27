@@ -8,9 +8,9 @@ openssl pkcs12 -export -in server.pem -inkey server.key -out kubernetes.p12 -nam
 openssl pkcs12 -export -in root.pem -inkey root.key -out example-root.p12 -passin pass:kubernetes -passout pass:goafabric
 
 #curl
-curl --cacert /usr/share/truststore/root.pem https://callee-service-application:8080
+curl --cacert /usr/share/truststore/example-root.pem https://callee-service-application:8080
 
-curl -u admin:admin --cacert /usr/share/truststore/root.pem https://kubernetes/callee/0
+curl -u admin:admin --cacert /usr/share/truststore/example-root.pem https://kubernetes/callee/0
 
 #links
 https://www.baeldung.com/spring-boot-https-self-signed-certificate

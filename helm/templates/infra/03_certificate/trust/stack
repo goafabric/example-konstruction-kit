@@ -3,7 +3,8 @@ export COMMAND=$1
 
 if [ "${COMMAND}" = "init" ]
 then
-    ./example-certs-manager create
+    cp ../root/config/root.pem ./config/example-root.pem
+    cp ../root/config/root.p12 ./config/example-root.p12
     ./secret-manager create
 elif [ "${COMMAND}" = "prune" ]
 then
