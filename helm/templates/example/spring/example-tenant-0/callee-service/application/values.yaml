@@ -33,7 +33,7 @@ nativeAnnotations:
 
 readinessProbe:
   initialDelaySeconds: 2
-#  scheme: HTTPS
+  scheme: HTTPS
 
 service:
   type: ClusterIP

@@ -5,7 +5,7 @@ keytool -genkeypair -alias goafabric -keyalg RSA -keysize 2048 -storetype PKCS12
 openssl pkcs12 -export -in server.pem -inkey server.key -out kubernetes.p12 -name "goafabric" -passin pass:kubernetes -passout pass:goafabric
                                                      
 #convert root.pem -> p12
-openssl pkcs12 -export -in root.pem -inkey root.key -out root.p12 -passin pass:kubernetes -passout pass:goafabric
+openssl pkcs12 -export -in root.pem -inkey root.key -out example-root.p12 -passin pass:kubernetes -passout pass:goafabric
 
 #curl
 curl --cacert /usr/share/truststore/root.pem https://callee-service-application:8080
