@@ -14,36 +14,36 @@ fi
 #variables
 export DAYS_VALID="365"
 export ROOT_FILE="../../root/config/root"
-export SERVER_FILE="./config/client"
+export CLIENT_FILE="./config/client"
 
 # create key, won't ask for password because no encryption applied
 openssl genrsa\
-        -out ${SERVER_FILE}.key\
+        -out ${CLIENT_FILE}.key\
         4096
 
 echo signing ...
 
 # create signing request (csr)
 openssl req -new -sha512\
-        -key ${SERVER_FILE}.key\
-        -out ${SERVER_FILE}.csr\
+        -key ${CLIENT_FILE}.key\
+        -out ${CLIENT_FILE}.csr\
         -config config/san.cnf\
         -extensions SAN
 
 echo server cert
 # create end entity certificate
 openssl x509 -req -sha512 -days ${DAYS_VALID}\
-        -in ${SERVER_FILE}.csr\
+        -in ${CLIENT_FILE}.csr\
         -CA ${ROOT_FILE}.pem\
         -CAkey ${ROOT_FILE}.key\
-        -CAcreateserial -out ${SERVER_FILE}.pem\
+        -CAcreateserial -out ${CLIENT_FILE}.pem\
         -extfile config/san.cnf\
         -extensions SAN\
         -passin pass:kubernetes #this should be changed, because we have a hardcoded password here
 
 
 # remove csr
-rm ${SERVER_FILE}.csr
+rm ${CLIENT_FILE}.csr
 cp ./config/san.org ./config/san.cnf
 
 #convert
