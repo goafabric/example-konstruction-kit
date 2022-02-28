@@ -1,14 +1,11 @@
-#genereate p12
-keytool -genkeypair -alias goafabric -keyalg RSA -keysize 2048 -storetype PKCS12 -keystore goafabric.p12 -validity 3650
-
 #convert example konstruction kit server.pem -> p12
 openssl pkcs12 -export -in server.pem -inkey server.key -out kubernetes.p12 -name "goafabric" -passin pass:kubernetes -passout pass:goafabric
                                                      
 #convert root.pem -> p12
-openssl pkcs12 -export -in root.pem -inkey root.key -out example-root.p12 -passin pass:kubernetes -passout pass:goafabric
+openssl pkcs12 -export -in root.pem -inkey root.key -out example-root.p12 -passin pass:kubernetes -passout pass:kubernetes
 
-#convert p12 -> jks
-keytool -importkeystore -srckeystore example-client.p12 -srcstoretype pkcs12 -destkeystore example-client.jks -deststoretype jks
+#convert pem -> jks
+keytool -import -file client.pem -keystore example-client.jks -alias serverCA
 
 #curl
 curl --cacert /usr/share/truststore/example-root.pem https://callee-service-application:8080
