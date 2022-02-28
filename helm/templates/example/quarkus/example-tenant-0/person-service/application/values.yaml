@@ -21,7 +21,7 @@ resourcesAnnotations:
       memory: 16M
       cpu: 250m
 
-  args: ["-Xmx16M", "-Djavax.net.ssl.trustStore=/usr/share/truststore/example-root.p12","-Djavax.net.ssl.trustStorePassword=goafabric" ]
+  args: ["-Xmx16M", "-Djavax.net.ssl.trustStore=/usr/share/truststore/example-root.p12","-Djavax.net.ssl.trustStorePassword=kubernetes" ]
 
 
 readinessProbe:
