@@ -14,6 +14,8 @@ curl -u admin:admin --cacert /usr/share/truststore/example-root.pem https://kube
 
 curl -i --cert ./config/client.pem --key ./config/client.key https://kubernetes:50900
 
+curl -i --cert ./config/root.pem --key ./config/root.key https://kubernetes:50900
+
 #links
 https://www.baeldung.com/spring-boot-https-self-signed-certificate
 https://www.baeldung.com/x-509-authentication-in-spring-security
