@@ -7,6 +7,9 @@ openssl pkcs12 -export -in server.pem -inkey server.key -out kubernetes.p12 -nam
 #convert root.pem -> p12
 openssl pkcs12 -export -in root.pem -inkey root.key -out example-root.p12 -passin pass:kubernetes -passout pass:goafabric
 
+#convert p12 -> jks
+keytool -importkeystore -srckeystore example-client.p12 -srcstoretype pkcs12 -destkeystore example-client.jks -deststoretype jks
+
 #curl
 curl --cacert /usr/share/truststore/example-root.pem https://callee-service-application:8080
 
