@@ -23,3 +23,4 @@ curl -i --cert ./config/root.pem --key ./config/root.key https://kubernetes:5090
 https://www.baeldung.com/spring-boot-https-self-signed-certificate
 https://www.baeldung.com/x-509-authentication-in-spring-security
 https://baeldung-cn.com/spring-tls-setup
+https://blog.codecentric.de/en/2018/08/x-509-client-certificates-with-spring-security/
