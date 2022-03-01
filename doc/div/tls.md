@@ -6,12 +6,14 @@ openssl pkcs12 -export -in root.pem -inkey root.key -out example-root.p12 -passi
 
 #convert pem -> jks
 keytool -import -file client.pem -keystore example-client.jks -alias serverCA
+keytool -import -file root.pem -keystore root.jks -alias serverCA
 
-#curl
+#server cert
 curl --cacert /usr/share/truststore/example-root.pem https://callee-service-application:8080
 
 curl -u admin:admin --cacert /usr/share/truststore/example-root.pem https://kubernetes/callee/0
-
+                    
+#client cert
 curl -i --cert ./config/client.pem --key ./config/client.key https://kubernetes:50900
 
 curl -i --cert ./config/root.pem --key ./config/root.key https://kubernetes:50900
