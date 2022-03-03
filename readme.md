@@ -18,7 +18,7 @@
 
 #Examples
 - To start specific applications change to the folder representing the namespace (e.g. helm/templates/example)
-- And do "./stack up" and "/stack import"
+- And do "./stack up" 
 - To shut everything down do "./stack down"
 
 #Proxy
