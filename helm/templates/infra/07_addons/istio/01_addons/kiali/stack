@@ -5,7 +5,7 @@ PROFILE=$2
 HOST=`kubectl get configmaps cluster-config -o jsonpath='{.data.hostname}'`
 _Values_host_name=`kubectl get configmaps cluster-config -o jsonpath='{.data.hostname}' -n default` && [ -z "$_Values_host_name" ] && echo "Hostname is empty" && exit
 
-[ ! -f "/usr/local/bin/helm" ] && echo "helm not found in /usr/local/bin, cannot continue" && exit
+
 
 function dynKubectl() {
 for filename in $2/*.yaml; do
