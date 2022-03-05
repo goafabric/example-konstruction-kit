@@ -8,18 +8,12 @@ openssl pkcs12 -export -in root.pem -inkey root.key -out example-root.p12 -passi
 keytool -import -file client.pem -keystore example-client.jks -alias serverCA
 keytool -import -file root.pem -keystore root.jks -alias serverCA
 
-#server cert
+#curl with root/server cert
 curl --cacert /usr/share/truststore/example-root.pem https://callee-service-application:8080
-
 curl -u admin:admin --cacert /usr/share/truststore/example-root.pem https://kubernetes/callee/0
                     
-#client cert
+#curl with client cert
 curl -i --cert ./config/client.pem --key ./config/client.key https://kubernetes:50900
-
 curl -i --cert ./config/root.pem --key ./config/root.key https://kubernetes:50900
 
-#links
-https://www.baeldung.com/spring-boot-https-self-signed-certificate
-https://www.baeldung.com/x-509-authentication-in-spring-security
-https://baeldung-cn.com/spring-tls-setup
-https://blog.codecentric.de/en/2018/08/x-509-client-certificates-with-spring-security/
+
