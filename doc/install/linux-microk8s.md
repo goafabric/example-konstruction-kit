@@ -18,6 +18,7 @@ microk8s config > config (should be put to ~/.kube on client machine)
 #Change Deamonset
 The nginx-ingress deamonset has to be changed for the reverse proxy to work "--ingress-class=public => --ingress-class=nginx"
 
-#Port Forward
-sudo iptables -P FORWARD ACCEPT
-=> may be needed for som systems
+kubectl edit daemonset.apps/nginx-ingress-microk8s-controller -n ingress
+(i for insert mode, esc to exit, :w tro write, :qa to exit)
+
+kubectl rollout restart daemonset.apps/nginx-ingress-microk8s-controller -n ingress
