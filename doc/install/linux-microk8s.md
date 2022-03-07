@@ -15,9 +15,10 @@ sudo sh -c 'echo "#!/bin/bash \n microk8s kubectl "\$1" "\$2" "\$3" "\$4" "\$5" 
 #Client Kubectl
 microk8s config > config (should be put to ~/.kube on client machine)
 
-#Change Deamonset
-The nginx-ingress deamonset has to be changed for the reverse proxy to work "--ingress-class=public => --ingress-class=nginx"
+#Add NGINX Ingress
+07/addons/microk8s/stack init
 
-#Port Forward
-sudo iptables -P FORWARD ACCEPT
-=> may be needed for som systems
+#Change Deamonset to NGINX (does not seem to be needed if ingressClass is applied)
+kubectl edit daemonset.apps/nginx-ingress-microk8s-controller -n ingress
+(i for insert mode, esc to exit, :w tro write, :qa to exit)
+kubectl rollout restart daemonset.apps/nginx-ingress-microk8s-controller -n ingress
