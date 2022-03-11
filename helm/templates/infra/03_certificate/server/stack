@@ -10,7 +10,6 @@ function read_secret() {
       echo host ${_Values_host_name} reachable
     else
       echo host ${_Values_host_name} is not reachable, do have have entry inside /etc/hosts ?
-      exit
     fi
 
     _Values_host_name="${_Values_host_name:=kubernetes}"

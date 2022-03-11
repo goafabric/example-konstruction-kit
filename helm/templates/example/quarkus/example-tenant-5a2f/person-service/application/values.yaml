@@ -4,6 +4,7 @@ tenantId: 5a2f
 ingress:
   paths: /person/{{ .Values.tenantId }}
   enabled: true
+  authentication: basic
 
 image:
   repository: "goafabric/person-service-quarkus"
@@ -20,7 +21,7 @@ resourcesAnnotations:
       memory: 16M
       cpu: 250m
 
-  args: ["-Xmx16M"]
+  args: ["-Xmx16M", "-Djavax.net.ssl.trustStore=/usr/share/truststore/example-root.p12","-Djavax.net.ssl.trustStorePassword=kubernetes" ]
 
 readinessProbe:
   initialDelaySeconds: 1
@@ -31,5 +32,5 @@ service:
 
 initContainers:
   - name: check-db-ready
-    image: postgres:14.0
+    image: postgres:14.1
     command: ['sh', '-c','until pg_isready -h person-service-postgres -p 5432;do echo waiting for database; sleep 1; done;']

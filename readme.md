@@ -3,6 +3,8 @@
 - For local installations you need an entry in /etc/hosts like "127.0.0.1 kubernetes"
 - For https to work you need to import helm/templates/infra/infra/03_certificate/root/config/root.pem
 - You need a Helm3 command line tool, as well as kubectl if not provided by your Kubernetes System
+  - https://kubernetes.io/releases/download/
+  - https://helm.sh/docs/intro/install/
 
 #Installation
 - Go to "helm/templates/infra"
@@ -11,6 +13,7 @@
   - credentials
   - server name (for local installations just kubernetes)
   - the certificate password (also kubernetes)
+- Docker Desktop needs an extra Step for the Ingress (helm/templates/infra/07_addons/nginx-ingress-controller ./stack init)
 
 #Welcome
 - And that's basically it just navigate to http(s)://kubernetes/welcome and you see the Welcome Page
@@ -18,12 +21,11 @@
 
 #Examples
 - To start specific applications change to the folder representing the namespace (e.g. helm/templates/example)
-- And do "./stack up" and "/stack import"
+- And do "./stack up" 
 - To shut everything down do "./stack down"
 
 #Proxy
 - In case you need a localhost direct connection to your pod do "./stack proxy" (e.g. connecting with a frontend)
-- "./stack jmx" or "./stack profile" will give you the options to profile the app
 
 #Uninstall
 - Go to "helm/templates/infra"

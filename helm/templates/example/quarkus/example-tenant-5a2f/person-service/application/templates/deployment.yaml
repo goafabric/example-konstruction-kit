@@ -65,6 +65,7 @@ spec:
             httpGet:
               path: /actuator/health
               port: http
+              scheme: {{ .Values.readinessProbe.scheme | default "HTTP" }}
             initialDelaySeconds: {{ .Values.readinessProbe.initialDelaySeconds }}
             periodSeconds: 10
             timeoutSeconds: 10
@@ -73,6 +74,7 @@ spec:
             httpGet:
               path: /actuator/health
               port: http
+              scheme: {{ .Values.readinessProbe.scheme | default "HTTP" }}
             initialDelaySeconds: {{ .Values.readinessProbe.initialDelaySeconds }}
             periodSeconds: 10
             timeoutSeconds: 10
@@ -81,7 +83,13 @@ spec:
           volumeMounts:
             - mountPath: /usr/share/logs
               name: {{ include "application.fullname" . }}-applogs
+            - mountPath: /usr/share/truststore
+              name: {{ include "application.fullname" . }}-trust-store-volume
 
       volumes:
         - name: {{ include "application.fullname" . }}-applogs
           emptyDir: {}
+        - name: {{ include "application.fullname" . }}-trust-store-volume
+          secret:
+            secretName: trust-store-secret
+

@@ -4,6 +4,7 @@ tenantId: 5a2f
 ingress:
   paths: /callee/{{ .Values.tenantId }}
   enabled: true
+  authentication: basic
 
 image:
   repository: "goafabric/callee-service"
@@ -32,6 +33,8 @@ nativeAnnotations:
 
 readinessProbe:
   initialDelaySeconds: 2
+#  scheme: HTTPS
+
 
 service:
   type: ClusterIP

@@ -3,10 +3,11 @@ replicaCount: 1
 ingress:
   paths: /fhir
   enabled: true
+  authentication: basic
 
 image:
   repository: "goafabric/fhir-facade"
-  pullPolicy: IfNotPresent
+  pullPolicy: Always
   pullSecrets: 
 
 podAnnotations:
@@ -19,7 +20,7 @@ resourcesAnnotations:
       memory: 128M
       cpu: 250m
 
-  command: ["java", "-Xms128M", "-Xmx128M", "-cp", "/app/resources:/app/classes:/app/libs/*", "org.goafabric.example.fhir.Application"]
+  command: ["java", "-Xms128M", "-Xmx128M", "-cp", "/app/resources:/app/classes:/app/libs/*", "org.goafabric.fhir.Application"]
 
 readinessProbe:
   initialDelaySeconds: 2
