@@ -26,7 +26,6 @@
 
 #Proxy
 - In case you need a localhost direct connection to your pod do "./stack proxy" (e.g. connecting with a frontend)
-- "./stack jmx" or "./stack profile" will give you the options to profile the app
 
 #Uninstall
 - Go to "helm/templates/infra"
