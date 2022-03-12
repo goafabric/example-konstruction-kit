@@ -23,6 +23,10 @@ metadata:
     nginx.ingress.kubernetes.io/auth-signin: "https://$host/oauth2/$http_x_tenantid/start?rd=$escaped_request_uri"
     nginx.ingress.kubernetes.io/auth-url: "https://$host/oauth2/$http_x_tenantid/auth" #"http://oauth2-proxy-$http_x_tenantid-application.oidc.svc.cluster.local:4180/oauth2/$http_x_tenantid/auth"
     nginx.ingress.kubernetes.io/auth-response-headers: "x-auth-request-user, x-auth-request-email"
+    nginx.ingress.kubernetes.io/configuration-snippet: |
+      if ($http_x_tenantid = '') {
+          set $http_x_tenantid 0;
+      }
     {{ end }}
 
 spec:
