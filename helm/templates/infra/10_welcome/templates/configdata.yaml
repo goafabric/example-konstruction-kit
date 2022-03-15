@@ -150,6 +150,12 @@ data:
                         <a href="/oidc/auth/" target="_blank">
                             <img src="keycloak.png"/><span> Keycloak</span>
                         </a>
+                        <a href="/oidc/auth/realms/tenant-0/protocol/openid-connect/logout" target="_blank">
+                            <img src="actuator.png"/><span> Logout</span>
+                        </a>
+                        <a href="https://kubernetes/oauth2/0/sign_out" target="_blank">
+                            <img src="actuator.png"/><span> Logout</span>
+                        </a>
                     </li>
                 </ul>
             </div>
@@ -198,7 +204,7 @@ data:
     </html>
 kind: ConfigMap
 metadata:
-  creationTimestamp: "2022-03-11T10:20:49Z"
+  creationTimestamp: "2022-03-15T10:36:07Z"
   managedFields:
   - apiVersion: v1
     fieldsType: FieldsV1
@@ -221,8 +227,8 @@ metadata:
         f:index.html: {}
     manager: kubectl-create
     operation: Update
-    time: "2022-03-11T10:20:49Z"
+    time: "2022-03-15T10:36:07Z"
   name: welcome-board-data-files
   namespace: monitoring
-  resourceVersion: "690214"
-  uid: 38fc6985-adf4-45ff-af1c-679f7e0128c2
+  resourceVersion: "739615"
+  uid: 79b509f1-fd42-4f6d-9be1-e5892c67ca44
