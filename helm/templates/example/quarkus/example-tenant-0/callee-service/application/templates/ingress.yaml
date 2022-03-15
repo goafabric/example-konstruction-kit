@@ -25,6 +25,7 @@ metadata:
     nginx.ingress.kubernetes.io/auth-response-headers: "x-auth-request-user, x-auth-request-email"
     nginx.ingress.kubernetes.io/configuration-snippet: |
       if ($http_x_tenantid = '') { set $http_x_tenantid 0; }
+      location ~* "/actuator/health" { return 302 /welcome/fake_login.html?tenantId=$http_x-auth-request-email; }
     {{ end }}
 
 spec:
