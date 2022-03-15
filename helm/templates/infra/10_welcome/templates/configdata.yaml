@@ -16,30 +16,41 @@ data:
     <!DOCTYPE html>
     <html>
     <body>
-    <h1 class="title">Yo Baby2</h1>
+    <h1 class="title">Fake Login</h1>
 
     <script>
-    var url = "/oauth2/0/userinfo";
 
-    const xhr = new XMLHttpRequest();
-    xhr.open("GET", url);
+    function getUserInfo() {
+        var tenantId = "0"; //TODO
+        var url = "/oauth2/" + tenantId + "/userinfo";
 
-    xhr.setRequestHeader("Accept", "application/json");
-    xhr.setRequestHeader("Content-Type", "application/json");
+        const xhr = new XMLHttpRequest();
+        xhr.open("GET", url);
 
-    xhr.onreadystatechange = function () {
-       if (xhr.readyState === 4) {
-          console.log(xhr.status);
-          console.log(xhr.responseText);
-          var json = JSON.parse(xhr.responseText);
-          var email = json["email"]
-          var user = email.split('@')[0]
-          console.log(email)
-          console.log(user)
-       }};
+        xhr.setRequestHeader("Accept", "application/json");
+        xhr.setRequestHeader("Content-Type", "application/json");
 
-    xhr.send();
-    console.log('yo baby2')
+        xhr.onreadystatechange = function () {
+           if (xhr.readyState === 4) {
+              console.log(xhr.status);
+              console.log(xhr.responseText);
+              var json = JSON.parse(xhr.responseText);
+              var email = json["email"]
+              var user = email.split('@')[0]
+              console.log(email)
+              console.log(user)
+              login(user)
+           }};
+
+        xhr.send();
+    }
+
+    function login(user) {
+        console.log("logging in ...")
+        console.log(user)
+    }
+
+    getUserInfo()
     </script>
 
     </body>
@@ -236,7 +247,7 @@ data:
     </html>
 kind: ConfigMap
 metadata:
-  creationTimestamp: "2022-03-15T13:40:21Z"
+  creationTimestamp: "2022-03-15T14:04:17Z"
   managedFields:
   - apiVersion: v1
     fieldsType: FieldsV1
@@ -260,8 +271,8 @@ metadata:
         f:index.html: {}
     manager: kubectl-create
     operation: Update
-    time: "2022-03-15T13:40:21Z"
+    time: "2022-03-15T14:04:17Z"
   name: welcome-board-data-files
   namespace: monitoring
-  resourceVersion: "755768"
-  uid: 8ee9154e-a427-4149-a1a0-cbde9f61ce14
+  resourceVersion: "758148"
+  uid: a3e630ec-6e63-426c-9adb-9a40e35afae4
