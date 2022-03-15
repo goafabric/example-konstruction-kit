@@ -20,11 +20,13 @@ function getUserInfo() {
           console.log(xhr.status);
           console.log(xhr.responseText);
           var json = JSON.parse(xhr.responseText);
-          var email = json["email"]
-          var user = email.split('@')[0]
-          console.log(email)
-          console.log(user)
-          login(user)
+          if (json != "") {
+              var email = json["email"]
+              var user = email.split('@')[0]
+              console.log(email)
+              console.log(user)
+              login(user)
+          }
        }};
 
     xhr.send();
