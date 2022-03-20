@@ -35,11 +35,13 @@ data:
               console.log(xhr.status);
               console.log(xhr.responseText);
               var json = JSON.parse(xhr.responseText);
-              var email = json["email"]
-              var user = email.split('@')[0]
-              console.log(email)
-              console.log(user)
-              login(user)
+              if (json != "") {
+                  var email = json["email"]
+                  var user = email.split('@')[0]
+                  console.log(email)
+                  console.log(user)
+                  login(user)
+              }
            }};
 
         xhr.send();
@@ -247,32 +249,8 @@ data:
     </html>
 kind: ConfigMap
 metadata:
-  creationTimestamp: "2022-03-15T14:04:17Z"
-  managedFields:
-  - apiVersion: v1
-    fieldsType: FieldsV1
-    fieldsV1:
-      f:binaryData:
-        .: {}
-        f:actuator.png: {}
-        f:callee.png: {}
-        f:country.png: {}
-        f:fhir.png: {}
-        f:grafana.png: {}
-        f:jaeger.png: {}
-        f:keycloak.png: {}
-        f:kiali.png: {}
-        f:kubernetes.png: {}
-        f:linkerd.png: {}
-        f:swagger.png: {}
-      f:data:
-        .: {}
-        f:fake_login.html: {}
-        f:index.html: {}
-    manager: kubectl-create
-    operation: Update
-    time: "2022-03-15T14:04:17Z"
+  creationTimestamp: "2022-03-20T08:12:41Z"
   name: welcome-board-data-files
   namespace: monitoring
-  resourceVersion: "758148"
-  uid: a3e630ec-6e63-426c-9adb-9a40e35afae4
+  resourceVersion: "791430"
+  uid: 8c6394bd-66d9-4504-bf98-d3aaa51d876b
