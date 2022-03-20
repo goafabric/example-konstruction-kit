@@ -13,7 +13,6 @@
   - credentials
   - server name (for local installations just kubernetes)
   - the certificate password (also kubernetes)
-- Docker Desktop needs an extra Step for the Ingress (helm/templates/infra/07_addons/nginx-ingress-controller ./stack init)
 
 #Welcome
 - And that's basically it just navigate to http(s)://kubernetes/welcome and you see the Welcome Page
