@@ -10,11 +10,11 @@ data:
   #PROXY
   OAUTH2_PROXY_PROVIDER: "keycloak"
   OAUTH2_PROXY_CLIENT_ID: "oauth2-proxy"
-  OAUTH2_PROXY_LOGIN_URL: "https://${_Values_host_name}/oidc/auth/realms/tenant-${_Values_tenant_id}/protocol/openid-connect/auth"
-  OAUTH2_PROXY_REDEEM_URL: "http://keycloak-application.oidc:8080/auth/realms/tenant-${_Values_tenant_id}/protocol/openid-connect/token"
-  OAUTH2_PROXY_PROFILE_URL: "http://keycloak-application.oidc:8080/auth/realms/tenant-${_Values_tenant_id}/protocol/openid-connect/userinfo"
-  OAUTH2_PROXY_VALIDATE_URL: "http://keycloak-application.oidc:8080/auth/realms/tenant-${_Values_tenant_id}/protocol/openid-connect/userinfo"
-  OAUTH2_PROXY_SCOPE: "openid"
+
+  OAUTH2_PROXY_REDIRECT_URL: "https://${_Values_host_name}/oauth2/${_Values_tenant_id}/callback"
+  OAUTH2_PROXY_OIDC_ISSUER_URL: "http://kubernetes/oidc/auth/realms/tenant-0"
+
+#  OAUTH2_PROXY_SCOPE: "openid"
 
 ---
 
