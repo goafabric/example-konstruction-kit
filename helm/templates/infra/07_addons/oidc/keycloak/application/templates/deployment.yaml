@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: ${_Values_app_name}
-        image: simaofsilva/keycloak:15.1.0 #svefors/keycloak-x:12.0.2
+        image: simaofsilva/keycloak:17.0.1 #svefors/keycloak-x:12.0.2
 
         ports:
         - name: http
