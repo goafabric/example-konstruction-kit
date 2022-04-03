@@ -33,5 +33,4 @@ spec:
             - --reverse-proxy=true
             - --set-xauthrequest=true
             - --proxy-prefix=/${_Values_ingress_name}
-            - --ssl-insecure-skip-verify=true
             - --insecure-oidc-allow-unverified-email
