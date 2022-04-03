@@ -8,7 +8,7 @@ data:
   TZ: Europe/Berlin
 
   PROXY_ADDRESS_FORWARDING: "true"
-  KEYCLOAK_FRONTEND_URL: "http://${_Values_host_name}/${_Values_ingress_name}/auth"
+  KEYCLOAK_FRONTEND_URL: "https://${_Values_host_name}/${_Values_ingress_name}/auth"
 
   #database
   DB_VENDOR: "POSTGRES"
