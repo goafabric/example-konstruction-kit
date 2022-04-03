@@ -2,6 +2,7 @@
 - infra structure changes
 - upgrade to istio 1.13.2, kiali 1.47.0
 - upgrade to jaeger 1.32.0
+- upgrade to OauthProxy 7.2.0, Keycloak 17.0.1
 
 #0.9.2
 - update to kubernetes-dashboard 2.5.0
