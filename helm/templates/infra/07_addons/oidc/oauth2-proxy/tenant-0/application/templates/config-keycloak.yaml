@@ -15,7 +15,7 @@ data:
   OAUTH2_PROXY_OIDC_ISSUER_URL: "https://${_Values_host_name}/oidc/auth/realms/tenant-${_Values_tenant_id}"
 #  OAUTH2_PROXY_OIDC_ISSUER_URL: "http://keycloak-application.oidc:8080/auth/realms/tenant-${_Values_tenant_id}"
 
-  OAUTH2_PROXY_SCOPE: "openid"
+#  OAUTH2_PROXY_SCOPE: "openid"
 
 ---
 
