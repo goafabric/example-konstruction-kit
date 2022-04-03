@@ -8,7 +8,7 @@ data:
   TZ: Europe/Berlin
 
   #PROXY
-  OAUTH2_PROXY_PROVIDER: "keycloak"
+  OAUTH2_PROXY_PROVIDER: "keycloak-oidc"
   OAUTH2_PROXY_CLIENT_ID: "oauth2-proxy"
 
   OAUTH2_PROXY_REDIRECT_URL: "https://${_Values_host_name}/oauth2/${_Values_tenant_id}/callback"
