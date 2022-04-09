@@ -135,11 +135,8 @@
                     <a href="/oidc/auth/" target="_blank">
                         <img src="keycloak.png"/><span> Keycloak</span>
                     </a>
-                    <a href="/oidc/auth/realms/tenant-0/protocol/openid-connect/logout" target="_blank">
-                        <img src="actuator.png"/><span> Logout</span>
-                    </a>
-                    <a href="https://kubernetes/oauth2/0/sign_out" target="_blank">
-                        <img src="actuator.png"/><span> Logout</span>
+                    <a id="logout" onclick="logout()">
+                    <img src="actuator.png" onclick="logout()"/><span> Logout</span>
                     </a>
                 </li>
             </ul>
@@ -185,5 +182,30 @@
         </div>
     </div>
 </div>
+
+<script>
+
+function logout() {
+    logoutByTenant("0");
+    logoutByTenant("5a2f");
+}
+
+function logoutByTenant(tenantId) {
+    doRequest("/oauth2/" + tenantId + "/sign_out");
+    doRequest("/oidc/auth/realms/tenant-" + tenantId + "/protocol/openid-connect/logout");
+}
+
+function doRequest(url) {
+    const xhr = new XMLHttpRequest();
+    xhr.open("GET", url);
+    xhr.onreadystatechange = function () {
+       if (xhr.readyState === 4) { console.log(xhr.responseText); }
+    }
+    xhr.send();
+}
+
+
+</script>
+
 </body>
 </html>
