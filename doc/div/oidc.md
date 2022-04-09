@@ -2,7 +2,7 @@
 clear
 export realm=tenant-0
 export access_token=$(\
-curl -s -X POST https://kubernetes-dev.eos.cloud.c3.cgm.ag/oidc/auth/realms/$realm/protocol/openid-connect/token \
+curl -s -X POST https://kubernetes/oidc/auth/realms/$realm/protocol/openid-connect/token \
 -H "Content-Type: application/x-www-form-urlencoded" \
 -d "username=user0" \
 -d "password=user0" \
