@@ -3,7 +3,7 @@
 - upgrade to istio 1.13.2, kiali 1.47.0
 - upgrade to jaeger 1.32.0
 - upgrade to OauthProxy 7.2.1, Keycloak 17.0.1
-- upgrade of all Service Versions
+- upgrade of all Service Versions to latest Spring / Quarkus versions + OauthProxy Support
 
 #0.9.2
 - update to kubernetes-dashboard 2.5.0
