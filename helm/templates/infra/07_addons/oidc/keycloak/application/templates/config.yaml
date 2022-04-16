@@ -11,8 +11,7 @@ data:
 #  KEYCLOAK_FRONTEND_URL: "https://${_Values_host_name}/${_Values_ingress_name}/auth"
 
   #database
-  DB_VENDOR: "POSTGRES"
-  DB_ADDR: "keycloak-postgres"
+  KC_DB_URL: "jdbc:postgresql://keycloak-postgres/keycloak"
 
 ---
 
@@ -31,6 +30,6 @@ data:
   KEYCLOAK_ADMIN_PASSWORD: "YWRtaW4="
 
   #database user
-  DB_USER: "a2V5Y2xvYWs="
-  DB_PASSWORD: "a2V5Y2xvYWs="
+  KC_DB_USERNAME: "a2V5Y2xvYWs="
+  KC_DB_PASSWORD: "a2V5Y2xvYWs="
 
