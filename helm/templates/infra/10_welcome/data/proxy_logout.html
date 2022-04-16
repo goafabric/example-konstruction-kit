@@ -19,7 +19,6 @@ function logout() {
 }
 
 function logoutByTenant(tenantId) {
-    doRequest("/ais/services/cgm/helix/mib/server/Session/logout");
     doRequest("/oauth2/" + tenantId + "/sign_out");
     doRequest("/oidc/auth/realms/tenant-" + tenantId + "/protocol/openid-connect/logout");
 }
