@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h1 class="title">Logout ...</h1>
+
+<script>
+
+function logout() {
+    const params = new URLSearchParams(window.location.search)
+    const tenant = params.get('tenant')
+
+    if (tenant == null || tenant === "") {
+        document.write("Error: No tenant provided !")
+        console.log("no tenant provided")
+        return
+    }
+
+    logoutByTenant(tenant);
+}
+
+function logoutByTenant(tenantId) {
+    doRequest("/oauth2/" + tenantId + "/sign_out");
+    doRequest("/oidc/auth/realms/tenant-" + tenantId + "/protocol/openid-connect/logout");
+}
+
+function doRequest(url) {
+    const xhr = new XMLHttpRequest();
+    xhr.open("GET", url);
+    xhr.onreadystatechange = function () {
+       if (xhr.readyState === 4) { console.log(xhr.responseText); }
+    }
+    xhr.send();
+}
+
+logout()
+</script>
+
+</body>
+</html>

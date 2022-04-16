@@ -11,7 +11,7 @@ spec:
     enableTracing: true
     defaultConfig:
       tracing:
-#        sampling: 100
+        sampling: 100
         zipkin:
           address: zipkin.monitoring:9411
   values:
