@@ -183,29 +183,5 @@
     </div>
 </div>
 
-<script>
-
-function logout() {
-    logoutByTenant("0");
-    logoutByTenant("5a2f");
-}
-
-function logoutByTenant(tenantId) {
-    doRequest("/oauth2/" + tenantId + "/sign_out");
-    doRequest("/oidc/auth/realms/tenant-" + tenantId + "/protocol/openid-connect/logout");
-}
-
-function doRequest(url) {
-    const xhr = new XMLHttpRequest();
-    xhr.open("GET", url);
-    xhr.onreadystatechange = function () {
-       if (xhr.readyState === 4) { console.log(xhr.responseText); }
-    }
-    xhr.send();
-}
-
-
-</script>
-
 </body>
 </html>
