@@ -1,3 +1,5 @@
+#0.9.4
+
 #0.9.3
 - infra structure changes
 - upgrade to istio 1.13.2, kiali 1.47.0
