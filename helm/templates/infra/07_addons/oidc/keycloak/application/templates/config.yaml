@@ -12,7 +12,7 @@ data:
 #  KC_HTTP_RELATIVE_PATH: "oidc"
 
   #database
-#  KC_DB_URL: "jdbc:postgresql://keycloak-postgres/keycloak"
+  KC_DB_URL: "jdbc:postgresql://keycloak-postgres/keycloak"
 
 ---
 
