@@ -1,4 +1,4 @@
-                                                                             #bearer token (vs authorization code flow)
+# login                                                                             #bearer token (vs authorization code flow)
 clear
 export realm=tenant-0
 export access_token=$(\
@@ -12,16 +12,20 @@ curl -s -X POST https://kubernetes/oidc/auth/realms/$realm/protocol/openid-conne
 )
 echo access token is: $access_token
 
-#userinfo
+# userinfo
 curl -v -H "Authorization: Bearer $access_token" "https://kubernetes/oidc/auth/realms/$realm/protocol/openid-connect/userinfo"
 
-#kubernetes service request
+# kubernetes service request
 curl -v "https://kubernetes/callee/0/callees/sayMyName?name=Heisenberg"
 curl -v -H "Authorization: Bearer $access_token" "https://kubernetes/callee/0/callees/sayMyName?name=Heisenberg"
 
-#localhost service request
+# localhost service request
 curl -v "http://localhost:50900/callees/sayMyName?name=Heisenberg"
 curl -v -H "Authorization: Bearer $access_token" -H "X-TenantId: 0" "http://localhost:50900/callees/sayMyName?name=Heisenberg"
 
-#localhost personservice
+# localhost personservice
 curl -v -H "Authorization: Bearer $access_token" "http://localhost:50800/persons/sayMyName?name=Heisenberg"
+              
+# keycloak
+docker run --rm --name keycloak -p 8080:8080 -e KEYCLOAK_ADMIN=admin -e KEYCLOAK_ADMIN_PASSWORD=admin \
+quay.io/keycloak/keycloak:17.0.1 start-dev
