@@ -8,7 +8,7 @@ metadata:
 #    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
 #    nginx.ingress.kubernetes.io/x-forwarded-prefix: "${_Values_ingress_name}"
 
-    nginx.ingress.kubernetes.io/rewrite-target: /\$2
+#    nginx.ingress.kubernetes.io/rewrite-target: /\$2
 
 spec:
   ingressClassName: nginx
@@ -20,7 +20,7 @@ spec:
     - host: ${_Values_host_name}
       http:
         paths:
-          - path: /${_Values_ingress_name}(/|$)(.*)
+          - path: /
             pathType: Prefix
             backend:
               service:
