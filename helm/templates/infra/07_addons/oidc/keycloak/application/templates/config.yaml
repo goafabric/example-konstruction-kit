@@ -9,7 +9,7 @@ data:
 
 #  PROXY_ADDRESS_FORWARDING: "true"
 #  KEYCLOAK_FRONTEND_URL: "https://${_Values_host_name}/${_Values_ingress_name}/auth"
-  KC_HTTP_RELATIVE_PATH: "oidc/auth"
+#  KC_HTTP_RELATIVE_PATH: "oidc"
 
   #database
 #  KC_DB_URL: "jdbc:postgresql://keycloak-postgres/keycloak"

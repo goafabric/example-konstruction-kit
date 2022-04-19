@@ -31,7 +31,7 @@ spec:
           - secretRef:
               name: ${_Values_app_name}-config-external
 
-        args: ["start-dev"]
+        args: ["start-dev --proxy=edge"]
 
 #        readinessProbe:
 #          httpGet:
