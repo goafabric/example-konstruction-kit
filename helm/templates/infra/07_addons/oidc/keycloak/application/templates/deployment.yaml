@@ -31,7 +31,7 @@ spec:
           - secretRef:
               name: ${_Values_app_name}-config-external
 
-        args: ["start-dev --auto-build --db=postgres --proxy=edge"]
+        args: ["start-dev --auto-build --proxy=edge"]
 
 #        readinessProbe:
 #          httpGet:
