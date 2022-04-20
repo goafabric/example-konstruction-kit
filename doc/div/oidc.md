@@ -28,4 +28,4 @@ curl -v -H "Authorization: Bearer $access_token" "http://localhost:50800/persons
 
 # keycloak
 docker run --rm --name keycloak -p 8080:8080 -e KEYCLOAK_ADMIN=admin -e KEYCLOAK_ADMIN_PASSWORD=admin \
-quay.io/keycloak/keycloak:17.0.1 start-dev
+-e  KC_HTTP_RELATIVE_PATH=oidc/auth quay.io/keycloak/keycloak:17.0.1 start-dev
