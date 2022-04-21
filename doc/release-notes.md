@@ -1,4 +1,5 @@
 #0.9.4
+- Upgrade to Keycloak 18.0.0
 
 #0.9.3
 - infra structure changes
