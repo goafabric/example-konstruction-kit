@@ -6,6 +6,8 @@ metadata:
   annotations:
     nginx.ingress.kubernetes.io/ssl-redirect: "true"
 
+    nginx.ingress.kubernetes.io/rewrite-target: /kiali/\$2
+
     # basic auth
 #    nginx.ingress.kubernetes.io/auth-type: basic
 #    nginx.ingress.kubernetes.io/auth-secret: authentication-secret
@@ -21,7 +23,7 @@ spec:
     - host: ${_Values_host_name}
       http:
         paths:
-          - path: /
+          - path: /kiali(/|$)(.*)
             pathType: Prefix
             backend:
               service:
