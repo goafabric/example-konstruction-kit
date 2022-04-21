@@ -7,6 +7,7 @@ data:
   #application
   TZ: Europe/Berlin
 
+  #div
   KC_HTTP_RELATIVE_PATH: "oidc/auth"
   KC_PROXY: "edge"
   KC_HOSTNAME_STRICT: "false"
