@@ -8,6 +8,8 @@ data:
   TZ: Europe/Berlin
 
   KC_HTTP_RELATIVE_PATH: "oidc/auth"
+  KC_PROXY: "edge"
+  KC_HOSTNAME_STRICT: "false"
 
   #database
   KC_DB: "postgres"

@@ -31,10 +31,10 @@ spec:
           - secretRef:
               name: ${_Values_app_name}-config-external
 
-        args: ["start --auto-build --hostname-strict=false --proxy=edge"]
+        args: ["start --auto-build"]
 
-#        readinessProbe:
-#          httpGet:
-#            path: /auth/realms/master
-#            port: 8080
-#          initialDelaySeconds: 5
+        readinessProbe:
+          httpGet:
+            path: /oidc/auth/realms/master
+            port: 8080
+          initialDelaySeconds: 5
