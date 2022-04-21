@@ -5,10 +5,9 @@ metadata:
   namespace: ${_Release_namespace}
   annotations:
     nginx.ingress.kubernetes.io/ssl-redirect: "false"
-#    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
-#    nginx.ingress.kubernetes.io/x-forwarded-prefix: "${_Values_ingress_name}"
+    #    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
 
-#    nginx.ingress.kubernetes.io/rewrite-target: /\$2
+    nginx.ingress.kubernetes.io/rewrite-target: /${_Values_ingress_name}/\$2
 
 spec:
   ingressClassName: nginx
@@ -20,12 +19,10 @@ spec:
     - host: ${_Values_host_name}
       http:
         paths:
-          - path: /
+          - path: /${_Values_ingress_name}(/|$)(.*)
             pathType: Prefix
             backend:
               service:
                 name: ${_Values_app_name}
                 port:
                   name: http
-           
-
