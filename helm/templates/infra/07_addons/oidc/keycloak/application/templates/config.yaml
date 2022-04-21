@@ -7,12 +7,14 @@ data:
   #application
   TZ: Europe/Berlin
 
-  PROXY_ADDRESS_FORWARDING: "true"
-  KEYCLOAK_FRONTEND_URL: "https://${_Values_host_name}/${_Values_ingress_name}/auth"
+  #div
+  KC_HTTP_RELATIVE_PATH: "oidc/auth"
+  KC_PROXY: "edge"
+  KC_HOSTNAME_STRICT: "false"
 
   #database
-  DB_VENDOR: "POSTGRES"
-  DB_ADDR: "keycloak-postgres"
+  KC_DB: "postgres"
+  KC_DB_URL: "jdbc:postgresql://keycloak-postgres/keycloak"
 
 ---
 
@@ -23,14 +25,10 @@ metadata:
   namespace: ${_Release_namespace}
 data:
   #keycloak admin user
-  KEYCLOAK_USER: "YWRtaW4="
-  KEYCLOAK_PASSWORD: "YWRtaW4="
-
-  #keycloak.x admin user
   KEYCLOAK_ADMIN: "YWRtaW4="
   KEYCLOAK_ADMIN_PASSWORD: "YWRtaW4="
 
   #database user
-  DB_USER: "a2V5Y2xvYWs="
-  DB_PASSWORD: "a2V5Y2xvYWs="
+  KC_DB_USERNAME: "a2V5Y2xvYWs="
+  KC_DB_PASSWORD: "a2V5Y2xvYWs="
 
