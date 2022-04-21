@@ -25,10 +25,6 @@ metadata:
   namespace: ${_Release_namespace}
 data:
   #keycloak admin user
-  KEYCLOAK_USER: "YWRtaW4="
-  KEYCLOAK_PASSWORD: "YWRtaW4="
-
-  #keycloak.x admin user
   KEYCLOAK_ADMIN: "YWRtaW4="
   KEYCLOAK_ADMIN_PASSWORD: "YWRtaW4="
 
