@@ -1,4 +1,4 @@
-# login                                                                             #bearer token (vs authorization code flow)
+# login                                                                             
 clear
 export realm=tenant-0
 export access_token=$(\
