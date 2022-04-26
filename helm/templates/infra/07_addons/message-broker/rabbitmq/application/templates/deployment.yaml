@@ -15,10 +15,6 @@ spec:
       annotations:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-        prometheus.io/scrape: "true"
-        prometheus.io/port: "{{ .Values.service.port }}"
-        prometheus.io/scheme: "http"
-        prometheus.io/path: "/actuator/prometheus"
       labels:
         {{- include "application.selectorLabels" . | nindent 8 }}
     spec:
@@ -38,6 +34,9 @@ spec:
           ports:
             - name: http
               containerPort: {{ .Values.service.port }}
+              protocol: TCP
+            - name: tcp
+              containerPort: 5672
               protocol: TCP
 
           envFrom:
