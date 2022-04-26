@@ -157,6 +157,8 @@ data:
                     </li>
                     <p></p>
                     <li>
+                        <a href="/event/" target="_blank">
+                            <img src="rabbitmq.png"/><span> Event Dispatcher</span>
                         </a>
                         <a href="/rabbitmq/" target="_blank">
                             <img src="rabbitmq.png"/><span> RabbitMQ</span>
@@ -264,8 +266,8 @@ data:
     </html>
 kind: ConfigMap
 metadata:
-  creationTimestamp: "2022-04-26T13:13:57Z"
+  creationTimestamp: "2022-04-26T13:28:57Z"
   name: welcome-board-data-files
   namespace: monitoring
-  resourceVersion: "336406"
-  uid: ad51edc9-d616-4798-b766-80cd941c3f93
+  resourceVersion: "338107"
+  uid: c326fb81-84dc-43fe-a752-912f4be9519a
