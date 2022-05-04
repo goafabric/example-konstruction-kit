@@ -67,4 +67,3 @@ spec:
       volumes:
         - name: {{ include "application.fullname" . }}-applogs
           emptyDir: {}
-
