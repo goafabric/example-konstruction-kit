@@ -247,7 +247,8 @@ data:
 
     function logoutByTenant(tenantId) {
         doRequest("/oauth2/" + tenantId + "/sign_out");
-        doRequest("/oidc/auth/realms/tenant-" + tenantId + "/protocol/openid-connect/logout");
+        //doRequest("/oidc/auth/realms/tenant-" + tenantId + "/protocol/openid-connect/logout");
+        window.location.href = "/oidc/auth/realms/tenant-" + tenantId + "/protocol/openid-connect/logout";
     }
 
     function doRequest(url) {
@@ -266,8 +267,8 @@ data:
     </html>
 kind: ConfigMap
 metadata:
-  creationTimestamp: "2022-05-02T13:53:52Z"
+  creationTimestamp: "2022-05-11T12:32:40Z"
   name: welcome-board-data-files
   namespace: monitoring
-  resourceVersion: "1727"
-  uid: 85e07543-ed3a-4145-8cde-4ee2410a08ef
+  resourceVersion: "2690"
+  uid: e956cc66-0940-419f-9d5a-40ac47372462
