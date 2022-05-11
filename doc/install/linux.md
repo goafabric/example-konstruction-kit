@@ -17,7 +17,7 @@ sudo usermod -aG sudo admin && sudo usermod -aG docker admin
 sudo docker run --rm hello-world
 
 #Portainer
-sudo docker volume create portainer_data && sudo docker run -d -p 8000:8000 -p 9000:9000 --name=portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce
+docker volume create portainer_data && docker run -d -p 8000:8000 -p 9000:9000 --name=portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:2.9.3
 
 #Geekbench
 wget https://cdn.geekbench.com/Geekbench-5.4.1-Linux.tar.gz, wget https://cdn.geekbench.com/Geekbench-5.4.0-LinuxARMPreview.tar.gz
