@@ -1,0 +1,64 @@
+version: "3.7"
+
+services:
+  keycloak:
+    container_name: ${_Values_root_name}-application
+    image:  ${_Values_image_repository}${_Values_image_native}:${_Values_image_tag}
+    restart: 'no'
+    ports:
+      - "${_Values_service_port}:8080"
+    command: ["start --auto-build"]
+    healthcheck:
+      test: "curl -f http://localhost:8080/oidc/auth/realms/master|| exit 1"
+      interval: 5s
+      timeout: 10s
+      retries: 5
+
+    networks:
+      - ${_Values_root_name}-net
+    environment:
+      #application
+      - TZ=Europe/Berlin
+      - JAVA_OPTS=-Xmx256m
+      - KC_HTTP_RELATIVE_PATH=oidc/auth
+      - KC_PROXY=edge
+      - KC_HOSTNAME_STRICT=false
+      - KC_HOSTNAME_STRICT_HTTPS=false
+
+      #database
+      - KC_DB=postgres
+      - KC_DB_URL=jdbc:postgresql://postgres/keycloak
+
+      - KEYCLOAK_ADMIN=admin
+      - KEYCLOAK_ADMIN_PASSWORD=admin
+      - KC_DB_USERNAME=keycloak
+      - KC_DB_PASSWORD=keycloak
+
+    depends_on:
+      - postgres
+
+  postgres:
+    container_name: ${_Values_root_name}-postgres
+    image: postgres:14.1
+    restart: 'no'
+    ports:
+      - 5432
+    environment:
+      - TZ=Europe/Berlin
+      - POSTGRES_USER=keycloak
+      - POSTGRES_PASSWORD=keycloak
+      - POSTGRES_DB=keycloak
+    command: postgres -c 'shared_buffers=128MB' -c 'max_connections=30' -c 'shared_preload_libraries=pg_stat_statements'
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - ${_Values_root_name}-net
+
+volumes:
+    tmp:
+    applogs:
+    pgdata:
+
+networks:
+  keycloak-net:
+    driver: bridge
