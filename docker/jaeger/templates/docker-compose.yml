@@ -14,6 +14,7 @@ services:
     environment:
       #application
       - TZ=Europe/Berlin
+      - COLLECTOR_ZIPKIN_HOST_PORT=:9411
 
 volumes:
     tmp:
