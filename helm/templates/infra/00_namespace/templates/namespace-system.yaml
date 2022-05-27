@@ -16,3 +16,12 @@ metadata:
     istio-injection: disabled
 #    secret-sync: enabled
 
+---
+
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: message-broker
+  labels:
+    istio-injection: disabled
+#    secret-sync: enabled
