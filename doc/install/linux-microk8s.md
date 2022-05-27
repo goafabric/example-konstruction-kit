@@ -17,8 +17,3 @@ microk8s config > config (should be put to ~/.kube on client machine)
 
 #Add NGINX Ingress
 07/addons/microk8s/stack init
-
-#Change Deamonset to NGINX (does not seem to be needed if ingressClass is applied)
-kubectl edit daemonset.apps/nginx-ingress-microk8s-controller -n ingress
-(i for insert mode, esc to exit, :w tro write, :qa to exit)
-kubectl rollout restart daemonset.apps/nginx-ingress-microk8s-controller -n ingress
