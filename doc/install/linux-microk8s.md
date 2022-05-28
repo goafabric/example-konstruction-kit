@@ -14,6 +14,3 @@ sudo sh -c 'echo "#!/bin/bash \n microk8s kubectl "\$1" "\$2" "\$3" "\$4" "\$5" 
 
 #Client Kubectl
 microk8s config > config (should be put to ~/.kube on client machine)
-
-#Add NGINX Ingress
-07/addons/microk8s/stack init
