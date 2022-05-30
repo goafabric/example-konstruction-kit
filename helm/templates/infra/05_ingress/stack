@@ -9,7 +9,6 @@ then
     exit
 else
     echo docker desktop detected, installing ingress controller ...
-    exit
 fi
 
 function up() {
