@@ -7,8 +7,8 @@ PROFILE=$2
 kubectl version | grep "Server Version" | grep "linux/arm64" > /dev/null && _Values_server_arch="-arm64v8"
 
 function up() {
-    helm repo update
     helm repo add appscode https://charts.appscode.com/stable/ > /dev/null
+    helm repo update
     helm install kubed appscode/kubed --version v0.12.0 --namespace kube-system
 }
 
