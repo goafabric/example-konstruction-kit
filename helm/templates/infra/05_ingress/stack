@@ -2,7 +2,7 @@
 COMMAND=$1
 PROFILE=$2
 
-if ! [kubectl get nodes | grep -q docker-desktop]
+if ! kubectl get nodes | grep -q docker-desktop
 then
     echo non docker desktop environment detected ... applying ingress class
     kubectl apply -f ./template/nginx-ingress-class.yaml
