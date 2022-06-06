@@ -4,6 +4,6 @@ description: person-service-postgres
 
 type: application
 
-version: 1.0.0
+version: 1.0.1
 
 appVersion: "14.1"

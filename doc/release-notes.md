@@ -1,3 +1,5 @@
+#1.0.1
+
 #1.0.0
 - upgrade to Keycloak 18.0.0
 - upgrade to istio 1.13.3
