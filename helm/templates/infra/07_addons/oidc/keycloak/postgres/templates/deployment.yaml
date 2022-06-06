@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
         - name: ${_Values_app_name}
-          image: "postgres:14.0"
+          image: "postgres:14.1"
           imagePullPolicy: IfNotPresent #Always
           ports:
             - name: transport

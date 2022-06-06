@@ -1,4 +1,10 @@
 #1.0.0
+- upgrade to Keycloak 18.0.0
+- upgrade to istio 1.13.3
+- upgrade to nginx-controller 1.2.0
+- upgrade to kubernetes-dashboard 2.5.1
+
+#0.9.3
 - infra structure changes
 - upgrade to istio 1.13.2, kiali 1.47.0
 - upgrade to jaeger 1.32.0

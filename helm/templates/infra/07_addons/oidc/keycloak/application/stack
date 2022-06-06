@@ -25,10 +25,17 @@ function down() {
     dynKubectl "delete --ignore-not-found" ./templates
 }
 
+function proxy() {
+    kubectl port-forward deployment/keycloak-application \
+    8080:8080 \
+    -n oidc
+}
 
 if   [ "${COMMAND}" = "init" ] ; then up;
 elif [ "${COMMAND}" = "restart" ] ; then down && up;
 elif [ "${COMMAND}" = "down" ]; then down;
 elif [ "${COMMAND}" = "prune" ]; then down;
+elif [ "${COMMAND}" = "proxy" ]; then proxy;
+
 
 else echo Doing nothing !; fi

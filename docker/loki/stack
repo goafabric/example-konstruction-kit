@@ -1,0 +1,16 @@
+#!/bin/bash
+export COMMAND=$1
+
+if [ "${COMMAND}" = "up" ]
+then
+    docker-compose -f ./templates/docker-compose.yml up -d
+elif [ "${COMMAND}" = "down" ]
+then
+    docker-compose -f ./templates/docker-compose.yml down
+elif [ "${COMMAND}" = "restart" ]
+then
+    docker-compose -f ./templates/docker-compose.yml down
+    docker-compose -f ./templates/docker-compose.yml up
+else
+    echo Doing nothing !
+fi
