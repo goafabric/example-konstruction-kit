@@ -1,4 +1,6 @@
 #1.0.1
+- welcome board nginx upgrade to 1.20.2
+- upgrade to istio 1.14.0 + kiali 1.50.0
 
 #1.0.0
 - upgrade to Keycloak 18.0.0

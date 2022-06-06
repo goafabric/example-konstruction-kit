@@ -4,7 +4,7 @@ metadata:
   namespace: istio-system
   name: example-istiocontrolplane
 spec:
-  hub: docker.io/querycapistio
+  hub: ghcr.io/resf/istio
   profile: minimal
 
   meshConfig:

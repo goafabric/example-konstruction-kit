@@ -18,7 +18,7 @@ done
 
 function up() {
     helm repo add kiali https://kiali.org/helm-charts > /dev/null
-    helm install kiali-server kiali/kiali-server --namespace istio-system --create-namespace --version 1.47.0 -f ./values.yaml
+    helm install kiali-server kiali/kiali-server --namespace istio-system --create-namespace --version 1.51.0 -f ./values.yaml
     dynKubectl apply ./ingress
 }
 
