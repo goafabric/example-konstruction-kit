@@ -1,4 +1,4 @@
-#0.9.3
+#1.0.0
 - infra structure changes
 - upgrade to istio 1.13.2, kiali 1.47.0
 - upgrade to jaeger 1.32.0
