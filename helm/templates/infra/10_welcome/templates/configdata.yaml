@@ -267,8 +267,8 @@ data:
     </html>
 kind: ConfigMap
 metadata:
-  creationTimestamp: "2022-06-06T06:55:36Z"
+  creationTimestamp: "2022-06-06T07:02:45Z"
   name: welcome-board-data-files
   namespace: monitoring
-  resourceVersion: "6228"
-  uid: d8f17191-87aa-4f40-b0ba-c7160347020a
+  resourceVersion: "7282"
+  uid: b60f1694-d502-430d-99b6-0af6c7574582
