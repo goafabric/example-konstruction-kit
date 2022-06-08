@@ -2,6 +2,7 @@
 - welcome board nginx upgrade to 1.20.2
 - upgrade to istio 1.14.0 + kiali 1.51.0
 - upgrade to jaeger 1.35.1
+- oidc auth switch added 
 
 #1.0.0
 - upgrade to Keycloak 18.0.0
