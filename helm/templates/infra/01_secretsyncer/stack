@@ -18,7 +18,6 @@ function down() {
 
 
 if   [ "${COMMAND}" = "init" ] ; then up;
-elif [ "${COMMAND}" = "restart" ] ; then down && up;
 elif [ "${COMMAND}" = "prune" ]; then down;
 
 else echo Doing nothing !; fi
