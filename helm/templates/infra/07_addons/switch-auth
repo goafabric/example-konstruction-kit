@@ -1,0 +1,19 @@
+#!/bin/bash
+export COMMAND=$1
+
+
+if [ "${COMMAND}" = "oidc" ]
+then
+    kubectl delete configmap authentication-config -n default
+    kubectl create configmap authentication-config -n default --from-literal=authentication=oidc
+    _Values_ingress_authentication=`kubectl get configmaps authentication-config -o jsonpath='{.data.authentication}' -n default`
+    echo authentication is: ${_Values_ingress_authentication}
+elif [ "${COMMAND}" = "basic" ]
+then
+    kubectl delete configmap authentication-config -n default
+    kubectl create configmap authentication-config -n default --from-literal=authentication=basic
+    _Values_ingress_authentication=`kubectl get configmaps authentication-config -o jsonpath='{.data.authentication}' -n default`
+    echo authentication is: ${_Values_ingress_authentication}
+else
+    echo Doing nothing !
+fi
