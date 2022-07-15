@@ -3,6 +3,7 @@
 - upgrade to istio 1.14.1 + kiali 1.51.0
 - upgrade to jaeger 1.35.1
 - upgrade to nginx controller 1.3.0
+- upgrade to rabbitmq 3.10.6
 - oidc auth switch added 
 
 #1.0.0
