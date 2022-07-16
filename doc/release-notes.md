@@ -1,7 +1,7 @@
 #1.0.1
 - welcome board nginx upgrade to 1.20.2
 - upgrade to istio 1.14.1 + kiali 1.51.0
-- upgrade to jaeger 1.35.1
+- upgrade to jaeger 1.36.0
 - upgrade to nginx controller 1.3.0
 - upgrade to rabbitmq 3.10.6
 - upgrade to postgres 14.4
