@@ -4,7 +4,7 @@
 - upgrade to jaeger 1.35.1
 - upgrade to nginx controller 1.3.0
 - upgrade to rabbitmq 3.10.6
-- oidc auth switch added 
+- oidc auth switch added + script fixes
 
 #1.0.0
 - upgrade to Keycloak 18.0.0
