@@ -6,6 +6,7 @@
 - upgrade to rabbitmq 3.10.6
 - upgrade to postgres 14.4
 - upgrade to Keycloak 18.0.2
+- upgrade to kubernetes-dashboard 2.6.0
 - oidc auth switch added + script fixes
 
 - all example services upgraded to latest 1.2.3
