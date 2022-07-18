@@ -17,7 +17,7 @@ function helm_install() {
 NAMESPACE=monitoring
 
 #welcome
-helm_install welcome-board 1.0.0
+helm_install welcome-board 1.0.3
 
 #jaeger
 #helm_install jaeger-all 1.24.0
