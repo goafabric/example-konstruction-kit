@@ -5,6 +5,8 @@
 - upgrade to OauthProxy 7.3.0
 - upgrade to Jaeger 1.37.0
 
+- uprade to istio 1.14.3 + kiali 1.54.0
+
 #1.0.1
 - welcome board nginx upgrade to 1.20.2
 - upgrade to istio 1.14.1 + kiali 1.51.0
