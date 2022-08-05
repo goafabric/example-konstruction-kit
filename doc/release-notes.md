@@ -1,6 +1,9 @@
 #1.0.3
+- upgrade of all Examples to version 2.0.0
+
 - upgrade to Keycloak 19.0.0
 - upgrade to OauthProxy 7.3.0
+- upgrade to Jaeger 1.37.0
 
 #1.0.1
 - welcome board nginx upgrade to 1.20.2
