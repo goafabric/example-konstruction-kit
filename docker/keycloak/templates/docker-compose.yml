@@ -7,7 +7,7 @@ services:
     restart: 'no'
     ports:
       - "${_Values_service_port}:8080"
-    command: ["start --auto-build"]
+    command: ["start"]
     healthcheck:
       test: "curl -f http://localhost:8080/oidc/auth/realms/master|| exit 1"
       interval: 5s
@@ -39,7 +39,7 @@ services:
 
   postgres:
     container_name: ${_Values_root_name}-postgres
-    image: postgres:14.1
+    image: postgres:14.4
     restart: 'no'
     ports:
       - 5432

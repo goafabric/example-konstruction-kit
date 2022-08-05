@@ -17,6 +17,14 @@ podAnnotations:
 resourcesAnnotations:
   resources:
     requests:
+      memory: 128M
+      cpu: 250m
+
+  command: ["java", "-Xms128M", "-Xmx128M", "-cp", "/app/resources:/app/classes:/app/libs/*", "org.goafabric.eventdispatcher.Application"]
+
+nativeAnnotations:
+  resources:
+    requests:
       memory: 16M
       cpu: 250m
 

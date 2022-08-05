@@ -4,6 +4,6 @@ description: rabbitmq
 
 type: application
 
-version: 3.9.15
+version: 3.10.6
 
-appVersion: "3.9.15-management"
+appVersion: "3.10.6-management"

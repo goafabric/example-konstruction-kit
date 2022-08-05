@@ -1,3 +1,24 @@
+#1.0.3
+- all example services upgraded to latest 2.0.0
+
+- upgrade to Keycloak 19.0.0
+- upgrade to OauthProxy 7.3.0
+- upgrade to Jaeger 1.37.0
+- upgrade to istio 1.14.3 + kiali 1.54.0
+
+#1.0.1
+- welcome board nginx upgrade to 1.20.2
+- upgrade to istio 1.14.1 + kiali 1.51.0
+- upgrade to jaeger 1.36.0
+- upgrade to nginx controller 1.3.0
+- upgrade to rabbitmq 3.10.6
+- upgrade to postgres 14.4
+- upgrade to Keycloak 18.0.2
+- upgrade to kubernetes-dashboard 2.6.0
+- oidc auth switch added + script fixes
+
+- all example services upgraded to latest 1.2.3
+
 #1.0.0
 - upgrade to Keycloak 18.0.0
 - upgrade to istio 1.13.3
