@@ -1,4 +1,5 @@
 # 1.0.4
+- compatibility with linkerd 2.12
 
 # 1.0.3
 - all example services upgraded to latest 2.0.0

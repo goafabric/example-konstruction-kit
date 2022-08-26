@@ -16,7 +16,8 @@ done
 }
 
 function init() {
-    linkerd install | kubectl apply -f -
+    linkerd install --crds | kubectl apply -f -
+    linkerd install --set proxyInit.runAsRoot=true | kubectl apply -f -
 }
 
 function prune() {
