@@ -22,7 +22,7 @@ function down() {
 }
 
 function proxy() {
-  open http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:https/proxy/ && kubectl proxy
+  open http://localhost:8001/api/v1/namespaces/monitoring/services/https:kubernetes-dashboard:https/proxy/ && kubectl proxy
 }
 
 
