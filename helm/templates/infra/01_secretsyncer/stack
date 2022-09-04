@@ -4,7 +4,7 @@ PROFILE=$2
 
 
 
-kubectl version | grep "Server Version" | grep "linux/arm64" > /dev/null && _Values_server_arch="-arm64v8"
+kubectl version --output=json | grep "linux/arm64" > /dev/null && _Values_server_arch="-arm64v8"
 
 function up() {
     helm repo add appscode https://charts.appscode.com/stable/ > /dev/null
