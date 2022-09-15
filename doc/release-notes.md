@@ -1,3 +1,5 @@
+# 1.0.5
+
 # 1.0.4
 - compatibility with linkerd 2.12
 - compatibility with kubernetes 1.25
