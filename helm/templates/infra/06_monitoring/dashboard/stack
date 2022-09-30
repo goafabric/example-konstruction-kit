@@ -10,7 +10,7 @@ _Values_host_name=`kubectl get configmaps cluster-config -o jsonpath='{.data.hos
 function up() {
     helm repo add kubernetes-dashboard https://kubernetes.github.io/dashboard/ > /dev/null
 
-    helm install kubernetes-dashboard kubernetes-dashboard/kubernetes-dashboard --namespace monitoring --version 5.7.0 \
+    helm install kubernetes-dashboard kubernetes-dashboard/kubernetes-dashboard --namespace monitoring --version 5.11.0 \
     -f ./values.yaml --set ingress.hosts[0]=$_Values_host_name,ingress.tls[0].hosts[0]=$_Values_host_name
 
     kubectl apply -f ./dashboard-admin.yaml
