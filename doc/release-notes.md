@@ -1,5 +1,6 @@
 # 1.0.5
 - upgrade to istio 1.15.1 + kiali 1.57.0
+- upgrade to Jaeger 1.38.0
 
 # 1.0.4
 - compatibility with linkerd 2.12
