@@ -2,6 +2,7 @@
 - upgrade to istio 1.15.1 + kiali 1.57.0
 - upgrade to Jaeger 1.38.0
 - upgrade to kubernetes-dashboard 2.7.0
+- upgrade to postgres 14.5                                           
 
 # 1.0.4
 - compatibility with linkerd 2.12
@@ -21,7 +22,7 @@
 - upgrade to jaeger 1.36.0
 - upgrade to nginx controller 1.3.0
 - upgrade to rabbitmq 3.10.6
-- upgrade to postgres 14.4
+- upgrade to postgres 14.5
 - upgrade to Keycloak 18.0.2
 - upgrade to kubernetes-dashboard 2.6.0
 - oidc auth switch added + script fixes
