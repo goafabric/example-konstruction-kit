@@ -117,7 +117,7 @@ data:
     </head>
     <body>
     <div class="box">
-        <h1 class="title">Welcome to the Example Cluster 1.0.3</h1>
+        <h1 class="title">Welcome to the Example Cluster 1.0.5</h1>
         <h2 class="subtitle">Your best course would be to tread lightly ...</h2>
 
         <div class="links-container">
@@ -267,8 +267,8 @@ data:
     </html>
 kind: ConfigMap
 metadata:
-  creationTimestamp: "2022-08-05T06:17:08Z"
+  creationTimestamp: "2022-11-07T11:28:14Z"
   name: welcome-board-data-files
   namespace: monitoring
-  resourceVersion: "29459"
-  uid: 26c6a1bd-e99f-4614-8ce1-9808214ea73e
+  resourceVersion: "40592"
+  uid: b7ef9fa8-14ca-4e21-869a-91582c1b0830

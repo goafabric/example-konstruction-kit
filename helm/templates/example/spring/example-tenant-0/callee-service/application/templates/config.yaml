@@ -19,15 +19,7 @@ data:
   management.endpoints.web.exposure.include: "health,heapdump,circuitbreakers,prometheus"
 
   #zipkin/jaeger
-  spring.zipkin.service.name: "{{ include "application.fullname" . }}-tenant-{{ .Values.tenantId }}"
-
-  spring.zipkin.baseUrl: "http://zipkin.monitoring:9411"
-  spring.sleuth.enabled: "true"
-  spring.zipkin.enabled: "true"
-
-  #ssl
-  {{ if .Values.readinessProbe.scheme }} {{ if eq .Values.readinessProbe.scheme "HTTPS" }}
-  server.ssl.key-store: "/usr/share/truststore/callee-service-application.p12"
-  server.ssl.key-store-password: "kubernetes"
-  {{ end }} {{ end }}
-
+  spring.application.name: "{{ include "application.fullname" . }}-tenant-{{ .Values.tenantId }}"
+  management.zipkin.tracing.endpoint: "http://zipkin.monitoring:9411/api/v2/spans"
+  management.tracing.sampling.probability: "1.0"
+  management.tracing.enabled: "true"
