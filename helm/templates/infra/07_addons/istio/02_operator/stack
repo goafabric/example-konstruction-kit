@@ -7,7 +7,7 @@ PROFILE=$2
 _Values_host_name=`kubectl get configmaps cluster-config -o jsonpath='{.data.hostname}' -n default` && [ -z "$_Values_host_name" ] && echo "Hostname is empty" && exit
 
 function init() {
-    istioctl operator init --tag=1.15.3
+    istioctl operator init --tag=1.16.0
     kubectl apply -f ./templates/operator${_Values_server_arch}.yaml
 }
 

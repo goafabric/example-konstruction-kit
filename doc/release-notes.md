@@ -1,5 +1,5 @@
 # 1.0.5
-- upgrade to istio 1.15.3 + kiali 1.59.0
+- upgrade to istio 1.16.0 + kiali 1.59.0
 - upgrade to Jaeger 1.38.0
 - upgrade to kubernetes-dashboard 2.7.0
 - upgrade to postgres 14.5                                           
