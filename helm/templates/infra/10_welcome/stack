@@ -3,7 +3,7 @@ COMMAND=$1
 
 function up() {
     kubectl create configmap welcome-board-data-files --namespace monitoring --from-file=./data/ -o yaml > ./templates/configdata.yaml \
-    && kubectl delete configmap welcome-board-data-files --namespace monitoring
+    && kubectl delete configmap welcome-board-data-files --namespace monitoring --create-namespace
 
     helm install \
     --set image.arch=`kubectl version --output=json | grep "linux/arm64" > /dev/null && echo "-arm64v8"` \
