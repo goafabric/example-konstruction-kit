@@ -4,7 +4,8 @@
 - upgrade to kubernetes-dashboard 2.7.0
 - upgrade to postgres 14.5
 
-- upgrade of all Spring Services to 3.0
+- upgrade of all Spring Services to 3.0.0
+- upgrade of all Quarkus Services to 2.0.2
 
 # 1.0.4
 - compatibility with linkerd 2.12
