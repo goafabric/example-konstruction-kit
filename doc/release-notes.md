@@ -1,8 +1,10 @@
 # 1.0.5
 - upgrade to istio 1.16.0 + kiali 1.59.0
-- upgrade to Jaeger 1.38.0
+- upgrade to Jaeger 1.39.0
 - upgrade to kubernetes-dashboard 2.7.0
-- upgrade to postgres 14.5                                           
+- upgrade to postgres 14.5
+
+- upgrade of all Spring Services to 3.0
 
 # 1.0.4
 - compatibility with linkerd 2.12
