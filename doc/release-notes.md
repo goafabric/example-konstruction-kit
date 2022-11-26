@@ -1,3 +1,5 @@
+# 1.0.6
+
 # 1.0.5
 - upgrade to istio 1.16.0 + kiali 1.59.0
 - upgrade to Jaeger 1.39.0
@@ -87,7 +89,7 @@
 - fhir facade quarkus added
 
 # 0.8.3
-- upgrade to latest person-service 1.0.5 and callee-service 1.0.7
+- upgrade to latest person-service 1.0.6 and callee-service 1.0.7
 
 # 0.8.2
 - upgrade to istio 1.10
