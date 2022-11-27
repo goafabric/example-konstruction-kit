@@ -128,7 +128,7 @@ function install() {
     install_certificate
     install_registry
 
-    #install_ingress
+    install_ingress
     install_dashboard
 
     if ! kubectl get secrets -n kube-system | grep -secret; then echo secret sync failed! cluster may not work correctly; fi
@@ -141,9 +141,10 @@ function uninstall() {
     uninstall_certificate
     uninstall_registry
 
-    uninstall_dashboard
     uninstall_ingress
+    uninstall_dashboard
 
+    echo removing namesaces .. this sometimes takes a moment
     kubectl delete ns ingress-nginx && kubectl delete ns monitoring
 }
 
