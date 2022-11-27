@@ -8,7 +8,7 @@ INGRESS_VERSION=4.2.3
 DASHBOARD_VERSION=5.11.0
 
 [ ! -f "/usr/local/bin/kubectl" ] && echo "kubectl not found in /usr/local/bin" && read -p "Press any key if you are stubborn enough to continue"
-[ ! -f "/usr/local/bin/helm" ] && echo "helm not found in /usr/local/bin" && read -p "Press any key if you are stubborn enough to continue"
+[ ! -f "/usr/local/bin/helm" ] && echo "helm not found in /usr/local/bin .. ok will do that for you" && curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 && chmod +x ./get_helm.sh && ./get_helm.sh && rm ./get_helm.sh
 
 function unpack_certs() {
     [ -d ./03_certificate ] && return
