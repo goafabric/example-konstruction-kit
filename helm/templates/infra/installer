@@ -107,18 +107,19 @@ function uninstall_certificate() {
     (cd ./03_certificate; ./stack prune; cd ..)
 }
 
-function uninstall_ingress() {
-    helm uninstall ingress-nginx --namespace ingress-nginx
-}
-
 function uninstall_registry() {
     for registry in ${REGISTRIES[@]}; do
         kubectl --namespace default delete secret --ignore-not-found docker-registry "$registry"-secret
     done
 }
 
+function uninstall_ingress() {
+    helm uninstall ingress-nginx --namespace ingress-nginx
+}
+
 function uninstall_dashboard() {
     helm uninstall kubernetes-dashboard --namespace=monitoring
+    kubectl delete clusterrolebinding kubernetes-dashboard
 }
 
 function install() {
@@ -145,7 +146,7 @@ function uninstall() {
     uninstall_dashboard
 
     echo removing namesaces .. this sometimes takes a moment
-    kubectl delete ns ingress-nginx && kubectl delete ns monitoring
+    kubectl delete ns monitoring #&& kubectl delete ns ingress-nginx
 }
 
 function dashboard() {
