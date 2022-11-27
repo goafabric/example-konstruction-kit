@@ -20,6 +20,11 @@ function install_authentication() {
     kubectl annotate secret authentication-secret kubed.appscode.com/sync="" --namespace default
 }
 
+function install_certificate() {
+    echo __installing server certificate
+    (cd ./03_certificate; ./stack init; cd ..)
+}
+
 function install_ingress() {
     echo __installing ingress controller ... this may take a moment ...
     if ! kubectl get nodes | grep -q docker-desktop; then echo no docker desktop detected, please install ingress controller yourself; return; fi
@@ -35,6 +40,11 @@ function uninstall_authentication() {
     kubectl delete secret --ignore-not-found authentication-secret --namespace default
 }
 
+function uninstall_certificate() {
+    echo __installing server certificate
+    (cd ./03_certificate; ./stack prune; cd ..)
+}
+
 function uninstall_ingress() {
     helm uninstall ingress-nginx --namespace ingress-nginx
 }
@@ -42,13 +52,15 @@ function uninstall_ingress() {
 function install() {
     install_secret_syncer
     install_authentication
+    install_certificate
     #install_ingress
-    echo yoo
+    echo finished ...
 }
 
 function uninstall() {
     uninstall_secret_syncer
     uninstall_authentication
+    uninstall_certificate
     uninstall_ingress
 }
 
