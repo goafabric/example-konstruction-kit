@@ -42,7 +42,7 @@ function uninstall_ingress() {
 function install() {
     install_secret_syncer
     install_authentication
-    install_ingress
+    #install_ingress
     echo yoo
 }
 
