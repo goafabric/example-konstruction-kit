@@ -73,9 +73,9 @@ function uninstall_registry() {
 function install() {
     install_secret_syncer
     install_authentication
-    #install_certificate
+    install_certificate
     install_registry
-    #install_ingress
+    install_ingress
 
     if ! kubectl get secrets -n kube-system | grep -secret; then echo secret sync failed! cluster may not work correctly; fi
     echo finished ...
