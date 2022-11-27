@@ -1,0 +1,6 @@
+#!/bin/bash
+./stack prune
+
+kubectl delete ns ingress-nginx
+kubectl delete ns monitoring
+kubectl get ns
