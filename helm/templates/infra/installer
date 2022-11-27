@@ -94,7 +94,7 @@ function install() {
     install_certificate
     install_registry
 
-    #install_ingress
+    install_ingress
     install_dashboard
 
     postcondition_check
