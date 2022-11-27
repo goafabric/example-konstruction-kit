@@ -1,6 +1,7 @@
 #!/bin/bash
 
-COMMAND=$1
+REGISTRIES=("registry-1.docker.io")
+
 CREDENTIALS='admin:$apr1$opP9IMT.$3sY/kXyTRUvYcYrvkrcM5.' #htpasswd -n admin
 
 [ ! -f "/usr/local/bin/kubectl" ] && echo "kubectl not found in /usr/local/bin" && read -p "Press any key if you are stubborn enough to continue"
@@ -12,7 +13,6 @@ function install_secret_syncer() {
     helm upgrade --install kubed appscode/kubed --version v0.12.0 --namespace kube-system --create-namespace > /dev/null
 }
 
-
 function install_authentication() {
     echo __installing basic authentication
     kubectl delete secret --ignore-not-found authentication-secret --namespace default
@@ -23,6 +23,20 @@ function install_authentication() {
 function install_certificate() {
     echo __installing server certificate
     (cd ./03_certificate; ./stack init; cd ..)
+}
+
+function install_registry() {
+    [ -z "$REGISTRIES" ] && return
+    echo We now need the credentials to login to the docker registry
+    read -p "email: " EMAIL < /dev/tty
+    read -s -p "password: " PASSWORD < /dev/tty
+
+    for registry in ${REGISTRIES[@]}; do
+        kubectl --namespace default delete secret --ignore-not-found docker-registry "$registry"-secret
+        kubectl --namespace default create secret docker-registry "$registry"-secret \
+                --docker-server=$registry --docker-username=$EMAIL --docker-password=$PASSWORD --docker-email=$EMAIL
+        kubectl annotate secret "$1"-secret kubed.appscode.com/sync="" --namespace default
+    done
 }
 
 function install_ingress() {
@@ -41,7 +55,6 @@ function uninstall_authentication() {
 }
 
 function uninstall_certificate() {
-    echo __installing server certificate
     (cd ./03_certificate; ./stack prune; cd ..)
 }
 
@@ -49,10 +62,17 @@ function uninstall_ingress() {
     helm uninstall ingress-nginx --namespace ingress-nginx
 }
 
+function uninstall_registry() {
+    for registry in ${REGISTRIES[@]}; do
+        kubectl --namespace default delete secret --ignore-not-found docker-registry "$registry"-secret
+    done
+}
+
 function install() {
     install_secret_syncer
     install_authentication
-    install_certificate
+    #install_certificate
+    install_registry
     #install_ingress
     echo finished ...
 }
@@ -61,10 +81,11 @@ function uninstall() {
     uninstall_secret_syncer
     uninstall_authentication
     uninstall_certificate
+    uninstall_registry
     uninstall_ingress
 }
 
-if   [ "${COMMAND}" = "init" ] ; then install;
-elif [ "${COMMAND}" = "prune" ] ; then uninstall;
+if   [ "$1" = "init" ] ; then install;
+elif [ "$1" = "prune" ] ; then uninstall;
 
 else echo Doing nothing !; fi
