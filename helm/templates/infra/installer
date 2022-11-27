@@ -1,0 +1,57 @@
+#!/bin/bash
+
+COMMAND=$1
+CREDENTIALS='admin:$apr1$opP9IMT.$3sY/kXyTRUvYcYrvkrcM5.' #htpasswd -n admin
+
+[ ! -f "/usr/local/bin/kubectl" ] && echo "kubectl not found in /usr/local/bin" && read -p "Press any key if you are stubborn enough to continue"
+[ ! -f "/usr/local/bin/helm" ] && echo "helm not found in /usr/local/bin" && read -p "Press any key if you are stubborn enough to continue"
+
+function install_secret_syncer() {
+    echo __installing secret syncer ...
+    helm repo add appscode https://charts.appscode.com/stable/ > /dev/null #&& helm repo update
+    helm upgrade --install kubed appscode/kubed --version v0.12.0 --namespace kube-system --create-namespace > /dev/null
+}
+
+function uninstall_secret_syncer() {
+    helm uninstall kubed --namespace kube-system
+}
+
+function install_authentication() {
+    echo __installing basic authentication
+    kubectl delete secret --ignore-not-found authentication-secret --namespace default
+    kubectl create secret generic authentication-secret --from-literal=auth=${CREDENTIALS} --namespace default
+    kubectl annotate secret authentication-secret kubed.appscode.com/sync="" --namespace default
+}
+
+function uninstall_authentication() {
+    kubectl delete secret --ignore-not-found authentication-secret --namespace default
+}
+
+function install_ingress() {
+    echo __installing ingress controller ... this may take a moment ...
+    if ! kubectl get nodes | grep -q docker-desktop; then echo no docker desktop detected, please install ingress controller yourself; return; fi
+    helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx > /dev/null #&& helm repo update
+    helm upgrade --install ingress-nginx ingress-nginx/ingress-nginx --wait --namespace ingress-nginx --create-namespace --version 4.2.3 > /dev/null
+}
+
+function uninstall_ingress() {
+    helm uninstall ingress-nginx --namespace ingress-nginx
+}
+
+function install() {
+    install_secret_syncer
+    install_authentication
+    install_ingress
+    echo yoo
+}
+
+function uninstall() {
+    uninstall_secret_syncer
+    uninstall_authentication
+    uninstall_ingress
+}
+
+if   [ "${COMMAND}" = "init" ] ; then install;
+elif [ "${COMMAND}" = "prune" ] ; then uninstall;
+
+else echo Doing nothing !; fi
