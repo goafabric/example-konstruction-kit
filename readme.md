@@ -30,3 +30,8 @@
 - Go to "helm/templates/infra"
 - ./stack prune-force => this will eradicate everything
 - Note: More complex Addons like Istio or Linkerd should be uninstalled manually via ./stack init inside the addon dirs
+
+
+# install
+
+curl -LJO https://raw.githubusercontent.com/goafabric/example-konstruction-kit/namespaces/helm/templates/infra/installer && chmod +x ./installer && ./installer init
