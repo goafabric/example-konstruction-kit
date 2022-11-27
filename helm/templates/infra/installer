@@ -12,9 +12,6 @@ function install_secret_syncer() {
     helm upgrade --install kubed appscode/kubed --version v0.12.0 --namespace kube-system --create-namespace > /dev/null
 }
 
-function uninstall_secret_syncer() {
-    helm uninstall kubed --namespace kube-system
-}
 
 function install_authentication() {
     echo __installing basic authentication
@@ -23,15 +20,19 @@ function install_authentication() {
     kubectl annotate secret authentication-secret kubed.appscode.com/sync="" --namespace default
 }
 
-function uninstall_authentication() {
-    kubectl delete secret --ignore-not-found authentication-secret --namespace default
-}
-
 function install_ingress() {
     echo __installing ingress controller ... this may take a moment ...
     if ! kubectl get nodes | grep -q docker-desktop; then echo no docker desktop detected, please install ingress controller yourself; return; fi
     helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx > /dev/null #&& helm repo update
     helm upgrade --install ingress-nginx ingress-nginx/ingress-nginx --wait --namespace ingress-nginx --create-namespace --version 4.2.3 > /dev/null
+}
+
+function uninstall_secret_syncer() {
+    helm uninstall kubed --namespace kube-system
+}
+
+function uninstall_authentication() {
+    kubectl delete secret --ignore-not-found authentication-secret --namespace default
 }
 
 function uninstall_ingress() {
