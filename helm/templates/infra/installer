@@ -51,7 +51,7 @@ function install_registry() {
 
 function install_ingress() {
     echo __installing ingress controller ... this may take a moment ...
-    if ! kubectl get nodes | grep -q docker-desktop; then echo no docker desktop detected, please install ingress controller yourself; return; fi
+    if ! kubectl get nodes | grep -q docker-desktop; then echo "no docker desktop detected, please install ingress controller yourself (e.g. microk8s enable ingress)"; return; fi
     helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx > /dev/null && helm repo update > /dev/null
     helm upgrade --install ingress-nginx ingress-nginx/ingress-nginx --wait --namespace ingress-nginx --create-namespace --version $INGRESS_VERSION > /dev/null
 }
@@ -129,6 +129,12 @@ function uninstall_dashboard() {
     kubectl delete clusterrolebinding kubernetes-dashboard
 }
 
+function sanity_check() {
+    _Values_host_name=`kubectl get configmaps cluster-config -o jsonpath='{.data.hostname}' -n default` && [ -z "$_Values_host_name" ] && echo "Hostname is empty" && exit
+    if ! kubectl get secrets -n kube-system | grep -secret; then echo secret sync failed! cluster may not work correctly; fi
+    if ! ping -c 1 "${_Values_host_name}" &> /dev/null; then echo "host ${_Values_host_name} is not reachable, do have have entry inside /etc/hosts ?"; fi
+}
+
 function install() {
     unpack_certs
 
@@ -141,7 +147,7 @@ function install() {
     install_ingress
     install_dashboard
 
-    if ! kubectl get secrets -n kube-system | grep -secret; then echo secret sync failed! cluster may not work correctly; fi
+    sanity_check
     echo finished ...
 }
 
@@ -154,7 +160,7 @@ function uninstall() {
     uninstall_ingress
     uninstall_dashboard
 
-    echo removing namesaces .. this sometimes takes a moment
+    echo removing namespaces .. this sometimes takes a moment
     kubectl delete ns monitoring #&& kubectl delete ns ingress-nginx
 }
 
