@@ -60,7 +60,7 @@ function install_dashboard()  {
     _Values_host_name=`kubectl get configmaps cluster-config -o jsonpath='{.data.hostname}' -n default` && [ -z "$_Values_host_name" ] && echo "Hostname is empty" && exit
     helm repo add kubernetes-dashboard https://kubernetes.github.io/dashboard/ > /dev/null && helm repo update > /dev/null
 
-    helm install kubernetes-dashboard kubernetes-dashboard/kubernetes-dashboard --namespace monitoring --create-namespace --version $DASHBOARD_VERSION \
+    helm upgrade --install kubernetes-dashboard kubernetes-dashboard/kubernetes-dashboard --namespace monitoring --create-namespace --version $DASHBOARD_VERSION \
     --set ingress.enabled=true,ingress.className=nginx \
     --set ingress.annotations.'nginx\.ingress\.kubernetes\.io/auth-secret'=authentication-secret,ingress.annotations.'nginx\.ingress\.kubernetes\.io/auth-type'=basic,ingress.annotations.'nginx\.ingress\.kubernetes\.io/rewrite-target'='/$1' \
     --set ingress.hosts[0]=$_Values_host_name,ingress.paths[0]='/dashboard/?(.*)'\
@@ -114,7 +114,7 @@ function install() {
     install_certificate
     install_registry
 
-    install_ingress
+    #install_ingress
     install_dashboard
 
     postcondition_check
