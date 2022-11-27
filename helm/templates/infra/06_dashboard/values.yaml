@@ -11,15 +11,12 @@ ingress:
     - /dashboard/?(.*)
   tls:
     - secretName: "server-certificate-secret"
-      
 extraArgs:
   - --enable-skip-login
-
 metrics-server:
   enabled: true
   args:
     - --kubelet-insecure-tls
-
 metricsScraper:
   enabled: true
 

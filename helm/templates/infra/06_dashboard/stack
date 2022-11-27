@@ -13,12 +13,12 @@ function up() {
     helm install kubernetes-dashboard kubernetes-dashboard/kubernetes-dashboard --namespace monitoring --create-namespace --version 5.11.0 \
     -f ./values.yaml --set ingress.hosts[0]=$_Values_host_name,ingress.tls[0].hosts[0]=$_Values_host_name
 
-    kubectl apply -f ./dashboard-admin.yaml
+#    kubectl apply -f ./dashboard-admin.yaml
 }
 
 function down() {
     helm uninstall kubernetes-dashboard --namespace=monitoring
-    kubectl delete -f ./dashboard-admin.yaml
+#    kubectl delete -f ./dashboard-admin.yaml
 }
 
 function proxy() {
