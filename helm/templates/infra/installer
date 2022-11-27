@@ -69,22 +69,9 @@ function install_dashboard()  {
     --set metricsScraper.enabled=true,metrics-server.enabled=true \
     --set metrics-server.args[0]='--kubelet-insecure-tls',extraArgs[0]='--enable-skip-login'
 
-cat <<EOF | kubectl apply -f -
-apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRoleBinding
-metadata:
-  name: kubernetes-dashboard
-  namespace: monitoring
-roleRef:
-  apiGroup: rbac.authorization.k8s.io
-  kind: ClusterRole
-  name: cluster-admin
-subjects:
-  - kind: ServiceAccount
-    name: kubernetes-dashboard
-    namespace: monitoring
-EOF
-
+    #clusterrolebinding
+    echo -n I2NyZWF0ZXMgYSByb2xlIGJpbmRpbmcgdGhhdCB0aWVzIHRoZSBTZXJ2aWNlQWNjb3VudCBjcmVhdGVkIGJ5IHRoZSBoZWxtIHNoYXJ0IHdpdGggdGhlIGV4aXN0aW5nIENsdXN0ZXJSb2xlIGZyb20geW91ciBLdWJlcm5ldGVzCiNodHRwczovL2dpdGh1Yi5jb20va3ViZXJuZXRlcy9kYXNoYm9hcmQvYmxvYi9tYXN0ZXIvZG9jcy91c2VyL2FjY2Vzcy1jb250cm9sL1JFQURNRS5tZAoKYXBpVmVyc2lvbjogcmJhYy5hdXRob3JpemF0aW9uLms4cy5pby92MQpraW5kOiBDbHVzdGVyUm9sZUJpbmRpbmcKbWV0YWRhdGE6CiAgbmFtZToga3ViZXJuZXRlcy1kYXNoYm9hcmQKICBuYW1lc3BhY2U6IG1vbml0b3JpbmcKcm9sZVJlZjoKICBhcGlHcm91cDogcmJhYy5hdXRob3JpemF0aW9uLms4cy5pbwogIGtpbmQ6IENsdXN0ZXJSb2xlCiAgbmFtZTogY2x1c3Rlci1hZG1pbgpzdWJqZWN0czoKICAtIGtpbmQ6IFNlcnZpY2VBY2NvdW50CiAgICBuYW1lOiBrdWJlcm5ldGVzLWRhc2hib2FyZAogICAgbmFtZXNwYWNlOiBtb25pdG9yaW5n \
+    | base64 -d | kubectl apply -f -
 }
 
 function uninstall_secret_syncer() {
