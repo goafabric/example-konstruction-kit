@@ -73,32 +73,16 @@ function install_dashboard()  {
     | base64 -d | kubectl apply -f -
 }
 
-function uninstall_secret_syncer() {
-    helm uninstall kubed --namespace kube-system
-}
-
-function uninstall_authentication() {
-    kubectl delete secret --ignore-not-found authentication-secret --namespace default
-}
-
-function uninstall_certificate() {
-    (cd ./03_certificate; ./stack prune; cd ..)
-}
+function uninstall_secret_syncer() { helm uninstall kubed --namespace kube-system ; }
+function uninstall_authentication() { kubectl delete secret --ignore-not-found authentication-secret --namespace default ; }
+function uninstall_certificate() { (cd ./03_certificate; ./stack prune; cd ..) ; }
 
 function uninstall_registry() {
-    for registry in ${REGISTRIES[@]}; do
-        kubectl --namespace default delete secret --ignore-not-found docker-registry "$registry"-secret
-    done
+    for registry in ${REGISTRIES[@]}; do kubectl --namespace default delete secret --ignore-not-found docker-registry "$registry"-secret; done
 }
 
-function uninstall_ingress() {
-    helm uninstall ingress-nginx --namespace ingress-nginx
-}
-
-function uninstall_dashboard() {
-    helm uninstall kubernetes-dashboard --namespace=monitoring
-    kubectl delete clusterrolebinding kubernetes-dashboard
-}
+function uninstall_ingress() { helm uninstall ingress-nginx --namespace ingress-nginx ; }
+function uninstall_dashboard() { helm uninstall kubernetes-dashboard --namespace=monitoring && kubectl delete clusterrolebinding kubernetes-dashboard ; }
 
 function postcondition_check() {
     _Values_host_name=`kubectl get configmaps cluster-config -o jsonpath='{.data.hostname}' -n default` && [ -z "$_Values_host_name" ] && echo "Hostname is empty" && exit
