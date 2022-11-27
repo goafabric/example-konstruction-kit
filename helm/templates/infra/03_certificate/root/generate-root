@@ -1,0 +1,17 @@
+#!/bin/bash
+
+#variables
+export DAYS_VALID="3650"
+export ROOT_FILE="config/root"
+
+#create key, asks for password because of ae256
+openssl genrsa -aes256 -out ${ROOT_FILE}.key 4096
+
+#create root certificate
+openssl req -x509 -new -nodes -sha512 -days ${DAYS_VALID}\
+        -key ${ROOT_FILE}.key\
+        -out ${ROOT_FILE}.pem\
+        -subj '/CN=Example CA/O=Example/C=DE'
+
+#export p12
+openssl pkcs12 -export -in ${ROOT_FILE}.pem -inkey ${ROOT_FILE}.key -out config/root.p12 -passin pass:kubernetes -passout pass:kubernetes
