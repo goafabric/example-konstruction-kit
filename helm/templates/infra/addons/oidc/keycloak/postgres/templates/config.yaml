@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ${_Values_app_name}-config
+data:
+  TZ: Europe/Berlin
+
+---
+
+apiVersion: v1
+kind: Secret
+metadata:
+  name: ${_Values_app_name}-config-external
+type: Opaque
+stringData:
+  POSTGRES_DB: keycloak
+data:
+  POSTGRES_USER: a2V5Y2xvYWs=
+  POSTGRES_PASSWORD: a2V5Y2xvYWs=
+
+---
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ${_Values_app_name}-data-files
+data:
+  00_pg_statements.sql: |-
+    CREATE EXTENSION pg_stat_statements;

@@ -1,0 +1,23 @@
+#!/bin/bash
+COMMAND=$1
+PROFILE=$2
+
+[ ! -f "/usr/local/bin/istioctl" ] && echo "istioctl not found in /usr/local/bin, cannot continue" && exit
+
+_Values_host_name=`kubectl get configmaps cluster-config -o jsonpath='{.data.hostname}' -n default` && [ -z "$_Values_host_name" ] && echo "Hostname is empty" && exit
+
+function init() {
+    istioctl operator init --tag=1.16.0
+    kubectl apply -f ./templates/operator${_Values_server_arch}.yaml
+}
+
+function prune() {
+    istioctl x uninstall -y --purge
+    kubectl delete namespace istio-operator && kubectl delete namespace istio-system
+#    istioctl operator remove && kubectl delete namespace istio-operator
+}
+
+if   [ "${COMMAND}" = "init" ] ; then init;
+elif [ "${COMMAND}" = "prune" ]; then prune;
+
+else echo Doing nothing !; fi

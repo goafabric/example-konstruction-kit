@@ -1,0 +1,25 @@
+#!/bin/bash
+COMMAND=$1
+PROFILE=$2
+
+
+
+
+function up() {
+    helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+    helm install prometheus prometheus-community/prometheus --namespace istio-system --version 14.6.1  \
+    --set alertmanager.enabled=false,kubeStateMetrics.enabled=false,nodeExporter.enabled=false,pushgateway.enabled=false #-f ./values.yaml
+}
+
+function down() {
+    helm uninstall prometheus --namespace=istio-system
+}
+
+
+if   [ "${COMMAND}" = "init" ] ; then up;
+elif [ "${COMMAND}" = "restart" ] ; then down && up;
+elif [ "${COMMAND}" = "prune" ]; then down;
+
+else echo Doing nothing !; fi
+
+#Sample query: {namespace="example-tenant-5a2f",container="callee-service-application"}
