@@ -35,7 +35,7 @@ function install_registry() {
         kubectl --namespace default delete secret --ignore-not-found docker-registry "$registry"-secret
         kubectl --namespace default create secret docker-registry "$registry"-secret \
                 --docker-server=$registry --docker-username=$EMAIL --docker-password=$PASSWORD --docker-email=$EMAIL
-        kubectl annotate secret "$1"-secret kubed.appscode.com/sync="" --namespace default
+        kubectl annotate secret "$registry"-secret kubed.appscode.com/sync="" --namespace default
     done
 }
 
