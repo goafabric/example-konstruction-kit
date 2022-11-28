@@ -10,7 +10,7 @@ _Values_host_name=`kubectl get configmaps cluster-config -o jsonpath='{.data.hos
 function up() {
     helm repo add kubernetes-dashboard https://kubernetes.github.io/dashboard/ > /dev/null
 
-    helm upgrade --install kubernetes-dashboard kubernetes-dashboard/kubernetes-dashboard --namespace monitoring --create-namespace --version 5.11.0 \
+    helm upgrade --install --create-namespace kubernetes-dashboard kubernetes-dashboard/kubernetes-dashboard --namespace monitoring --version 5.11.0 \
     --set ingress.enabled=true,ingress.className=nginx \
     --set ingress.annotations.'nginx\.ingress\.kubernetes\.io/auth-secret'=authentication-secret,ingress.annotations.'nginx\.ingress\.kubernetes\.io/auth-type'=basic,ingress.annotations.'nginx\.ingress\.kubernetes\.io/rewrite-target'='/$1' \
     --set ingress.hosts[0]=$_Values_host_name,ingress.paths[0]='/dashboard/?(.*)'\

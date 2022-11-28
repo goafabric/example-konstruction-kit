@@ -3,7 +3,7 @@ COMMAND=$1
 IMAGE_ARCH=$2
 
 function up() {
-    helm install \
+    helm install --create-namespace \
     --set image.arch=$IMAGE_ARCH \
     --set ingress.hosts=`kubectl get configmaps cluster-config -o jsonpath='{.data.hostname}' -n default` \
     --namespace `pwd | rev | cut -d '/' -f3 | rev` \
