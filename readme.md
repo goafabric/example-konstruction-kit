@@ -5,10 +5,13 @@
 - You need a Helm3 command line tool, as well as kubectl if not provided by your Kubernetes System
   - https://kubernetes.io/releases/download/
   - https://helm.sh/docs/intro/install/
+              
+# Quickstart
+curl -LJO https://raw.githubusercontent.com/goafabric/example-konstruction-kit/refactoring/helm/templates/infra/installer && chmod +x ./installer && ./installer init
 
 # Installation
 - Go to "helm/templates/infra"
-- ./stack init
+- ./installer init
 - You might be asked for
   - credentials
   - server name (for local installations just kubernetes)
@@ -28,10 +31,8 @@
 
 # Uninstall
 - Go to "helm/templates/infra"
-- ./stack prune-force => this will eradicate everything
+- ./installer prune => this will eradicate everything
 - Note: More complex Addons like Istio or Linkerd should be uninstalled manually via ./stack init inside the addon dirs
 
-# install
-curl -LJO https://raw.githubusercontent.com/goafabric/example-konstruction-kit/namespaces/helm/templates/infra/installer && chmod +x ./installer && ./installer init
 
 
