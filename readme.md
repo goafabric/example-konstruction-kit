@@ -18,7 +18,7 @@ curl -LJO https://raw.githubusercontent.com/goafabric/example-konstruction-kit/r
   - the certificate password (also kubernetes)
 
 # Welcome
-- And that's basically it just navigate to http(s)://kubernetes/welcome and you see the Welcome Page
+- ./installer welcome will give you a welcome page
 - Password is currently just admin/admin
 
 # Examples
