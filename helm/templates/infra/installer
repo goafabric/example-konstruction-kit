@@ -125,9 +125,6 @@ function welcome() {
     | base64 -d > index.html && echo '<base href="https://'${_Values_host_name}'/" />' >> index.html && open ./index.html
 }
 
-preconditions_check
-exit
-
 if   [ "$1" = "init" ] ; then install;
 elif [ "$1" = "prune" ] ; then uninstall;
 elif [ "$1" = "dashboard" ] ; then dashboard;
