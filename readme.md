@@ -34,5 +34,7 @@ curl -LJO https://raw.githubusercontent.com/goafabric/example-konstruction-kit/r
 - ./installer prune => this will eradicate everything
 - Note: More complex Addons like Istio or Linkerd should be uninstalled manually via ./stack init inside the addon dirs
 
+# Dashboard Troubleshoot
+- If the dashboard cannot by downloaded due to company proxies, please issue a manual "docker pull kubernetesui/dashboard:v2.7.0"
 
 
