@@ -1,5 +1,0 @@
-#!/bin/bash
-find ../../templates/infra/06_monitoring -not -path "." -type d -print0 | sort -hz | xargs -0 -I '{}' bash -c "echo '{}' && helm package '{}' -d ./infra"
-find ../../templates/infra/10_welcome -not -path "." -type d -print0 | sort -hz | xargs -0 -I '{}' bash -c "echo '{}' && helm package '{}' -d ./infra"
-
-helm repo index ./infra --url https://goafabric.github.io/example-konstruction-kit/helm/charts/infra/infra
