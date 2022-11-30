@@ -11,4 +11,4 @@ pack ../../templates/example/spring/example-tenant-0
 #find ../../templates/example/spring/example-tenant-0 -not -path "." -type d -print0 | sort -hz | xargs -0 -I '{}' bash -c "echo '{}' && helm package '{}' -d ./spring"
 
 
-#helm repo index ./spring --url https://goafabric.github.io/example-konstruction-kit/helm/charts/example/spring
+helm repo index ./spring --url https://goafabric.github.io/example-konstruction-kit/helm/charts/example/spring

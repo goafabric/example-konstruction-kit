@@ -1,0 +1,58 @@
+apiVersion: v1
+entries:
+  callee-service-application:
+  - apiVersion: v2
+    appVersion: 3.0.0
+    created: "2022-11-30T13:42:02.931114+01:00"
+    description: callee-service-application
+    digest: cf7043a647345336bee58f51121542ed8a9c7a231c0302ff61a8616537c114ea
+    name: callee-service-application
+    type: application
+    urls:
+    - https://goafabric.github.io/example-konstruction-kit/helm/charts/example/spring/callee-service-application-1.0.6.tgz
+    version: 1.0.6
+  fhir-facade-application:
+  - apiVersion: v2
+    appVersion: 2.0.2
+    created: "2022-11-30T13:42:02.931324+01:00"
+    description: fhir-facade-application
+    digest: 4cbe816989eb7bf92c08db3c0026c715fc51f2a76115cc975714a3bb9bd3677b
+    name: fhir-facade-application
+    type: application
+    urls:
+    - https://goafabric.github.io/example-konstruction-kit/helm/charts/example/spring/fhir-facade-application-1.0.6.tgz
+    version: 1.0.6
+  person-service-application:
+  - apiVersion: v2
+    appVersion: 3.0.0
+    created: "2022-11-30T13:42:02.931577+01:00"
+    description: person-service-application
+    digest: cb5c215f50def0ee6b3aaf20b39f696819c72f255dc6eb0f4a4a547c2c29a399
+    name: person-service-application
+    type: application
+    urls:
+    - https://goafabric.github.io/example-konstruction-kit/helm/charts/example/spring/person-service-application-1.0.6.tgz
+    version: 1.0.6
+  person-service-batch:
+  - apiVersion: v2
+    appVersion: 3.0.0
+    created: "2022-11-30T13:42:02.931766+01:00"
+    description: person-service-batch
+    digest: 09d741b8e27387b30e730c280e08d82c35454a4817bdc5722fe3928e063ea01a
+    name: person-service-batch
+    type: application
+    urls:
+    - https://goafabric.github.io/example-konstruction-kit/helm/charts/example/spring/person-service-batch-1.0.6.tgz
+    version: 1.0.6
+  person-service-postgres:
+  - apiVersion: v2
+    appVersion: "14.5"
+    created: "2022-11-30T13:42:02.931934+01:00"
+    description: person-service-postgres
+    digest: 75298db29aa6d33fbe16b90a0f2ad1e9e8433819eb0ce97ab1f34642bb2f0c65
+    name: person-service-postgres
+    type: application
+    urls:
+    - https://goafabric.github.io/example-konstruction-kit/helm/charts/example/spring/person-service-postgres-1.0.6.tgz
+    version: 1.0.6
+generated: "2022-11-30T13:42:02.930364+01:00"
