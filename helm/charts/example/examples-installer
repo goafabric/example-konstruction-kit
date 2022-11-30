@@ -1,6 +1,7 @@
 #!/bin/bash
 
-if ! helm repo list | grep example-spring > /dev/null then
+if ! helm repo list | grep example-spring > /dev/null
+then
     helm repo add example-spring https://goafabric.github.io/example-konstruction-kit/helm/charts/example/spring
     helm repo update 
 fi
