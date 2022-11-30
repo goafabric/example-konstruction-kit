@@ -3,9 +3,9 @@ entries:
   callee-service-application:
   - apiVersion: v2
     appVersion: 3.0.0
-    created: "2022-11-30T14:11:28.480843+01:00"
+    created: "2022-11-30T14:49:34.102831+01:00"
     description: callee-service-application
-    digest: 4a31df6c235392af597ef1d32b3b908cf57af8026bb16ad227abad87e7d4ac43
+    digest: b708f6ad3fa37f814d5efb7d8341e5040a6a040fd91d0978155bec1161002bcb
     name: callee-service-application
     type: application
     urls:
@@ -14,9 +14,9 @@ entries:
   fhir-facade-application:
   - apiVersion: v2
     appVersion: 2.0.2
-    created: "2022-11-30T14:11:28.481056+01:00"
+    created: "2022-11-30T14:49:34.1031+01:00"
     description: fhir-facade-application
-    digest: 03e69a620d20a00b4d27bd3e408ff199dccdaeadce80b62829999e0c2c56ceb7
+    digest: 1841b178072e3a97c9c598e0859d06a1855f591ec946e0ab060e059076b4ff75
     name: fhir-facade-application
     type: application
     urls:
@@ -25,9 +25,9 @@ entries:
   person-service-application:
   - apiVersion: v2
     appVersion: 3.0.0
-    created: "2022-11-30T14:11:28.481295+01:00"
+    created: "2022-11-30T14:49:34.103363+01:00"
     description: person-service-application
-    digest: 237c13e29aff2edf64cddb1e8670f5b9abee9c364e35dce571dbca606535dff0
+    digest: 0166f98c2c7ef37238e1b7a4b9f2817f37888088b5d08db1784a8ebb0919176b
     name: person-service-application
     type: application
     urls:
@@ -36,9 +36,9 @@ entries:
   person-service-batch:
   - apiVersion: v2
     appVersion: 3.0.0
-    created: "2022-11-30T14:11:28.48148+01:00"
+    created: "2022-11-30T14:49:34.103569+01:00"
     description: person-service-batch
-    digest: 64c92fe839f58c536f01cf0dd3142694f2b894ad030969e8e1ed04d62a5b3def
+    digest: 2aa609e5be4612a17c05fa0dbadc51e0afff970d9533f4431e4fd6bb9e734b50
     name: person-service-batch
     type: application
     urls:
@@ -47,9 +47,9 @@ entries:
   person-service-postgres:
   - apiVersion: v2
     appVersion: "14.5"
-    created: "2022-11-30T14:11:28.481659+01:00"
+    created: "2022-11-30T14:49:34.103748+01:00"
     description: person-service-postgres
-    digest: e2b83c548cabfe13928aa0be722a0461650925052d00150154656a9c050d7eb7
+    digest: f6c6321433980481dce352a6b76633d4e934e8739220afcc8eec805eeb7ab85e
     name: person-service-postgres
     type: application
     urls:
@@ -58,7 +58,17 @@ entries:
   welcome-board:
   - apiVersion: v2
     appVersion: 1.20.2
-    created: "2022-11-30T14:11:28.481888+01:00"
+    created: "2022-11-30T14:49:34.104526+01:00"
+    description: welcome-board
+    digest: a2e03bfe18554e506e8a1e5de40c245aeddcbd3802713988b1fd503d7c624459
+    name: welcome-board
+    type: application
+    urls:
+    - https://goafabric.github.io/example-konstruction-kit/helm/charts/example/spring/welcome-board-1.0.6.tgz
+    version: 1.0.6
+  - apiVersion: v2
+    appVersion: 1.20.2
+    created: "2022-11-30T14:49:34.104275+01:00"
     description: welcome-board
     digest: 17011cf1d9a43e50090dc8f71899cecc5b5d9d827b2d94e40d41fd41acf90ea9
     name: welcome-board
@@ -66,4 +76,4 @@ entries:
     urls:
     - https://goafabric.github.io/example-konstruction-kit/helm/charts/example/spring/welcome-board-1.0.0.tgz
     version: 1.0.0
-generated: "2022-11-30T14:11:28.47997+01:00"
+generated: "2022-11-30T14:49:34.102249+01:00"

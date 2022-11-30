@@ -34,6 +34,9 @@ function install() {
     helm_install person-service-application 1.0.6
     helm_install person-service-postgres 1.0.6
     helm_install person-service-batch 1.0.6
+
+    NAMESPACE=default
+    helm_install welcome-board 1.0.6
 }
 
 function uninstall() {
@@ -51,6 +54,9 @@ function uninstall() {
     helm uninstall person-service-application -n $NAMESPACE
     helm uninstall person-service-batch -n $NAMESPACE
     helm uninstall person-service-postgres -n $NAMESPACE
+
+    NAMESPACE=default
+    helm_uninstall welcome-board
 
     kubectl delete pvc person-service-postgres-pvc -n example-tenant-0
     kubectl delete pvc person-service-postgres-pvc -n example-tenant-5a2f
