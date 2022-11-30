@@ -1,15 +1,16 @@
 # Prerequisites
 - For specific installation instructions concerning linux and mac please see doc/install
+
 - For local installations you need an entry in /etc/hosts like "127.0.0.1 kubernetes"
 - For https to work you need to import helm/templates/infra/infra/certificate/root/config/root.pem
 - You need a Helm3 command line tool, as well as kubectl if not provided by your Kubernetes System
-  - https://kubernetes.io/releases/download/
-  - https://helm.sh/docs/intro/install/
-              
+- However if helm cannot be found the installer will try to install it for you
+ 
 # Quickstart
 curl -LJO https://raw.githubusercontent.com/goafabric/example-konstruction-kit/refactoring/helm/templates/infra/installer && chmod +x ./installer && ./installer init
 
 # Installation
+- Obselete if Quickstart was executed
 - Go to "helm/templates/infra"
 - ./installer init
 - You might be asked for
@@ -30,7 +31,6 @@ curl -LJO https://raw.githubusercontent.com/goafabric/example-konstruction-kit/r
 - In case you need a localhost direct connection to your pod do "./stack proxy" (e.g. connecting with a frontend)
 
 # Uninstall
-- Go to "helm/templates/infra"
 - ./installer prune => this will eradicate everything
 - Note: More complex Addons like Istio or Linkerd should be uninstalled manually via ./stack init inside the addon dirs
 
