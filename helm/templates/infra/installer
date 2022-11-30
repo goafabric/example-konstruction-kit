@@ -48,6 +48,7 @@ function install_ingress() {
 
 function install_dashboard()  {
     echo __installing kubernetes dashboard
+    echo ___in case that this is not working due to corporate proxy, cancel the script and do a manuall pull upfront "docker pull kubernetesui/dashboard:v2.7.0"
     _Values_host_name=`kubectl get configmaps cluster-config -o jsonpath='{.data.hostname}' -n default` && [ -z "$_Values_host_name" ] && echo "Hostname is empty" && exit
     helm repo add kubernetes-dashboard https://kubernetes.github.io/dashboard/ > /dev/null && helm repo update > /dev/null
 
