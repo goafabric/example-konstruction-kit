@@ -10,3 +10,6 @@ helm uninstall callee-service-application -n $NAMESPACE
 helm uninstall person-service-application -n $NAMESPACE
 helm uninstall person-service-batch -n $NAMESPACE
 helm uninstall person-service-postgres -n $NAMESPACE
+
+kubectl delete pvc person-service-postgres-pvc -n example-tenant-0
+kubectl delete pvc person-service-postgres-pvc -n example-tenant-5a2f
