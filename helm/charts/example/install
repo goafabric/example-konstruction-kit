@@ -13,13 +13,13 @@ function helm_install() {
 
 NAMESPACE=example
 
-helm_install fhir-facade-application 1.0.3
+helm_install fhir-facade-application 1.0.6
 
 NAMESPACE=example-tenant-0
 
-helm_install callee-service-application 1.0.3
+helm_install callee-service-application 1.0.6
 
-helm_install person-service-application 1.0.3
-helm_install person-service-postgres 1.0.3
-helm_install person-service-batch 1.0.3
+helm_install person-service-application 1.0.6
+helm_install person-service-postgres 1.0.6
+helm_install person-service-batch 1.0.6
 
