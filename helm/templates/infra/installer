@@ -99,7 +99,7 @@ function install() {
     install_dashboard
 
     postcondition_check
-    echo finished ...
+    echo finished ... please be sure to have the root cert installed inside your os: certificate/root/config/root.pem
 }
 
 function uninstall() {
