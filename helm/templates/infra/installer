@@ -126,7 +126,7 @@ function welcome() {
 }
 
 function linkerd() {
-    if kubectl get ns | grep linkerd; then ~/.linkerd2/bin/linkerd uninstall | kubectl delete -f - && exit; fi
+    if kubectl get ns | grep linkerd; then ~/.linkerd2/bin/linkerd uninstall | kubectl delete -f - ; exit; fi
     curl -sSfL https://run.linkerd.io/install | sh
     ~/.linkerd2/bin/linkerd install --crds | kubectl apply -f - && ~/.linkerd2/bin/linkerd install --set proxyInit.runAsRoot=true | kubectl apply -f -
 }
