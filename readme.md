@@ -4,7 +4,7 @@
 
 - For local installations you need an entry in /etc/hosts like "127.0.0.1 kubernetes"
 - For https to work you need to import helm/templates/infra/infra/certificate/root/config/root.pem
-- You need a Helm3 command line tool, as well as kubectl if not provided by your Kubernetes System
+- You need a Helm command line tool v3.10+, as well as kubectl if not provided by your Kubernetes System
 - However if helm cannot be found the installer will try to install it for you
  
 # Quickstart Infra
