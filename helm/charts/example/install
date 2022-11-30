@@ -6,14 +6,16 @@ function helm_install() {
   helm install $1 example-spring/$1  \
   --version $2 \
   --namespace=$NAMESPACE \
-  --set image.arch=`kubectl version | grep "Server Version" | grep "linux/arm64" > /dev/null && echo "-arm64v8"` \
-  --set ingress.hosts=`kubectl get configmaps cluster-config -o jsonpath='{.data.hostname}' -n default`
+  --set image.arch=`kubectl version --output=json | grep "linux/arm64" > /dev/null && echo "-arm64v8"` \
+  --set ingress.hosts=`kubectl get configmaps cluster-config -o jsonpath='{.data.hostname}' -n default` \
+  --set tenantId=$TENANT_ID \
 }
 
 NAMESPACE=example
 
 helm_install fhir-facade-application 1.0.6
 
+TENANT_ID=0
 NAMESPACE=example-tenant-0
 
 helm_install callee-service-application 1.0.6
