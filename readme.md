@@ -1,5 +1,6 @@
 # Prerequisites
 - For specific installation instructions concerning linux and mac please see doc/install
+- Easiest Option is recent version of Docker Dekstop + Kubernetes 1.25+ enabled
 
 - For local installations you need an entry in /etc/hosts like "127.0.0.1 kubernetes"
 - For https to work you need to import helm/templates/infra/infra/certificate/root/config/root.pem
