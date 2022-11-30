@@ -56,7 +56,7 @@ function uninstall() {
     helm uninstall person-service-postgres -n $NAMESPACE
 
     NAMESPACE=default
-    helm_uninstall welcome-board
+    helm uninstall welcome-board
 
     kubectl delete pvc person-service-postgres-pvc -n example-tenant-0
     kubectl delete pvc person-service-postgres-pvc -n example-tenant-5a2f
