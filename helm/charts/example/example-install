@@ -3,12 +3,12 @@
 helm repo add example-spring https://goafabric.github.io/example-konstruction-kit/helm/charts/example/spring && helm repo update > /dev/null
 
 function helm_install() {
-  helm install $1 example-spring/$1  \
-  --version $2 \
-  --namespace=$NAMESPACE \
-  --set ingress.hosts=`kubectl get configmaps cluster-config -o jsonpath='{.data.hostname}' -n default` \
-  --set tenantId=$TENANT_ID
-#  --set image.arch=`kubectl version --output=json | grep "linux/arm64" > /dev/null && echo "-arm64v8"` \
+    helm install $1 example-spring/$1  \
+    --version $2 \
+    --namespace=$NAMESPACE \
+    --set ingress.hosts=`kubectl get configmaps cluster-config -o jsonpath='{.data.hostname}' -n default` \
+    --set tenantId=$TENANT_ID
+  #  --set image.arch=`kubectl version --output=json | grep "linux/arm64" > /dev/null && echo "-arm64v8"` \
 }
 
 function install() {
@@ -16,7 +16,15 @@ function install() {
     helm_install fhir-facade-application 1.0.6
 
     TENANT_ID=0
-    NAMESPACE=example-tenant-0
+    NAMESPACE=example-tenant-$TENANT_ID
+    helm_install callee-service-application 1.0.6
+
+    helm_install person-service-application 1.0.6
+    helm_install person-service-postgres 1.0.6
+    helm_install person-service-batch 1.0.6
+
+    TENANT_ID=5a2f
+    NAMESPACE=example-tenant-$TENANT_ID
     helm_install callee-service-application 1.0.6
 
     helm_install person-service-application 1.0.6
@@ -34,8 +42,14 @@ function uninstall() {
     helm uninstall person-service-batch -n $NAMESPACE
     helm uninstall person-service-postgres -n $NAMESPACE
 
+    NAMESPACE=example-tenant-5a2f
+    helm uninstall callee-service-application -n $NAMESPACE
+    helm uninstall person-service-application -n $NAMESPACE
+    helm uninstall person-service-batch -n $NAMESPACE
+    helm uninstall person-service-postgres -n $NAMESPACE
+
     kubectl delete pvc person-service-postgres-pvc -n example-tenant-0
-    #kubectl delete pvc person-service-postgres-pvc -n example-tenant-5a2f
+    kubectl delete pvc person-service-postgres-pvc -n example-tenant-5a2f
 }
 
 if   [ "$1" = "init" ] ; then install;
