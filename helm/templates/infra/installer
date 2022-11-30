@@ -82,9 +82,11 @@ function preconditions_check {
 }
 
 function postcondition_check() {
+    echo __checking post conditions ...
     _Values_host_name=`kubectl get configmaps cluster-config -o jsonpath='{.data.hostname}' -n default` && [ -z "$_Values_host_name" ] && echo "Hostname is empty" && exit
     if ! kubectl get secrets -n kube-system | grep -secret; then echo secret sync failed! cluster may not work correctly; fi
     if ! ping -c 1 "${_Values_host_name}" &> /dev/null; then echo "host ${_Values_host_name} is not reachable, do have have entry inside /etc/hosts ?"; fi
+    if ! curl -s https://"${_Values_host_name}"; then echo https connection cannot be established, please have the root cert imported: certificate/root/config/root.pem ; fi
 }
 
 function install() {
@@ -99,7 +101,7 @@ function install() {
     install_dashboard
 
     postcondition_check
-    echo finished ... please be sure to have the root cert installed inside your os: certificate/root/config/root.pem
+    echo __finished ...
 }
 
 function uninstall() {
@@ -137,6 +139,4 @@ elif [ "$1" = "prune" ] ; then uninstall;
 elif [ "$1" = "dashboard" ] ; then dashboard;
 elif [ "$1" = "welcome" ] ; then welcome;
 elif [ "$1" = "linkerd" ] ; then linkerd;
-
-
 else echo "Doing nothing .. Valid commands are (install | uninstall | dashboard | welcome | linkerd)"; fi
