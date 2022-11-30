@@ -1,10 +1,9 @@
 #!/bin/bash
 
-helm repo add example-quarkus https://goafabric.github.io/example-konstruction-kit/helm/charts/example/spring
-#helm repo update
+helm repo add example-spring https://goafabric.github.io/example-konstruction-kit/helm/charts/example/spring && helm repo update
 
 function helm_install() {
-  helm install $1 example-quarkus/$1  \
+  helm install $1 example-spring/$1  \
   --version $2 \
   --namespace=$NAMESPACE \
   --set image.arch=`kubectl version | grep "Server Version" | grep "linux/arm64" > /dev/null && echo "-arm64v8"` \
