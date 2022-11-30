@@ -1,6 +1,9 @@
 #!/bin/bash
 
-helm repo add example-spring https://goafabric.github.io/example-konstruction-kit/helm/charts/example/spring && helm repo update > /dev/null
+if ! helm repo list | grep example-spring > /dev/null then
+    helm repo add example-spring https://goafabric.github.io/example-konstruction-kit/helm/charts/example/spring
+    helm repo update 
+fi
 
 function helm_install() {
     helm install $1 example-spring/$1  \

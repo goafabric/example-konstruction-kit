@@ -7,8 +7,11 @@
 - You need a Helm3 command line tool, as well as kubectl if not provided by your Kubernetes System
 - However if helm cannot be found the installer will try to install it for you
  
-# Quickstart
+# Quickstart Infra
 curl -LJO https://raw.githubusercontent.com/goafabric/example-konstruction-kit/refactoring/helm/templates/infra/installer && chmod +x ./installer && ./installer init
+
+# Quickstart Examples
+curl -LJO https://raw.githubusercontent.com/goafabric/example-konstruction-kit/refactoring/helm/charts/example/examples-installer && chmod +x ./examples-installer && ./examples-installer init
 
 # Installation
 - Obselete if Quickstart was executed
