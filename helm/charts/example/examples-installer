@@ -17,6 +17,8 @@ function helm_install() {
 }
 
 function install() {
+    helm repo update
+    
     NAMESPACE=example
     helm_install fhir-facade-application 1.0.6
 
