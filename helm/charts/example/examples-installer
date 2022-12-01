@@ -41,6 +41,8 @@ function install() {
     NAMESPACE=default
     if kubectl get pods -n default | grep welcome-board > /dev/null; then helm uninstall welcome-board; fi
     helm_install welcome-board 1.0.6
+
+    echo __welcome page now available under /welcome/
 }
 
 function uninstall() {
