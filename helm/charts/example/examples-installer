@@ -7,7 +7,8 @@ then
 fi
 
 function helm_install() {
-    helm install --create-namespace $1 example-spring/$1  \
+    helm install $1 example-spring/$1  \
+    --create-namespace \
     --version $2 \
     --namespace=$NAMESPACE \
     --set ingress.hosts=`kubectl get configmaps cluster-config -o jsonpath='{.data.hostname}' -n default` \
