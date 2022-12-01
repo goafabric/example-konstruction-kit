@@ -39,6 +39,7 @@ function install() {
     helm_install person-service-batch 1.0.6
 
     NAMESPACE=default
+    helm uninstall welcome-board > /dev/null
     helm_install welcome-board 1.0.6
 }
 
