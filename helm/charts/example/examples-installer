@@ -12,13 +12,15 @@ function helm_install() {
     --version $2 \
     --namespace=$NAMESPACE \
     --set ingress.hosts=`kubectl get configmaps cluster-config -o jsonpath='{.data.hostname}' -n default` \
-    --set tenantId=$TENANT_ID 
-#    --set image.arch="-native"`kubectl version --output=json | grep "linux/arm64" > /dev/null && echo "-arm64v8"`
+    --set tenantId=$TENANT_ID \
+    --set image.arch=$IMAGE_ARCH
 }
 
 function install() {
     NAMESPACE=example
     helm_install fhir-facade-application 1.0.6
+
+    IMAGE_ARCH="-native"`kubectl version --output=json | grep "linux/arm64" > /dev/null && echo "-arm64v8"`
 
     TENANT_ID=0
     NAMESPACE=example-tenant-$TENANT_ID
