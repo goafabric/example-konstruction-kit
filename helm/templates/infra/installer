@@ -139,4 +139,5 @@ elif [ "$1" = "prune" ] ; then uninstall;
 elif [ "$1" = "dashboard" ] ; then dashboard;
 elif [ "$1" = "welcome" ] ; then welcome;
 elif [ "$1" = "linkerd" ] ; then linkerd;
-else echo "Doing nothing .. Valid commands are (install | uninstall | dashboard | welcome | linkerd)"; fi
+else echo "Doing nothing .. Valid commands are (install | uninstall | dashboard | welcome | linkerd)"
+fi
