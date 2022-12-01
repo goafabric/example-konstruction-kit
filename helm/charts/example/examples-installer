@@ -61,6 +61,8 @@ function uninstall() {
 
     kubectl delete pvc person-service-postgres-pvc -n example-tenant-0
     kubectl delete pvc person-service-postgres-pvc -n example-tenant-5a2f
+
+    kubectl delete ns example example-tenant-0
 }
 
 if   [ "$1" = "init" ] ; then install;
