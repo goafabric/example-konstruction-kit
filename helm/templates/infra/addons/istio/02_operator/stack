@@ -9,7 +9,7 @@ _Values_host_name=`kubectl get configmaps cluster-config -o jsonpath='{.data.hos
 function init() {
     istioctl operator init --tag=1.16.0
     kubectl apply -f ./templates/operator${_Values_server_arch}.yaml
-    for namespace in $(kubectl get ns | grep -vE 'default|kube|monitoring|ingress|istio|oidc' | awk '{print $1}' | tail -n +2); do
+    for namespace in $(kubectl get ns | grep -vE 'default|kube|monitoring|ingress|istio|oidc|message-broker' | awk '{print $1}' | tail -n +2); do
         kubectl label namespace $namespace istio-injection=enabled --overwrite; done
 }
 
