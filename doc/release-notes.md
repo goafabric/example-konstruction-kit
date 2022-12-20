@@ -1,3 +1,5 @@
+# 1.0.7
+
 # 1.0.6
 - upgrade to Keycloak 19.0.2
 - upgrade to Oauth Proxy 7.4.0

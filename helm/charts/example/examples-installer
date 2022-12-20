@@ -20,29 +20,29 @@ function install() {
     helm repo update
     
     NAMESPACE=example
-    helm_install fhir-facade-application 1.0.6
+    helm_install fhir-facade-application 1.0.7
 
     IMAGE_ARCH="-native"`kubectl version --output=json | grep "linux/arm64" > /dev/null && echo "-arm64v8"`
 
     TENANT_ID=0
     NAMESPACE=example-tenant-$TENANT_ID
-    helm_install callee-service-application 1.0.6
+    helm_install callee-service-application 1.0.7
 
-    helm_install person-service-application 1.0.6
-    helm_install person-service-postgres 1.0.6
-    helm_install person-service-batch 1.0.6
+    helm_install person-service-application 1.0.7
+    helm_install person-service-postgres 1.0.7
+    helm_install person-service-batch 1.0.7
 
     TENANT_ID=5a2f
     NAMESPACE=example-tenant-$TENANT_ID
-    helm_install callee-service-application 1.0.6
+    helm_install callee-service-application 1.0.7
 
-    helm_install person-service-application 1.0.6
-    helm_install person-service-postgres 1.0.6
-    helm_install person-service-batch 1.0.6
+    helm_install person-service-application 1.0.7
+    helm_install person-service-postgres 1.0.7
+    helm_install person-service-batch 1.0.7
 
     NAMESPACE=default
     if kubectl get pods -n default | grep welcome-board > /dev/null; then helm uninstall welcome-board; fi
-    helm_install welcome-board 1.0.6
+    helm_install welcome-board 1.0.7
 
     echo __welcome page now available under /welcome/
 }
