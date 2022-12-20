@@ -1,7 +1,7 @@
 # 1.0.6
 - upgrade to Keycloak 19.0.2
 - upgrade to Oauth Proxy 7.4.0
-- helmcharts repository via github pages
+- helm charts repository via github pages
 
 # 1.0.5
 - upgrade to istio 1.16.0 + kiali 1.59.0
