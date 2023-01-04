@@ -10,6 +10,7 @@ services:
       - --http-address=0.0.0.0:4180
       - --reverse-proxy=true
       - --set-xauthrequest=true
+#      - --proxy-prefix=/oauth2
 #      - --proxy-prefix=/oauth2/${_Values_tenant_id}
     restart: 'no'
     ports:
