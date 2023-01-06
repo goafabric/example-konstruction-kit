@@ -25,13 +25,13 @@ services:
       OAUTH2_PROXY_CLIENT_ID: "oauth2-proxy"
       OAUTH2_PROXY_SKIP_OIDC_DISCOVERY: "true"
 
-      OAUTH2_PROXY_REDIRECT_URL: "http://localhost:4180/callback"
+      OAUTH2_PROXY_REDIRECT_URL: "http://localhost:8080/oauth2/callback"
 
       OAUTH2_PROXY_OIDC_ISSUER_URL: "http://localhost:30200/oidc/auth/realms/tenant-${_Values_tenant_id}"
       OAUTH2_PROXY_LOGIN_URL: "http://localhost:30200/oidc/auth/realms/tenant-${_Values_tenant_id}/protocol/openid-connect/auth"
 
       OAUTH2_PROXY_REDEEM_URL: "http://host.docker.internal:30200/oidc/auth/realms/tenant-${_Values_tenant_id}/protocol/openid-connect/token"
-      OAUTH2_PROXY_OIDC_JWKS_URL: "http:/host.docker.internal:30200/oidc/auth/realms/tenant-${_Values_tenant_id}/protocol/openid-connect/certs"
+      OAUTH2_PROXY_OIDC_JWKS_URL: "http://host.docker.internal:30200/oidc/auth/realms/tenant-${_Values_tenant_id}/protocol/openid-connect/certs"
 
       OAUTH2_PROXY_CLIENT_SECRET: none
       OAUTH2_PROXY_COOKIE_SECRET: SvJIUgqBKxOYSxJwFREiOg==
