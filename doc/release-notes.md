@@ -1,5 +1,6 @@
 # 1.0.7
 - update to kubed 0.13.2
+- rabbitmq removed
 
 # 1.0.6
 - upgrade to Keycloak 19.0.2

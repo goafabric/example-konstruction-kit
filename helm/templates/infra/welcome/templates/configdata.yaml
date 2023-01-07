@@ -153,17 +153,7 @@ data:
                         <a href="/welcome/proxy_logout.html?tenant=0" target="_blank">
                             <span>➡️ Logout</span>
                         </a>
-                    </li>
-                    <p></p>
-                    <li>
-                        <a href="/event/" target="_blank">
-                            <span>🐰 Event Dispatcher</span>
-                        </a>
-                        <a href="/rabbitmq/" target="_blank">
-                            <span>🐰 RabbitMQ</span>
-                        </a>
-                    </li>
-
+                    </li>                  
                 </ul>
             </div>
 
