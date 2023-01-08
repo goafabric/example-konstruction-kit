@@ -72,7 +72,7 @@ services:
       OAUTH2_PROXY_REVERSE_PROXY: "true"
       OAUTH2_PROXY_SET_XAUTHREQUEST: "true"
 
-      # oauth2proxy generic config
+      # oauth2proxy provider config
       OAUTH2_PROXY_PROVIDER: "oidc"
       OAUTH2_PROXY_CLIENT_ID: "oauth2-proxy"
       OAUTH2_PROXY_SKIP_OIDC_DISCOVERY: "true"
@@ -86,6 +86,7 @@ services:
       OAUTH2_PROXY_OIDC_JWKS_URL: "http://keycloak:8080/oidc/auth/realms/tenant-${_Values_tenant_id}/protocol/openid-connect/certs"
 
       OAUTH2_PROXY_CLIENT_SECRET: none
+      # docker run -ti --rm python:3-alpine python -c 'import secrets,base64; print(base64.b64encode(base64.b64encode(secrets.token_bytes(16))));'
       OAUTH2_PROXY_COOKIE_SECRET: SvJIUgqBKxOYSxJwFREiOg==
 
     networks:
