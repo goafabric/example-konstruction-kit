@@ -13,11 +13,10 @@ function func_compose {
 if [ "${COMMAND}" = "up" ]
 then
     func_compose up -d
-    (cd ./oauth2proxy; ./stack up)
 elif [ "${COMMAND}" = "down" ]
 then
     func_compose down
-    (cd ./oauth2proxy; ./stack down)
+
 elif [ "${COMMAND}" = "restart" ]
 then
     func_compose down
