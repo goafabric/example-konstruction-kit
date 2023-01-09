@@ -3,10 +3,10 @@ version: "3.7"
 services:
   keycloak:
     container_name: ${_Values_root_name}-keycloak
-    image:  ${_Values_image_repository}${_Values_image_native}:${_Values_image_tag}
+    image:  quay.io/keycloak/keycloak:19.0.2
     restart: 'no'
     ports:
-      - "${_Values_service_port}:8080"
+      - "30200:8080"
     command: ["start"]
     healthcheck:
       test: "curl -f http://localhost:8080/oidc/auth/realms/master|| exit 1"
@@ -79,11 +79,11 @@ services:
 
       OAUTH2_PROXY_REDIRECT_URL: "http://localhost:8080/oauth2/callback"
 
-      OAUTH2_PROXY_OIDC_ISSUER_URL: "http://localhost:30200/oidc/auth/realms/tenant-${_Values_tenant_id}"
-      OAUTH2_PROXY_LOGIN_URL: "http://localhost:30200/oidc/auth/realms/tenant-${_Values_tenant_id}/protocol/openid-connect/auth"
+      OAUTH2_PROXY_OIDC_ISSUER_URL: "http://localhost:30200/oidc/auth/realms/tenant-0"
+      OAUTH2_PROXY_LOGIN_URL: "http://localhost:30200/oidc/auth/realms/tenant-0/protocol/openid-connect/auth"
 
-      OAUTH2_PROXY_REDEEM_URL: "http://keycloak:8080/oidc/auth/realms/tenant-${_Values_tenant_id}/protocol/openid-connect/token"
-      OAUTH2_PROXY_OIDC_JWKS_URL: "http://keycloak:8080/oidc/auth/realms/tenant-${_Values_tenant_id}/protocol/openid-connect/certs"
+      OAUTH2_PROXY_REDEEM_URL: "http://keycloak:8080/oidc/auth/realms/tenant-0/protocol/openid-connect/token"
+      OAUTH2_PROXY_OIDC_JWKS_URL: "http://keycloak:8080/oidc/auth/realms/tenant-0/protocol/openid-connect/certs"
 
       OAUTH2_PROXY_CLIENT_SECRET: none
       # docker run -ti --rm python:3-alpine python -c 'import secrets,base64; print(base64.b64encode(base64.b64encode(secrets.token_bytes(16))));'
