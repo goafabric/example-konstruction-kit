@@ -4,7 +4,7 @@ export realm=tenant-0
 export credentials=user1
 
 export access_token=$(\
-curl -s -X POST http://localhost:30200/oidc/auth/realms/$realm/protocol/openid-connect/token \
+curl -s -X POST http://localhost:30200/oidc/realms/$realm/protocol/openid-connect/token \
 -H "Content-Type: application/x-www-form-urlencoded" \
 -d "username=$credentials" \
 -d "password=$credentials" \
@@ -15,7 +15,7 @@ curl -s -X POST http://localhost:30200/oidc/auth/realms/$realm/protocol/openid-c
 echo access token is: $access_token
 
 # userinfo
-curl -v -H "Authorization: Bearer $access_token" "http://localhost:30200/oidc/auth/realms/$realm/protocol/openid-connect/userinfo"
+curl -v -H "Authorization: Bearer $access_token" "http://localhost:30200/oidc/realms/$realm/protocol/openid-connect/userinfo"
 
 # localhost service request
 curl -v "http://localhost:50900/callees/sayMyName?name=Heisenberg"

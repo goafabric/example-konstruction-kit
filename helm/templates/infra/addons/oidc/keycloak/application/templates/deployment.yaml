@@ -35,6 +35,6 @@ spec:
 
         readinessProbe:
           httpGet:
-            path: /oidc/auth/realms/master
+            path: /oidc/realms/master
             port: 8080
           initialDelaySeconds: 5

@@ -20,8 +20,8 @@ function logout() {
 
 function logoutByTenant(tenantId) {
     doRequest("/oauth2/" + tenantId + "/sign_out");
-    //doRequest("/oidc/auth/realms/tenant-" + tenantId + "/protocol/openid-connect/logout");
-    window.location.href = "/oidc/auth/realms/tenant-" + tenantId + "/protocol/openid-connect/logout";
+    //doRequest("/oidc/realms/tenant-" + tenantId + "/protocol/openid-connect/logout");
+    window.location.href = "/oidc/realms/tenant-" + tenantId + "/protocol/openid-connect/logout";
 }
 
 function doRequest(url) {
