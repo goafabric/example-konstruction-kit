@@ -2,6 +2,7 @@
 - update to kubed 0.13.2
 - rabbitmq removed
 - keycloak endpoint changed to /oidc
+- keycloak upgrade to 20.0.2
 
 # 1.0.6
 - upgrade to Keycloak 19.0.2

@@ -3,7 +3,7 @@ version: "3.7"
 services:
   keycloak:
     container_name: ${_Values_root_name}-keycloak
-    image:  quay.io/keycloak/keycloak:19.0.2
+    image:  quay.io/keycloak/keycloak:20.0.2
     restart: 'no'
     ports:
       - "30200:8080"
