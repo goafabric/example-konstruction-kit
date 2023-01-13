@@ -4,7 +4,7 @@
 
 ### GOAL: retrieve ONE-TIME-CODE based on client-id and USERNAME/PASSWORD entered 
 
-- client-id provided via the #frontend
+- client-id provided via the #frontend to #authorization-endpoint
 - http://localhost:8081/oauth2/authorize?client_id=oauth2-proxy&response_type=code&scope=openid
 - #openid-provider login screen
 - #user types in username/password
