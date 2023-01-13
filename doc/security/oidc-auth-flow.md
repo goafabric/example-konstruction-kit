@@ -28,9 +28,8 @@
 
 - => jwt can be used to authenticate to other backend
 
-curl -v -s -X POST $baseurl/oidc/realms/$realm/protocol/openid-connect/token \
--H "Content-Type: application/x-www-form-urlencoded" \
--d "username=$credentials" -d "password=$credentials" -d "grant_type=password" -d "client_id=callee-service" -d "scope=openid" \
+curl -v -s -X POST http://localhost:30200/oidc/realms/tenant-0/protocol/openid-connect/token -H "Content-Type: application/x-www-form-urlencoded" \
+-d "username=$credentials" -d "password=$credentials" -d "grant_type=password" -d "client_id=callee-service" -d "scope=openid" 
 
 # 3) Urls
          
