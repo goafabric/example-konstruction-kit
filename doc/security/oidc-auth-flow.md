@@ -29,3 +29,12 @@
 
 - => jwt can be used to authenticate to other backend
 
+# 3) Urls
+
+- OAUTH2_PROXY_REDIRECT_URL: "http://localhost:8080/oauth2/callback"
+
+- OAUTH2_PROXY_OIDC_ISSUER_URL: "http://localhost:30200/oidc/realms/tenant-0"
+- OAUTH2_PROXY_LOGIN_URL: "http://localhost:30200/oidc/realms/tenant-0/protocol/openid-connect/auth"
+
+- OAUTH2_PROXY_REDEEM_URL: "http://keycloak:8080/oidc/realms/tenant-0/protocol/openid-connect/token"
+- OAUTH2_PROXY_OIDC_JWKS_URL: "http://keycloak:8080/oidc/realms/tenant-0/protocol/openid-connect/certs"
