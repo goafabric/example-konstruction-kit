@@ -24,13 +24,13 @@ services:
       OAUTH2_PROXY_CLIENT_ID: "oauth2-proxy"
       OAUTH2_PROXY_SKIP_OIDC_DISCOVERY: "true"
 
-      OAUTH2_PROXY_REDIRECT_URL: "http://localhost:4180/oauth2/callback"
+      OAUTH2_PROXY_REDIRECT_URL: "http://127.0.0.1:8081/login/oauth2/code/oauth2-proxy"
 
-      OAUTH2_PROXY_OIDC_ISSUER_URL: "http://localhost:8081"
-      OAUTH2_PROXY_LOGIN_URL: "http://localhost:8081/oauth2/authorize"
+      OAUTH2_PROXY_OIDC_ISSUER_URL: "http://127.0.0.1:8081"
+      OAUTH2_PROXY_LOGIN_URL: "http://127.0.0.1:8081/oauth2/authorize"
 
-      OAUTH2_PROXY_REDEEM_URL: "http://localhost:8081/oauth2/token"
-      OAUTH2_PROXY_OIDC_JWKS_URL: "http://localhost:8081/oauth2/jwks"
+      OAUTH2_PROXY_REDEEM_URL: "http://127.0.0.1:8081/oauth2/token"
+      OAUTH2_PROXY_OIDC_JWKS_URL: "http://127.0.0.1:8081/oauth2/jwks"
 
       OAUTH2_PROXY_CLIENT_SECRET: none
       # docker run -ti --rm python:3-alpine python -c 'import secrets,base64; print(base64.b64encode(base64.b64encode(secrets.token_bytes(16))));'
