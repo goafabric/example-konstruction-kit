@@ -27,3 +27,7 @@ curl -v -H "Authorization: Bearer $access_token" -H "X-TenantId: 0" "http://loca
 # kubernetes service request
 curl -v "https://kubernetes/callee/0/callees/sayMyName?name=Heisenberg"
 curl -v -H "Authorization: Bearer $access_token" "https://kubernetes/callee/0/callees/sayMyName?name=Heisenberg"
+
+# doc
+https://www.ibm.com/docs/en/was-liberty/base?topic=liberty-invoking-authorization-endpoint-openid-connect
+https://developers.onelogin.com/openid-connect
