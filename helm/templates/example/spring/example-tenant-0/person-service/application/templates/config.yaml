@@ -29,7 +29,7 @@ data:
   spring.datasource.hikari.maximum-pool-size: "10"
   spring.datasource.hikari.connection-timeout: "10000"
 
-  database.provisioning.goals: ""
+  database.provisioning.goals: "-import-demo-data"
 
   #adapter
   adapter.calleeservice.url: "http://callee-service-application:8080"

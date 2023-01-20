@@ -30,7 +30,7 @@ function install() {
 
     helm_install person-service-application 1.0.7
     helm_install person-service-postgres 1.0.7
-    helm_install person-service-batch 1.0.7
+#    helm_install person-service-batch 1.0.7
 
     TENANT_ID=5a2f
     NAMESPACE=example-tenant-$TENANT_ID
@@ -38,7 +38,7 @@ function install() {
 
     helm_install person-service-application 1.0.7
     helm_install person-service-postgres 1.0.7
-    helm_install person-service-batch 1.0.7
+#    helm_install person-service-batch 1.0.7
 
     NAMESPACE=default
     if kubectl get pods -n default | grep welcome-board > /dev/null; then helm uninstall welcome-board; fi
