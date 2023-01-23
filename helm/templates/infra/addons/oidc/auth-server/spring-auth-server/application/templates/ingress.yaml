@@ -16,10 +16,6 @@ metadata:
     {{ if eq .Values.ingress.authentication "basic" }}
     nginx.ingress.kubernetes.io/auth-type: "basic"
     nginx.ingress.kubernetes.io/auth-secret: "authentication-secret"
-    nginx.ingress.kubernetes.io/configuration-snippet: |    
-      sub_filter '/login' '/oidc/login;    
-      sub_filter_once off;
-      sub_filter_types *;
     {{ end }}
 
     # oidc auth
