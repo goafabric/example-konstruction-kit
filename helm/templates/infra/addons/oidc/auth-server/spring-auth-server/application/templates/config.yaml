@@ -1,35 +1,17 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: ${_Values_app_name}-config
-  namespace: ${_Release_namespace}
+  name: {{ include "application.fullname" . }}-config
+  labels:
+    {{- include "application.labels" . | nindent 4 }}
 data:
   #application
   TZ: Europe/Berlin
+  server.port: "{{ .Values.service.port }}"
+  server.tomcat.threads.max: "20"
+  server.forward-headers-strategy: FRAMEWORK
 
-  #div
-  KC_HTTP_RELATIVE_PATH: "oidc"
-  KC_PROXY: "edge"
-  KC_HOSTNAME_STRICT: "false"
-  KC_HOSTNAME_STRICT_HTTPS: "false"
-
-  #database
-  KC_DB: "postgres"
-  KC_DB_URL: "jdbc:postgresql://keycloak-postgres/keycloak"
-
----
-
-apiVersion: v1
-kind: Secret
-metadata:
-  name: ${_Values_app_name}-config-external
-  namespace: ${_Release_namespace}
-data:
-  #keycloak admin user
-  KEYCLOAK_ADMIN: "YWRtaW4="
-  KEYCLOAK_ADMIN_PASSWORD: "YWRtaW4="
-
-  #database user
-  KC_DB_USERNAME: "a2V5Y2xvYWs="
-  KC_DB_PASSWORD: "a2V5Y2xvYWs="
-
+  #users
+  spring.security.authorization.base-uri: "/oidc"
+  spring.security.authorization.clients: "oauth2-proxy:none"
+  spring.security.authorization.users: "user1:user1,user2:user2,user3:user3,user4:user4"

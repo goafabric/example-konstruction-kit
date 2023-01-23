@@ -1,0 +1,11 @@
+apiVersion: v2
+name: spring-auth-server-application
+description: spring-auth-server-application
+
+type: application
+
+version: 1.0.7
+
+appVersion: "1.0.2"
+
+
