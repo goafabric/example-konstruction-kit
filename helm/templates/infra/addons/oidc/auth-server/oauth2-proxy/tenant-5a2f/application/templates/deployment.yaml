@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ${_Values_app_name}
+  namespace: ${_Release_namespace}
+  labels:
+    app: ${_Values_app_name}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ${_Values_app_name}
+  template:
+    metadata:
+      labels:
+        app: ${_Values_app_name}
+    spec:
+      containers:
+        - name: ${_Values_app_name}
+          image: quay.io/oauth2-proxy/oauth2-proxy:v7.4.0
+          ports:
+            - containerPort: 4180
+              protocol: TCP
+          envFrom:
+            - configMapRef:
+                name: ${_Values_app_name}-config
+            - secretRef:
+                name: ${_Values_app_name}-config-external
+          args:
+            - --email-domain=*
+            - --upstream=file:///dev/null
+            - --http-address=0.0.0.0:4180
+            - --reverse-proxy=true
+            - --set-xauthrequest=true
+            - --proxy-prefix=/${_Values_ingress_name}
