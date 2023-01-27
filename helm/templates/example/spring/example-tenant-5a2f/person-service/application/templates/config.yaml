@@ -33,3 +33,4 @@ data:
 
   #adapter
   adapter.calleeservice.url: "http://callee-service-application:8080"
+  adapter.calleeservice.timeout: "10000"
