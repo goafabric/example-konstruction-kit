@@ -7,7 +7,14 @@ data:
   #application
   TZ: Europe/Berlin
 
-  #PROXY
+
+  # oauth2proxy generic config
+  OAUTH2_PROXY_UPSTREAM: "file:///dev/null"
+  OAUTH2_PROXY_HTTP_ADDRESS: "0.0.0.0:4180"
+  OAUTH2_PROXY_REVERSE_PROXY: "true"
+  OAUTH2_PROXY_SET_XAUTHREQUEST: "true"
+
+  # oauth2proxy provider config
   OAUTH2_PROXY_PROVIDER: "oidc"
   OAUTH2_PROXY_CLIENT_ID: "oauth2-proxy"
 
