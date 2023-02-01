@@ -1,0 +1,10 @@
+datasources:
+  - access: proxy
+    editable: true
+    isDefault: false
+    jsonData:
+      timeInterval: 5s
+    name: Loki
+    orgId: 1
+    type: loki
+    url: http://loki:3100
