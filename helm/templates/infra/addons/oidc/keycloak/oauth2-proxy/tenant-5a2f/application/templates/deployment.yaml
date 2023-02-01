@@ -28,4 +28,3 @@ spec:
                 name: ${_Values_app_name}-config-external
           args:
             - --email-domain=*
-            - --proxy-prefix=/${_Values_ingress_name}
