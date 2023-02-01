@@ -7,6 +7,7 @@ data:
   #application
   TZ: Europe/Berlin
 
+
   # oauth2proxy generic config
   OAUTH2_PROXY_UPSTREAM: "file:///dev/null"
   OAUTH2_PROXY_HTTP_ADDRESS: "0.0.0.0:4180"
@@ -16,14 +17,16 @@ data:
   # oauth2proxy provider config
   OAUTH2_PROXY_PROVIDER: "oidc"
   OAUTH2_PROXY_CLIENT_ID: "oauth2-proxy"
+  OAUTH2_PROXY_SKIP_OIDC_DISCOVERY: "true"
 
   OAUTH2_PROXY_REDIRECT_URL: "https://${_Values_host_name}/oauth2/${_Values_tenant_id}/callback"
-  OAUTH2_PROXY_OIDC_ISSUER_URL: "https://${_Values_host_name}/oidc/realms/tenant-${_Values_tenant_id}"
+  OAUTH2_PROXY_LOGIN_URL: "https://${_Values_host_name}/oidc/auth"
 
-  OAUTH2_PROXY_SKIP_OIDC_DISCOVERY: "true"
-  OAUTH2_PROXY_LOGIN_URL: "https://${_Values_host_name}/oidc/realms/tenant-${_Values_tenant_id}/protocol/openid-connect/auth"
-  OAUTH2_PROXY_REDEEM_URL: "http://keycloak-application.oidc:8080/oidc/realms/tenant-${_Values_tenant_id}/protocol/openid-connect/token"
-  OAUTH2_PROXY_OIDC_JWKS_URL: "http://keycloak-application.oidc:8080/oidc/realms/tenant-${_Values_tenant_id}/protocol/openid-connect/certs"
+  OAUTH2_PROXY_OIDC_ISSUER_URL: "http://spring-auth-server-application:8080"
+  OAUTH2_PROXY_OIDC_JWKS_URL: "http://spring-auth-server-application:8080/oidc/certs"
+  OAUTH2_PROXY_REDEEM_URL: "http://spring-auth-server-application:8080/oidc/token"
+
+
 
 
 ---

@@ -2,7 +2,7 @@ replicaCount: 1
 
 tenantId: 0
 ingress:
-  paths: /oidc/{{ .Values.tenantId }}
+  paths: /
   enabled: true
   authentication: basic
 
