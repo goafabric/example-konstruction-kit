@@ -24,6 +24,7 @@ data:
   spring.zipkin.service.name: "{{ include "application.fullname" . }}"
   spring.sleuth.enabled: "true"
   spring.zipkin.enabled: "true"
+  logging.level.zipkin2: "FATAL"
 
   #profile
   spring.profiles.active: "remote"
