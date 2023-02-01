@@ -7,6 +7,8 @@
 - upgrade of spring apps to 3.0.2
 - batch applications temp. disabled
 
+- spring authorization server added
+
 # 1.0.6
 - upgrade to Keycloak 19.0.2
 - upgrade to Oauth Proxy 7.4.0
