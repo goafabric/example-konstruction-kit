@@ -78,13 +78,14 @@ services:
       OAUTH2_PROXY_SKIP_OIDC_DISCOVERY: "true"
 
       OAUTH2_PROXY_REDIRECT_URL: "http://localhost:8080/oauth2/callback"
-
-      OAUTH2_PROXY_OIDC_ISSUER_URL: "http://localhost:30200/oidc/realms/tenant-0"
       OAUTH2_PROXY_LOGIN_URL: "http://localhost:30200/oidc/realms/tenant-0/protocol/openid-connect/auth"
 
-      OAUTH2_PROXY_REDEEM_URL: "http://keycloak:8080/oidc/realms/tenant-0/protocol/openid-connect/token"
-      OAUTH2_PROXY_OIDC_JWKS_URL: "http://keycloak:8080/oidc/realms/tenant-0/protocol/openid-connect/certs"
+      OAUTH2_PROXY_OIDC_ISSUER_URL: "http://localhost:30200/oidc/realms/tenant-0"
 
+      OAUTH2_PROXY_OIDC_JWKS_URL: "http://keycloak:8080/oidc/realms/tenant-0/protocol/openid-connect/certs"
+      OAUTH2_PROXY_REDEEM_URL: "http://keycloak:8080/oidc/realms/tenant-0/protocol/openid-connect/token"
+
+      #secrets
       OAUTH2_PROXY_CLIENT_SECRET: none
       # docker run -ti --rm python:3-alpine python -c 'import secrets,base64; print(base64.b64encode(base64.b64encode(secrets.token_bytes(16))));'
       OAUTH2_PROXY_COOKIE_SECRET: SvJIUgqBKxOYSxJwFREiOg==
