@@ -8,7 +8,7 @@ then
 elif [ "${COMMAND}" = "down" ]
 then
     docker-compose -f ./templates/docker-compose.yml down
-    docker plugin disable loki --force
+    docker plugin disable loki --force && docker plugin rm loki --force
 elif [ "${COMMAND}" = "restart" ]
 then
     docker-compose -f ./templates/docker-compose.yml down
