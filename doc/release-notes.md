@@ -8,6 +8,7 @@
 - batch applications temp. disabled
 
 - spring authorization server added
+- upgrade of postgres to 15.1
 
 # 1.0.6
 - upgrade to Keycloak 19.0.2
