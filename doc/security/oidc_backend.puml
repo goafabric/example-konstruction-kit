@@ -1,0 +1,16 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+participant Client #lightblue
+participant Backend #lightblue
+participant OIDC_Token_Endpoint #lightblue
+
+Client -> OIDC_Token_Endpoint : Credentials
+OIDC_Token_Endpoint -> Client : Response : JWT
+Client -> Backend : GET /person/42 + JWT
+Backend -> OIDC_Token_Endpoint : Verify JWT
+Backend-> Client : Response : person
+
+@enduml
