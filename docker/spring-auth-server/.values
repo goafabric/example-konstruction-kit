@@ -1,0 +1,7 @@
+_Values_root_name="auth-server"
+
+_Values_image_repository=goafabric/spring-auth-server-native
+_Values_image_tag=1.0.2
+
+_Values_service_port=30200
+_Values_resources_requests_memory=32M

@@ -1,0 +1,88 @@
+version: "3.7"
+
+services:
+  application:
+    container_name: ${_Values_root_name}-application
+    image: ${_Values_image_repository}${_Values_server_arch}:${_Values_image_tag}
+    restart: 'no'
+    ports:
+      - "${_Values_service_port}:${_Values_service_port}"
+    command: [ "-Xmx${_Values_resources_requests_memory}" ]
+    environment:
+      #application
+      server.forward-headers-strategy: FRAMEWORK
+
+      #auth
+      spring.security.authorization.base-uri: "/oidc"
+      spring.security.authorization.clients: "oauth2-proxy:none"
+      spring.security.authorization.users: "user1:user1,user2:user2,user3:user3,user4:user4"
+    networks:
+      - ${_Values_root_name}-net
+
+  oauth2-proxy:
+    container_name: ${_Values_root_name}-oauthproxy
+    image: quay.io/oauth2-proxy/oauth2-proxy:v7.4.0
+    command:
+      - --email-domain=*
+    restart: 'no'
+    ports:
+      - "4180:4180"
+    environment:
+      #application
+      TZ: Europe/Berlin
+
+      # oauth2proxy generic config
+      OAUTH2_PROXY_UPSTREAM: "file:///dev/null"
+      OAUTH2_PROXY_HTTP_ADDRESS: "0.0.0.0:4180"
+      OAUTH2_PROXY_REVERSE_PROXY: "true"
+      OAUTH2_PROXY_SET_XAUTHREQUEST: "true"
+
+      # oauth2proxy provider config
+      OAUTH2_PROXY_PROVIDER: "oidc"
+      OAUTH2_PROXY_CLIENT_ID: "oauth2-proxy"
+      OAUTH2_PROXY_SKIP_OIDC_DISCOVERY: "true"
+
+      # secrets
+      OAUTH2_PROXY_CLIENT_SECRET: none
+      # docker run -ti --rm python:3-alpine python -c 'import secrets,base64; print(base64.b64encode(base64.b64encode(secrets.token_bytes(16))));'
+      OAUTH2_PROXY_COOKIE_SECRET: SvJIUgqBKxOYSxJwFREiOg==
+
+      # urls
+      OAUTH2_PROXY_REDIRECT_URL: "http://localhost:8080/oauth2/callback"
+#      OAUTH2_PROXY_REDIRECT_URL: "http://localhost:4180/oauth2/callback"
+      OAUTH2_PROXY_LOGIN_URL: "http://localhost:30200/oidc/auth"
+
+      OAUTH2_PROXY_OIDC_ISSUER_URL: "http://auth-server-application:30200"
+      OAUTH2_PROXY_OIDC_JWKS_URL: "http://auth-server-application:30200/oidc/certs"
+      OAUTH2_PROXY_REDEEM_URL: "http://auth-server-application:30200/oidc/token"
+
+    networks:
+      - ${_Values_root_name}-net
+    depends_on:
+      - application
+
+#  nginx:
+#    container_name: ${_Values_root_name}-nginx
+#    image: nginx:1.22.1
+#    restart: 'no'
+#    ports:
+#      - 80:80
+#    #      - 444:443
+#    networks:
+#      - ${_Values_root_name}-net
+#    volumes:
+#      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+#      - ./nginx/ssl:/etc/ssl/
+#    depends_on:
+#      application:
+#        condition: service_started
+
+
+volumes:
+    tmp:
+    applogs:
+    pgdata:
+
+networks:
+  auth-server-net:
+    driver: bridge
