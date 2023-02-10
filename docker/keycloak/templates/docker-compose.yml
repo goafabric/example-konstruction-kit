@@ -76,6 +76,7 @@ services:
       OAUTH2_PROXY_PROVIDER: "oidc"
       OAUTH2_PROXY_CLIENT_ID: "oauth2-proxy"
       OAUTH2_PROXY_SKIP_OIDC_DISCOVERY: "true"
+      OAUTH2_PROXY_SKIP_PROVIDER_BUTTON: "true"
 
       OAUTH2_PROXY_REDIRECT_URL: "http://localhost:8080/oauth2/callback"
       OAUTH2_PROXY_LOGIN_URL: "http://localhost:30200/oidc/realms/tenant-0/protocol/openid-connect/auth"
