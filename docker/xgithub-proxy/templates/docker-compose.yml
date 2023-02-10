@@ -6,7 +6,7 @@ services:
     image: quay.io/oauth2-proxy/oauth2-proxy:v7.4.0
     command:
       - --email-domain=*
-#      - --scope="goafabric:goafabric@goafabric.de"
+#      - --scope "user:email"
     restart: 'no'
     ports:
       - "4180:4180"
@@ -20,10 +20,12 @@ services:
       OAUTH2_PROXY_REVERSE_PROXY: "true"
       OAUTH2_PROXY_SET_XAUTHREQUEST: "true"
 
+      OAUTH2_PROXY_SKIP_PROVIDER_BUTTON: "true"
+
       # oauth2proxy provider config
       OAUTH2_PROXY_PROVIDER: "github"
       OAUTH2_PROXY_CLIENT_ID: "028cf7cd4281313938a0"
-#      OAUTH2_PROXY_SKIP_PROVIDER_BUTTON: "true"
+      OAUTH2_PROXY_SCOPE: "user:email"
 
       # secrets
       OAUTH2_PROXY_CLIENT_SECRET: "2d79fbf8d9a4f1c0861fc8aa5b41d835d760212b"
@@ -32,7 +34,6 @@ services:
 
       # urls
       OAUTH2_PROXY_REDIRECT_URL: "http://localhost:8080/oauth2/callback"
-#      OAUTH2_PROXY_REDIRECT_URL: "http://localhost:4180/oauth2/callback"
 
 
     networks:
