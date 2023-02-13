@@ -1,4 +1,4 @@
 _Values_root_name="jaeger"
 
 _Values_image_repository=jaegertracing/all-in-one
-_Values_image_tag=1.35.1
+_Values_image_tag=1.42.0

@@ -1,14 +1,15 @@
 # 1.0.7
-- update to kubed 0.13.2
-- rabbitmq removed
-- keycloak endpoint changed to /oidc
-- keycloak upgrade to 20.0.2
+- upgrade to kubed 0.13.2
+- upgrade to istio 1.16.2 + kiali 1.63.0
+- upgrade of postgres to 15.1
+- upgrade of keycloak to 20.0.2
 
 - upgrade of spring apps to 3.0.2
-- batch applications temp. disabled
 
+- rabbitmq removed
+- keycloak endpoint changed to /oidc
+- batch applications temp. disabled
 - spring authorization server added
-- upgrade of postgres to 15.1
 
 # 1.0.6
 - upgrade to Keycloak 19.0.2

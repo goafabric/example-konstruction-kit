@@ -7,7 +7,7 @@ PROFILE=$2
 _Values_host_name=`kubectl get configmaps cluster-config -o jsonpath='{.data.hostname}' -n default` && [ -z "$_Values_host_name" ] && echo "Hostname is empty" && exit
 
 function init() {
-    istioctl operator init --tag=1.16.0
+    istioctl operator init --tag=1.16.2
     kubectl apply -f ./templates/operator${_Values_server_arch}.yaml
     for namespace in $(kubectl get ns | grep -vE 'default|kube|monitoring|ingress|istio|oidc|message-broker' | awk '{print $1}' | tail -n +2); do
         kubectl label namespace $namespace istio-injection=enabled --overwrite; done
