@@ -42,4 +42,8 @@ else
     echo Doing nothing !
 fi
 
-#CleanUp: docker volume prune
+#function github-proxy {
+#docker run --name auth2-proxy --rm -p4180:4180 quay.io/oauth2-proxy/oauth2-proxy:v7.4.0 \
+#--email-domain='*' --upstream=file:///dev/null --http-address=0.0.0.0:4180 --set-xauthrequest=true --provider=github --skip-provider-button=true --scope="user:email" \
+#--client-id=028cf7cd4281313938a0 --client-secret=2d79fbf8d9a4f1c0861fc8aa5b41d835d760212b  --cookie-secret=SvJIUgqBKxOYSxJwFREiOg== --redirect-url=http://localhost:8080/oauth2/callback
+#}
