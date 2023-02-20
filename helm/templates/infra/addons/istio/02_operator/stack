@@ -27,7 +27,7 @@ function prune() {
 }
 
 if   [ "${COMMAND}" = "init" ] ; then init;
-if   [ "${COMMAND}" = "init" ] ; then ambient;
+elif   [ "${COMMAND}" = "ambient" ] ; then ambient;
 elif [ "${COMMAND}" = "prune" ]; then prune;
 
 else echo Doing nothing !; fi
