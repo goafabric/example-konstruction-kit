@@ -1,3 +1,6 @@
+# url
+https://istio.io/latest/docs/tasks/security/authentication/authn-policy/
+
 # strict
 kubectl apply -f - <<EOF
 apiVersion: security.istio.io/v1beta1
