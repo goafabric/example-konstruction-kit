@@ -14,7 +14,7 @@ function init() {
 }
 
 function ambient() {
-    istioctl operator init --tag=1.16.2 --set profile=ambient
+    istioctl operator init --tag=1.17.0 --set profile=ambient
 #    istioctl-ambient install --set profile=ambient -y
     kubectl apply -f ./templates/operator${_Values_server_arch}.yaml
     for namespace in $(kubectl get ns | grep -vE 'default|kube|monitoring|ingress|istio|oidc|message-broker' | awk '{print $1}' | tail -n +2); do
