@@ -1,0 +1,21 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+participant Frontend #lightblue
+participant OIDC_Frontend_Auth #lightblue
+participant Backend #lightblue
+participant OIDC_Token_Endpoint #lightblue
+
+Frontend -> Frontend : Enter Credentials
+Frontend -> OIDC_Frontend_Auth : Credentials
+OIDC_Frontend_Auth -> Frontend : Response : One Time Code
+Frontend -> Backend  : One Time Code via Redirect_URI
+Backend ->  OIDC_Token_Endpoint : One Time Code
+OIDC_Token_Endpoint -> Backend : Response : JWT
+Backend -> Frontend : Authentication OK + Set Cookie
+Frontend -> Backend : Get person/42  + Cookie
+Backend ->  Frontend : Response : person
+
+@enduml

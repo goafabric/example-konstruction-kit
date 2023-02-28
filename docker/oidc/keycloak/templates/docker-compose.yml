@@ -1,0 +1,105 @@
+version: "3.7"
+
+services:
+  keycloak:
+    container_name: ${_Values_root_name}-keycloak
+    image:  quay.io/keycloak/keycloak:20.0.2
+    restart: 'no'
+    ports:
+      - "30200:8080"
+    command: ["start"]
+    healthcheck:
+      test: "curl -f http://localhost:8080/oidc/realms/master|| exit 1"
+      interval: 5s
+      timeout: 10s
+      retries: 5
+
+    networks:
+      - ${_Values_root_name}-net
+    environment:
+      #application
+      - TZ=Europe/Berlin
+      - JAVA_OPTS=-Xmx256m
+      - KC_HTTP_RELATIVE_PATH=oidc
+      - KC_PROXY=edge
+      - KC_HOSTNAME_STRICT=false
+      - KC_HOSTNAME_STRICT_HTTPS=false
+
+      #database
+      - KC_DB=postgres
+      - KC_DB_URL=jdbc:postgresql://postgres/keycloak
+
+      - KEYCLOAK_ADMIN=admin
+      - KEYCLOAK_ADMIN_PASSWORD=admin
+      - KC_DB_USERNAME=keycloak
+      - KC_DB_PASSWORD=keycloak
+
+    depends_on:
+      - postgres
+
+  postgres:
+    container_name: ${_Values_root_name}-postgres
+    image: postgres:14.5
+    restart: 'no'
+    ports:
+      - 5432
+    environment:
+      - TZ=Europe/Berlin
+      - POSTGRES_USER=keycloak
+      - POSTGRES_PASSWORD=keycloak
+      - POSTGRES_DB=keycloak
+    command: postgres -c 'shared_buffers=64MB' -c 'max_connections=30' -c 'shared_preload_libraries=pg_stat_statements'
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - ${_Values_root_name}-net
+
+  oauth2proxy:
+    container_name: ${_Values_root_name}-oauth2proxy
+    image: quay.io/oauth2-proxy/oauth2-proxy:v7.4.0
+    command:
+      - --email-domain=*
+    restart: 'no'
+    ports:
+      - "4180:4180"
+    environment:
+      #application
+      TZ: Europe/Berlin
+
+      # oauth2proxy generic config
+      OAUTH2_PROXY_UPSTREAM: "file:///dev/null"
+      OAUTH2_PROXY_HTTP_ADDRESS: "0.0.0.0:4180"
+      OAUTH2_PROXY_REVERSE_PROXY: "true"
+      OAUTH2_PROXY_SET_XAUTHREQUEST: "true"
+
+      OAUTH2_PROXY_SKIP_PROVIDER_BUTTON: "true"
+
+      # oauth2proxy provider config
+      OAUTH2_PROXY_PROVIDER: "oidc"
+      OAUTH2_PROXY_CLIENT_ID: "oauth2-proxy"
+      OAUTH2_PROXY_SKIP_OIDC_DISCOVERY: "true"
+
+      OAUTH2_PROXY_REDIRECT_URL: "http://localhost:8080/oauth2/callback"
+      OAUTH2_PROXY_LOGIN_URL: "http://localhost:30200/oidc/realms/tenant-0/protocol/openid-connect/auth"
+
+      OAUTH2_PROXY_OIDC_ISSUER_URL: "http://localhost:30200/oidc/realms/tenant-0"
+
+      OAUTH2_PROXY_OIDC_JWKS_URL: "http://keycloak:8080/oidc/realms/tenant-0/protocol/openid-connect/certs"
+      OAUTH2_PROXY_REDEEM_URL: "http://keycloak:8080/oidc/realms/tenant-0/protocol/openid-connect/token"
+
+      #secrets
+      OAUTH2_PROXY_CLIENT_SECRET: none
+      # docker run -ti --rm python:3-alpine python -c 'import secrets,base64; print(base64.b64encode(base64.b64encode(secrets.token_bytes(16))));'
+      OAUTH2_PROXY_COOKIE_SECRET: SvJIUgqBKxOYSxJwFREiOg==
+
+    networks:
+      - ${_Values_root_name}-net
+
+volumes:
+    tmp:
+    applogs:
+    pgdata:
+
+networks:
+  keycloak-net:
+    driver: bridge

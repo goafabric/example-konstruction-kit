@@ -1,0 +1,45 @@
+#!/bin/bash
+source .values
+export COMMAND=$1
+export OPTION=$2
+
+[[ "$(uname -m)" == "arm64" || "$(uname -m)" == "aarch64" ]] && export _Values_server_arch="-arm64v8"
+export _Values_image_native="" && [[ "${OPTION}" = "-native" ]] && export _Values_image_native=-native${_Values_server_arch}
+export _Values_nginx_oidc="" && docker ps | grep oauth2-proxy > /dev/null && export _Values_nginx_oidc="_oidc"
+docker ps | grep loki > /dev/null && LOKI_COMPOSE="-f ./templates/docker-compose-loki.yml"
+
+function func_compose {
+    echo Going $1 ...
+    docker-compose -p ${_Values_root_name} -f ./templates/docker-compose.yml $LOKI_COMPOSE --env-file .values $1 $2 $3 $4 $5
+}
+
+if [ "${COMMAND}" = "up" ]
+then
+    func_compose up -d
+elif [ "${COMMAND}" = "down" ]
+then
+    func_compose down
+elif [ "${COMMAND}" = "restart" ]
+then
+    func_compose down
+    func_compose up -d
+elif [ "${COMMAND}" = "pull" ]
+then
+    func_compose down
+    func_compose pull
+elif [ "${COMMAND}" = "build" ]
+then
+    func_compose build
+elif [ "${COMMAND}" = "prune" ]
+then
+    func_compose down --volumes
+elif [ "${COMMAND}" = "update" ]
+then
+    func_compose down --volumes
+    func_compose pull
+    func_compose up -d
+else
+    echo Doing nothing !
+fi
+
+#CleanUp: docker volume prune

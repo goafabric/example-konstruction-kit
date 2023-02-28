@@ -23,3 +23,4 @@ data:
   management.zipkin.tracing.endpoint: "http://zipkin.monitoring:9411/api/v2/spans"
   management.tracing.sampling.probability: "1.0"
   management.tracing.enabled: "true"
+  logging.level.zipkin2.reporter: "ERROR"

@@ -1,7 +1,0 @@
-_Values_root_name="keycloak"
-
-_Values_image_repository=quay.io/keycloak/keycloak
-_Values_image_tag=19.0.2
-
-_Values_service_port=30200
-_Values_resources_requests_memory=256M

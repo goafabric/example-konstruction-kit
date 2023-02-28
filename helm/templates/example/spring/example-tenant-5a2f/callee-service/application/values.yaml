@@ -26,10 +26,10 @@ resourcesAnnotations:
 nativeAnnotations:
   resources:
     requests:
-      memory: 64M
+      memory: 32M
       cpu: 250m
 
-  args: ["-Xmx64M"]
+  args: ["-Xmx32M"]
 
 readinessProbe:
   initialDelaySeconds: 2

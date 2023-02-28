@@ -1,0 +1,44 @@
+replicaCount: 1
+
+tenantId: 0
+ingress:
+  paths: /
+  enabled: true
+  authentication: basic
+
+image:
+  repository: "goafabric/spring-auth-server"
+  pullPolicy: IfNotPresent
+  pullSecrets: 
+
+podAnnotations:
+  linkerd.io/inject: enabled
+  sidecar.istio.io/inject: "true"
+
+resourcesAnnotations:
+  resources:
+    requests:
+      memory: 128M
+      cpu: 250m
+
+  command: ["java", "-Xms128M", "-Xmx128M", "-cp", "/app/resources:/app/classes:/app/libs/*", "org.goafabric.authserver.Application"]
+
+nativeAnnotations:
+  resources:
+    requests:
+      memory: 32M
+      cpu: 250m
+
+  args: ["-Xmx32M"]
+
+readinessProbe:
+  initialDelaySeconds: 2
+#  scheme: HTTPS
+
+service:
+  type: ClusterIP
+  port: 8080
+
+
+
+

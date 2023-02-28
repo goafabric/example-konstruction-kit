@@ -23,13 +23,15 @@ data:
   management.zipkin.tracing.endpoint: "http://zipkin.monitoring:9411/api/v2/spans"
   management.tracing.sampling.probability: "1.0"
   management.tracing.enabled: "true"
+  logging.level.zipkin2.reporter: "ERROR"
 
   #persistence
   spring.datasource.url: "jdbc:postgresql://person-service-postgres:5432/person"
   spring.datasource.hikari.maximum-pool-size: "10"
   spring.datasource.hikari.connection-timeout: "10000"
 
-  database.provisioning.goals: ""
+  database.provisioning.goals: "-import-demo-data"
 
   #adapter
   adapter.calleeservice.url: "http://callee-service-application:8080"
+  adapter.calleeservice.timeout: "10000"

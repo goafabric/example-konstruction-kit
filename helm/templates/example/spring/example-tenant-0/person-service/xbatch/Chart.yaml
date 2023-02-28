@@ -4,6 +4,6 @@ description: person-service-batch
 
 type: application
 
-version: 1.0.6
+version: 1.0.7
 
-appVersion: "3.0.0"
+appVersion: "3.0.3"
