@@ -1,6 +1,6 @@
 # 1.0.7
 - upgrade to kubed 0.13.2
-- upgrade to istio 1.16.2 + kiali 1.63.0
+- upgrade to istio 1.17.1 + kiali 1.63.0
 - upgrade of postgres to 15.2
 - upgrade of keycloak to 20.0.2
 - verify linkerd 2.12.4
