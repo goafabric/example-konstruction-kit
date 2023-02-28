@@ -9,8 +9,8 @@ entries:
     name: callee-service-application
     type: application
     urls:
-    - https://goafabric.github.io/example-konstruction-kit/helm/charts/example/spring/callee-service-application-1.0.7.tgz
-    version: 1.0.7
+    - https://goafabric.github.io/example-konstruction-kit/helm/charts/example/spring/callee-service-application-1.0.8.tgz
+    version: 1.0.8
   - apiVersion: v2
     appVersion: 3.0.0
     created: "2022-12-20T14:53:58.004141+01:00"
@@ -30,8 +30,8 @@ entries:
     name: fhir-facade-application
     type: application
     urls:
-    - https://goafabric.github.io/example-konstruction-kit/helm/charts/example/spring/fhir-facade-application-1.0.7.tgz
-    version: 1.0.7
+    - https://goafabric.github.io/example-konstruction-kit/helm/charts/example/spring/fhir-facade-application-1.0.8.tgz
+    version: 1.0.8
   - apiVersion: v2
     appVersion: 2.0.2
     created: "2022-12-20T14:53:58.004953+01:00"
@@ -51,8 +51,8 @@ entries:
     name: person-service-application
     type: application
     urls:
-    - https://goafabric.github.io/example-konstruction-kit/helm/charts/example/spring/person-service-application-1.0.7.tgz
-    version: 1.0.7
+    - https://goafabric.github.io/example-konstruction-kit/helm/charts/example/spring/person-service-application-1.0.8.tgz
+    version: 1.0.8
   - apiVersion: v2
     appVersion: 3.0.0
     created: "2022-12-20T14:53:58.005678+01:00"
@@ -72,8 +72,8 @@ entries:
     name: person-service-batch
     type: application
     urls:
-    - https://goafabric.github.io/example-konstruction-kit/helm/charts/example/spring/person-service-batch-1.0.7.tgz
-    version: 1.0.7
+    - https://goafabric.github.io/example-konstruction-kit/helm/charts/example/spring/person-service-batch-1.0.8.tgz
+    version: 1.0.8
   - apiVersion: v2
     appVersion: 3.0.0
     created: "2022-12-20T14:53:58.006371+01:00"
@@ -93,8 +93,8 @@ entries:
     name: person-service-postgres
     type: application
     urls:
-    - https://goafabric.github.io/example-konstruction-kit/helm/charts/example/spring/person-service-postgres-1.0.7.tgz
-    version: 1.0.7
+    - https://goafabric.github.io/example-konstruction-kit/helm/charts/example/spring/person-service-postgres-1.0.8.tgz
+    version: 1.0.8
   - apiVersion: v2
     appVersion: "14.5"
     created: "2022-12-20T14:53:58.00698+01:00"
@@ -114,8 +114,8 @@ entries:
     name: welcome-board
     type: application
     urls:
-    - https://goafabric.github.io/example-konstruction-kit/helm/charts/example/spring/welcome-board-1.0.7.tgz
-    version: 1.0.7
+    - https://goafabric.github.io/example-konstruction-kit/helm/charts/example/spring/welcome-board-1.0.8.tgz
+    version: 1.0.8
   - apiVersion: v2
     appVersion: 1.20.2
     created: "2022-12-20T14:53:58.007631+01:00"

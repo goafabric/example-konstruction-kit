@@ -1,3 +1,6 @@
+# 1.0.8
+- version increase
+
 # 1.0.7
 - upgrade to kubed 0.13.2
 - upgrade to istio 1.16.2 + kiali 1.63.0
@@ -106,7 +109,7 @@
 - fhir facade quarkus added
 
 # 0.8.3
-- upgrade to latest person-service 1.0.6 and callee-service 1.0.7
+- upgrade to latest person-service 1.0.6 and callee-service 1.0.8
 
 # 0.8.2
 - upgrade to istio 1.10
