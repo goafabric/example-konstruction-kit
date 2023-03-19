@@ -8,14 +8,14 @@ _Values_host_name=`kubectl get configmaps cluster-config -o jsonpath='{.data.hos
 
 function init() {
     istioctl operator init --tag=1.17.1
-    kubectl apply -f ./templates/operator${_Values_server_arch}.yaml
+    kubectl apply -f ./templates/operator.yaml
     for namespace in $(kubectl get ns | grep -vE 'default|kube|monitoring|ingress|istio|oidc|message-broker' | awk '{print $1}' | tail -n +2); do
         kubectl label namespace $namespace istio-injection=enabled --overwrite; done
 }
 
 function ambient() {
-    istioctl operator init --tag=1.17.1 --set profile=ambient
-    kubectl apply -f ./templates/operator${_Values_server_arch}.yaml
+    istioctl install --set profile=ambient
+    #kubectl apply -f ./templates/operator.yaml
     for namespace in $(kubectl get ns | grep -vE 'default|kube|monitoring|ingress|istio|oidc|message-broker' | awk '{print $1}' | tail -n +2); do
         kubectl label namespace $namespace istio.io/dataplane-mode=ambient --overwrite; done
 }
