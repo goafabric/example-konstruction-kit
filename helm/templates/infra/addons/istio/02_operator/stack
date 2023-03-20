@@ -7,22 +7,20 @@ PROFILE=$2
 _Values_host_name=`kubectl get configmaps cluster-config -o jsonpath='{.data.hostname}' -n default` && [ -z "$_Values_host_name" ] && echo "Hostname is empty" && exit
 
 function init() {
-    istioctl operator init --tag=1.17.1
-    kubectl apply -f ./templates/operator.yaml
+    istioctl install -y --set profile=minimal -f ./templates/meshconfig.yaml
     for namespace in $(kubectl get ns | grep -vE 'default|kube|monitoring|ingress|istio|oidc|message-broker' | awk '{print $1}' | tail -n +2); do
         kubectl label namespace $namespace istio-injection=enabled --overwrite; done
 }
 
 function ambient() {
-    istioctl install --set profile=ambient
-    #kubectl apply -f ./templates/operator.yaml
+    istioctl install --set profile=ambient -f ./templates/meshconfig.yaml
     for namespace in $(kubectl get ns | grep -vE 'default|kube|monitoring|ingress|istio|oidc|message-broker' | awk '{print $1}' | tail -n +2); do
         kubectl label namespace $namespace istio.io/dataplane-mode=ambient --overwrite; done
 }
 
 function prune() {
-    istioctl x uninstall -y --purge
-    kubectl delete namespace istio-operator && kubectl delete namespace istio-system
+    istioctl uninstall -y --purge
+    kubectl delete namespace istio-system
 }
 
 if   [ "${COMMAND}" = "init" ] ; then init;
