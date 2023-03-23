@@ -12,7 +12,12 @@ metadata:
   namespace: cert-manager
 spec:
   isCA: true
-  commonName: my-selfsigned-ca
+
+  commonName: Example Ca
+  subject:
+    organizations:
+      - Example Organization
+
   secretName: root-certificate
   privateKey:
     algorithm: ECDSA
