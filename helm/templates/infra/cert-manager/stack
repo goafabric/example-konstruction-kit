@@ -4,18 +4,21 @@ PROFILE=$2
 
 function up() {
     helm repo add jetstack https://charts.jetstack.io > /dev/null
-    helm repo update
     helm install cert-manager jetstack/cert-manager \
       --namespace cert-manager \
       --create-namespace \
       --version v1.11.0 \
       --set installCRDs=true \
       --set prometheus.enabled=false
+    kubectl apply -f ./templates/deployment.yaml
+#    kubectl get issuers -n cert-manager -o wide selfsigned-issuer
+    kubectl get clusterissuers -o wide selfsigned-issuer
 }
 
 function down() {
-    helm uninstall cert-manager --namespace cert-manager
-    kubectl delete namespace cert-manager
+    kubectl delete -f ./templates/deployment.yaml
+#    helm uninstall cert-manager --namespace cert-manager
+#    kubectl delete namespace cert-manager
 }
 
 
