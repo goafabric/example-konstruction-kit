@@ -6,10 +6,7 @@ function up() {
     helm repo add jetstack https://charts.jetstack.io > /dev/null
     helm upgrade --install cert-manager jetstack/cert-manager --version v1.11.0 \
       --namespace cert-manager --create-namespace --set installCRDs=true --set prometheus.enabled=false #--set enable-certificate-owner-ref=true
-#    kubectl apply -f ./templates/deployment.yaml
-    echo -n YXBpVmVyc2lvbjogY2VydC1tYW5hZ2VyLmlvL3YxCmtpbmQ6IENsdXN0ZXJJc3N1ZXIKbWV0YWRhdGE6CiAgbmFtZTogc2VsZnNpZ25lZC1pc3N1ZXIKc3BlYzoKICBzZWxmU2lnbmVkOiB7fQotLS0KYXBpVmVyc2lvbjogY2VydC1tYW5hZ2VyLmlvL3YxCmtpbmQ6IENlcnRpZmljYXRlCm1ldGFkYXRhOgogIG5hbWU6IG15LXNlbGZzaWduZWQtY2EKICBuYW1lc3BhY2U6IGNlcnQtbWFuYWdlcgpzcGVjOgogIGlzQ0E6IHRydWUKCiAgY29tbW9uTmFtZTogRXhhbXBsZSBDYQogIHN1YmplY3Q6CiAgICBvcmdhbml6YXRpb25zOgogICAgICAtIEV4YW1wbGUgT3JnYW5pemF0aW9uCgogIHNlY3JldE5hbWU6IHJvb3QtY2VydGlmaWNhdGUKICBwcml2YXRlS2V5OgogICAgYWxnb3JpdGhtOiBFQ0RTQQogICAgc2l6ZTogMjU2CiAgaXNzdWVyUmVmOgogICAgbmFtZTogc2VsZnNpZ25lZC1pc3N1ZXIKICAgIGtpbmQ6IENsdXN0ZXJJc3N1ZXIKICAgIGdyb3VwOiBjZXJ0LW1hbmFnZXIuaW8KLS0tCmFwaVZlcnNpb246IGNlcnQtbWFuYWdlci5pby92MQpraW5kOiBJc3N1ZXIKbWV0YWRhdGE6CiAgbmFtZTogbXktY2EtaXNzdWVyCiAgbmFtZXNwYWNlOiBjZXJ0LW1hbmFnZXIKc3BlYzoKICBjYToKICAgIHNlY3JldE5hbWU6IHJvb3QtY2VydGlmaWNhdGU= \
-    | base64 -d | kubectl apply -f -
-
+    kubectl apply -f ./templates/deployment.yaml
 #    kubectl delete --ignore-not-found secret server-certificate-secret -n default > /dev/null
 }
 
