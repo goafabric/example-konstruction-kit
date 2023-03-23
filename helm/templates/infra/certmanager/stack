@@ -7,7 +7,7 @@ function up() {
     helm upgrade --install cert-manager jetstack/cert-manager --version v1.11.0 \
       --namespace cert-manager --create-namespace --set installCRDs=true --set prometheus.enabled=false #--set enable-certificate-owner-ref=true
     kubectl apply -f ./templates/deployment.yaml
-#    kubectl delete --ignore-not-found secret server-certificate-secret -n default > /dev/null
+#    kubectl delete --ignore-not-found secret root-certificate -n default > /dev/null
 }
 
 function down() {

@@ -4,6 +4,8 @@ metadata:
   name: keycloak-ingress
   namespace: ${_Release_namespace}
   annotations:
+    cert-manager.io/cluster-issuer: selfsigned-issuer
+
     nginx.ingress.kubernetes.io/ssl-redirect: "true"
     #    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
 
@@ -14,7 +16,7 @@ spec:
   tls:
     - hosts:
         - ${_Values_host_name}
-      secretName: server-certificate-secret
+      secretName: root-certificate
   rules:
     - host: ${_Values_host_name}
       http:

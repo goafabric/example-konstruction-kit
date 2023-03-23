@@ -60,7 +60,7 @@ function install_dashboard()  {
     --set ingress.annotations.'nginx\.ingress\.kubernetes\.io/auth-secret'=authentication-secret,ingress.annotations.'nginx\.ingress\.kubernetes\.io/auth-type'=basic,ingress.annotations.'nginx\.ingress\.kubernetes\.io/rewrite-target'='/$1' \
     --set ingress.annotations.'cert-manager\.io/cluster-issuer'='selfsigned-issuer' \
     --set ingress.hosts[0]=$_Values_host_name,ingress.paths[0]='/dashboard/?(.*)'\
-    --set ingress.tls[0].hosts[0]=$_Values_host_name,ingress.tls[0].secretName=server-certificate-secret \
+    --set ingress.tls[0].hosts[0]=$_Values_host_name,ingress.tls[0].secretName=root-certificate \
     --set metricsScraper.enabled=true,metrics-server.enabled=true \
     --set metrics-server.args[0]='--kubelet-insecure-tls',extraArgs[0]='--enable-skip-login'
 
