@@ -21,6 +21,9 @@ function down() {
     kubectl delete --ignore-not-found -f ./templates/deployment.yaml > /dev/null
     helm uninstall cert-manager --namespace cert-manager
     kubectl delete namespace cert-manager
+
+    for namespace in $(kubectl get ns | awk '{print $1}' | tail -n +2); do
+          kubectl delete --ignore-not-found secret root-certificate -n $namespace; done
 }
 
 
