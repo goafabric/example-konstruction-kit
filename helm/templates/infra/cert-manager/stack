@@ -13,12 +13,14 @@ function up() {
     kubectl apply -f ./templates/deployment.yaml
 #    kubectl get issuers -n cert-manager -o wide selfsigned-issuer
     kubectl get clusterissuers -o wide selfsigned-issuer
+
+    kubectl delete --ignore-not-found secret server-certificate-secret -n default > /dev/null
 }
 
 function down() {
-    kubectl delete -f ./templates/deployment.yaml
-#    helm uninstall cert-manager --namespace cert-manager
-#    kubectl delete namespace cert-manager
+    kubectl delete --ignore-not-found -f ./templates/deployment.yaml > /dev/null
+    helm uninstall cert-manager --namespace cert-manager
+    kubectl delete namespace cert-manager
 }
 
 
