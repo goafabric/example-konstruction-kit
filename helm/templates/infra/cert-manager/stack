@@ -1,0 +1,29 @@
+#!/bin/bash
+COMMAND=$1
+PROFILE=$2
+
+function up() {
+    helm repo add jetstack https://charts.jetstack.io > /dev/null
+    helm repo update
+    helm install cert-manager jetstack/cert-manager \
+      --namespace cert-manager \
+      --create-namespace \
+      --version v1.11.0 \
+      --set installCRDs=true \
+      --set prometheus.enabled=false
+}
+
+function down() {
+    helm uninstall cert-manager --namespace cert-manager
+    kubectl delete namespace cert-manager
+}
+
+
+
+if   [ "${COMMAND}" = "init" ] ; then up;
+elif [ "${COMMAND}" = "restart" ] ; then down && up;
+elif [ "${COMMAND}" = "prune" ]; then down;
+
+else echo Doing nothing !; fi
+
+#Sample query: {namespace="example-tenant-5a2f",container="callee-service-application"}
