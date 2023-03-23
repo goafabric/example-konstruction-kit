@@ -6,6 +6,8 @@ metadata:
   annotations:
     cert-manager.io/cluster-issuer: selfsigned-issuer
 
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+
     nginx.ingress.kubernetes.io/ssl-redirect: "false"
 
     nginx.ingress.kubernetes.io/upstream-vhost: $service_name.$namespace.svc.cluster.local:8084

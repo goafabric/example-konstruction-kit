@@ -29,6 +29,8 @@ ingress:
   annotations:
     cert-manager.io/cluster-issuer: selfsigned-issuer
 
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+
     nginx.ingress.kubernetes.io/auth-secret: authentication-secret
     nginx.ingress.kubernetes.io/auth-type: basic
 
