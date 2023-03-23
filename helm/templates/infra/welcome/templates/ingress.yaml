@@ -20,7 +20,7 @@ spec:
   tls:
     - hosts:
         - {{ .Values.ingress.hosts}}
-      secretName: root-secret
+      secretName: root-certificate
   rules:
     - host: {{ .Values.ingress.hosts}}
       http:
