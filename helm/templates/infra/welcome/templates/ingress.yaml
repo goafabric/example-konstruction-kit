@@ -12,12 +12,15 @@ metadata:
     nginx.ingress.kubernetes.io/configuration-snippet: |
       rewrite ^({{ .Values.ingress.paths }})$ $1/ redirect;
 
+    # add an annotation indicating the issuer to use.
+    cert-manager.io/cluster-issuer: selfsigned-issuer
+
 spec:
   ingressClassName: nginx
   tls:
     - hosts:
         - {{ .Values.ingress.hosts}}
-      secretName: server-certificate-secret
+      secretName: root-secret
   rules:
     - host: {{ .Values.ingress.hosts}}
       http:
