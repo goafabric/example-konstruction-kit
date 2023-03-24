@@ -5,16 +5,13 @@ PROFILE=$2
 function up() {
     helm repo add jetstack https://charts.jetstack.io > /dev/null
     helm upgrade --install cert-manager jetstack/cert-manager --version v1.11.0 \
-      --namespace cert-manager --create-namespace --set installCRDs=true --set prometheus.enabled=false #--set enable-certificate-owner-ref=true
+         --namespace cert-manager --create-namespace --set installCRDs=true,prometheus.enabled=false,extraArgs[0]='--enable-certificate-owner-ref'
     kubectl apply -f ./templates/deployment.yaml
-#    kubectl delete --ignore-not-found secret root-certificate -n default > /dev/null
 }
 
 function down() {
     kubectl delete --ignore-not-found -f ./templates/deployment.yaml > /dev/null
-#    helm uninstall cert-manager --namespace cert-manager && kubectl delete namespace cert-manager
-    for namespace in $(kubectl get ns | awk '{print $1}' | tail -n +2); do
-          kubectl delete --ignore-not-found secret root-certificate -n $namespace; done
+    helm uninstall cert-manager --namespace cert-manager && kubectl delete namespace cert-manager
 }
 
 
