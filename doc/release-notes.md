@@ -1,5 +1,6 @@
 # 1.0.8
 - version increase
+- cert-manager added
 
 # 1.0.7
 - upgrade to kubed 0.13.2
