@@ -3,7 +3,7 @@
 - Easiest Option is recent version of Docker Dekstop + Kubernetes 1.25+ enabled
 
 - For local installations you need an entry in /etc/hosts like "127.0.0.1 kubernetes"
-- For https to work you need to import helm/templates/infra/infra/certificate/root/config/root.pem
+- For https to work you might get an error during first browser access, you have to export the certificate and import into your system keychain
 - You need a Helm command line tool v3.10+, as well as kubectl if not provided by your Kubernetes System
 - However if helm cannot be found the installer will try to install it for you
  
