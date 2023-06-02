@@ -29,6 +29,7 @@ services:
       GF_AUTH_DISABLE_SIGNOUT_MENU: "true"
       GF_AUTH_ANONYMOUS_ENABLED: "true"
       GF_AUTH_ANONYMOUS_ORG_ROLE: "Admin"
+      GF_SECURITY_ALLOW_EMBEDDING: "true"
     volumes:
       - ./loki_ds.yml:/etc/grafana/provisioning/datasources/loki_ds.yml
     networks:
