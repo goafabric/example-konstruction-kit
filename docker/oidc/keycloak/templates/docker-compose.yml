@@ -4,6 +4,8 @@ services:
   keycloak:
     container_name: ${_Values_root_name}-keycloak
     image:  quay.io/keycloak/keycloak:20.0.2
+#    image:  quay.io/keycloak/keycloak:21.1.1
+
     restart: 'no'
     ports:
       - "30200:8080"
