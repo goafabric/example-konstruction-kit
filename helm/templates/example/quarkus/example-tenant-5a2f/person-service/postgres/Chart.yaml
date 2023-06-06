@@ -1,9 +1,0 @@
-apiVersion: v2
-name: person-service-postgres
-description: person-service-postgres
-
-type: application
-
-version: 1.0.8
-
-appVersion: "15.2"

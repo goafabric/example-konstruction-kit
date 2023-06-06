@@ -1,298 +1,65 @@
 apiVersion: v1
 data:
-  index.html: ""
-  proxy_login.html: ""
-  proxy_logout.html: ""
+  index.html: "<!DOCTYPE html>\n<html>\n<head lang=\"en\">\n    <meta charset=\"UTF-8\">\n
+    \   <title>Cluster Landing Page</title>\n    <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\">\n
+    \   <link href=\"https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,700;1,100&display=swap\"\n
+    \         rel=\"stylesheet\">\n    <style>\n        body, h1, h2, h3, h4, h5,
+    h6 {\n            margin: 0;\n        }\n\n        ul {\n            margin: 16px
+    0;\n            padding-left: 40px;\n        }\n\n        li {\n            list-style:
+    none;\n        }\n\n        html {\n            background-color: #0099ff;\n            background-size:
+    cover;\n        }\n\n        body {\n            color: #ffffff;\n            font-family:
+    'Roboto', sans-serif;\n            padding-top: 100px;\n            text-align:
+    center;\n        }\n\n        .title {\n            font-size: 60px;\n            font-weight:
+    300;\n        }\n\n        .subtitle {\n            font-size: 20px;\n            font-weight:
+    100;\n            font-style: italic;\n        }\n\n        .box {\n            backdrop-filter:
+    blur(5px);\n            background: rgba(66, 66, 66, 0.25);\n            border:
+    2px solid #ffffff;\n            box-sizing: border-box;\n            margin: 75px
+    auto 0;\n            max-width: 1024px;\n            padding: 25px;\n            width:
+    100%;\n        }\n\n        .links-container {\n            box-sizing: border-box;\n
+    \           display: flex;\n            flex-wrap: wrap;\n            margin-top:
+    25px;\n            width: 100%;\n        }\n\n        .links {\n            flex:
+    33%;\n            margin: 25px 0;\n            text-align: left;\n        }\n\n
+    \       .links h6 {\n            font-size: 30px;\n            font-weight: 300;\n
+    \           padding-left: 79px;\n            text-transform: uppercase;\n        }\n\n
+    \       .links a {\n            align-items: center;\n            color: #ffffff;\n
+    \           display: inline-flex;\n            font-size: 16px;\n            margin:
+    5px;\n            text-decoration: none;\n        }\n\n        .links a:hover
+    {\n            text-decoration: underline;\n        }\n\n        .links a img
+    {\n            height: 24px;\n            margin-right: 10px;\n            width:
+    24px;\n        }\n        p {\n          height: 1px;\n          border-bottom:
+    1px dashed #ffffff54;\n        }\n    </style>\n</head>\n<body>\n<div class=\"box\">\n
+    \   <h1 class=\"title\">Welcome to the Example Cluster 1.1.0</h1>\n    <h2 class=\"subtitle\">Your
+    best course would be to tread lightly ...</h2>\n\n    <div class=\"links-container\">\n
+    \       <div class=\"links\">\n            <h6>Dashboards</h6>\n            <ul>\n
+    \               <p></p>\n                <li>\n                    <a href=\"/dashboard/#\"
+    target=\"_blank\">\n                        <span>☸️ Kubernetes Dashboard</span>\n
+    \                   </a>\n                </li>\n                <li>\n                    <a
+    href=\"/kiali/\" target=\"_blank\">\n                        <span>⛵ Istio Dashboard</span>\n
+    \                   </a>\n                </li>\n                <p></p>\n                <li>\n
+    \                   <a href=\"/jaeger/\" target=\"_blank\">\n                        <span>\U0001F3F9
+    Jaeger</span>\n                    </a>\n                </li>\n                <li>\n
+    \                   <a href=\"/grafana/\" target=\"_blank\">\n                        <span>\U0001F4CA
+    Loki</span>\n                    </a>\n                </li>\n                <p></p>\n
+    \               <li>\n                    <a href=\"/oidc/\" target=\"_blank\">\n
+    \                       <span>\U0001F510 Keycloak</span>\n                    </a>\n
+    \                   <a href=\"/welcome/proxy_logout.html?tenant=0\" target=\"_blank\">\n
+    \                       <span>➡️ Logout</span>\n                    </a>\n                </li>\n
+    \           </ul>\n        </div>\n\n        <div class=\"links\">\n            <h6>Example
+    0</h6>\n            <ul>\n                <p></p>\n                <li>\n                    <a
+    href=\"/person/\" target=\"_blank\">\n                        <span>\U0001F30D
+    Person Service</span>\n                    </a>\n                </li>\n                <li>\n
+    \                   <a href=\"/person/actuator/health\" target=\"_blank\">\n                        <span>\U0001F5A5️
+    Health</span>\n                    </a>\n                </li>\n                <p></p>\n
+    \               <li>\n                    <a href=\"/callee/\" target=\"_blank\">\n
+    \                       <span>\U0001F4E2 Callee Service</span>\n                    </a>\n
+    \               </li>\n                <li>\n                    <a href=\"/callee/actuator/health\"
+    target=\"_blank\">\n                        <span>\U0001F5A5️ Health</span>\n
+    \                   </a>\n                </li>\n            </ul>\n        </div>\n
+    \   </div>\n</div>\n\n</body>\n"
 kind: ConfigMap
 metadata:
-  creationTimestamp: "2022-11-28T07:46:49Z"
+  creationTimestamp: "2023-06-06T05:34:29Z"
   name: welcome-board-data-files
-  namespace: monitoring
-  resourceVersion: "41545"
-  uid: 13652f86-5c89-4d34-8c77-22f965c8889a
-apiVersion: v1
-data:
-  index.html: |
-    <!DOCTYPE html>
-    <html>
-    <head lang="en">
-        <meta charset="UTF-8">
-        <title>Cluster Landing Page</title>
-        <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,700;1,100&display=swap"
-              rel="stylesheet">
-        <style>
-            body, h1, h2, h3, h4, h5, h6 {
-                margin: 0;
-            }
-
-            ul {
-                margin: 16px 0;
-                padding-left: 40px;
-            }
-
-            li {
-                list-style: none;
-            }
-
-            html {
-                background-color: #0099ff;
-                background-size: cover;
-            }
-
-            body {
-                color: #ffffff;
-                font-family: 'Roboto', sans-serif;
-                padding-top: 100px;
-                text-align: center;
-            }
-
-            .title {
-                font-size: 60px;
-                font-weight: 300;
-            }
-
-            .subtitle {
-                font-size: 20px;
-                font-weight: 100;
-                font-style: italic;
-            }
-
-            .box {
-                backdrop-filter: blur(5px);
-                background: rgba(66, 66, 66, 0.25);
-                border: 2px solid #ffffff;
-                box-sizing: border-box;
-                margin: 75px auto 0;
-                max-width: 1024px;
-                padding: 25px;
-                width: 100%;
-            }
-
-            .links-container {
-                box-sizing: border-box;
-                display: flex;
-                flex-wrap: wrap;
-                margin-top: 25px;
-                width: 100%;
-            }
-
-            .links {
-                flex: 33%;
-                margin: 25px 0;
-                text-align: left;
-            }
-
-            .links h6 {
-                font-size: 30px;
-                font-weight: 300;
-                padding-left: 79px;
-                text-transform: uppercase;
-            }
-
-            .links a {
-                align-items: center;
-                color: #ffffff;
-                display: inline-flex;
-                font-size: 16px;
-                margin: 5px;
-                text-decoration: none;
-            }
-
-            .links a:hover {
-                text-decoration: underline;
-            }
-
-            .links a img {
-                height: 24px;
-                margin-right: 10px;
-                width: 24px;
-            }
-            p {
-              height: 1px;
-              border-bottom: 1px dashed #ffffff54;
-            }
-        </style>
-    </head>
-    <body>
-    <div class="box">
-        <h1 class="title">Welcome to the Example Cluster 1.0.8</h1>
-        <h2 class="subtitle">Your best course would be to tread lightly ...</h2>
-
-        <div class="links-container">
-            <div class="links">
-                <h6>Dashboards</h6>
-                <ul>
-                    <p></p>
-                    <li>
-                        <a href="/dashboard/#" target="_blank">
-                            <span>☸️ Kubernetes Dashboard</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/kiali/" target="_blank">
-                            <span>⛵ Istio Dashboard</span>
-                        </a>
-                    </li>
-                    <p></p>
-                    <li>
-                        <a href="/jaeger/" target="_blank">
-                            <span>🏹 Jaeger</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/grafana/" target="_blank">
-                            <span>📊 Loki</span>
-                        </a>
-                    </li>
-                    <p></p>
-                    <li>
-                        <a href="/oidc/" target="_blank">
-                            <span>🔐 Keycloak</span>
-                        </a>
-                        <a href="/welcome/proxy_logout.html?tenant=0" target="_blank">
-                            <span>➡️ Logout</span>
-                        </a>
-                    </li>                  
-                </ul>
-            </div>
-
-            <div class="links">
-                <h6>Example 0</h6>
-                <ul>
-                    <p></p>
-                    <li>
-                        <a href="/fhir/" target="_blank">
-                            <span>🔥 FHIR Facade</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/fhir/actuator/health" target="_blank">
-                            <span>🖥️ Health</span>
-                        </a>
-                    </li>
-                    <p></p>
-                    <li>
-                        <a href="/person/0/" target="_blank">
-                            <span>🌍 Person Service</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/person/0/actuator/health" target="_blank">
-                            <span>🖥️ Health</span>
-                        </a>
-                    </li>
-                    <p></p>
-                    <li>
-                        <a href="/callee/0/" target="_blank">
-                            <span>📢 Callee Service</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/callee/0/actuator/health" target="_blank">
-                            <span>🖥️ Health</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    </body>
-
-  proxy_login.html: |
-    <!DOCTYPE html>
-    <html>
-    <body>
-    <h1 class="title">Login</h1>
-
-    <script>
-
-    function login() {
-        const params = new URLSearchParams(window.location.search)
-        const tenant = params.get('tenant')
-
-        if (tenant == null || tenant === "") {
-            document.write("Error: No tenant provided !")
-            console.log("no tenant provided")
-            return
-        }
-
-        const url = "/oauth2/" + params.get('tenant') + "/userinfo"
-
-        const xhr = new XMLHttpRequest()
-        xhr.open("GET", url)
-
-        xhr.setRequestHeader("Accept", "application/json")
-        xhr.setRequestHeader("Content-Type", "application/json")
-
-        xhr.onreadystatechange = function () {
-           if (xhr.readyState === 4) {
-              console.log(xhr.status)
-              console.log(xhr.responseText)
-              var json = JSON.parse(xhr.responseText)
-              if (json != "") {
-                  var user = json["preferredUsername"]
-                  loginIntoApp(user)
-              }
-           }}
-
-        xhr.send()
-    }
-
-
-    function loginIntoApp(user) {
-        console.log("logging in ...")
-        console.log(user)
-    }
-
-    login()
-    </script>
-
-    </body>
-    </html>
-    
-  proxy_logout.html: |
-    <!DOCTYPE html>
-    <html>
-    <body>
-    <h1 class="title">Logout ...</h1>
-
-    <script>
-
-    function logout() {
-        const params = new URLSearchParams(window.location.search)
-        const tenant = params.get('tenant')
-
-        if (tenant == null || tenant === "") {
-            document.write("Error: No tenant provided !")
-            console.log("no tenant provided")
-            return
-        }
-
-        logoutByTenant(tenant);
-    }
-
-    function logoutByTenant(tenantId) {
-        doRequest("/oauth2/" + tenantId + "/sign_out");
-        //doRequest("/oidc/realms/tenant-" + tenantId + "/protocol/openid-connect/logout");
-        window.location.href = "/oidc/realms/tenant-" + tenantId + "/protocol/openid-connect/logout";
-    }
-
-    function doRequest(url) {
-        const xhr = new XMLHttpRequest();
-        xhr.open("GET", url);
-        xhr.onreadystatechange = function () {
-           if (xhr.readyState === 4) { console.log(xhr.responseText); }
-        }
-        xhr.send();
-    }
-
-    logout()
-    </script>
-
-    </body>
-    </html>
-kind: ConfigMap
-metadata:
-  name: welcome-board-data-files
+  namespace: default
+  resourceVersion: "544122"
+  uid: 5fbda4ae-ad5f-4fa4-a8c1-cc03aa42b24c

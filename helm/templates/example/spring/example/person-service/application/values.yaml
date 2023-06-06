@@ -1,0 +1,46 @@
+replicaCount: 1
+
+tenantId: 0
+ingress:
+  paths: /person
+  enabled: true
+  authentication: basic
+
+image:
+  repository: "goafabric/person-service"
+  pullPolicy: IfNotPresent
+  pullSecrets:
+
+podAnnotations:
+  linkerd.io/inject: enabled
+  sidecar.istio.io/inject: "true"
+
+resourcesAnnotations:
+  resources:
+    requests:
+      memory: 256M
+      cpu: 250m
+
+  command: ["java", "-Xms256M", "-Xmx256M", "-cp", "/app/resources:/app/classes:/app/libs/*",
+            "-Djavax.net.ssl.trustStore=/usr/share/truststore/example-root.p12","-Djavax.net.ssl.trustStorePassword=kubernetes",
+            "org.goafabric.personservice.Application"]
+
+nativeAnnotations:
+  resources:
+    requests:
+      memory: 64M
+      cpu: 250m
+
+  args: ["-Xmx64M", "-Djavax.net.ssl.trustStore=/usr/share/truststore/example-root.p12","-Djavax.net.ssl.trustStorePassword=kubernetes"]
+
+readinessProbe:
+  initialDelaySeconds: 2
+
+service:
+  type: ClusterIP
+  port: 8080
+
+initContainers:
+  - name: check-db-ready
+    image: postgres:15.2
+    command: ['sh', '-c','until pg_isready -h person-service-postgres -p 5432;do echo waiting for database; sleep 1; done;']
