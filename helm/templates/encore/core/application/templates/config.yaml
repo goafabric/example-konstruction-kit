@@ -35,3 +35,9 @@ data:
   #profile
   spring.profiles.active: jpa
 
+  #monitoring view
+  monitoring.view.enabled: "true"
+  monitoring.view.tracing.url: "/jaeger"
+  monitoring.view.loki.url: "/grafana/explore"
+  monitoring.view.s3.url: "/s3"
+
