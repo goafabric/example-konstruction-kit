@@ -2,7 +2,27 @@
 COMMAND=$1
 PROFILE=$2
 
+function read_secret() {
+    read -p "server name <kubernetes>: " _Values_host_name < /dev/tty
+    _Values_host_name="${_Values_host_name:=kubernetes}"
+
+    if ping -c 1 "${_Values_host_name}" &> /dev/null
+    then
+      echo host ${_Values_host_name} reachable
+    else
+      echo host ${_Values_host_name} is not reachable, do have have entry inside /etc/hosts ?
+    fi
+
+    _Values_host_name="${_Values_host_name:=kubernetes}"
+
+    kubectl delete --ignore-not-found configmap cluster-config -n default
+    kubectl create configmap cluster-config -n default --from-literal=hostname=${_Values_host_name}
+    _Values_host_name=`kubectl get configmaps cluster-config -o jsonpath='{.data.hostname}' -n default` && [ -z "$_Values_host_name" ] && echo "Server Name is empty" && exit
+    echo Server Name is: ${_Values_host_name}
+}
+
 function up() {
+    read_secret
     helm repo add jetstack https://charts.jetstack.io > /dev/null
     helm upgrade --install cert-manager jetstack/cert-manager --version v1.11.0 \
          --namespace cert-manager --create-namespace --set installCRDs=true,prometheus.enabled=false,extraArgs[0]='--enable-certificate-owner-ref'
