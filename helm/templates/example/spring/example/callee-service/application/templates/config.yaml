@@ -19,7 +19,7 @@ data:
   management.endpoints.web.exposure.include: "health,heapdump,circuitbreakers,prometheus"
 
   #zipkin/jaeger
-  spring.application.name: "{{ include "application.fullname" . }}-tenant-{{ .Values.tenantId }}"
+  spring.application.name: "{{ include "application.fullname" . }}"
   management.zipkin.tracing.endpoint: "http://zipkin.monitoring:9411/api/v2/spans"
   management.tracing.sampling.probability: "1.0"
   management.tracing.enabled: "true"
