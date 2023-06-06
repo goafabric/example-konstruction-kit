@@ -1,6 +1,6 @@
-# 1.0.8
-- version increase
+# 1.1.0
 - cert-manager added
+- loki updated and working again
 
 # 1.0.7
 - upgrade to kubed 0.13.2
