@@ -14,6 +14,11 @@ data:
   #security
   security.authentication.enabled: "false"
 
+  spring.security.oauth2.frontend-uri: "https://{_Values_host_name}/oidc"
+  spring.security.oauth2.base-uri: "http://keycloak-application.oidc:8080/oidc"
+  spring.security.oauth2.prefix: "/realms/tenant-{tenantId}/protocol/openid-connect"
+  spring.security.oauth2.user-name-attribute: "preferred_username"
+
   #monitoring
   management.endpoint.health.show-details: always
   management.endpoints.web.exposure.include: "health,heapdump,circuitbreakers,prometheus"
