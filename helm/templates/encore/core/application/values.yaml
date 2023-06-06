@@ -1,10 +1,9 @@
 replicaCount: 1
 
-tenantId: 0
 ingress:
   paths: /encore
   enabled: true
-  authentication: basic
+  authentication: none
 
 image:
   repository: "goafabric/encore"
