@@ -46,20 +46,22 @@ data:
     \                       <span>➡️ Logout</span>\n                    </a>\n                </li>\n
     \           </ul>\n        </div>\n\n        <div class=\"links\">\n            <h6>Example
     0</h6>\n            <ul>\n                <p></p>\n                <li>\n                    <a
-    href=\"/person/\" target=\"_blank\">\n                        <span>\U0001F30D
-    Person Service</span>\n                    </a>\n                </li>\n                <li>\n
-    \                   <a href=\"/person/actuator/health\" target=\"_blank\">\n                        <span>\U0001F5A5️
-    Health</span>\n                    </a>\n                </li>\n                <p></p>\n
-    \               <li>\n                    <a href=\"/callee/\" target=\"_blank\">\n
-    \                       <span>\U0001F4E2 Callee Service</span>\n                    </a>\n
-    \               </li>\n                <li>\n                    <a href=\"/callee/actuator/health\"
+    href=\"/encore/frontend/\" target=\"_blank\">\n                        <span>\U0001F30D
+    Encore</span>\n                    </a>\n                </li>\n                <p></p>\n
+    \               <li>\n                    <a href=\"/person/\" target=\"_blank\">\n
+    \                       <span>\U0001F30D Person Service</span>\n                    </a>\n
+    \               </li>\n                <li>\n                    <a href=\"/person/actuator/health\"
     target=\"_blank\">\n                        <span>\U0001F5A5️ Health</span>\n
-    \                   </a>\n                </li>\n            </ul>\n        </div>\n
-    \   </div>\n</div>\n\n</body>\n"
+    \                   </a>\n                </li>\n                <p></p>\n                <li>\n
+    \                   <a href=\"/callee/\" target=\"_blank\">\n                        <span>\U0001F4E2
+    Callee Service</span>\n                    </a>\n                </li>\n                <li>\n
+    \                   <a href=\"/callee/actuator/health\" target=\"_blank\">\n                        <span>\U0001F5A5️
+    Health</span>\n                    </a>\n                </li>\n            </ul>\n
+    \       </div>\n    </div>\n</div>\n\n</body>\n"
 kind: ConfigMap
 metadata:
-  creationTimestamp: "2023-06-06T05:34:29Z"
+  creationTimestamp: "2023-06-06T06:48:07Z"
   name: welcome-board-data-files
   namespace: default
-  resourceVersion: "544122"
-  uid: 5fbda4ae-ad5f-4fa4-a8c1-cc03aa42b24c
+  resourceVersion: "555621"
+  uid: a74a6c95-2b9c-4fa5-ac21-8ec98d5b3dbf

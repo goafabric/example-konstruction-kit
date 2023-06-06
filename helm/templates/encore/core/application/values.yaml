@@ -8,7 +8,7 @@ ingress:
 
 image:
   repository: "goafabric/encore"
-  pullPolicy: IfNotPresent
+  pullPolicy: Always #IfNotPresent
   pullSecrets:
 
 podAnnotations:
