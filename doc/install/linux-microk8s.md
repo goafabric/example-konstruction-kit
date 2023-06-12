@@ -3,7 +3,7 @@ user=admin
 dns=
 
 # Microk8s Install
-sudo snap install microk8s --classic --channel=1.23/stable
+sudo snap install microk8s --classic --channel=1.25/stable
 
 # Microk8s Config
 # mkdir ~/.kube && sudo microk8s config > ~/.kube/config && chmod 600 ~/.kube/config && sudo usermod -a -G microk8s $user && sudo chown -f -R $user ~/.kube
