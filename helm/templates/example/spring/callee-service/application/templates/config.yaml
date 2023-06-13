@@ -10,6 +10,7 @@ data:
   server.port: "{{ .Values.service.port }}"
   server.tomcat.threads.max: "20"
   server.forward-headers-strategy: FRAMEWORK
+  server.tomcat.keep-alive-timeout: "0s"
 
   #security
   security.authentication.enabled: "false"
