@@ -14,8 +14,8 @@ function init() {
 
 function ambient() {
     istioctl install -y --set profile=ambient -f ./templates/meshconfig.yaml
-    kubectl label namespace example istio.io/dataplane-mode=ambient --overwrite; done
-    for namespace in $(kubectl get ns | grep -vE 'default|kube|monitoring|ingress|istio|oidc|message-broker' | awk '{print $1}' | tail -n +2); do
+#    kubectl label namespace example istio.io/dataplane-mode=ambient --overwrite; done
+    for namespace in $(kubectl get ns | grep -vE 'default|kube|monitoring|ingress|istio|oidc|message-broker|cert-manager' | awk '{print $1}' | tail -n +2); do
         kubectl label namespace $namespace istio.io/dataplane-mode=ambient --overwrite; done
 }
 
