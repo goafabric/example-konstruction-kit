@@ -10,20 +10,20 @@ function up() {
     helm install --create-namespace \
     --set image.arch=$IMAGE_ARCH $INGRESS_AUTHENTICATION \
     --set ingress.hosts=`kubectl get configmaps cluster-config -o jsonpath='{.data.hostname}' -n default` \
-    --namespace `pwd | rev | cut -d '/' -f3 | rev` \
+    --namespace `pwd | rev | cut -d '/' -f4 | rev` \
     `cat ./Chart.yaml | grep "name" | cut -d':' -f2 | xargs` ./
 }
 
 function down() {
     helm uninstall \
-    --namespace `pwd | rev | cut -d '/' -f3 | rev` \
+    --namespace `pwd | rev | cut -d '/' -f4 | rev` \
     `cat ./Chart.yaml | grep "name" | cut -d':' -f2 | xargs`
 }
 
 function proxy() {
     kubectl port-forward deployment/`cat ./Chart.yaml | grep "name" | cut -d':' -f2 | xargs` \
     `cat ./values.yaml | grep "port" | cut -d':' -f2 | xargs`:`cat ./values.yaml | grep "port" | cut -d':' -f2 | xargs` \
-    -n `pwd | rev | cut -d '/' -f3 | rev`
+    -n `pwd | rev | cut -d '/' -f4 | rev`
 }
 
 if   [ "${COMMAND}" = "up" ]; then up;
