@@ -29,7 +29,7 @@ function down() {
 
 
 if   [ "${COMMAND}" = "init" ] ; then up;
-if   [ "${COMMAND}" = "ambient" ] ; then up;
+elif [ "${COMMAND}" = "ambient" ] ; then up;
 elif [ "${COMMAND}" = "restart" ] ; then down && up;
 elif [ "${COMMAND}" = "prune" ]; then down;
 
