@@ -24,8 +24,9 @@ services:
       - JAVA_OPTS=-Xmx256m
       - KC_HTTP_RELATIVE_PATH=oidc
       - KC_PROXY=edge
-      - KC_HOSTNAME_STRICT=false
+#      - KC_HOSTNAME_STRICT=false
       - KC_HOSTNAME_STRICT_HTTPS=false
+      - KC_HOSTNAME=localhost:30200
 
       #database
       - KC_DB=postgres
