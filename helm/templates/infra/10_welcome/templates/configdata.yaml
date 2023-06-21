@@ -42,23 +42,24 @@ data:
     Loki</span>\n                    </a>\n                </li>\n                <p></p>\n
     \               <li>\n                    <a href=\"/oidc/\" target=\"_blank\">\n
     \                       <span>\U0001F510 Keycloak</span>\n                    </a>\n
+    \               </li>\n            </ul>\n        </div>\n        <div class=\"links\">\n
+    \           <h6>Example</h6>\n            <ul>\n                <p></p>\n                <li>\n
+    \                   <a href=\"/person/\" target=\"_blank\">\n                        <span>\U0001F30D
+    Person Service</span>\n                    </a>\n                </li>\n                <p></p>\n
+    \               <li>\n                    <a href=\"/callee/\" target=\"_blank\">\n
+    \                       <span>\U0001F4E2 Callee Service</span>\n                    </a>\n
     \               </li>\n            </ul>\n        </div>\n\n        <div class=\"links\">\n
-    \           <h6>Example 0</h6>\n            <ul>\n                <p></p>\n                <li>\n
+    \           <h6>Core</h6>\n            <ul>\n                <p></p>\n                <li>\n
     \                   <a href=\"/core/oauth2/authorization/5\" target=\"_blank\">\n
     \                       <span>\U0001F30D Core</span>\n                    </a>\n
     \               </li>\n                <p></p>\n                <li>\n                    <a
     href=\"/catalog/\" target=\"_blank\">\n                        <span>\U0001F4D9
-    Catalog</span>\n                    </a>\n                </li>\n                <p></p>\n
-    \               <li>\n                    <a href=\"/person/\" target=\"_blank\">\n
-    \                       <span>\U0001F30D Person Service</span>\n                    </a>\n
-    \               </li>\n                <p></p>\n                <li>\n                    <a
-    href=\"/callee/\" target=\"_blank\">\n                        <span>\U0001F4E2
-    Callee Service</span>\n                    </a>\n                </li>\n            </ul>\n
+    Catalog</span>\n                    </a>\n                </li>\n            </ul>\n
     \       </div>\n    </div>\n</div>\n\n</body>\n"
 kind: ConfigMap
 metadata:
-  creationTimestamp: "2023-06-21T13:29:32Z"
+  creationTimestamp: "2023-06-21T13:47:26Z"
   name: welcome-board-data-files
   namespace: default
-  resourceVersion: "619851"
-  uid: 85567521-fe2c-4593-9968-09ab8f7ada5c
+  resourceVersion: "621981"
+  uid: 771aed40-4061-4605-a8fc-c010703c93d9
