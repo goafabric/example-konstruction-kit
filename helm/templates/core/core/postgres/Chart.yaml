@@ -1,6 +1,6 @@
 apiVersion: v2
-name: encore-postgres
-description: encore-postgres
+name: core-postgres
+description: core-postgres
 
 type: application
 

@@ -41,4 +41,4 @@ service:
 initContainers:
   - name: check-db-ready
     image: postgres:15.2
-    command: ['sh', '-c','until pg_isready -h encore-postgres -p 5432;do echo waiting for database; sleep 1; done;']
+    command: ['sh', '-c','until pg_isready -h core-postgres -p 5432;do echo waiting for database; sleep 1; done;']

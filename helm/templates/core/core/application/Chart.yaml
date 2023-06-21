@@ -1,6 +1,6 @@
 apiVersion: v2
-name: encore-application
-description: encore-application
+name: core-application
+description: core-application
 
 type: application
 

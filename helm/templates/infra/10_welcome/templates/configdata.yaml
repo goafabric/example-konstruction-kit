@@ -46,8 +46,8 @@ data:
     \                       <span>➡️ Logout</span>\n                    </a>\n                </li>\n
     \           </ul>\n        </div>\n\n        <div class=\"links\">\n            <h6>Example
     0</h6>\n            <ul>\n                <p></p>\n                <li>\n                    <a
-    href=\"/encore/frontend/\" target=\"_blank\">\n                        <span>\U0001F30D
-    Encore</span>\n                    </a>\n                </li>\n                <p></p>\n
+    href=\"/core/frontend/\" target=\"_blank\">\n                        <span>\U0001F30D
+    Core</span>\n                    </a>\n                </li>\n                <p></p>\n
     \               <li>\n                    <a href=\"/person/\" target=\"_blank\">\n
     \                       <span>\U0001F30D Person Service</span>\n                    </a>\n
     \               </li>\n                <li>\n                    <a href=\"/person/actuator/health\"
@@ -60,9 +60,8 @@ data:
     \       </div>\n    </div>\n</div>\n\n</body>\n"
 kind: ConfigMap
 metadata:
-  creationTimestamp: "2023-06-12T14:06:28Z"
+  creationTimestamp: "2023-06-21T12:37:39Z"
   name: welcome-board-data-files
   namespace: default
-  resourceVersion: "1396"
-  selfLink: /api/v1/namespaces/default/configmaps/welcome-board-data-files
-  uid: cce98717-42d0-48a7-a44e-bbfc68b10ac7
+  resourceVersion: "612880"
+  uid: 81926026-8617-48ee-b9ae-417f948fff90
