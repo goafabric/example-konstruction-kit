@@ -11,8 +11,8 @@ data:
   KC_HTTP_RELATIVE_PATH: "oidc"
   KC_PROXY: "edge"
   KC_HOSTNAME_STRICT: "false"
-  KC_HOSTNAME_STRICT_HTTPS: "false"
-#  KC_HOSTNAME: "${_Values_host_name}"
+#  KC_HOSTNAME_STRICT_HTTPS: "false"
+  KC_HOSTNAME: "${_Values_host_name}"
 
   #database
   KC_DB: "postgres"

@@ -12,11 +12,10 @@ data:
   server.forward-headers-strategy: FRAMEWORK
 
   #security
-  security.authentication.enabled: "false"
+  security.authentication.enabled: "true"
 
-  spring.security.oauth2.frontend-uri: "https://{_Values_host_name}/oidc"
-  spring.security.oauth2.base-uri: "http://keycloak-application.oidc:8080/oidc"
-  spring.security.oauth2.prefix: "/realms/tenant-{tenantId}/protocol/openid-connect"
+  spring.security.oauth2.frontend-uri: "https://kubernetes/oidc/realms/tenant-{tenantId}/protocol/openid-connect/auth"
+  spring.security.oauth2.base-uri: "http://keycloak-application.oidc:8080/oidc/realms/tenant-{tenantId}/protocol/openid-connect"
   spring.security.oauth2.user-name-attribute: "preferred_username"
 
   #monitoring
