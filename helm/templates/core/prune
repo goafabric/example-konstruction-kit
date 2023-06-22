@@ -1,3 +1,4 @@
 #!/bin/bash
 ./stack down
 kubectl delete pvc core-postgres-pvc -n core
+kubectl delete pvc s3-minio-pvc -n core

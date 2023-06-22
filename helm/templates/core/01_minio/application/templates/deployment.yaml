@@ -42,8 +42,8 @@ spec:
           envFrom:
             - configMapRef:
                 name: {{ include "application.fullname" . }}-config
-#            - secretRef:
-#                name: {{ include "application.fullname" . }}-secret
+            - secretRef:
+                name: {{ include "application.fullname" . }}-secret
 
           args: ["server", "/data", "--console-address", ":9001"]
           resources:
