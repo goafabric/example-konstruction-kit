@@ -1,0 +1,47 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "application.fullname" . }}-config
+  labels:
+    {{- include "application.labels" . | nindent 4 }}
+data:
+  #application
+  TZ: Europe/Berlin
+  server.port: "{{ .Values.service.port }}"
+  server.tomcat.threads.max: "20"
+  server.forward-headers-strategy: FRAMEWORK
+
+  #security
+  security.authentication.enabled: "true"
+
+  spring.security.oauth2.authorization-uri: "https://{{ .Values.ingress.hosts}}/oidc/realms/tenant-{tenantId}/protocol/openid-connect/auth"
+  spring.security.oauth2.base-uri: "http://keycloak-application.oidc:8080/oidc/realms/tenant-{tenantId}/protocol/openid-connect"
+  spring.security.oauth2.user-name-attribute: "preferred_username"
+
+  #monitoring
+  management.endpoint.health.show-details: always
+  management.endpoints.web.exposure.include: "health,heapdump,circuitbreakers,prometheus"
+
+  #zipkin/jaeger
+  spring.application.name: "{{ include "application.fullname" . }}"
+  management.zipkin.tracing.endpoint: "http://zipkin.monitoring:9411/api/v2/spans"
+  management.tracing.sampling.probability: "1.0"
+  management.tracing.enabled: "true"
+  logging.level.zipkin2.reporter: "ERROR"
+
+  #persistence
+  spring.datasource.url: "jdbc:postgresql://core-postgres:5432/core"
+  spring.datasource.hikari.maximum-pool-size: "10"
+  spring.datasource.hikari.connection-timeout: "10000"
+
+  database.provisioning.goals: "-import-demo-data -terminate"
+
+  #profile
+  spring.profiles.active: jpa
+
+  #monitoring view
+  monitoring.view.enabled: "true"
+  monitoring.view.tracing.url: "/jaeger"
+  monitoring.view.loki.url: "/grafana/explore"
+  monitoring.view.s3.url: "/s3"
+
