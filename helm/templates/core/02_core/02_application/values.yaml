@@ -21,7 +21,6 @@ resourcesAnnotations:
       cpu: 250m
 
   command: ["java", "-Xms256M", "-Xmx256M", "-cp", "/app/resources:/app/classes:/app/libs/*",
-            "-Djavax.net.ssl.trustStore=/usr/share/truststore/example-root.p12","-Djavax.net.ssl.trustStorePassword=kubernetes",
             "org.goafabric.encore.Application"]
 
 nativeAnnotations:
@@ -30,7 +29,7 @@ nativeAnnotations:
       memory: 64M
       cpu: 250m
 
-  args: ["-Xmx64M", "-Djavax.net.ssl.trustStore=/usr/share/truststore/example-root.p12","-Djavax.net.ssl.trustStorePassword=kubernetes"]
+  args: ["-Xmx64M"]
 
 readinessProbe:
   initialDelaySeconds: 2
