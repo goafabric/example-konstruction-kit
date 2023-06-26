@@ -21,7 +21,6 @@ data:
 
   #zipkin/jaeger
   spring.application.name: "{{ include "application.fullname" . }}"
-  management.zipkin.tracing.endpoint: "http://zipkin.monitoring:9411/api/v2/spans"
+  management.otlp.tracing.endpoint: "http://otlp.monitoring:4318/v1/traces"
   management.tracing.sampling.probability: "1.0"
-  management.tracing.enabled: "true"
-  logging.level.zipkin2.reporter: "ERROR"
+  logging.level.io.opentelemetry: "INFO"
