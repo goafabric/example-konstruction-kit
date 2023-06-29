@@ -6,7 +6,7 @@ ingress:
   authentication: none
 
 image:
-  repository: "goafabric/encore"
+  repository: "goafabric/core-service"
   pullPolicy: Always #IfNotPresent
   pullSecrets:
 
@@ -21,7 +21,7 @@ resourcesAnnotations:
       cpu: 250m
 
   command: ["java", "-Xms256M", "-Xmx256M", "-cp", "/app/resources:/app/classes:/app/libs/*",
-            "org.goafabric.encore.Application"]
+            "org.goafabric.core.Application"]
 
 nativeAnnotations:
   resources:
