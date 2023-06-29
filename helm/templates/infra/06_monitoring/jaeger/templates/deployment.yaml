@@ -13,6 +13,7 @@ spec:
       labels:
         app: jaeger
       annotations:
+        linkerd.io/inject: enabled
         sidecar.istio.io/inject: "false"
         prometheus.io/scrape: "true"
         prometheus.io/port: "14269"
