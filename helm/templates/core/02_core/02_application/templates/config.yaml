@@ -33,7 +33,9 @@ data:
   spring.datasource.hikari.maximum-pool-size: "10"
   spring.datasource.hikari.connection-timeout: "10000"
 
-  database.provisioning.goals: "-import-demo-data -import-catalog-data"
+  multi-tenancy.tenants: "0,5"
+  multi-tenancy.schema-prefix: "core_"
+  database.provisioning.goals: "-migrate -import-demo-data"
 
   #profile
   spring.profiles.active: jpa
