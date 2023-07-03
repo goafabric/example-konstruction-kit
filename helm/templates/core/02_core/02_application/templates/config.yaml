@@ -15,6 +15,7 @@ data:
   security.authentication.enabled: "true"
 
   spring.security.oauth2.authorization-uri: "https://{{ .Values.ingress.hosts}}/oidc/realms/tenant-{tenantId}/protocol/openid-connect/auth"
+  spring.security.oauth2.logout-uri: "https://{{ .Values.ingress.hosts}}/oidc/realms/tenant-{tenantId}/protocol/openid-connect/logout"
   spring.security.oauth2.base-uri: "http://keycloak-application.oidc:8080/oidc/realms/tenant-{tenantId}/protocol/openid-connect"
   spring.security.oauth2.user-name-attribute: "preferred_username"
 
