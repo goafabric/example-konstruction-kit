@@ -21,6 +21,10 @@ data:
   quarkus.jaeger.sampler-param: "1"
   quarkus.jaeger.propagation: "b3"
 
+  #tracing
+  quarkus.otel.exporter.otlp.traces.endpoint: "http://jaeger-collector.monitoring:4317"
+  quarkus.application.name: { { include "application.fullname" . } }
+
   #persistence
   quarkus.datasource.jdbc.url: "jdbc:postgresql://person-service-postgres:5432/person"
   quarkus.datasource.jdbc.max-size: "10"
