@@ -57,8 +57,8 @@ data:
     \               </li>\n            </ul>\n        </div>\n    </div>\n</div>\n\n</body>\n"
 kind: ConfigMap
 metadata:
-  creationTimestamp: "2023-07-26T07:23:12Z"
+  creationTimestamp: "2023-07-26T07:32:47Z"
   name: welcome-board-data-files
   namespace: default
-  resourceVersion: "375004"
-  uid: bd86f720-d98d-46bb-a153-58caaa051536
+  resourceVersion: "376895"
+  uid: 5c99b57d-8c63-47cd-9d4f-b660db3e4b8a
