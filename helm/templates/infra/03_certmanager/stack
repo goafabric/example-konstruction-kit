@@ -21,19 +21,30 @@ function read_secret() {
     echo Server Name is: ${_Values_host_name}
 }
 
+function dynKubectl() {
+for filename in $2/*.yaml; do
+eval "cat <<EOF
+$(<$filename)
+EOF
+" | kubectl $1 -f -
+done
+}
+
+
 function up() {
-    read_secret
+    #read_secret
+    _Values_host_name=v2202307203466234098.megasrv.de
     helm repo add jetstack https://charts.jetstack.io > /dev/null
     helm upgrade --install cert-manager jetstack/cert-manager --version v1.11.0 \
          --namespace cert-manager --create-namespace --set installCRDs=true,prometheus.enabled=false,extraArgs[0]='--enable-certificate-owner-ref'
-    kubectl apply -f ./templates/deployment.yaml
+    kubectl apply -f ./templates/deployment-letsencrypt.yaml
 
-    kubectl create secret generic trust-store-secret --from-literal none=none --namespace default
-    kubectl annotate secret trust-store-secret kubed.appscode.com/sync="" --namespace default
+    kubectl describe certificaterequest letsencrypt-ca -n cert-manager
 }
 
 function down() {
     kubectl delete --ignore-not-found -f ./templates/deployment.yaml > /dev/null
+    kubectl delete --ignore-not-found -f ./templates/deployment-letsencrypt.yaml > /dev/null
     helm uninstall cert-manager --namespace cert-manager && kubectl delete namespace cert-manager
 }
 

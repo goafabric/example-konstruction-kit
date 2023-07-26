@@ -1,0 +1,32 @@
+apiVersion: cert-manager.io/v1
+kind: Issuer
+metadata:
+  name: letsencrypt-issuer
+  namespace: cert-manager
+spec:
+  acme:
+    # Staging API
+    server: https://acme-staging-v02.api.letsencrypt.org/directory
+    email: yourname@email.com
+    privateKeySecretRef:
+      name: account-key
+    solvers:
+      - http01:
+          ingress:
+            class: nginx
+
+---
+
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: letsencrypt-ca
+  namespace: cert-manager
+spec:
+  secretName: root-certificate
+  issuerRef:
+    name: letsencrypt-issuer
+  dnsNames:
+    - v2202307203466234098.megasrv.de
+
+

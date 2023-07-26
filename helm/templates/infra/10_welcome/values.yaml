@@ -1,7 +1,7 @@
 replicaCount: 1
 
 ingress:
-  paths: /welcome
+  paths: /
   hosts: ""
 
 image:
