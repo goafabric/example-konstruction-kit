@@ -7,7 +7,7 @@ spec:
   acme:
     # Staging API
 #    server: https://acme-staging-v02.api.letsencrypt.org/directory
-    server: https://acme-kubev02.api.letsencrypt.org/directory
+    server: https://acme-v02.api.letsencrypt.org/directory
     email: yourname@email.com
     privateKeySecretRef:
       name: account-key
