@@ -22,12 +22,10 @@ function read_secret() {
 }
 
 function dynKubectl() {
-for filename in $2/*.yaml; do
 eval "cat <<EOF
-$(<$filename)
+$(<$1)
 EOF
-" | kubectl $1 -f -
-done
+" | kubectl apply -f -
 }
 
 
@@ -37,9 +35,8 @@ function up() {
     helm repo add jetstack https://charts.jetstack.io > /dev/null
     helm upgrade --install cert-manager jetstack/cert-manager --version v1.11.0 \
          --namespace cert-manager --create-namespace --set installCRDs=true,prometheus.enabled=false,extraArgs[0]='--enable-certificate-owner-ref'
-    kubectl apply -f ./templates/deployment-letsencrypt.yaml
-
-    kubectl describe certificaterequest letsencrypt-ca -n cert-manager
+    dynKubectl ./templates/deployment-letsencrypt.yaml
+#    kubectl describe certificaterequest letsencrypt-ca -n cert-manager
 }
 
 function down() {

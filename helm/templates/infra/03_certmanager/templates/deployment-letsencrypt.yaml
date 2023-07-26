@@ -27,6 +27,6 @@ spec:
   issuerRef:
     name: letsencrypt-issuer
   dnsNames:
-    - v2202307203466234098.megasrv.de
+    - ${_Values_host_name}
 
 
