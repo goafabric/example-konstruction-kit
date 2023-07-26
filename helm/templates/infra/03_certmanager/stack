@@ -27,9 +27,6 @@ function up() {
     helm upgrade --install cert-manager jetstack/cert-manager --version v1.11.0 \
          --namespace cert-manager --create-namespace --set installCRDs=true,prometheus.enabled=false,extraArgs[0]='--enable-certificate-owner-ref'
     kubectl apply -f ./templates/deployment.yaml
-
-    kubectl create secret generic trust-store-secret --from-literal none=none --namespace default
-    kubectl annotate secret trust-store-secret kubed.appscode.com/sync="" --namespace default
 }
 
 function down() {
