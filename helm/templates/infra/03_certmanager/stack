@@ -21,23 +21,33 @@ function read_secret() {
     echo Server Name is: ${_Values_host_name}
 }
 
+function dynKubectl() {
+eval "cat <<EOF
+$(<$1)
+EOF
+" | kubectl apply -f -
+}
+
+
 function up() {
     read_secret
+#    _Values_host_name=v2202307203466234098.megasrv.de
     helm repo add jetstack https://charts.jetstack.io > /dev/null
-    helm upgrade --install cert-manager jetstack/cert-manager --version v1.11.0 \
+    helm upgrade --install cert-manager jetstack/cert-manager --version v1.12.3 \
          --namespace cert-manager --create-namespace --set installCRDs=true,prometheus.enabled=false,extraArgs[0]='--enable-certificate-owner-ref'
-    kubectl apply -f ./templates/deployment.yaml
+    dynKubectl ./templates/deployment${1}.yaml
 }
 
 function down() {
     kubectl delete --ignore-not-found -f ./templates/deployment.yaml > /dev/null
+    kubectl delete --ignore-not-found -f ./templates/deployment-letsencrypt.yaml > /dev/null
     helm uninstall cert-manager --namespace cert-manager && kubectl delete namespace cert-manager
 }
 
-
-
 if   [ "${COMMAND}" = "init" ] ; then up;
+elif [ "${COMMAND}" = "lets" ] ; then up -letsencrypt;
 elif [ "${COMMAND}" = "restart" ] ; then down && up;
+elif [ "${COMMAND}" = "describe" ] ; then kubectl describe certificaterequest cluster-ca -n cert-manager;
 elif [ "${COMMAND}" = "prune" ]; then down;
 
 else echo Doing nothing !; fi

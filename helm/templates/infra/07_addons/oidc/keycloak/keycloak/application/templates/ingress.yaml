@@ -4,7 +4,7 @@ metadata:
   name: keycloak-ingress
   namespace: ${_Release_namespace}
   annotations:
-    cert-manager.io/cluster-issuer: selfsigned-issuer
+    cert-manager.io/cluster-issuer: my-cluster-issuer
     nginx.ingress.kubernetes.io/ssl-redirect: "true"
     nginx.ingress.kubernetes.io/rewrite-target: /${_Values_ingress_name}/\$2
 

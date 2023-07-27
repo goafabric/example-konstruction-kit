@@ -18,7 +18,7 @@ metadata:
     #nginx.ingress.kubernetes.io/auth-signin: "https://$host/oauth2/$http_x_tenantid/start?rd=$escaped_request_uri"
     #nginx.ingress.kubernetes.io/auth-url: "https://$host/oauth2/$http_x_tenantid/auth" #"https://$host/oauth2/$http_x_tenantid/auth"
 
-    cert-manager.io/cluster-issuer: selfsigned-issuer
+    cert-manager.io/cluster-issuer: my-cluster-issuer
 
     nginx.ingress.kubernetes.io/ssl-redirect: "true"
 spec:

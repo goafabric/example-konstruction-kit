@@ -29,7 +29,7 @@ ingress:
   enabled: true
   ingressClassName: nginx
   annotations:
-    cert-manager.io/cluster-issuer: selfsigned-issuer
+    cert-manager.io/cluster-issuer: my-cluster-issuer
 
     nginx.ingress.kubernetes.io/ssl-redirect: "true"
 
