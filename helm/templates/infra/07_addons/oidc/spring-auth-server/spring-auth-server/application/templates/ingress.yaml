@@ -6,7 +6,7 @@ metadata:
   labels:
     {{- include "application.labels" . | nindent 4 }}
   annotations:
-    cert-manager.io/cluster-issuer: selfsigned-issuer
+    cert-manager.io/cluster-issuer: my-cluster-issuer
 
     nginx.ingress.kubernetes.io/ssl-redirect: "true"
 
