@@ -38,12 +38,12 @@ function up() {
 }
 
 function letsencrypt() {
+    #read_secret
     _Values_host_name=v2202307203466234098.megasrv.de
     helm repo add jetstack https://charts.jetstack.io > /dev/null
     helm upgrade --install cert-manager jetstack/cert-manager --version v1.12.3 \
          --namespace cert-manager --create-namespace --set installCRDs=true,prometheus.enabled=false,extraArgs[0]='--enable-certificate-owner-ref'
     dynKubectl ./templates/deployment-letsencrypt.yaml
-#    kubectl describe certificaterequest letsencrypt-ca -n cert-manager
 }
 
 function down() {
@@ -52,11 +52,10 @@ function down() {
     helm uninstall cert-manager --namespace cert-manager && kubectl delete namespace cert-manager
 }
 
-
-
 if   [ "${COMMAND}" = "init" ] ; then up;
-elif   [ "${COMMAND}" = "lets" ] ; then letsencrypt;
+elif [ "${COMMAND}" = "lets" ] ; then letsencrypt;
 elif [ "${COMMAND}" = "restart" ] ; then down && up;
+elif [ "${COMMAND}" = "describe" ] ; then kubectl describe certificaterequest letsencrypt-ca -n cert-manager;
 elif [ "${COMMAND}" = "prune" ]; then down;
 
 else echo Doing nothing !; fi
