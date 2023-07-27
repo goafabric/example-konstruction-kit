@@ -30,7 +30,14 @@ EOF
 
 
 function up() {
-    #read_secret
+    read_secret
+    helm repo add jetstack https://charts.jetstack.io > /dev/null
+    helm upgrade --install cert-manager jetstack/cert-manager --version v1.11.0 \
+         --namespace cert-manager --create-namespace --set installCRDs=true,prometheus.enabled=false,extraArgs[0]='--enable-certificate-owner-ref'
+    kubectl apply -f ./templates/deployment.yaml
+}
+
+function lets() {
     _Values_host_name=v2202307203466234098.megasrv.de
     helm repo add jetstack https://charts.jetstack.io > /dev/null
     helm upgrade --install cert-manager jetstack/cert-manager --version v1.11.0 \

@@ -1,5 +1,5 @@
 apiVersion: cert-manager.io/v1
-kind: Issuer
+kind: ClusterIssuer
 metadata:
   name: letsencrypt-issuer
   namespace: cert-manager
@@ -27,6 +27,7 @@ spec:
   secretName: root-certificate
   issuerRef:
     name: letsencrypt-issuer
+    kind: ClusterIssuer
   dnsNames:
     - ${_Values_host_name}
 
