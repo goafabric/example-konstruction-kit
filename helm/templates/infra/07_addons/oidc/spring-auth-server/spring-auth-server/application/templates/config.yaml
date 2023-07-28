@@ -12,6 +12,6 @@ data:
   server.forward-headers-strategy: FRAMEWORK
 
   #users
-  spring.security.authorization.base-uri: "/oidc"
+  spring.security.authorization.base-uri: "/"
   spring.security.authorization.clients: "oauth2-proxy:none"
   spring.security.authorization.users: "user1:user1,user2:user2,user3:user3,user4:user4,admin:admin"

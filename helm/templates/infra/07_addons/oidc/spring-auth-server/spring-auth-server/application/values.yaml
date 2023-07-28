@@ -2,9 +2,9 @@ replicaCount: 1
 
 tenantId: 0
 ingress:
-  paths: /
+  paths: /oidc
   enabled: true
-  authentication: basic
+#  authentication: basic
 
 image:
   repository: "goafabric/spring-auth-server"
