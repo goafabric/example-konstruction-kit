@@ -7,7 +7,7 @@ ingress:
 
 image:
   repository: "goafabric/catalog-service"
-  pullPolicy: Always #IfNotPresent
+  pullPolicy: IfNotPresent
   pullSecrets:
 
 podAnnotations:
