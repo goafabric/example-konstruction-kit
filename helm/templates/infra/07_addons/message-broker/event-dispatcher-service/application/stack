@@ -1,6 +1,6 @@
 #!/bin/bash
 COMMAND=$1
-IMAGE_ARCH="-native"
+IMAGE_ARCH=$2 #"-native"
 
 function up() {
     helm install --create-namespace \
