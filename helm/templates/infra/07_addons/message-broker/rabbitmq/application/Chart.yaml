@@ -1,0 +1,9 @@
+apiVersion: v2
+name: rabbitmq
+description: rabbitmq
+
+type: application
+
+version: 3.12.1
+
+appVersion: "3.12.1-management"
