@@ -49,7 +49,7 @@ data:
     Event Dispatcher</span>\n                    </a>\n                    -->\n                </li>\n
     \           </ul>\n        </div>\n        <div class=\"links\">\n            <h6>Core</h6>\n
     \           <ul>\n                <p></p>\n                <li>\n                    <a
-    href=\"/core/oauth2/authorization/5\" target=\"_blank\">\n                        <span>\U0001F30D
+    href=\"/core/oauth2/authorization/0\" target=\"_blank\">\n                        <span>\U0001F30D
     Core</span>\n                    </a>\n                </li>\n                <p></p>\n
     \               <li>\n                    <a href=\"/catalog/\" target=\"_blank\">\n
     \                       <span>\U0001F4D9 Catalog</span>\n                    </a>\n
@@ -62,9 +62,8 @@ data:
     \               </li>\n            </ul>\n        </div>\n    </div>\n</div>\n\n</body>\n"
 kind: ConfigMap
 metadata:
-  creationTimestamp: "2023-08-17T13:24:42Z"
+  creationTimestamp: "2023-08-18T05:41:54Z"
   name: welcome-board-data-files
   namespace: default
-  resourceVersion: "11439162"
-  selfLink: /api/v1/namespaces/default/configmaps/welcome-board-data-files
-  uid: d9837b33-635d-49b1-b1bb-52e5263038ca
+  resourceVersion: "4390084"
+  uid: 47eb3381-12f8-41eb-be16-44e0d4ee92d2
