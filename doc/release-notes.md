@@ -1,6 +1,8 @@
 # 1.1.0
 - cert-manager added
 - loki updated and working again
+- upgrade to core 1.0.4
+- upgrade to minio RELEASE.2023-08-23
 
 # 1.0.7
 - upgrade to kubed 0.13.2
