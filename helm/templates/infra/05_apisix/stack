@@ -11,9 +11,10 @@ function up() {
     helm repo add apisix https://charts.apiseven.com  > /dev/null
     helm repo add bitnami https://charts.bitnami.com/bitnami  > /dev/null
     helm repo update
-    #kubectl create ns ingress-apisix
-    helm install apisix apisix/apisix \
-      --set service.type=LoadBalancer,apisix.ssl.enabled=true,ingress-controller.enabled=true \
+    # TODO using older version because of this bug: https://github.com/apache/apisix/pull/10066
+    # values for latest version of apisix: --set service.type=LoadBalancer,apisix.ssl.enabled=true,ingress-controller.enabled=true \
+    helm install apisix apisix/apisix --version 1.3.1 \
+      --set gateway.type=LoadBalancer,gateway.tls.enabled=true,plugin_attr.redirect.https_port=443,ingress-controller.enabled=true \
       --namespace ingress-apisix \
       --create-namespace
 
