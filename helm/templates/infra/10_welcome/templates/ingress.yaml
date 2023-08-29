@@ -7,8 +7,8 @@ metadata:
   annotations:
     cert-manager.io/cluster-issuer: my-cluster-issuer
 
-    k8s.apisix.apache.org/rewrite-target-regex: "{{ .Values.ingress.paths }}/(.*)"
-    k8s.apisix.apache.org/rewrite-target-regex-template: "/$1/"
+    k8s.apisix.apache.org/rewrite-target-regex: "{{ .Values.ingress.paths }}(.*)"
+    k8s.apisix.apache.org/rewrite-target-regex-template: "/$1"
     k8s.apisix.apache.org/http-to-https: "true"
     #nginx.ingress.kubernetes.io/ssl-redirect: "true"
 

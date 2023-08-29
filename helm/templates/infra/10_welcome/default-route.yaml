@@ -1,0 +1,16 @@
+apiVersion: apisix.apache.org/v2
+kind: ApisixRoute
+metadata:
+  name: httpserver-route
+spec:
+  http:
+    - name: default-welcome
+      match:
+        hosts:
+          - kubernetes
+        paths:
+          - /
+          - /*
+      backends:
+        - serviceName: welcome-board
+          servicePort: 8080
