@@ -11,6 +11,7 @@ data:
   server.tomcat.threads.max: "20"
   server.forward-headers-strategy: FRAMEWORK
 
+  # TODO re-enable
   #security
   security.authentication.enabled: "false"
 
