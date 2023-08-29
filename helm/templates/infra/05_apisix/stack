@@ -1,0 +1,36 @@
+#!/bin/bash
+COMMAND=$1
+PROFILE=$2
+
+if ! kubectl get nodes | grep -q docker-desktop
+then
+    echo installing ingress controller ...
+fi
+
+function up() {
+    helm repo add apisix https://charts.apiseven.com  > /dev/null
+    helm repo add bitnami https://charts.bitnami.com/bitnami  > /dev/null
+    helm repo update
+    #kubectl create ns ingress-apisix
+    helm install apisix apisix/apisix \
+      --set service.type=NodePort,apisix.ssl.enabled=true,ingress-controller.enabled=true \
+      --namespace ingress-apisix \
+      --create-namespace
+
+    echo waiting for
+    #kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/kind/deploy.yaml
+}
+
+function down() {
+    helm uninstall apisix --namespace ingress-apisix && kubectl delete namespace ingress-apisix
+    #kubectl delete -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.3.0/deploy/static/provider/cloud/deploy.yaml
+}
+
+
+if   [ "${COMMAND}" = "init" ] ; then up;
+elif [ "${COMMAND}" = "restart" ] ; then down && up;
+elif [ "${COMMAND}" = "prune" ]; then down;
+
+else echo Doing nothing !; fi
+
+#Sample query: {namespace="example-tenant-5a2f",container="callee-service-application"}

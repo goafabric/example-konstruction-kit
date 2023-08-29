@@ -5,14 +5,18 @@ metadata:
   labels:
     {{- include "application.labels" . | nindent 4 }}
   annotations:
-    nginx.ingress.kubernetes.io/ssl-redirect: "true"
-    nginx.ingress.kubernetes.io/rewrite-target: /jaeger/$2
+    k8s.apisix.apache.org/rewrite-target-regex: "/jaeger/(.*)"
+    k8s.apisix.apache.org/rewrite-target-regex-template: "/jaeger/$1"
+    k8s.apisix.apache.org/http-to-https: "true"
 
-    nginx.ingress.kubernetes.io/enable-modsecurity: "true"
+    #nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    #nginx.ingress.kubernetes.io/rewrite-target: /jaeger/$2
+
+    #nginx.ingress.kubernetes.io/enable-modsecurity: "true"
 
     # basic auth
-    nginx.ingress.kubernetes.io/auth-type: "basic"
-    nginx.ingress.kubernetes.io/auth-secret: "authentication-secret"
+    #nginx.ingress.kubernetes.io/auth-type: "basic"
+    #nginx.ingress.kubernetes.io/auth-secret: "authentication-secret"
 
     # oidc auth
     #nginx.ingress.kubernetes.io/auth-signin: "https://$host/oauth2/$http_x_tenantid/start?rd=$escaped_request_uri"
@@ -20,9 +24,9 @@ metadata:
 
     cert-manager.io/cluster-issuer: my-cluster-issuer
 
-    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    #nginx.ingress.kubernetes.io/ssl-redirect: "true"
 spec:
-  ingressClassName: nginx
+  ingressClassName: apisix
   tls:
     - hosts:
         - {{ .Values.ingress.hosts}}
@@ -31,7 +35,7 @@ spec:
     - host: {{ .Values.ingress.hosts}}
       http:
         paths:
-          - path: /jaeger(/|$)(.*)
+          - path: /jaeger
             pathType: Prefix
             backend:
               service:
