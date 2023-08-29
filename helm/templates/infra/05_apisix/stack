@@ -13,7 +13,7 @@ function up() {
     helm repo update
     #kubectl create ns ingress-apisix
     helm install apisix apisix/apisix \
-      --set service.type=NodePort,apisix.ssl.enabled=true,ingress-controller.enabled=true \
+      --set service.type=LoadBalancer,apisix.ssl.enabled=true,ingress-controller.enabled=true \
       --namespace ingress-apisix \
       --create-namespace
 
