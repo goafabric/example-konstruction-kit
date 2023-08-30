@@ -14,23 +14,30 @@ function up() {
     # TODO using older version because of this bug: https://github.com/apache/apisix/pull/10066
     # values for latest version of apisix: --set service.type=LoadBalancer,apisix.ssl.enabled=true,ingress-controller.enabled=true \
     helm install apisix apisix/apisix --version 1.3.1 \
-      --set gateway.type=LoadBalancer,gateway.tls.enabled=true,plugin_attr.redirect.https_port=443,ingress-controller.enabled=true \
+      --set gateway.type=LoadBalancer,gateway.tls.enabled=true,gateway.tls.containerPort=443,pluginAttrs.redirect.https_port=443,ingress-controller.enabled=true \
       --namespace ingress-apisix \
       --create-namespace
+
+    helm install apisix-dashboard apisix/apisix-dashboard --namespace ingress-apisix
 
     echo waiting for
     #kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/kind/deploy.yaml
 }
 
 function down() {
+    helm uninstall apisix-dashboard --namespace ingress-apisix
     helm uninstall apisix --namespace ingress-apisix && kubectl delete namespace ingress-apisix
     #kubectl delete -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.3.0/deploy/static/provider/cloud/deploy.yaml
 }
 
+function proxy() {
+      kubectl -n ingress-apisix port-forward service/apisix-dashboard 9090:80
+}
 
 if   [ "${COMMAND}" = "init" ] ; then up;
 elif [ "${COMMAND}" = "restart" ] ; then down && up;
 elif [ "${COMMAND}" = "prune" ]; then down;
+elif [ "${COMMAND}" = "proxy" ]; then proxy;
 
 else echo Doing nothing !; fi
 

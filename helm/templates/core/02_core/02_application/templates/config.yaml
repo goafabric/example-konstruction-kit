@@ -11,9 +11,8 @@ data:
   server.tomcat.threads.max: "20"
   server.forward-headers-strategy: FRAMEWORK
 
-  # TODO re-enable
   #security
-  security.authentication.enabled: "false"
+  security.authentication.enabled: "true"
 
   spring.security.oauth2.authorization-uri: "https://{{ .Values.ingress.hosts}}/oidc/realms/tenant-{tenantId}/protocol/openid-connect/auth"
   spring.security.oauth2.logout-uri: "https://{{ .Values.ingress.hosts}}/oidc/realms/tenant-{tenantId}/protocol/openid-connect/logout"
