@@ -10,7 +10,6 @@ spec:
           - kubernetes
         paths:
           - /
-          - /*
       backends:
         - serviceName: welcome-board
           servicePort: 8080
