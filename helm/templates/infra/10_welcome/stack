@@ -11,7 +11,7 @@ function up() {
     --namespace default \
     `cat ./Chart.yaml | grep "name" | cut -d':' -f2 | xargs` ./
 
-    kubectl apply -f ./default-route.yaml --namespace default
+    #kubectl apply -f ./default-route.yaml --namespace default
 }
 
 function down() {
@@ -19,7 +19,7 @@ function down() {
     --namespace default \
     `cat ./Chart.yaml | grep "name" | cut -d':' -f2 | xargs`
 
-    kubectl delete -f ./default-route.yaml --namespace default
+    #kubectl delete -f ./default-route.yaml --namespace default
 }
 
 function proxy() {

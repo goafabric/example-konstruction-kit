@@ -11,21 +11,20 @@ function up() {
     helm repo add kubernetes-dashboard https://kubernetes.github.io/dashboard/ > /dev/null
 
     helm upgrade --install --create-namespace kubernetes-dashboard kubernetes-dashboard/kubernetes-dashboard --namespace monitoring --version 5.11.0 \
-    --set ingress.enabled=true,ingress.className=apisix \
-    --set ingress.annotations.'k8s\.apisix\.apache\.org/rewrite-target-regex'='/dashboard/(.*)',ingress.annotations.'k8s\.apisix\.apache\.org/rewrite-target-regex-template'='/$1',ingress.annotations.'k8s\.apisix\.apache\.org/upstream-scheme'='https' \
-    --set-string ingress.annotations.'k8s\.apisix\.apache\.org/http-to-https'=true \
-    --set ingress.annotations.'cert-manager\.io/cluster-issuer'='my-cluster-issuer' \
-    --set ingress.hosts[0]=$_Values_host_name,ingress.customPaths[0].path='/dashboard',ingress.customPaths[0].pathType='Prefix',ingress.customPaths[0].backend.service.name='kubernetes-dashboard',ingress.customPaths[0].backend.service.port.number=443 \
-    --set ingress.tls[0].hosts[0]=$_Values_host_name,ingress.tls[0].secretName=root-certificate \
+    --set ingress.enabled=false \
     --set metricsScraper.enabled=true,metrics-server.enabled=true \
     --set metrics-server.args[0]='--kubelet-insecure-tls',extraArgs[0]='--enable-skip-login'
 
     kubectl apply -f ./dashboard-admin.yaml
+    kubectl apply -f ./route.yaml --namespace monitoring
+    kubectl apply -f ./upstream.yaml --namespace monitoring
 }
 
 function down() {
     helm uninstall kubernetes-dashboard --namespace=monitoring
     kubectl delete -f ./dashboard-admin.yaml
+    kubectl delete -f ./route.yaml --namespace monitoring
+    kubectl delete -f ./upstream.yaml --namespace monitoring
 }
 
 function proxy() {

@@ -1,0 +1,64 @@
+{{- if .Values.ingress.enabled -}}
+apiVersion: apisix.apache.org/v2
+kind: ApisixRoute
+metadata:
+  name: {{ include "application.fullname" . }}-5
+spec:
+  http:
+    - name: {{ include "application.fullname" . }}-5
+      match:
+        hosts:
+          - {{ .Values.ingress.hosts}}
+        paths:
+          - /5{{ .Values.ingress.paths }}
+          - /5{{ .Values.ingress.paths }}/*
+      backends:
+          - serviceName: {{ include "application.fullname" . }}
+            servicePort: http
+      plugins:
+        - name: redirect
+          enable: true
+          config:
+            http_to_https: true
+        - name: openid-connect
+          enable: true
+          config:
+            #bearer_only: true
+            client_id: oauth2-proxy
+            client_secret: none
+            discovery: https://kubernetes/oidc/realms/tenant-5/.well-known/openid-configuration
+            realm: tenant-5
+            access_token_in_authorization_header: false
+            set_id_token_header: true
+            set_userinfo_header: true
+            redirect_uri: "/5/core/redirect_uri"
+            ssl_verify: false
+        - name: proxy-rewrite
+          enable: true
+          config:
+            regex_uri:
+              - /5{{ .Values.ingress.paths }}/(.*)
+              - /$1
+            #- name: cors
+            #  enable: true
+            #  config:
+            #    allow_credential: true
+            #    allow_origins: "**"
+            #    #allow_origins_by_regex: ["kubernetes"]
+            ##    allow_methods: GET, POST, PUT, PATCH, DELETE, HEAD, OPTIONS
+            ##    expose_headers: X-PINGOTHER, Content-Type, Authorization
+            #    allow_headers: X-PINGOTHER, Content-Type, Authorization
+            #- name: authz-keycloak
+            #  enable: true
+            #  config:
+            #    token_endpoint: https://kubernetes/oidc/realms/tenant-0/protocol/openid-connect/token
+            #permissions: ["View authors resources#authors:GET"]
+            #    http_method_as_scope: true
+            #    lazy_load_paths: true
+            #    client_id: apisix-client
+            #audience: poc-apisix
+        #    client_secret: ekA3f938FqcWJDLPMbN5kxH3YKwQPwe3
+        #    discovery: https://kubernetes/oidc/realms/tenant-0/.well-known/openid-configuration
+        #    realm: tenant-0
+        #    ssl_verify: false
+  {{- end }}

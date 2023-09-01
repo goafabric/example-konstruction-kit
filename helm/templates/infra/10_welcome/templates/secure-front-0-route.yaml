@@ -1,0 +1,44 @@
+apiVersion: apisix.apache.org/v2
+kind: ApisixRoute
+metadata:
+  name: {{ include "application.fullname" . }}-0
+spec:
+  http:
+    - name: {{ include "application.fullname" . }}-0
+      match:
+        hosts:
+          - kubernetes
+        paths:
+          - /0
+          - /0/*
+      backends:
+        - serviceName: welcome-board
+          servicePort: 8080
+      plugins:
+        - name: redirect
+          enable: true
+          config:
+            http_to_https: true
+        - name: openid-connect
+          enable: true
+          config:
+            client_id: oauth2-proxy
+            client_secret: none
+            discovery: https://kubernetes/oidc/realms/tenant-0/.well-known/openid-configuration
+            realm: tenant-0
+            access_token_in_authorization_header: false
+            set_id_token_header: true
+            set_userinfo_header: true
+            redirect_uri: "/0/redirect_uri"
+            ssl_verify: false
+        #- name: response-rewrite
+        #  enable: true
+        #  config:
+        #    headers:
+        #      HTTP_X_USERINFO: "$http_x_userinfo"
+        - name: proxy-rewrite
+          enable: true
+          config:
+            regex_uri:
+              - /0/(.*)
+              - /

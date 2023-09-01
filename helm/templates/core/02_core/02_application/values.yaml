@@ -6,9 +6,9 @@ ingress:
   authentication: none
 
 image:
-  repository: "goafabric/core-service"
+  repository: "gss-eos.docker.artifactory.cgm.ag/core-service"
   pullPolicy: Always #IfNotPresent
-  pullSecrets:
+  pullSecrets: registry-secret
 
 podAnnotations:
   linkerd.io/inject: enabled
@@ -21,7 +21,7 @@ resourcesAnnotations:
       cpu: 250m
 
   command: ["java", "-Xms256M", "-Xmx256M", "-cp", "/app/resources:/app/classes:/app/libs/*",
-            "org.goafabric.core.Application"]
+            "com.cgm.de.ais.core.Application"]
 
 nativeAnnotations:
   resources:

@@ -28,15 +28,17 @@ data:
     {\n            height: 24px;\n            margin-right: 10px;\n            width:
     24px;\n        }\n        p {\n          height: 1px;\n          border-bottom:
     1px dashed #ffffff54;\n        }\n    </style>\n</head>\n<body>\n<div class=\"box\">\n
-    \   <h1 class=\"title\">Welcome to the Example Cluster 1.1.0</h1>\n    <h2 class=\"subtitle\">Your
-    best course would be to tread lightly ...</h2>\n\n    <div class=\"links-container\">\n
-    \       <div class=\"links\">\n            <h6>Dashboards</h6>\n            <ul>\n
-    \               <p></p>\n                <li>\n                    <a href=\"/dashboard/#\"
-    target=\"_blank\">\n                        <span>☸️ Kubernetes Dashboard</span>\n
-    \                   </a>\n                </li>\n                <li>\n                    <a
-    href=\"/kiali/\" target=\"_blank\">\n                        <span>⛵ Istio Dashboard</span>\n
-    \                   </a>\n                </li>\n                <p></p>\n                <li>\n
-    \                   <a href=\"/jaeger/\" target=\"_blank\">\n                        <span>\U0001F3F9
+    \   <div>\n        <a href=\"./logout\" target=\"_self\">\n            <span>Logout</span>\n
+    \       </a>\n    </div>\n    <h1 class=\"title\">Welcome to the Example Cluster
+    1.1.0</h1>\n    <h2 class=\"subtitle\">Your best course would be to tread lightly
+    ...</h2>\n\n    <div class=\"links-container\">\n        <div class=\"links\">\n
+    \           <h6>Dashboards</h6>\n            <ul>\n                <p></p>\n                <li>\n
+    \                   <a href=\"/dashboard/#\" target=\"_blank\">\n                        <span>☸️
+    Kubernetes Dashboard</span>\n                    </a>\n                </li>\n
+    \               <li>\n                    <a href=\"/kiali/\" target=\"_blank\">\n
+    \                       <span>⛵ Istio Dashboard</span>\n                    </a>\n
+    \               </li>\n                <p></p>\n                <li>\n                    <a
+    href=\"/jaeger/\" target=\"_blank\">\n                        <span>\U0001F3F9
     Jaeger</span>\n                    </a>\n                </li>\n                <li>\n
     \                   <a href=\"/grafana/\" target=\"_blank\">\n                        <span>\U0001F4CA
     Loki</span>\n                    </a>\n                </li>\n                <p></p>\n
@@ -49,7 +51,7 @@ data:
     Event Dispatcher</span>\n                    </a>\n                    -->\n                </li>\n
     \           </ul>\n        </div>\n        <div class=\"links\">\n            <h6>Core</h6>\n
     \           <ul>\n                <p></p>\n                <li>\n                    <a
-    href=\"/core/oauth2/authorization/0\" target=\"_blank\">\n                        <span>\U0001F30D
+    href=\"./core/\" target=\"_blank\">\n                        <span>\U0001F30D
     Core</span>\n                    </a>\n                </li>\n                <p></p>\n
     \               <li>\n                    <a href=\"/catalog/\" target=\"_blank\">\n
     \                       <span>\U0001F4D9 Catalog</span>\n                    </a>\n
@@ -62,8 +64,8 @@ data:
     \               </li>\n            </ul>\n        </div>\n    </div>\n</div>\n\n</body>\n"
 kind: ConfigMap
 metadata:
-  creationTimestamp: "2023-08-18T05:41:54Z"
+  creationTimestamp: "2023-09-01T14:25:34Z"
   name: welcome-board-data-files
   namespace: default
-  resourceVersion: "4390084"
-  uid: 47eb3381-12f8-41eb-be16-44e0d4ee92d2
+  resourceVersion: "480346"
+  uid: 96c38571-cd79-46f9-a890-c969402ce572
