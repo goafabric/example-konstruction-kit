@@ -13,13 +13,17 @@ spec:
           - {{ .Values.ingress.paths }}
           - {{ .Values.ingress.paths }}/*
       backends:
-        - serviceName: {{ include "application.fullname" . }}
-          servicePort: http
+          - serviceName: {{ include "application.fullname" . }}
+            servicePort: http
       plugins:
+        - name: redirect
+          enable: true
+          config:
+            http_to_https: true
         - name: proxy-rewrite
           enable: true
           config:
             regex_uri:
               - {{ .Values.ingress.paths }}/(.*)
               - /$1
-{{- end }}
+  {{- end }}

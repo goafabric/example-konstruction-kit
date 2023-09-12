@@ -1,0 +1,39 @@
+replicaCount: 1
+
+ingress:
+  paths: /keycloak
+  enabled: true
+  authentication: none
+
+image:
+  repository: "gss-eos.docker.artifactory.cgm.ag/keycloak-service"
+  pullPolicy: IfNotPresent
+  pullSecrets: registry-secret
+
+podAnnotations:
+  linkerd.io/inject: enabled
+  sidecar.istio.io/inject: "true"
+
+resourcesAnnotations:
+  resources:
+    requests:
+      memory: 256M
+      cpu: 250m
+
+  command: ["java", "-Xms256M", "-Xmx256M", "-cp", "/app/resources:/app/classes:/app/libs/*",
+            "com.cgm.de.ais.keycloakservice.Application"]
+
+nativeAnnotations:
+  resources:
+    requests:
+      memory: 64M
+      cpu: 250m
+
+  args: ["-Xmx64M"]
+
+readinessProbe:
+  initialDelaySeconds: 2
+
+service:
+  type: ClusterIP
+  port: 8080
