@@ -15,16 +15,16 @@ function up() {
     --set metricsScraper.enabled=true,metrics-server.enabled=true \
     --set metrics-server.args[0]='--kubelet-insecure-tls',extraArgs[0]='--enable-skip-login'
 
+    helm install dashboard-route ./dashboard-route --set hostname=`kubectl get configmaps cluster-config -o jsonpath='{.data.hostname}' -n default` \
+    --namespace monitoring
+
     kubectl apply -f ./dashboard-admin.yaml
-    kubectl apply -f ./route.yaml --namespace monitoring
-    kubectl apply -f ./upstream.yaml --namespace monitoring
 }
 
 function down() {
     helm uninstall kubernetes-dashboard --namespace=monitoring
+    helm uninstall dashboard-route --namespace=monitoring
     kubectl delete -f ./dashboard-admin.yaml
-    kubectl delete -f ./route.yaml --namespace monitoring
-    kubectl delete -f ./upstream.yaml --namespace monitoring
 }
 
 function proxy() {

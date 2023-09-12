@@ -7,7 +7,7 @@ spec:
     - name: default-welcome-route
       match:
         hosts:
-          - kubernetes
+          - {{.Values.ingress.hosts}}
         paths:
           - /
       backends:

@@ -20,14 +20,15 @@ function up() {
 
     helm install apisix-dashboard apisix/apisix-dashboard --namespace ingress-apisix
 
-    kubectl apply -f ./tls.yaml --namespace ingress-apisix
+    helm install apisix-tls ./apisix-tls --set hostname=`kubectl get configmaps cluster-config -o jsonpath='{.data.hostname}' -n default` \
+      --namespace ingress-apisix
 
     echo waiting for
     #kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/kind/deploy.yaml
 }
 
 function down() {
-    kubectl delete -f ./tls.yaml --namespace ingress-apisix
+    helm uninstall apisix-tls --namespace ingress-apisix
     helm uninstall apisix-dashboard --namespace ingress-apisix
     helm uninstall apisix --namespace ingress-apisix && kubectl delete namespace ingress-apisix
     #kubectl delete -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.3.0/deploy/static/provider/cloud/deploy.yaml

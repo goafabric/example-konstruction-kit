@@ -7,7 +7,7 @@ spec:
     - name: {{ include "application.fullname" . }}
       match:
         hosts:
-          - kubernetes
+          - {{.Values.ingress.hosts}}
         paths:
           - /*
       backends:
@@ -23,27 +23,10 @@ spec:
           config:
             client_id: oauth2-proxy
             client_secret: none
-            discovery: https://kubernetes/oidc/realms/tenant-0/.well-known/openid-configuration
+            discovery: https://{{.Values.ingress.hosts}}/oidc/realms/tenant-0/.well-known/openid-configuration
             realm: tenant-0
             access_token_in_authorization_header: false
             set_id_token_header: true
             set_userinfo_header: true
             redirect_uri: "/redirect_uri"
             ssl_verify: false
-        #- name: response-rewrite
-        #  enable: true
-        #  config:
-        #    headers:
-        #      HTTP_X_USERINFO: "$http_x_userinfo"
-        #- name: proxy-rewrite
-        #  enable: true
-        #  config:
-        #    headers:
-        #      add:
-        #        HTTP_X_USERINFO: "$http_x_userinfo"
-        #      set:
-        #        Accept-Language: "bla"
-        #        Dnt: 123
-        #    regex_uri:
-        #      - /(.*)
-        #      - /123

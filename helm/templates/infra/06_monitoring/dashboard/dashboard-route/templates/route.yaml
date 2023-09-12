@@ -1,15 +1,15 @@
 apiVersion: apisix.apache.org/v2
 kind: ApisixRoute
 metadata:
-  name: kubernetes-dashboard
+  name: {{ include "dashboard-route.fullname" . }}
   annotations:
     k8s.apisix.apache.org/upstream-scheme: "https"
 spec:
   http:
-    - name: kubernetes-dashboard
+    - name: {{ include "dashboard-route.fullname" . }}
       match:
         hosts:
-          - kubernetes
+          - {{ .Values.hostname }}
         paths:
           - /dashboard
           - /dashboard/*

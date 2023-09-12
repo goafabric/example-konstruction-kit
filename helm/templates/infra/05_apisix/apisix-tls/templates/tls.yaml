@@ -1,10 +1,10 @@
 apiVersion: apisix.apache.org/v2
 kind: ApisixTls
 metadata:
-  name: ingress-apisix-tls
+  name: {{ include "apisix-tls.fullname" . }}
 spec:
   hosts:
-    - kubernetes
+    - {{ .Values.hostname }}
   secret:
     name: root-certificate
     namespace: cert-manager

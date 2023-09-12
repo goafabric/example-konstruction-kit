@@ -10,8 +10,8 @@ spec:
         hosts:
           - {{ .Values.ingress.hosts}}
         paths:
-          - /0{{ .Values.ingress.paths }}
-          - /0{{ .Values.ingress.paths }}/*
+          - {{ .Values.ingress.paths }}/0
+          - {{ .Values.ingress.paths }}/0/*
       backends:
         - serviceName: {{ include "application.fullname" . }}
           servicePort: http
@@ -23,42 +23,18 @@ spec:
         - name: openid-connect
           enable: true
           config:
-            #bearer_only: true
             client_id: oauth2-proxy
             client_secret: none
-            discovery: https://kubernetes/oidc/realms/tenant-0/.well-known/openid-configuration
-            realm: tenant-0
+            discovery: https://{{ .Values.ingress.hosts}}/oidc/realms/tenant-0/.well-known/openid-configuration
             access_token_in_authorization_header: false
-            set_id_token_header: true
-            set_userinfo_header: true
-            redirect_uri: "/0/core/redirect_uri"
+            set_id_token_header: false
+            set_userinfo_header: false
             ssl_verify: false
+            redirect_uri: "/core/0/redirect_uri"
         - name: proxy-rewrite
           enable: true
           config:
             regex_uri:
-              - /0{{ .Values.ingress.paths }}/(.*)
+              - {{ .Values.ingress.paths }}/0/(.*)
               - /$1
-            #- name: cors
-            #  enable: true
-            #  config:
-            #    allow_credential: true
-            #    allow_origins: "**"
-            #    #allow_origins_by_regex: ["kubernetes"]
-            ##    allow_methods: GET, POST, PUT, PATCH, DELETE, HEAD, OPTIONS
-            ##    expose_headers: X-PINGOTHER, Content-Type, Authorization
-            #    allow_headers: X-PINGOTHER, Content-Type, Authorization
-            #- name: authz-keycloak
-            #  enable: true
-            #  config:
-            #    token_endpoint: https://kubernetes/oidc/realms/tenant-0/protocol/openid-connect/token
-            #permissions: ["View authors resources#authors:GET"]
-            #    http_method_as_scope: true
-            #    lazy_load_paths: true
-            #    client_id: apisix-client
-            #audience: poc-apisix
-        #    client_secret: ekA3f938FqcWJDLPMbN5kxH3YKwQPwe3
-        #    discovery: https://kubernetes/oidc/realms/tenant-0/.well-known/openid-configuration
-        #    realm: tenant-0
-        #    ssl_verify: false
   {{- end }}
