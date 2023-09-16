@@ -3,11 +3,12 @@
 - loki updated and working again
 - upgrade to core 1.0.4
 - upgrade to minio RELEASE.2023-08-23
+- postgres upfrade to 16.0
 
 # 1.0.7
 - upgrade to kubed 0.13.2
 - upgrade to istio 1.16.2 + kiali 1.63.0
-- upgrade of postgres to 15.2
+- upgrade of postgres to 16.0
 - upgrade of keycloak to 20.0.2
 - verify linkerd 2.12.4
 
