@@ -27,9 +27,10 @@ spec:
             discovery: https://{{.Values.ingress.hosts}}/oidc/realms/tenant-0/.well-known/openid-configuration
             realm: tenant-0
             access_token_in_authorization_header: false
-            set_id_token_header: true
-            set_userinfo_header: true
+            set_id_token_header: false
+            set_userinfo_header: false
             redirect_uri: "/0/redirect_uri"
+            logout_path: "/0/logout"
             ssl_verify: false
         - name: proxy-rewrite
           enable: true
