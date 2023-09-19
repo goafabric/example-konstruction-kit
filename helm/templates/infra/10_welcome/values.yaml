@@ -7,7 +7,6 @@ ingress:
 image:
   repository: "nginx"
   pullPolicy: IfNotPresent
-  pullSecrets: 
 
 
 service:

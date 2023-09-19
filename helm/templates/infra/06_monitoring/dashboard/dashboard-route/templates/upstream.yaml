@@ -1,0 +1,9 @@
+apiVersion: apisix.apache.org/v2
+kind: ApisixUpstream
+metadata:
+  name: kubernetes-dashboard
+spec:
+  loadbalancer:
+    type: roundrobin
+    hashOn: vars
+  scheme: https

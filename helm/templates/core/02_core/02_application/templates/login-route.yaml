@@ -1,0 +1,18 @@
+{{- if .Values.ingress.enabled -}}
+apiVersion: apisix.apache.org/v2
+kind: ApisixRoute
+metadata:
+  name: {{ include "application.fullname" . }}-login
+spec:
+  http:
+    - name: {{ include "application.fullname" . }}-login
+      match:
+        hosts:
+          - {{ .Values.ingress.hosts}}
+        paths:
+          - /login
+          - /login/*
+      backends:
+          - serviceName: {{ include "application.fullname" . }}
+            servicePort: http
+  {{- end }}

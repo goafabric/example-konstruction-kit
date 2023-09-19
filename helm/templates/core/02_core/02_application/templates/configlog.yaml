@@ -6,7 +6,7 @@ metadata:
     {{- include "application.labels" . | nindent 4 }}
 data:
   #log levels
-  logging.level.root: "WARN"
+  logging.level.root: "INFO"
   logging.level.org.goafabric: "INFO"
 
   logging.level.org.springframework: "INFO"

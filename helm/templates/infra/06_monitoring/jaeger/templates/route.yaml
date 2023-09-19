@@ -1,0 +1,27 @@
+apiVersion: apisix.apache.org/v2
+kind: ApisixRoute
+metadata:
+  name: {{ include "application.fullname" . }}
+spec:
+  http:
+    - name: {{ include "application.fullname" . }}
+      match:
+        hosts:
+          - {{ .Values.ingress.hosts}}
+        paths:
+          - /jaeger
+          - /jaeger/*
+      backends:
+          - serviceName: tracing
+            servicePort: 80
+      plugins:
+        - name: redirect
+          enable: true
+          config:
+            http_to_https: true
+        - name: proxy-rewrite
+          enable: true
+          config:
+            regex_uri:
+              - /jaeger/(.*)
+              - /jaeger/$1
