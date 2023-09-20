@@ -4,6 +4,9 @@ ingress:
   paths: /core
   enabled: true
   authentication: none
+  tenantIDs:
+    - 0
+    - 5
 
 image:
   repository: "gss-eos.docker.artifactory.cgm.ag/core-service"

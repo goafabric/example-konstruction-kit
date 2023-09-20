@@ -3,6 +3,9 @@ replicaCount: 1
 ingress:
   paths: /welcome
   hosts: ""
+  tenantIDs:
+    - 0
+    - 5
 
 image:
   repository: "nginx"

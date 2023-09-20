@@ -4,6 +4,9 @@ ingress:
   paths: /catalog
   enabled: true
   authentication: none
+  tenantIDs:
+    - 0
+    - 5
 
 image:
   repository: "goafabric/catalog-service"

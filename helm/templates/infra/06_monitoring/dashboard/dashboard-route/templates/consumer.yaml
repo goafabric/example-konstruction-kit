@@ -1,0 +1,10 @@
+apiVersion: apisix.apache.org/v2
+kind: ApisixConsumer
+metadata:
+  name: kubernetes-dashboard
+spec:
+  authParameter:
+    basicAuth:
+      value:
+        username: admin
+        password: admin

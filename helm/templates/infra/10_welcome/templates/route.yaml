@@ -1,16 +1,20 @@
+{{- $applicationFullname := include "application.fullname" . -}}
+{{- $ingressHosts := .Values.ingress.hosts -}}
+{{- range $tenantID := .Values.ingress.tenantIDs }}
+---
 apiVersion: apisix.apache.org/v2
 kind: ApisixRoute
 metadata:
-  name: {{ include "application.fullname" . }}-5
+  name: {{ $applicationFullname }}-{{ $tenantID }}
 spec:
   http:
-    - name: {{ include "application.fullname" . }}-5
+    - name: {{ $applicationFullname }}-{{ $tenantID }}
       match:
         hosts:
-          - {{.Values.ingress.hosts}}
+          - {{ $ingressHosts }}
         paths:
-          - /5
-          - /5/*
+          - /{{ $tenantID }}
+          - /{{ $tenantID }}/*
       backends:
         - serviceName: welcome-board
           servicePort: 8080
@@ -24,17 +28,19 @@ spec:
           config:
             client_id: oauth2-proxy
             client_secret: none
-            discovery: https://{{.Values.ingress.hosts}}/oidc/realms/tenant-5/.well-known/openid-configuration
-            realm: tenant-5
+            discovery: https://{{ $ingressHosts }}/oidc/realms/tenant-{{ $tenantID }}/.well-known/openid-configuration
+            realm: tenant-{{ $tenantID }}
             access_token_in_authorization_header: false
             set_id_token_header: false
             set_userinfo_header: false
-            redirect_uri: "/5/redirect_uri"
-            logout_path: "/5/logout"
+            redirect_uri: "/{{ $tenantID }}/redirect_uri"
+            logout_path: "/{{ $tenantID }}/logout"
             ssl_verify: false
         - name: proxy-rewrite
           enable: true
           config:
             regex_uri:
-              - /5/(.*)
-              - /$1
+              - /{{ $tenantID }}/(.*)
+              - /
+---
+{{- end }}

@@ -27,3 +27,7 @@ spec:
             regex_uri:
               - /dashboard/(.*)
               - /$1
+        - name: basic-auth
+          enable: true
+          config:
+            hide_credentials: true
