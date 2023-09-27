@@ -1,20 +1,16 @@
-{{- $applicationFullname := include "application.fullname" . -}}
-{{- $ingressHosts := .Values.ingress.hosts -}}
-{{- range $tenantID := .Values.ingress.tenantIDs }}
----
 apiVersion: apisix.apache.org/v2
 kind: ApisixRoute
 metadata:
-  name: {{ $applicationFullname }}-{{ $tenantID }}
+  name: {{ include "application.fullname" . }}
 spec:
   http:
-    - name: {{ $applicationFullname }}-{{ $tenantID }}
+    - name: {{ include "application.fullname" . }}
       match:
         hosts:
-          - {{ $ingressHosts }}
+          - {{ .Values.ingress.hosts}}
         paths:
-          - /{{ $tenantID }}
-          - /{{ $tenantID }}/*
+          - /welcome
+          - /welcome/*
       backends:
         - serviceName: welcome-board
           servicePort: 8080
@@ -23,24 +19,9 @@ spec:
           enable: true
           config:
             http_to_https: true
-        - name: openid-connect
-          enable: true
-          config:
-            client_id: oauth2-proxy
-            client_secret: none
-            discovery: https://{{ $ingressHosts }}/oidc/realms/tenant-{{ $tenantID }}/.well-known/openid-configuration
-            realm: tenant-{{ $tenantID }}
-            access_token_in_authorization_header: false
-            set_id_token_header: false
-            set_userinfo_header: false
-            redirect_uri: "/{{ $tenantID }}/redirect_uri"
-            logout_path: "/{{ $tenantID }}/logout"
-            ssl_verify: false
         - name: proxy-rewrite
           enable: true
           config:
             regex_uri:
-              - /{{ $tenantID }}/(.*)
-              - /
----
-{{- end }}
+              - /welcome/(.*)
+              - /$1
