@@ -51,21 +51,24 @@ data:
     Event Dispatcher</span>\n                    </a>\n                    -->\n                </li>\n
     \           </ul>\n        </div>\n        <div class=\"links\">\n            <h6>Core</h6>\n
     \           <ul>\n                <p></p>\n                <li>\n                    <a
-    href=\"./core/\" target=\"_blank\">\n                        <span>\U0001F30D
-    Core</span>\n                    </a>\n                </li>\n                <p></p>\n
-    \               <li>\n                    <a href=\"/catalog/\" target=\"_blank\">\n
-    \                       <span>\U0001F4D9 Catalog</span>\n                    </a>\n
-    \               </li>\n            </ul>\n        </div>\n\n        <div class=\"links\">\n
-    \           <h6>Example</h6>\n            <ul>\n                <p></p>\n                <li>\n
-    \                   <a href=\"/person/\" target=\"_blank\">\n                        <span>\U0001F30D
+    href=\"/core/0/\" target=\"_blank\">\n                        <span>\U0001F30D
+    Core Tenant 0</span>\n                    </a>\n                </li>\n                <p></p>\n
+    \               <li>\n                    <a href=\"/core/5/\" target=\"_blank\">\n
+    \                       <span>\U0001F30D Core Tenant 5</span>\n                    </a>\n
+    \               </li>\n                <p></p>\n                <li>\n                    <a
+    href=\"/catalog/0/\" target=\"_blank\">\n                        <span>\U0001F4D9
+    Catalog Tenant 0</span>\n                    </a>\n                </li>\n            </ul>\n
+    \       </div>\n\n        <div class=\"links\">\n            <h6>Example</h6>\n
+    \           <ul>\n                <p></p>\n                <li>\n                    <a
+    href=\"/person/\" target=\"_blank\">\n                        <span>\U0001F30D
     Person Service</span>\n                    </a>\n                </li>\n                <p></p>\n
     \               <li>\n                    <a href=\"/callee/\" target=\"_blank\">\n
     \                       <span>\U0001F4E2 Callee Service</span>\n                    </a>\n
     \               </li>\n            </ul>\n        </div>\n    </div>\n</div>\n\n</body>\n"
 kind: ConfigMap
 metadata:
-  creationTimestamp: "2023-09-01T14:25:34Z"
+  creationTimestamp: "2023-09-27T07:12:06Z"
   name: welcome-board-data-files
   namespace: default
-  resourceVersion: "480346"
-  uid: 96c38571-cd79-46f9-a890-c969402ce572
+  resourceVersion: "42029"
+  uid: 3ea9b29e-3060-49fd-9ffd-614d13ef8a67

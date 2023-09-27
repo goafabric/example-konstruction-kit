@@ -18,7 +18,7 @@ function up() {
       --namespace ingress-apisix \
       --create-namespace
 
-    helm install apisix-dashboard apisix/apisix-dashboard --namespace ingress-apisix
+    #helm install apisix-dashboard apisix/apisix-dashboard --namespace ingress-apisix
 
     helm install apisix-tls ./apisix-tls --set hostname=`kubectl get configmaps cluster-config -o jsonpath='{.data.hostname}' -n default` \
       --namespace ingress-apisix

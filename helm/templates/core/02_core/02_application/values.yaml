@@ -9,7 +9,7 @@ ingress:
     - 5
 
 image:
-  repository: "gss-eos.docker.artifactory.cgm.ag/core-service"
+  repository: "goafabric/core-service"
   pullPolicy: Always #IfNotPresent
   pullSecrets: registry-secret
 
@@ -24,7 +24,7 @@ resourcesAnnotations:
       cpu: 250m
 
   command: ["java", "-Xms256M", "-Xmx256M", "-cp", "/app/resources:/app/classes:/app/libs/*",
-            "com.cgm.de.ais.core.Application"]
+            "org.goafabric.core.Application"]
 
 nativeAnnotations:
   resources:
