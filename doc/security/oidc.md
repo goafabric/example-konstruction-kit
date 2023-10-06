@@ -80,7 +80,7 @@ echo $access_token
 
 curl -X POST "$baseurl/oidc/admin/realms/$realm/users" \
 -H "Content-Type: application/json" \
--H "Authorization: Bearer YOUR_ADMIN_ACCESS_TOKEN" \
+-H "Authorization: $access_token" \
 -d '{
 "username": "newuser",
 "email": "newuser@example.com",
