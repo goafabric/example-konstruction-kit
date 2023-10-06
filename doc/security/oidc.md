@@ -62,12 +62,15 @@ curl http://kubernetes:30200/.well-known/openid-configuration
 curl http://localhost:30200/oidc/realms/master/.well-known/openid-configuration
 curl http://keycloak:8080/oidc/realms/master/.well-known/openid-configuration
                     
-# user create
+
+#####
+
 
 # user create
 export baseurl=http://localhost:30200
-                                    
-## always master realm here
+export realm=tenant-0
+export user=user3
+
 export access_token=$(\
 curl -v -s -X POST $baseurl/oidc/realms/master/protocol/openid-connect/token \
 -d "client_id=admin-cli" \
@@ -82,20 +85,20 @@ echo $access_token
 curl -X POST "$baseurl/oidc/admin/realms/$realm/users" \
 -H "Content-Type: application/json" \
 -H "Authorization: Bearer $access_token" \
--d '{
-"username": "newuser",
-"email": "newuser@example.com",
-"enabled": true,
-"credentials": [{
-"type": "password",
-"value": "password123",
-"temporary": false
+-d "{
+\"username\": \"$user\",
+\"email\": \"$user@example.com\",
+\"enabled\": true,
+\"credentials\": [{
+\"type\": \"$user\",
+\"value\": \"$user\",
+\"temporary\": false
 }]
-}'
-                 
+}"
+
 # set email verified
 export user_id=$(\
-curl -X GET "$baseurl/oidc/admin/realms/$realm/users/?username=newuser" \
+curl -X GET "$baseurl/oidc/admin/realms/$realm/users/?username=$user" \
 -H "Content-Type: application/json" \
 -H "Authorization: Bearer $access_token" \
 | jq -r '.[0].id' \
