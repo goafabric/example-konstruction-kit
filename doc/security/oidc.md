@@ -66,7 +66,8 @@ curl http://keycloak:8080/oidc/realms/master/.well-known/openid-configuration
 
 # user create
 export baseurl=http://localhost:30200
-
+                                    
+## always master realm here
 export access_token=$(\
 curl -v -s -X POST $baseurl/oidc/realms/master/protocol/openid-connect/token \
 -d "client_id=admin-cli" \
@@ -78,7 +79,7 @@ curl -v -s -X POST $baseurl/oidc/realms/master/protocol/openid-connect/token \
 echo access token is:
 echo $access_token
 
-curl -X POST "$baseurl/oidc/admin/realms/tenant-0/users" \
+curl -X POST "$baseurl/oidc/admin/realms/$realm/users" \
 -H "Content-Type: application/json" \
 -H "Authorization: Bearer $access_token" \
 -d '{
@@ -91,3 +92,17 @@ curl -X POST "$baseurl/oidc/admin/realms/tenant-0/users" \
 "temporary": false
 }]
 }'
+                 
+# set email verified
+export user_id=$(\
+curl -X GET "$baseurl/oidc/admin/realms/$realm/users/?username=newuser" \
+-H "Content-Type: application/json" \
+-H "Authorization: Bearer $access_token" \
+| jq -r '.[0].id' \
+)
+echo userid is: $user_id
+
+curl -X PUT "$baseurl/oidc/admin/realms/$realm/users/$user_id" \
+-H "Content-Type: application/json" \
+-H "Authorization: Bearer $access_token" \
+-d '{"emailVerified":true}'
