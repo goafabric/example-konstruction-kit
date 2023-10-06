@@ -78,6 +78,11 @@ curl -v -s -X POST $baseurl/oidc/realms/$realm/protocol/openid-connect/token \
 echo access token is:
 echo $access_token
 
+#-d "client_id=admin-cli" \
+#-d "client_secret=YOUR_CLIENT_SECRET" \
+#-d "grant_type=client_credentials"
+
+
 curl -X POST "$baseurl/oidc/admin/realms/$realm/users" \
 -H "Content-Type: application/json" \
 -H "Authorization: $access_token" \
