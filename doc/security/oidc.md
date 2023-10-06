@@ -66,9 +66,10 @@ curl http://keycloak:8080/oidc/realms/master/.well-known/openid-configuration
 
 # user create
 export realm=tenant-0
+export baseurl=http://localhost:30200
 
 export access_token=$(\
-curl -v -s -X POST $baseurl/oidc/realms/$realm/protocol/openid-connect/token \
+curl -v -s -X POST $baseurl/oidc/realms/master/protocol/openid-connect/token \
 -d "client_id=admin-cli" \
 -d "username=admin" \
 -d "password=admin" \
