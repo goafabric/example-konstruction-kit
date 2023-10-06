@@ -18,6 +18,9 @@ curl -v -s -X POST $baseurl/oidc/realms/$realm/protocol/openid-connect/token \
 echo access token is: 
 echo $access_token                                                                      
 
+https://your-keycloak-server/auth/admin/realms/your-realm/users
+
+
 # jwt.io 
 https://jwt.io/
 
@@ -58,3 +61,33 @@ curl http://kubernetes:30200/.well-known/openid-configuration
 # keycloak
 curl http://localhost:30200/oidc/realms/master/.well-known/openid-configuration
 curl http://keycloak:8080/oidc/realms/master/.well-known/openid-configuration
+                    
+# user create
+
+# user create
+export realm=tenant-0
+
+export access_token=$(\
+curl -v -s -X POST $baseurl/oidc/realms/$realm/protocol/openid-connect/token \
+-d "client_id=admin-cli" \
+-d "username=admin" \
+-d "password=admin" \
+-d "grant_type=password" \
+| jq --raw-output '.access_token' \
+)
+echo access token is:
+echo $access_token
+
+curl -X POST "$baseurl/oidc/admin/realms/$realm/users" \
+-H "Content-Type: application/json" \
+-H "Authorization: Bearer YOUR_ADMIN_ACCESS_TOKEN" \
+-d '{
+"username": "newuser",
+"email": "newuser@example.com",
+"enabled": true,
+"credentials": [{
+"type": "password",
+"value": "password123",
+"temporary": false
+}]
+}'
