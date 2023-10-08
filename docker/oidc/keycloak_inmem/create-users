@@ -55,6 +55,10 @@ function create-user {
     -d '{"emailVerified":true}'
 }
 
+while ! docker logs keycloak-application 2>&1 | grep -q "started in"; do
+  echo "waiting for keycloak to start .."
+  sleep 2
+done
 
 baseurl=http://localhost:30200
 
