@@ -11,20 +11,10 @@ function create-user {
     user=$3
 
     echo retrieving access token ..
-
-    export access_token=$(\
-    curl -v -s -X POST $baseurl/oidc/realms/master/protocol/openid-connect/token \
-    -d "client_id=admin-cli" \
-    -d "username=admin" \
-    -d "password=admin" \
-    -d "grant_type=password" \
-    | jq --raw-output '.access_token' \
-    )
-    echo access token is:
-    echo $access_token
+    export access_token=$(curl -v -s -X POST $baseurl/oidc/realms/master/protocol/openid-connect/token \
+    -d "client_id=admin-cli" -d "username=admin" -d "password=admin" -d "grant_type=password" | jq --raw-output '.access_token' )
 
     echo creating user ...
-
     curl -X POST "$baseurl/oidc/admin/realms/$realm/users" \
     -H "Content-Type: application/json" \
     -H "Authorization: Bearer $access_token" \
@@ -40,19 +30,11 @@ function create-user {
     }"
 
     echo setting email verified ...
-
-    export user_id=$(\
-    curl -X GET "$baseurl/oidc/admin/realms/$realm/users/?username=$user" \
-    -H "Content-Type: application/json" \
-    -H "Authorization: Bearer $access_token" \
-    | jq -r '.[0].id' \
-    )
-    echo userid is: $user_id
+    export user_id=$(curl -X GET "$baseurl/oidc/admin/realms/$realm/users/?username=$user" \
+    -H "Content-Type: application/json" -H "Authorization: Bearer $access_token" | jq -r '.[0].id' )
 
     curl -X PUT "$baseurl/oidc/admin/realms/$realm/users/$user_id" \
-    -H "Content-Type: application/json" \
-    -H "Authorization: Bearer $access_token" \
-    -d '{"emailVerified":true}'
+    -H "Content-Type: application/json" -H "Authorization: Bearer $access_token" -d '{"emailVerified":true}'
 }
 
 while ! docker logs keycloak-application 2>&1 | grep -q "started in"; do
