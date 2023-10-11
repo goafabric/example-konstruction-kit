@@ -9,6 +9,7 @@ function create-user {
     baseurl=$1
     realm=$2
     user=$3
+    orgunit=4
 
     echo retrieving access token ..
 
@@ -36,7 +37,10 @@ function create-user {
     \"type\": \"$user\",
     \"value\": \"$user\",
     \"temporary\": false
-    }]
+    }],
+    \"attributes\": {
+    \"orgunit\": \"$orgunit\"
+    }
     }"
 
     echo setting email verified ...
