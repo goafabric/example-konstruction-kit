@@ -24,6 +24,7 @@ There is a lock of 15 minutes after 5 failed login attempts and the waiting time
 - It is 20 to 25 characters long and uses two types of character (e.g. a sequence of words). This kind of password is long and less complex.
 - It is eight to 12 characters long and uses four types of character. This kind of password is short and complex.
 - It is eight characters long, uses three types of character and is also protected by multi-factor authentication (e.g. in the form of a fingerprint, verification via app or a PIN). This is the recommended method, generally speaking.
+- upper-case and lower-case letters, numbers and special characters
 
 # result
 - weak can be anything
@@ -33,3 +34,4 @@ There is a lock of 15 minutes after 5 failed login attempts and the waiting time
   - brute force login
 - strong: 10 characters, 2 type of characters
 - verystrong: 10 characters, 3 type of characters, mfa (User1user1) 
+- It is eight characters long, uses three types of character and is also protected by multi-factor authentication
