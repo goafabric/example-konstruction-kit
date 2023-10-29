@@ -52,7 +52,7 @@ function create-user {
     )
     echo userid is: $user_id
 
-    curl -X PUT "$baseurl/oidc/admin/realms/$realm/users/$user_id" \
+    curl -k -X PUT "$baseurl/oidc/admin/realms/$realm/users/$user_id" \
     -H "Content-Type: application/json" \
     -H "Authorization: Bearer $access_token" \
     -d '{"emailVerified":true}'
@@ -64,6 +64,7 @@ while ! docker logs keycloak-application 2>&1 | grep -q "started in"; do
 done
 
 baseurl=http://localhost:30200
+#baseurl=https://`kubectl get configmaps cluster-config -o jsonpath='{.data.hostname}' -n default`
 
 create-user $baseurl tenant-0 user1 User1user1
 create-user $baseurl tenant-0 user2 User2user2
