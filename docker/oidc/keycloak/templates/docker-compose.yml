@@ -3,7 +3,7 @@ version: "3.7"
 services:
   keycloak:
     container_name: ${_Values_root_name}-application
-    image:  quay.io/keycloak/keycloak:22.0.0
+    image:  quay.io/keycloak/keycloak:22.0.3
 #    image:  quay.io/keycloak/keycloak:21.1.1
 
     restart: 'no'
@@ -45,7 +45,7 @@ services:
 
   postgres:
     container_name: ${_Values_root_name}-postgres
-    image: postgres:14.5
+    image: postgres:16.0
     restart: 'no'
     ports:
       - 5432
@@ -62,7 +62,7 @@ services:
 
   oauth2proxy:
     container_name: ${_Values_root_name}-oauth2proxy
-    image: quay.io/oauth2-proxy/oauth2-proxy:v7.4.0
+    image: quay.io/oauth2-proxy/oauth2-proxy:v7.5.1
     command:
       - --email-domain=*
     restart: 'no'

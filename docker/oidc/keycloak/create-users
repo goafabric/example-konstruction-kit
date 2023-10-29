@@ -9,6 +9,7 @@ function create-user {
     baseurl=$1
     realm=$2
     user=$3
+    password=$4
     orgunit=4
 
     echo retrieving access token ..
@@ -35,7 +36,7 @@ function create-user {
     \"enabled\": true,
     \"credentials\": [{
     \"type\": \"$user\",
-    \"value\": \"$user\",
+    \"value\": \"$password\",
     \"temporary\": false
     }],
     \"attributes\": {
@@ -59,11 +60,15 @@ function create-user {
     -d '{"emailVerified":true}'
 }
 
+while ! docker logs keycloak-application 2>&1 | grep -q "started in"; do
+  echo "waiting for keycloak to start .."
+  sleep 2
+done
 
 baseurl=http://localhost:30200
 
-create-user $baseurl tenant-0 user1
-create-user $baseurl tenant-0 user2
-create-user $baseurl tenant-5 user1
-create-user $baseurl tenant-5 user2
+create-user $baseurl tenant-0 user1 user1user1
+create-user $baseurl tenant-0 user2 user2user2
+create-user $baseurl tenant-5 user1 user1user1
+create-user $baseurl tenant-5 user2 user1user1
 
