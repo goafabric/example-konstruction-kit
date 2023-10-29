@@ -67,8 +67,8 @@ done
 
 baseurl=http://localhost:30200
 
-create-user $baseurl tenant-0 user1 user1user1
-create-user $baseurl tenant-0 user2 user2user2
-create-user $baseurl tenant-5 user1 user1user1
-create-user $baseurl tenant-5 user2 user1user1
+create-user $baseurl tenant-0 user1 User1user1
+create-user $baseurl tenant-0 user2 User2user2
+create-user $baseurl tenant-5 user1 User1user1
+create-user $baseurl tenant-5 user2 User1user1
 
