@@ -31,7 +31,7 @@ There is a lock of 15 minutes after 5 failed login attempts and the waiting time
 - 
 - always 2 factor, temporary, 
   - validity 14 days for new, 90 days for existing
-  - brute force login
+  - brute force login (lock of 15 minutes after 5 failed login attempts and the waiting time is increase)
 - strong: 10 characters, 2 type of characters
 - verystrong: 10 characters, 3 type of characters, mfa (User1user1) 
 - It is eight characters long, uses three types of character and is also protected by multi-factor authentication
