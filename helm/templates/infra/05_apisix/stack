@@ -11,26 +11,27 @@ function up() {
     helm repo add apisix https://charts.apiseven.com  > /dev/null
     helm repo add bitnami https://charts.bitnami.com/bitnami  > /dev/null
     helm repo update
-    # values for latest version of apisix: --set service.type=LoadBalancer,apisix.ssl.enabled=true,ingress-controller.enabled=true \
-    helm install apisix apisix/apisix --version 1.7.1 \
-      --set gateway.type=LoadBalancer,gateway.tls.enabled=true,gateway.tls.containerPort=443,pluginAttrs.redirect.https_port=443,ingress-controller.enabled=true \
-      --namespace ingress-apisix \
-      --create-namespace
 
-    #helm install apisix-dashboard apisix/apisix-dashboard --namespace ingress-apisix
+    helm install apisix apisix/apisix --version 2.3.0 \
+      --set service.type=LoadBalancer,apisix.ssl.enabled=true,apisix.ssl.containerPort=443 \
+      --set "apisix.plugins={opentelemetry,openid-connect,redirect,proxy-rewrite,basic-auth}" \
+      --set apisix.pluginAttrs.redirect.https_port=443 \
+      --set apisix.pluginAttrs.opentelemetry.resource.service.name=APISIX \
+      --set apisix.pluginAttrs.opentelemetry.collector.address=otlp.monitoring:4318 \
+      --set ingress-controller.enabled=true \
+      --namespace ingress-apisix
+
+#    helm install apisix-dashboard apisix/apisix-dashboard \
+#      --namespace ingress-apisix
 
     helm install apisix-tls ./apisix-tls --set hostname=`kubectl get configmaps cluster-config -o jsonpath='{.data.hostname}' -n default` \
       --namespace ingress-apisix
-
-    echo waiting for
-    #kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/kind/deploy.yaml
 }
 
 function down() {
     helm uninstall apisix-tls --namespace ingress-apisix
     helm uninstall apisix-dashboard --namespace ingress-apisix
-    helm uninstall apisix --namespace ingress-apisix #&& kubectl delete namespace ingress-apisix
-    #kubectl delete -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.3.0/deploy/static/provider/cloud/deploy.yaml
+    helm uninstall apisix --namespace ingress-apisix
 }
 
 function proxy() {
@@ -43,5 +44,3 @@ elif [ "${COMMAND}" = "prune" ]; then down;
 elif [ "${COMMAND}" = "proxy" ]; then proxy;
 
 else echo Doing nothing !; fi
-
-#Sample query: {namespace="example-tenant-5a2f",container="callee-service-application"}

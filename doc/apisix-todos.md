@@ -9,4 +9,4 @@
 # Infrastructure
 - Apisix Controller consumes 450MB vs < 200 to NGINX, are 3 etcd needed ?
 - With Opentelemetry enabled but not configured, no route will be created
-- Upgrade to chart 1.7.1 seems to possible, 2.3.0 maybe note
+- apisix helm chart should have a fixed version like 2.3.0
