@@ -10,7 +10,7 @@ fi
 function up() {
     helm repo add apisix https://charts.apiseven.com  > /dev/null
     helm repo add bitnami https://charts.bitnami.com/bitnami  > /dev/null
-    helm repo update
+    #helm repo update
 
     helm install apisix apisix/apisix --version 2.3.0 \
       --set service.type=LoadBalancer,apisix.ssl.enabled=true,apisix.ssl.containerPort=443 \
@@ -19,7 +19,8 @@ function up() {
       --set apisix.pluginAttrs.opentelemetry.resource.service.name=APISIX \
       --set apisix.pluginAttrs.opentelemetry.collector.address=otlp.monitoring:4318 \
       --set ingress-controller.enabled=true \
-      --namespace ingress-apisix
+      --namespace ingress-apisix \
+       --create-namespace
 
 #    helm install apisix-dashboard apisix/apisix-dashboard \
 #      --namespace ingress-apisix
