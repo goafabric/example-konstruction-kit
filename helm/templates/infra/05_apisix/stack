@@ -20,7 +20,9 @@ function up() {
       --set apisix.pluginAttrs.opentelemetry.collector.address=otlp.monitoring:4318 \
       --set ingress-controller.enabled=true \
       --namespace ingress-apisix \
-       --create-namespace
+      --create-namespace
+#      --set podSecurityContext.sysctls[0].name=net.ipv4.ip_unprivileged_port_start,podSecurityContext.sysctls[0].value="1" \
+#      --set etcd.replicaCount=1
 
 #    helm install apisix-dashboard apisix/apisix-dashboard \
 #      --namespace ingress-apisix
