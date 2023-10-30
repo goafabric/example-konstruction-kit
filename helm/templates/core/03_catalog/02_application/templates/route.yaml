@@ -43,11 +43,8 @@ spec:
             regex_uri:
               - {{ $ingressPaths }}/{{ $tenantID }}/(.*)
               - /$1
-        - name: opentelemetry
-          enable: true
-          config:
-            sampler:
-              name: always_on
+            headers:
+              X-TenantId: {{ $tenantID }}
 ---
 {{- end }}
 {{- end }}
