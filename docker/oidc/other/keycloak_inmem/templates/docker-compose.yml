@@ -4,7 +4,6 @@ services:
   keycloak:
     container_name: ${_Values_root_name}-application
     image:  quay.io/keycloak/keycloak:22.0.3
-#    image:  quay.io/keycloak/keycloak:21.1.1
 
     restart: 'no'
     ports:
@@ -29,9 +28,6 @@ services:
       - KC_HOSTNAME=localhost:30200
 
       #database
-      - KC_DB=postgres
-      - KC_DB_URL=jdbc:postgresql://postgres/keycloak
-
       - KEYCLOAK_ADMIN=admin
       - KEYCLOAK_ADMIN_PASSWORD=admin
       - KC_DB_USERNAME=keycloak
@@ -39,26 +35,6 @@ services:
 
     volumes:
       - ./realm-config:/opt/keycloak/data/import
-
-    depends_on:
-      - postgres
-
-  postgres:
-    container_name: ${_Values_root_name}-postgres
-    image: postgres:16.0
-    restart: 'no'
-    ports:
-      - 5432
-    environment:
-      - TZ=Europe/Berlin
-      - POSTGRES_USER=keycloak
-      - POSTGRES_PASSWORD=keycloak
-      - POSTGRES_DB=keycloak
-    command: postgres -c 'shared_buffers=64MB' -c 'max_connections=30' -c 'shared_preload_libraries=pg_stat_statements'
-    volumes:
-      - pgdata:/var/lib/postgresql/data
-    networks:
-      - ${_Values_root_name}-net
 
   oauth2proxy:
     container_name: ${_Values_root_name}-oauth2proxy
