@@ -17,9 +17,5 @@ entire communication can be encrypted via (m)TLS
 # c5 compliance
 
 💪strong passwords (>= 10 chars, upper, lower, digits)
-🔑️2 factor authentication, via one time token generator
 🔒brute force detection (lockout after 5 failed attempts, intentionally not visible)
-
-# webauthn.io demo
-
-https://webauthn.io/
+🔑️2 factor authentication, via one time token generator or passkeys (https://webauthn.io/)
