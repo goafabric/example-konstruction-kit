@@ -28,17 +28,15 @@ data:
     {\n            height: 24px;\n            margin-right: 10px;\n            width:
     24px;\n        }\n        p {\n          height: 1px;\n          border-bottom:
     1px dashed #ffffff54;\n        }\n    </style>\n</head>\n<body>\n<div class=\"box\">\n
-    \   <div>\n        <a href=\"./logout\" target=\"_self\">\n            <span>Logout</span>\n
-    \       </a>\n    </div>\n    <h1 class=\"title\">Welcome to the Example Cluster
-    1.1.0</h1>\n    <h2 class=\"subtitle\">Your best course would be to tread lightly
-    ...</h2>\n\n    <div class=\"links-container\">\n        <div class=\"links\">\n
-    \           <h6>Dashboards</h6>\n            <ul>\n                <p></p>\n                <li>\n
-    \                   <a href=\"/dashboard/#\" target=\"_blank\">\n                        <span>☸️
-    Kubernetes Dashboard</span>\n                    </a>\n                </li>\n
-    \               <li>\n                    <a href=\"/kiali/\" target=\"_blank\">\n
-    \                       <span>⛵ Istio Dashboard</span>\n                    </a>\n
-    \               </li>\n                <p></p>\n                <li>\n                    <a
-    href=\"/jaeger/\" target=\"_blank\">\n                        <span>\U0001F3F9
+    \   <h1 class=\"title\">Welcome to the Example Cluster 1.1.0</h1>\n    <h2 class=\"subtitle\">Your
+    best course would be to tread lightly ...</h2>\n\n    <div class=\"links-container\">\n
+    \       <div class=\"links\">\n            <h6>Dashboards</h6>\n            <ul>\n
+    \               <p></p>\n                <li>\n                    <a href=\"/dashboard/#\"
+    target=\"_blank\">\n                        <span>☸️ Kubernetes Dashboard</span>\n
+    \                   </a>\n                </li>\n                <li>\n                    <a
+    href=\"/kiali/\" target=\"_blank\">\n                        <span>⛵ Istio Dashboard</span>\n
+    \                   </a>\n                </li>\n                <p></p>\n                <li>\n
+    \                   <a href=\"/jaeger/\" target=\"_blank\">\n                        <span>\U0001F3F9
     Jaeger</span>\n                    </a>\n                </li>\n                <li>\n
     \                   <a href=\"/grafana/\" target=\"_blank\">\n                        <span>\U0001F4CA
     Loki</span>\n                    </a>\n                </li>\n                <p></p>\n
@@ -51,24 +49,29 @@ data:
     Event Dispatcher</span>\n                    </a>\n                    -->\n                </li>\n
     \           </ul>\n        </div>\n        <div class=\"links\">\n            <h6>Core</h6>\n
     \           <ul>\n                <p></p>\n                <li>\n                    <a
-    href=\"/core/0/\" target=\"_blank\">\n                        <span>\U0001F30D
+    href=\"/core/0/frontend/\" target=\"_blank\">\n                        <span>\U0001F30D
     Core Tenant 0</span>\n                    </a>\n                </li>\n                <p></p>\n
-    \               <li>\n                    <a href=\"/core/5/\" target=\"_blank\">\n
+    \               <li>\n                    <a href=\"/core/5/frontend/\" target=\"_blank\">\n
     \                       <span>\U0001F30D Core Tenant 5</span>\n                    </a>\n
     \               </li>\n                <p></p>\n                <li>\n                    <a
     href=\"/catalog/0/\" target=\"_blank\">\n                        <span>\U0001F4D9
-    Catalog Tenant 0</span>\n                    </a>\n                </li>\n            </ul>\n
-    \       </div>\n\n        <div class=\"links\">\n            <h6>Example</h6>\n
-    \           <ul>\n                <p></p>\n                <li>\n                    <a
-    href=\"/person/\" target=\"_blank\">\n                        <span>\U0001F30D
-    Person Service</span>\n                    </a>\n                </li>\n                <p></p>\n
-    \               <li>\n                    <a href=\"/callee/\" target=\"_blank\">\n
-    \                       <span>\U0001F4E2 Callee Service</span>\n                    </a>\n
-    \               </li>\n            </ul>\n        </div>\n    </div>\n</div>\n\n</body>\n"
+    Catalog Tenant 0</span>\n                    </a>\n                </li>\n                <p></p>\n
+    \               <li>\n                    <a href=\"/core/0/logout\" target=\"_blank\">\n
+    \                       <span>\U0001F4D9 Logout Tenant 0</span>\n                    </a>\n
+    \               </li>\n                <li>\n                    <a href=\"/core/5/logout\"
+    target=\"_blank\">\n                        <span>\U0001F4D9 Logout Tenant 5</span>\n
+    \                   </a>\n                </li>\n            </ul>\n        </div>\n\n
+    \       <div class=\"links\">\n            <h6>Example</h6>\n            <ul>\n
+    \               <p></p>\n                <li>\n                    <a href=\"/person/\"
+    target=\"_blank\">\n                        <span>\U0001F30D Person Service</span>\n
+    \                   </a>\n                </li>\n                <p></p>\n                <li>\n
+    \                   <a href=\"/callee/\" target=\"_blank\">\n                        <span>\U0001F4E2
+    Callee Service</span>\n                    </a>\n                </li>\n            </ul>\n
+    \       </div>\n    </div>\n</div>\n\n</body>\n"
 kind: ConfigMap
 metadata:
-  creationTimestamp: "2023-10-30T08:58:17Z"
+  creationTimestamp: "2023-10-30T09:23:23Z"
   name: welcome-board-data-files
   namespace: default
-  resourceVersion: "7686"
-  uid: 7042ae23-3cc7-45df-95dd-f8318ced8d11
+  resourceVersion: "11214"
+  uid: aec1d84d-c255-4107-9d44-152d93d72b39

@@ -35,14 +35,19 @@ spec:
             set_id_token_header: false
             set_userinfo_header: false
             ssl_verify: false
-            redirect_uri: "/catalog/{{ $tenantID }}/redirect_uri"
-            logout_path: "/catalog/{{ $tenantID }}/logout"
+            redirect_uri: "{{ $ingressPaths }}/{{ $tenantID }}/redirect_uri"
+            logout_path: "{{ $ingressPaths }}/{{ $tenantID }}/logout"
         - name: proxy-rewrite
           enable: true
           config:
             regex_uri:
               - {{ $ingressPaths }}/{{ $tenantID }}/(.*)
               - /$1
+        - name: opentelemetry
+          enable: true
+          config:
+            sampler:
+              name: always_on
 ---
 {{- end }}
 {{- end }}
