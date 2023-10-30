@@ -7,7 +7,6 @@
 - Cookie and Local Storage needs be be erased once, or Error 500
 
 # Infrastructure
-- No time to take a closer Look
 - Apisix Controller consumes 450MB vs < 200 to NGINX, are 3 etcd needed ?
 - With Opentelemetry enabled but not configured, no route will be created
-- Bug was fixed, upgrade now possible ? (chart 2.3.0 or 1.7.1)
+- Upgrade to chart 1.7.1 seems to possible, 2.3.0 maybe note
