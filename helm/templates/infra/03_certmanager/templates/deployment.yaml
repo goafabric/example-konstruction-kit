@@ -13,7 +13,9 @@ metadata:
 spec:
   isCA: true
 
-  commonName: Example Ca
+  commonName: ${_Values_host_name}
+  dnsNames:
+    - ${_Values_host_name}
   subject:
     organizations:
       - Example Organization
