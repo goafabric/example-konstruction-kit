@@ -60,7 +60,7 @@ create-user $baseurl tenant-0 user2 User2user2
 create-user $baseurl tenant-0 user3 User3user3 CONFIGURE_TOTP
 create-user $baseurl tenant-5 user1 User1user1
 create-user $baseurl tenant-5 user2 User1user1
-create-user $baseurl tenant-5 user3 User3user3 CONFIGURE_TOTP
+create-user $baseurl tenant-5 user3 User3user3 webauthn-register
 
 
 
