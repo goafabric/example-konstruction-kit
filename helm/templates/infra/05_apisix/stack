@@ -17,7 +17,6 @@ function up() {
       --set gateway.type=LoadBalancer,gateway.tls.enabled=true,gateway.tls.containerPort=443,pluginAttrs.redirect.https_port=443,ingress-controller.enabled=true \
       --namespace ingress-apisix \
       --create-namespace
-#      --set etcd.replicas=1 \
 
     #helm install apisix-dashboard apisix/apisix-dashboard --namespace ingress-apisix
 
