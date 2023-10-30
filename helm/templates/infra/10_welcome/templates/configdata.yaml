@@ -50,28 +50,28 @@ data:
     \           </ul>\n        </div>\n        <div class=\"links\">\n            <h6>Core</h6>\n
     \           <ul>\n                <p></p>\n                <li>\n                    <a
     href=\"/core/0/frontend/\" target=\"_blank\">\n                        <span>\U0001F30D
-    Core Tenant 0</span>\n                    </a>\n                </li>\n                <p></p>\n
+    Core 0</span>\n                    </a>\n                </li>\n                <p></p>\n
     \               <li>\n                    <a href=\"/core/5/frontend/\" target=\"_blank\">\n
-    \                       <span>\U0001F30D Core Tenant 5</span>\n                    </a>\n
+    \                       <span>\U0001F30D Core 5</span>\n                    </a>\n
     \               </li>\n                <p></p>\n                <li>\n                    <a
     href=\"/catalog/0/\" target=\"_blank\">\n                        <span>\U0001F4D9
-    Catalog Tenant 0</span>\n                    </a>\n                </li>\n                <p></p>\n
+    Catalog 0</span>\n                    </a>\n                </li>\n                <p></p>\n
     \               <li>\n                    <a href=\"/core/0/logout\" target=\"_blank\">\n
-    \                       <span>\U0001F4D9 Logout Tenant 0</span>\n                    </a>\n
+    \                       <span>\U0001F51A Logout 0</span>\n                    </a>\n
     \               </li>\n                <li>\n                    <a href=\"/core/5/logout\"
-    target=\"_blank\">\n                        <span>\U0001F4D9 Logout Tenant 5</span>\n
+    target=\"_blank\">\n                        <span>\U0001F51A Logout 5</span>\n
     \                   </a>\n                </li>\n            </ul>\n        </div>\n\n
     \       <div class=\"links\">\n            <h6>Example</h6>\n            <ul>\n
-    \               <p></p>\n                <li>\n                    <a href=\"/person/\"
-    target=\"_blank\">\n                        <span>\U0001F30D Person Service</span>\n
+    \               <p></p>\n                <li>\n                    <a href=\"/person/0/\"
+    target=\"_blank\">\n                        <span>\U0001F30D Person Service 0</span>\n
     \                   </a>\n                </li>\n                <p></p>\n                <li>\n
-    \                   <a href=\"/callee/\" target=\"_blank\">\n                        <span>\U0001F4E2
-    Callee Service</span>\n                    </a>\n                </li>\n            </ul>\n
+    \                   <a href=\"/callee/0/\" target=\"_blank\">\n                        <span>\U0001F4E2
+    Callee Service 0</span>\n                    </a>\n                </li>\n            </ul>\n
     \       </div>\n    </div>\n</div>\n\n</body>\n"
 kind: ConfigMap
 metadata:
-  creationTimestamp: "2023-10-30T09:23:23Z"
+  creationTimestamp: "2023-10-30T09:50:21Z"
   name: welcome-board-data-files
   namespace: default
-  resourceVersion: "11214"
-  uid: aec1d84d-c255-4107-9d44-152d93d72b39
+  resourceVersion: "16977"
+  uid: 6baaf2fe-916d-4cc8-b259-3dd3bd0ee87f

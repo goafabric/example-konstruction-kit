@@ -1,10 +1,11 @@
 replicaCount: 1
 
-tenantId: 0
 ingress:
   paths: /person
   enabled: true
-  authentication: basic
+  tenantIDs:
+    - 0
+    - 5
 
 image:
   repository: "goafabric/person-service"

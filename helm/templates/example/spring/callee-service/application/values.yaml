@@ -1,10 +1,11 @@
 replicaCount: 2
 
-tenantId: 0
 ingress:
   paths: /callee
   enabled: true
-  authentication: basic
+  tenantIDs:
+    - 0
+    - 5
 
 image:
   repository: "goafabric/callee-service"
