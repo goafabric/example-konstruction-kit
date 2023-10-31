@@ -4,6 +4,6 @@ description: core-postgres
 
 type: application
 
-version: 1.1.0
+version: 1.1.1
 
 appVersion: "16.0"

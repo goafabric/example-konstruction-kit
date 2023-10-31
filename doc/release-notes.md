@@ -1,3 +1,5 @@
+# 1.1.1
+
 # 1.1.0
 - cert-manager added
 - loki updated and working again
@@ -95,7 +97,7 @@
 - upgrade to Postgres 14.0
 
 # 0.8.7
-- Upgrade all versions to 1.1.0+
+- Upgrade all versions to 1.1.1+
 - Istio: Circuitbreaker and Namespace Isolation added
 - Upgrade to Postgres 13.4
 
