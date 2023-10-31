@@ -28,7 +28,7 @@ data:
     {\n            height: 24px;\n            margin-right: 10px;\n            width:
     24px;\n        }\n        p {\n          height: 1px;\n          border-bottom:
     1px dashed #ffffff54;\n        }\n    </style>\n</head>\n<body>\n<div class=\"box\">\n
-    \   <h1 class=\"title\">Welcome to the Example Cluster 1.1.0</h1>\n    <h2 class=\"subtitle\">Your
+    \   <h1 class=\"title\">Welcome to the Example Cluster 1.1.1</h1>\n    <h2 class=\"subtitle\">Your
     best course would be to tread lightly ...</h2>\n\n    <div class=\"links-container\">\n
     \       <div class=\"links\">\n            <h6>Dashboards</h6>\n            <ul>\n
     \               <p></p>\n                <li>\n                    <a href=\"/dashboard/#\"

@@ -1,9 +1,12 @@
+# 1.1.1
+
 # 1.1.0
 - cert-manager added
 - loki updated and working again
 - upgrade to core 1.0.5
 - upgrade to minio RELEASE.2023-08-23
 - postgres upgrade to 16.0
+- fixes and apisix preparations
 
 # 1.0.7
 - upgrade to kubed 0.13.2
@@ -94,7 +97,7 @@
 - upgrade to Postgres 14.0
 
 # 0.8.7
-- Upgrade all versions to 1.1.0+
+- Upgrade all versions to 1.1.1+
 - Istio: Circuitbreaker and Namespace Isolation added
 - Upgrade to Postgres 13.4
 
