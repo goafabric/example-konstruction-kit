@@ -32,7 +32,7 @@ spec:
   tls:
     - hosts:
         - {{ .Values.ingress.hosts}}
-      secretName: server-certificate-secret
+      secretName: root-certificate
   rules:
     - host: {{ .Values.ingress.hosts}}
       http:
