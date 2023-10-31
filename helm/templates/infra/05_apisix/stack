@@ -21,7 +21,7 @@ function up() {
       --set ingress-controller.enabled=true \
       --namespace ingress-apisix \
       --create-namespace \
-      --set etcd.replicaCount=3 \
+      --set etcd.replicaCount=2 \
       --values ./values.yaml
 
 #      --set podSecurityContext.sysctls[0].name=net.ipv4.ip_unprivileged_port_start,podSecurityContext.sysctls[0].value=1 \
