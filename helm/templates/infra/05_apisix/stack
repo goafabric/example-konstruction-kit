@@ -35,7 +35,7 @@ function up() {
 
 function down() {
     helm uninstall apisix-tls --namespace ingress-apisix
-    helm uninstall apisix-dashboard --namespace ingress-apisix
+#    helm uninstall apisix-dashboard --namespace ingress-apisix
     helm uninstall apisix --namespace ingress-apisix
 }
 
