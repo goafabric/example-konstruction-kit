@@ -70,8 +70,8 @@ data:
     \       </div>\n    </div>\n</div>\n\n</body>\n"
 kind: ConfigMap
 metadata:
-  creationTimestamp: "2023-10-30T09:50:21Z"
+  creationTimestamp: "2023-10-31T16:51:46Z"
   name: welcome-board-data-files
   namespace: default
-  resourceVersion: "16977"
-  uid: 6baaf2fe-916d-4cc8-b259-3dd3bd0ee87f
+  resourceVersion: "17420824"
+  uid: 25b96ae0-8e68-49a1-b4e9-5079306863f3
