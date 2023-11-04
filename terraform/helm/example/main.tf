@@ -9,8 +9,12 @@ variable "hostname" {
   default = "kubernetes"
 }
 
+variable "example_repository" {
+  default = "https://goafabric.github.io/example-konstruction-kit/helm/charts/example/spring"
+}
+
 resource "helm_release" "callee-service-application" {
-  repository = "https://goafabric.github.io/example-konstruction-kit/helm/charts/example/spring"
+  repository = var.example_repository
   name       = "callee-service-application"
   chart      = "callee-service-application"
   version    = "1.1.1"
@@ -32,7 +36,7 @@ resource "helm_release" "callee-service-application" {
 }
 
 resource "helm_release" "person-service-postgres" {
-  repository = "https://goafabric.github.io/example-konstruction-kit/helm/charts/example/spring"
+  repository = var.example_repository
   name       = "person-service-postgres"
   chart      = "person-service-postgres"
   version    = "1.1.1"
@@ -50,7 +54,7 @@ resource "helm_release" "person-service-postgres" {
 }
 
 resource "helm_release" "person-service-application" {
-  repository = "https://goafabric.github.io/example-konstruction-kit/helm/charts/example/spring"
+  repository = var.example_repository
   name       = "person-service-application"
   chart      = "person-service-application"
   version    = "1.1.1"
