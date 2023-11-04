@@ -2,11 +2,11 @@
 
 function pack() {
     #find $1 -not -path "." -type d -print0 | sort -hz | xargs -0 -I '{}' bash -c "echo '{}' && helm package '{}' -d ./spring"
-    find "$1" -type f -name "Chart.yaml" -exec sh -c 'helm package "$(dirname "$0")" -d ./example' {} \;
+    find "$1" -type f -name "Chart.yaml" -exec sh -c 'helm package "$(dirname "$0")" -d ./spring' {} \;
 }
 
-pack ../templates/example/spring
-pack ../templates/core
-pack ../templates/infra/10_welcome
+pack ../../templates/example/spring
+pack ../../templates/core
+pack ../../templates/infra/10_welcome
 
 helm repo index ./spring --url https://goafabric.github.io/example-konstruction-kit/helm/charts/example/spring
