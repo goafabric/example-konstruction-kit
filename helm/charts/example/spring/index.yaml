@@ -1,0 +1,113 @@
+apiVersion: v1
+entries:
+  callee-service-application:
+  - apiVersion: v2
+    appVersion: 3.1.1
+    created: "2023-11-04T16:54:04.699263+01:00"
+    description: callee-service-application
+    digest: 76b7c5d49d6093fd38bfd7ad6b6dd753336173ba75782bac80a2deb38cd0be3f
+    name: callee-service-application
+    type: application
+    urls:
+    - https://goafabric.github.io/example-konstruction-kit/helm/charts/example/spring/callee-service-application-1.1.1.tgz
+    version: 1.1.1
+  catalog-application:
+  - apiVersion: v2
+    appVersion: 1.0.4
+    created: "2023-11-04T16:54:04.699489+01:00"
+    description: catalog-application
+    digest: 1da9cd9fbcbc818e797294fb953d15befe27b549bd2f1f7e214c26b4e9bb791c
+    name: catalog-application
+    type: application
+    urls:
+    - https://goafabric.github.io/example-konstruction-kit/helm/charts/example/spring/catalog-application-1.1.1.tgz
+    version: 1.1.1
+  catalog-batch:
+  - apiVersion: v2
+    appVersion: 1.0.4
+    created: "2023-11-04T16:54:04.699684+01:00"
+    description: catalog-batch
+    digest: 7f917de1ddb79b9fa86f0310da875ee02679abe4b3ce7a5352c4b4cf73da8a86
+    name: catalog-batch
+    type: application
+    urls:
+    - https://goafabric.github.io/example-konstruction-kit/helm/charts/example/spring/catalog-batch-1.1.1.tgz
+    version: 1.1.1
+  core-application:
+  - apiVersion: v2
+    appVersion: 1.0.5-vaadin-fixed-SNAPSHOT
+    created: "2023-11-04T16:54:04.6999+01:00"
+    description: core-application
+    digest: 6ea5ff8bc7e5bcf105d58dc54b81e53b5b8cbeb52f9b9fb20faa31299ea7256b
+    name: core-application
+    type: application
+    urls:
+    - https://goafabric.github.io/example-konstruction-kit/helm/charts/example/spring/core-application-1.1.1.tgz
+    version: 1.1.1
+  core-postgres:
+  - apiVersion: v2
+    appVersion: "16.0"
+    created: "2023-11-04T16:54:04.700067+01:00"
+    description: core-postgres
+    digest: 2e948a282732fea589354683c4e8304eda257519671071dac3ead779cd0976d3
+    name: core-postgres
+    type: application
+    urls:
+    - https://goafabric.github.io/example-konstruction-kit/helm/charts/example/spring/core-postgres-1.1.1.tgz
+    version: 1.1.1
+  person-service-application:
+  - apiVersion: v2
+    appVersion: 3.1.1
+    created: "2023-11-04T16:54:04.700284+01:00"
+    description: person-service-application
+    digest: 3e1ae57db9ef189777a763f7969e24c61e952e9376253903df847f84a1f50d07
+    name: person-service-application
+    type: application
+    urls:
+    - https://goafabric.github.io/example-konstruction-kit/helm/charts/example/spring/person-service-application-1.1.1.tgz
+    version: 1.1.1
+  person-service-batch:
+  - apiVersion: v2
+    appVersion: 3.0.7
+    created: "2023-11-04T16:54:04.700501+01:00"
+    description: person-service-batch
+    digest: 6b42048e1b1638cfe5014a90ccdc8e579f976ef113ae9852397f8332b87145ba
+    name: person-service-batch
+    type: application
+    urls:
+    - https://goafabric.github.io/example-konstruction-kit/helm/charts/example/spring/person-service-batch-1.1.1.tgz
+    version: 1.1.1
+  person-service-postgres:
+  - apiVersion: v2
+    appVersion: "16.0"
+    created: "2023-11-04T16:54:04.700665+01:00"
+    description: person-service-postgres
+    digest: 29faa0423712e093928ac83e3ec89be7ed20dbf63869ac08f7523d96603d9869
+    name: person-service-postgres
+    type: application
+    urls:
+    - https://goafabric.github.io/example-konstruction-kit/helm/charts/example/spring/person-service-postgres-1.1.1.tgz
+    version: 1.1.1
+  s3-minio:
+  - apiVersion: v2
+    appVersion: RELEASE.2023-08-23T10-07-06Z
+    created: "2023-11-04T16:54:04.700837+01:00"
+    description: s3-minio
+    digest: 4e825b3f7c5fd4bd325c6b1ff5a1b027d147ba4b8d645031bbc73a514f3a2812
+    name: s3-minio
+    type: application
+    urls:
+    - https://goafabric.github.io/example-konstruction-kit/helm/charts/example/spring/s3-minio-1.1.1.tgz
+    version: 1.1.1
+  welcome-board:
+  - apiVersion: v2
+    appVersion: 1.20.2
+    created: "2023-11-04T16:54:04.701038+01:00"
+    description: welcome-board
+    digest: 03b093feebbf2b36059c983de70c114aadd5065125cb66cd36e06ddbedf34cb4
+    name: welcome-board
+    type: application
+    urls:
+    - https://goafabric.github.io/example-konstruction-kit/helm/charts/example/spring/welcome-board-1.1.1.tgz
+    version: 1.1.1
+generated: "2023-11-04T16:54:04.698436+01:00"
