@@ -3,9 +3,9 @@ entries:
   callee-service-application:
   - apiVersion: v2
     appVersion: 3.1.1
-    created: "2023-11-04T16:54:04.699263+01:00"
+    created: "2023-11-04T16:55:45.65289+01:00"
     description: callee-service-application
-    digest: 76b7c5d49d6093fd38bfd7ad6b6dd753336173ba75782bac80a2deb38cd0be3f
+    digest: 7157b3fdfc3df319f95d515ba7d9b57f59f8a32989c1aacaafad0c07f3bb1e86
     name: callee-service-application
     type: application
     urls:
@@ -14,9 +14,9 @@ entries:
   catalog-application:
   - apiVersion: v2
     appVersion: 1.0.4
-    created: "2023-11-04T16:54:04.699489+01:00"
+    created: "2023-11-04T16:55:45.653109+01:00"
     description: catalog-application
-    digest: 1da9cd9fbcbc818e797294fb953d15befe27b549bd2f1f7e214c26b4e9bb791c
+    digest: 8c3cb57e01881c5e9a28a63bb25853762a0429a728a6719035a1fa137ac31067
     name: catalog-application
     type: application
     urls:
@@ -25,9 +25,9 @@ entries:
   catalog-batch:
   - apiVersion: v2
     appVersion: 1.0.4
-    created: "2023-11-04T16:54:04.699684+01:00"
+    created: "2023-11-04T16:55:45.653311+01:00"
     description: catalog-batch
-    digest: 7f917de1ddb79b9fa86f0310da875ee02679abe4b3ce7a5352c4b4cf73da8a86
+    digest: c78e838ac951fadec9b66904d8c614a9740cc590e1522d17e69e725d00a37e14
     name: catalog-batch
     type: application
     urls:
@@ -36,9 +36,9 @@ entries:
   core-application:
   - apiVersion: v2
     appVersion: 1.0.5-vaadin-fixed-SNAPSHOT
-    created: "2023-11-04T16:54:04.6999+01:00"
+    created: "2023-11-04T16:55:45.653535+01:00"
     description: core-application
-    digest: 6ea5ff8bc7e5bcf105d58dc54b81e53b5b8cbeb52f9b9fb20faa31299ea7256b
+    digest: 2056853ffefe3934adc4e43b23f36af42c87303944b1269f18582ed64b5a80ed
     name: core-application
     type: application
     urls:
@@ -47,9 +47,9 @@ entries:
   core-postgres:
   - apiVersion: v2
     appVersion: "16.0"
-    created: "2023-11-04T16:54:04.700067+01:00"
+    created: "2023-11-04T16:55:45.653705+01:00"
     description: core-postgres
-    digest: 2e948a282732fea589354683c4e8304eda257519671071dac3ead779cd0976d3
+    digest: 89d040b3ba8dec2e4b5b279bd1c3d2775a015da022aa7dfdf2c413cd993a5051
     name: core-postgres
     type: application
     urls:
@@ -58,9 +58,9 @@ entries:
   person-service-application:
   - apiVersion: v2
     appVersion: 3.1.1
-    created: "2023-11-04T16:54:04.700284+01:00"
+    created: "2023-11-04T16:55:45.653915+01:00"
     description: person-service-application
-    digest: 3e1ae57db9ef189777a763f7969e24c61e952e9376253903df847f84a1f50d07
+    digest: adfc02e6bc88056f26f20e218ed3756065868b046a78c6a3cde0c5536b117baa
     name: person-service-application
     type: application
     urls:
@@ -69,9 +69,9 @@ entries:
   person-service-batch:
   - apiVersion: v2
     appVersion: 3.0.7
-    created: "2023-11-04T16:54:04.700501+01:00"
+    created: "2023-11-04T16:55:45.654083+01:00"
     description: person-service-batch
-    digest: 6b42048e1b1638cfe5014a90ccdc8e579f976ef113ae9852397f8332b87145ba
+    digest: b2f210b62dd794590bfb9ebbde26505ccf8985b3709aac1da5a2e7a1eddc2230
     name: person-service-batch
     type: application
     urls:
@@ -80,9 +80,9 @@ entries:
   person-service-postgres:
   - apiVersion: v2
     appVersion: "16.0"
-    created: "2023-11-04T16:54:04.700665+01:00"
+    created: "2023-11-04T16:55:45.654298+01:00"
     description: person-service-postgres
-    digest: 29faa0423712e093928ac83e3ec89be7ed20dbf63869ac08f7523d96603d9869
+    digest: 57c96b08cfeb7c6ad35a5a14ed811545ba691244f8e0c5b6a469d650188f25d7
     name: person-service-postgres
     type: application
     urls:
@@ -91,9 +91,9 @@ entries:
   s3-minio:
   - apiVersion: v2
     appVersion: RELEASE.2023-08-23T10-07-06Z
-    created: "2023-11-04T16:54:04.700837+01:00"
+    created: "2023-11-04T16:55:45.654505+01:00"
     description: s3-minio
-    digest: 4e825b3f7c5fd4bd325c6b1ff5a1b027d147ba4b8d645031bbc73a514f3a2812
+    digest: 0e18eef19654d8cd08dfd603fa1eebdba1d95b424fe9cdf0c62196d47ff5520d
     name: s3-minio
     type: application
     urls:
@@ -102,12 +102,12 @@ entries:
   welcome-board:
   - apiVersion: v2
     appVersion: 1.20.2
-    created: "2023-11-04T16:54:04.701038+01:00"
+    created: "2023-11-04T16:55:45.654696+01:00"
     description: welcome-board
-    digest: 03b093feebbf2b36059c983de70c114aadd5065125cb66cd36e06ddbedf34cb4
+    digest: 82deac74418bdf5de86bd7452b45033a1657ae96da52bfd00808af742aee950a
     name: welcome-board
     type: application
     urls:
     - https://goafabric.github.io/example-konstruction-kit/helm/charts/example/spring/welcome-board-1.1.1.tgz
     version: 1.1.1
-generated: "2023-11-04T16:54:04.698436+01:00"
+generated: "2023-11-04T16:55:45.652568+01:00"
