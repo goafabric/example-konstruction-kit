@@ -22,10 +22,6 @@ resource "helm_release" "callee-service-application" {
   create_namespace = true
 
   set {
-    name  = "ingress.hosts"
-    value = var.hostname
-  }
-  set {
     name  = "image-arch"
     value = "-native"
   }
