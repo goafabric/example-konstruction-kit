@@ -11,6 +11,8 @@ variable "example_repository" {
   default = "https://goafabric.github.io/example-konstruction-kit/helm/charts/example/spring"
 }
 
+# core
+
 resource "helm_release" "core-application" {
   repository = var.example_repository
   name       = "core-application"
@@ -42,6 +44,7 @@ resource "helm_release" "core-postgres" {
   create_namespace = true
 }
 
+# catalog
 
 resource "helm_release" "catalog-application" {
   repository = var.example_repository
@@ -63,6 +66,10 @@ resource "helm_release" "catalog-application" {
     name  = "security.authentication.enabled"
     value = "false"
   }
+  set {
+    name  = "replicaCount"
+    value = "1"
+  }
 }
 
 resource "helm_release" "catalog-batch" {
@@ -72,4 +79,20 @@ resource "helm_release" "catalog-batch" {
   version    = "1.1.1"
   namespace  = "core"
   create_namespace = true
+}
+
+# minio
+
+resource "helm_release" "s3-minio" {
+  repository = var.example_repository
+  name       = "s3-minio"
+  chart      = "s3-minio"
+  version    = "1.1.1"
+  namespace  = "core"
+  create_namespace = true
+
+  set {
+    name  = "ingress.hosts"
+    value = var.hostname
+  }
 }
