@@ -40,11 +40,6 @@ resource "helm_release" "person-service-postgres" {
   version    = "1.1.1"
   namespace  = "example"
   create_namespace = true
-
-  set {
-    name  = "ingress.hosts"
-    value = var.hostname
-  }
 }
 
 resource "helm_release" "person-service-application" {
