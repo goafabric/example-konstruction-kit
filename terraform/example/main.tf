@@ -45,10 +45,6 @@ resource "helm_release" "person-service-postgres" {
     name  = "ingress.hosts"
     value = var.hostname
   }
-  set {
-    name  = "image-arch"
-    value = "-native"
-  }
 }
 
 resource "helm_release" "person-service-application" {

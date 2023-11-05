@@ -3,7 +3,7 @@ entries:
   callee-service-application:
   - apiVersion: v2
     appVersion: 3.1.1
-    created: "2023-11-05T08:25:03.651994+01:00"
+    created: "2023-11-05T09:02:48.393677+01:00"
     description: callee-service-application
     digest: 5fd23465b9f1c04d6b1379cc15a8c939032cc11445a794dcb0fe4fa8f5b7e5cd
     name: callee-service-application
@@ -14,9 +14,9 @@ entries:
   catalog-application:
   - apiVersion: v2
     appVersion: 1.0.4
-    created: "2023-11-05T08:25:03.652218+01:00"
+    created: "2023-11-05T09:02:48.3939+01:00"
     description: catalog-application
-    digest: 28343eacae50a110bfa4d1a2eb5f335892d42c5dd735bd203778f1cbdc5dc85a
+    digest: edba4af52ed8f44d6910d5f08337d35222f18a5d59f6b55d61cce94b0754397a
     name: catalog-application
     type: application
     urls:
@@ -25,9 +25,9 @@ entries:
   catalog-batch:
   - apiVersion: v2
     appVersion: 1.0.4
-    created: "2023-11-05T08:25:03.652474+01:00"
+    created: "2023-11-05T09:02:48.394076+01:00"
     description: catalog-batch
-    digest: 31e2efda908877220940d2d22809aa44b29c02072c3f5a28f6897a6644ad01b3
+    digest: a364a80e4c8ab6ec6f75897b569753f6dba7641daa243ee6cf41c416aadd2879
     name: catalog-batch
     type: application
     urls:
@@ -36,9 +36,9 @@ entries:
   core-application:
   - apiVersion: v2
     appVersion: 1.0.5-vaadin-fixed-SNAPSHOT
-    created: "2023-11-05T08:25:03.652692+01:00"
+    created: "2023-11-05T09:02:48.394291+01:00"
     description: core-application
-    digest: e75f2797560e6210840bbfd6e2e688118f4daa60ad5bc39b48ca2895283242fa
+    digest: 87545097b67cd15fc4a140687251842ea662b3d74473a654408ac69ef738ffe7
     name: core-application
     type: application
     urls:
@@ -47,9 +47,9 @@ entries:
   core-postgres:
   - apiVersion: v2
     appVersion: "16.0"
-    created: "2023-11-05T08:25:03.652857+01:00"
+    created: "2023-11-05T09:02:48.39445+01:00"
     description: core-postgres
-    digest: ed6f4200eb3aedddda5d76a32dfca85c064a3aa17602cf57f973e199e856e70d
+    digest: 84360f57ef2bcb43ea07f7181c61cb60675a23639b6ce7058caca2350f139c2d
     name: core-postgres
     type: application
     urls:
@@ -58,7 +58,7 @@ entries:
   person-service-application:
   - apiVersion: v2
     appVersion: 3.1.1
-    created: "2023-11-05T08:25:03.653075+01:00"
+    created: "2023-11-05T09:02:48.394806+01:00"
     description: person-service-application
     digest: 92c32132675690921ef3e78c6f73b89ed747df09780696e34c8bafc4277b62e7
     name: person-service-application
@@ -69,7 +69,7 @@ entries:
   person-service-batch:
   - apiVersion: v2
     appVersion: 3.0.7
-    created: "2023-11-05T08:25:03.653249+01:00"
+    created: "2023-11-05T09:02:48.395413+01:00"
     description: person-service-batch
     digest: ca4b45894d7a320de1f1b1e1d72c374acbcc72eff6dc2cbd7f574ea4065c0305
     name: person-service-batch
@@ -80,7 +80,7 @@ entries:
   person-service-postgres:
   - apiVersion: v2
     appVersion: "16.0"
-    created: "2023-11-05T08:25:03.653419+01:00"
+    created: "2023-11-05T09:02:48.395638+01:00"
     description: person-service-postgres
     digest: 7cf6d1b8822070785201fe81fac3567f4a3663dd1827f521ea6d250d3f1e5337
     name: person-service-postgres
@@ -91,12 +91,12 @@ entries:
   s3-minio:
   - apiVersion: v2
     appVersion: RELEASE.2023-08-23T10-07-06Z
-    created: "2023-11-05T08:25:03.653606+01:00"
+    created: "2023-11-05T09:02:48.395818+01:00"
     description: s3-minio
-    digest: 3610073c3d3c4de348ab08d4437af1c8a1eec341a9eec94d3d65beb79d38f0b4
+    digest: ce90740a97682f0734c1bb496143183a6978264a1f9403a4d6e1baa6b77fc4c5
     name: s3-minio
     type: application
     urls:
     - https://goafabric.github.io/example-konstruction-kit/helm/charts/example/spring/s3-minio-1.1.1.tgz
     version: 1.1.1
-generated: "2023-11-05T08:25:03.651678+01:00"
+generated: "2023-11-05T09:02:48.392904+01:00"

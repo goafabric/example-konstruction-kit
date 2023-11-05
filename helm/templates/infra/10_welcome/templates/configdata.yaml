@@ -49,21 +49,21 @@ data:
     Event Dispatcher</span>\n                    </a>\n                    -->\n                </li>\n
     \           </ul>\n        </div>\n        <div class=\"links\">\n            <h6>Core</h6>\n
     \           <ul>\n                <p></p>\n                <li>\n                    <a
-    href=\"/core/oauth2/authorization/0\" target=\"_blank\">\n                        <span>\U0001F30D
-    Core</span>\n                    </a>\n                </li>\n                <p></p>\n
-    \               <li>\n                    <a href=\"/catalog/\" target=\"_blank\">\n
-    \                       <span>\U0001F4D9 Catalog</span>\n                    </a>\n
-    \               </li>\n            </ul>\n        </div>\n\n        <div class=\"links\">\n
-    \           <h6>Example</h6>\n            <ul>\n                <p></p>\n                <li>\n
-    \                   <a href=\"/person/\" target=\"_blank\">\n                        <span>\U0001F30D
+    href=\"/core/\" target=\"_blank\">\n                        <span>\U0001F30D Core</span>\n
+    \                   </a>\n                </li>\n                <p></p>\n                <li>\n
+    \                   <a href=\"/catalog/\" target=\"_blank\">\n                        <span>\U0001F4D9
+    Catalog</span>\n                    </a>\n                </li>\n            </ul>\n
+    \       </div>\n\n        <div class=\"links\">\n            <h6>Example</h6>\n
+    \           <ul>\n                <p></p>\n                <li>\n                    <a
+    href=\"/person/\" target=\"_blank\">\n                        <span>\U0001F30D
     Person Service</span>\n                    </a>\n                </li>\n                <p></p>\n
     \               <li>\n                    <a href=\"/callee/\" target=\"_blank\">\n
     \                       <span>\U0001F4E2 Callee Service</span>\n                    </a>\n
     \               </li>\n            </ul>\n        </div>\n    </div>\n</div>\n\n</body>\n"
 kind: ConfigMap
 metadata:
-  creationTimestamp: "2023-11-05T07:30:04Z"
+  creationTimestamp: "2023-11-05T08:02:09Z"
   name: welcome-board-data-files
   namespace: default
-  resourceVersion: "17912"
-  uid: 2a5910c3-d4bd-4f0f-a803-a778ff5af756
+  resourceVersion: "22274"
+  uid: d738b274-23fa-4336-b289-87f623942ee4
