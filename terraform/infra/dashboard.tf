@@ -4,6 +4,7 @@ resource "helm_release" "kubernetes_dashboard" {
   chart      = "kubernetes-dashboard"
   namespace  = "monitoring"
   version    = "5.11.0"
+  wait       = false
 
   values = [file("dashboard-values.yml")]
 
