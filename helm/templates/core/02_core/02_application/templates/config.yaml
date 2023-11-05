@@ -12,8 +12,9 @@ data:
   server.forward-headers-strategy: FRAMEWORK
 
   #security
-  security.authentication.enabled: "{{ .Values.security.authentication.enabled }}"
+  security.authentication.enabled: "false"
 
+  #security.authentication.enabled: "{{ .Values.security.authentication.enabled }}"
 
   spring.security.oauth2.authorization-uri: "https://{{ .Values.ingress.hosts}}/oidc/realms/tenant-{tenantId}/protocol/openid-connect/auth"
   spring.security.oauth2.logout-uri: "https://{{ .Values.ingress.hosts}}/oidc/realms/tenant-{tenantId}/protocol/openid-connect/logout"
