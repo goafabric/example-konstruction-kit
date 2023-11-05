@@ -41,4 +41,8 @@ resource "helm_release" "core-application" {
     name  = "image-arch"
     value = "-native"
   }
+  set {
+    name  = "security.authentication.enabled"
+    value = "false"
+  }
 }

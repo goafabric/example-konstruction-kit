@@ -45,4 +45,4 @@ initContainers:
 
 security:
   authentication:
-    enabled: false
+    enabled: true
