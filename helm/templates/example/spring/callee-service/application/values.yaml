@@ -4,7 +4,7 @@ tenantId: 0
 ingress:
   paths: /callee
   enabled: true
-  authentication: basic
+  authentication: none
 
 image:
   repository: "goafabric/callee-service"

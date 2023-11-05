@@ -4,7 +4,7 @@ tenantId: 0
 ingress:
   paths: /person
   enabled: true
-  authentication: basic
+  authentication: none
 
 image:
   repository: "goafabric/person-service-quarkus"
