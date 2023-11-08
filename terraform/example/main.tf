@@ -8,7 +8,7 @@ provider "helm" {
 variable "hostname" {}
 
 variable "example_repository" {
-  default = "https://goafabric.github.io/example-konstruction-kit/helm/charts/example/spring"
+  default = "https://goafabric.github.io/example-konstruction-kit/helm/charts/example/spring" # "example-spring"
 }
 
 resource "helm_release" "callee-service-application" {
