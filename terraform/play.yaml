@@ -1,0 +1,31 @@
+# pip install ansible-core
+# ansible-playbook play.yaml
+
+- name: Execute Shell Command Locally
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Execute Shell Command
+      shell: echo "Before execution"
+      register: command_output
+
+    - name: Display Command Output
+      debug:
+        var: command_output.stdout
+
+- name: Install Helm Chart
+  hosts: localhost
+  gather_facts: false
+
+  tasks:
+    - name: Install Helm Chart
+      kubernetes.core.helm:
+        name: test
+        chart_ref: example-spring/callee-service-application
+        chart_version: 1.1.1
+        release_namespace: default
+        state: present
+        #state: absent
+        values:
+          ingress:
+            hosts: "kubernetes"
