@@ -4,7 +4,7 @@ resource "helm_release" "welcome-board" {
   chart      = "welcome-board"
   version    = "1.1.1"
   namespace  = "default"
-  create_namespace = true
+  create_namespace = false
 
   set {
     name  = "ingress.hosts"
