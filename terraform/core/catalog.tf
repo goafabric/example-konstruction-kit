@@ -5,7 +5,7 @@ resource "helm_release" "catalog-application" {
   version    = "1.1.1"
   namespace  = "core"
   create_namespace = true
-  timeout = 30
+  timeout = var.helm_timeout
 
   set {
     name  = "ingress.hosts"
@@ -32,7 +32,7 @@ resource "helm_release" "catalog-batch" {
   version    = "1.1.1"
   namespace  = "core"
   create_namespace = true
-  timeout = 30
+  timeout = var.helm_timeout
 
   set {
     name  = "image.arch"

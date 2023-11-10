@@ -6,8 +6,8 @@ provider "helm" {
 }
 
 variable "hostname" {}
-
-variable "server_arch" { }
+variable "server_arch" {}
+variable "helm_timeout" {}
 
 variable "helm_repository" {
   default = "https://goafabric.github.io/example-konstruction-kit/helm/charts/example/spring" # "../../helm/templates/example/spring"
@@ -20,7 +20,7 @@ resource "helm_release" "callee-service-application" {
   version    = "1.1.1"
   namespace  = "example"
   create_namespace = true
-  timeout = 30
+  timeout = var.helm_timeout
 
   set {
     name  = "ingress.hosts"
@@ -43,7 +43,7 @@ resource "helm_release" "person-service-postgres" {
   version    = "1.1.1"
   namespace  = "example"
   create_namespace = true
-  timeout = 30
+  timeout = var.helm_timeout
 }
 
 resource "helm_release" "person-service-application" {
@@ -53,7 +53,7 @@ resource "helm_release" "person-service-application" {
   version    = "1.1.1"
   namespace  = "example"
   create_namespace = true
-  timeout = 30
+  timeout = var.helm_timeout
 
   set {
     name  = "ingress.hosts"

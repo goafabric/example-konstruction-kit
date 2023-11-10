@@ -5,7 +5,7 @@ resource "helm_release" "core-postgres" {
   version    = "1.1.1"
   namespace  = "core"
   create_namespace = true
-  timeout = 30
+  timeout = var.helm_timeout
 }
 
 resource "helm_release" "core-application" {
@@ -15,7 +15,7 @@ resource "helm_release" "core-application" {
   version    = "1.1.1"
   namespace  = "core"
   create_namespace = true
-  timeout = 30
+  timeout = var.helm_timeout
 
   set {
     name  = "ingress.hosts"
@@ -38,7 +38,7 @@ resource "helm_release" "s3-minio" {
   version    = "1.1.1"
   namespace  = "core"
   create_namespace = true
-  timeout = 30
+  timeout = var.helm_timeout
 
   set {
     name  = "ingress.hosts"
