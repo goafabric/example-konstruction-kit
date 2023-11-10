@@ -20,8 +20,8 @@ resource "helm_release" "core-application" {
     value = var.hostname
   }
   set {
-    name  = "image-arch"
-    value = "-native"
+    name  = "image.arch"
+    value = "-native${var.architecture}"
   }
   set {
     name  = "security.authentication.enabled"

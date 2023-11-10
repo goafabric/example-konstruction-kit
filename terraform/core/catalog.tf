@@ -11,8 +11,8 @@ resource "helm_release" "catalog-application" {
     value = var.hostname
   }
   set {
-    name  = "image-arch"
-    value = "-native"
+    name  = "image.arch"
+    value = "-native${var.architecture}"
   }
   set {
     name  = "security.authentication.enabled"
@@ -31,4 +31,9 @@ resource "helm_release" "catalog-batch" {
   version    = "1.1.1"
   namespace  = "core"
   create_namespace = true
+
+  set {
+    name  = "image.arch"
+    value = "-native${var.architecture}"
+  }
 }

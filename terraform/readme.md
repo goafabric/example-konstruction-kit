@@ -2,8 +2,9 @@
 terraform init
 terraform plan
 terraform apply
-
 terraform destroy
 
-#
-https://registry.terraform.io/providers/kreuzwerker/docker/latest/docs
+# todos
+- arm64v8 detection
+- certificate is invalid after monitoring teardown
+- argocd

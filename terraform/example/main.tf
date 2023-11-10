@@ -7,11 +7,11 @@ provider "helm" {
 
 variable "hostname" {}
 
+variable "architecture" { default = "-arm64v8" }
+
 variable "helm_repository" {
   default = "https://goafabric.github.io/example-konstruction-kit/helm/charts/example/spring" # "../../helm/templates/example/spring"
 }
-
-variable "architecture" { default = "-arm64v8" }
 
 resource "helm_release" "callee-service-application" {
   repository = var.helm_repository
