@@ -7,7 +7,7 @@ provider "helm" {
 
 variable "hostname" {}
 
-variable "architecture" { default = "-arm64v8" }
+variable "server_arch" { }
 
 variable "helm_repository" {
   default = "https://goafabric.github.io/example-konstruction-kit/helm/charts/example/spring" # "../../helm/templates/example/spring"
@@ -28,7 +28,7 @@ resource "helm_release" "callee-service-application" {
   }
   set {
     name  = "image.arch"
-    value = "-native${var.architecture}"
+    value = "-native${var.server_arch}"
   }
   set {
     name  = "replicaCount"
@@ -61,6 +61,6 @@ resource "helm_release" "person-service-application" {
   }
   set {
     name  = "image.arch"
-    value = "-native${var.architecture}"
+    value = "-native${var.server_arch}"
   }
 }

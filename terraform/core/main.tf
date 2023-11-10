@@ -6,7 +6,7 @@ provider "helm" {
 
 variable "hostname" {}
 
-variable "architecture" { default = "-arm64v8" }
+variable "server_arch" { default = "-arm64v8" }
 
 variable "example_repository" {
   default = "https://goafabric.github.io/example-konstruction-kit/helm/charts/example/spring"
