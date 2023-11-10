@@ -7,12 +7,15 @@ provider "helm" {
 
 variable "hostname" {}
 
-variable "example_repository" {
+variable "helm_repository" {
+  #default = "../../helm/templates/example/spring"
   default = "https://goafabric.github.io/example-konstruction-kit/helm/charts/example/spring" # "example-spring"
 }
 
+variable "architecture" { default = "-arm64v8" }
+
 resource "helm_release" "callee-service-application" {
-  repository = var.example_repository
+  repository = var.helm_repository
   name       = "callee-service-application"
   chart      = "callee-service-application"
   version    = "1.1.1"
@@ -24,8 +27,8 @@ resource "helm_release" "callee-service-application" {
     value = var.hostname
   }
   set {
-    name  = "image-arch"
-    value = "-native"
+    name  = "image.arch"
+    value = "-native${var.architecture}"
   }
   set {
     name  = "replicaCount"
@@ -34,7 +37,7 @@ resource "helm_release" "callee-service-application" {
 }
 
 resource "helm_release" "person-service-postgres" {
-  repository = var.example_repository
+  repository = var.helm_repository
   name       = "person-service-postgres"
   chart      = "person-service-postgres"
   version    = "1.1.1"
@@ -43,7 +46,7 @@ resource "helm_release" "person-service-postgres" {
 }
 
 resource "helm_release" "person-service-application" {
-  repository = var.example_repository
+  repository = var.helm_repository
   name       = "person-service-application"
   chart      = "person-service-application"
   version    = "1.1.1"
@@ -55,7 +58,7 @@ resource "helm_release" "person-service-application" {
     value = var.hostname
   }
   set {
-    name  = "image-arch"
-    value = "-native"
+    name  = "image.arch"
+    value = "-native${var.architecture}"
   }
 }
