@@ -8,8 +8,7 @@ provider "helm" {
 variable "hostname" {}
 
 variable "helm_repository" {
-  #default = "../../helm/templates/example/spring"
-  default = "https://goafabric.github.io/example-konstruction-kit/helm/charts/example/spring" # "example-spring"
+  default = "https://goafabric.github.io/example-konstruction-kit/helm/charts/example/spring" # "../../helm/templates/example/spring"
 }
 
 variable "architecture" { default = "-arm64v8" }
