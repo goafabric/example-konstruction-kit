@@ -20,6 +20,7 @@ resource "helm_release" "callee-service-application" {
   version    = "1.1.1"
   namespace  = "example"
   create_namespace = true
+  timeout = 30
 
   set {
     name  = "ingress.hosts"
@@ -42,6 +43,7 @@ resource "helm_release" "person-service-postgres" {
   version    = "1.1.1"
   namespace  = "example"
   create_namespace = true
+  timeout = 30
 }
 
 resource "helm_release" "person-service-application" {
@@ -51,6 +53,7 @@ resource "helm_release" "person-service-application" {
   version    = "1.1.1"
   namespace  = "example"
   create_namespace = true
+  timeout = 30
 
   set {
     name  = "ingress.hosts"
