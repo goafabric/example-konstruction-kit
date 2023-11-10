@@ -12,7 +12,8 @@ sudo snap install microk8s --classic --channel=1.27/stable
 see other file + microk8s stop && microk8s start
 
 # Microk8s Addons
-sudo microk8s enable ingress storage dns$dns
+sudo microk8s enable metal-lb storage dns$dns
+ip range needs to be set to you server ip from dns, e.g: 45.129.180.184-45.129.180.184
 
 # Kubectl + Helm
 sudo sh -c 'echo "#!/bin/bash \n microk8s kubectl "\$1" "\$2" "\$3" "\$4" "\$5" "\$6" "\$7" "\$8" "\$9" " > /usr/local/bin/kubectl' && sudo chmod +x /usr/local/bin/kubectl
