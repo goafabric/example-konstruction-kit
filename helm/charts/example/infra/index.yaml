@@ -3,9 +3,9 @@ entries:
   event-dispatcher-service-application:
   - apiVersion: v2
     appVersion: 3.1.2
-    created: "2023-11-10T09:33:30.081387+01:00"
+    created: "2023-11-11T09:23:02.148904+01:00"
     description: event-dispatcher-service-application
-    digest: c60fccc1418489b4a9462f53e0fb4b725a0767a465372c488d42f4fb720ccb36
+    digest: e59cc3aee21e2d03c08036a8c0c731449b689461ac02172eb695b466240734e3
     name: event-dispatcher-service-application
     type: application
     urls:
@@ -14,9 +14,9 @@ entries:
   jaeger-all:
   - apiVersion: v2
     appVersion: 1.46.0
-    created: "2023-11-10T09:33:30.08149+01:00"
+    created: "2023-11-11T09:23:02.149021+01:00"
     description: jaeger-all
-    digest: 164030db373306054b1d86261494aa749314b35c9a3badd88062c19c93b4f9b6
+    digest: bc95291549264790672881c715a9556fac2154960ba39a17d54a4e7fb42837a2
     name: jaeger-all
     type: application
     urls:
@@ -25,9 +25,9 @@ entries:
   rabbitmq:
   - apiVersion: v2
     appVersion: 3.12.1-management
-    created: "2023-11-10T09:33:30.081665+01:00"
+    created: "2023-11-11T09:23:02.149193+01:00"
     description: rabbitmq
-    digest: 3d5cf6112bc8a0e249bb781bc6d3dca8be5a9f3ef82ade5f81572bfb9058d6c9
+    digest: 07eb352a165a87f6fb5a7e0b4ea4d209862543a7c321743f3398cefe8eb8c8c0
     name: rabbitmq
     type: application
     urls:
@@ -36,9 +36,9 @@ entries:
   spring-auth-server-application:
   - apiVersion: v2
     appVersion: 1.0.3
-    created: "2023-11-10T09:33:30.081849+01:00"
+    created: "2023-11-11T09:23:02.149384+01:00"
     description: spring-auth-server-application
-    digest: 0a4577146c506f1ebd254e2b5e05352c999b1059a8a994cd3b513b58809b9d9c
+    digest: 006494aa4dfc54e58e338a1df975f164c796cbc3db65c4691adeafb9cc7c7560
     name: spring-auth-server-application
     type: application
     urls:
@@ -47,12 +47,12 @@ entries:
   welcome-board:
   - apiVersion: v2
     appVersion: 1.20.2
-    created: "2023-11-10T09:33:30.082026+01:00"
+    created: "2023-11-11T09:23:02.149574+01:00"
     description: welcome-board
-    digest: 32ac1441da10fb93ad6eb50fbe94d7094b914e0414709bdd52c921bcd002e7f1
+    digest: fe033eb9117ff20ec008d35451119d2ec5b4f865b33945ae1a0d1b6caabb1537
     name: welcome-board
     type: application
     urls:
     - https://goafabric.github.io/example-konstruction-kit/helm/charts/example/infra/welcome-board-1.1.1.tgz
     version: 1.1.1
-generated: "2023-11-10T09:33:30.081099+01:00"
+generated: "2023-11-11T09:23:02.148609+01:00"
