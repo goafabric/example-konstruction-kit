@@ -1,0 +1,4 @@
+variable "hostname" {
+  default = "kubernetes"
+}
+
