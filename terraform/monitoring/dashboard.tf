@@ -45,7 +45,7 @@ resource "kubernetes_manifest" "dashboard-role" {
 
 resource "kubernetes_manifest" "dashboard-ingress" {
   manifest   = yamldecode(
-    <<-EOF
+  <<-EOF
   kind: Ingress
   apiVersion: networking.k8s.io/v1
   metadata:
@@ -75,6 +75,6 @@ resource "kubernetes_manifest" "dashboard-ingress" {
                   name: kubernetes-dashboard
                   port:
                     number: 443
-    EOF
+  EOF
   )
 }
