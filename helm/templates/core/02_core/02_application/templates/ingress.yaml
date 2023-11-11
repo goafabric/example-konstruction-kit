@@ -14,12 +14,6 @@ metadata:
 
     nginx.ingress.kubernetes.io/enable-modsecurity: "true"
 
-    # basic auth
-    {{ if eq .Values.ingress.authentication "basic" }}
-    nginx.ingress.kubernetes.io/auth-type: "basic"
-    nginx.ingress.kubernetes.io/auth-secret: "authentication-secret"
-    {{ end }}
-
 spec:
   ingressClassName: nginx
   tls:
