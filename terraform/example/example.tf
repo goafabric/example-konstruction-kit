@@ -1,7 +1,7 @@
 resource "helm_release" "callee-service-application" {
   repository = var.helm_repository
   name       = "callee-service-application"
-  chart      = "callee-service-application"
+  chart      = "${var.helm_repository}/callee-service/application"
   version    = "1.1.1"
   namespace  = "example"
   create_namespace = true
@@ -24,7 +24,7 @@ resource "helm_release" "callee-service-application" {
 resource "helm_release" "person-service-postgres" {
   repository = var.helm_repository
   name       = "person-service-postgres"
-  chart      = "person-service-postgres"
+  chart      = "${var.helm_repository}/person-service/postgres"
   version    = "1.1.1"
   namespace  = "example"
   create_namespace = true
@@ -34,7 +34,7 @@ resource "helm_release" "person-service-postgres" {
 resource "helm_release" "person-service-application" {
   repository = var.helm_repository
   name       = "person-service-application"
-  chart      = "person-service-application"
+  chart      = "${var.helm_repository}/person-service/application"
   version    = "1.1.1"
   namespace  = "example"
   create_namespace = true
