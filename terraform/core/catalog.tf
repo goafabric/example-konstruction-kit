@@ -1,7 +1,22 @@
+resource "helm_release" "catalog-batch" {
+  repository = var.helm_repository
+  name       = "catalog-batch"
+  chart      = "${var.helm_repository}/03_catalog/01_batch"
+  version    = "1.1.1"
+  namespace  = "core"
+  create_namespace = true
+  timeout = var.helm_timeout
+
+  set {
+    name  = "image.arch"
+    value = "-native${var.server_arch}"
+  }
+}
+
 resource "helm_release" "catalog-application" {
-  repository = var.example_repository
+  repository = var.helm_repository
   name       = "catalog-application"
-  chart      = "catalog-application"
+  chart      = "${var.helm_repository}/03_catalog/02_application"
   version    = "1.1.1"
   namespace  = "core"
   create_namespace = true
@@ -22,20 +37,5 @@ resource "helm_release" "catalog-application" {
   set {
     name  = "replicaCount"
     value = "1"
-  }
-}
-
-resource "helm_release" "catalog-batch" {
-  repository = var.example_repository
-  name       = "catalog-batch"
-  chart      = "catalog-batch"
-  version    = "1.1.1"
-  namespace  = "core"
-  create_namespace = true
-  timeout = var.helm_timeout
-
-  set {
-    name  = "image.arch"
-    value = "-native${var.server_arch}"
   }
 }

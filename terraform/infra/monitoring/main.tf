@@ -7,7 +7,3 @@ provider "helm" {
 provider "kubernetes" {
   config_path = "~/.kube/config"
 }
-
-variable "infra_repository" {
-  default = "https://goafabric.github.io/example-konstruction-kit/helm/charts/example/infra"
-}

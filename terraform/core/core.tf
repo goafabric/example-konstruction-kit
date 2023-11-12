@@ -1,7 +1,7 @@
 resource "helm_release" "core-postgres" {
-  repository = var.example_repository
+  repository = var.helm_repository
   name       = "core-postgres"
-  chart      = "core-postgres"
+  chart      = "${var.helm_repository}/02_core/01_postgres"
   version    = "1.1.1"
   namespace  = "core"
   create_namespace = true
@@ -9,9 +9,9 @@ resource "helm_release" "core-postgres" {
 }
 
 resource "helm_release" "core-application" {
-  repository = var.example_repository
+  repository = var.helm_repository
   name       = "core-application"
-  chart      = "core-application"
+  chart      = "${var.helm_repository}/02_core/02_application"
   version    = "1.1.1"
   namespace  = "core"
   create_namespace = true
@@ -32,9 +32,9 @@ resource "helm_release" "core-application" {
 }
 
 resource "helm_release" "s3-minio" {
-  repository = var.example_repository
+  repository = var.helm_repository
   name       = "s3-minio"
-  chart      = "s3-minio"
+  chart      = "${var.helm_repository}/01_minio/application"
   version    = "1.1.1"
   namespace  = "core"
   create_namespace = true
