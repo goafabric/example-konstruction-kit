@@ -3,5 +3,5 @@ variable "hostname" {
 }
 
 variable "infra_repository" {
-  default = "https://goafabric.github.io/example-konstruction-kit/helm/charts/example/infra"
+  default = "../../../helm/templates/infra" #"https://goafabric.github.io/example-konstruction-kit/helm/charts/example/infra"
 }
