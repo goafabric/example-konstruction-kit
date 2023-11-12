@@ -9,6 +9,5 @@ certain variables like server_arch have to be set from outside, you can "source 
 
 # todos
 - certificate is invalid after monitoring teardown
-- install from local helm folder
 - cert-manager crds fuckup
 - argocd
