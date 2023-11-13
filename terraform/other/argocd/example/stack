@@ -17,11 +17,10 @@ function up() {
       --repo https://github.com/goafabric/example-konstruction-kit --revision refactoring \
       --path helm/templates/example/spring/person-service/application
 
-    argocd app create person-service-postgres--port-forward-namespace argocd --dest-server https://kubernetes.default.svc --dest-namespace example --sync-policy automated \
+    argocd app create person-service-postgres --port-forward-namespace argocd --dest-server https://kubernetes.default.svc --dest-namespace example --sync-policy automated \
       --helm-set ingress.hosts=kubernetes --helm-set image.arch=-native-arm64v8 \
       --repo https://github.com/goafabric/example-konstruction-kit --revision refactoring \
       --path helm/templates/example/spring/person-service/postgres
-
 
 }
 
