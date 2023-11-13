@@ -8,7 +8,6 @@ terraform destroy
 certain variables like server_arch have to be set from outside, you can "source .values" for that
 
 # todos
-- core folder names (01_)
 - argocd kubectl files instead of shell script
 - hostname + architecture from configmap https://itnext.io/manage-auto-generated-secrets-in-your-helm-charts-5aee48ba6918
 
