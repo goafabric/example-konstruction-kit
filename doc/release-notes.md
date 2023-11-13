@@ -1,4 +1,6 @@
 # 1.1.1
+- terraform added
+- removed Chart.AppVersion from selectorLabels as it whoed with update
 
 # 1.1.0
 - cert-manager added
