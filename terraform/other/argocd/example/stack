@@ -8,7 +8,7 @@ SERVER_ARCH=`kubectl version --output=json | grep "linux/arm64" > /dev/null && e
 
 function up() {
     argocd app create callee-service-application --port-forward-namespace argocd --dest-server https://kubernetes.default.svc --dest-namespace example --sync-policy automated \
-      --helm-set ingress.hosts=kubernetes --helm-set image.arch=-native-arm64v8 \
+      --helm-set ingress.hosts=kubernetes --helm-set image.arch=-native-arm64v8 --helm-set replicaCount=1 \
       --repo https://github.com/goafabric/example-konstruction-kit --revision refactoring \
       --path helm/templates/example/spring/callee-service/application
 
