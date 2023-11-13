@@ -7,13 +7,28 @@ SERVER_ARCH=`kubectl version --output=json | grep "linux/arm64" > /dev/null && e
 [[ `kubectl get configmaps authentication-config --ignore-not-found -o jsonpath='{.data.authentication}' -n default` = "oidc" ]] && INGRESS_AUTHENTICATION="--set ingress.authentication=oidc"
 
 function up() {
-    argocd app create callee-service --port-forward-namespace argocd --dest-server https://kubernetes.default.svc --dest-namespace example --helm-set ingress.hosts=kubernetes --helm-set image.arch=-native-arm64v8 \
-      --path helm/templates/example/spring/callee-service/application --repo https://github.com/goafabric/example-konstruction-kit --revision refactoring
+    argocd app create callee-service-application --port-forward-namespace argocd --dest-server https://kubernetes.default.svc --dest-namespace example --sync-policy automated \
+      --helm-set ingress.hosts=kubernetes --helm-set image.arch=-native-arm64v8 \
+      --repo https://github.com/goafabric/example-konstruction-kit --revision refactoring \
+      --path helm/templates/example/spring/callee-service/application
+
+    argocd app create person-service-application --port-forward-namespace argocd --dest-server https://kubernetes.default.svc --dest-namespace example --sync-policy automated \
+      --helm-set ingress.hosts=kubernetes --helm-set image.arch=-native-arm64v8 \
+      --repo https://github.com/goafabric/example-konstruction-kit --revision refactoring \
+      --path helm/templates/example/spring/person-service/application
+
+    argocd app create person-service-postgres--port-forward-namespace argocd --dest-server https://kubernetes.default.svc --dest-namespace example --sync-policy automated \
+      --helm-set ingress.hosts=kubernetes --helm-set image.arch=-native-arm64v8 \
+      --repo https://github.com/goafabric/example-konstruction-kit --revision refactoring \
+      --path helm/templates/example/spring/person-service/postgres
+
+
 }
 
 function down() {
-    logout
-    kubectl delete -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+    argocd app delete callee-service-application --port-forward-namespace argocd -y
+    argocd app delete person-service-application --port-forward-namespace argocd -y
+    argocd app delete person-service-postgres --port-forward-namespace argocd -y
 }
 
 function proxy() {
