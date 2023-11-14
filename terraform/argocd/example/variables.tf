@@ -11,5 +11,5 @@ variable "server_arch" {
 }
 
 variable "helm_repository" {
-  default = "../../helm/templates/example/spring" #"https://goafabric.github.io/example-konstruction-kit/helm/charts/example/spring"
+  default = "https://github.com/goafabric/example-konstruction-kit"
 }
