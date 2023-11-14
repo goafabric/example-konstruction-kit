@@ -5,6 +5,8 @@ resource "kubernetes_manifest" "callee-service-application" {
     metadata:
       name: callee-service-application
       namespace: argocd
+      finalizers:
+        - resources-finalizer.argocd.argoproj.io
     spec:
       project: default
       source:
