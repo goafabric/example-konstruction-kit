@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: callee-service-application
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/goafabric/example-konstruction-kit
+    targetRevision: refactoring
+    path: helm/templates/example/spring/callee-service/application
+    helm:
+      parameters:
+        - name: "ingress.hosts"
+          value: "kubernetes"
+        - name: "image.arch"
+          value: "-native-arm64v8"
+        - name: "replicaCount"
+          value: "1"
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: example
+  syncPolicy:
+    automated: {}

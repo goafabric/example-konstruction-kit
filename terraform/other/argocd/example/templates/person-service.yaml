@@ -1,0 +1,47 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: person-service-application
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/goafabric/example-konstruction-kit
+    targetRevision: refactoring
+    path: helm/templates/example/spring/person-service/application
+    helm:
+      parameters:
+        - name: "ingress.hosts"
+          value: "kubernetes"
+        - name: "image.arch"
+          value: "-native-arm64v8"
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: example
+  syncPolicy:
+    automated: {}
+
+---
+
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: person-service-postgres
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/goafabric/example-konstruction-kit
+    targetRevision: refactoring
+    path: helm/templates/example/spring/person-service/postgres
+    helm:
+      parameters:
+        - name: "ingress.hosts"
+          value: "kubernetes"
+        - name: "image.arch"
+          value: "-native-arm64v8"
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: example
+  syncPolicy:
+    automated: {}
