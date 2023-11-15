@@ -1,4 +1,10 @@
 # for whatever stupid reason, nginx ingress also needs the secret here, if if only used inside monitoring ns
+resource "kubernetes_namespace" "example" {
+  metadata {
+    name = "example"
+  }
+}
+
 resource "kubernetes_secret" "authentication-secret" {
   metadata {
     name = "authentication-secret"

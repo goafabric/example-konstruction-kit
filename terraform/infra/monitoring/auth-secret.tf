@@ -1,3 +1,9 @@
+resource "kubernetes_namespace" "example" {
+  metadata {
+    name = "monitoring"
+  }
+}
+
 resource "kubernetes_secret" "authentication-secret" {
   metadata {
     name = "authentication-secret"
