@@ -10,10 +10,8 @@ function up() {
     kubectl create namespace argocd
     kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 
-    #argocd app create guestbook --port-forward-namespace argocd --repo https://github.com/argoproj/argocd-example-apps.git --path guestbook --dest-server https://kubernetes.default.svc --dest-namespace default
-
-    #argocd app create callee-service --port-forward-namespace argocd --dest-server https://kubernetes.default.svc --dest-namespace example --helm-set ingress.hosts=kubernetes --helm-set image.arch=-native-arm64v8 \
-    #--path helm/templates/example/spring/callee-service/application --repo https://github.com/goafabric/example-konstruction-kit --revision refactoring
+    #helm repo add argo-cd https://argoproj.github.io/argo-helm
+    #helm install argocd argo-cd/argo-cd --namespace argocd --version 5.51.2
 }
 
 function down() {
