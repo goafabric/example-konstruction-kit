@@ -3,6 +3,8 @@ kind: Application
 metadata:
   name: person-service-application
   namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
 spec:
   project: default
   source:
@@ -28,6 +30,8 @@ kind: Application
 metadata:
   name: person-service-postgres
   namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
 spec:
   project: default
   source:
