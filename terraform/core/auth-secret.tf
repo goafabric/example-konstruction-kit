@@ -1,5 +1,5 @@
 # for whatever stupid reason, nginx ingress also needs the secret here, if if only used inside monitoring ns
-resource "kubernetes_namespace" "example" {
+resource "kubernetes_namespace" "core" {
   metadata {
     name = "core"
   }
