@@ -10,3 +10,4 @@ certain variables like server_arch have to be set from outside, you can "source 
 # todos
 - secrets
 - hostname + architecture from configmap https://itnext.io/manage-auto-generated-secrets-in-your-helm-charts-5aee48ba6918
+- linkerd
