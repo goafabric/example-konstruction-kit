@@ -24,9 +24,9 @@ resource "helm_release" "cert-manager" {
 
 resource "helm_release" "cert-manager-issuer" {
   depends_on = [helm_release.cert-manager]
-  repository       = "./resources"
+  repository       = "./cert-manager-issuer"
   name             = "cert-manager-issuer"
-  chart            = "./resources"
+  chart            = "./cert-manager-issuer"
   version          = "1.1.1"
   namespace        = "example"
   create_namespace = true
