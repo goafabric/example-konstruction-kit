@@ -21,3 +21,18 @@ resource "helm_release" "cert-manager" {
     value = "--enable-certificate-owner-ref"
   }
 }
+
+resource "helm_release" "cert-manager-resources" {
+  depends_on = [helm_release.cert-manager]
+  repository       = "./resources"
+  name             = "cert-manager-resources"
+  chart            = "./resources"
+  version          = "1.1.1"
+  namespace        = "example"
+  create_namespace = true
+
+  set {
+    name  = "ingress.hosts"
+    value = var.hostname
+  }
+}

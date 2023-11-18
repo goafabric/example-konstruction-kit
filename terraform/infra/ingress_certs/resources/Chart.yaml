@@ -1,0 +1,11 @@
+apiVersion: v2
+name: cert-manager-resources
+description: cert-manager-resources
+
+type: application
+
+version: 1.1.1
+
+appVersion: "1.1.1"
+
+
