@@ -13,5 +13,4 @@ resource "terraform_data" "linkerd" {
     when = destroy
     command = "linkerd uninstall | kubectl delete -f -"
   }
-
 }
