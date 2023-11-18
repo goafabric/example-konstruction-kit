@@ -22,10 +22,10 @@ resource "helm_release" "cert-manager" {
   }
 }
 
-resource "helm_release" "cert-manager-resources" {
+resource "helm_release" "cert-manager-issuer" {
   depends_on = [helm_release.cert-manager]
   repository       = "./resources"
-  name             = "cert-manager-resources"
+  name             = "cert-manager-issuer"
   chart            = "./resources"
   version          = "1.1.1"
   namespace        = "example"
