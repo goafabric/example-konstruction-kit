@@ -18,9 +18,7 @@ resource "terraform_data" "linkerd" {
     when = destroy
     command = "linkerd uninstall | kubectl delete -f -"
   }
-
 }
-
 
 resource "terraform_data" "patch-ingress" {
   depends_on = [terraform_data.linkerd]

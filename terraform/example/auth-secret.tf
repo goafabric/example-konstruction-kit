@@ -2,6 +2,9 @@
 resource "kubernetes_namespace" "example" {
   metadata {
     name = "example"
+    labels = {
+      istio-injection = "enabled"
+    }
   }
 }
 

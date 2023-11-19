@@ -1,14 +1,17 @@
 # for whatever stupid reason, nginx ingress also needs the secret here, if if only used inside monitoring ns
-resource "kubernetes_namespace" "core" {
+resource "kubernetes_namespace" "example" {
   metadata {
-    name = "core"
+    name = "example"
+    labels = {
+      istio-injection = "enabled"
+    }
   }
 }
 
 resource "kubernetes_secret" "authentication-secret" {
   metadata {
     name = "authentication-secret"
-    namespace = "core"
+    namespace = "example"
   }
 
   data = {
