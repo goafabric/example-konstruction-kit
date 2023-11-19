@@ -32,8 +32,7 @@ resource "helm_release" "kiali" {
 
 
 resource "kubernetes_manifest" "kiali-ingress" {
-  manifest   = yamldecode(
-    <<-EOF
+  manifest   = yamldecode(<<-EOF
   kind: Ingress
   apiVersion: networking.k8s.io/v1
   metadata:
