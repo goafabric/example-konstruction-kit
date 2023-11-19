@@ -11,12 +11,7 @@ resource "terraform_data" "linkerd" {
 
   provisioner "local-exec" {
     when = create
-    command = "kubectl annotate namespaces ingress-nginx linkerd.io/inject=enabled --overwrite && kubectl delete pods --all -n ingress-nginx"
-  }
-
-  provisioner "local-exec" {
-    when = destroy
-    command = "kubectl annotate namespaces ingress-nginx linkerd.io/inject=false --overwrite && kubectl delete pods --all -n ingress-nginx"
+    command = "linkerd check"
   }
 
   provisioner "local-exec" {
@@ -24,4 +19,18 @@ resource "terraform_data" "linkerd" {
     command = "linkerd uninstall | kubectl delete -f -"
   }
 
+}
+
+
+resource "terraform_data" "patch-ingress" {
+  depends_on = [terraform_data.linkerd]
+  provisioner "local-exec" {
+    when = create
+    command = "kubectl annotate namespaces ingress-nginx linkerd.io/inject=enabled --overwrite && kubectl delete pods --all -n ingress-nginx"
+  }
+
+  provisioner "local-exec" {
+    when = destroy
+    command = "kubectl annotate namespaces ingress-nginx linkerd.io/inject=false --overwrite && kubectl delete pods --all -n ingress-nginx"
+  }
 }
