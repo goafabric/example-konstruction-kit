@@ -1,4 +1,4 @@
-resource "terraform_data" "linkerd" {
+resource "terraform_data" "istio" {
   provisioner "local-exec" {
     when = create
     command = "istioctl install -y --set profile=${var.profile}"
