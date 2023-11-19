@@ -3,7 +3,7 @@ resource "kubernetes_namespace" "example" {
   metadata {
     name = "example"
     labels = {
-      istio-injection = "enabled"
+      istio-injection = "enabled" #"istio.io/dataplane-mode" = "ambient"
     }
   }
 }
