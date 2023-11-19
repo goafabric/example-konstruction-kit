@@ -28,6 +28,19 @@ resource "helm_release" "kiali" {
     name  = "server.web_root"
     value = "/kiali"
   }
+
 }
 
+
+resource "terraform_data" "prometheus" {
+  provisioner "local-exec" {
+    when = create
+    command = "kubectl apply -f ./templates"
+  }
+
+  provisioner "local-exec" {
+    when = destroy
+    command = "kubectl delete --ignore-not-found -f ./templates"
+  }
+}
 
