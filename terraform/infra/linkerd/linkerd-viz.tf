@@ -1,3 +1,4 @@
+/*
 resource "terraform_data" "linkerd-viz" {
   depends_on = [terraform_data.linkerd]
   provisioner "local-exec" {
@@ -10,3 +11,4 @@ resource "terraform_data" "linkerd-viz" {
     command = "linkerd viz uninstall | kubectl delete -f -"
   }
 }
+*/
