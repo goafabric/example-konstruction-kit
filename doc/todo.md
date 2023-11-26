@@ -3,5 +3,6 @@
 - workspaces + hostname variable
 - keycloak
 - volume encryption
+- Rbac, No dashboard in prod, No Openapi in prod                                       
 
 - JWT Config (Token, Tenant, Vaadin)
