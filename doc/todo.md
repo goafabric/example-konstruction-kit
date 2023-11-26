@@ -9,6 +9,7 @@
 - standard helm charts for minio, postgres, jaeger 
 - preconfigured keycloak with users, realm, standard helm chart
 - apisix deployment including gateway definitions, switchable between ingress and apisix
+- grafana oss with loki + tempo
 
 ## security
 - terraform generated secrets injected in to helm charts, eventually vault (alternative: https://itnext.io/manage-auto-generated-secrets-in-your-helm-charts-5aee48ba6918)
