@@ -1,9 +1,9 @@
 # todos
 
 ## terraform
-- workspaces + hostname variable
 - No dashboard in Prod via Conditional Deploy
 - No Openapi in prod (springdoc.swagger-ui.path: "//", springdoc.api-docs.path: "//")
+- workspaces + hostname variable
 
 ## terraform cont.
 - standard helm charts for minio, postgres, jaeger 
