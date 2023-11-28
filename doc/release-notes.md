@@ -2,6 +2,8 @@
 - terraform added
 - removed Chart.AppVersion from selectorLabels as it whoed with update
 
+- openapi endpoints blocked due to security reasons
+
 # 1.1.0
 - cert-manager added
 - loki updated and working again

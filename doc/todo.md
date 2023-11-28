@@ -2,7 +2,6 @@
 
 ## terraform
 - No dashboard in Prod via Conditional Deploy
-- No Openapi in prod (springdoc.swagger-ui.path: "//", springdoc.api-docs.path: "//")
 - workspaces + hostname variable
 
 ## terraform cont.
@@ -16,6 +15,7 @@
 - volume encryption
 - RBAC
 - 10 best practices: https://www.youtube.com/watch?app=desktop&v=oBf5lrmquYI&pp=ygUSI211dGlyYW9rdWJlcm5ldGVz
+- CSP Headers for Ingress that satisfy Owasp Zap (seems to need restat after every scan)
 
 ## application           
 - JWT HTTP Interceptor Config (Token, Tenant, Vaadin)
