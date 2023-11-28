@@ -10,14 +10,15 @@ data:
   server.port: "{{ .Values.service.port }}"
   server.tomcat.threads.max: "20"
   server.forward-headers-strategy: FRAMEWORK
-  server.tomcat.keep-alive-timeout: "0s"
 
   #security
   security.authentication.enabled: "false"
 
   #monitoring
-  management.endpoint.health.show-details: always
   management.endpoints.web.exposure.include: "health,heapdump,circuitbreakers,prometheus"
+  management.endpoint.health.show-details: never
+  springdoc.swagger-ui.path: "//"
+  springdoc.api-docs.path: "//"
 
   #zipkin/jaeger
   spring.application.name: "{{ include "application.fullname" . }}"
