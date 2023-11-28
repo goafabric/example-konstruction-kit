@@ -7,14 +7,3 @@ resource "kubernetes_namespace" "example" {
     }
   }
 }
-
-resource "kubernetes_secret" "authentication-secret" {
-  metadata {
-    name = "authentication-secret"
-    namespace = "example"
-  }
-
-  data = {
-    "auth" = "admin:$apr1$opP9IMT.$3sY/kXyTRUvYcYrvkrcM5."
-  }
-}
