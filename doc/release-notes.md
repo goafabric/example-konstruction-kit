@@ -3,6 +3,7 @@
 - removed Chart.AppVersion from selectorLabels as it whoed with update
 
 - openapi endpoints blocked due to security reasons
+- conditional deploy for dashboard only for dev stages
 
 # 1.1.0
 - cert-manager added
