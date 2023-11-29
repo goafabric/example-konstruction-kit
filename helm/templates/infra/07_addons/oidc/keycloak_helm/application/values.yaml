@@ -2,7 +2,7 @@ replicaCount: 1
 
 tenantId: 0
 ingress:
-  paths: /keycloak
+  paths: /oidc
   enabled: true
   authentication: none
 
