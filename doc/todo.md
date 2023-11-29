@@ -4,7 +4,7 @@
 - workspaces + hostname variable
 
 ## terraform cont.
-- standard helm charts for minio, postgres, jaeger 
+- standard helm charts for minio, postgres
 - preconfigured keycloak with users, realm, standard helm chart
 - apisix deployment including gateway definitions, switchable between ingress and apisix
 - grafana oss with loki + tempo

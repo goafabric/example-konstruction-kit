@@ -1,4 +1,0 @@
-allInOne:
-  extraEnv:
-    - name: QUERY_BASE_PATH
-      value: /jaeger
