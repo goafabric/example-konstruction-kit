@@ -6,11 +6,6 @@ resource "helm_release" "jaeger" {
   namespace  = "monitoring"
   create_namespace = true
 
-  values = [
-    file("values.yaml")
-  ]
-
-
   set {
     name  = "allInOne.enabled"
     value = "true"
@@ -35,7 +30,14 @@ resource "helm_release" "jaeger" {
     name  = "query.enabled"
     value = "false"
   }
-
+  set {
+    name  = "allInOne.extraEnv[0].name"
+    value = "QUERY_BASE_PATH"
+  }
+  set {
+    name  = "allInOne.extraEnv[0].value"
+    value = "/jaeger"
+  }
 }
 
 resource "kubernetes_manifest" "jaeger-ingress" {
