@@ -9,7 +9,7 @@ metadata:
     cert-manager.io/cluster-issuer: my-cluster-issuer
 
     nginx.ingress.kubernetes.io/ssl-redirect: "true"
-    nginx.ingress.kubernetes.io/rewrite-target: /oidc/$2
+    nginx.ingress.kubernetes.io/rewrite-target: "{{- tpl (toYaml .Values.ingress.paths) . }}/$2"
 
     # fix for bad gateway upstream to big
     nginx.ingress.kubernetes.io/proxy-buffer-size: 10k
@@ -24,8 +24,8 @@ spec:
     - host: {{ .Values.ingress.hosts}}
       http:
         paths:
-          - path: /oidc(/|$)(.*)
-            pathType: Prefix
+          - path: {{- tpl (toYaml .Values.ingress.paths) . | nindent 14 }}(/|$)(.*)
+            pathType: ImplementationSpecific
             backend:
               service:
                 name: {{ include "application.fullname" . }}
