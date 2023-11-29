@@ -7,7 +7,7 @@ resource "helm_release" "jaeger" {
   create_namespace = true
 
   values = [
-    "${file("values.yaml")}"
+    file("values.yaml")
   ]
 
 
