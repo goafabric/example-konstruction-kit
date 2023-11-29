@@ -33,7 +33,6 @@ resource "helm_release" "jaeger" {
 
 }
 
-/*
 resource "kubernetes_manifest" "jaeger-ingress" {
   manifest   = yamldecode(
     <<-EOF
@@ -59,10 +58,10 @@ resource "kubernetes_manifest" "jaeger-ingress" {
               pathType: ImplementationSpecific
               backend:
                 service:
-                  name: tracing
+                  name: jaeger-query
                   port:
-                    number: 80
+                    number: 16686
   EOF
   )
 }
-*/
+
