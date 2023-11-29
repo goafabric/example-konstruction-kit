@@ -36,12 +36,10 @@ resource "helm_release" "jaeger" {
     value = "false"
   }
 
-
 }
 
 resource "kubernetes_manifest" "jaeger-ingress" {
-  manifest   = yamldecode(
-    <<-EOF
+  manifest   = yamldecode(<<-EOF
   kind: Ingress
   apiVersion: networking.k8s.io/v1
   metadata:
@@ -70,4 +68,29 @@ resource "kubernetes_manifest" "jaeger-ingress" {
   EOF
   )
 }
+
+resource "kubernetes_manifest" "jaeger-service" {
+  manifest   = yamldecode(<<-EOF
+    apiVersion: v1
+    kind: Service
+    metadata:
+      labels:
+        name: otlp
+      name: otlp
+      namespace: monitoring
+    spec:
+      ports:
+        - port: 4317
+          targetPort: 4317
+          name: otlp-grpc
+        - port: 4318
+          targetPort: 4318
+          name: otlp-http
+      selector:
+        app.kubernetes.io/name: jaeger
+  EOF
+  )
+}
+
+
 
