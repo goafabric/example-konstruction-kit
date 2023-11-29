@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "application.fullname" . }}-config
+  labels:
+    {{- include "application.labels" . | nindent 4 }}
+data:
+  #application
+  TZ: Europe/Berlin
+
+  #div
+  KC_HTTP_RELATIVE_PATH: "oidc"
+  KC_PROXY: "edge"
+  KC_HOSTNAME_STRICT: "false"
+  #  KC_HOSTNAME_STRICT_HTTPS: "false"
+  KC_HOSTNAME: "{{ .Values.ingress.hosts}}"
+
+  #database
+  KC_DB: "postgres"
+  KC_DB_URL: "jdbc:postgresql://keycloak-service-postgres/keycloak"

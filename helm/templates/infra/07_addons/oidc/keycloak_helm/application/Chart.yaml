@@ -1,0 +1,9 @@
+apiVersion: v2
+name: keycloak-service-application
+description: keycloak-service-application
+
+type: application
+
+version: 1.1.1
+
+appVersion: "22.0.3"
