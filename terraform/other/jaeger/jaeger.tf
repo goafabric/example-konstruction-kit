@@ -6,6 +6,11 @@ resource "helm_release" "jaeger" {
   namespace  = "monitoring"
   create_namespace = true
 
+  values = [
+    "${file("values.yaml")}"
+  ]
+
+
   set {
     name  = "allInOne.enabled"
     value = "true"
@@ -31,6 +36,7 @@ resource "helm_release" "jaeger" {
     value = "false"
   }
 
+
 }
 
 resource "kubernetes_manifest" "jaeger-ingress" {
@@ -43,7 +49,7 @@ resource "kubernetes_manifest" "jaeger-ingress" {
     namespace: monitoring
     annotations:
       cert-manager.io/cluster-issuer: my-cluster-issuer
-      nginx.ingress.kubernetes.io/rewrite-target: /
+      nginx.ingress.kubernetes.io/rewrite-target: /jaeger/$1
   spec:
     ingressClassName: nginx
     tls:
@@ -54,8 +60,8 @@ resource "kubernetes_manifest" "jaeger-ingress" {
       - host: ${var.hostname}
         http:
           paths:
-            - path: /
-              pathType: Prefix
+            - path: /jaeger/?(.*)
+              pathType: ImplementationSpecific
               backend:
                 service:
                   name: jaeger-query
