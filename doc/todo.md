@@ -1,7 +1,6 @@
 # todos
 
 ## terraform
-- No dashboard in Prod via Conditional Deploy
 - workspaces + hostname variable
 
 ## terraform cont.
