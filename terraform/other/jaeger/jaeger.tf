@@ -43,7 +43,7 @@ resource "kubernetes_manifest" "jaeger-ingress" {
     namespace: monitoring
     annotations:
       cert-manager.io/cluster-issuer: my-cluster-issuer
-      nginx.ingress.kubernetes.io/rewrite-target: /jaeger/$1
+      nginx.ingress.kubernetes.io/rewrite-target: /
   spec:
     ingressClassName: nginx
     tls:
@@ -54,8 +54,8 @@ resource "kubernetes_manifest" "jaeger-ingress" {
       - host: ${var.hostname}
         http:
           paths:
-            - path: /jaeger/?(.*)
-              pathType: ImplementationSpecific
+            - path: /
+              pathType: Prefix
               backend:
                 service:
                   name: jaeger-query
