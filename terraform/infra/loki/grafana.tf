@@ -28,7 +28,7 @@ resource "helm_release" "loki" {
 
   set {
     name  = "grafana.enabled"
-    value = "true"
+    value = "false"
   }
   # no prometheus is of course invalid for production
   set {
