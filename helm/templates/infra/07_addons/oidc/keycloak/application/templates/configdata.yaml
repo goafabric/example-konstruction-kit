@@ -4809,8 +4809,8 @@ data:
     }
 kind: ConfigMap
 metadata:
-  creationTimestamp: "2023-11-30T07:53:36Z"
+  creationTimestamp: "2023-11-30T07:55:06Z"
   name: keycloak-service-application-data-files
   namespace: oidc
-  resourceVersion: "439133"
-  uid: ab2d3117-24b0-454a-92d3-7fc108acec04
+  resourceVersion: "439440"
+  uid: 24a9bdd5-8018-47ca-a84f-9bf64fb70542
