@@ -2,6 +2,7 @@
 
 ## terraform
 - workspaces + hostname variable
+- secrets
 
 ## terraform cont.
 - standard helm charts for minio, postgres, keycloak 
