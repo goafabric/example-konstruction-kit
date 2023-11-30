@@ -48,7 +48,9 @@ spec:
             - secretRef:
                 name: {{ include "application.fullname" . }}-secret
 
-          args: ["start --import-realm"]
+          args:
+            - start
+            - --import-realm
 
           readinessProbe:
             httpGet:
