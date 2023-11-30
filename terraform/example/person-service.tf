@@ -9,7 +9,7 @@ resource "helm_release" "person-service-postgres" {
 
   set {
     name  = "db.password"
-    value = "supersecret"
+    value = random_password.db_password.result
   }
 }
 
@@ -32,6 +32,6 @@ resource "helm_release" "person-service-application" {
   }
   set {
     name  = "db.password"
-    value = "supersecret"
+    value = random_password.db_password.result
   }
 }
