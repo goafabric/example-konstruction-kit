@@ -17,4 +17,4 @@ data:
 
   #database
   KC_DB: "postgres"
-  KC_DB_URL: "jdbc:postgresql://keycloak-service-postgres/keycloak"
+  KC_DB_URL: "jdbc:postgresql://keycloak-postgres/keycloak"

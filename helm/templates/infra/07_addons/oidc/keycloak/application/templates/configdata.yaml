@@ -4810,7 +4810,7 @@ data:
 kind: ConfigMap
 metadata:
   creationTimestamp: "2023-11-30T07:55:06Z"
-  name: keycloak-service-application-data-files
+  name: keycloak-application-data-files
   namespace: oidc
   resourceVersion: "439440"
   uid: 24a9bdd5-8018-47ca-a84f-9bf64fb70542

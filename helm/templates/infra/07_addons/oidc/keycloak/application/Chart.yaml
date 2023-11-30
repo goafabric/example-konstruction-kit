@@ -1,6 +1,6 @@
 apiVersion: v2
-name: keycloak-service-application
-description: keycloak-service-application
+name: keycloak-application
+description: keycloak-application
 
 type: application
 

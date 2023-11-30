@@ -1,6 +1,6 @@
-resource "helm_release" "keycloak-service-application" {
+resource "helm_release" "keycloak-application" {
   repository = var.infra_repository
-  name       = "keycloak-service-application"
+  name       = "keycloak-application"
   chart      = "${var.infra_repository}/07_addons/oidc/keycloak/application"
   version    = "1.1.1"
   namespace  = "oidc"
@@ -13,9 +13,9 @@ resource "helm_release" "keycloak-service-application" {
   }
 }
 
-resource "helm_release" "keycloak-service-postgres" {
+resource "helm_release" "keycloak-postgres" {
   repository = var.infra_repository
-  name       = "keycloak-service-postgres"
+  name       = "keycloak-postgres"
   chart      = "${var.infra_repository}/07_addons/oidc/keycloak/postgres"
   version    = "1.1.1"
   namespace  = "oidc"
@@ -29,7 +29,7 @@ resource "helm_release" "keycloak-service-postgres" {
 }
 
 resource "terraform_data" "keycloak_users" {
-  depends_on = [helm_release.keycloak-service-application]
+  depends_on = [helm_release.keycloak-application]
   provisioner "local-exec" {
     when    = create
     command = "./scripts/create-users https://${var.hostname}"

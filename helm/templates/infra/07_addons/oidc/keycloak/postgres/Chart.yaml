@@ -1,6 +1,6 @@
 apiVersion: v2
-name: keycloak-service-postgres
-description: keycloak-service-postgres
+name: keycloak-postgres
+description: keycloak-postgres
 
 type: application
 
