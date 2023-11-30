@@ -4,10 +4,9 @@
 - workspaces + hostname variable
 
 ## terraform cont.
-- standard helm charts for minio, postgres
-- preconfigured keycloak with users, realm, standard helm chart
-- apisix deployment including gateway definitions, switchable between ingress and apisix
+- standard helm charts for minio, postgres, keycloak 
 - grafana oss with loki + tempo
+- apisix deployment including gateway definitions, switchable between ingress and apisix
 
 ## security
 - terraform generated secrets injected in to helm charts, eventually vault (alternative: https://itnext.io/manage-auto-generated-secrets-in-your-helm-charts-5aee48ba6918)
