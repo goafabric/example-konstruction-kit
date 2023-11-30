@@ -27,7 +27,7 @@ resource "helm_release" "core-application" {
   }
   set {
     name  = "security.authentication.enabled"
-    value = "false"
+    value = "true"
   }
 }
 
