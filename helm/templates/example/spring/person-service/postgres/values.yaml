@@ -30,4 +30,4 @@ persistence:
   storageClassName:
 
 db:
-  password:
+  password: mother

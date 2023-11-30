@@ -6,6 +6,11 @@ resource "helm_release" "person-service-postgres" {
   namespace  = "example"
   create_namespace = true
   timeout = var.helm_timeout
+
+  set {
+    name  = "db.password"
+    value = "supersecret"
+  }
 }
 
 resource "helm_release" "person-service-application" {
@@ -24,5 +29,9 @@ resource "helm_release" "person-service-application" {
   set {
     name  = "image.arch"
     value = "-native${var.server_arch}"
+  }
+  set {
+    name  = "db.password"
+    value = "supersecret"
   }
 }
