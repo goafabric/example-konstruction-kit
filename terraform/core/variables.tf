@@ -13,3 +13,8 @@ variable "server_arch" {
 variable "helm_repository" {
   default = "../../helm/templates/core" #"https://goafabric.github.io/example-konstruction-kit/helm/charts/example/spring"
 }
+
+variable "authentication_enabled" {
+  default = "false"
+
+}
