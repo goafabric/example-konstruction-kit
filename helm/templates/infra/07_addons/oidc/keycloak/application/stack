@@ -7,6 +7,9 @@ SERVER_ARCH=`kubectl version --output=json | grep "linux/arm64" > /dev/null && e
 [[ `kubectl get configmaps authentication-config --ignore-not-found -o jsonpath='{.data.authentication}' -n default` = "oidc" ]] && INGRESS_AUTHENTICATION="--set ingress.authentication=oidc"
 
 function up() {
+    kubectl create configmap keycloak-service-application-data-files --namespace oidc --from-file=../realm-config/ -o yaml > ./templates/configdata.yaml \
+    && kubectl delete configmap keycloak-service-application-data-files --namespace oidc
+
     helm install --create-namespace \
     --set image.arch=$IMAGE_ARCH $INGRESS_AUTHENTICATION \
     --set ingress.hosts=`kubectl get configmaps cluster-config -o jsonpath='{.data.hostname}' -n default` \
