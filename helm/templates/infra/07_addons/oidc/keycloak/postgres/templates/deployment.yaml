@@ -1,63 +1,87 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ${_Values_app_name}
+  name: {{ include "application.fullname" . }}
+  labels:
+    {{- include "application.labels" . | nindent 4 }}
 spec:
+  replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: ${_Values_app_name}
-      version: v1
-  replicas: 1
-  strategy:
-    type: Recreate #RollingUpdate
+      {{- include "application.selectorLabels" . | nindent 6 }}
   template:
     metadata:
+      {{- with .Values.podAnnotations }}
       annotations:
-        linkerd.io/inject: enabled
-        sidecar.istio.io/inject: "false"
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
       labels:
-        app: ${_Values_app_name}
-        version: v1
+        {{- include "application.selectorLabels" . | nindent 8 }}
     spec:
+      {{- with .Values.initContainers }}
+      initContainers:
+        {{- toYaml . | nindent 8 }}
+        {{- end }}
+
+      {{ if .Values.image.pullSecrets }}
+      imagePullSecrets:
+        - name: {{ .Values.image.pullSecrets }}
+      {{- end }}
       containers:
-        - name: ${_Values_app_name}
-          image: "postgres:16.0"
-          imagePullPolicy: IfNotPresent #Always
+        - name: {{ .Chart.Name }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
-            - name: transport
-              containerPort: ${_Values_service_port}
+            - name: tcp
+              containerPort: {{ .Values.service.port }}
               protocol: TCP
+
           envFrom:
             - configMapRef:
-                name: ${_Values_app_name}-config
+                name: {{ include "application.fullname" . }}-config
             - secretRef:
-                name: ${_Values_app_name}-config-external
+                name: {{ include "application.fullname" . }}-secret
 
           args: ["postgres",
                  "-c", "shared_preload_libraries=pg_stat_statements",
-                 "-c", "shared_buffers=${_Values_resources_requests_memory}B",
-                 "-c", "max_connections=${_Values_postgres_max_connections}"]
+                 "-c", "shared_buffers={{ .Values.resources.requests.memory }}B",
+                 "-c", "max_connections={{ .Values.postgres.maxConnections }}"]
           resources:
             requests:
-              memory: "${_Values_resources_requests_memory}"
-              cpu: "${_Values_resources_requests_cpu}"
+              memory: "{{ .Values.resources.requests.memory }}"
+              cpu: "{{ .Values.resources.requests.cpu }}"
             limits:
-              cpu: "${_Values_resources_limits_cpu}"
+              cpu: "{{ .Values.resources.limits.cpu }}"
+
+          readinessProbe:
+            exec:
+              command: ['sh', '-c', 'pg_isready']
+            initialDelaySeconds: {{ .Values.readinessProbe.initialDelaySeconds }}
+            periodSeconds: 2
+            timeoutSeconds: 2
+            failureThreshold: 3
+
+          livenessProbe:
+            exec:
+              command: ['sh', '-c', 'pg_isready']
+            initialDelaySeconds: {{ .Values.readinessProbe.initialDelaySeconds }}
+            periodSeconds: 2
+            timeoutSeconds: 2
+            failureThreshold: 3
 
           volumeMounts:
             - mountPath: /var/lib/postgresql/data
-              name: ${_Values_app_name}-pvc-volume
+              subPath: pgdata
+              name: {{ include "application.fullname" . }}-volume
 
             - mountPath: /docker-entrypoint-initdb.d/
-              name: ${_Values_app_name}-initdb-volume
+              name: {{ include "application.fullname" . }}-initdb-volume
 
       volumes:
-        - name: ${_Values_app_name}-pvc-volume
+        - name: {{ include "application.fullname" . }}-volume
           persistentVolumeClaim:
-            claimName: ${_Values_app_name}-pvc
+            claimName: {{ include "application.fullname" . }}-pvc
 
-        - name: ${_Values_app_name}-initdb-volume
+        - name: {{ include "application.fullname" . }}-initdb-volume
           configMap:
-            name: ${_Values_app_name}-data-files
-
-
+            name: {{ include "application.fullname" . }}-config-files
