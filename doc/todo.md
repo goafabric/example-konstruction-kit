@@ -18,3 +18,4 @@
 
 ## application           
 - JWT HTTP Interceptor Config (Token, Tenant, Vaadin)
+- sonarlint: https://www.linkedin.com/pulse/static-code-analysis-sonarlint-github-actions-lucas-persson?utm_source=share&utm_medium=member_ios&utm_campaign=share_via                                              
