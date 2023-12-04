@@ -8,6 +8,9 @@ resource "terraform_data" "kind" {
     when = destroy
     command = "kind delete cluster"
   }
+
 }
+
+# curl https://kubernetes:32443/welcome/
 
 
