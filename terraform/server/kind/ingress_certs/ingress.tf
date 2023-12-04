@@ -8,7 +8,7 @@ resource "helm_release" "nginx-ingress" {
 
   set {
     name  = "controller.service.type"
-    value = "NodePort"
+    value = var.ingress_service_type
   }
 
   set {
