@@ -3,6 +3,10 @@
 ## terraform
 - workspaces + hostname variable
 - secrets
+                    
+## kind
+- loadbalancer access
+- ambient mesh
 
 ## terraform cont.
 - standard helm charts for minio, postgres, keycloak 
