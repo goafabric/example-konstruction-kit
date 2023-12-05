@@ -7,7 +7,7 @@ ingress:
   authentication: none
 
 image:
-  repository: "goafabric/callee-service"
+  repository: "goafabric/callee-service" # image name
   pullPolicy: IfNotPresent
   pullSecrets: 
 

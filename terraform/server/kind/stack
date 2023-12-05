@@ -1,0 +1,18 @@
+#!/bin/bash
+source .values
+COMMAND=$1
+
+function up() {
+    terraform apply -auto-approve
+    (cd ingress_certs; terraform apply -auto-approve)
+}
+
+function down() {
+    (cd ingress_certs; terraform destroy -auto-approve)
+    terraform destroy -auto-approve
+}
+
+if   [ "${COMMAND}" = "init" ]; then up;
+elif [ "${COMMAND}" = "prune" ]; then down;
+
+else echo Doing nothing !; fi
