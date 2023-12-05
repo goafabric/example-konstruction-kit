@@ -3,19 +3,22 @@ source .values
 COMMAND=$1
 WORKSPACE="kind"
 
-function terra() {
-  terraform workspace or-create $WORKSPACE
-  terraform $1 -auto-approve
+function apply() {
+  (cd $1; terraform workspace select -or-create $WORKSPACE && terraform apply -auto-approve)
+}
+
+function destroy() {
+  (cd $1; terraform workspace select -or-create $WORKSPACE && terraform destroy -auto-approve)
 }
 
 function up() {
-    terra apply
-    (cd ingress_certs; terra apply)
+    apply ./
+    apply ../../infra/ingress_certs
 }
 
 function down() {
-    (cd ingress_certs; terra destroy)
-    terra destroy
+    destroy ../../infra/ingress_certs
+    destroy ./
 }
 
 if   [ "${COMMAND}" = "init" ]; then up;
