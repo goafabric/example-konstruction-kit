@@ -3,15 +3,13 @@
 ## terraform
 - workspaces + hostname variable
 - secrets
-                    
-## kind
-- loadbalancer access
-- ambient mesh
 
 ## terraform cont.
 - standard helm charts for minio, postgres, keycloak 
 - grafana oss with loki + tempo
 - apisix deployment including gateway definitions, switchable between ingress and apisix
+
+- ambient mesh
 
 ## security
 - terraform generated secrets injected in to helm charts, eventually vault (alternative: https://itnext.io/manage-auto-generated-secrets-in-your-helm-charts-5aee48ba6918)
