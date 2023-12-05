@@ -1,4 +1,3 @@
 #!/bin/bash
+export TF_VAR_hostname="kind"
 export TF_VAR_ingress_service_type="NodePort"
-
-# echo needs to be called with source .values

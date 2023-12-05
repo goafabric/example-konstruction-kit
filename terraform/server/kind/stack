@@ -1,7 +1,6 @@
 #!/bin/bash
 source .values
 COMMAND=$1
-export TF_VAR_hostname="kind"
 WORKSPACE=$TF_VAR_hostname
 
 function apply() {
@@ -15,9 +14,11 @@ function destroy() {
 function up() {
     apply ./
     apply ../../infra/ingress_certs
+    apply ../../infra/dev/monitoring
 }
 
 function down() {
+    destroy ../../infra/dev/monitoring
     destroy ../../infra/ingress_certs
     destroy ./
 }

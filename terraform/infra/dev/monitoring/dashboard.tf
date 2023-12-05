@@ -1,5 +1,5 @@
 resource "helm_release" "kubernetes_dashboard" {
-  count = var.hostname == "kubernetes" ? 1 : 0 #only install for dev stages
+#  count = var.hostname == "kubernetes" ? 1 : 0 #only install for dev stages
 
   name       = "kubernetes-dashboard"
   repository = "https://kubernetes.github.io/dashboard"
@@ -28,7 +28,7 @@ resource "helm_release" "kubernetes_dashboard" {
 }
 
 resource "kubernetes_manifest" "dashboard-role" {
-  count = var.hostname == "kubernetes" ? 1 : 0
+#  count = var.hostname == "kubernetes" ? 1 : 0
 
   manifest   = yamldecode(
     <<-EOF
@@ -49,7 +49,7 @@ resource "kubernetes_manifest" "dashboard-role" {
 }
 
 resource "kubernetes_manifest" "dashboard-ingress" {
-  count = var.hostname == "kubernetes" ? 1 : 0
+#  count = var.hostname == "kubernetes" ? 1 : 0
 
   manifest   = yamldecode(
   <<-EOF
