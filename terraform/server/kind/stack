@@ -1,7 +1,8 @@
 #!/bin/bash
 source .values
 COMMAND=$1
-WORKSPACE="kind"
+export TF_VAR_hostname="kind"
+WORKSPACE=$TF_VAR_hostname
 
 function apply() {
   (cd $1; terraform workspace select -or-create $WORKSPACE && terraform apply -auto-approve)
