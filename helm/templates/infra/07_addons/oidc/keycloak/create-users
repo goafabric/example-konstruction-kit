@@ -10,7 +10,7 @@ function create-user {
     echo retrieving access token ..
 
     export access_token=$(\
-    curl -k -v -s -X POST https://kubernetes/oidc/realms/master/protocol/openid-connect/token \
+    curl -k -v -s -X "$baseurl/oidc/realms/master/protocol/openid-connect/token" \
     -d "client_id=admin-cli" \
     -d "username=admin" \
     -d "password=admin" \
@@ -53,7 +53,7 @@ function create-user {
     -d '{"emailVerified":true}'
 }
 
-baseurl=$1 #https://`kubectl get configmaps cluster-config -o jsonpath='{.data.hostname}' -n default`
+baseurl=https://`kubectl get configmaps cluster-config -o jsonpath='{.data.hostname}' -n default`
 
 create-user $baseurl tenant-0 user1 User1user1
 create-user $baseurl tenant-0 user2 User2user2
