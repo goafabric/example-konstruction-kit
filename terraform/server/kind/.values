@@ -1,3 +1,2 @@
-#!/bin/bash
-export TF_VAR_hostname="kind"
-export TF_VAR_ingress_service_type="NodePort"
+TF_VAR_hostname="kind"
+TF_VAR_ingress_service_type="NodePort"
