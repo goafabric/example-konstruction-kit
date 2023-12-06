@@ -30,8 +30,7 @@ resource "helm_release" "kubernetes_dashboard" {
 resource "kubernetes_manifest" "dashboard-role" {
 #  count = var.hostname == "kubernetes" ? 1 : 0
 
-  manifest   = yamldecode(
-    <<-EOF
+  manifest   = yamldecode(<<-EOF
     apiVersion: rbac.authorization.k8s.io/v1
     kind: ClusterRoleBinding
     metadata:
@@ -51,8 +50,7 @@ resource "kubernetes_manifest" "dashboard-role" {
 resource "kubernetes_manifest" "dashboard-ingress" {
 #  count = var.hostname == "kubernetes" ? 1 : 0
 
-  manifest   = yamldecode(
-  <<-EOF
+  manifest   = yamldecode(<<-EOF
   kind: Ingress
   apiVersion: networking.k8s.io/v1
   metadata:
