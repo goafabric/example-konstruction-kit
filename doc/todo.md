@@ -1,8 +1,9 @@
 # todos
 
 ## terraform
-- secrets
+- secrets via terraform
 - ambient mesh
+- Localstack
 
 ## terraform cont.
 - standard helm charts for minio, postgres, keycloak 
@@ -10,7 +11,7 @@
 - apisix deployment including gateway definitions, switchable between ingress and apisix
 
 ## security
-- terraform generated secrets injected in to helm charts, eventually vault (alternative: https://itnext.io/manage-auto-generated-secrets-in-your-helm-charts-5aee48ba6918)
+- secrets via fault
 - volume encryption
 - RBAC
 - 10 best practices: https://www.youtube.com/watch?app=desktop&v=oBf5lrmquYI&pp=ygUSI211dGlyYW9rdWJlcm5ldGVz
