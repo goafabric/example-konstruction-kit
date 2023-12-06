@@ -1,7 +1,13 @@
+provider "helm" {
+  kubernetes {
+    config_path = "~/.kube/config"
+  }
+}
+
 resource "helm_release" "welcome-board" {
-  repository = var.infra_repository
+  repository = "./chart"
   name       = "welcome-board"
-  chart      = "${var.infra_repository}/10_welcome"
+  chart      = "./chart"
   version    = "1.1.1"
   namespace  = "default"
   create_namespace = true
