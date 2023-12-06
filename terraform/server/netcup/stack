@@ -13,19 +13,21 @@ function destroy() {
 
 function up() {
     time(
-    apply ./
     apply ../../infra/ingress_certs
     apply ../../infra/dev/welcome
-    #apply ../../infra/dev/monitoring
+    apply ../../infra/dev/monitoring
+    apply ../../infra/dev/oidc
+    apply ../../core
     )
 }
 
 function down() {
     time(
-    #destroy ../../infra/dev/monitoring
+    destroy ../../core
+    destroy ../../infra/dev/oidc
+    destroy ../../infra/dev/monitoring
     destroy ../../infra/dev/welcome
     destroy ../../infra/ingress_certs
-    destroy ./
     )
 }
 

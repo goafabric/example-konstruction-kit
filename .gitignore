@@ -9,3 +9,4 @@
 
 .terraform*
 terraform.tfstate*
+kind-config

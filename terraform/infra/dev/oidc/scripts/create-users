@@ -10,7 +10,7 @@ function create-user {
     echo retrieving access token ..
 
     export access_token=$(\
-    curl -k -v -s -X POST https://kubernetes/oidc/realms/master/protocol/openid-connect/token \
+    curl -k -v -s -X POST "$baseurl/oidc/realms/master/protocol/openid-connect/token" \
     -d "client_id=admin-cli" \
     -d "username=admin" \
     -d "password=admin" \

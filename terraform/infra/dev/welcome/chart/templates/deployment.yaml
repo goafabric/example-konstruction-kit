@@ -15,10 +15,6 @@ spec:
       annotations:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-        prometheus.io/scrape: "true"
-        prometheus.io/port: "{{ .Values.service.port }}"
-        prometheus.io/scheme: "http"
-        prometheus.io/path: "/actuator/prometheus"
       labels:
         {{- include "application.selectorLabels" . | nindent 8 }}
     spec:
@@ -26,14 +22,13 @@ spec:
       initContainers:
         {{- toYaml . | nindent 8 }}
         {{- end }}
-
       {{ if .Values.image.pullSecrets }}
       imagePullSecrets:
         - name: {{ .Values.image.pullSecrets }}
       {{- end }}
       containers:
         - name: {{ .Chart.Name }}
-          image: "{{ .Values.image.repository }}{{ .Values.image.arch }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          image: "nginx:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - name: http
@@ -48,40 +43,27 @@ spec:
             - secretRef:
                 name: {{ include "application.fullname" . }}-secret
 
-          args:
-            - start
-            - --import-realm
+          #resources and commands and args
+          {{- with .Values.resourcesAnnotations }}
+            {{- toYaml . | nindent 10 }}
+            {{- end }}
 
-          readinessProbe:
-            httpGet:
-              path: /oidc/realms/master
-              port: 8080
-              scheme: {{ .Values.readinessProbe.scheme | default "HTTP" }}
-            initialDelaySeconds: {{ .Values.readinessProbe.initialDelaySeconds }}
-            periodSeconds: 15
-            timeoutSeconds: 15
-            failureThreshold: 3
-          livenessProbe:
-            httpGet:
-              path: /oidc/realms/master
-              port: 8080
-              scheme: {{ .Values.readinessProbe.scheme | default "HTTP" }}
-            initialDelaySeconds: {{ .Values.readinessProbe.initialDelaySeconds }}
-            periodSeconds: 15
-            timeoutSeconds: 15
-            failureThreshold: 3
-
+ 
           volumeMounts:
-            - mountPath: /usr/share/logs
+            - mountPath: /var/log/nginx/logs/
               name: {{ include "application.fullname" . }}-applogs
-            - mountPath: /opt/keycloak/data/import
+            - mountPath: /etc/nginx/nginx.conf
+              subPath: nginx.conf
+              name: {{ include "application.fullname" . }}-config-files-volume
+            - mountPath: /www/data
               name: {{ include "application.fullname" . }}-data-files-volume
 
       volumes:
         - name: {{ include "application.fullname" . }}-applogs
           emptyDir: {}
+        - name: {{ include "application.fullname" . }}-config-files-volume
+          configMap:
+            name: {{ include "application.fullname" . }}-config-files
         - name: {{ include "application.fullname" . }}-data-files-volume
           configMap:
             name: {{ include "application.fullname" . }}-data-files
-     
-

@@ -22,6 +22,7 @@ resource "helm_release" "cert-manager" {
   }
 }
 
+# we cannot use simple kubernetes manifest here, because the depends_on is not working and install fails with missing crds
 resource "helm_release" "cert-manager-issuer" {
   depends_on = [helm_release.cert-manager]
   repository       = "./cert-manager-issuer"

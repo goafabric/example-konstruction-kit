@@ -1,7 +1,6 @@
 # todos
 
 ## terraform
-- workspaces + hostname variable
 - secrets
 
 ## terraform cont.
