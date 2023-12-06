@@ -1,2 +1,1 @@
 TF_VAR_hostname="kind"
-TF_VAR_ingress_service_type="NodePort"
