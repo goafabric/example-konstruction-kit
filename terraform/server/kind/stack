@@ -12,15 +12,19 @@ function destroy() {
 }
 
 function up() {
+    time(
     apply ./
     apply ../../infra/ingress_certs
     apply ../../infra/dev/monitoring
+    )
 }
 
 function down() {
+    time(
     destroy ../../infra/dev/monitoring
     destroy ../../infra/ingress_certs
     destroy ./
+    )
 }
 
 if   [ "${COMMAND}" = "init" ]; then up;
