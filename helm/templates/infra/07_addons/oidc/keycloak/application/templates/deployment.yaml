@@ -58,8 +58,8 @@ spec:
               port: 8080
               scheme: {{ .Values.readinessProbe.scheme | default "HTTP" }}
             initialDelaySeconds: {{ .Values.readinessProbe.initialDelaySeconds }}
-            periodSeconds: 10
-            timeoutSeconds: 10
+            periodSeconds: 15
+            timeoutSeconds: 15
             failureThreshold: 3
           livenessProbe:
             httpGet:
@@ -67,8 +67,8 @@ spec:
               port: 8080
               scheme: {{ .Values.readinessProbe.scheme | default "HTTP" }}
             initialDelaySeconds: {{ .Values.readinessProbe.initialDelaySeconds }}
-            periodSeconds: 10
-            timeoutSeconds: 10
+            periodSeconds: 15
+            timeoutSeconds: 15
             failureThreshold: 3
 
           volumeMounts:

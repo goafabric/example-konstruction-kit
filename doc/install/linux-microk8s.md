@@ -3,7 +3,7 @@ user=admin
 dns=
 
 # Microk8s Install
-sudo snap install microk8s --classic --channel=1.27/stable
+sudo snap install microk8s --classic --channel=1.28/stable
 
 # Microk8s Config
 # mkdir ~/.kube && sudo microk8s config > ~/.kube/config && chmod 600 ~/.kube/config && sudo usermod -a -G microk8s $user && sudo chown -f -R $user ~/.kube
@@ -12,7 +12,7 @@ sudo snap install microk8s --classic --channel=1.27/stable
 see other file + microk8s stop && microk8s start
 
 # Microk8s Addons
-sudo microk8s enable metal-lb storage dns$dns
+sudo microk8s enable metallb storage dns$dns
 ip range needs to be set to you server ip from dns, e.g: 45.129.180.184-45.129.180.184
 
 # Kubectl + Helm
@@ -22,5 +22,4 @@ curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scrip
 
                                                                                                                                             
 # uninstall
-sudo microk8s reset
-sudo snap remove microk8s
+sudo snap remove microk8s --purge

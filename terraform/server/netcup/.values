@@ -1,2 +1,3 @@
-TF_VAR_hostname="v2202307203466234098.megasrv.de"
-TF_VAR_authentication_enabled="true"
+#!/bin/bash
+export TF_VAR_hostname="v2202307203466234098.megasrv.de"
+export TF_VAR_authentication_enabled="true"
