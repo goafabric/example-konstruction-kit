@@ -1,0 +1,35 @@
+#!/bin/bash
+source .values
+COMMAND=$1
+WORKSPACE=$TF_VAR_hostname
+
+function apply() {
+  (cd $1; terraform workspace select -or-create $WORKSPACE && terraform apply -auto-approve)
+}
+
+function destroy() {
+  (cd $1; terraform workspace select -or-create $WORKSPACE && terraform destroy -auto-approve)
+}
+
+function up() {
+    time(
+    apply ../../infra/ingress_certs
+    apply ../../infra/dev/monitoring
+    apply ../../infra/dev/oidc
+    apply ../../core
+    )
+}
+
+function down() {
+    time(
+    destroy ../../core
+    destroy ../../infra/dev/oidc
+    destroy ../../infra/dev/monitoring
+    destroy ../../infra/ingress_certs
+    )
+}
+
+if   [ "${COMMAND}" = "init" ]; then up;
+elif [ "${COMMAND}" = "prune" ]; then down;
+
+else echo Doing nothing !; fi
