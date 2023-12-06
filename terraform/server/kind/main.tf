@@ -39,3 +39,11 @@ resource "kind_cluster" "kind" {
 #    }
   }
 }
+
+resource "terraform_data" "docker_restart" {
+  depends_on = [kind_cluster.kind]
+  provisioner "local-exec" {
+    when    = create
+    command = "docker update --restart=no kind-control-plane"
+  }
+}
