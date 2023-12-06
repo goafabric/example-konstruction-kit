@@ -16,7 +16,7 @@ function up() {
     apply ./
     apply ../../infra/ingress_certs
     apply ../../infra/dev/welcome
-    #apply ../../infra/dev/monitoring
+    apply ../../infra/dev/monitoring
     )
 }
 
