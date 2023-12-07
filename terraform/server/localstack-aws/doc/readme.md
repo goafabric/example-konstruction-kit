@@ -1,6 +1,7 @@
 # docs
 https://docs.localstack.cloud/user-guide/integrations/aws-cli/
 https://docs.localstack.cloud/user-guide/aws/feature-coverage/
+https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources
 
 # installation
 pip install awscli && pip install awscli-local
