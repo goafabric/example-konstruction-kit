@@ -46,7 +46,7 @@ entries:
     version: 1.1.1
   core-postgres:
   - apiVersion: v2
-    appVersion: "16.0"
+    appVersion: "16.1"
     created: "2023-11-11T11:58:07.843023+01:00"
     description: core-postgres
     digest: fb4f193e687717e4e346c2d2767df9df251de208bb6687cfb5c28f338100c0ba
@@ -79,7 +79,7 @@ entries:
     version: 1.1.1
   person-service-postgres:
   - apiVersion: v2
-    appVersion: "16.0"
+    appVersion: "16.1"
     created: "2023-11-11T11:58:07.844184+01:00"
     description: person-service-postgres
     digest: 7cf6d1b8822070785201fe81fac3567f4a3663dd1827f521ea6d250d3f1e5337

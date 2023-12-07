@@ -40,5 +40,5 @@ service:
 
 initContainers:
   - name: check-db-ready
-    image: postgres:16.0
+    image: postgres:16.1
     command: ['sh', '-c','until pg_isready -h core-postgres -p 5432;do echo waiting for database; sleep 1; done;']

@@ -45,7 +45,7 @@ services:
 
   postgres:
     container_name: ${_Values_root_name}-postgres
-    image: postgres:16.0
+    image: postgres:16.1
     restart: 'no'
     ports:
       - 5432

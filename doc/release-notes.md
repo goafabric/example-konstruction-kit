@@ -4,6 +4,7 @@
 
 - openapi endpoints blocked due to security reasons
 - conditional deploy for dashboard only for dev stages
+- postgres upgrade to 16.1
 
 # 1.1.0
 - cert-manager added
@@ -16,7 +17,7 @@
 # 1.0.7
 - upgrade to kubed 0.13.2
 - upgrade to istio 1.16.2 + kiali 1.63.0
-- upgrade of postgres to 16.0
+- upgrade of postgres to 16.1
 - upgrade of keycloak to 20.0.2
 - verify linkerd 2.12.4
 
@@ -33,7 +34,7 @@
 - helm charts repository via github pages
 
 # 1.0.5
-- upgrade to istio 1.16.0 + kiali 1.59.0
+- upgrade to istio 1.16.1 + kiali 1.59.0
 - upgrade to Jaeger 1.39.0
 - upgrade to kubernetes-dashboard 2.7.0
 - upgrade to postgres 14.5
