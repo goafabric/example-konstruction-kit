@@ -6,6 +6,7 @@ https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources
 # installation
 pip install awscli && pip install awscli-local
 docker run --rm --name localstack -p 4566:4566 -p 4510-4559:4510-4559 localstack/localstack:3.0.2
+/etc/hosts might need "127.0.0.1 localhost.localstack.cloud"
 
 # s3 bucket
 awslocal s3api create-bucket --bucket sample-bucket
