@@ -12,7 +12,7 @@ docker run --rm --name localstack -p 4566:4566 -p 4510-4559:4510-4559 localstack
 export AWS_DEFAULT_REGION="eu-central-1"
 
 # s3 bucket
-awslocal s3api create-bucket --bucket sample-bucket --create-bucket-configuration LocationConstraint=$AWS_DEFAULT_REGION
+awslocal s3api create-bucket --bucket sample-bucket2 --create-bucket-configuration LocationConstraint=$AWS_DEFAULT_REGION
 awslocal s3api list-buckets
 
 # sqs
