@@ -8,8 +8,11 @@ pip install awscli && pip install awscli-local
 docker run --rm --name localstack -p 4566:4566 -p 4510-4559:4510-4559 localstack/localstack:3.0.2
 /etc/hosts might need "127.0.0.1 localhost.localstack.cloud"
 
+# export
+export AWS_DEFAULT_REGION="eu-central-1"
+
 # s3 bucket
-awslocal s3api create-bucket --bucket sample-bucket
+awslocal s3api create-bucket --bucket sample-bucket --create-bucket-configuration LocationConstraint=$AWS_DEFAULT_REGION
 awslocal s3api list-buckets
 
 # sqs
@@ -18,7 +21,7 @@ awslocal sqs list-queues
                                   
 # elasticsearch 
 awslocal es create-elasticsearch-domain --domain-name goafabric
-curl http://goafabric.us-east-1.es.localhost.localstack.cloud:4566
+curl http://goafabric.eu-central-1.es.localhost.localstack.cloud:4566
 
 # identity and access management
 awslocal iam create-user --user-name test
