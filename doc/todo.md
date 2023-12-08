@@ -3,7 +3,6 @@
 ## terraform
 - secrets via terraform
 - ambient mesh
-- Localstack
 
 ## terraform cont.
 - standard helm charts for minio, postgres, keycloak 
