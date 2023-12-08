@@ -1,0 +1,48 @@
+#!/bin/bash
+#source .values
+COMMAND=$1
+WORKSPACE=$TF_VAR_hostname
+
+
+function up() {
+    zip function.zip index.js
+
+    awslocal lambda create-function \
+    --function-name localstack-lambda-url-example \
+    --runtime nodejs18.x \
+    --zip-file fileb://function.zip \
+    --handler index.handler \
+    --role arn:aws:iam::000000000000:role/lambda-role
+
+    awslocal lambda wait function-active-v2 --function-name localstack-lambda-url-example
+
+    awslocal lambda invoke --function-name localstack-lambda-url-example \
+    --payload '{"body": "{\"num1\": \"10\", \"num2\": \"10\"}" }' output.txt | cat output.txt
+
+    rm function.zip && rm output.txt
+
+    awslocal lambda create-function-url-config \
+        --function-name localstack-lambda-url-example \
+        --auth-type NONE
+
+    exit
+
+    curl -X POST \
+        'http://82btgeje4n8mcbg42ga1ug25jljnivm2.lambda-url.eu-central-1.localhost.localstack.cloud:4566/"' \
+        -H 'Content-Type: application/json' \
+        -d '{"num1": "10", "num2": "10"}'
+
+    #awslocal lambda list-functions
+}
+
+function down() {
+  echo down
+}
+
+if   [ "${COMMAND}" = "init" ]; then up;
+elif [ "${COMMAND}" = "prune" ]; then down;
+
+else echo Doing nothing !; fi
+
+# https://www.danvega.dev/blog/2023/06/30/aws-lambda-spring-boot-3
+# https://copyprogramming.com/howto/localstack-with-terraform-and-docker-for-running-aws-locally
