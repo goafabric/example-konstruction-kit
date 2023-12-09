@@ -46,14 +46,3 @@ resource "kubernetes_labels" "example_ambient" {
   }
 }
 
-resource "kubernetes_labels" "ingress_ambient" {
-  count = var.profile == "ambient" ? 1 : 0
-  api_version = "v1"
-  kind        = "Namespace"
-  metadata {
-    name = "ingress-nginx"
-  }
-  labels = {
-    "istio.io/dataplane-mode" = "ambient"
-  }
-}
