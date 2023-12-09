@@ -66,12 +66,12 @@ resource "kubernetes_manifest" "kiali-ingress" {
 resource "terraform_data" "prometheus" {
   provisioner "local-exec" {
     when = create
-    command = "kubectl apply -f ./templates"
+    command = "kubectl apply -f ./templates/prometheus.yaml"
   }
 
   provisioner "local-exec" {
     when = destroy
-    command = "kubectl delete --ignore-not-found -f ./templates"
+    command = "kubectl delete --ignore-not-found -f ./templates/prometheus.yaml"
   }
 }
 

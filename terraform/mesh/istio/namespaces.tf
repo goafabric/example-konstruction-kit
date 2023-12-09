@@ -1,3 +1,9 @@
+resource "kubernetes_namespace" "istio" {
+  metadata {
+    name = "istio-system"
+  }
+}
+
 resource "kubernetes_namespace" "core_minimal" {
   count = var.profile == "minimal" ? 1 : 0
   metadata {
