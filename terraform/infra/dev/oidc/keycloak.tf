@@ -1,7 +1,7 @@
 resource "helm_release" "keycloak-application" {
   repository = var.infra_repository
   name       = "keycloak-application"
-  chart      = "${var.infra_repository}/07_addons/oidc/keycloak/application"
+  chart      = "${var.infra_repository}/keycloak/application"
   version    = "1.1.1"
   namespace  = "oidc"
   create_namespace = true
@@ -16,7 +16,7 @@ resource "helm_release" "keycloak-application" {
 resource "helm_release" "keycloak-postgres" {
   repository = var.infra_repository
   name       = "keycloak-postgres"
-  chart      = "${var.infra_repository}/07_addons/oidc/keycloak/postgres"
+  chart      = "${var.infra_repository}/keycloak/postgres"
   version    = "1.1.1"
   namespace  = "oidc"
   create_namespace = true
