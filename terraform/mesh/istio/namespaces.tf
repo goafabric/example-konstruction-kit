@@ -1,16 +1,40 @@
-resource "terraform_data" "namespaces" {
-  provisioner "local-exec" {
-    when = create
-    command = "kubectl delete ns example --ignore-not-found  && kubectl create ns example"
+resource "kubernetes_namespace" "core_minimal" {
+  count = var.profile == "minimal" ? 1 : 0
+  metadata {
+    name = "core"
+    labels = {
+      istio-injection = "enabled"
+    }
   }
+}
 
-  provisioner "local-exec" {
-    when = create
-    command = "kubectl delete ns core --ignore-not-found && kubectl create ns core"
+resource "kubernetes_namespace" "core_ambient" {
+  count = var.profile == "ambient" ? 1 : 0
+  metadata {
+    name = "core"
+    labels = {
+      "istio.io/dataplane-mode" = "ambient"
+    }
   }
+}
 
-  provisioner "local-exec" {
-    when = destroy
-    command = "kubectl delete --ignore-not-found -f ./templates"
+resource "kubernetes_namespace" "example_minimal" {
+  count = var.profile == "minimal" ? 1 : 0
+  metadata {
+    name = "example"
+    labels = {
+      istio-injection = "enabled"
+    }
+  }
+}
+
+
+resource "kubernetes_namespace" "example_ambient" {
+  count = var.profile == "ambient" ? 1 : 0
+  metadata {
+    name = "example"
+    labels = {
+      "istio.io/dataplane-mode" = "ambient"
+    }
   }
 }

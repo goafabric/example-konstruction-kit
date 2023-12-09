@@ -5,9 +5,9 @@ provider "helm" {
 }
 
 resource "helm_release" "welcome-board" {
-  repository = "./chart"
+  repository = "${var.infra_repository}/welcome"
   name       = "welcome-board"
-  chart      = "./chart"
+  chart      = "${var.infra_repository}/welcome"
   version    = "1.1.1"
   namespace  = "default"
   create_namespace = true
