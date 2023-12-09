@@ -3,7 +3,7 @@ resource "helm_release" "kiali" {
   repository = "https://kiali.org/helm-charts"
   chart      = "kiali-server"
   namespace  = "istio-system"
-  create_namespace = false
+  create_namespace = true
   version    = "1.76.0"
   wait       = true
 
