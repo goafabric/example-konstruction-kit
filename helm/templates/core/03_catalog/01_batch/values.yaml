@@ -7,8 +7,8 @@ image:
   pullSecrets:
 
 podAnnotations:
-#  linkerd.io/inject: enabled
-#  sidecar.istio.io/inject: "true"
+  linkerd.io/inject: disabled
+  sidecar.istio.io/inject: "false"
 
 resourcesAnnotations:
   resources:
