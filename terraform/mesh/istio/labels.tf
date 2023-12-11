@@ -46,3 +46,26 @@ resource "kubernetes_labels" "example_ambient" {
   }
 }
 
+resource "kubernetes_labels" "message_broker_minimal" {
+  count = var.profile == "minimal" ? 1 : 0
+  api_version = "v1"
+  kind        = "Namespace"
+  metadata {
+    name = "message-broker"
+  }
+  labels = {
+    istio-injection = "enabled"
+  }
+}
+
+resource "kubernetes_labels" "message_broker_ambient" {
+  count = var.profile == "ambient" ? 1 : 0
+  api_version = "v1"
+  kind        = "Namespace"
+  metadata {
+    name = "message-broker"
+  }
+  labels = {
+    "istio.io/dataplane-mode" = "ambient"
+  }
+}
