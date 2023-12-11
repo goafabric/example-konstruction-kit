@@ -20,6 +20,7 @@ resource "terraform_data" "linkerd" {
   }
 }
 
+/*
 resource "terraform_data" "patch-ingress" {
   depends_on = [terraform_data.linkerd]
   provisioner "local-exec" {
@@ -32,3 +33,4 @@ resource "terraform_data" "patch-ingress" {
     command = "kubectl annotate namespaces ingress-nginx linkerd.io/inject=false --overwrite && kubectl delete pods --all -n ingress-nginx"
   }
 }
+*/

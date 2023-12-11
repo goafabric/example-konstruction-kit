@@ -1,6 +1,4 @@
 resource "helm_release" "kubernetes_dashboard" {
-#  count = var.hostname == "kubernetes" ? 1 : 0 #only install for dev stages
-
   name       = "kubernetes-dashboard"
   repository = "https://kubernetes.github.io/dashboard"
   chart      = "kubernetes-dashboard"
@@ -28,8 +26,6 @@ resource "helm_release" "kubernetes_dashboard" {
 }
 
 resource "kubernetes_manifest" "dashboard-role" {
-#  count = var.hostname == "kubernetes" ? 1 : 0
-
   manifest   = yamldecode(<<-EOF
     apiVersion: rbac.authorization.k8s.io/v1
     kind: ClusterRoleBinding
@@ -48,8 +44,7 @@ resource "kubernetes_manifest" "dashboard-role" {
 }
 
 resource "kubernetes_manifest" "dashboard-ingress" {
-#  count = var.hostname == "kubernetes" ? 1 : 0
-
+  count = var.hostname == "kind" ? 1 : 0
   manifest   = yamldecode(<<-EOF
   kind: Ingress
   apiVersion: networking.k8s.io/v1
@@ -81,3 +76,4 @@ resource "kubernetes_manifest" "dashboard-ingress" {
   EOF
   )
 }
+
