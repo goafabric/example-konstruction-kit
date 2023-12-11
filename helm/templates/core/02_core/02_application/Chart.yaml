@@ -6,5 +6,5 @@ type: application
 
 version: 1.1.1
 
-appVersion: "1.2.0-vaadin"
+appVersion: "1.2.1-vaadin-SNAPSHOT"
 
