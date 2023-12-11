@@ -17,7 +17,7 @@ resource "helm_release" "kiali" {
   }
   set {
     name  = "external_services.tracing.in_cluster_url"
-    value = "http://tracing.monitoring:16685/jaeger"
+    value = "http://jaeger-collector.monitoring:16685/jaeger"
   }
   set {
     name  = "external_services.tracing.use_grpc"
