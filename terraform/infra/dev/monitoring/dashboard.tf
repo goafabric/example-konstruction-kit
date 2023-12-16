@@ -44,7 +44,7 @@ resource "kubernetes_manifest" "dashboard-role" {
 }
 
 resource "kubernetes_manifest" "dashboard-ingress" {
-  count = var.hostname == "kind" ? 1 : 0
+#  count = var.hostname == "kind" ? 1 : 0
   manifest   = yamldecode(<<-EOF
   kind: Ingress
   apiVersion: networking.k8s.io/v1
