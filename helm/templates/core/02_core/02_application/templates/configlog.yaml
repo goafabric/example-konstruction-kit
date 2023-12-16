@@ -7,7 +7,7 @@ metadata:
 data:
   #log levels
   logging.level.root: "WARN"
-  logging.level.org.goafabric: "DEBUG"
+  logging.level.org.goafabric: "INFO"
 
   logging.level.org.springframework: "INFO"
   logging.level.org.flywaydb.core: "INFO"
