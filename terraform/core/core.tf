@@ -9,7 +9,7 @@ resource "helm_release" "core-postgres" {
 
   set {
     name  = "database.password"
-    value = random_password.db_password.result
+    value = random_password.database_password.result
   }
 }
 
@@ -36,7 +36,7 @@ resource "helm_release" "core-application" {
   }
   set {
     name  = "database.password"
-    value = random_password.db_password.result
+    value = random_password.database_password.result
   }
 }
 

@@ -13,7 +13,7 @@ resource "helm_release" "catalog-batch" {
   }
   set {
     name  = "database.password"
-    value = random_password.db_password.result
+    value = random_password.database_password.result
   }
 
 }
@@ -45,6 +45,6 @@ resource "helm_release" "catalog-application" {
   }
   set {
     name  = "database.password"
-    value = random_password.db_password.result
+    value = random_password.database_password.result
   }
 }
