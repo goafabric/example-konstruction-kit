@@ -2,7 +2,7 @@ replicaCount: 1
 
 ingress:
   paths: /rabbitmq
-  enabled: true
+  enabled: false
   authentication: none
 
 image:
