@@ -8,7 +8,7 @@ resource "helm_release" "person-service-postgres" {
   timeout = var.helm_timeout
 
   set {
-    name  = "db.password"
+    name  = "database.password"
     value = random_password.db_password.result
   }
 }
@@ -31,7 +31,7 @@ resource "helm_release" "person-service-application" {
     value = "-native${var.server_arch}"
   }
   set {
-    name  = "db.password"
+    name  = "database.password"
     value = random_password.db_password.result
   }
 }

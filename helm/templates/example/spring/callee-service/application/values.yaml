@@ -39,7 +39,7 @@ service:
   type: ClusterIP
   port: 8080
 
-db:
+database:
   password: mother
 
 
