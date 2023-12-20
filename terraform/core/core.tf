@@ -6,6 +6,11 @@ resource "helm_release" "core-postgres" {
   namespace  = "core"
   create_namespace = true
   timeout = var.helm_timeout
+
+  set {
+    name  = "database.password"
+    value = random_password.db_password.result
+  }
 }
 
 resource "helm_release" "core-application" {
@@ -28,6 +33,10 @@ resource "helm_release" "core-application" {
   set {
     name  = "security.authentication.enabled"
     value = var.authentication_enabled
+  }
+  set {
+    name  = "database.password"
+    value = random_password.db_password.result
   }
 }
 

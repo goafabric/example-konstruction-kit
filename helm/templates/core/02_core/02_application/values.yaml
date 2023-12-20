@@ -46,3 +46,5 @@ initContainers:
 security:
   authentication:
     enabled: true
+
+database:

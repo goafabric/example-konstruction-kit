@@ -11,6 +11,11 @@ resource "helm_release" "catalog-batch" {
     name  = "image.arch"
     value = "-native${var.server_arch}"
   }
+  set {
+    name  = "database.password"
+    value = random_password.db_password.result
+  }
+
 }
 
 resource "helm_release" "catalog-application" {
@@ -37,5 +42,9 @@ resource "helm_release" "catalog-application" {
   set {
     name  = "replicaCount"
     value = "1"
+  }
+  set {
+    name  = "database.password"
+    value = random_password.db_password.result
   }
 }
