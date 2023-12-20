@@ -38,6 +38,10 @@ resource "helm_release" "core-application" {
     name  = "database.password"
     value = random_password.database_password.result
   }
+  set {
+    name  = "s3.password"
+    value = random_password.s3_password.result
+  }
 }
 
 resource "helm_release" "s3-minio" {
@@ -52,5 +56,9 @@ resource "helm_release" "s3-minio" {
   set {
     name  = "ingress.hosts"
     value = var.hostname
+  }
+  set {
+    name  = "s3.password"
+    value = random_password.s3_password.result
   }
 }
