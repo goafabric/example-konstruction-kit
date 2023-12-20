@@ -32,3 +32,6 @@ postgres:
 
 persistence:
   storageClassName:
+
+s3:
+  password:

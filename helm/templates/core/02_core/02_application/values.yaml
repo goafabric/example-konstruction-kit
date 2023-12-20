@@ -45,6 +45,9 @@ initContainers:
 
 security:
   authentication:
-    enabled: true
+    enabled: false
 
 database:
+  password:
+s3:
+  password:

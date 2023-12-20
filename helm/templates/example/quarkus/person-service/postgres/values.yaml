@@ -30,3 +30,4 @@ persistence:
   storageClassName:
 
 database:
+  password:

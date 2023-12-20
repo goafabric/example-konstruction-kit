@@ -44,3 +44,4 @@ initContainers:
     command: ['sh', '-c','until pg_isready -h core-postgres -p 5432;do echo waiting for database; sleep 1; done;']
 
 database:
+  password:
