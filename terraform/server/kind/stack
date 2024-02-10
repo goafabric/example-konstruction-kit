@@ -16,7 +16,6 @@ function up() {
     time(
     apply ./
     apply ../../infra/ingress_certs
-    apply ../../infra/dev/welcome
     apply ../../infra/dev/monitoring
     )
 }
@@ -24,7 +23,6 @@ function up() {
 function down() {
     time(
     destroy ../../infra/dev/monitoring
-    destroy ../../infra/dev/welcome
     destroy ../../infra/ingress_certs
     destroy ./
     )

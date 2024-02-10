@@ -15,9 +15,8 @@ function up() {
     time(
     apply ../../infra/ingress_certs
     apply ../../mesh/linkerd
-    apply ../../infra/dev/welcome
     apply ../../infra/dev/monitoring
-    #apply ../../infra/dev/oidc
+    apply ../../infra/dev/oidc
     apply ../../core
     )
 }
@@ -27,7 +26,6 @@ function down() {
     destroy ../../core
     destroy ../../infra/dev/oidc
     destroy ../../infra/dev/monitoring
-    destroy ../../infra/dev/welcome
     destroy ../../infra/ingress_certs
     destroy ../../mesh/linkerd
     )
