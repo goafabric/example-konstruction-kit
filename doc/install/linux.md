@@ -1,18 +1,14 @@
 _#Based on Ubuntu 20 Focal
 
 #user (replace with your user)
-user=$user
+user=andreas
 
 #system 
 sudo apt --assume-yes update  
 sudo apt --assume-yes install mc && sudo apt --assume-yes install net-tools && sudo apt --assume-yes install conntrack && sudo apt --assume-yes install apache2-utils
 
 #ssh 
-#sudo sed -i '/PasswordAuthentication no/c PasswordAuthentication yes' /etc/ssh/sshd_config && sudo service ssh restart
-#sudo adduser --ingroup $user admin
-
-#Maven
-sudo apt --assume-yes install maven
+adduser --ingroup sudo $user
 
 #Docker 
 sudo apt --assume-yes install docker.io && sudo apt --assume-yes install docker-compose && sudo systemctl enable docker &&  sudo service docker start
