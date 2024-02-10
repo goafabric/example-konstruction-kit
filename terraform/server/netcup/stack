@@ -17,7 +17,7 @@ function up() {
     apply ../../mesh/linkerd
     apply ../../infra/dev/welcome
     apply ../../infra/dev/monitoring
-    apply ../../infra/dev/oidc
+    #apply ../../infra/dev/oidc
     apply ../../core
     )
 }
