@@ -19,11 +19,13 @@ function up() {
     apply ../../infra/dev/loki
     #apply ../../infra/dev/oidc
     apply ../../core
+    (cd ../../../helm/templates/infra/message-broker/; ./stack init)
     )
 }
 
 function down() {
     time(
+    (cd ../../../helm/templates/infra/message-broker/; ./stack prune)
     destroy ../../core
     destroy ../../infra/dev/oidc
     destroy ../../infra/dev/monitoring
