@@ -1,10 +1,13 @@
 # 1.1.1
 - terraform added
+- argocd added
 - removed Chart.AppVersion from selectorLabels as it whoed with update
 
 - openapi endpoints blocked due to security reasons
 - conditional deploy for dashboard only for dev stages
 - postgres upgrade to 16.1
+
+- tons of other changes
 
 # 1.1.0
 - cert-manager added
