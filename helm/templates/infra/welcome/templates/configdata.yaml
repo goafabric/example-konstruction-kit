@@ -38,7 +38,7 @@ data:
     \                   </a>\n                </li>\n                <p></p>\n                <li>\n
     \                   <a href=\"/jaeger/\" target=\"_blank\">\n                        <span>\U0001F3F9
     Jaeger</span>\n                    </a>\n                </li>\n                <li>\n
-    \                   <a href=\"/grafana/\" target=\"_blank\">\n                        <span>\U0001F4CA
+    \                   <a href=\"/grafana/explore\" target=\"_blank\">\n                        <span>\U0001F4CA
     Loki</span>\n                    </a>\n                </li>\n                <p></p>\n
     \               <li>\n                    <a href=\"/oidc/\" target=\"_blank\">\n
     \                       <span>\U0001F510 Keycloak</span>\n                    </a>\n
@@ -62,8 +62,8 @@ data:
     \               </li>\n            </ul>\n        </div>\n    </div>\n</div>\n\n</body>\n"
 kind: ConfigMap
 metadata:
-  creationTimestamp: "2023-11-11T08:28:27Z"
+  creationTimestamp: "2024-02-10T10:38:18Z"
   name: welcome-board-data-files
   namespace: default
-  resourceVersion: "94670"
-  uid: a3d54948-fc41-4691-bfe7-31f41010ce18
+  resourceVersion: "12252"
+  uid: a44068fd-e28c-4f9e-9476-9ab5bfbadf96
