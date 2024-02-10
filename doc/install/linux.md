@@ -5,7 +5,7 @@ user=andreas
 
 #system 
 sudo apt --assume-yes update  
-sudo apt --assume-yes install mc && sudo apt --assume-yes install net-tools && sudo apt --assume-yes install conntrack && sudo apt --assume-yes install apache2-utils
+sudo apt --assume-yes install mc && sudo apt --assume-yes install net-tools
 
 #ssh 
 adduser --ingroup sudo $user
