@@ -11,9 +11,7 @@ sudo snap install microk8s --classic --channel=1.28/stable
 see other file + microk8s stop && microk8s start
 
 # Microk8s Addons
-microk8s enable dns ingress storage
-
-sudo microk8s enable metallb storage dns$dns
+sudo microk8s enable metallb hostpath-storage dns$dns
 ip range needs to be set to you server ip from dns, e.g: 152.53.18.28-152.53.18.28
 
 # Helm
