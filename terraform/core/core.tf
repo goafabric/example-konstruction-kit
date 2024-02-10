@@ -26,10 +26,10 @@ resource "helm_release" "core-application" {
     name  = "ingress.hosts"
     value = var.hostname
   }
-  set {
-    name  = "image.arch"
-    value = "-native${var.server_arch}"
-  }
+#  set {
+#    name  = "image.arch"
+#    value = "-native${var.server_arch}"
+#  }
   set {
     name  = "security.authentication.enabled"
     value = var.authentication_enabled
