@@ -19,7 +19,7 @@ function up() {
     apply ../../infra/dev/loki
     #apply ../../infra/dev/oidc
     apply ../../core
-    (cd ../../../helm/templates/infra/message-broker/; ./stack init)
+    (cd ../../../helm/templates/infra/message-broker/; ./stack restart)
     )
 }
 

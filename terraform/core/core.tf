@@ -2,7 +2,7 @@ resource "helm_release" "core-postgres" {
   repository = var.helm_repository
   name       = "core-postgres"
   chart      = "${var.helm_repository}/02_core/01_postgres"
-  version    = "1.1.1"
+  version    = "1.1.2"
   namespace  = "core"
   create_namespace = true
   timeout = var.helm_timeout
@@ -17,7 +17,7 @@ resource "helm_release" "core-application" {
   repository = var.helm_repository
   name       = "core-application"
   chart      = "${var.helm_repository}/02_core/02_application"
-  version    = "1.1.1"
+  version    = "1.1.2"
   namespace  = "core"
   create_namespace = true
   timeout = var.helm_timeout
@@ -48,7 +48,7 @@ resource "helm_release" "s3-minio" {
   repository = var.helm_repository
   name       = "s3-minio"
   chart      = "${var.helm_repository}/01_minio/application"
-  version    = "1.1.1"
+  version    = "1.1.2"
   namespace  = "core"
   create_namespace = true
   timeout = var.helm_timeout

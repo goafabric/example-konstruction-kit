@@ -42,8 +42,8 @@ entries:
     name: spring-auth-server-application
     type: application
     urls:
-    - https://goafabric.github.io/example-konstruction-kit/helm/charts/example/infra/spring-auth-server-application-1.1.1.tgz
-    version: 1.1.1
+    - https://goafabric.github.io/example-konstruction-kit/helm/charts/example/infra/spring-auth-server-application-1.1.2.tgz
+    version: 1.1.2
   welcome-board:
   - apiVersion: v2
     appVersion: 1.20.2
@@ -53,6 +53,6 @@ entries:
     name: welcome-board
     type: application
     urls:
-    - https://goafabric.github.io/example-konstruction-kit/helm/charts/example/infra/welcome-board-1.1.1.tgz
-    version: 1.1.1
+    - https://goafabric.github.io/example-konstruction-kit/helm/charts/example/infra/welcome-board-1.1.2.tgz
+    version: 1.1.2
 generated: "2023-11-11T11:58:07.864999+01:00"
