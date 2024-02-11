@@ -53,7 +53,7 @@ function create-user {
     -d '{"emailVerified":true}'
 }
 
-baseurl=$1 #https://`kubectl get configmaps cluster-config -o jsonpath='{.data.hostname}' -n default`
+baseurl=$1
 
 create-user $baseurl tenant-0 user1 User1user1
 create-user $baseurl tenant-0 user2 User2user2

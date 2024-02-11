@@ -9,7 +9,7 @@ resource "helm_release" "catalog-batch" {
 
   set {
     name  = "image.arch"
-    value = "-native${var.server_arch}"
+    value = "-native${local.server_arch}"
   }
   set {
     name  = "database.password"
@@ -33,7 +33,7 @@ resource "helm_release" "catalog-application" {
   }
   set {
     name  = "image.arch"
-    value = "-native${var.server_arch}"
+    value = "-native${local.server_arch}"
   }
   set {
     name  = "security.authentication.enabled"
