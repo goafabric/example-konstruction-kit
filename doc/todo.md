@@ -1,5 +1,7 @@
 # todos
 
+kubectl create configmap cluster-config -n default --from-literal=hostname=kind 
+
 ## terraform
 - secrets via terraform
 - ambient mesh
