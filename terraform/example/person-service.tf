@@ -28,7 +28,7 @@ resource "helm_release" "person-service-application" {
   }
   set {
     name  = "image.arch"
-    value = "-native${var.server_arch}"
+    value = "-native${local.server_arch}"
   }
   set {
     name  = "database.password"
