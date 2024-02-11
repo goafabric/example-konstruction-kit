@@ -22,12 +22,13 @@ resource "helm_release" "cert-manager" {
   }
 }
 
+
 # we cannot use simple kubernetes manifest here, because the depends_on is not working and install fails with missing crds
 resource "helm_release" "cert-manager-issuer" {
   depends_on = [helm_release.cert-manager]
-  repository       = var.hostname == "kind" ? "./cert-manager-issuer/selfsigned" : "./cert-manager-issuer/letsencrypt"
+  repository       = local.cert_manager_issuer
   name             = "cert-manager-issuer"
-  chart            = var.hostname == "kind" ? "./cert-manager-issuer/selfsigned" : "./cert-manager-issuer/letsencrypt"
+  chart            = local.cert_manager_issuer
   version          = "1.1.2"
   namespace        = "cert-manager"
   create_namespace = true

@@ -13,3 +13,7 @@ variable "server_arch" {
 variable "helm_repository" {
   default = "../../helm/templates/core" #"https://goafabric.github.io/example-konstruction-kit/helm/charts/example/spring"
 }
+
+locals {
+  authentication_enabled = var.hostname == "kind" ? "false" : "true"
+}

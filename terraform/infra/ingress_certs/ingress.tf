@@ -8,7 +8,7 @@ resource "helm_release" "nginx-ingress" {
 
   set {
     name  = "controller.service.type"
-    value = var.hostname == "kind" ? "NodePort" : "LoadBalancer"
+    value = local.ingress_service_type
   }
 
   set {

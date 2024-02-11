@@ -28,7 +28,7 @@ resource "helm_release" "core-application" {
   }
   set {
     name  = "security.authentication.enabled"
-    value = var.hostname == "kind" ? "false" : "true"
+    value = local.authentication_enabled
   }
   set {
     name  = "database.password"
