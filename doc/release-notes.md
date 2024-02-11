@@ -1,5 +1,8 @@
 # 1.1.2
 
+- terraform variable optimization
+- helm charts dir removed
+
 # 1.1.1
 - terraform added
 - argocd added

@@ -1,6 +1,4 @@
 # todos
-- terraform variable optimization
-- helm charts dir removed
 
 ## terraform
 - secrets via terraform
