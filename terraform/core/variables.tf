@@ -1,5 +1,5 @@
 variable "hostname" {
-  default = "kubernetes"
+  default = "kind"
 }
 
 variable "helm_timeout" {
