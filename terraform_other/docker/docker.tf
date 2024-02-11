@@ -13,7 +13,7 @@ provider "docker" {
 
 # Pulls the image
 resource "docker_image" "callee-service" {
-  name = "goafabric/callee-service-native-arm64v8:3.2.0-SNAPSHOT"
+  name = "goafabric/callee-service:3.2.0"
 }
 
 # Create a container
