@@ -1,5 +1,5 @@
 variable "profile" {
-  default = "minimal" #ambient
+  default = "ambient" #minimal
 }
 
 variable "hostname" {
