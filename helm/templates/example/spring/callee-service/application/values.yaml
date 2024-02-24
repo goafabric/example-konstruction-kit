@@ -41,6 +41,6 @@ service:
 
 database:
   password:
-  password: mother
+
 
 
