@@ -14,7 +14,7 @@ image:
 podAnnotations:
   linkerd.io/inject: enabled
   sidecar.istio.io/inject: "true"
-  config.alpha.linkerd.io/proxy-enable-native-sidecar: "false" # https://linkerd.io/2.15/reference/proxy-configuration/, https://linkerd.io/2024/02/21/announcing-linkerd-2.15/
+  config.alpha.linkerd.io/proxy-enable-native-sidecar: "false" # https://linkerd.io/2.15/reference/proxy-configuration/, https://linkerd.io/2024/02/21/announcing-linkerd-2.15/, https://github.com/linkerd/linkerd2/releases
 
 resourcesAnnotations:
   resources:
