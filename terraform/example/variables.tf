@@ -15,6 +15,8 @@ data "external" "server_arch_data" {
 }
 
 locals {
-  authentication_enabled = var.hostname == "kind" ? "false" : "true"
+  production_mode = var.hostname == "kind" ? "false" : "true"
+
+  authentication_enabled = local.production_mode
   server_arch = data.external.server_arch_data.result["server_arch"]
 }

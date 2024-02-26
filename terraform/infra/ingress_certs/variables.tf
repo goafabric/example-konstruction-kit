@@ -3,6 +3,8 @@ variable "hostname" {
 }
 
 locals {
-  cert_manager_issuer = var.hostname == "kind" ? "./cert-manager-issuer/selfsigned" : "./cert-manager-issuer/letsencrypt"
-  ingress_service_type = var.hostname == "kind" ? "NodePort" : "LoadBalancer"
+  production_mode = var.hostname == "kind" ? "false" : "true"
+
+  cert_manager_issuer = local.production_mode == "true" ? "./cert-manager-issuer/letsencrypt" : "./cert-manager-issuer/selfsigned"
+  ingress_service_type = local.production_mode == "true" ? "LoadBalancer" : "NodePort"
 }

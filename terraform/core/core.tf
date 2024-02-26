@@ -35,6 +35,10 @@ resource "helm_release" "core-application" {
     value = local.authentication_enabled
   }
   set {
+    name  = "replicaCount"
+    value = local.production_mode == "true" ? "2" : "1"
+  }
+  set {
     name  = "database.password"
     value = random_password.database_password.result
   }

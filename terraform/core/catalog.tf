@@ -41,7 +41,7 @@ resource "helm_release" "catalog-application" {
   }
   set {
     name  = "replicaCount"
-    value = "1"
+    value = local.production_mode == "true" ? "2" : "1"
   }
   set {
     name  = "database.password"
