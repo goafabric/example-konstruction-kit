@@ -36,7 +36,7 @@ resource "helm_release" "core-application" {
   }
   set {
     name  = "replicaCount"
-    value = local.production_mode == "true" ? "1" : "1"
+    value = "1"
   }
   set {
     name  = "database.password"
