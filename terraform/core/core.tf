@@ -23,6 +23,10 @@ resource "helm_release" "core-application" {
   timeout = var.helm_timeout
 
   set {
+    name  = "image.arch"
+    value = "-native${local.server_arch}"
+  }
+  set {
     name  = "ingress.hosts"
     value = var.hostname
   }
