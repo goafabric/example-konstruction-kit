@@ -23,7 +23,7 @@ resource "kubernetes_manifest" "person-service-application" {
             },
             {
               name  = "image.arch"
-              value = "-native${var.server_arch}"
+              value = "-native${local.server_arch}"
             },
             {
               name  = "replicaCount"
@@ -66,10 +66,6 @@ resource "kubernetes_manifest" "person-service-postgres" {
             {
               name  = "ingress.hosts"
               value = var.hostname
-            },
-            {
-              name  = "image.arch"
-              value = "-native${var.server_arch}"
             },
             {
               name  = "replicaCount"

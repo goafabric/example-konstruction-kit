@@ -23,7 +23,7 @@ resource "kubernetes_manifest" "callee-service-application" {
             },
             {
               name  = "image.arch"
-              value = "-native${var.server_arch}"
+              value = "-native${local.server_arch}"
             },
             {
               name  = "replicaCount"

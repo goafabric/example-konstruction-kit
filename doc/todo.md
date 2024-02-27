@@ -2,10 +2,6 @@
 
 kubectl create configmap cluster-config -n default --from-literal=hostname=kind 
 
-## terraform
-- secrets via terraform
-- ambient mesh
-
 ## terraform cont.
 - standard helm charts for minio, postgres, keycloak 
 - grafana oss with loki + tempo
