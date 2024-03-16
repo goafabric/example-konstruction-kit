@@ -2,7 +2,7 @@
 adduser --ingroup sudo andreas
 
 # Microk8s Install
-sudo snap install microk8s --classic --channel=1.28/stable
+sudo snap install microk8s --classic --channel=1.29/stable
 
 # Microk8s Config
 # mkdir ~/.kube && sudo microk8s config > ~/.kube/config && chmod 600 ~/.kube/config && sudo usermod -a -G microk8s $user && sudo chown -f -R $user ~/.kube
@@ -11,7 +11,8 @@ sudo snap install microk8s --classic --channel=1.28/stable
 see other file + microk8s stop && microk8s start
 
 # Microk8s Addons
-sudo microk8s enable metallb hostpath-storage dns$dns
+sudo microk8s enable hostpath-storage
+sudo microk8s enable metallb 
 ip range needs to be set to you server ip from dns, e.g: 152.53.18.28-152.53.18.28
 
 # Helm
