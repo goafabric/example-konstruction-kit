@@ -1,6 +1,7 @@
 # todos
 
-kubectl create configmap cluster-config -n default --from-literal=hostname=kind 
+kubectl create configmap cluster-config -n default --from-literal=hostname=kind
+kubectl create configmap cluster-config -n default --from-literal=hostname=v2202402203466256255.megasrv.de
 
 ## terraform cont.
 - standard helm charts for minio, postgres, keycloak 
