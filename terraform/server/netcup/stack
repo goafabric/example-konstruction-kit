@@ -14,10 +14,11 @@ function destroy() {
 function up() {
     time(
     apply ../../infra/ingress_certs
-    apply ../../mesh/linkerd
+    #apply ../../mesh/linkerd
     apply ../../infra/dev/monitoring
     apply ../../infra/dev/loki
-    #apply ../../infra/dev/oidc
+    apply ../../infra/dev/oidc
+    apply ../../example
     apply ../../core
     (cd ../../../helm/templates/infra/message-broker/; ./stack restart)
     )
@@ -27,11 +28,12 @@ function down() {
     time(
     (cd ../../../helm/templates/infra/message-broker/; ./stack prune)
     destroy ../../core
+    destroy ../../example
     destroy ../../infra/dev/oidc
     destroy ../../infra/dev/monitoring
     apply ../../infra/dev/loki
     destroy ../../infra/ingress_certs
-    destroy ../../mesh/linkerd
+    #destroy ../../mesh/linkerd
     )
 }
 
