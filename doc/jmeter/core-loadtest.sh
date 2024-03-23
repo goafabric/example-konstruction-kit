@@ -11,6 +11,8 @@ function dorequest() {
 
   curl -k "${baseurl}/insurances/findByDisplay?display=a"
 
+  curl -k "${baseurl}/objects/search?search="
+
   practitioner_info=$(curl -k -s "${baseurl}/practitioners/findByFamilyName?familyName=Hibbert") && curl -k -X POST -H "Content-Type: application/json" -d '{
     "id": "'$(echo "$practitioner_info" | jq -r '.[0].id')'",
     "version": "'$(echo "$practitioner_info" | jq -r '.[0].version')'",
