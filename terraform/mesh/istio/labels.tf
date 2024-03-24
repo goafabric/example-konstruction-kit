@@ -59,26 +59,26 @@ resource "kubernetes_labels" "example_ambient" {
 #}
 #
 
-resource "kubernetes_labels" "message_broker_ambient" {
-  count = var.profile == "ambient" ? 1 : 0
-  api_version = "v1"
-  kind        = "Namespace"
-  metadata {
-    name = "message-broker"
-  }
-  labels = {
-    "istio.io/dataplane-mode" = "ambient"
-  }
-}
-
-resource "kubernetes_labels" "ingress_nginx_ambient" {
-  count = var.profile == "ambient" ? 1 : 0
-  api_version = "v1"
-  kind        = "Namespace"
-  metadata {
-    name = "ingress-nginx"
-  }
-  labels = {
-    "istio.io/dataplane-mode" = "ambient"
-  }
-}
+#resource "kubernetes_labels" "message_broker_ambient" {
+#  count = var.profile == "ambient" ? 1 : 0
+#  api_version = "v1"
+#  kind        = "Namespace"
+#  metadata {
+#    name = "message-broker"
+#  }
+#  labels = {
+#    "istio.io/dataplane-mode" = "ambient"
+#  }
+#}
+#
+#resource "kubernetes_labels" "ingress_nginx_ambient" {
+#  count = var.profile == "ambient" ? 1 : 0
+#  api_version = "v1"
+#  kind        = "Namespace"
+#  metadata {
+#    name = "ingress-nginx"
+#  }
+#  labels = {
+#    "istio.io/dataplane-mode" = "ambient"
+#  }
+#}
