@@ -7,6 +7,7 @@ kubectl create configmap cluster-config -n default --from-literal=hostname=v2202
 - standard helm charts for minio, postgres, keycloak 
 - grafana oss with loki + tempo
 - apisix deployment including gateway definitions, switchable between ingress and apisix
+- replicatset
 
 ## security
 - secrets via vault
