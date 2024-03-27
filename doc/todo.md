@@ -1,7 +1,6 @@
 # todos
 
 ## terraform cont.
-- standard helm charts for minio, postgres, keycloak
 - grafana oss with loki + tempo
 
 ## security
