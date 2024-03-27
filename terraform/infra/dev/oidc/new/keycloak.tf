@@ -14,7 +14,7 @@ resource "helm_release" "keycloak" {
 
   set {
     name  = "auth.adminPassword"
-    value = random_password.keycloak_admin_password.result
+    value = "admin" #random_password.keycloak_admin_password.result
   }
 
   set {
