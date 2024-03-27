@@ -9,7 +9,9 @@ resource "kubernetes_manifest" "keycloak-ingress" {
       cert-manager.io/cluster-issuer: my-cluster-issuer
       nginx.ingress.kubernetes.io/backend-protocol: HTTPS
       nginx.ingress.kubernetes.io/rewrite-target: /$1
-      service.alpha.kubernetes.io/app-protocols: '{"https":"HTTPS"}'
+
+      # fix for bad gateway upstream to big
+      nginx.ingress.kubernetes.io/proxy-buffer-size: 10k
   spec:
     ingressClassName: nginx
     tls:
