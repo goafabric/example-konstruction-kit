@@ -8,15 +8,15 @@ resource "helm_release" "callee-service-application" {
   timeout = var.helm_timeout
 
   set {
+    name  = "replicaCount"
+    value = local.replica_count
+  }
+  set {
     name  = "ingress.hosts"
     value = var.hostname
   }
   set {
     name  = "image.arch"
     value = "-native${local.server_arch}"
-  }
-  set {
-    name  = "replicaCount"
-    value = "1"
   }
 }

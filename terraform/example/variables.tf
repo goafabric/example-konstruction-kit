@@ -18,5 +18,6 @@ locals {
   production_mode = var.hostname == "kind" ? "false" : "true"
 
   authentication_enabled = local.production_mode
+  replica_count = local.production_mode ? "2" : "1"
   server_arch = data.external.server_arch_data.result["server_arch"]
 }
