@@ -103,7 +103,7 @@ resource "helm_release" "keycloak" {
 resource "terraform_data" "remove_postgres_pvc" {
   provisioner "local-exec" {
     when = destroy
-    command = "kubectl delete pvc -l app.kubernetes.io/instance=keycloak -n example"
+    command = "kubectl delete pvc -l app.kubernetes.io/instance=keycloak -n oidc"
   }
 }
 

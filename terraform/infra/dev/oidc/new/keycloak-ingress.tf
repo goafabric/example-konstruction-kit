@@ -7,7 +7,6 @@ resource "kubernetes_manifest" "keycloak-ingress" {
     namespace: oidc
     annotations:
       cert-manager.io/cluster-issuer: my-cluster-issuer
-      nginx.ingress.kubernetes.io/backend-protocol: HTTPS
       nginx.ingress.kubernetes.io/rewrite-target: /$1
 
       # fix for bad gateway upstream to big
