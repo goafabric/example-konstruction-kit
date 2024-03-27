@@ -99,6 +99,14 @@ resource "helm_release" "keycloak" {
   }
 }
 
+# manually remove the pvc to avoid password problems
+resource "terraform_data" "remove_postgres_pvc" {
+  provisioner "local-exec" {
+    when = destroy
+    command = "kubectl delete pvc -l app.kubernetes.io/instance=keycloak -n example"
+  }
+}
+
 resource "random_password" "keycloak_admin_password" {
   length  = 32
   special = false
