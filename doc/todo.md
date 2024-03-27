@@ -2,7 +2,6 @@
 
 ## terraform cont.
 - standard helm charts for minio, postgres, keycloak
-- replicatset (needs statelessness)
 - grafana oss with loki + tempo
 
 ## security
