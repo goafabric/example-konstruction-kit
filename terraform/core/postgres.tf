@@ -22,7 +22,7 @@ resource "helm_release" "core-postgres" {
   repository = "https://charts.bitnami.com/bitnami"
   chart      = "postgresql-ha"
   version    = "14.0.0"
-  namespace  = "example"
+  namespace  = "core"
 
   set {
     name  = "postgresql.replicaCount"
