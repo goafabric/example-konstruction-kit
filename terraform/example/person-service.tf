@@ -21,9 +21,9 @@ resource "helm_release" "person-service-application" {
   }
 }
 
-resource "helm_release" "person-service-postgres" {
+resource "helm_release" "person-service-postgres-postgresql-ha-pgpool" {
   repository = var.helm_repository
-  name       = "person-service-postgres"
+  name       = "person-service-postgres-postgresql-ha-pgpool"
   chart      = "${var.helm_repository}/person-service/postgres"
   version    = "1.1.2"
   namespace  = "example"
