@@ -1,9 +1,15 @@
+/*
 resource "helm_release" "s3-minio" {
   name       = "s3-minio"
   repository = "https://charts.bitnami.com/bitnami"
   chart      = "minio"
   namespace  = "core"
   version    = "14.1.2"
+
+  set {
+    name  = "persistence.size"
+    value = "2Gi"
+  }
 
   set {
     name  = "auth.rootUser"
@@ -29,8 +35,5 @@ resource "helm_release" "s3-minio" {
     name  = "extraEnvVars[0].value"
     value = "Europe/Berlin"
   }
-  set {
-    name  = "persistence.size"
-    value = "2Gi"
-  }
 }
+*/

@@ -1,4 +1,4 @@
-resource "helm_release" "person-service-postgres-postgresql-ha-pgpool" {
+resource "helm_release" "person-service-postgres" {
   count = local.postgres_ha == "false" ? 1 : 0
 
   repository = var.helm_repository
@@ -26,7 +26,7 @@ resource "helm_release" "person-service-postgres-ha" {
 
   set {
     name  = "postgresql.replicaCount"
-    value = "2"
+    value = local.replica_count
   }
   set {
     name  = "persistence.size"
