@@ -1,6 +1,6 @@
 apiVersion: v2
-name: core-postgres
-description: core-postgres
+name: core-postgres-postgresql-ha-pgpool
+description: core-postgres-postgresql-ha-pgpool
 
 type: application
 

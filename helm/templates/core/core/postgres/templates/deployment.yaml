@@ -75,13 +75,13 @@ spec:
               name: {{ include "application.fullname" . }}-volume
 
             - mountPath: /docker-entrypoint-initdb.d/
-              name: {{ include "application.fullname" . }}-initdb-volume
+              name: {{ include "application.fullname" . }}-initdb
 
       volumes:
         - name: {{ include "application.fullname" . }}-volume
           persistentVolumeClaim:
             claimName: {{ include "application.fullname" . }}-pvc
 
-        - name: {{ include "application.fullname" . }}-initdb-volume
+        - name: {{ include "application.fullname" . }}-initdb
           configMap:
             name: {{ include "application.fullname" . }}-config-files
