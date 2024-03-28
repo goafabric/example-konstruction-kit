@@ -1,4 +1,6 @@
 resource "helm_release" "rabbitmq" {
+  count = local.message_broker_ha == "false" ? 1 : 0
+
   repository = var.helm_repository
   name       = "rabbitmq"
   chart      = "${var.helm_repository}/rabbitmq/application"
@@ -13,8 +15,9 @@ resource "helm_release" "rabbitmq" {
   }
 }
 
-/*
-resource "helm_release" "rabbitmq" {
+resource "helm_release" "rabbitmq-ha" {
+  count = local.message_broker_ha == "true" ? 1 : 0
+
   name       = "rabbitmq"
   repository = "https://charts.bitnami.com/bitnami"
   chart      = "rabbitmq"
@@ -26,6 +29,10 @@ resource "helm_release" "rabbitmq" {
     name = "replicaCount"
     value = local.replica_count
   }
+  set {
+    name  = "persistence.size"
+    value = "2Gi"
+  }
 
   set {
     name  = "auth.username"
@@ -34,15 +41,16 @@ resource "helm_release" "rabbitmq" {
 
   set {
     name  = "auth.password"
-    value = "admin" #random_password.database_password.result
+    value = random_password.database_password.result
   }
 }
 
 # manually remove the pvc to avoid password problems
 resource "terraform_data" "remove_postgres_pvc" {
+  count = local.message_broker_ha == "true" ? 1 : 0
+
   provisioner "local-exec" {
     when = destroy
     command = "kubectl delete pvc -l app.kubernetes.io/instance=rabbitmq -n message-broker"
   }
 }
-*/
