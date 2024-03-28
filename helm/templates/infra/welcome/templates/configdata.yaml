@@ -42,16 +42,16 @@ data:
     Loki</span>\n                    </a>\n                </li>\n                <p></p>\n
     \               <li>\n                    <a href=\"/oidc/\" target=\"_blank\">\n
     \                       <span>\U0001F510 Keycloak</span>\n                    </a>\n
-    \               </li>\n                <p></p>\n                <li>\n                    <a
-    href=\"/rabbitmq/\" target=\"_blank\">\n                        <span>\U0001F430
-    RabbitMQ</span>\n                    </a>\n                    <!--\n                    <a
+    \               </li>\n                <p></p>\n                <li>\n                    <!--\n
+    \                   <a href=\"/rabbitmq/\" target=\"_blank\">\n                        <span>\U0001F430
+    RabbitMQ</span>\n                    </a>\n                    -->\n                    <a
     href=\"/event/\" target=\"_blank\">\n                        <span>\U0001F430
-    Event Dispatcher</span>\n                    </a>\n                    -->\n                </li>\n
-    \           </ul>\n        </div>\n        <div class=\"links\">\n            <h6>Core</h6>\n
-    \           <ul>\n                <p></p>\n                <li>\n                    <a
-    href=\"/core/\" target=\"_blank\">\n                        <span>\U0001F30D Core</span>\n
-    \                   </a>\n                </li>\n                <p></p>\n                <li>\n
-    \                   <a href=\"/catalog/\" target=\"_blank\">\n                        <span>\U0001F4D9
+    Event Dispatcher</span>\n                    </a>\n                </li>\n            </ul>\n
+    \       </div>\n        <div class=\"links\">\n            <h6>Core</h6>\n            <ul>\n
+    \               <p></p>\n                <li>\n                    <a href=\"/core/\"
+    target=\"_blank\">\n                        <span>\U0001F30D Core</span>\n                    </a>\n
+    \               </li>\n                <p></p>\n                <li>\n                    <a
+    href=\"/catalog/\" target=\"_blank\">\n                        <span>\U0001F4D9
     Catalog</span>\n                    </a>\n                </li>\n            </ul>\n
     \       </div>\n\n        <div class=\"links\">\n            <h6>Example</h6>\n
     \           <ul>\n                <p></p>\n                <li>\n                    <a
@@ -62,8 +62,8 @@ data:
     \               </li>\n            </ul>\n        </div>\n    </div>\n</div>\n\n</body>\n"
 kind: ConfigMap
 metadata:
-  creationTimestamp: "2024-02-10T11:20:54Z"
+  creationTimestamp: "2024-03-28T06:58:56Z"
   name: welcome-board-data-files
   namespace: default
-  resourceVersion: "9943"
-  uid: 043b069c-7063-4476-989f-6d9284007d86
+  resourceVersion: "135196"
+  uid: 8edb2546-8f6a-49cc-afa9-c8f3ed2f8955
