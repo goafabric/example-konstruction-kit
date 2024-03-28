@@ -30,7 +30,7 @@ resource "helm_release" "s3-minio" {
     value = "Europe/Berlin"
   }
   set {
-    name  = "extraEnvVars[1].name"
-    value = "MINIO_BROWSER_REDIRECT_URL"
+    name  = "persistence.size"
+    value = "2Gi"
   }
 }
