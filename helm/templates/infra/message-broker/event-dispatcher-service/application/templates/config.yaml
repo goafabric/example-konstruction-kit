@@ -26,4 +26,3 @@ data:
 
   #rabbit
   spring.rabbitmq.host: "rabbitmq"
-

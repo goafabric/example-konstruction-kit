@@ -11,6 +11,7 @@ resource "helm_release" "event-dispatcher-service-application" {
     name  = "replicaCount"
     value = local.replica_count
   }
+
   set {
     name  = "ingress.hosts"
     value = var.hostname
@@ -18,5 +19,9 @@ resource "helm_release" "event-dispatcher-service-application" {
   set {
     name  = "image.arch"
     value = "-native${local.server_arch}"
+  }
+  set {
+    name  = "messageBroker.password"
+    value = "admin" #random_password.database_password.result
   }
 }
