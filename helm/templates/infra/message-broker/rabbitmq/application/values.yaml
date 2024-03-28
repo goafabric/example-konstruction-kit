@@ -26,3 +26,6 @@ readinessProbe:
 service:
   type: ClusterIP
   port: 15672
+
+messageBroker:
+  password:
