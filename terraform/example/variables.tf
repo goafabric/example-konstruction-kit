@@ -3,7 +3,7 @@ variable "hostname" {
 }
 
 variable "helm_timeout" {
-  default = 60
+  default = 90
 }
 
 variable "helm_repository" {
@@ -16,8 +16,9 @@ data "external" "server_arch_data" {
 
 locals {
   production_mode = var.hostname == "kind" ? "false" : "true"
-
-  authentication_enabled = local.production_mode
-  replica_count = local.production_mode ? "2" : "1"
   server_arch = data.external.server_arch_data.result["server_arch"]
+  authentication_enabled = local.production_mode
+
+  replica_count = local.production_mode ? "2" : "1"
+  postgres_ha = "true"
 }

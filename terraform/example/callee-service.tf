@@ -11,6 +11,7 @@ resource "helm_release" "callee-service-application" {
     name  = "replicaCount"
     value = local.replica_count
   }
+
   set {
     name  = "ingress.hosts"
     value = var.hostname

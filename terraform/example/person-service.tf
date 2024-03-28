@@ -8,6 +8,11 @@ resource "helm_release" "person-service-application" {
   timeout = var.helm_timeout
 
   set {
+    name  = "replicaCount"
+    value = local.replica_count
+  }
+
+  set {
     name  = "ingress.hosts"
     value = var.hostname
   }
