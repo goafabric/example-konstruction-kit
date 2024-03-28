@@ -22,6 +22,6 @@ resource "helm_release" "event-dispatcher-service-application" {
   }
   set {
     name  = "messageBroker.password"
-    value = "admin" #random_password.database_password.result
+    value = random_password.database_password.result
   }
 }
