@@ -47,7 +47,7 @@ resource "helm_release" "core-postgres-ha" {
   }
   set {
     name  = "global.postgresql.database"
-    value = "person"
+    value = "core"
   }
   set {
     name  = "global.postgresql.username"
