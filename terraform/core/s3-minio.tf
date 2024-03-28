@@ -1,4 +1,3 @@
-/*
 resource "helm_release" "s3-minio" {
   name       = "s3-minio"
   repository = "https://charts.bitnami.com/bitnami"
@@ -36,4 +35,3 @@ resource "helm_release" "s3-minio" {
     value = "Europe/Berlin"
   }
 }
-*/
