@@ -14,7 +14,7 @@
 
 ## application           
 - Sonarqube + Sonarlint: https://www.linkedin.com/pulse/static-code-analysis-sonarlint-github-actions-lucas-persson?utm_source=share&utm_medium=member_ios&utm_campaign=share_via
-- JWT HTTP Interceptor Config (Token, Tenant, Vaadin)
+- Release https://wszlosek.github.io/DevDawn/2023/06/28/gradle-release-plugin.html
 
 # fixex
 kubectl create configmap cluster-config -n default --from-literal=hostname=kind
