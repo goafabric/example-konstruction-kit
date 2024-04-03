@@ -44,7 +44,7 @@ resource "helm_release" "keycloak" {
 
   set {
     name  = "extraEnvVars[1].value"
-    value = "/oidc"
+    value = "oidc"
   }
 
   set {

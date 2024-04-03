@@ -7,7 +7,7 @@ resource "kubernetes_manifest" "keycloak-ingress" {
     namespace: oidc
     annotations:
       cert-manager.io/cluster-issuer: my-cluster-issuer
-      nginx.ingress.kubernetes.io/rewrite-target: /$1
+      nginx.ingress.kubernetes.io/rewrite-target: /oidc/$1
 
       # fix for bad gateway upstream to big
       nginx.ingress.kubernetes.io/proxy-buffer-size: 10k
