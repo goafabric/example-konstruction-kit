@@ -12,9 +12,9 @@ function destroy() {
 }
 
 function up() {
-    cp kind-config ~/.kube.profile/.kube.kind/config
     time(
     apply ./
+    cp kind-config ~/.kube.profile/.kube.kind/config
     apply ../../infra/ingress_certs
     apply ../../infra/dev/monitoring
     )

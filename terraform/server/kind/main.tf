@@ -30,7 +30,7 @@ resource "kind_cluster" "kind" {
       }
       extra_port_mappings {
         container_port = 32443
-        host_port      = 32443
+        host_port      = 443
       }
     }
 
