@@ -1,4 +1,4 @@
-resource "helm_release" "keycloak-application" {
+resource "helm_release" "keycloak" {
   repository = var.infra_repository
   name       = "keycloak-application"
   chart      = "${var.infra_repository}/keycloak/application"
@@ -28,6 +28,7 @@ resource "helm_release" "keycloak-postgres" {
   }
 }
 
+/*
 resource "terraform_data" "keycloak_users" {
   depends_on = [helm_release.keycloak-application]
   provisioner "local-exec" {
@@ -35,3 +36,4 @@ resource "terraform_data" "keycloak_users" {
     command = "./scripts/create-users https://${var.hostname}"
   }
 }
+*/

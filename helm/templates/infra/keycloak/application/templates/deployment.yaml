@@ -74,14 +74,14 @@ spec:
           volumeMounts:
             - mountPath: /usr/share/logs
               name: {{ include "application.fullname" . }}-applogs
-            - mountPath: /opt/keycloak/data/import
-              name: {{ include "application.fullname" . }}-data-files-volume
+#            - mountPath: /opt/keycloak/data/import
+#              name: {{ include "application.fullname" . }}-data-files-volume
 
       volumes:
         - name: {{ include "application.fullname" . }}-applogs
           emptyDir: {}
-        - name: {{ include "application.fullname" . }}-data-files-volume
-          configMap:
-            name: {{ include "application.fullname" . }}-data-files
+ #       - name: {{ include "application.fullname" . }}-data-files-volume
+ #         configMap:
+ #           name: {{ include "application.fullname" . }}-data-files
      
 
