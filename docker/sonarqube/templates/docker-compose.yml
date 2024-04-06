@@ -16,7 +16,7 @@ services:
     ports:
       - "9000:9000"
   db:
-    image: postgres:16.1
+    image: postgres:16.2
     environment:
       POSTGRES_USER: sonar
       POSTGRES_PASSWORD: sonar
