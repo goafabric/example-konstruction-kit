@@ -36,6 +36,8 @@ resource "keycloak_openid_client" "openid_client_0" {
 resource "keycloak_user" "user1_0" {
   realm_id   = keycloak_realm.tenant-0.id
   username   = "user1"
+  first_name = "user1"
+  last_name  = "user1"
   enabled    = true
 
   email      = "user1@example.com"
@@ -50,6 +52,8 @@ resource "keycloak_user" "user1_0" {
 resource "keycloak_user" "user2_0" {
   realm_id   = keycloak_realm.tenant-0.id
   username   = "user2"
+  first_name = "user2"
+  last_name  = "user2"
   enabled    = true
 
   email      = "user2@example.com"
@@ -99,6 +103,8 @@ resource "keycloak_openid_client" "openid_client_5" {
 resource "keycloak_user" "user1_5" {
   realm_id   = keycloak_realm.tenant-5.id
   username   = "user1"
+  first_name = "user1"
+  last_name  = "user1"
   enabled    = true
 
   email      = "user1@example.com"
@@ -113,6 +119,8 @@ resource "keycloak_user" "user1_5" {
 resource "keycloak_user" "user2_5" {
   realm_id   = keycloak_realm.tenant-5.id
   username   = "user2"
+  first_name = "user2"
+  last_name  = "user2"
   enabled    = true
 
   email      = "user2@example.com"

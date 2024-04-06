@@ -17,7 +17,7 @@ data "external" "server_arch_data" {
 locals {
   production_mode = var.hostname == "kind" ? "false" : "true"
   server_arch = data.external.server_arch_data.result["server_arch"]
-  authentication_enabled = local.production_mode
+  authentication_enabled = true #local.production_mode
 
   replica_count = local.production_mode ? "2" : "1"
   postgres_ha = "false"
