@@ -65,7 +65,6 @@ resource "helm_release" "person-service-postgres-ha" {
 
 # manually remove the pvc to avoid password problems
 resource "terraform_data" "remove_postgres_pvc" {
-  count = local.postgres_ha == "true" ? 1 : 0
 
   provisioner "local-exec" {
     when = destroy

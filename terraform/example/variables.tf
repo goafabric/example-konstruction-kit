@@ -15,7 +15,7 @@ data "external" "server_arch_data" {
 }
 
 locals {
-  production_mode = !strcontians(var.hostname, ".local")
+  production_mode = !strcontains(var.hostname, ".local")
   server_arch = data.external.server_arch_data.result["server_arch"]
   authentication_enabled = local.production_mode
 
