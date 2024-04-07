@@ -3,5 +3,5 @@ variable "profile" {
 }
 
 variable "hostname" {
-  default = "kind"
+  default = "kind.local"
 }

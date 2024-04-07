@@ -1,5 +1,5 @@
 variable "hostname" {
-  default = "kind"
+  default = "kind.local"
 }
 
 variable "helm_timeout" {

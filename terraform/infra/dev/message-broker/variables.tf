@@ -1,5 +1,5 @@
 variable "hostname" {
-  default = "kind"
+  default = "kind.local"
 }
 
 variable "helm_timeout" {
@@ -15,7 +15,7 @@ data "external" "server_arch_data" {
 }
 
 locals {
-  production_mode = var.hostname == "kind" ? "false" : "true"
+  production_mode = var.hostname == "kind.local" ? "false" : "true"
   server_arch = data.external.server_arch_data.result["server_arch"]
   authentication_enabled = local.production_mode
 

@@ -1,2 +1,2 @@
 #!/bin/bash
-export TF_VAR_hostname="kind"
+export TF_VAR_hostname="kind.local"
