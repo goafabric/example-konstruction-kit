@@ -16,6 +16,7 @@ function up() {
     time(
     apply ./
     cp kind-config ~/.kube.profile/.kube.kind/config
+    kubectl create configmap cluster-config -n default --from-literal=hostname=$TF_VAR_hostname
     apply ../../ingress
     apply ../../infra/monitoring
     )
