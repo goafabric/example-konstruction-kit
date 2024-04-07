@@ -15,7 +15,7 @@ function up() {
     time(
     apply ./
     cp kind-config ~/.kube.profile/.kube.kind/config
-    apply ../../infra/ingress_certs
+    apply ../../ingress_certs
     apply ../../infra/monitoring
     )
 }
@@ -23,7 +23,7 @@ function up() {
 function down() {
     time(
     destroy ../../infra/monitoring
-    destroy ../../infra/ingress_certs
+    destroy ../../ingress_certs
     destroy ./
     )
 }
