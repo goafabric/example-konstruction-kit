@@ -7,7 +7,7 @@ variable "helm_timeout" {
 }
 
 variable "helm_repository" {
-  default = "../../../../helm/templates/infra/message-broker" #"https://goafabric.github.io/example-konstruction-kit/helm/charts/example/spring"
+  default = "../../../../helm/infra/message-broker" #"https://goafabric.github.io/example-konstruction-kit/helm/charts/example/spring"
 }
 
 data "external" "server_arch_data" {

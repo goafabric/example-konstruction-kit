@@ -14,7 +14,7 @@ resource "kubernetes_manifest" "person-service-application" {
       source = {
         repoURL        = var.helm_repository
         targetRevision = "refactoring"
-        path           = "helm/templates/example/spring/person-service/application"
+        path           = "helm/example/spring/person-service/application"
         helm = {
           parameters = [
             {
@@ -60,7 +60,7 @@ resource "kubernetes_manifest" "person-service-postgres" {
       source = {
         repoURL        = var.helm_repository
         targetRevision = "refactoring"
-        path           = "helm/templates/example/spring/person-service/postgres"
+        path           = "helm/example/spring/person-service/postgres"
         helm = {
           parameters = [
             {

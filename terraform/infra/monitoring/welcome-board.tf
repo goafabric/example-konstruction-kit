@@ -1,7 +1,7 @@
 resource "helm_release" "welcome-board" {
-  repository = "../../../../helm/templates/infra/welcome"
+  repository = "../../../helm/infra/welcome"
   name       = "welcome-board"
-  chart      = "../../../../helm/templates/infra/welcome"
+  chart      = "../../../helm/infra/welcome"
   version    = "1.1.2"
   namespace  = "default"
   create_namespace = true
