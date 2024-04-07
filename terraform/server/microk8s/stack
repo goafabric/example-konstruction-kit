@@ -1,5 +1,6 @@
 #!/bin/bash
-source .values
+source ~/.kube/values
+
 COMMAND=$1
 WORKSPACE=$TF_VAR_hostname
 

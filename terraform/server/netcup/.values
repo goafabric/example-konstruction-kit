@@ -1,2 +1,0 @@
-#!/bin/bash
-export TF_VAR_hostname="v2202402203466256255.megasrv.de"

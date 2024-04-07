@@ -1,5 +1,6 @@
 #!/bin/bash
-source .values
+TF_VAR_hostname="kind.local"
+
 COMMAND=$1
 WORKSPACE=$TF_VAR_hostname
 
