@@ -2,6 +2,7 @@
 
 - terraform variable optimization
 - helm charts dir removed
+- massive refactoring of directories
 
 # 1.1.1
 - terraform added
