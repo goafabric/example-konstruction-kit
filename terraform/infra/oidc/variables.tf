@@ -7,5 +7,5 @@ variable "helm_timeout" {
 }
 
 variable "infra_repository" {
-  default = "../../../../helm/infra" #"https://goafabric.github.io/example-konstruction-kit/helm/charts/example/infra"
+  default = "../../../helm/infra" #"https://goafabric.github.io/example-konstruction-kit/helm/charts/example/infra"
 }
