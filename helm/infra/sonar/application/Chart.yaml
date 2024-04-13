@@ -1,0 +1,9 @@
+apiVersion: v2
+name: sonarqube-application
+description: sonarqube-application
+
+type: application
+
+version: 1.1.2
+
+appVersion: "community"
