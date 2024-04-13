@@ -20,8 +20,8 @@ resourcesAnnotations:
     requests:
       memory: 256M
       cpu: 250m
-    limits:
-      memory: 2G
+#    limits:
+#      memory: 2G
 
 readinessProbe:
   initialDelaySeconds: 2
