@@ -13,4 +13,3 @@
 
 ## application           
 - Sonarqube + Sonarlint: https://www.linkedin.com/pulse/static-code-analysis-sonarlint-github-actions-lucas-persson?utm_source=share&utm_medium=member_ios&utm_campaign=share_via
-- Release https://wszlosek.github.io/DevDawn/2023/06/28/gradle-release-plugin.html
