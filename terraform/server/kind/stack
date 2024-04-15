@@ -1,6 +1,4 @@
 #!/bin/bash
-TF_VAR_hostname="kind.local"
-
 COMMAND=$1
 WORKSPACE=$TF_VAR_hostname
 
@@ -17,7 +15,7 @@ function up() {
     apply ./
     cp kind-config ~/.kube.profile/.kube.kind/config
     kubectl create configmap cluster-config -n default --from-literal=hostname=$TF_VAR_hostname
-    apply ../../ingress
+    apply ../../infra/ingress
     apply ../../infra/monitoring
     )
 }
@@ -25,7 +23,7 @@ function up() {
 function down() {
     time(
     destroy ../../infra/monitoring
-    destroy ../../ingress
+    destroy ../../infra/ingress
     destroy ./
     )
 }

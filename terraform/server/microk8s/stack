@@ -14,7 +14,7 @@ function destroy() {
 
 function up() {
     time(
-    apply ../../ingress
+    apply ../../infra/ingress
     apply ../../infra/monitoring
     apply ../../infra/loki
     apply ../../infra/oidc
