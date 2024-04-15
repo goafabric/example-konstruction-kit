@@ -1,0 +1,20 @@
+apiVersion: metallb.io/v1beta1
+kind: IPAddressPool
+metadata:
+  name: default-pool
+  namespace: metallb-system
+spec:
+  addresses:
+    - 127.0.0.1-127.0.0.1
+#    - 172.18.255.200-172.18.255.250  #docker network inspect -f '{{range .IPAM.Config}}{{.Subnet}}{{end}}' kind | grep -o '[^.]*.[^.]*' | head -n1
+
+---
+
+apiVersion: metallb.io/v1beta1
+kind: L2Advertisement
+metadata:
+  name: default
+  namespace: metallb-system
+spec:
+  ipAddressPools:
+    - default-pool
