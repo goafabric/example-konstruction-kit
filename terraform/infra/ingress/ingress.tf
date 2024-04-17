@@ -3,7 +3,7 @@ resource "helm_release" "nginx-ingress" {
   repository = "https://kubernetes.github.io/ingress-nginx"
   chart      = "ingress-nginx"
   namespace  = "ingress-nginx"
-  version    = "4.7.0"
+  version    = "4.10.0"
   create_namespace = true
 
   set {
@@ -14,6 +14,11 @@ resource "helm_release" "nginx-ingress" {
   set {
     name  = "controller.service.nodePorts.https"
     value = "32443"
+  }
+
+  set {
+    name  = "controller.allowSnippetAnnotations"
+    value = true
   }
 
 }

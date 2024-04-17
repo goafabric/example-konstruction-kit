@@ -1,8 +1,10 @@
 # 1.2.0
-
 - terraform variable optimization
 - helm charts dir removed
 - massive refactoring of directories
+- upgrade of ingress nginx helm chart to 4.10.0
+- upgrade of cert-manager helm chart to 1.14.4
+- added grafana tempo + update of other grafana compomnents to latest version in monolithic mode
 
 # 1.1.1
 - terraform added
