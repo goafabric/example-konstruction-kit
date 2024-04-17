@@ -8,7 +8,7 @@ resource "helm_release" "person-service-application" {
 
   set {
     name  = "replicaCount"
-    value = local.replica_count
+    value = "1"
   }
 
   set {
