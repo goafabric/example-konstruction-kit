@@ -4,7 +4,6 @@ resource "helm_release" "core-postgres-postgresql-ha-pgpool" {
   repository = var.helm_repository
   name       = "core-postgres-postgresql-ha-pgpool"
   chart      = "${var.helm_repository}/core/postgres"
-  version    = "1.1.2"
   namespace  = "core"
   create_namespace = true
   timeout = var.helm_timeout

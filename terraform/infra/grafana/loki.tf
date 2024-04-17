@@ -1,7 +1,7 @@
 resource "helm_release" "loki" {
   repository = "https://grafana.github.io/helm-charts"
   name       = "loki"
-  chart      = "loki-stack"
+  chart      = "loki-stack" #loki-stack is used to also get promtail
   version    = "v2.10.2"
   namespace  = "monitoring"
   create_namespace = true

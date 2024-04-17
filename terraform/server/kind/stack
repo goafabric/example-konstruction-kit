@@ -16,13 +16,13 @@ function up() {
     cp kind-config ~/.kube.profile/.kube.kind/config
     kubectl create configmap cluster-config -n default --from-literal=hostname=$TF_VAR_hostname
     apply ../../infra/ingress
-    apply ../../infra/monitoring
+    apply ../../infra/dashboard
     )
 }
 
 function down() {
     time(
-    destroy ../../infra/monitoring
+    destroy ../../infra/dashboard
     destroy ../../infra/ingress
     destroy ./
     )

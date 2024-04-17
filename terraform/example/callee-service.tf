@@ -2,7 +2,6 @@ resource "helm_release" "callee-service-application" {
   repository = var.helm_repository
   name       = "callee-service-application"
   chart      = "${var.helm_repository}/callee-service/application"
-  version    = "1.1.2"
   namespace  = "example"
   create_namespace = true
   timeout = var.helm_timeout

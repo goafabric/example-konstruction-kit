@@ -15,7 +15,7 @@ function destroy() {
 function up() {
     time(
     apply ../../infra/ingress
-    apply ../../infra/monitoring
+    apply ../../infra/dashboard
     apply ../../infra/grafana
     apply ../../infra/oidc
     apply ../../example
@@ -30,7 +30,7 @@ function down() {
     destroy ../../core
     destroy ../../example
     destroy ../../infra/oidc
-    destroy ../../infra/monitoring
+    destroy ../../infra/dashboard
     destroy ../../infra/grafana
     destroy ../../infra/ingress
     )

@@ -2,7 +2,6 @@ resource "helm_release" "core-application" {
   repository = var.helm_repository
   name       = "core-application"
   chart      = "${var.helm_repository}/core/application"
-  version    = "1.1.2"
   namespace  = "core"
   create_namespace = true
   timeout = var.helm_timeout
