@@ -37,7 +37,7 @@ datasources:
       uid: tempo
       access: proxy
       orgId: 1
-      url: http://tempo-query-frontend:3100
+      url: http://tempo:3100
       editable: true
       isDefault: false
       jsonData:

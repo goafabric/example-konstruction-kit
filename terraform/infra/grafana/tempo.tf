@@ -1,8 +1,10 @@
 resource "helm_release" "tempo" {
   name       = "tempo"
   repository = "https://grafana.github.io/helm-charts"
-  chart      = "tempo-distributed"
-  version    = "1.8.5"
+#  chart      = "tempo-distributed"
+#  version    = "1.8.5"
+  chart      = "tempo"
+  version    = "1.7.2"
   namespace  = "monitoring"
   timeout    = "120"
   create_namespace = true
