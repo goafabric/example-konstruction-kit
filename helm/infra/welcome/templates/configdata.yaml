@@ -28,7 +28,7 @@ data:
     {\n            height: 24px;\n            margin-right: 10px;\n            width:
     24px;\n        }\n        p {\n          height: 1px;\n          border-bottom:
     1px dashed #ffffff54;\n        }\n    </style>\n</head>\n<body>\n<div class=\"box\">\n
-    \   <h1 class=\"title\">Welcome to the Example Cluster 1.1.2</h1>\n    <h2 class=\"subtitle\">Your
+    \   <h1 class=\"title\">Welcome to the Example Cluster 1.2.0</h1>\n    <h2 class=\"subtitle\">Your
     best course would be to tread lightly ...</h2>\n\n    <div class=\"links-container\">\n
     \       <div class=\"links\">\n            <h6>Dashboards</h6>\n            <ul>\n
     \               <p></p>\n                <li>\n                    <a href=\"/dashboard/#\"
@@ -36,10 +36,8 @@ data:
     \                   </a>\n                </li>\n                <li>\n                    <a
     href=\"/kiali/\" target=\"_blank\">\n                        <span>⛵ Istio Dashboard</span>\n
     \                   </a>\n                </li>\n                <p></p>\n                <li>\n
-    \                   <a href=\"/jaeger/\" target=\"_blank\">\n                        <span>\U0001F3F9
-    Jaeger</span>\n                    </a>\n                </li>\n                <li>\n
     \                   <a href=\"/grafana/explore\" target=\"_blank\">\n                        <span>\U0001F4CA
-    Loki</span>\n                    </a>\n                </li>\n                <a
+    Grafana</span>\n                    </a>\n                </li>\n                <a
     href=\"/sonar/\" target=\"_blank\">\n                    <span>\U0001F4E1 Sonarqube</span>\n
     \               </a>\n                <p></p>\n                <li>\n                    <a
     href=\"/oidc/\" target=\"_blank\">\n                        <span>\U0001F510 Keycloak</span>\n
@@ -63,8 +61,8 @@ data:
     \               </li>\n            </ul>\n        </div>\n    </div>\n</div>\n\n</body>\n"
 kind: ConfigMap
 metadata:
-  creationTimestamp: "2024-04-13T15:15:16Z"
+  creationTimestamp: "2024-04-17T04:33:15Z"
   name: welcome-board-data-files
   namespace: default
-  resourceVersion: "5793543"
-  uid: 59182d33-5edd-4798-b9c0-bfb2fd6517e6
+  resourceVersion: "18290"
+  uid: 72e24d37-9cd4-48b4-ba78-b4e470e73efb
