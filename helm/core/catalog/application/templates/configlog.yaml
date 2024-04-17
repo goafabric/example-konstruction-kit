@@ -12,3 +12,5 @@ data:
   logging.level.org.springframework: "INFO"
   logging.level.org.flywaydb.core: "INFO"
   logging.level.org.hibernate.SQL: "INFO"
+
+  logging.pattern.level: "%5p tenantId=%X{tenantId:-}" #"%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}] tenantId=%X{tenantId:-}"
