@@ -3,7 +3,7 @@ resource "helm_release" "loki" {
   name       = "loki"
   chart      = "loki-stack"
   version    = "v2.10.2"
-  namespace  = "grafana"
+  namespace  = "monitoring"
   create_namespace = true
 
   set {

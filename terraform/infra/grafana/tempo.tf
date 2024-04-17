@@ -3,7 +3,7 @@ resource "helm_release" "tempo" {
   repository = "https://grafana.github.io/helm-charts"
   chart      = "tempo-distributed"
   version    = "1.8.5"
-  namespace  = "grafana"
+  namespace  = "monitoring"
   timeout    = "120"
   create_namespace = true
   
@@ -52,7 +52,7 @@ resource "helm_release" "tempo" {
 #   name       = "s3-minio"
 #   repository = "https://charts.bitnami.com/bitnami"
 #   chart      = "minio"
-#   namespace  = "grafana"
+#   namespace  = "monitoring"
 #   version    = "14.1.2"
 #   timeout = "90"
 #   create_namespace = "true"
