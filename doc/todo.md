@@ -1,7 +1,6 @@
 # todos
 
 ## terraform cont.
-- grafana oss with loki + tempo
 - apisix deployment including gateway definitions, switchable between ingress and apisix
 
 ## security
