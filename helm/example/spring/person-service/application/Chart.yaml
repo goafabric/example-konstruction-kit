@@ -1,0 +1,9 @@
+apiVersion: v2
+name: person-service-application
+description: person-service-application
+
+type: application
+
+version: 1.2.0
+
+appVersion: "3.2.4"

@@ -1,3 +1,0 @@
-#!/bin/bash
-export TF_VAR_server_arch=`kubectl version --output=json | grep "linux/arm64" > /dev/null && echo "-arm64v8"`
-# echo needs to be called with source .values

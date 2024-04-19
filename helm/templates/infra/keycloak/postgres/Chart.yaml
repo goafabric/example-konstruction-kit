@@ -1,9 +1,0 @@
-apiVersion: v2
-name: keycloak-postgres
-description: keycloak-postgres
-
-type: application
-
-version: 1.1.1
-
-appVersion: "16.1"

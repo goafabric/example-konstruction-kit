@@ -1,0 +1,9 @@
+apiVersion: v2
+name: person-service-postgres
+description: person-service-postgres
+
+type: application
+
+version: 1.2.0
+
+appVersion: "16.2"

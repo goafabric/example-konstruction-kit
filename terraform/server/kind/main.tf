@@ -2,7 +2,7 @@ terraform {
   required_providers {
     kind = {
       source  = "tehcyx/kind"
-      version = "0.2.1"
+      version = "0.4.0"
     }
   }
 }
@@ -30,7 +30,7 @@ resource "kind_cluster" "kind" {
       }
       extra_port_mappings {
         container_port = 32443
-        host_port      = 32443
+        host_port      = 443
       }
     }
 

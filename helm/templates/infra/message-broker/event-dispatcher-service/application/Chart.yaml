@@ -1,9 +1,0 @@
-apiVersion: v2
-name: event-dispatcher-service-application
-description: event-dispatcher-service-application
-
-type: application
-
-version: 1.0.0
-
-appVersion: "3.2.0"

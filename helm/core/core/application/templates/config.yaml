@@ -1,0 +1,63 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "application.fullname" . }}-config
+  labels:
+    {{- include "application.labels" . | nindent 4 }}
+data:
+  #application
+  TZ: Europe/Berlin
+  server.port: "{{ .Values.service.port }}"
+  server.tomcat.threads.max: "20"
+  server.forward-headers-strategy: FRAMEWORK
+
+  #security
+  #security.authentication.enabled: "false"
+  security.authentication.enabled: "{{ .Values.security.authentication.enabled }}"
+
+  spring.security.oauth2.authorization-uri: "https://{{ .Values.ingress.hosts}}/oidc/realms/tenant-{tenantId}/protocol/openid-connect/auth"
+  spring.security.oauth2.logout-uri: "https://{{ .Values.ingress.hosts}}/oidc/realms/tenant-{tenantId}/protocol/openid-connect/logout"
+  spring.security.oauth2.base-uri: "http://keycloak-application.oidc:8080/oidc/realms/tenant-{tenantId}/protocol/openid-connect"
+  spring.security.oauth2.user-name-attribute: "preferred_username"
+
+  #spring.security.oauth2.authorization-uri: "https://{{ .Values.ingress.hosts}}/oidc/auth"
+  #spring.security.oauth2.base-uri: "http://spring-auth-server-application.oidc:8080/"
+
+  #monitoring
+  management.endpoints.web.exposure.include: "health,heapdump,circuitbreakers,prometheus"
+  management.endpoint.health.show-details: never
+  springdoc.swagger-ui.path: "//"
+  springdoc.api-docs.path: "//"
+
+  #zipkin/jaeger
+  spring.application.name: "{{ include "application.fullname" . }}"
+  management.otlp.tracing.endpoint: "http://tempo.monitoring:4318/v1/traces"
+  management.tracing.sampling.probability: "1.0"
+  logging.level.io.opentelemetry: "INFO"
+
+  #persistence
+  spring.datasource.url: "jdbc:postgresql://core-postgres-postgresql-ha-pgpool:5432/core"
+  spring.datasource.hikari.maximum-pool-size: "10"
+  spring.datasource.hikari.connection-timeout: "10000"
+
+  multi-tenancy.tenants: "0,5"
+  multi-tenancy.schema-prefix: "core_"
+  database.provisioning.goals: "-migrate -import-demo-data"
+
+  #profile
+  spring.profiles.active: jpa
+
+  #frontend
+  frontend.catalog-service.uri: "http://catalog-application:8080"
+
+  #monitoring view
+  monitoring.view.enabled: "true"
+  monitoring.view.tracing.url: "/jaeger"
+  monitoring.view.loki.url: "/grafana/explore"
+  monitoring.view.s3.url: "/s3"
+
+  #
+  spring.cloud.aws.s3.endpoint: "http://s3-minio:9000"
+  spring.cloud.aws.s3.enabled: "true"
+
+  event.dispatcher.uri: "http://event-dispatcher-service-application.message-broker:8080/events/dispatch"

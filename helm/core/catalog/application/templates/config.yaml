@@ -1,0 +1,42 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "application.fullname" . }}-config
+  labels:
+    {{- include "application.labels" . | nindent 4 }}
+data:
+  #application
+  TZ: Europe/Berlin
+  server.port: "{{ .Values.service.port }}"
+  server.tomcat.threads.max: "20"
+  server.forward-headers-strategy: FRAMEWORK
+
+  #security
+  security.authentication.enabled: "false"
+
+  spring.security.oauth2.frontend-uri: "https://{_Values_host_name}/oidc"
+  spring.security.oauth2.base-uri: "http://keycloak-application.oidc:8080/oidc"
+  spring.security.oauth2.prefix: "/realms/tenant-{tenantId}/protocol/openid-connect"
+  spring.security.oauth2.user-name-attribute: "preferred_username"
+
+  #monitoring
+  management.endpoints.web.exposure.include: "health,heapdump,circuitbreakers,prometheus"
+  management.endpoint.health.show-details: never
+  springdoc.swagger-ui.path: "//"
+  springdoc.api-docs.path: "//"
+
+  #zipkin/jaeger
+  spring.application.name: "{{ include "application.fullname" . }}"
+  management.otlp.tracing.endpoint: "http://tempo.monitoring:4318/v1/traces"
+  management.tracing.sampling.probability: "1.0"
+  logging.level.io.opentelemetry: "INFO"
+
+  #persistence
+  spring.datasource.url: "jdbc:postgresql://core-postgres-postgresql-ha-pgpool:5432/core"
+  spring.datasource.hikari.maximum-pool-size: "10"
+  spring.datasource.hikari.connection-timeout: "10000"
+
+  database.provisioning.goals: ""
+
+  #profile
+  spring.profiles.active: jpa

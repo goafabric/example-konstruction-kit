@@ -1,0 +1,39 @@
+replicaCount: 1
+
+tenantId: 0
+ingress:
+  paths: /sonar
+  enabled: true
+  authentication: none
+
+image:
+  repository: "sonarqube"
+  pullPolicy: IfNotPresent
+  pullSecrets:
+
+podAnnotations:
+  linkerd.io/inject: enabled
+  sidecar.istio.io/inject: "true"
+
+resourcesAnnotations:
+  resources:
+    requests:
+      memory: 256M
+      cpu: 250m
+#    limits:
+#      memory: 2G
+
+readinessProbe:
+  initialDelaySeconds: 2
+
+service:
+  type: ClusterIP
+  port: 9000
+
+initContainers:
+  - name: check-db-ready
+    image: postgres:16.2
+    command: ['sh', '-c','until pg_isready -h sonarqube-postgres -p 5432;do echo waiting for database; sleep 1; done;']
+
+database:
+  password:

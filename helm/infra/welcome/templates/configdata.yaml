@@ -1,0 +1,68 @@
+apiVersion: v1
+data:
+  index.html: "<!DOCTYPE html>\n<html>\n<head lang=\"en\">\n    <meta charset=\"UTF-8\">\n
+    \   <title>Cluster Landing Page</title>\n    <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\">\n
+    \   <link href=\"https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,700;1,100&display=swap\"\n
+    \         rel=\"stylesheet\">\n    <style>\n        body, h1, h2, h3, h4, h5,
+    h6 {\n            margin: 0;\n        }\n\n        ul {\n            margin: 16px
+    0;\n            padding-left: 40px;\n        }\n\n        li {\n            list-style:
+    none;\n        }\n\n        html {\n            background-color: #0099ff;\n            background-size:
+    cover;\n        }\n\n        body {\n            color: #ffffff;\n            font-family:
+    'Roboto', sans-serif;\n            padding-top: 100px;\n            text-align:
+    center;\n        }\n\n        .title {\n            font-size: 60px;\n            font-weight:
+    300;\n        }\n\n        .subtitle {\n            font-size: 20px;\n            font-weight:
+    100;\n            font-style: italic;\n        }\n\n        .box {\n            backdrop-filter:
+    blur(5px);\n            background: rgba(66, 66, 66, 0.25);\n            border:
+    2px solid #ffffff;\n            box-sizing: border-box;\n            margin: 75px
+    auto 0;\n            max-width: 1024px;\n            padding: 25px;\n            width:
+    100%;\n        }\n\n        .links-container {\n            box-sizing: border-box;\n
+    \           display: flex;\n            flex-wrap: wrap;\n            margin-top:
+    25px;\n            width: 100%;\n        }\n\n        .links {\n            flex:
+    33%;\n            margin: 25px 0;\n            text-align: left;\n        }\n\n
+    \       .links h6 {\n            font-size: 30px;\n            font-weight: 300;\n
+    \           padding-left: 79px;\n            text-transform: uppercase;\n        }\n\n
+    \       .links a {\n            align-items: center;\n            color: #ffffff;\n
+    \           display: inline-flex;\n            font-size: 16px;\n            margin:
+    5px;\n            text-decoration: none;\n        }\n\n        .links a:hover
+    {\n            text-decoration: underline;\n        }\n\n        .links a img
+    {\n            height: 24px;\n            margin-right: 10px;\n            width:
+    24px;\n        }\n        p {\n          height: 1px;\n          border-bottom:
+    1px dashed #ffffff54;\n        }\n    </style>\n</head>\n<body>\n<div class=\"box\">\n
+    \   <h1 class=\"title\">Welcome to the Example Cluster 1.2.0</h1>\n    <h2 class=\"subtitle\">Your
+    best course would be to tread lightly ...</h2>\n\n    <div class=\"links-container\">\n
+    \       <div class=\"links\">\n            <h6>Dashboards</h6>\n            <ul>\n
+    \               <p></p>\n                <li>\n                    <a href=\"/dashboard/#\"
+    target=\"_blank\">\n                        <span>☸️ Kubernetes Dashboard</span>\n
+    \                   </a>\n                </li>\n                <li>\n                    <a
+    href=\"/kiali/\" target=\"_blank\">\n                        <span>⛵ Istio Dashboard</span>\n
+    \                   </a>\n                </li>\n                <p></p>\n                <li>\n
+    \                   <a href=\"/grafana/explore\" target=\"_blank\">\n                        <span>\U0001F4CA
+    Grafana</span>\n                    </a>\n                </li>\n                <a
+    href=\"/sonar/\" target=\"_blank\">\n                    <span>\U0001F4E1 Sonarqube</span>\n
+    \               </a>\n                <p></p>\n                <li>\n                    <a
+    href=\"/oidc/\" target=\"_blank\">\n                        <span>\U0001F510 Keycloak</span>\n
+    \                   </a>\n                </li>\n                <p></p>\n                <li>\n
+    \                   <!--\n                    <a href=\"/rabbitmq/\" target=\"_blank\">\n
+    \                       <span>\U0001F430 RabbitMQ</span>\n                    </a>\n
+    \                   -->\n                    <a href=\"/event/\" target=\"_blank\">\n
+    \                       <span>\U0001F430 Event Dispatcher</span>\n                    </a>\n
+    \               </li>\n            </ul>\n        </div>\n        <div class=\"links\">\n
+    \           <h6>Core</h6>\n            <ul>\n                <p></p>\n                <li>\n
+    \                   <a href=\"/core/\" target=\"_blank\">\n                        <span>\U0001F30D
+    Core</span>\n                    </a>\n                </li>\n                <p></p>\n
+    \               <li>\n                    <a href=\"/catalog/\" target=\"_blank\">\n
+    \                       <span>\U0001F4D9 Catalog</span>\n                    </a>\n
+    \               </li>\n            </ul>\n        </div>\n\n        <div class=\"links\">\n
+    \           <h6>Example</h6>\n            <ul>\n                <p></p>\n                <li>\n
+    \                   <a href=\"/person/\" target=\"_blank\">\n                        <span>\U0001F30D
+    Person Service</span>\n                    </a>\n                </li>\n                <p></p>\n
+    \               <li>\n                    <a href=\"/callee/\" target=\"_blank\">\n
+    \                       <span>\U0001F4E2 Callee Service</span>\n                    </a>\n
+    \               </li>\n            </ul>\n        </div>\n    </div>\n</div>\n\n</body>\n"
+kind: ConfigMap
+metadata:
+  creationTimestamp: "2024-04-17T04:33:15Z"
+  name: welcome-board-data-files
+  namespace: default
+  resourceVersion: "18290"
+  uid: 72e24d37-9cd4-48b4-ba78-b4e470e73efb
