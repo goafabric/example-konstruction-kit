@@ -4,6 +4,6 @@ description: sonarqube-postgres
 
 type: application
 
-version: 1.2.0
+version: 1.2.1
 
 appVersion: "16.2"
