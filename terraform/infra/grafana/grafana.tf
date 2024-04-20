@@ -25,4 +25,3 @@ resource "helm_release" "grafana" {
     value = "admin"
   }
 }
-
