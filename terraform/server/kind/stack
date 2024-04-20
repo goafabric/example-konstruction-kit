@@ -3,7 +3,7 @@ COMMAND=$1
 WORKSPACE=$TF_VAR_hostname
 
 function apply() {
-  (cd $1; terraform workspace select -or-create $WORKSPACE && terraform apply -auto-approve)
+  (cd $1; terraform workspace select -or-create $WORKSPACE && terraform init && terraform apply -auto-approve)
 }
 
 function destroy() {
