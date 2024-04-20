@@ -13,6 +13,16 @@ resource "helm_release" "keycloak" {
     name  = "ingress.hosts"
     value = var.hostname
   }
+
+  set {
+    name  = "database.password"
+    value = random_password.database_password.result
+  }
+
+  set {
+    name  = "admin.password"
+    value = random_password.admin_password.result
+  }
 }
 
 resource "helm_release" "keycloak-postgres" {
@@ -25,7 +35,7 @@ resource "helm_release" "keycloak-postgres" {
   timeout = var.helm_timeout
 
   set {
-    name  = "ingress.hosts"
-    value = var.hostname
+    name  = "database.password"
+    value = random_password.database_password.result
   }
 }
