@@ -9,7 +9,7 @@ resource "helm_release" "apisix" {
 
   set {
     name  = "service.type"
-    value = "NodePort" #"LoadBalancer"
+    value = local.ingress_service_type
   }
 
   set {
