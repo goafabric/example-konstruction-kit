@@ -31,38 +31,37 @@ data:
     \   <h1 class=\"title\">Welcome to the Example Cluster 1.2.1</h1>\n    <h2 class=\"subtitle\">Your
     best course would be to tread lightly ...</h2>\n\n    <div class=\"links-container\">\n
     \       <div class=\"links\">\n            <h6>Dashboards</h6>\n            <ul>\n
-    \               <p></p>\n                <li>\n                    <a href=\"/dashboard/#\"
-    target=\"_blank\">\n                        <span>☸️ Kubernetes Dashboard</span>\n
-    \                   </a>\n                </li>\n                <li>\n                    <a
-    href=\"/kiali/\" target=\"_blank\">\n                        <span>⛵ Istio Dashboard</span>\n
-    \                   </a>\n                </li>\n                <p></p>\n                <li>\n
-    \                   <a href=\"/grafana/explore\" target=\"_blank\">\n                        <span>\U0001F4CA
-    Grafana</span>\n                    </a>\n                </li>\n                <a
-    href=\"/sonar/\" target=\"_blank\">\n                    <span>\U0001F4E1 Sonarqube</span>\n
-    \               </a>\n                <p></p>\n                <li>\n                    <a
+    \               <p></p>\n                <!--\n                <li>\n                    <a
+    href=\"/dashboard/#\" target=\"_blank\">\n                        <span>☸️ Kubernetes
+    Dashboard</span>\n                    </a>\n                </li>\n                -->\n
+    \               <li>\n                    <a href=\"/grafana/explore\" target=\"_blank\">\n
+    \                       <span>\U0001F4CA Grafana</span>\n                    </a>\n
+    \               </li>\n                <li>\n                    <a href=\"/kiali/\"
+    target=\"_blank\">\n                        <span>⛵ Istio Dashboard</span>\n                    </a>\n
+    \               </li>\n                <p></p>\n                <li>\n                    <a
     href=\"/oidc/\" target=\"_blank\">\n                        <span>\U0001F510 Keycloak</span>\n
-    \                   </a>\n                </li>\n                <p></p>\n                <li>\n
-    \                   <!--\n                    <a href=\"/rabbitmq/\" target=\"_blank\">\n
-    \                       <span>\U0001F430 RabbitMQ</span>\n                    </a>\n
-    \                   -->\n                    <a href=\"/event/\" target=\"_blank\">\n
-    \                       <span>\U0001F430 Event Dispatcher</span>\n                    </a>\n
-    \               </li>\n            </ul>\n        </div>\n        <div class=\"links\">\n
+    \                   </a>\n                </li>\n                <p></p>\n                <a
+    href=\"/sonar/\" target=\"_blank\">\n                    <span>\U0001F4E1 Sonarqube</span>\n
+    \               </a>\n            </ul>\n        </div>\n        <div class=\"links\">\n
     \           <h6>Core</h6>\n            <ul>\n                <p></p>\n                <li>\n
     \                   <a href=\"/core/\" target=\"_blank\">\n                        <span>\U0001F30D
     Core</span>\n                    </a>\n                </li>\n                <p></p>\n
     \               <li>\n                    <a href=\"/catalog/\" target=\"_blank\">\n
     \                       <span>\U0001F4D9 Catalog</span>\n                    </a>\n
-    \               </li>\n            </ul>\n        </div>\n\n        <div class=\"links\">\n
-    \           <h6>Example</h6>\n            <ul>\n                <p></p>\n                <li>\n
-    \                   <a href=\"/person/\" target=\"_blank\">\n                        <span>\U0001F30D
+    \               </li>\n                <p></p>\n                <li>\n                    <a
+    href=\"/event/\" target=\"_blank\">\n                        <span>\U0001F430
+    Event Dispatcher</span>\n                    </a>\n                </li>\n            </ul>\n
+    \       </div>\n\n        <div class=\"links\">\n            <h6>Example</h6>\n
+    \           <ul>\n                <p></p>\n                <li>\n                    <a
+    href=\"/person/\" target=\"_blank\">\n                        <span>\U0001F30D
     Person Service</span>\n                    </a>\n                </li>\n                <p></p>\n
     \               <li>\n                    <a href=\"/callee/\" target=\"_blank\">\n
     \                       <span>\U0001F4E2 Callee Service</span>\n                    </a>\n
     \               </li>\n            </ul>\n        </div>\n    </div>\n</div>\n\n</body>\n"
 kind: ConfigMap
 metadata:
-  creationTimestamp: "2024-04-17T04:33:15Z"
+  creationTimestamp: "2024-04-20T11:08:11Z"
   name: welcome-board-data-files
   namespace: default
-  resourceVersion: "18290"
-  uid: 72e24d37-9cd4-48b4-ba78-b4e470e73efb
+  resourceVersion: "7281248"
+  uid: 88fa329d-9f1e-4ec3-b7a7-7ba61264305f
