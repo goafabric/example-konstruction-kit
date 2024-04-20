@@ -16,5 +16,13 @@ resource "helm_release" "grafana" {
     name  = "ingress.tls[0].hosts[0]"
     value = var.hostname
   }
+  set {
+    name = "adminUser"
+    value = "admin"
+  }
+  set {
+    name = "adminPassword"
+    value = "admin"
+  }
 }
 
