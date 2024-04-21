@@ -55,7 +55,7 @@ spec:
               {{- end }}
           {{- end }}
 
-          {{ if and (ne .Values.image.arch "-native") (ne .Values.image.arch "-native-arm64v8") }}
+          {{ if or (eq .Values.image.arch "-native") (eq .Values.image.arch "-native-arm64v8") }}
             {{- with .Values.nativeAnnotations }}
               {{- toYaml . | nindent 10 }}
               {{- end }}

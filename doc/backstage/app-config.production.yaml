@@ -1,0 +1,15 @@
+# Backstage override configuration for your local development environment
+backend:
+  auth:
+    keys:
+    - secret: 'secret'
+    
+auth:
+  providers:
+    guest: 
+      dangerouslyAllowOutsideDevelopment: true
+      
+      
+#npx @backstage/create-app@latest
+#yarn install --frozen-lockfile && yarn tsc && yarn build:backend --config ../../app-config.yaml && docker image build . -f packages/backend/Dockerfile --tag goafabric/backstage:1.0.0-SNAPSHOT
+#docker run  --rm  --name backstage -p 7007:7007 goafabric/backstage:1.0.0-SNAPSHOT      
