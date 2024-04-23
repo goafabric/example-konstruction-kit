@@ -19,9 +19,3 @@ spec:
           enable: true
           config:
             http_to_https: true
-        - name: proxy-rewrite
-          enable: true
-          config:
-            regex_uri:
-              - {{ .Values.ingress.paths }}/(.*)
-              - /$1
