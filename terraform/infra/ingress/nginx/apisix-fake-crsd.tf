@@ -23,27 +23,21 @@ resource "kubernetes_manifest" "apisix-fake-crsd" {
           - jsonPath: .spec.http[].match.hosts
             name: Hosts
             type: string
-            priority: 0
           - jsonPath: .spec.http[].match.paths
             name: URIs
             type: string
-            priority: 0
           - jsonPath: .spec.http[].backends[].serviceName
             name: Target Service(HTTP)
             type: string
-            priority: 1
           - jsonPath: .spec.tcp[].match.ingressPort
             name: Ingress Server Port(TCP)
             type: integer
-            priority: 1
           - jsonPath: .spec.tcp[].match.backend.serviceName
             name: Target Service(TCP)
             type: string
-            priority: 1
           - jsonPath: .metadata.creationTimestamp
             name: Age
             type: date
-            priority: 0
         schema:
           openAPIV3Schema:
             type: object
