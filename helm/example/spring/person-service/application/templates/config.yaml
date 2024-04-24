@@ -18,8 +18,8 @@ data:
   #monitoring
   management.endpoints.web.exposure.include: "health,heapdump,circuitbreakers,prometheus"
   management.endpoint.health.show-details: never
-  springdoc.swagger-ui.path: "//"
-  springdoc.api-docs.path: "//"
+  #springdoc.swagger-ui.path: "//"
+  #springdoc.api-docs.path: "//"
 
   #zipkin/jaeger
   spring.application.name: "{{ include "application.fullname" . }}"
