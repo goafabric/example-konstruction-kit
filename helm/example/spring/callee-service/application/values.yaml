@@ -4,8 +4,10 @@ tenantId: 0
 ingress:
   paths: /callee
   enabled: true
-  authentication: none
-
+  tenantIDs:
+    - 0
+    - 5
+      
 image:
   repository: "goafabric/callee-service" # image name
   pullPolicy: IfNotPresent
