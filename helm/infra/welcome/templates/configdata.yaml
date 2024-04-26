@@ -48,35 +48,39 @@ data:
     href=\"/sonar/\" target=\"_blank\">\n                    <span>\U0001F4E1 Sonarqube</span>\n
     \               </a>\n            </ul>\n        </div>\n        <div class=\"links\">\n
     \           <h6>Core</h6>\n            <ul>\n                <p></p>\n                <li>\n
-    \                   <a href=\"/core/0/frontend/\" target=\"_blank\">\n                        <span>\U0001F30D
-    Core 0</span>\n                    </a>\n                    <a href=\"/core/0/logout\"
-    target=\"_blank\">\n                        <span>\U0001F513</span>\n                    </a>\n
-    \               </li>\n                <li>\n                    <a href=\"/core/5/frontend/\"
-    target=\"_blank\">\n                        <span>\U0001F30D Core 5</span>\n                    </a>\n
-    \                   <a href=\"/core/5/logout\" target=\"_blank\">\n                        <span>\U0001F513</span>\n
-    \                   </a>\n                </li>\n                <p></p>\n                <li>\n
-    \                   <a href=\"/catalog/0/\" target=\"_blank\">\n                        <span>\U0001F4D9
-    Catalog</span>\n                    </a>\n                </li>\n                <p></p>\n
-    \               <li>\n                    <a href=\"/event/0/\" target=\"_blank\">\n
-    \                       <span>\U0001F430 Event Dispatcher</span>\n                    </a>\n
-    \               </li>\n            </ul>\n        </div>\n\n        <div class=\"links\">\n
-    \           <h6>Example</h6>\n            <ul>\n                <p></p>\n                <li>\n
-    \                   <a href=\"/person/0/\" target=\"_blank\">\n                        <span>\U0001F30D
-    Person Service 0</span>\n                    </a>\n                    <a href=\"/person/0/logout\"
-    target=\"_blank\">\n                        <span>\U0001F513</span>\n                    </a>\n
-    \               </li>\n                <li>\n                    <a href=\"/person/5/\"
-    target=\"_blank\">\n                        <span>\U0001F30D Person Service 5</span>\n
-    \                   </a>\n                    <a href=\"/person/5/logout\" target=\"_blank\">\n
+    \                   <a href=\"/core/frontend/\" target=\"_blank\">\n                        <span>\U0001F30D
+    Core</span>\n                    </a>\n                    <a href=\"/core/0/frontend/\"
+    target=\"_blank\">\n                        <span>0</span>\n                    </a>\n
+    \                   <a href=\"/core/5/frontend/\" target=\"_blank\">\n                        <span>5</span>\n
+    \                   </a>\n                    <a href=\"/core/0/logout\" target=\"_blank\">\n
     \                       <span>\U0001F513</span>\n                    </a>\n                </li>\n
-    \               <p></p>\n                <li>\n                    <a href=\"/callee/0/\"
+    \               <p></p>\n                <li>\n                    <a href=\"/catalog/\"
+    target=\"_blank\">\n                        <span>\U0001F4D9 Catalog</span>\n
+    \                   </a>\n                    <a href=\"/catalog/0/\" target=\"_blank\">\n
+    \                       <span>0</span>\n                    </a>\n                </li>\n
+    \               <p></p>\n                <li>\n                    <a href=\"/event/\"
+    target=\"_blank\">\n                        <span>\U0001F430 Event Dispatcher</span>\n
+    \                   </a>\n                    <a href=\"/event/0/\" target=\"_blank\">\n
+    \                       <span>0</span>\n                    </a>\n                </li>\n
+    \           </ul>\n        </div>\n\n        <div class=\"links\">\n            <h6>Example</h6>\n
+    \           <ul>\n                <p></p>\n                <li>\n                    <a
+    href=\"/person/\" target=\"_blank\">\n                        <span>\U0001F30D
+    Person Service</span>\n                    </a>\n                    <a href=\"/person/0/\"
+    target=\"_blank\">\n                        <span>0</span>\n                    </a>\n
+    \                   <a href=\"/person/5/\" target=\"_blank\">\n                        <span>5</span>\n
+    \                   </a>\n                    <a href=\"/person/0/logout\" target=\"_blank\">\n
+    \                       <span>\U0001F513</span>\n                    </a>\n                </li>\n
+    \               <p></p>\n                <li>\n                    <a href=\"/callee/\"
     target=\"_blank\">\n                        <span>\U0001F4E2 Callee Service</span>\n
-    \                   </a>\n                    <a href=\"/callee/0/logout\" target=\"_blank\">\n
-    \                       <span>\U0001F513</span>\n                    </a>\n                </li>\n
-    \           </ul>\n        </div>\n    </div>\n</div>\n\n</body>\n"
+    \                   </a>\n                    <a href=\"/callee/0/\" target=\"_blank\">\n
+    \                       <span>0</span>\n                    </a>\n                    <a
+    href=\"/callee/0/logout\" target=\"_blank\">\n                        <span>\U0001F513</span>\n
+    \                   </a>\n                </li>\n            </ul>\n        </div>\n
+    \   </div>\n</div>\n\n</body>\n"
 kind: ConfigMap
 metadata:
-  creationTimestamp: "2024-04-26T11:55:17Z"
+  creationTimestamp: "2024-04-26T12:15:33Z"
   name: welcome-board-data-files
   namespace: default
-  resourceVersion: "8603850"
-  uid: c9f8a6e8-4b39-425a-9b5a-616ad63b147d
+  resourceVersion: "8609467"
+  uid: 316e7369-e4ad-4a0d-9e9c-d1908f484611
