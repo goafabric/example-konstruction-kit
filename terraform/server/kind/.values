@@ -1,2 +1,2 @@
 TF_VAR_hostname=kind.local
-INGRESS_TYPE=apisix #nginx
+INGRESS_TYPE=nginx #apisix
