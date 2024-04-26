@@ -45,10 +45,6 @@ service:
 #    image: postgres:16.2
 #    command: ['sh', '-c','until pg_isready -h core-postgres-postgresql-ha-pgpool -p 5432;do echo waiting for database; sleep 1; done;']
 
-security:
-  authentication:
-    enabled: false
-
 database:
   password:
 s3:
