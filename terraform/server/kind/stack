@@ -18,11 +18,13 @@ function up() {
     kubectl create configmap cluster-config -n default --from-literal=hostname=$TF_VAR_hostname
     apply ../../infra/ingress/$INGRESS_TYPE
     apply ../../infra/dashboard
+    apply ../../example
     )
 }
 
 function down() {
     time(
+    destroy ../../example
     destroy ../../infra/dashboard
     destroy ../../infra/ingress/$INGRESS_TYPE
     destroy ./

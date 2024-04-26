@@ -48,34 +48,39 @@ data:
     href=\"/sonar/\" target=\"_blank\">\n                    <span>\U0001F4E1 Sonarqube</span>\n
     \               </a>\n            </ul>\n        </div>\n        <div class=\"links\">\n
     \           <h6>Core</h6>\n            <ul>\n                <p></p>\n                <li>\n
-    \                   <a href=\"/core/\" target=\"_blank\">\n                        <span>\U0001F30D
-    Core</span>\n                        <a href=\"https://github.com/goafabric/core-service\"
-    target=\"_blank\"><span>\U0001F419</span></a>\n                        <a href=\"/sonar/dashboard?id=org.goafabric%3Acore-service\"
-    target=\"_blank\"><span>\U0001F4E1</span></a>\n                        <!--<a
-    href=\"/core/swagger-ui/swagger-ui/index.html\" target=\"_blank\"><span>\U0001F4C4</span></a>-->\n
-    \                   </a>\n                </li>\n                <p></p>\n                <li>\n
-    \                   <a href=\"/catalog/\" target=\"_blank\">\n                        <span>\U0001F4D9
-    Catalog</span>\n                        <a href=\"https://github.com/goafabric/callee-service\"
-    target=\"_blank\"><img src=\"./github.png\" alt=\"Git\" style=\"width:16px;height:16px;margin-right:0px;\"></a>\n
-    \                       <a href=\"/sonar/dashboard?id=org.goafabric%3Acatalog-batch-service\"
-    target=\"_blank\"><img src=\"./sonarqube.png\" alt=\"Sonarqube\" style=\"width:16px;height:16px;margin-right:0px;\"></a>\n
-    \                       <a href=\"/catalog/swagger-ui/swagger-ui/index.html\"
-    target=\"_blank\"><img src=\"./openapi.png\" alt=\"OpenAPI\" style=\"width:16px;height:16px;margin-right:0px;\"></a>\n
-    \                   </a>\n                </li>\n                <p></p>\n                <li>\n
-    \                   <a href=\"/event/\" target=\"_blank\">\n                        <span>\U0001F430
-    Event Dispatcher</span>\n                        <a href=\"https://github.com/goafabric/event-dispatcher-service\"
-    target=\"_blank\"><span>\U0001F419</span></a>\n                    </a>\n                </li>\n
+    \                   <a href=\"/core/frontend/\" target=\"_blank\">\n                        <span>\U0001F30D
+    Core</span>\n                    </a>\n                    <a href=\"/core/0/frontend/\"
+    target=\"_blank\">\n                        <span>0</span>\n                    </a>\n
+    \                   <a href=\"/core/5/frontend/\" target=\"_blank\">\n                        <span>5</span>\n
+    \                   </a>\n                    <a href=\"/core/0/logout\" target=\"_blank\">\n
+    \                       <span>\U0001F513</span>\n                    </a>\n                </li>\n
+    \               <p></p>\n                <li>\n                    <a href=\"/catalog/\"
+    target=\"_blank\">\n                        <span>\U0001F4D9 Catalog</span>\n
+    \                   </a>\n                    <a href=\"/catalog/0/\" target=\"_blank\">\n
+    \                       <span>0</span>\n                    </a>\n                </li>\n
+    \               <p></p>\n                <li>\n                    <a href=\"/event/\"
+    target=\"_blank\">\n                        <span>\U0001F430 Event Dispatcher</span>\n
+    \                   </a>\n                    <a href=\"/event/0/\" target=\"_blank\">\n
+    \                       <span>0</span>\n                    </a>\n                </li>\n
     \           </ul>\n        </div>\n\n        <div class=\"links\">\n            <h6>Example</h6>\n
     \           <ul>\n                <p></p>\n                <li>\n                    <a
     href=\"/person/\" target=\"_blank\">\n                        <span>\U0001F30D
-    Person Service</span>\n                    </a>\n                </li>\n                <p></p>\n
-    \               <li>\n                    <a href=\"/callee/\" target=\"_blank\">\n
-    \                       <span>\U0001F4E2 Callee Service</span>\n                    </a>\n
-    \               </li>\n            </ul>\n        </div>\n    </div>\n</div>\n\n</body>\n"
+    Person Service</span>\n                    </a>\n                    <a href=\"/person/0/\"
+    target=\"_blank\">\n                        <span>0</span>\n                    </a>\n
+    \                   <a href=\"/person/5/\" target=\"_blank\">\n                        <span>5</span>\n
+    \                   </a>\n                    <a href=\"/person/0/logout\" target=\"_blank\">\n
+    \                       <span>\U0001F513</span>\n                    </a>\n                </li>\n
+    \               <p></p>\n                <li>\n                    <a href=\"/callee/\"
+    target=\"_blank\">\n                        <span>\U0001F4E2 Callee Service</span>\n
+    \                   </a>\n                    <a href=\"/callee/0/\" target=\"_blank\">\n
+    \                       <span>0</span>\n                    </a>\n                    <a
+    href=\"/callee/0/logout\" target=\"_blank\">\n                        <span>\U0001F513</span>\n
+    \                   </a>\n                </li>\n            </ul>\n        </div>\n
+    \   </div>\n</div>\n\n</body>\n"
 kind: ConfigMap
 metadata:
-  creationTimestamp: "2024-04-24T06:22:55Z"
+  creationTimestamp: "2024-04-26T12:15:33Z"
   name: welcome-board-data-files
   namespace: default
-  resourceVersion: "8116350"
-  uid: 525a4d3b-c6da-4d4e-b2ad-88310d63c0a0
+  resourceVersion: "8609467"
+  uid: 316e7369-e4ad-4a0d-9e9c-d1908f484611

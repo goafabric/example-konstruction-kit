@@ -4,6 +4,9 @@ ingress:
   paths: /event
   enabled: true
   authentication: basic
+  tenantIDs:
+    - 0
+    - 5
 
 image:
   repository: "goafabric/event-dispatcher-service"
