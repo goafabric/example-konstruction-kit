@@ -27,7 +27,7 @@ spec:
             discovery: https://{{ .Values.ingress.hosts }}/oidc/realms/tenant-0/.well-known/openid-configuration
             access_token_in_authorization_header: false
             set_id_token_header: false
-            set_userinfo_header: false
+            set_userinfo_header: true
             ssl_verify: false
             redirect_uri: "{{ .Values.ingress.paths }}/redirect_uri"
             logout_path: "{{ .Values.ingress.paths }}/logout"
@@ -39,3 +39,9 @@ spec:
               - /$1
             headers:
               X-TenantId: 0
+#        - name: serverless-post-function
+#          enable: true
+#          config:
+#            phase: "rewrite"
+#            functions:
+#              - "return function(conf, ctx) local core = require(\"apisix.core\"); local cjson = require(\"cjson\"); local userinfo = core.request.header(ctx, \"X-Userinfo\"); if userinfo then local decodedUserinfo = ngx.decode_base64(userinfo); local decodedUserinfoJson = cjson.decode(decodedUserinfo); core.request.set_header(\"X-Auth-Request-Preferred-Username\", decodedUserinfo.preferred_username); ngx.log(ngx.ERR, \"apisix function \"); end; end"
