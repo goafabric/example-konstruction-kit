@@ -3,9 +3,6 @@ replicaCount: 2
 ingress:
   paths: /catalog
   enabled: true
-  tenantIDs:
-    - 0
-    - 5
 
 image:
   repository: "goafabric/catalog-batch-service"
