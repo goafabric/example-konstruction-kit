@@ -14,10 +14,6 @@ resource "helm_release" "core-application" {
     name  = "ingress.hosts"
     value = var.hostname
   }
-#   set {
-#     name  = "security.authentication.enabled"
-#     value = local.authentication_enabled
-#   }
   set {
     name  = "replicaCount"
     value = "1"
