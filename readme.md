@@ -1,32 +1,24 @@
 # Prerequisites
-- For specific installation instructions concerning linux and mac please see doc/install
-- For local installations you need an entry in /etc/hosts like "127.0.0.1 kubernetes"
+- For local installations you need an entry in /etc/hosts like "127.0.0.1 kind.local"
+- Terraform and latest kubectl need to be installed, k9s is optional but might help
 - For https to work you need to import the certificate from your browser's certifcate warning
-- You need a Helm3 command line tool, as well as kubectl if not provided by your Kubernetes System
-  - https://kubernetes.io/releases/download/
-  - https://helm.sh/docs/intro/install/
 
 # Installation
-- Go to "helm/templates/infra"
+- Go to "/terraform/server/kind"
 - ./stack init
-- You might be asked for
-  - credentials
-  - server name (for local installations just kubernetes)
-  - the certificate password (also kubernetes)
+- in .values you may choose between apsix or nginx, apisix also needs the oidc namespace installed (terraform apply inside infra/oidc) 
 
 # Welcome
 - And that's basically it just navigate to http(s)://kubernetes/welcome and you see the Welcome Page
 - Password is currently just admin/admin
 
-# Examples
-- To start specific applications change to the folder representing the namespace (e.g. helm/templates/example/spring)
-- And do "./stack up" 
-- To shut everything down do "./stack down"
-
-# Proxy
-- In case you need a localhost direct connection to your pod do "./stack proxy" (e.g. connecting with a frontend)
-
 # Uninstall
-- Go to "helm/templates/infra"
-- ./stack prune-force => this will eradicate everything
-- Note: More complex Addons like Istio or Linkerd should be uninstalled manually via ./stack init inside the addon dirs
+- Go to "/terraform/server/kind"
+- ./stack prune => this will eradicate everything
+
+# Helm Specific (deprecated)
+- To start specific applications change to the folder representing the namespace (e.g. helm/templates/example/spring)
+- And do "./stack up"
+- To shut everything down do "./stack down"
+-
+- In case you need a localhost direct connection to your pod do "./stack proxy" (e.g. connecting with a frontend)
