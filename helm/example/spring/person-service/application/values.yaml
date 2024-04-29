@@ -10,7 +10,7 @@ ingress:
 
 image:
   repository: "goafabric/person-service"
-  pullPolicy: Always #IfNotPresent
+  pullPolicy: IfNotPresent
   pullSecrets:
 
 podAnnotations:

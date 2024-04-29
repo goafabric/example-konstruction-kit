@@ -1,4 +1,6 @@
 # 1.2.1
+- upgrade of all service applications
+- apisix including authentication added
 
 # 1.2.0
 - terraform variable optimization
