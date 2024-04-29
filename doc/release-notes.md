@@ -1,4 +1,6 @@
-# 1.2.1
+# 1.2.2
+
+# 1.2.2
 - upgrade of all service applications
 - apisix including authentication added
 - kind initial rollout fixed
