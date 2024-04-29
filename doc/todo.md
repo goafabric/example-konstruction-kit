@@ -1,8 +1,3 @@
-# todos
-
-## terraform cont.
-- apisix deployment including gateway definitions, switchable between ingress and apisix
-
 ## security
 - secrets via vault
 - volume encryption
