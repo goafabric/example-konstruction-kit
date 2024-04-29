@@ -1,7 +1,7 @@
 # Prerequisites
 - For local installations you need an entry in /etc/hosts like "127.0.0.1 kind.local"
-- Terraform and latest kubectl need to be installed, k9s is optional but might help
-- For https to work you need to import the certificate from your browser's certifcate warning
+- Docker Desktop, Terraform and latest kubectl need to be installed, k9s is optional but might help
+- For https to work you need to import the certificate from your browser's certificate warning
 
 # Installation
 - Go to "/terraform/server/kind"
