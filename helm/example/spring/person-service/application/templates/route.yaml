@@ -45,12 +45,6 @@ spec:
               - /$1
             headers:
               X-TenantId: {{ $tenantID }}
-        - name: serverless-post-function
-          enable: true
-          config:
-            phase: "rewrite"
-            functions:
-              - "return function(conf, ctx) local core = require(\"apisix.core\"); local cjson = require(\"cjson\"); local userinfo = core.request.header(ctx, \"X-Userinfo\"); if userinfo then local decodedUserinfo = ngx.decode_base64(userinfo); local decodedUserinfoJson = cjson.decode(decodedUserinfo); core.request.add_header(\"X-Auth-Request-Preferred-Username\", decodedUserinfoJson.preferred_username); ngx.log(ngx.ERR, \"apisix function \"); end; end"
 ---
 {{- end }}
 {{- end }}

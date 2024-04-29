@@ -10,7 +10,7 @@ ingress:
 
 image:
   repository: "goafabric/person-service"
-  pullPolicy: IfNotPresent
+  pullPolicy: Always #IfNotPresent
   pullSecrets:
 
 podAnnotations:
@@ -41,10 +41,10 @@ service:
   type: ClusterIP
   port: 8080
 
-#initContainers:
-#  - name: check-db-ready
-#    image: postgres:16.2
-#    command: ['sh', '-c','until pg_isready -h person-service-postgres-postgresql-ha-pgpool -p 5432;do echo waiting for database; sleep 1; done;']
+initContainers:
+  - name: check-db-ready
+    image: postgres:16.2
+    command: ['sh', '-c','until pg_isready -h person-service-postgres-postgresql-ha-pgpool -p 5432;do echo waiting for database; sleep 1; done;']
 
 database:
   password:

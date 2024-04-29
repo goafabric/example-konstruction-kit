@@ -15,8 +15,8 @@ resource "helm_release" "callee-service-application" {
     name  = "ingress.hosts"
     value = var.hostname
   }
-  set {
-    name  = "image.arch"
-    value = "-native${local.server_arch}"
-  }
+#   set {
+#     name  = "image.arch"
+#     value = "-native${local.server_arch}"
+#   }
 }
