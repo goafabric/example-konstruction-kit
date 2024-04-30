@@ -32,7 +32,7 @@ resource "helm_release" "catalog-application" {
 resource "helm_release" "catalog-batch" {
   repository = var.helm_repository
   name       = "catalog-batch"
-  chart      = "${var.helm_repository}/catalog/batch"
+  chart      = "${var.helm_repository}/catalog/xbatch"
   version    = "1.1.2"
   namespace  = "core"
   create_namespace = true

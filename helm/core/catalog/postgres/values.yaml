@@ -1,0 +1,33 @@
+replicaCount: 1
+
+image:
+  repository: "postgres"
+  pullPolicy: IfNotPresent
+  pullSecrets:
+
+podAnnotations:
+  linkerd.io/inject: enabled
+  sidecar.istio.io/inject: "true"
+
+resources:
+  requests:
+    memory: 64M
+    cpu: 250m
+  limits:
+    cpu: 500m
+
+readinessProbe:
+  initialDelaySeconds: 2
+
+service:
+  type: ClusterIP
+  port: 5432
+
+postgres:
+  maxConnections: 50
+
+persistence:
+  storageClassName:
+
+database:
+  password:
