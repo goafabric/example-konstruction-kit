@@ -10,7 +10,7 @@ resource "helm_release" "core-postgres-postgresql-ha-pgpool" {
 
   set {
     name  = "database.password"
-    value = random_password.database_password.result
+    value = random_password.core_database_password.result
   }
 }
 
@@ -54,11 +54,11 @@ resource "helm_release" "core-postgres-ha" {
   }
   set {
     name  = "global.postgresql.password"
-    value = random_password.database_password.result
+    value = random_password.core_database_password.result
   }
   set {
     name  = "postgresql.postgresPassword"
-    value = random_password.database_password.result
+    value = random_password.core_database_password.result
   }
 }
 
@@ -82,6 +82,6 @@ resource "helm_release" "catalog-postgres-postgresql-ha-pgpool" {
 
   set {
     name  = "database.password"
-    value = random_password.database_password.result
+    value = random_password.catalog_database_password.result
   }
 }

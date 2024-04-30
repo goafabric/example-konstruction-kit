@@ -20,7 +20,7 @@ resource "helm_release" "core-application" {
   }
   set {
     name  = "database.password"
-    value = random_password.database_password.result
+    value = random_password.core_database_password.result
   }
   set {
     name  = "s3.password"
