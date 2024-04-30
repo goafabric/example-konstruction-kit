@@ -9,7 +9,7 @@ ingress:
 
 image:
   repository: "goafabric/core-service"
-  pullPolicy: IfNotPresent
+  pullPolicy: Always #IfNotPresent
   pullSecrets:
 
 podAnnotations:
@@ -34,7 +34,7 @@ nativeAnnotations:
   args: ["-Xmx64M"]
 
 readinessProbe:
-  initialDelaySeconds: 2
+  initialDelaySeconds: 5
 
 service:
   type: ClusterIP
