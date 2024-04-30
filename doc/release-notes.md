@@ -1,3 +1,5 @@
+# 1.2.3
+
 # 1.2.2
 - fix for manual helm chart rollout
 
