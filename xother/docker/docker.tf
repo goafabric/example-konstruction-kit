@@ -13,11 +13,11 @@ provider "docker" {
 
 # Pulls the image
 resource "docker_image" "callee-service" {
-  name = "goafabric/callee-service:3.2.0"
+  name = "goafabric/callee-service:3.2.5"
 }
 
 # Create a container
-resource "docker_container" "foo" {
+resource "docker_container" "callee-service" {
   image = docker_image.callee-service.image_id
-  name  = "foo"
+  name  = "callee-service"
 }
