@@ -1,6 +1,7 @@
 # 1.2.2
+- fix for manual helm chart rollout
 
-# 1.2.2
+# 1.2.1
 - upgrade of all service applications
 - apisix including authentication added
 - kind initial rollout fixed
