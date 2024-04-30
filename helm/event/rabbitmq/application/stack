@@ -22,8 +22,8 @@ function proxy() {
     -n `pwd | rev | cut -d '/' -f3 | rev`
 }
 
-if   [ "${COMMAND}" = "init" ]; then up;
-elif [ "${COMMAND}" = "prune" ]; then down;
+if   [ "${COMMAND}" = "up" ]; then up;
+elif [ "${COMMAND}" = "down" ]; then down;
 elif [ "${COMMAND}" = "restart" ]; then down && up;
 elif [ "${COMMAND}" = "lint" ]; then helm lint ./;
 elif [ "${COMMAND}" = "proxy" ]; then proxy;
