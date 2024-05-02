@@ -4,6 +4,6 @@ description: catalog-postgres-postgresql-ha-pgpool
 
 type: application
 
-version: 1.2.3
+version: 1.2.2
 
 appVersion: "16.2"

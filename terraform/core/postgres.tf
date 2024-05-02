@@ -71,17 +71,3 @@ resource "terraform_data" "remove_postgres_pvc" {
     command = "kubectl delete pvc -l app.kubernetes.io/instance=core-postgres -n core"
   }
 }
-
-resource "helm_release" "catalog-postgres-postgresql-ha-pgpool" {
-  repository = var.helm_repository
-  name       = "catalog-postgres-postgresql-ha-pgpool"
-  chart      = "${var.helm_repository}/catalog/postgres"
-  namespace  = "core"
-  create_namespace = true
-  timeout = var.helm_timeout
-
-  set {
-    name  = "database.password"
-    value = random_password.catalog_database_password.result
-  }
-}
