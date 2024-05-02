@@ -1,9 +1,0 @@
-apiVersion: v2
-name: catalog-postgres-postgresql-ha-pgpool
-description: catalog-postgres-postgresql-ha-pgpool
-
-type: application
-
-version: 1.2.2
-
-appVersion: "16.2"

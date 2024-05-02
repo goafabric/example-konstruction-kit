@@ -35,7 +35,7 @@ data:
   logging.level.io.opentelemetry: "INFO"
 
   #persistence
-  spring.datasource.url: "jdbc:postgresql://catalog-postgres-postgresql-ha-pgpool:5432/core"
+  spring.datasource.url: "jdbc:postgresql://core-postgres-postgresql-ha-pgpool:5432/core"
   spring.datasource.hikari.maximum-pool-size: "10"
   spring.datasource.hikari.connection-timeout: "10000"
 
