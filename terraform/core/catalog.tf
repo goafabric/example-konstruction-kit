@@ -46,4 +46,8 @@ resource "helm_release" "catalog-batch" {
     name  = "database.password"
     value = random_password.core_database_password.result
   }
+  set {
+    name = "authentication.enabled"
+    value = local.authentication_enabled
+  }
 }

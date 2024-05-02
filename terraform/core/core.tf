@@ -26,4 +26,8 @@ resource "helm_release" "core-application" {
     name  = "s3.password"
     value = random_password.s3_password.result
   }
+  set {
+    name = "authentication.enabled"
+    value = local.authentication_enabled
+  }
 }

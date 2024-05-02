@@ -25,8 +25,16 @@ spec:
           enable: true
           config:
             http_to_https: true
-        - name: openid-connect
+        - name: proxy-rewrite
           enable: true
+          config:
+            regex_uri:
+              - {{ $ingressPaths }}/{{ $tenantID }}/(.*)
+              - /$1
+            headers:
+              X-TenantId: {{ $tenantID }}
+        - name: openid-connect
+          enable: {{ $.Values.authentication.enabled }}
           config:
             client_id: oauth2-proxy
             client_secret: none
@@ -37,14 +45,6 @@ spec:
             ssl_verify: false
             redirect_uri: "{{ $ingressPaths }}/{{ $tenantID }}/redirect_uri"
             logout_path: "{{ $ingressPaths }}/{{ $tenantID }}/logout"
-        - name: proxy-rewrite
-          enable: true
-          config:
-            regex_uri:
-              - {{ $ingressPaths }}/{{ $tenantID }}/(.*)
-              - /$1
-            headers:
-              X-TenantId: {{ $tenantID }}
 ---
 {{- end }}
 {{- end }}

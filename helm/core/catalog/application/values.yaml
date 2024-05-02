@@ -44,3 +44,6 @@ initContainers:
 
 database:
   password:
+
+authentication:
+  enabled:
