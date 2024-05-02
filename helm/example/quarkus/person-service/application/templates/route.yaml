@@ -1,0 +1,50 @@
+{{- if .Values.ingress.enabled -}}
+{{- $applicationFullname := include "application.fullname" . -}}
+{{- $ingressHosts := .Values.ingress.hosts -}}
+{{- $ingressPaths := .Values.ingress.paths -}}
+{{- range $tenantID := .Values.ingress.tenantIDs }}
+---
+apiVersion: apisix.apache.org/v2
+kind: ApisixRoute
+metadata:
+  name: {{ $applicationFullname }}-{{ $tenantID }}
+spec:
+  http:
+    - name: {{ $applicationFullname }}-{{ $tenantID }}
+      match:
+        hosts:
+          - {{ $ingressHosts }}
+        paths:
+          - {{ $ingressPaths }}/{{ $tenantID }}
+          - {{ $ingressPaths }}/{{ $tenantID }}/*
+      backends:
+          - serviceName: {{ $applicationFullname }}
+            servicePort: http
+      plugins:
+        - name: redirect
+          enable: true
+          config:
+            http_to_https: true
+        - name: proxy-rewrite
+          enable: true
+          config:
+            regex_uri:
+              - {{ $ingressPaths }}/{{ $tenantID }}/(.*)
+              - /$1
+            headers:
+              X-TenantId: {{ $tenantID }}
+        - name: openid-connect
+          enable: {{ $.Values.authentication.enabled }}
+          config:
+            client_id: oauth2-proxy
+            client_secret: none
+            discovery: https://{{ $ingressHosts }}/oidc/realms/tenant-{{ $tenantID }}/.well-known/openid-configuration
+            access_token_in_authorization_header: false
+            set_id_token_header: false
+            set_userinfo_header: true
+            ssl_verify: false
+            redirect_uri: "{{ $ingressPaths }}/{{ $tenantID }}/redirect_uri"
+            logout_path: "{{ $ingressPaths }}/{{ $tenantID }}/logout"
+---
+{{- end }}
+{{- end }}

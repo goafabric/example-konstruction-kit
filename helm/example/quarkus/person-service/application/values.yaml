@@ -4,7 +4,9 @@ tenantId: 0
 ingress:
   paths: /person
   enabled: true
-  authentication: none
+  tenantIDs:
+    - 0
+    - 5
 
 image:
   repository: "goafabric/person-service-quarkus"
@@ -38,3 +40,6 @@ initContainers:
 
 database:
   password:
+
+authentication:
+  enabled:

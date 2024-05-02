@@ -1,0 +1,9 @@
+apiVersion: v2
+name: person-service-postgres-postgresql-ha-pgpool
+description: person-service-postgres
+
+type: application
+
+version: 1.2.3
+
+appVersion: "16.2"
