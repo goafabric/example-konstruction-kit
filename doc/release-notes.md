@@ -1,4 +1,6 @@
 # 1.2.3
+- switchable apisix authentication
+- quarkus reintroduced
 
 # 1.2.2
 - fix for manual helm chart rollout
