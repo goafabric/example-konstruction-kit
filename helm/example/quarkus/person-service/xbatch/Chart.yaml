@@ -1,9 +1,0 @@
-apiVersion: v2
-name: person-service-batch
-description: person-service-batch
-
-type: application
-
-version: 1.2.3
-
-appVersion: "3.0.0"

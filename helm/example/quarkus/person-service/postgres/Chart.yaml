@@ -1,5 +1,5 @@
 apiVersion: v2
-name: person-service-postgres
+name: person-service-postgres-postgresql-ha-pgpool
 description: person-service-postgres
 
 type: application

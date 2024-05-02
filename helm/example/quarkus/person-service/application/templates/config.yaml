@@ -26,7 +26,7 @@ data:
   quarkus.application.name: {{ include "application.fullname" . }}
 
   #persistence
-  quarkus.datasource.jdbc.url: "jdbc:postgresql://person-service-postgres:5432/person"
+  quarkus.datasource.jdbc.url: "jdbc:postgresql://person-service-postgres-postgresql-ha-pgpool:5432/person"
   quarkus.datasource.jdbc.max-size: "10"
 
   database.provisioning.goals: "-import-demo-data"
