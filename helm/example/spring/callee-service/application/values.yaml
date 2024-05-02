@@ -39,8 +39,7 @@ service:
   type: ClusterIP
   port: 8080
 
-database:
-  password:
-
+authentication:
+  enabled:
 
 

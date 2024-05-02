@@ -19,4 +19,8 @@ resource "helm_release" "callee-service-application" {
     name  = "image.arch"
     value = "-native${local.server_arch}"
   }
+  set {
+    name = "authentication.enabled"
+    value = local.authentication_enabled
+  }
 }

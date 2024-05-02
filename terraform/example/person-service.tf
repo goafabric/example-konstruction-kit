@@ -23,6 +23,10 @@ resource "helm_release" "person-service-application" {
     name  = "database.password"
     value = random_password.database_password.result
   }
+  set {
+    name = "authentication.enabled"
+    value = local.authentication_enabled
+  }
 }
 
 
