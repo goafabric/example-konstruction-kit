@@ -53,6 +53,7 @@ echo access token is: $access_token
 curl -v -H "Authorization: Bearer $access_token" "http://127.0.0.1:30200/oidc/userinfo"
 
 # keycloak client grant (secrent inside BASIC auth needs to be updated!)
+# needs a non public oauth2-proxy client with credentials + service_account_roles checkbox ticked
 export access_token=$(\
 curl -v -s -X POST http://localhost:30200/oidc/realms/tenant-0/protocol/openid-connect/token \
 -H "Content-Type: application/x-www-form-urlencoded" \
