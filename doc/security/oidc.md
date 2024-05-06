@@ -38,7 +38,7 @@ curl -k -v -H "Authorization: Bearer $access_token" "https://kubernetes/callee/0
 https://www.ibm.com/docs/en/was-liberty/base?topic=liberty-invoking-authorization-endpoint-openid-connect
 https://developers.onelogin.com/openid-connect
 
-# spring auth server request
+# spring auth server client grant
 export access_token=$(\
 curl -v -s -X POST http://127.0.0.1:30200/oidc/token \
 -H "Content-Type: application/x-www-form-urlencoded" \
@@ -51,7 +51,21 @@ echo access token is: $access_token
 
 # userinfo not working
 curl -v -H "Authorization: Bearer $access_token" "http://127.0.0.1:30200/oidc/userinfo"
-                      
+
+# keycloak client grant (secrent inside BASIC auth needs to be updated!)
+export access_token=$(\
+curl -v -s -X POST http://localhost:30200/oidc/realms/tenant-0/protocol/openid-connect/token \
+-H "Content-Type: application/x-www-form-urlencoded" \
+-H "Authorization: BASIC b2F1dGgyLXByb3h5OlM3Q2FxYjVSdzk5OVZsUFBEdVY5R0dzM1hZejgzNFJL " \
+-d "grant_type=client_credentials" \
+-d "scope=openid" \
+| jq --raw-output '.access_token'
+)
+echo access token is: $access_token
+
+# userinfo 
+curl -v -H "Authorization: Bearer $access_token" "http://127.0.0.1:30200/oidc/realms/tenant-0/protocol/openid-connect/userinfo"
+
 # issuer
 curl http://localhost:30200/.well-known/openid-configuration
 curl http://kubernetes:30200/.well-known/openid-configuration
