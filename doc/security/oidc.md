@@ -44,7 +44,6 @@ curl -v -s -X POST http://127.0.0.1:30200/oidc/token \
 -H "Content-Type: application/x-www-form-urlencoded" \
 -H "Authorization: BASIC b2F1dGgyLXByb3h5Om5vbmU=" \
 -d "grant_type=client_credentials" \
--d "client_id=oauth2-proxy" \
 -d "scope=openid" \
 | jq --raw-output '.access_token'
 )
