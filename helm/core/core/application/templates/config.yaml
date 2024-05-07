@@ -26,7 +26,7 @@ data:
   #spring.security.oauth2.base-uri: "http://spring-auth-server-application.oidc:8080/"
 
   #monitoring
-  management.endpoints.web.exposure.include: "health,heapdump,circuitbreakers,prometheus"
+  management.endpoints.web.exposure.include: "health,circuitbreakers,prometheus"
   management.endpoint.health.show-details: never
   springdoc.swagger-ui.path: "//"
   springdoc.api-docs.path: "//"

@@ -19,7 +19,7 @@ data:
 
   #monitoring
   management.endpoint.health.show-details: always
-  management.endpoints.web.exposure.include: "health,heapdump,circuitbreakers,prometheus"
+  management.endpoints.web.exposure.include: "health,circuitbreakers,prometheus"
 
   #zipkin/jaeger
   spring.application.name: "{{ include "application.fullname" . }}"
