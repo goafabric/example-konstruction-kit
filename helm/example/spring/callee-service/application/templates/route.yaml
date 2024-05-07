@@ -27,6 +27,7 @@ spec:
               - /$1
             headers:
               X-TenantId: 0
+              Authorization: BASIC YWRtaW46YWRtaW4=
         - name: openid-connect
           enable: {{ .Values.authentication.enabled }}
           config:
