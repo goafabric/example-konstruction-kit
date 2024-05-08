@@ -28,6 +28,3 @@ postgres:
 
 persistence:
   storageClassName:
-
-database:
-  password:

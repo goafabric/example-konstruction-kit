@@ -39,9 +39,6 @@ service:
   type: ClusterIP
   port: 8080
 
-serviceUser:
-  password:
-
 authentication:
   enabled:
 
