@@ -35,7 +35,7 @@ nativeAnnotations:
   args: ["-Xmx64M"]
 
 readinessProbe:
-  initialDelaySeconds: 2
+  initialDelaySeconds: 5
 
 service:
   type: ClusterIP
