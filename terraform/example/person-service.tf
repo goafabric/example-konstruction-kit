@@ -24,7 +24,7 @@ resource "helm_release" "person-service-application" {
     value = random_password.database_password.result
   }
   set {
-    name = "serviceUser.password"
+    name = "service.password"
     value = random_password.service_password.result
   }
   set {
