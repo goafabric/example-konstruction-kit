@@ -45,11 +45,5 @@ initContainers:
     image: postgres:16.2
     command: ['sh', '-c','until pg_isready -h core-postgres-postgresql-ha-pgpool -p 5432;do echo waiting for database; sleep 1; done;']
 
-database:
-  password:
-
-s3:
-  password:
-
 authentication:
   enabled:

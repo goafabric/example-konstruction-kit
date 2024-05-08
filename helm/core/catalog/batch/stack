@@ -10,6 +10,7 @@ function up() {
     helm install --create-namespace \
     --set image.arch=$IMAGE_ARCH $INGRESS_AUTHENTICATION \
     --set ingress.hosts=`kubectl get configmaps cluster-config -o jsonpath='{.data.hostname}' -n default` \
+    --set database.password=postgres \
     --namespace `pwd | rev | cut -d '/' -f3 | rev` \
     `cat ./Chart.yaml | grep "name" | cut -d':' -f2 | xargs` ./
 }
