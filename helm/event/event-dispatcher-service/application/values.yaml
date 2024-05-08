@@ -36,8 +36,5 @@ service:
   type: ClusterIP
   port: 8080
 
-messageBroker:
-  password:
-
 authentication:
   enabled:
