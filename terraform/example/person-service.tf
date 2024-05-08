@@ -15,13 +15,17 @@ resource "helm_release" "person-service-application" {
     name  = "ingress.hosts"
     value = var.hostname
   }
-  set {
-    name  = "image.arch"
-    value = strcontains(var.helm_repository, "spring") ? "-native${local.server_arch}" : local.server_arch
-  }
+#   set {
+#     name  = "image.arch"
+#     value = strcontains(var.helm_repository, "spring") ? "-native${local.server_arch}" : local.server_arch
+#   }
   set {
     name  = "database.password"
     value = random_password.database_password.result
+  }
+  set {
+    name = "serviceUser.password"
+    value = random_password.service_password.result
   }
   set {
     name = "authentication.enabled"
