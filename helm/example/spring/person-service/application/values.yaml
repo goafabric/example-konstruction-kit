@@ -49,5 +49,8 @@ initContainers:
 database:
   password:
 
+serviceUser:
+  password:
+
 authentication:
   enabled:

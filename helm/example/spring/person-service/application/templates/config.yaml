@@ -15,7 +15,7 @@ data:
   server.tomcat.max-http-response-header-size: "10KB"
 
   #security
-  security.authentication.enabled: "false"
+  security.authentication.enabled: "true"
 
   #monitoring
   #monitoring
