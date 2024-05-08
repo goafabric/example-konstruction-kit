@@ -23,4 +23,8 @@ resource "helm_release" "callee-service-application" {
     name = "authentication.enabled"
     value = local.authentication_enabled
   }
+  set {
+    name = "user.password"
+    value = random_password.service_password.result
+  }
 }

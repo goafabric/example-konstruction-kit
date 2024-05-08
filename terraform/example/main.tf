@@ -12,3 +12,8 @@ resource "random_password" "database_password" {
   length           = 32
   special          = false
 }
+
+resource "random_password" "service_password" {
+  length           = 32
+  special          = false
+}
