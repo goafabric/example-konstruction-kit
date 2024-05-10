@@ -15,10 +15,10 @@ resource "helm_release" "callee-service-application" {
     name  = "ingress.hosts"
     value = var.hostname
   }
-#   set {
-#     name  = "image.arch"
-#     value = strcontains(var.helm_repository, "spring") ? "-native${local.server_arch}" : local.server_arch
-#   }
+  set {
+    name  = "image.arch"
+    value = strcontains(var.helm_repository, "spring") ? "-native${local.server_arch}" : local.server_arch
+  }
   set {
     name = "authentication.enabled"
     value = local.authentication_enabled
