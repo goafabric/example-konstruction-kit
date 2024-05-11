@@ -74,3 +74,13 @@ curl http://kubernetes:30200/.well-known/openid-configuration
 # keycloak
 curl http://localhost:30200/oidc/realms/master/.well-known/openid-configuration
 curl http://keycloak:8080/oidc/realms/master/.well-known/openid-configuration
+
+# Grant Types
+
+## Frontend
+CodeGrant, afer login with username, password exchange one time code for jwt
+
+## Backend
+Password Grant (deprecated), get jwt with user credentials + client credentials
+Client Grant, get jwt with client credentials alone
+Jwt Bearer, authenticate with already obtained Jwt
