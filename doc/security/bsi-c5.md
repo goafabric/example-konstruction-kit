@@ -15,3 +15,9 @@
 - It is eight to 12 characters long and uses four types of character. This kind of password is short and complex.
 - It is eight characters long, uses three types of character and is also protected by multi-factor authentication (e.g. in the form of a fingerprint, verification via app or a PIN). This is the recommended method, generally speaking.
 - upper-case and lower-case letters, numbers and special characters
+
+# c5 compliance
+
+💪strong passwords (>= 10 chars, upper, lower, digits)
+🔒brute force detection (lockout after 5 failed attempts, intentionally not visible)
+🔑️2 factor authentication, via one time token generator or passkeys (https://webauthn.io/)
