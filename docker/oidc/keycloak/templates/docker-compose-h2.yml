@@ -1,0 +1,45 @@
+services:
+  keycloak:
+    container_name: ${_Values_root_name}-application
+    image:  quay.io/keycloak/keycloak:23.0.1
+
+    restart: 'no'
+    ports:
+      - "30200:8080"
+    command: start --import-realm
+#    healthcheck:
+#      test: "curl -f http://localhost:8080/oidc/realms/master|| exit 1"
+#      interval: 5s
+#      timeout: 10s
+#      retries: 5
+
+    networks:
+      - ${_Values_root_name}-net
+    environment:
+      #application
+      - TZ=Europe/Berlin
+      - JAVA_OPTS=-Xmx256m
+      - KC_HTTP_RELATIVE_PATH=oidc
+      - KC_PROXY=edge
+      - KC_HOSTNAME_STRICT_HTTPS=false
+      - KC_HOSTNAME=localhost:30200
+
+      #user
+      - KEYCLOAK_ADMIN=admin
+      - KEYCLOAK_ADMIN_PASSWORD=admin
+
+      #database
+      - KC_DB_USERNAME=keycloak
+      - KC_DB_PASSWORD=keycloak
+
+    volumes:
+      - ./realm-config:/opt/keycloak/data/import
+
+volumes:
+    tmp:
+    applogs:
+    pgdata:
+
+networks:
+  keycloak-net:
+    driver: bridge
