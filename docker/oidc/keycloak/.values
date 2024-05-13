@@ -2,4 +2,4 @@ _Values_root_name="keycloak"
 
 _Values_tenant_id=0
 
-_Values_profile=postgres
+_Values_profile=relay

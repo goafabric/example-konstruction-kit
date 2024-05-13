@@ -1,0 +1,121 @@
+services:
+  keycloak:
+    container_name: ${_Values_root_name}-application
+    image:  quay.io/keycloak/keycloak:24.0.1
+
+    restart: 'no'
+    ports:
+      - "30200:8080"
+    command: start --import-realm
+
+    networks:
+      - ${_Values_root_name}-net
+    environment:
+      #application
+      - TZ=Europe/Berlin
+      - JAVA_OPTS=-Xmx256m
+      - KC_HTTP_RELATIVE_PATH=oidc
+      - KC_PROXY=edge
+      - KC_HOSTNAME_STRICT_HTTPS=false
+      - KC_HOSTNAME=localhost:30200
+
+      #user
+      - KEYCLOAK_ADMIN=admin
+      - KEYCLOAK_ADMIN_PASSWORD=admin
+
+      #database
+      - KC_DB=postgres
+      - KC_DB_URL=jdbc:postgresql://postgres/keycloak
+      - KC_DB_USERNAME=keycloak
+      - KC_DB_PASSWORD=keycloak
+
+    volumes:
+      - ./realm-config:/opt/keycloak/data/import
+
+    depends_on:
+      - postgres
+
+  postgres:
+    container_name: ${_Values_root_name}-postgres
+    image: postgres:16.1
+    restart: 'no'
+    ports:
+      - 5432
+    environment:
+      - TZ=Europe/Berlin
+      - POSTGRES_USER=keycloak
+      - POSTGRES_PASSWORD=keycloak
+      - POSTGRES_DB=keycloak
+    command: postgres -c 'shared_buffers=64MB' -c 'max_connections=30' -c 'shared_preload_libraries=pg_stat_statements'
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - ${_Values_root_name}-net
+
+  oauth2proxy:
+    container_name: ${_Values_root_name}-oauth2proxy
+    image: quay.io/oauth2-proxy/oauth2-proxy:v7.5.1
+    command:
+      - --email-domain=*
+    restart: 'no'
+    ports:
+      - "4180:4180"
+    environment:
+      #application
+      TZ: Europe/Berlin
+
+      # oauth2proxy generic config
+      OAUTH2_PROXY_UPSTREAM: "file:///dev/null"
+      OAUTH2_PROXY_HTTP_ADDRESS: "0.0.0.0:4180"
+      OAUTH2_PROXY_REVERSE_PROXY: "true"
+      OAUTH2_PROXY_SET_XAUTHREQUEST: "true"
+
+      OAUTH2_PROXY_SKIP_PROVIDER_BUTTON: "true"
+
+      # oauth2proxy provider config
+      OAUTH2_PROXY_PROVIDER: "oidc"
+      OAUTH2_PROXY_CLIENT_ID: "oauth2-proxy"
+      OAUTH2_PROXY_SKIP_OIDC_DISCOVERY: "true"
+
+      OAUTH2_PROXY_REDIRECT_URL: "http://localhost:4180/oauth2/callback"
+      OAUTH2_PROXY_LOGIN_URL: "http://localhost:30200/oidc/realms/auth-server/protocol/openid-connect/auth"
+
+      OAUTH2_PROXY_OIDC_ISSUER_URL: "http://localhost:30200/oidc/realms/auth-server"
+
+      OAUTH2_PROXY_OIDC_JWKS_URL: "http://keycloak:8080/oidc/realms/auth-server/protocol/openid-connect/certs"
+      OAUTH2_PROXY_REDEEM_URL: "http://keycloak:8080/oidc/realms/auth-server/protocol/openid-connect/token"
+
+      #secrets
+      OAUTH2_PROXY_CLIENT_SECRET: none
+      # docker run -ti --rm python:3-alpine python -c 'import secrets,base64; print(base64.b64encode(base64.b64encode(secrets.token_bytes(16))));'
+      OAUTH2_PROXY_COOKIE_SECRET: SvJIUgqBKxOYSxJwFREiOg==
+
+    networks:
+      - ${_Values_root_name}-net
+
+  auth-server:
+    container_name: ${_Values_root_name}-auth-server
+    image: goafabric/spring-auth-server-native${_Values_server_arch}:1.0.3
+    restart: 'no'
+    ports:
+      - "30300:30200"
+    command: [ "-Xmx32m" ]
+    environment:
+      #application
+      server.forward-headers-strategy: FRAMEWORK
+
+      #auth
+      spring.security.authorization.base-uri: "/oidc"
+      spring.security.authorization.clients: "oauth2-proxy:none"
+      spring.security.authorization.users: "user1:user1,user2:user2,user3:user3,user4:user4"
+    networks:
+      - ${_Values_root_name}-net
+
+volumes:
+    tmp:
+    applogs:
+    pgdata:
+
+networks:
+  keycloak-net:
+    driver: bridge
