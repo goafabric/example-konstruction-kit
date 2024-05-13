@@ -86,12 +86,6 @@ resource "kubernetes_manifest" "kiali-route" {
             enable: true
             config:
               http_to_https: true
-          - name: proxy-rewrite
-            enable: true
-            config:
-              regex_uri:
-                - /kiali/(.*)
-                - /$1
   EOF
   )
 }
