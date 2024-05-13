@@ -8,7 +8,7 @@ ingress:
 
 image:
   repository: "goafabric/callee-service-quarkus"
-  pullPolicy: Always #IfNotPresent
+  pullPolicy: IfNotPresent
   pullSecrets: 
 
 podAnnotations:
