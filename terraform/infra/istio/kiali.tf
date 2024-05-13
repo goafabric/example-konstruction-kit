@@ -62,6 +62,41 @@ resource "kubernetes_manifest" "kiali-ingress" {
   )
 }
 
+resource "kubernetes_manifest" "kiali-route" {
+  manifest   = yamldecode(<<-EOF
+  kind: ApisixRoute
+  apiVersion: apisix.apache.org/v2
+  metadata:
+    name: kiali
+    namespace: istio-system
+  spec:
+    http:
+      - name: kiali
+        match:
+          hosts:
+            - ${var.hostname}
+          paths:
+            - /kiali
+            - /kiali/*
+        backends:
+          - serviceName: kiali
+            servicePort: 20001
+        plugins:
+          - name: redirect
+            enable: true
+            config:
+              http_to_https: true
+          - name: proxy-rewrite
+            enable: true
+            config:
+              regex_uri:
+                - /kiali/(.*)
+                - /$1
+  EOF
+  )
+}
+
+
 
 resource "terraform_data" "prometheus" {
   provisioner "local-exec" {
