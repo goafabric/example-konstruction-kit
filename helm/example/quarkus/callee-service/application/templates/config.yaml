@@ -11,7 +11,7 @@ data:
   quarkus.http.io-threads: "20"
 
   #security
-  security.authentication.enabled: "false"
+  security.authentication.enabled: "true"
 
   #tracing
   quarkus.otel.exporter.otlp.traces.endpoint: "http://tempo.monitoring:4317"
