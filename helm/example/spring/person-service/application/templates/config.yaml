@@ -18,13 +18,12 @@ data:
   security.authentication.enabled: "true"
 
   #monitoring
-  #monitoring
   management.endpoints.web.exposure.include: "health,circuitbreakers,prometheus"
   management.endpoint.health.show-details: never
   springdoc.swagger-ui.path: "//"
   springdoc.api-docs.path: "//"
 
-  #zipkin/jaeger
+  #tracing
   spring.application.name: "{{ include "application.fullname" . }}"
   management.otlp.tracing.endpoint: "http://tempo.monitoring:4318/v1/traces"
   management.tracing.sampling.probability: "1.0"
