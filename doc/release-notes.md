@@ -2,6 +2,7 @@
 - switchable apisix authentication
 - quarkus reintroduced
 - dangerous helm secret defaults removed
+- quarkus otel fixes for tempo
 
 # 1.2.2
 - fix for manual helm chart rollout
