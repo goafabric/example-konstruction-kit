@@ -5,3 +5,4 @@ kubectl create namespace message-broker; kubectl label namespace message-broker 
 kubectl create namespace oidc; kubectl label namespace message-broker "istio.io/dataplane-mode"="ambient"
 
 #kubectl label namespace ingress-apisix "istio.io/dataplane-mode"="ambient"
+#kubectl label namespace ingress-nginx "istio.io/dataplane-mode"="ambient"
