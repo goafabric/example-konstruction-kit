@@ -1,3 +1,5 @@
+# 1.2.4
+
 # 1.2.3
 - switchable apisix authentication
 - quarkus reintroduced
@@ -90,7 +92,7 @@
 - upgrade to kubernetes-dashboard 2.6.0
 - oidc auth switch added + script fixes
 
-- all example services upgraded to latest 1.2.3
+- all example services upgraded to latest 1.2.4
 
 # 1.0.0
 - upgrade to Keycloak 18.0.0
