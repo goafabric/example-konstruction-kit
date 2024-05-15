@@ -93,6 +93,7 @@ resource "kubernetes_manifest" "kiali-route" {
 
 
 resource "terraform_data" "prometheus" {
+  depends_on = [kubernetes_manifest.kiali-ingress]
   provisioner "local-exec" {
     when = create
     command = "kubectl apply -f ./templates/prometheus.yaml"
