@@ -6,3 +6,6 @@ metadata:
 spec:
   mtls:
     mode: STRICT
+
+# wget http://callee-service-application.example:8080
+# wget --header="Authorization: Basic c2VydmljZTpZVkltZGZodTBCT3R2clFrRVY1QnIyZjNOMmhjbHNUQQ==" http://callee-service-application.example:8080/
