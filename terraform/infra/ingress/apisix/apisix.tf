@@ -2,9 +2,9 @@ resource "helm_release" "apisix" {
   name       = "apisix"
   repository = "https://apache.github.io/apisix-helm-chart"
   chart      = "apisix"
-  version    = "2.6.0"
+  version    = "2.7.0"
   namespace  = "ingress-apisix"
-  timeout    = "600"
+  timeout    = "300"
   create_namespace = true
 
   set {
@@ -90,6 +90,7 @@ resource "helm_release" "apisix" {
 
 
 resource "helm_release" "apisix-tls" {
+  depends_on = [helm_release.apisix]
   name       = "apisix-tls"
   repository = "https://wiremind.github.io/wiremind-helm-charts/"
   chart      = "raw"
@@ -110,7 +111,5 @@ resource "helm_release" "apisix-tls" {
             namespace: cert-manager
     EOF
   ]
-
-  depends_on = [helm_release.apisix]
 }
 
