@@ -1,6 +1,6 @@
 # div
 - istio helm installation
-- kialia + grafana + tempo
+- kiali + grafana + tempo
 
 ## security
 - network policies
