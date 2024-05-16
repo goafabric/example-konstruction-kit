@@ -1,4 +1,9 @@
+# div
+- istio helm installation
+- kialia + grafana + tempo
+
 ## security
+- network policies
 - secrets via vault
 - volume encryption
 - RBAC
