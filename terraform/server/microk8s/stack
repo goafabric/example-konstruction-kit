@@ -14,7 +14,6 @@ function destroy() {
 
 function up() {
     time(
-    apply ../../infra/ingress/cert-manager
     apply ../../infra/ingress/$INGRESS_TYPE
     apply ../../infra/dashboard
     apply ../../infra/grafana
@@ -36,7 +35,6 @@ function down() {
     destroy ../../infra/ingress
     destroy ../../infra/cert-manager
     destroy ../../infra/ingress/$INGRESS_TYPE
-    destroy ../../infra/ingress/cert-manager
     )
 }
 
