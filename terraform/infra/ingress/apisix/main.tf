@@ -9,5 +9,5 @@ provider "kubernetes" {
 }
 
 module "cert-manager" {
-  source = "../cert-manager"
+  source = "../modules/cert-manager"
 }
