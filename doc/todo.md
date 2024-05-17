@@ -6,6 +6,7 @@
 - CSP Headers for Ingress that satisfy Owasp Zap (seems to need restat after every scan)
 
 # div
+- kong oidc
 - istio helm installation
 - kiali + grafana + tempo
                                                                                                
