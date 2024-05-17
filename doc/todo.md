@@ -11,4 +11,3 @@
                                                                                                
 # info
 - 10 best practices: https://www.youtube.com/watch?app=desktop&v=oBf5lrmquYI&pp=ygUSI211dGlyYW9rdWJlcm5ldGVz
-- kong docu: https://docs.konghq.com/kubernetes-ingress-controller/latest/guides/services/tls/, https://gateway-api.sigs.k8s.io/guides/http-header-modifier/
