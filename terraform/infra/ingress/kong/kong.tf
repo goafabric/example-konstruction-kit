@@ -17,3 +17,4 @@ resource "helm_release" "kong" {
     value = "32443"
   }
 }
+
