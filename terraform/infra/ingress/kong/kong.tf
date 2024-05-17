@@ -26,7 +26,7 @@ resource "terraform_data" "kong_crd" {
 
   provisioner "local-exec" {
     when = destroy
-    command = "kubectl delete -f https://github.com/kubernetes-sigs/gateway-api/releases/download/v1.0.0/standard-install.yaml && kubectl delete -f ./templates/gateway-class.yaml"
+    command = "kubectl delete -f ./templates/gateway-class.yaml && kubectl delete -f https://github.com/kubernetes-sigs/gateway-api/releases/download/v1.0.0/standard-install.yaml"
   }
 }
 

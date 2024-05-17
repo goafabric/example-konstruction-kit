@@ -7,7 +7,3 @@ provider "helm" {
 provider "kubernetes" {
   config_path = "~/.kube/config"
 }
-
-module "cert-manager" {
-  source = "../cert-manager"
-}
