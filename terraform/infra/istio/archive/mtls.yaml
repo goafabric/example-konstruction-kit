@@ -1,11 +1,21 @@
 apiVersion: security.istio.io/v1beta1
 kind: PeerAuthentication
 metadata:
-  name: default
+  name: example
   namespace: example
 spec:
   mtls:
     mode: STRICT
+---
+apiVersion: security.istio.io/v1beta1
+kind: PeerAuthentication
+metadata:
+  name: core
+  namespace: core
+spec:
+  mtls:
+    mode: STRICT
+
 
 # wget http://callee-service-application.example:8080
 
