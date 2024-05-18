@@ -16,5 +16,10 @@ resource "helm_release" "kong" {
     name  = "proxy.tls.nodePort"
     value = "32443"
   }
+
+#   set {
+#     name  = "postgresql.enabled"
+#     value = true
+#   }
 }
 
