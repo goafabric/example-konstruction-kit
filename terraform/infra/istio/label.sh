@@ -5,7 +5,7 @@ kubectl create namespace message-broker; kubectl label namespace message-broker 
 kubectl create namespace oidc; kubectl label namespace message-broker "istio.io/dataplane-mode"="ambient"
 kubectl create namespace monitoring; kubectl label namespace monitoring "istio.io/dataplane-mode"="ambient"
 
-#kubectl label pods -l app.kubernetes.io/name=apisix istio.io/dataplane-mode=ambient -n ingress-apisix
+#kubectl label pods -l app.kubernetes.io/name=apisix istio.io/dataplane-mode=ambient -n ingress-apisix --overwrite
 
 #kubectl label namespace ingress-nginx "istio.io/dataplane-mode"="ambient" --overwrite
 #kubectl label namespace kong "istio.io/dataplane-mode"="ambient" --overwrite
