@@ -10,4 +10,5 @@ provider "kubernetes" {
 
 module "cert-manager" {
   source = "../modules/cert-manager"
+  hostname = var.hostname
 }
