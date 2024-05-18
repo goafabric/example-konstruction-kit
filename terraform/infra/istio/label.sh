@@ -7,3 +7,4 @@ kubectl create namespace monitoring; kubectl label namespace monitoring "istio.i
 
 #kubectl label namespace ingress-apisix "istio.io/dataplane-mode"="ambient" --overwrite
 #kubectl label namespace ingress-nginx "istio.io/dataplane-mode"="ambient" --overwrite
+#kubectl label namespace kong "istio.io/dataplane-mode"="ambient" --overwrite
