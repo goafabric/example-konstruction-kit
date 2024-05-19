@@ -79,8 +79,8 @@ data:
     \   </div>\n</div>\n\n</body>\n"
 kind: ConfigMap
 metadata:
-  creationTimestamp: "2024-05-19T10:00:05Z"
+  creationTimestamp: "2024-05-19T10:04:16Z"
   name: welcome-board-data-files
   namespace: monitoring
-  resourceVersion: "13089"
-  uid: e790be7e-ecf8-460b-b1fe-49f8c494de16
+  resourceVersion: "13648"
+  uid: 62d925c8-df97-4d4e-a3b6-f53b6fcabfd7

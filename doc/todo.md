@@ -7,7 +7,6 @@
 
 # div
 - kong oidc
-- istio helm installation
 - kiali + grafana + tempo
                                                                                                
 # info

@@ -87,3 +87,10 @@ resource "helm_release" "istio-ztunnel" {
 
   depends_on = [helm_release.istio-base]
 }
+
+resource "terraform_data" "istio" {
+  provisioner "local-exec" {
+    when = create
+    command = "./label.sh"
+  }
+}
