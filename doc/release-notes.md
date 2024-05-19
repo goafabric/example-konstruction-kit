@@ -1,3 +1,7 @@
+# 1.3.0
+- kong gateway definitions added
+- nginx removed
+
 # 1.2.4
 - upgrade to Apisix Chart 2.7.0
 - added kong gateway as an option
@@ -94,7 +98,7 @@
 - upgrade to kubernetes-dashboard 2.6.0
 - oidc auth switch added + script fixes
 
-- all example services upgraded to latest 1.2.4
+- all example services upgraded to latest 1.3.0
 
 # 1.0.0
 - upgrade to Keycloak 18.0.0
