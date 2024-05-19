@@ -1,5 +1,6 @@
 # 1.2.4
 - upgrade to Apisix Chart 2.7.0
+- added kong gateway as an option
 
 # 1.2.3
 - switchable apisix authentication
