@@ -30,38 +30,6 @@ resource "helm_release" "kiali" {
   }
 }
 
-
-resource "kubernetes_manifest" "kiali-ingress" {
-  manifest   = yamldecode(<<-EOF
-  kind: Ingress
-  apiVersion: networking.k8s.io/v1
-  metadata:
-    name: kiali-ingress
-    namespace: istio-system
-    annotations:
-      cert-manager.io/cluster-issuer: my-cluster-issuer
-      nginx.ingress.kubernetes.io/rewrite-target: /kiali/$1
-  spec:
-    ingressClassName: nginx
-    tls:
-      - hosts:
-          - ${var.hostname}
-        secretName: root-certificate
-    rules:
-      - host: ${var.hostname}
-        http:
-          paths:
-            - path: /kiali/?(.*)
-              pathType: ImplementationSpecific
-              backend:
-                service:
-                  name: kiali
-                  port:
-                    number: 20001
-  EOF
-  )
-}
-
 resource "kubernetes_manifest" "kiali-route" {
   manifest   = yamldecode(<<-EOF
   kind: ApisixRoute

@@ -62,16 +62,3 @@ datasources:
           hide: false
         nodeGraph:
           enabled: true
-      
-ingress:
-  enabled: true
-  ingressClassName: nginx
-  annotations:
-    cert-manager.io/cluster-issuer: my-cluster-issuer
-
-    nginx.ingress.kubernetes.io/ssl-redirect: "true"
-    nginx.ingress.kubernetes.io/rewrite-target: /$1
-
-  path: /grafana/?(.*)
-  tls:
-    - secretName: "root-certificate"
