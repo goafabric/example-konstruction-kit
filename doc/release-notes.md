@@ -2,6 +2,7 @@
 - kong gateway definitions added
 - nginx removed
 - namespace message-broker renamed to event
+- moved welcome page from default to monitoring namespace, due to cert problems
 
 # 1.2.4
 - upgrade to Apisix Chart 2.7.0
