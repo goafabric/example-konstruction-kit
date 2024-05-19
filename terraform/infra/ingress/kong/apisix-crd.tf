@@ -1,3 +1,4 @@
+# kubectl delete crd apisixroutes.apisix.apache.org
 resource "kubernetes_manifest" "apisix-fake-crsd" {
   manifest   = yamldecode(<<-EOF
   apiVersion: apiextensions.k8s.io/v1
