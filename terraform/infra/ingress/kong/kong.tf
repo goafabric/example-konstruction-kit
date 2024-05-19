@@ -17,9 +17,9 @@ resource "helm_release" "kong" {
     value = "32443"
   }
 
-  set {
-    name  = "postgresql.enabled"
-    value = true
-  }
+#   set {
+#     name  = "postgresql.enabled"
+#     value = true
+#   }
 }
 
