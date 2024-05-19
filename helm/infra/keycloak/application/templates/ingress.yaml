@@ -6,7 +6,6 @@ metadata:
     {{- include "application.labels" . | nindent 4 }}
   annotations:
     cert-manager.io/cluster-issuer: my-cluster-issuer
-    konghq.com/strip-path: 'true'
 spec:
   ingressClassName: kong
   tls:

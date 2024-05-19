@@ -1,4 +1,3 @@
-{{- if .Values.ingress.enabled -}}
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -7,15 +6,9 @@ metadata:
     {{- include "application.labels" . | nindent 4 }}
   annotations:
     cert-manager.io/cluster-issuer: my-cluster-issuer
-
-    nginx.ingress.kubernetes.io/ssl-redirect: "true"
-    nginx.ingress.kubernetes.io/rewrite-target: /$1
-    nginx.ingress.kubernetes.io/x-forwarded-prefix: "{{- tpl (toYaml .Values.ingress.paths) . }}"
-
-    nginx.ingress.kubernetes.io/enable-modsecurity: "true"
-
+    konghq.com/strip-path: 'true'
 spec:
-  ingressClassName: nginx
+  ingressClassName: kong
   tls:
     - hosts:
         - {{ .Values.ingress.hosts}}
@@ -24,11 +17,10 @@ spec:
     - host: {{ .Values.ingress.hosts}}
       http:
         paths:
-          - path: {{- tpl (toYaml .Values.ingress.paths) . | nindent 14 }}/?(.*)
+          - path: {{ .Values.ingress.paths}}
             pathType: ImplementationSpecific
             backend:
               service:
                 name: {{ include "application.fullname" . }}
                 port:
                   name: http
-{{- end }}

@@ -58,65 +58,80 @@ resource "kubernetes_manifest" "kiali-route" {
   )
 }
 
-resource "kubernetes_manifest" "kiali-gateway" {
-  manifest   = yamldecode(<<-EOF
-  apiVersion: gateway.networking.k8s.io/v1
-  kind: Gateway
-  metadata:
-    name: kiali-gateway
-    namespace: istio-system
-  spec:
-    gatewayClassName: kong
-    listeners:
-      - name: https
-        port: 443
-        protocol: HTTPS
-        hostname: kind.local
-        tls:
-          mode: Terminate
-          certificateRefs:
-            - kind: Secret
-              name: root-certificate
-  EOF
-  )
-}
+# resource "kubernetes_manifest" "kiali-gateway" {
+#   manifest   = yamldecode(<<-EOF
+#   apiVersion: gateway.networking.k8s.io/v1
+#   kind: Gateway
+#   metadata:
+#     name: kiali-gateway
+#     namespace: istio-system
+#   spec:
+#     gatewayClassName: kong
+#     listeners:
+#       - name: https
+#         port: 443
+#         protocol: HTTPS
+#         hostname: kind.local
+#         tls:
+#           mode: Terminate
+#           certificateRefs:
+#             - kind: Secret
+#               name: root-certificate
+#   EOF
+#   )
+# }
+#
+# resource "kubernetes_manifest" "kiali-httproute" {
+#   manifest   = yamldecode(<<-EOF
+#   apiVersion: gateway.networking.k8s.io/v1
+#   kind: HTTPRoute
+#   metadata:
+#     name: kiali-route
+#     namespace: istio-system
+#   spec:
+#     parentRefs:
+#       - name: kiali-gateway
+#         sectionName: https
+#     hostnames:
+#       - kind.local
+#     rules:
+#       - matches:
+#           - path:
+#               type: PathPrefix
+#               value: /kiali
+#         backendRefs:
+#           - name: kiali
+#             port: 20001
+#   EOF
+#   )
+# }
 
-resource "kubernetes_manifest" "kiali-httproute" {
+resource "kubernetes_manifest" "kiali-ingress" {
   manifest   = yamldecode(<<-EOF
-  apiVersion: gateway.networking.k8s.io/v1
-  kind: HTTPRoute
+  kind: Ingress
+  apiVersion: networking.k8s.io/v1
   metadata:
-    name: kiali-route
+    name: kiali-ingress
     namespace: istio-system
+    annotations:
+      cert-manager.io/cluster-issuer: my-cluster-issuer
   spec:
-    parentRefs:
-      - name: kiali-gateway
-        sectionName: https
-    hostnames:
-      - kind.local
+    ingressClassName: kong
+    tls:
+      - hosts:
+          - ${var.hostname}
+        secretName: root-certificate
     rules:
-      - matches:
-          - path:
-              type: PathPrefix
-              value: /kiali
-        backendRefs:
-          - name: kiali
-            port: 20001
+      - host: ${var.hostname}
+        http:
+          paths:
+            - path: /kiali
+              pathType: ImplementationSpecific
+              backend:
+                service:
+                  name: kiali
+                  port:
+                    number: 20001
   EOF
   )
 }
-
-
-resource "terraform_data" "prometheus" {
-  depends_on = [helm_release.kiali]
-  provisioner "local-exec" {
-    when = create
-    command = "kubectl apply -f ./templates/prometheus.yaml"
-  }
-
-  provisioner "local-exec" {
-    when = destroy
-    command = "kubectl delete --ignore-not-found -f ./templates/prometheus.yaml"
-  }
-}
-
