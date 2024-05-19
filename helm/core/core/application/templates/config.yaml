@@ -62,4 +62,4 @@ data:
   spring.cloud.aws.s3.endpoint: "http://s3-minio:9000"
   spring.cloud.aws.s3.enabled: "false"
 
-  event.dispatcher.uri: "http://event-dispatcher-service-application.message-broker:8080/events/dispatch"
+  event.dispatcher.uri: "http://event-dispatcher-service-application.event:8080/events/dispatch"

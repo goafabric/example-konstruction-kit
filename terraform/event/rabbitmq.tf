@@ -5,7 +5,7 @@ resource "helm_release" "rabbitmq" {
   name       = "rabbitmq"
   chart      = "${var.helm_repository}/rabbitmq/application"
 #  version    = "3.12.1"
-  namespace  = "message-broker"
+  namespace  = "event"
   create_namespace = true
   timeout = var.helm_timeout
 
@@ -22,7 +22,7 @@ resource "helm_release" "rabbitmq-ha" {
   repository = "https://charts.bitnami.com/bitnami"
   chart      = "rabbitmq"
   version    = "13.0.0"
-  namespace  = "message-broker"
+  namespace  = "event"
   create_namespace = "true"
 
   set {
@@ -51,6 +51,6 @@ resource "terraform_data" "remove_postgres_pvc" {
 
   provisioner "local-exec" {
     when = destroy
-    command = "kubectl delete pvc -l app.kubernetes.io/instance=rabbitmq -n message-broker"
+    command = "kubectl delete pvc -l app.kubernetes.io/instance=rabbitmq -n event"
   }
 }

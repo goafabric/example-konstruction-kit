@@ -1,6 +1,7 @@
 # 1.3.0
 - kong gateway definitions added
 - nginx removed
+- namespace message-broker renamed to event
 
 # 1.2.4
 - upgrade to Apisix Chart 2.7.0

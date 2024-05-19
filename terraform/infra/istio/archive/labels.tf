@@ -51,7 +51,7 @@ resource "kubernetes_labels" "example_ambient" {
 #  api_version = "v1"
 #  kind        = "Namespace"
 #  metadata {
-#    name = "message-broker"
+#    name = "event"
 #  }
 #  labels = {
 #    istio-injection = "enabled"
@@ -64,7 +64,7 @@ resource "kubernetes_labels" "example_ambient" {
 #  api_version = "v1"
 #  kind        = "Namespace"
 #  metadata {
-#    name = "message-broker"
+#    name = "event"
 #  }
 #  labels = {
 #    "istio.io/dataplane-mode" = "ambient"
