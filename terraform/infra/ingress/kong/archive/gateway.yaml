@@ -2,6 +2,8 @@ apiVersion: gateway.networking.k8s.io/v1
 kind: Gateway
 metadata:
   name: {{ include "application.fullname" . }}-gateway
+  annotations:
+    cert-manager.io/cluster-issuer: my-cluster-issuer
 spec:
   gatewayClassName: kong
   listeners:
