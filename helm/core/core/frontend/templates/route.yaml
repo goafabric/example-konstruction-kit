@@ -1,0 +1,39 @@
+apiVersion: apisix.apache.org/v2
+kind: ApisixRoute
+metadata:
+  name: {{ include "application.fullname" . }}
+spec:
+  http:
+    - name: {{ include "application.fullname" . }}
+      match:
+        hosts:
+          - {{ .Values.ingress.hosts }}
+        paths:
+          - {{ .Values.ingress.paths }}
+          - {{ .Values.ingress.paths }}/*
+      backends:
+        - serviceName: {{ include "application.fullname" . }}
+          servicePort: http
+      plugins:
+        - name: redirect
+          enable: true
+          config:
+            http_to_https: true
+        - name: proxy-rewrite
+          enable: true
+          config:
+            regex_uri:
+              - {{ .Values.ingress.paths }}/(.*)
+              - /$1
+        - name: openid-connect
+          enable: {{ .Values.authentication.enabled }}
+          config:
+            client_id: oauth2-proxy
+            client_secret: none
+            discovery: https://{{ .Values.ingress.hosts }}/oidc/realms/tenant-0/.well-known/openid-configuration
+            access_token_in_authorization_header: false
+            set_id_token_header: false
+            set_userinfo_header: true
+            ssl_verify: false
+            redirect_uri: "{{ .Values.ingress.paths }}/redirect_uri"
+            logout_path: "{{ .Values.ingress.paths }}/logout"

@@ -3,9 +3,6 @@ replicaCount: 1
 ingress:
   paths: /core
   enabled: true
-  tenantIDs:
-    - 0
-    - 5
 
 image:
   repository: "goafabric/core-service"

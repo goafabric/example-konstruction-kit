@@ -1,10 +1,10 @@
 replicaCount: 1
 
 ingress:
-  paths: /callee
+  paths: /core-frontend
 
 image:
-  repository: "goafabric/callee-service" # image name
+  repository: "goafabric/core-fe" # image name
   pullPolicy: Always #IfNotPresent
   pullSecrets: 
 
@@ -16,18 +16,8 @@ podAnnotations:
 resourcesAnnotations:
   resources:
     requests:
-      memory: 128M
+      memory: 10M
       cpu: 250m
-
-  command: ["java", "-Xms128M", "-Xmx128M", "-cp", "/app/resources:/app/classes:/app/libs/*", "org.goafabric.calleeservice.Application"]
-
-nativeAnnotations:
-  resources:
-    requests:
-      memory: 32M
-      cpu: 250m
-
-  args: ["-Xmx32M"]
 
 readinessProbe:
   initialDelaySeconds: 2
@@ -35,7 +25,7 @@ readinessProbe:
 
 service:
   type: ClusterIP
-  port: 8080
+  port: 80
 
 authentication:
   enabled:

@@ -31,3 +31,21 @@ resource "helm_release" "core-application" {
     value = local.authentication_enabled
   }
 }
+
+resource "helm_release" "core-frontend" {
+  repository       = var.helm_repository
+  name             = "core-frontend"
+  chart            = "${var.helm_repository}/core/frontend"
+  namespace        = "core"
+  create_namespace = true
+  timeout          = var.helm_timeout
+
+  set {
+    name  = "ingress.hosts"
+    value = var.hostname
+  }
+  set {
+    name  = "replicaCount"
+    value = "1"
+  }
+}
