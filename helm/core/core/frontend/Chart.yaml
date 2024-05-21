@@ -1,5 +1,5 @@
 apiVersion: v2
-name: core-fronted
+name: core-frontend
 description: core-frontend
 
 type: application

@@ -48,24 +48,25 @@ data:
     href=\"/sonar/\" target=\"_blank\">\n                    <span>\U0001F4E1 Sonarqube</span>\n
     \               </a>\n            </ul>\n        </div>\n        <div class=\"links\">\n
     \           <h6>Core</h6>\n            <ul>\n                <p></p>\n                <li>\n
-    \                   <a href=\"/core/frontend/\" target=\"_blank\">\n                        <span>\U0001F30D
-    Core</span>\n                    </a>\n                    <a href=\"/core/0/frontend/\"
-    target=\"_blank\">\n                        <span>0</span>\n                    </a>\n
-    \                   <a href=\"/core/5/frontend/\" target=\"_blank\">\n                        <span>5</span>\n
-    \                   </a>\n                    <a href=\"/core/0/logout\" target=\"_blank\">\n
-    \                       <span>\U0001F513</span>\n                    </a>\n                </li>\n
-    \               <p></p>\n                <li>\n                    <a href=\"/catalog/\"
-    target=\"_blank\">\n                        <span>\U0001F4D9 Catalog</span>\n
-    \                   </a>\n                    <!--\n                    <a href=\"/catalog/logout\"
+    \                   <a href=\"/core-frontend/frontend/\" target=\"_blank\">\n
+    \                       <span>\U0001F30D Core</span>\n                    </a>\n
+    \                   <a href=\"/core-frontend/0/frontend/\" target=\"_blank\">\n
+    \                       <span>0</span>\n                    </a>\n                    <a
+    href=\"/core-frontend/5/frontend/\" target=\"_blank\">\n                        <span>5</span>\n
+    \                   </a>\n                    <a href=\"/core-frontend/0/frontend/logout\"
     target=\"_blank\">\n                        <span>\U0001F513</span>\n                    </a>\n
-    \                   -->\n                </li>\n                <p></p>\n                <li>\n
-    \                   <a href=\"/event/\" target=\"_blank\">\n                        <span>\U0001F430
-    Event Dispatcher</span>\n                    </a>\n                    <!--\n
-    \                   <a href=\"/event/logout\" target=\"_blank\">\n                        <span>\U0001F513</span>\n
-    \                   </a>\n                    -->\n                </li>\n            </ul>\n
-    \       </div>\n\n        <div class=\"links\">\n            <h6>Example</h6>\n
-    \           <ul>\n                <p></p>\n                <li>\n                    <a
-    href=\"/person/\" target=\"_blank\">\n                        <span>\U0001F30D
+    \               </li>\n                <p></p>\n                <li>\n                    <a
+    href=\"/catalog/\" target=\"_blank\">\n                        <span>\U0001F4D9
+    Catalog</span>\n                    </a>\n                    <!--\n                    <a
+    href=\"/catalog/logout\" target=\"_blank\">\n                        <span>\U0001F513</span>\n
+    \                   </a>\n                    -->\n                </li>\n                <p></p>\n
+    \               <li>\n                    <a href=\"/event/\" target=\"_blank\">\n
+    \                       <span>\U0001F430 Event Dispatcher</span>\n                    </a>\n
+    \                   <!--\n                    <a href=\"/event/logout\" target=\"_blank\">\n
+    \                       <span>\U0001F513</span>\n                    </a>\n                    -->\n
+    \               </li>\n            </ul>\n        </div>\n\n        <div class=\"links\">\n
+    \           <h6>Example</h6>\n            <ul>\n                <p></p>\n                <li>\n
+    \                   <a href=\"/person/\" target=\"_blank\">\n                        <span>\U0001F30D
     Person Service</span>\n                    </a>\n                    <a href=\"/person/0/\"
     target=\"_blank\">\n                        <span>0</span>\n                    </a>\n
     \                   <a href=\"/person/5/\" target=\"_blank\">\n                        <span>5</span>\n
@@ -79,8 +80,8 @@ data:
     \   </div>\n</div>\n\n</body>\n"
 kind: ConfigMap
 metadata:
-  creationTimestamp: "2024-05-19T10:04:16Z"
+  creationTimestamp: "2024-05-21T07:21:42Z"
   name: welcome-board-data-files
   namespace: monitoring
-  resourceVersion: "13648"
-  uid: 62d925c8-df97-4d4e-a3b6-f53b6fcabfd7
+  resourceVersion: "34156"
+  uid: 928ec98b-4706-459f-ab26-e463628fde09
