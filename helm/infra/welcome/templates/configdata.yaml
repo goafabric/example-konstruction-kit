@@ -50,13 +50,9 @@ data:
     \           <h6>Core</h6>\n            <ul>\n                <p></p>\n                <li>\n
     \                   <a href=\"/core-frontend/frontend/\" target=\"_blank\">\n
     \                       <span>\U0001F30D Core</span>\n                    </a>\n
-    \                   <a href=\"/core-frontend/0/frontend/\" target=\"_blank\">\n
-    \                       <span>0</span>\n                    </a>\n                    <a
-    href=\"/core-frontend/5/frontend/\" target=\"_blank\">\n                        <span>5</span>\n
-    \                   </a>\n                    <a href=\"/core-frontend/0/logout\"
-    target=\"_blank\">\n                        <span>\U0001F513</span>\n                    </a>\n
-    \               </li>\n                <p></p>\n                <li>\n                    <a
-    href=\"/catalog/\" target=\"_blank\">\n                        <span>\U0001F4D9
+    \                   <a href=\"/core-frontend/logout\" target=\"_blank\">\n                        <span>\U0001F513</span>\n
+    \                   </a>\n                </li>\n                <p></p>\n                <li>\n
+    \                   <a href=\"/catalog/\" target=\"_blank\">\n                        <span>\U0001F4D9
     Catalog</span>\n                    </a>\n                    <!--\n                    <a
     href=\"/catalog/logout\" target=\"_blank\">\n                        <span>\U0001F513</span>\n
     \                   </a>\n                    -->\n                </li>\n                <p></p>\n
@@ -67,21 +63,18 @@ data:
     \               </li>\n            </ul>\n        </div>\n\n        <div class=\"links\">\n
     \           <h6>Example</h6>\n            <ul>\n                <p></p>\n                <li>\n
     \                   <a href=\"/person/\" target=\"_blank\">\n                        <span>\U0001F30D
-    Person Service</span>\n                    </a>\n                    <a href=\"/person/0/\"
-    target=\"_blank\">\n                        <span>0</span>\n                    </a>\n
-    \                   <a href=\"/person/5/\" target=\"_blank\">\n                        <span>5</span>\n
-    \                   </a>\n                    <a href=\"/person/0/logout\" target=\"_blank\">\n
-    \                       <span>\U0001F513</span>\n                    </a>\n                </li>\n
-    \               <p></p>\n                <li>\n                    <a href=\"/callee/\"
-    target=\"_blank\">\n                        <span>\U0001F4E2 Callee Service</span>\n
-    \                   </a>\n                    <!--\n                    <a href=\"/callee/logout\"
+    Person Service</span>\n                    </a>\n                    <a href=\"/person/logout\"
     target=\"_blank\">\n                        <span>\U0001F513</span>\n                    </a>\n
-    \                   -->\n                </li>\n            </ul>\n        </div>\n
-    \   </div>\n</div>\n\n</body>\n"
+    \               </li>\n                <p></p>\n                <li>\n                    <a
+    href=\"/callee/\" target=\"_blank\">\n                        <span>\U0001F4E2
+    Callee Service</span>\n                    </a>\n                    <!--\n                    <a
+    href=\"/callee/logout\" target=\"_blank\">\n                        <span>\U0001F513</span>\n
+    \                   </a>\n                    -->\n                </li>\n            </ul>\n
+    \       </div>\n    </div>\n</div>\n\n</body>\n"
 kind: ConfigMap
 metadata:
-  creationTimestamp: "2024-05-21T07:37:28Z"
+  creationTimestamp: "2024-05-21T11:31:24Z"
   name: welcome-board-data-files
   namespace: monitoring
-  resourceVersion: "15215771"
-  uid: 805ea2fa-94a9-482c-b4ed-dbcb6224b516
+  resourceVersion: "4482"
+  uid: 07cb5b93-b72a-49fa-b97c-041f4e0bea06
