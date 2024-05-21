@@ -1,4 +1,3 @@
-
 apiVersion: apisix.apache.org/v2
 kind: ApisixRoute
 metadata:
@@ -27,7 +26,7 @@ spec:
               - {{ .Values.ingress.paths }}/(.*)
               - /$1
             headers:
-              X-TenantId: 0
+#              X-TenantId: 0
               Authorization: BASIC {{ b64enc (printf "%s:%s" ("c2VydmljZQ==" | b64dec) (.Values.service.password )) }} #Should use vault secret
         - name: openid-connect
           enable: {{ .Values.authentication.enabled }}
