@@ -48,4 +48,8 @@ resource "helm_release" "core-frontend" {
     name  = "replicaCount"
     value = "1"
   }
+  set {
+    name = "authentication.enabled"
+    value = local.authentication_enabled
+  }
 }

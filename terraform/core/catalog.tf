@@ -20,8 +20,8 @@ resource "helm_release" "catalog-application" {
     value = "-native${local.server_arch}"
   }
   set {
-    name  = "security.authentication.enabled"
-    value = "false"
+    name = "authentication.enabled"
+    value = local.authentication_enabled
   }
   set {
     name  = "database.password"
