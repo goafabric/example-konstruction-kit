@@ -32,7 +32,6 @@ data:
   spring.application.name: "{{ include "application.fullname" . }}"
   management.otlp.tracing.endpoint: "http://tempo.monitoring:4318/v1/traces"
   management.tracing.sampling.probability: "1.0"
-  logging.level.io.opentelemetry: "INFO"
 
   #persistence
   spring.datasource.url: "jdbc:postgresql://core-postgres-postgresql-ha-pgpool:5432/core"

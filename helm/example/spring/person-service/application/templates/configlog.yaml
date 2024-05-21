@@ -12,3 +12,5 @@ data:
   logging.level.org.springframework: "INFO"
   logging.level.org.flywaydb.core: "INFO"
   logging.level.org.hibernate.SQL: "INFO"
+
+  logging.level.io.opentelemetry: "OFF"
