@@ -1,7 +1,7 @@
 replicaCount: 1
 
 ingress:
-  paths: /callee
+  paths: /invoice
 
 image:
   repository: "goafabric/invoice-process" # image name

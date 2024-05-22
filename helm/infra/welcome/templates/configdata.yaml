@@ -53,28 +53,29 @@ data:
     \                   <a href=\"/core-frontend/logout\" target=\"_blank\">\n                        <span>\U0001F513</span>\n
     \                   </a>\n                </li>\n                <p></p>\n                <li>\n
     \                   <a href=\"/catalog/\" target=\"_blank\">\n                        <span>\U0001F4D9
-    Catalog</span>\n                    </a>\n                    <!--\n                    <a
-    href=\"/catalog/logout\" target=\"_blank\">\n                        <span>\U0001F513</span>\n
-    \                   </a>\n                    -->\n                </li>\n                <p></p>\n
-    \               <li>\n                    <a href=\"/event/\" target=\"_blank\">\n
-    \                       <span>\U0001F430 Event Dispatcher</span>\n                    </a>\n
-    \                   <!--\n                    <a href=\"/event/logout\" target=\"_blank\">\n
-    \                       <span>\U0001F513</span>\n                    </a>\n                    -->\n
-    \               </li>\n            </ul>\n        </div>\n\n        <div class=\"links\">\n
-    \           <h6>Example</h6>\n            <ul>\n                <p></p>\n                <li>\n
-    \                   <a href=\"/person/\" target=\"_blank\">\n                        <span>\U0001F30D
-    Person Service</span>\n                    </a>\n                    <a href=\"/person/logout\"
+    Catalog</span>\n                    </a>\n                </li>\n                <p></p>\n
+    \               <li>\n                    <a href=\"/invoice/\" target=\"_blank\">\n
+    \                       <span>$ Invoice</span>\n                    </a>\n                </li>\n
+    \               <p></p>\n                <li>\n                    <a href=\"/event/\"
+    target=\"_blank\">\n                        <span>\U0001F430 Event Dispatcher</span>\n
+    \                   </a>\n                    <!--\n                    <a href=\"/event/logout\"
     target=\"_blank\">\n                        <span>\U0001F513</span>\n                    </a>\n
-    \               </li>\n                <p></p>\n                <li>\n                    <a
-    href=\"/callee/\" target=\"_blank\">\n                        <span>\U0001F4E2
-    Callee Service</span>\n                    </a>\n                    <!--\n                    <a
-    href=\"/callee/logout\" target=\"_blank\">\n                        <span>\U0001F513</span>\n
-    \                   </a>\n                    -->\n                </li>\n            </ul>\n
-    \       </div>\n    </div>\n</div>\n\n</body>\n"
+    \                   -->\n                </li>\n            </ul>\n        </div>\n\n
+    \       <div class=\"links\">\n            <h6>Example</h6>\n            <ul>\n
+    \               <p></p>\n                <li>\n                    <a href=\"/person/\"
+    target=\"_blank\">\n                        <span>\U0001F30D Person Service</span>\n
+    \                   </a>\n                    <a href=\"/person/logout\" target=\"_blank\">\n
+    \                       <span>\U0001F513</span>\n                    </a>\n                </li>\n
+    \               <p></p>\n                <li>\n                    <a href=\"/callee/\"
+    target=\"_blank\">\n                        <span>\U0001F4E2 Callee Service</span>\n
+    \                   </a>\n                    <!--\n                    <a href=\"/callee/logout\"
+    target=\"_blank\">\n                        <span>\U0001F513</span>\n                    </a>\n
+    \                   -->\n                </li>\n            </ul>\n        </div>\n
+    \   </div>\n</div>\n\n</body>\n"
 kind: ConfigMap
 metadata:
-  creationTimestamp: "2024-05-22T05:50:26Z"
+  creationTimestamp: "2024-05-22T11:24:45Z"
   name: welcome-board-data-files
   namespace: monitoring
-  resourceVersion: "15490783"
-  uid: d8f42f74-3401-464d-a4b7-d1d559981aa6
+  resourceVersion: "44435"
+  uid: 483e17e5-55fe-4ef8-b90d-674358fe9e75
