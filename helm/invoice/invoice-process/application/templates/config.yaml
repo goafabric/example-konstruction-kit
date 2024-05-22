@@ -32,4 +32,5 @@ data:
 
   #adapter
   adapter.coreservice.url: "http://core-application.core:8080"
+  adapter.catalogservice.url: "http://catalog-application.core:8080"
   adapter.timeout: "10000"
