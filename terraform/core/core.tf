@@ -16,7 +16,7 @@ resource "helm_release" "core-application" {
   }
   set {
     name  = "replicaCount"
-    value = "1"
+    value = local.replica_count
   }
   set {
     name  = "database.password"
