@@ -1,0 +1,44 @@
+replicaCount: 1
+
+ingress:
+  paths: /callee
+
+image:
+  repository: "goafabric/invoice-process" # image name
+  pullPolicy: Always #IfNotPresent
+  pullSecrets: 
+
+podAnnotations:
+  linkerd.io/inject: enabled
+  sidecar.istio.io/inject: "true"
+  config.alpha.linkerd.io/proxy-enable-native-sidecar: "false" # https://linkerd.io/2.15/reference/proxy-configuration/, https://linkerd.io/2024/02/21/announcing-linkerd-2.15/, https://github.com/linkerd/linkerd2/releases
+
+resourcesAnnotations:
+  resources:
+    requests:
+      memory: 128M
+      cpu: 250m
+
+  command: ["java", "-Xms128M", "-Xmx128M", "-cp", "/app/resources:/app/classes:/app/libs/*", "org.goafabric.invoice.process.Application"]
+
+nativeAnnotations:
+  resources:
+    requests:
+      memory: 32M
+      cpu: 250m
+
+  args: ["-Xmx32M"]
+
+readinessProbe:
+  initialDelaySeconds: 2
+#  scheme: HTTPS
+
+service:
+  type: ClusterIP
+  port: 8080
+
+authentication:
+  enabled:
+
+
+
