@@ -57,7 +57,7 @@ data:
     \               <li>\n                    <a href=\"/invoice/\" target=\"_blank\">\n
     \                       <span>\U0001F4B0 Invoice</span>\n                    </a>\n
     \               </li>\n                <p></p>\n                <li>\n                    <a
-    href=\"/event/\" target=\"_blank\">\n                        <span>\U0001F430
+    href=\"/event/\" target=\"_blank\">\n                        <span>\U0001F4E9
     Event Dispatcher</span>\n                    </a>\n                    <!--\n
     \                   <a href=\"/event/logout\" target=\"_blank\">\n                        <span>\U0001F513</span>\n
     \                   </a>\n                    -->\n                </li>\n            </ul>\n
@@ -74,8 +74,8 @@ data:
     \       </div>\n    </div>\n</div>\n\n</body>\n"
 kind: ConfigMap
 metadata:
-  creationTimestamp: "2024-05-22T11:43:07Z"
+  creationTimestamp: "2024-05-23T06:54:48Z"
   name: welcome-board-data-files
   namespace: monitoring
-  resourceVersion: "15570743"
-  uid: 8aa5ec77-22b3-4769-90b9-4ee4dc84eb77
+  resourceVersion: "15807071"
+  uid: a1325c56-24b6-4a5b-8bd9-ef28e22b7cae
