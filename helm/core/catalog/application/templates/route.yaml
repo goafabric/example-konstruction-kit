@@ -40,4 +40,4 @@ spec:
             redirect_uri: "{{ .Values.ingress.paths }}/redirect_uri"
             logout_path: "{{ .Values.ingress.paths }}/logout"
             session:
-              secret: "{{ .Values.oidc.session.secret | default "" }}"
+              secret: "{{ .Values.oidc.session.secret | default "" }}" #it's important to SET the SAME secret for all routes ! otherwise reauth will happen
