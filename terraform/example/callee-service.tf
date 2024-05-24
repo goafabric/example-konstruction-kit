@@ -24,6 +24,10 @@ resource "helm_release" "callee-service-application" {
     value = local.authentication_enabled
   }
   set {
+    name = "oidc.session.secret"
+    value = random_password.oidc_session_secret.result
+  }
+  set {
     name = "service.password"
     value = random_password.service_password.result
   }
