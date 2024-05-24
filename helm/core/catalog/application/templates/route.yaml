@@ -40,4 +40,4 @@ spec:
             redirect_uri: "{{ .Values.ingress.paths }}/redirect_uri"
             logout_path: "{{ .Values.ingress.paths }}/logout"
             session:
-              secret: "32986E86-CB6B-412F-B631-633CDD586075"
+              secret: "{{ .Values.oidc.session.secret | default "" }}"

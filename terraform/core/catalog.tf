@@ -20,12 +20,16 @@ resource "helm_release" "catalog-application" {
     value = "-native${local.server_arch}"
   }
   set {
+    name  = "database.password"
+    value = random_password.core_database_password.result
+  }
+  set {
     name = "authentication.enabled"
     value = local.authentication_enabled
   }
   set {
-    name  = "database.password"
-    value = random_password.core_database_password.result
+    name = "oidc.session.secret"
+    value = random_password.oidc_session_secret.result
   }
 }
 

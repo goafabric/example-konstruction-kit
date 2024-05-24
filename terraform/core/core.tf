@@ -30,6 +30,10 @@ resource "helm_release" "core-application" {
     name = "authentication.enabled"
     value = local.authentication_enabled
   }
+  set {
+    name = "oidc.session.secret"
+    value = random_password.oidc_session_secret.result
+  }
 }
 
 resource "helm_release" "core-frontend" {
@@ -51,5 +55,9 @@ resource "helm_release" "core-frontend" {
   set {
     name = "authentication.enabled"
     value = local.authentication_enabled
+  }
+  set {
+    name = "oidc.session.secret"
+    value = random_password.oidc_session_secret.result
   }
 }
