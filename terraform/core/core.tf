@@ -18,6 +18,7 @@ resource "helm_release" "core-application" {
     name  = "replicaCount"
     value = local.replica_count
   }
+
   set {
     name  = "database.password"
     value = random_password.core_database_password.result
@@ -26,9 +27,10 @@ resource "helm_release" "core-application" {
     name  = "s3.password"
     value = random_password.s3_password.result
   }
+
   set {
-    name = "authentication.enabled"
-    value = local.authentication_enabled
+    name = "oidc.enabled"
+    value = local.oidc_enabled
   }
   set {
     name = "oidc.session.secret"
@@ -53,8 +55,8 @@ resource "helm_release" "core-frontend" {
     value = "1"
   }
   set {
-    name = "authentication.enabled"
-    value = local.authentication_enabled
+    name = "oidc.enabled"
+    value = local.oidc_enabled
   }
   set {
     name = "oidc.session.secret"

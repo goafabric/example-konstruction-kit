@@ -27,7 +27,7 @@ service:
   type: ClusterIP
   port: 80
 
-authentication:
+oidc:
   enabled:
 
 

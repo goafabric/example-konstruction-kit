@@ -10,7 +10,6 @@ resource "helm_release" "catalog-application" {
     name  = "replicaCount"
     value = "1"
   }
-  
   set {
     name  = "ingress.hosts"
     value = var.hostname
@@ -19,13 +18,15 @@ resource "helm_release" "catalog-application" {
     name  = "image.arch"
     value = "-native${local.server_arch}"
   }
+
   set {
     name  = "database.password"
     value = random_password.core_database_password.result
   }
+
   set {
-    name = "authentication.enabled"
-    value = local.authentication_enabled
+    name = "oidc.enabled"
+    value = local.oidc_enabled
   }
   set {
     name = "oidc.session.secret"
@@ -51,7 +52,7 @@ resource "helm_release" "catalog-batch" {
     value = random_password.core_database_password.result
   }
   set {
-    name = "authentication.enabled"
-    value = local.authentication_enabled
+    name = "oidc.enabled"
+    value = local.oidc_enabled
   }
 }

@@ -17,7 +17,7 @@ data "external" "server_arch_data" {
 locals {
   production_mode = !strcontains(var.hostname, ".local")
   server_arch = data.external.server_arch_data.result["server_arch"]
-  authentication_enabled = local.production_mode
+  oidc_enabled = local.production_mode
 
   replica_count = local.production_mode ? "1" : "1"
 }

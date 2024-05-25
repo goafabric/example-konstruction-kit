@@ -3,7 +3,6 @@ replicaCount: 1
 ingress:
   paths: /rabbitmq
   enabled: false
-  authentication: none
 
 image:
   repository: "rabbitmq"

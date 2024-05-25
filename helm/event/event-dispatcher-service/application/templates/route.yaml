@@ -29,7 +29,7 @@ spec:
             headers:
               X-TenantId: 0
         - name: openid-connect
-          enable: {{ .Values.authentication.enabled }}
+          enable: {{ .Values.oidc.enabled }}
           config:
             client_id: oauth2-proxy
             client_secret: none

@@ -28,7 +28,7 @@ spec:
             headers:
               X-TenantId: 0 #just a dummy to avaoid privilige escalation, should be changed to the real tenantId retrieved during Authentication
         - name: openid-connect
-          enable: {{ .Values.authentication.enabled }}
+          enable: {{ .Values.oidc.enabled }}
           config:
             client_id: oauth2-proxy
             client_secret: none

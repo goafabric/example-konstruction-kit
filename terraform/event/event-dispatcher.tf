@@ -23,4 +23,9 @@ resource "helm_release" "event-dispatcher-service-application" {
     name  = "messageBroker.password"
     value = random_password.database_password.result
   }
+
+  set {
+    name = "oidc.enabled"
+    value = local.oidc_enabled
+  }
 }

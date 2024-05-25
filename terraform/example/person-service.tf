@@ -28,8 +28,8 @@ resource "helm_release" "person-service-application" {
     value = random_password.service_password.result
   }
   set {
-    name = "authentication.enabled"
-    value = local.authentication_enabled
+    name = "oidc.enabled"
+    value = local.oidc_enabled
   }
   set {
     name = "oidc.session.secret"

@@ -4,7 +4,6 @@ tenantId: 0
 ingress:
   paths: /callee
   enabled: true
-  authentication: none
 
 image:
   repository: "goafabric/callee-service-quarkus"
@@ -30,5 +29,5 @@ service:
   type: ClusterIP
   port: 8080
 
-authentication:
+oidc:
   enabled:

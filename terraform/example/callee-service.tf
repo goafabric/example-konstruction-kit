@@ -20,8 +20,8 @@ resource "helm_release" "callee-service-application" {
     value = strcontains(var.helm_repository, "spring") ? "-native${local.server_arch}" : local.server_arch
   }
   set {
-    name = "authentication.enabled"
-    value = local.authentication_enabled
+    name = "oidc.enabled"
+    value = local.oidc_enabled
   }
   set {
     name = "oidc.session.secret"

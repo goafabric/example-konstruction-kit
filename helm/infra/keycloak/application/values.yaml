@@ -4,7 +4,6 @@ tenantId: 0
 ingress:
   paths: /oidc
   enabled: true
-  authentication: none
 
 image:
   repository: "quay.io/keycloak/keycloak"
