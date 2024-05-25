@@ -1,3 +1,5 @@
+# 1.3.1
+
 # 1.3.0
 - kong gateway definitions added
 - nginx controller removed
