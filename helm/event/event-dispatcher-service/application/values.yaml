@@ -6,7 +6,7 @@ ingress:
 
 image:
   repository: "goafabric/event-dispatcher-service"
-  pullPolicy: IfNotPresent
+  pullPolicy: IfNotPresent #Always
   pullSecrets: 
 
 podAnnotations:
