@@ -19,6 +19,12 @@ resource "helm_release" "callee-service-application" {
     name  = "image.arch"
     value = strcontains(var.helm_repository, "spring") ? "-native${local.server_arch}" : local.server_arch
   }
+
+  set {
+    name = "service.password"
+    value = random_password.service_password.result
+  }
+
   set {
     name = "oidc.enabled"
     value = local.oidc_enabled
@@ -26,9 +32,5 @@ resource "helm_release" "callee-service-application" {
   set {
     name = "oidc.session.secret"
     value = random_password.oidc_session_secret.result
-  }
-  set {
-    name = "service.password"
-    value = random_password.service_password.result
   }
 }
