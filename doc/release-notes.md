@@ -1,8 +1,10 @@
 # 1.3.0
 - kong gateway definitions added
-- nginx removed
-- namespace message-broker renamed to event
+- nginx controller removed
+- namespace message-broker renamed to event, kafka is now also the default
 - moved welcome page from default to monitoring namespace, due to cert problems
+- fixed an issue with apisix oidc reauthentication happening on root url switch (session.secret)
+- upgraded examples to version 3.3.0
 
 # 1.2.4
 - upgrade to Apisix Chart 2.7.0
