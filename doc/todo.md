@@ -7,7 +7,6 @@
 
 # div
 - kafka chart password + switchable rabbitmq
-
 - kong oidc
 - kiali + grafana + tempo
                                                                                                
