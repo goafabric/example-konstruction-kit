@@ -19,12 +19,14 @@ resource "helm_release" "invoice-process-application" {
     name  = "image.arch"
     value = "-native${local.server_arch}"
   }
-  set {
-    name = "oidc.enabled"
-    value = local.oidc_enabled
-  }
+
   set {
     name = "service.password"
     value = random_password.service_password.result
+  }
+
+  set {
+    name = "oidc.enabled"
+    value = local.oidc_enabled
   }
 }

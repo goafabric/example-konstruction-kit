@@ -19,6 +19,7 @@ resource "helm_release" "event-dispatcher-service-application" {
     name  = "image.arch"
     value = "-native${local.server_arch}"
   }
+
   set {
     name  = "messageBroker.password"
     value = random_password.database_password.result
