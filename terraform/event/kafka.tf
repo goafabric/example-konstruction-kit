@@ -27,7 +27,14 @@ resource "helm_release" "kafka-ha" {
 
   set {
     name = "controller.replicaCount"
-    value = "1"
+    value = local.broker_replica_count
+  }
+  set {
+    name  = "extraConfig"
+    value = <<-EOT
+      offsets.topic.replication.factor=${local.broker_replica_count}
+      transaction.state.log.replication.factor=${local.broker_replica_count}
+    EOT
   }
   set {
     name = "controller.heapOpts"

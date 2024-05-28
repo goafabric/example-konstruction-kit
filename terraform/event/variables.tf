@@ -20,5 +20,7 @@ locals {
   oidc_enabled = local.production_mode
 
   replica_count = local.production_mode ? "2" : "1"
+  broker_replica_count = "1"
+
   message_broker_ha = "true"
 }
