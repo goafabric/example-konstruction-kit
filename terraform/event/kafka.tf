@@ -27,7 +27,7 @@ resource "helm_release" "kafka-ha" {
 
   set {
     name = "controller.replicaCount"
-    value = local.replica_count
+    value = "1"
   }
   set {
     name = "controller.heapOpts"
