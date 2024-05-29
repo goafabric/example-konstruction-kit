@@ -43,8 +43,24 @@ resource "helm_release" "kafka-ha" {
 
   set {
     name = "listeners.client.protocol"
+    value = "SASL_PLAINTEXT"
+  }
+
+  set {
+    name = "listeners.client.protocol"
     value = "PLAINTEXT"
   }
+
+#   set {
+#     name = "sasl.client.users"
+#     value = "admin"
+#   }
+#   set {
+#     name = "sasl.client.passwords"
+#     value = "secret"
+#   }
+
+
 
   set {
     name  = "persistence.size"
