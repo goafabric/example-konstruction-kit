@@ -1,20 +1,3 @@
-resource "helm_release" "kafka" {
-  count = local.message_broker_ha == "false" ? 1 : 0
-
-  repository = var.helm_repository
-  name       = "kafka"
-  chart      = "${var.helm_repository}/kafka/application"
-  namespace  = "event"
-  create_namespace = true
-  timeout = var.helm_timeout
-
-#  set {
-#     name  = "messageBroker.password"
-#     value = random_password.database_password.result
-#   }
-}
-
-
 resource "helm_release" "kafka-ha" {
   count = local.message_broker_ha == "true" ? 1 : 0
 
@@ -40,17 +23,10 @@ resource "helm_release" "kafka-ha" {
     name = "controller.heapOpts"
     value = "-Xmx256m"
   }
-
   set {
     name = "listeners.client.protocol"
     value = "SASL_PLAINTEXT"
   }
-
-#  set {
-#    name = "listeners.client.protocol"
-#    value = "PLAINTEXT"
-#  }
-
   set {
     name = "sasl.client.users[0]"
     value = "admin"
@@ -59,9 +35,6 @@ resource "helm_release" "kafka-ha" {
     name = "sasl.client.passwords[0]"
     value = random_password.database_password.result
   }
-
-
-
   set {
     name  = "persistence.size"
     value = "2Gi"

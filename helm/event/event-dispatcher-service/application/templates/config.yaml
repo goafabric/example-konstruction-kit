@@ -32,9 +32,7 @@ data:
 
   #kafka
   spring.kafka.bootstrap-servers: "kafka:9092"
-
   spring.kafka.properties.security.protocol: "SASL_PLAINTEXT"
   spring.kafka.properties.sasl.mechanism: "PLAIN"
-#  spring.kafka.properties.sasl.jaas.config: org.apache.kafka.common.security.plain.PlainLoginModule required username="admin" password="secret";
-  spring.kafka.properties.sasl.jaas.config: org.apache.kafka.common.security.plain.PlainLoginModule required username="admin" password="{{ .Values.messageBroker.password }}";
+  spring.kafka.properties.sasl.jaas.config: org.apache.kafka.common.security.plain.PlainLoginModule required username="${spring.kafka.username}" password="${spring.kafka.password}";
 
