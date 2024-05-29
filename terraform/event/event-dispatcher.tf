@@ -16,17 +16,22 @@ resource "helm_release" "event-dispatcher-service-application" {
     value = var.hostname
   }
   set {
-    name  = "image.arch"
-    value = "-native${local.server_arch}"
-  }
-
-  set {
     name  = "messageBroker.password"
-    value = random_password.database_password.result
+    value = random_password.messageBroker_password.result
   }
-
   set {
     name = "oidc.enabled"
     value = local.oidc_enabled
   }
+
+
+  set {
+    name = "dispatcher.profile"
+    value = local.dispatcher_profile
+  }
+  set {
+    name  = "image.arch"
+    value = local.dispatcher_profile == "kafka" ? "-native${local.server_arch}" : ""
+  }
+
 }

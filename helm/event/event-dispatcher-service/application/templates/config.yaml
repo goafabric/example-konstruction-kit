@@ -36,3 +36,5 @@ data:
   spring.kafka.properties.sasl.mechanism: "PLAIN"
   spring.kafka.properties.sasl.jaas.config: org.apache.kafka.common.security.plain.PlainLoginModule required username="${spring.kafka.username}" password="${spring.kafka.password}";
 
+  #profile
+  spring.profiles.active: {{ .Values.dispatcher.profile }}

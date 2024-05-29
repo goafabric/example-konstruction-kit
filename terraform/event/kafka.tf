@@ -1,5 +1,5 @@
-resource "helm_release" "kafka-ha" {
-  count = local.message_broker_ha == "true" ? 1 : 0
+resource "helm_release" "kafka" {
+  count = local.dispatcher_profile == "kafka" ? 1 : 0
 
   name       = "kafka"
   repository = "https://charts.bitnami.com/bitnami"
@@ -33,7 +33,7 @@ resource "helm_release" "kafka-ha" {
   }
   set {
     name = "sasl.client.passwords[0]"
-    value = random_password.database_password.result
+    value = random_password.messageBroker_password.result
   }
   set {
     name  = "persistence.size"
@@ -42,8 +42,8 @@ resource "helm_release" "kafka-ha" {
 }
 
 # manually remove the pvc to avoid password problems
-resource "terraform_data" "remove_postgres_pvc" {
-  count = local.message_broker_ha == "true" ? 1 : 0
+resource "terraform_data" "remove_kafka_pvc" {
+  count = local.dispatcher_profile == "kafka" ? 1 : 0
 
   provisioner "local-exec" {
     when = destroy

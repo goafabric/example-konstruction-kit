@@ -29,7 +29,7 @@ resource "helm_release" "rabbitmq" {
 }
 
 # manually remove the pvc to avoid password problems
-resource "terraform_data" "remove_postgres_pvc" {
+resource "terraform_data" "remove_rabbitmq_pvc" {
   count = local.dispatcher_profile == "rabbitmq" ? 1 : 0
 
   provisioner "local-exec" {
