@@ -22,5 +22,5 @@ locals {
   replica_count = local.production_mode ? "2" : "1"
   messageBroker_replica_count = "1"
 
-  dispatcher_profile = "kafka"
+  dispatcher_profile = "kafka" #rabbitmq
 }
