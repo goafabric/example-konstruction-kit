@@ -57,7 +57,7 @@ resource "helm_release" "kafka-ha" {
   }
   set {
     name = "sasl.client.passwords[0]"
-    value = "secret"
+    value = random_password.database_password.result
   }
 
 
