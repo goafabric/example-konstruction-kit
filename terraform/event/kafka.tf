@@ -23,6 +23,7 @@ resource "helm_release" "kafka" {
     name = "controller.heapOpts"
     value = "-Xmx256m"
   }
+
   set {
     name = "listeners.client.protocol"
     value = "SASL_PLAINTEXT"
