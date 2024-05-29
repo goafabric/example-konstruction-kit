@@ -22,10 +22,19 @@ spec:
       labels:
         {{- include "application.selectorLabels" . | nindent 8 }}
     spec:
-      {{- with .Values.initContainers }}
+      {{ if eq .Values.dispatcher.profile "kafka" }}
       initContainers:
-        {{- toYaml . | nindent 8 }}
-        {{- end }}
+        - name: wait-for-broker
+          image: busybox
+          command: ['sh', '-c', 'until nc -z kafka 9092; do echo waiting for broker; sleep 1; done;']
+      {{- end }}
+
+      {{ if eq .Values.dispatcher.profile "rabbitmq" }}
+      initContainers:
+        - name: wait-for-broker
+          image: busybox
+          command: ['sh', '-c', 'until nc -z rabbitmq 5672; do echo waiting for broker; sleep 1; done;']
+      {{- end }}
 
       {{ if .Values.image.pullSecrets }}
       imagePullSecrets:
