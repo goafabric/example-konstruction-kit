@@ -20,7 +20,7 @@ locals {
   oidc_enabled = local.production_mode
 
   replica_count = local.production_mode ? "2" : "1"
-  broker_replica_count = "1"
+  messageBroker_replica_count = "1"
 
   dispatcher_profile = "kafka"
 }

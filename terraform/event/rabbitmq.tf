@@ -10,7 +10,7 @@ resource "helm_release" "rabbitmq" {
 
   set {
     name = "replicaCount"
-    value = local.replica_count
+    value = local.messageBroker_replica_count
   }
   set {
     name  = "persistence.size"
