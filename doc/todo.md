@@ -6,7 +6,6 @@
 - CSP Headers for Ingress that satisfy Owasp Zap (seems to need restat after every scan)
 
 # div
-- kafka chart password + switchable rabbitmq
 - kong oidc
 - kiali + grafana + tempo
                                                                                                
