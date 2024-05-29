@@ -1,0 +1,27 @@
+replicaCount: 1
+
+ingress:
+  paths: /rabbitmq
+  enabled: false
+
+image:
+  repository: "rabbitmq"
+  pullPolicy: IfNotPresent
+  pullSecrets: 
+
+podAnnotations:
+  linkerd.io/inject: disabled
+  sidecar.istio.io/inject: "false"
+
+resourcesAnnotations:
+  resources:
+    requests:
+      memory: 128M
+      cpu: 250m
+
+readinessProbe:
+  initialDelaySeconds: 1
+
+service:
+  type: ClusterIP
+  port: 15672
