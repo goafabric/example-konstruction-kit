@@ -1,4 +1,5 @@
 # 1.3.1
+- switchable kafka and rabbitmq broker added
 
 # 1.3.0
 - kong gateway definitions added
