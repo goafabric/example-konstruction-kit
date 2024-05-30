@@ -1,3 +1,6 @@
+# 1.3.2
+- cleanup of event folder
+
 # 1.3.1
 - switchable kafka and rabbitmq broker added
 
