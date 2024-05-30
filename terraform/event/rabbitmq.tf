@@ -16,16 +16,19 @@ resource "helm_release" "rabbitmq" {
     name  = "persistence.size"
     value = "2Gi"
   }
-
   set {
     name  = "auth.username"
     value = "admin"
   }
-
   set {
     name  = "auth.password"
     value = random_password.messageBroker_password.result
   }
+  set {
+    name  = "networkPolicy.enabled"
+    value = false
+  }
+
 }
 
 # manually remove the pvc to avoid password problems

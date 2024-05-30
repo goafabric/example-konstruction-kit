@@ -13,6 +13,10 @@ resource "helm_release" "kafka" {
     value = local.messageBroker_replica_count
   }
   set {
+    name  = "persistence.size"
+    value = "2Gi"
+  }
+  set {
     name  = "extraConfig"
     value = <<-EOT
       offsets.topic.replication.factor=${local.messageBroker_replica_count}
@@ -37,8 +41,8 @@ resource "helm_release" "kafka" {
     value = random_password.messageBroker_password.result
   }
   set {
-    name  = "persistence.size"
-    value = "2Gi"
+    name  = "networkPolicy.enabled"
+    value = false
   }
 }
 
