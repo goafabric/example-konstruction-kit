@@ -6,6 +6,8 @@ resource "helm_release" "event-dispatcher-service-application" {
   create_namespace = true
   timeout = var.helm_timeout
 
+#  depends_on = [helm_release.kafka]
+
   set {
     name  = "replicaCount"
     value = local.replica_count
@@ -23,8 +25,6 @@ resource "helm_release" "event-dispatcher-service-application" {
     name = "oidc.enabled"
     value = local.oidc_enabled
   }
-
-
   set {
     name = "dispatcher.profile"
     value = local.dispatcher_profile
