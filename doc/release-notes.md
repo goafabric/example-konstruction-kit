@@ -1,6 +1,7 @@
 # 1.3.2
 - cleanup of event folder
 - network policies added
+- basic auth to core service added
 
 # 1.3.1
 - switchable kafka and rabbitmq broker added

@@ -11,6 +11,7 @@ function up() {
     --set image.arch=$IMAGE_ARCH $INGRESS_AUTHENTICATION \
     --set ingress.hosts=`kubectl get configmaps cluster-config -o jsonpath='{.data.hostname}' -n default` \
     --set database.password=postgres \
+    --set service.password=secret \
     --set s3.password=minioadmin \
     --set oidc.session.secret=secretsecretsecret \
     --namespace `pwd | rev | cut -d '/' -f3 | rev` \
