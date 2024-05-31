@@ -1,6 +1,6 @@
 # div
 - kong oidc
-- kiali + grafana + tempo
+- kiali + grafana + tempo, https://kiali.io/docs/configuration/p8s-jaeger-grafana/tracing/tempo/
 
 ## security
 - network policies
