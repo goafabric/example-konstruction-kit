@@ -6,7 +6,7 @@ kubectl create namespace invoice; kubectl label namespace invoice istio.io/datap
 
 kubectl create namespace monitoring; kubectl label namespace monitoring istio.io/dataplane-mode=ambient
 
-kubectl label pods -l app.kubernetes.io/name=apisix istio.io/dataplane-mode=ambient -n ingress-apisix --overwrite
+kubectl label pods -l app.kubernetes.io/name=apisix istio.io/dataplane-mode= -n ingress-apisix --overwrite
 kubectl create namespace kong; kubectl label namespace kong istio.io/dataplane-mode=ambient --overwrite
 
 #kubectl create namespace oidc; kubectl label namespace oidc istio.io/dataplane-mode=ambient #works but needs to many restart
