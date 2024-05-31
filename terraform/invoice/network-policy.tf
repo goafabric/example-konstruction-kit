@@ -1,7 +1,7 @@
 resource "kubernetes_network_policy" "allow_ingress_and_self" {
   metadata {
     name      = "allow-ingress"
-    namespace = "example"
+    namespace = "invoice"
   }
 
   spec {
@@ -14,10 +14,11 @@ resource "kubernetes_network_policy" "allow_ingress_and_self" {
           }
         }
       }
+
       from {
         namespace_selector {
           match_labels = {
-            name = "example"
+            name = "invoice"
           }
         }
       }

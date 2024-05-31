@@ -14,6 +14,7 @@ resource "kubernetes_network_policy" "allow_ingress_and_self" {
           }
         }
       }
+
       from {
         namespace_selector {
           match_labels = {
