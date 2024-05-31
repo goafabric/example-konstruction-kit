@@ -1,7 +1,7 @@
 resource "kubernetes_network_policy" "allow_ingress_and_self" {
   metadata {
     name      = "allow-ingress"
-    namespace = "core"
+    namespace = "event"
   }
 
   spec {
@@ -18,7 +18,7 @@ resource "kubernetes_network_policy" "allow_ingress_and_self" {
       from {
         namespace_selector {
           match_labels = {
-            name = "core"
+            name = "event"
           }
         }
       }
@@ -28,10 +28,10 @@ resource "kubernetes_network_policy" "allow_ingress_and_self" {
   }
 }
 
-resource "kubernetes_network_policy" "allow_invoice" {
+resource "kubernetes_network_policy" "allow_core" {
   metadata {
-    name      = "allow-invoice"
-    namespace = "core"
+    name      = "allow-core"
+    namespace = "event"
   }
 
   spec {
@@ -40,12 +40,12 @@ resource "kubernetes_network_policy" "allow_invoice" {
       from {
         namespace_selector {
           match_labels = {
-            name = "invoice"
+            name = "core"
           }
         }
         pod_selector {
           match_labels = {
-            app = "invoice-process-application"
+            app = "core-application"
           }
         }
       }
