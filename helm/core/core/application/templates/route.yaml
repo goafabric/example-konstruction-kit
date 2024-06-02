@@ -27,7 +27,6 @@ spec:
               - /$1
             headers:
               X-TenantId: 0 #just a dummy to avaoid privilige escalation, should be changed to the real tenantId retrieved during Authentication
-#              Authorization: BASIC {{ b64enc (printf "%s:%s" ("c2VydmljZQ==" | b64dec) (.Values.service.password )) }} #Should use vault secret
         - name: openid-connect
           enable: {{ .Values.oidc.enabled }}
           config:
