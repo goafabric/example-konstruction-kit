@@ -27,6 +27,9 @@ data:
   management.tracing.sampling.probability: "1.0"
   logging.level.io.opentelemetry: "INFO"
 
+  spring.kafka.template.observation-enabled: "true"
+  spring.kafka.listener.observation-enabled: "true"
+
   #rabbit
   spring.rabbitmq.host: "rabbitmq"
 
