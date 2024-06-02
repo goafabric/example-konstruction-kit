@@ -6,6 +6,8 @@ metadata:
     {{- include "application.labels" . | nindent 4 }}
 data:
   #log levels
+  logging.pattern.level: "%5p tenantId=%X{tenantId:-}"
+
   logging.level.root: "WARN"
   logging.level.org.goafabric: "INFO"
 
