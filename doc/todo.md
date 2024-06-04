@@ -1,9 +1,9 @@
 # div
 - kiali + grafana + tempo, https://kiali.io/docs/configuration/p8s-jaeger-grafana/tracing/tempo/
 - kong oidc
+- rbac
 
 ## security
-- RBAC
 - secrets via vault
 - volume encryption
 - CSP Headers for Ingress that satisfy Owasp Zap (seems to need restat after every scan)
