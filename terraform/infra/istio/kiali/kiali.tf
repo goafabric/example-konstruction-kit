@@ -15,10 +15,16 @@ resource "helm_release" "kiali" {
     name  = "external_services.custom_dashboards.enabled"
     value = "true"
   }
+
   set {
-    name  = "external_services.tracing.in_cluster_url"
-    value = "http://jaeger-collector.monitoring:16685/jaeger"
+    name  = "external_services.grafana.in_cluster_url"
+    value = "http://grafana.monitoring:80"
   }
+  set {
+    name  = "external_services.grafana.url"
+    value = "https://${var.hostname}"
+  }
+
   set {
     name  = "external_services.tracing.use_grpc"
     value = "true"

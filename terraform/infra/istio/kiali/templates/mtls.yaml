@@ -1,0 +1,42 @@
+apiVersion: security.istio.io/v1beta1
+kind: PeerAuthentication
+metadata:
+  name: example
+  namespace: example
+spec:
+  mtls:
+    mode: STRICT
+---
+apiVersion: security.istio.io/v1beta1
+kind: PeerAuthentication
+metadata:
+  name: core
+  namespace: core
+spec:
+  mtls:
+    mode: STRICT
+---
+apiVersion: security.istio.io/v1beta1
+kind: PeerAuthentication
+metadata:
+  name: invoice
+  namespace: invoice
+spec:
+  mtls:
+    mode: STRICT
+---
+apiVersion: security.istio.io/v1beta1
+kind: PeerAuthentication
+metadata:
+  name: event
+  namespace: event
+spec:
+  mtls:
+    mode: STRICT
+
+# wget http://callee-service-application.example:8080
+
+# k delete -f mtls.yaml
+# k get secret callee-service-application-secret -n example -o yaml | grep spring.security
+
+# wget --header="Authorization: Basic c2VydmljZTpZVkltZGZodTBCT3R2clFrRVY1QnIyZjNOMmhjbHNUQQ==" http://callee-service-application.example:8080/
