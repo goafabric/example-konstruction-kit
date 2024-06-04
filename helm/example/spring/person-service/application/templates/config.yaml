@@ -24,7 +24,7 @@ data:
   springdoc.api-docs.path: "//"
 
   #tracing
-  spring.application.name: "{{ include "application.fullname" . }}"
+  spring.application.name: "{{ include "application.fullname" . }}.example"
   management.otlp.tracing.endpoint: "http://tempo.monitoring:4318/v1/traces"
   management.tracing.sampling.probability: "1.0"
 
