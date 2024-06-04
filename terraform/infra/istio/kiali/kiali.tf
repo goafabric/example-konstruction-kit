@@ -15,7 +15,11 @@ resource "helm_release" "kiali" {
     name  = "external_services.custom_dashboards.enabled"
     value = "true"
   }
-
+  set {
+    name  = "server.web_root"
+    value = "/kiali"
+  }
+  
   set {
     name  = "external_services.grafana.in_cluster_url"
     value = "http://grafana.monitoring:80"
@@ -25,15 +29,46 @@ resource "helm_release" "kiali" {
     value = "https://${var.hostname}"
   }
 
+  ###
+  set {
+    name  = "external_services.tracing.enabled"
+    value = true
+  }
   set {
     name  = "external_services.tracing.use_grpc"
-    value = "true"
+    value = false
+  }
+  set {
+    name  = "external_services.tracing.provider"
+    value = "tempo"
   }
 
   set {
-    name  = "server.web_root"
-    value = "/kiali"
+    name  = "external_services.tracing.in_cluster_url"
+    value = "http://tempo.monitoring:3100/"
   }
+
+  set {
+    name  = "external_services.tracing.url"
+    value = "https://${var.hostname}/grafana"
+  }
+
+
+  set {
+    name  = "external_services.tracing.tempo_config.org_id"
+    value = "1"
+  }
+  set {
+    name  = "external_services.tracing.tempo_config.datasource_uid"
+    value = "tempo"
+  }
+
+
+  set {
+    name  = "deployment.logger.log_level"
+    value = "debug"
+  }
+
 }
 
 resource "kubernetes_manifest" "kiali-route" {
