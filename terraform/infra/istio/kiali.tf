@@ -7,8 +7,6 @@ resource "helm_release" "kiali" {
   version    = "1.82.0"
   wait       = true
 
-  # todo Grafana + Tempo Url Integration, Authentication
-
   set {
     name  = "auth.strategy"
     value = "anonymous"
@@ -28,10 +26,14 @@ resource "helm_release" "kiali" {
     value = "http://grafana.monitoring:80"
   }
   set {
-    name  = "external_services.grafana.url"
-    value = "https://${var.hostname}/grafana"
+    name  = "external_services.grafana.health_check_url"
+    value = "http://grafana.monitoring:80/healthz"
   }
-
+  set {
+    name  = "external_services.grafana.url"
+    value = "/grafana"
+  }
+  
   # tempo
   set {
     name  = "external_services.tracing.enabled"
@@ -50,12 +52,6 @@ resource "helm_release" "kiali" {
     name  = "external_services.tracing.in_cluster_url"
     value = "http://tempo.monitoring:3100/"
   }
-
-  set {
-    name  = "external_services.tracing.url"
-    value = "https://${var.hostname}/grafana/"
-  }
-
   set {
     name  = "external_services.tracing.tempo_config.org_id"
     value = "1"
@@ -64,10 +60,9 @@ resource "helm_release" "kiali" {
     name  = "external_services.tracing.tempo_config.datasource_uid"
     value = "tempo"
   }
-  
   set {
     name  = "deployment.logger.log_level"
-    value = "debug"
+    value = "info"
   }
 
 }
