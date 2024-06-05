@@ -33,7 +33,7 @@ datasources:
       orgId: 1
       url: http://tempo:3100
       editable: true
-      isDefault: false
+      isDefault: true
       jsonData:
         httpMethod: GET
         tracesToMetrics:
