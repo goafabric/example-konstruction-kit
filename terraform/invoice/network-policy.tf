@@ -40,4 +40,3 @@ resource "kubernetes_network_policy" "allow_self_ingress_prometheus" {
     policy_types = ["Ingress"]
   }
 }
-
