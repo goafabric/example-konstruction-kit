@@ -1,4 +1,4 @@
-resource "kubernetes_network_policy" "allow_ingress_and_self" {
+resource "kubernetes_network_policy" "allow_self_ingress_prometheus" {
   metadata {
     name      = "allow-ingress"
     namespace = "event"
@@ -10,6 +10,14 @@ resource "kubernetes_network_policy" "allow_ingress_and_self" {
       from {
         namespace_selector {
           match_labels = {
+            name = "event"
+          }
+        }
+      }
+
+      from {
+        namespace_selector {
+          match_labels = {
             name = "ingress-apisix"
           }
         }
@@ -18,7 +26,12 @@ resource "kubernetes_network_policy" "allow_ingress_and_self" {
       from {
         namespace_selector {
           match_labels = {
-            name = "event"
+            "kubernetes.io/metadata.name" = "istio-system"
+          }
+        }
+        pod_selector {
+          match_labels = {
+            "app.kubernetes.io/name" = "prometheus"
           }
         }
       }

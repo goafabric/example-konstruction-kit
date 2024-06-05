@@ -1,4 +1,4 @@
-resource "kubernetes_network_policy" "allow_ingress_and_self" {
+resource "kubernetes_network_policy" "allow_self_ingress_prometheus" {
   metadata {
     name      = "allow-ingress"
     namespace = "core"
@@ -10,6 +10,14 @@ resource "kubernetes_network_policy" "allow_ingress_and_self" {
       from {
         namespace_selector {
           match_labels = {
+            name = "core"
+          }
+        }
+      }
+
+      from {
+        namespace_selector {
+          match_labels = {
             name = "ingress-apisix"
           }
         }
@@ -18,7 +26,12 @@ resource "kubernetes_network_policy" "allow_ingress_and_self" {
       from {
         namespace_selector {
           match_labels = {
-            name = "core"
+            "kubernetes.io/metadata.name" = "istio-system"
+          }
+        }
+        pod_selector {
+          match_labels = {
+            "app.kubernetes.io/name" = "prometheus"
           }
         }
       }
@@ -27,7 +40,6 @@ resource "kubernetes_network_policy" "allow_ingress_and_self" {
     policy_types = ["Ingress"]
   }
 }
-
 resource "kubernetes_network_policy" "allow_invoice" {
   metadata {
     name      = "allow-invoice"
