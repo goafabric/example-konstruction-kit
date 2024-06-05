@@ -29,7 +29,7 @@ resource "helm_release" "kiali" {
   }
   set {
     name  = "external_services.grafana.url"
-    value = "https://${var.hostname}"
+    value = "https://${var.hostname}/grafana"
   }
 
   # tempo
