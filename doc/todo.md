@@ -4,7 +4,6 @@
 ## security
 - secrets via vault
 - volume encryption
-- CSP Headers for Ingress that satisfy Owasp Zap (seems to need restat after every scan)
 - rbac                                                                                                               k
                                                                                                
 # info
