@@ -2,6 +2,7 @@
 - cleanup of event folder
 - network policies added
 - basic auth to core service added
+- kiali connection to tempo tracing added, spring application name now contiains the Namespace
 
 # 1.3.1
 - switchable kafka and rabbitmq broker added

@@ -15,4 +15,4 @@ data:
 
   #tracing
   quarkus.otel.exporter.otlp.traces.endpoint: "http://tempo.monitoring:4317"
-  quarkus.application.name: {{ include "application.fullname" . }}
+  quarkus.application.name: {{ include "application.fullname" . }}.{{ .Release.Namespace }}
