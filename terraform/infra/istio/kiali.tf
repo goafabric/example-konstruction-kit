@@ -7,7 +7,7 @@ resource "helm_release" "kiali" {
   version    = "1.82.0"
   wait       = true
 
-  # todo Grafana + Tempo Url Integration, Grpc, Authentication
+  # todo Grafana + Tempo Url Integration, Authentication
 
   set {
     name  = "auth.strategy"
@@ -53,7 +53,7 @@ resource "helm_release" "kiali" {
 
   set {
     name  = "external_services.tracing.url"
-    value = "https://${var.hostname}/grafana"
+    value = "https://${var.hostname}/grafana/"
   }
 
   set {
