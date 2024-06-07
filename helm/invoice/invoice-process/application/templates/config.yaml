@@ -30,6 +30,11 @@ data:
   management.otlp.tracing.endpoint: "http://tempo.monitoring:4318/v1/traces"
   management.tracing.sampling.probability: "1.0"
 
+  #cache
+  spring.profiles.active: "redis"
+  spring.data.redis.host: "invoice-process-redis.invoice"
+  spring.data.redis.port: "6379"
+
   #adapter
   adapter.coreservice.url: "http://core-application.core:8080"
   adapter.catalogservice.url: "http://catalog-application.core:8080"
