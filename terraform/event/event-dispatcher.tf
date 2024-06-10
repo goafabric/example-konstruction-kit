@@ -3,7 +3,7 @@ resource "helm_release" "event-dispatcher-service-application" {
   name       = "event-dispatcher-service-application"
   chart      = "${var.helm_repository}/event-dispatcher-service/application"
   namespace  = "event"
-  create_namespace = true
+  create_namespace = false
   timeout = var.helm_timeout
 
   set {

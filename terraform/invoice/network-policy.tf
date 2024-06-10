@@ -1,3 +1,12 @@
+resource "kubernetes_namespace" "invoice" {
+  metadata {
+    name = "invoice"
+    labels = {
+      "istio.io/dataplane-mode" = "ambient"
+    }
+  }
+}
+
 resource "kubernetes_network_policy" "allow_self_ingress_prometheus" {
   metadata {
     name      = "allow-ingress"

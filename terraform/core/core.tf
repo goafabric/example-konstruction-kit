@@ -3,7 +3,7 @@ resource "helm_release" "core-application" {
   name       = "core-application"
   chart      = "${var.helm_repository}/core/application"
   namespace  = "core"
-  create_namespace = true
+  create_namespace = false
   timeout = var.helm_timeout
 
   set {
@@ -47,7 +47,7 @@ resource "helm_release" "core-frontend" {
   name             = "core-frontend"
   chart            = "${var.helm_repository}/core/frontend"
   namespace        = "core"
-  create_namespace = true
+  create_namespace = false
   timeout          = var.helm_timeout
 
   set {

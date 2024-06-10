@@ -3,7 +3,7 @@ resource "helm_release" "person-service-application" {
   name       = "person-service-application"
   chart      = "${var.helm_repository}/person-service/application"
   namespace  = "example"
-  create_namespace = true
+  create_namespace = false
   timeout = var.helm_timeout
 
   set {

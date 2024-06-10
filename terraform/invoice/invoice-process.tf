@@ -3,7 +3,7 @@ resource "helm_release" "invoice-process-application" {
   name       = "invoice-process-application"
   chart      = "${var.helm_repository}/invoice-process/application"
   namespace  = "invoice"
-  create_namespace = true
+  create_namespace = false
   timeout = var.helm_timeout
 
   set {

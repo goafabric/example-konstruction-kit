@@ -5,7 +5,7 @@ resource "helm_release" "person-service-postgres" {
   name       = "person-service-postgres-postgresql-ha-pgpool"
   chart      = "${var.helm_repository}/person-service/postgres"
   namespace  = "example"
-  create_namespace = true
+  create_namespace = false
   timeout = var.helm_timeout
 
   set {
