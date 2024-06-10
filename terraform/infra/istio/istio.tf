@@ -4,7 +4,7 @@ resource "helm_release" "istio-base" {
   chart      = "base"
   namespace  = "istio-system"
   create_namespace = true
-  version    = "1.22.0"
+  version    = "1.22.1"
   wait       = true
 
   set {
@@ -19,7 +19,7 @@ resource "helm_release" "istio-istiod" {
   chart      = "istiod"
   namespace  = "istio-system"
   create_namespace = true
-  version    = "1.22.0"
+  version    = "1.22.1"
   wait       = true
 
   depends_on = [helm_release.istio-base]

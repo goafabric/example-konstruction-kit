@@ -3,6 +3,8 @@
 - network policies added
 - basic auth to core service added
 - kiali connection to tempo tracing added, spring application name now contains the Namespace
+- upgrade to apisix chart 2.8.0
+- upgrade to kind kubernetes 1.3.0
 
 # 1.3.1
 - switchable kafka and rabbitmq broker added

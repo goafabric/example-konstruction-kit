@@ -2,7 +2,7 @@ resource "helm_release" "apisix" {
   name       = "apisix"
   repository = "https://apache.github.io/apisix-helm-chart"
   chart      = "apisix"
-  version    = "2.7.0"
+  version    = "2.8.0"
   namespace  = "ingress-apisix"
   timeout    = "300"
   create_namespace = true
