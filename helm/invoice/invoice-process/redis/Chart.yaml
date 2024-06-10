@@ -1,6 +1,6 @@
 apiVersion: v2
-name: invoice-process-redis
-description: invoice-process-redis
+name: redis
+description: redis
 
 type: application
 

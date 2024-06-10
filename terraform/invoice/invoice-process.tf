@@ -30,14 +30,3 @@ resource "helm_release" "invoice-process-application" {
     value = local.oidc_enabled
   }
 }
-
-
-resource "helm_release" "invoice-process-redis" {
-  repository = var.helm_repository
-  name       = "invoice-process-redis"
-  chart      = "${var.helm_repository}/invoice-process/redis"
-  namespace  = "invoice"
-  create_namespace = true
-  timeout = var.helm_timeout
-
-}

@@ -32,7 +32,7 @@ data:
 
   #cache
   spring.profiles.active: "redis"
-  spring.data.redis.host: "invoice-process-redis.invoice"
+  spring.data.redis.host: "redis.invoice"
   spring.data.redis.port: "6379"
 
   #adapter
