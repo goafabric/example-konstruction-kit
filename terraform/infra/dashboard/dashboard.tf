@@ -4,7 +4,7 @@ resource "helm_release" "kubernetes_dashboard" {
   chart      = "kubernetes-dashboard"
   namespace  = "monitoring"
   create_namespace = true
-  version    = "5.11.0"
+  version    = "6.0.8"
   wait       = false
 
   set {
