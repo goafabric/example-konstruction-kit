@@ -40,6 +40,9 @@ data:
   adapter.catalogservice.url: "http://catalog-application.core:8080"
   adapter.timeout: "10000"
 
+  #s3
+  spring.cloud.aws.s3.endpoint: "http://s3-minio.core:9000"
+
   #resilience4j
   resilience4j.circuitbreaker.configs.default.slowCallDurationThreshold: "10000"
   resilience4j.circuitbreaker.configs.default.slowCallRateThreshold: "100"

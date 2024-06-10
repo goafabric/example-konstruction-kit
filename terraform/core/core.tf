@@ -29,7 +29,7 @@ resource "helm_release" "core-application" {
 #   }
   set {
     name  = "s3.password"
-    value = random_password.s3_password.result
+    value = "minioadmin" #random_password.s3_password.result
   }
 
   set {
