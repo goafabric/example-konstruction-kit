@@ -1,12 +1,3 @@
-resource "kubernetes_namespace" "core" {
-  metadata {
-    name = "core"
-    labels = {
-      "istio.io/dataplane-mode" = "ambient"
-    }
-  }
-}
-
 resource "kubernetes_network_policy" "allow_self_ingress_prometheus" {
   metadata {
     name      = "allow-ingress"
@@ -19,7 +10,7 @@ resource "kubernetes_network_policy" "allow_self_ingress_prometheus" {
       from {
         namespace_selector {
           match_labels = {
-            name = "core"
+            "kubernetes.io/metadata.name" = "core"
           }
         }
       }
@@ -27,7 +18,7 @@ resource "kubernetes_network_policy" "allow_self_ingress_prometheus" {
       from {
         namespace_selector {
           match_labels = {
-            name = "ingress-apisix"
+            "kubernetes.io/metadata.name" = "ingress-apisix"
           }
         }
       }
@@ -49,6 +40,8 @@ resource "kubernetes_network_policy" "allow_self_ingress_prometheus" {
     policy_types = ["Ingress"]
   }
 }
+
+
 resource "kubernetes_network_policy" "allow_invoice" {
   metadata {
     name      = "allow-invoice"
@@ -61,7 +54,7 @@ resource "kubernetes_network_policy" "allow_invoice" {
       from {
         namespace_selector {
           match_labels = {
-            name = "invoice"
+            "kubernetes.io/metadata.name" = "invoice"
           }
         }
         pod_selector {

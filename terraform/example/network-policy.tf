@@ -1,12 +1,3 @@
-resource "kubernetes_namespace" "example" {
-  metadata {
-    name = "example"
-    labels = {
-      "istio.io/dataplane-mode" = "ambient"
-    }
-  }
-}
-
 resource "kubernetes_network_policy" "allow_self_ingress_prometheus" {
   metadata {
     name      = "allow-ingress"
@@ -19,7 +10,7 @@ resource "kubernetes_network_policy" "allow_self_ingress_prometheus" {
       from {
         namespace_selector {
           match_labels = {
-            name = "example"
+            "kubernetes.io/metadata.name" = "example"
           }
         }
       }
@@ -27,7 +18,7 @@ resource "kubernetes_network_policy" "allow_self_ingress_prometheus" {
       from {
         namespace_selector {
           match_labels = {
-            name = "ingress-apisix"
+            "kubernetes.io/metadata.name" = "ingress-apisix"
           }
         }
       }
