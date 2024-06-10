@@ -34,4 +34,8 @@ resource "helm_release" "s3-minio" {
     name  = "extraEnvVars[0].value"
     value = "Europe/Berlin"
   }
+  set {
+    name = "commonLabels.app"
+    value = "s3-minio"
+  }
 }
