@@ -2,7 +2,7 @@ resource "helm_release" "kubernetes_dashboard" {
   name       = "kubernetes-dashboard"
   repository = "https://kubernetes.github.io/dashboard"
   chart      = "kubernetes-dashboard"
-  namespace  = "monitoring"
+  namespace  = "dashboard"
   create_namespace = false
   version    = "6.0.8"
   wait       = false
@@ -38,7 +38,7 @@ resource "kubernetes_manifest" "dashboard-role" {
     subjects:
       - kind: ServiceAccount
         name: kubernetes-dashboard
-        namespace: monitoring
+        namespace: dashboard
     EOF
   )
 }

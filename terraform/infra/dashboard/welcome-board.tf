@@ -3,7 +3,7 @@ resource "helm_release" "welcome-board" {
   name       = "welcome-board"
   chart      = "../../../helm/infra/welcome"
   version    = "1.1.2"
-  namespace  = "monitoring"
+  namespace  = "dashboard"
   create_namespace = false
 
   set {
