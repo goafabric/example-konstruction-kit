@@ -22,4 +22,12 @@ resource "helm_release" "prometheus" {
     name = "prometheus-pushgateway.enabled"
     value = false
   }
+  set {
+    name = "global.scrape_interval"
+    value = "15s"
+  }
+  set {
+    name = "global.evaluation_interval"
+    value = "1m"
+  }
 }
