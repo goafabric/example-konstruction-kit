@@ -20,6 +20,12 @@ resource "helm_release" "kiali" {
     value = "/kiali"
   }
 
+  # prometheus
+  set {
+    name  = "external_services.prometheus.url"
+    value = "http://prometheus-server.istio-system:80"
+  }
+
   # grafana
   set {
     name  = "external_services.grafana.in_cluster_url"
@@ -171,17 +177,4 @@ resource "kubernetes_manifest" "kiali-ingress" {
                     number: 20001
   EOF
   )
-}
-
-resource "terraform_data" "prometheus" {
-  depends_on = [helm_release.kiali]
-  provisioner "local-exec" {
-    when = create
-    command = "kubectl apply -f ./templates/prometheus.yaml"
-  }
-
-  provisioner "local-exec" {
-    when = destroy
-    command = "kubectl delete --ignore-not-found -f ./templates/prometheus.yaml"
-  }
 }
