@@ -5,7 +5,7 @@ resource "helm_release" "apisix" {
   version    = "2.8.0"
   namespace  = "ingress-apisix"
   timeout    = "300"
-  create_namespace = true
+  create_namespace = false
 
   set {
     name  = "service.type"

@@ -5,7 +5,7 @@ resource "helm_release" "kong" {
   version          = "2.38.0"
   namespace        = "kong"
   timeout          = "120"
-  create_namespace = true
+  create_namespace = false
 
   set {
    name  = "proxy.type"
