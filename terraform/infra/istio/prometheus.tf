@@ -23,11 +23,11 @@ resource "helm_release" "prometheus" {
     value = false
   }
   set {
-    name = "global.scrape_interval"
+    name = "server.global.scrape_interval"
     value = "15s"
   }
   set {
-    name = "global.evaluation_interval"
+    name = "server.global.evaluation_interval"
     value = "1m"
   }
 }
