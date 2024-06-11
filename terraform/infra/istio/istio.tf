@@ -3,7 +3,7 @@ resource "helm_release" "istio-base" {
   repository = "https://istio-release.storage.googleapis.com/charts"
   chart      = "base"
   namespace  = "istio-system"
-  create_namespace = true
+  create_namespace = false
   version    = "1.22.1"
   wait       = true
 
@@ -18,7 +18,7 @@ resource "helm_release" "istio-istiod" {
   repository = "https://istio-release.storage.googleapis.com/charts"
   chart      = "istiod"
   namespace  = "istio-system"
-  create_namespace = true
+  create_namespace = false
   version    = "1.22.1"
   wait       = true
 
@@ -37,7 +37,7 @@ resource "helm_release" "istio-cni-kind" {
   repository = "https://istio-release.storage.googleapis.com/charts"
   chart      = "cni"
   namespace  = "istio-system"
-  create_namespace = true
+  create_namespace = false
   version    = "1.22.0"
   wait       = true
 
@@ -56,7 +56,7 @@ resource "helm_release" "istio-cni-microk8s" {
   repository = "https://istio-release.storage.googleapis.com/charts"
   chart      = "cni"
   namespace  = "istio-system"
-  create_namespace = true
+  create_namespace = false
   version    = "1.22.0"
   wait       = true
 
@@ -81,7 +81,7 @@ resource "helm_release" "istio-ztunnel" {
   repository = "https://istio-release.storage.googleapis.com/charts"
   chart      = "ztunnel"
   namespace  = "istio-system"
-  create_namespace = true
+  create_namespace = false
   version    = "1.22.0"
   wait       = true
 

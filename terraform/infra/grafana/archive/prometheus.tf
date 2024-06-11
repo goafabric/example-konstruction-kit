@@ -4,7 +4,7 @@ resource "helm_release" "prometheus" {
   chart      = "prometheus"
   version    = "25.19.1"
   namespace  = "monitoring"
-  create_namespace = true
+  create_namespace = false
 
   set {
     name  = "alertmanager.enabled"

@@ -3,7 +3,7 @@
 #   name       = "redis-master"
 #   chart      = "${var.helm_repository}/invoice-process/redis"
 #   namespace  = "invoice"
-#   create_namespace = true
+#   create_namespace = false
 #   timeout = var.helm_timeout
 # }
 

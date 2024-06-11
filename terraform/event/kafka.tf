@@ -6,7 +6,7 @@ resource "helm_release" "kafka" {
   chart      = "kafka"
   version    = "29.1.1"
   namespace  = "event"
-  create_namespace = "true"
+  create_namespace = false
 
   set {
     name = "controller.replicaCount"

@@ -4,7 +4,7 @@ resource "helm_release" "cert-manager" {
   chart      = "cert-manager"
   namespace  = "cert-manager"
   version    = "v1.14.4"
-  create_namespace = true
+  create_namespace = false
 
   set {
     name  = "installCRDs"
@@ -36,7 +36,7 @@ resource "helm_release" "cert-manager-issuer" {
   chart            = local.cert_manager_issuer
   version          = "1.1.2"
   namespace        = "cert-manager"
-  create_namespace = true
+  create_namespace = false
 
   set {
     name  = "ingress.hosts"

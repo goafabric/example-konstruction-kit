@@ -4,7 +4,7 @@ resource "helm_release" "grafana" {
   chart      = "grafana"
   version    = "7.3.8"
   namespace  = "monitoring"
-  create_namespace = true
+  create_namespace = false
 
   values = [file("values.yaml")]
 

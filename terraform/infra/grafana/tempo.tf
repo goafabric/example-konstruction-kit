@@ -7,7 +7,7 @@ resource "helm_release" "tempo" {
   version    = "1.7.2"
   namespace  = "monitoring"
   timeout    = "120"
-  create_namespace = true
+  create_namespace = false
   
   set {
     name  = "traces.otlp.http.enabled"

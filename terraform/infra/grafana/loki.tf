@@ -4,7 +4,7 @@ resource "helm_release" "loki" {
   chart      = "loki-stack" #loki-stack is used to also get promtail
   version    = "v2.10.2"
   namespace  = "monitoring"
-  create_namespace = true
+  create_namespace = false
 
   set {
     name  = "grafana.enabled"
