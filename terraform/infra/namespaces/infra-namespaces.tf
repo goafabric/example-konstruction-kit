@@ -19,6 +19,15 @@ resource "kubernetes_namespace" "kong" {
   }
 }
 
+resource "kubernetes_namespace" "dashboard" {
+  metadata {
+    name = "dashboard"
+    labels = {
+      "istio.io/dataplane-mode" = "ambient"
+    }
+  }
+}
+
 resource "kubernetes_namespace" "monitoring" {
   metadata {
     name = "monitoring"

@@ -76,6 +76,6 @@ kind: ConfigMap
 metadata:
   creationTimestamp: "2024-06-10T11:20:16Z"
   name: welcome-board-data-files
-  namespace: monitoring
+  namespace: dashboard
   resourceVersion: "1880"
   uid: 31cf9544-e4c6-4e96-83fc-5e4f43e72233
