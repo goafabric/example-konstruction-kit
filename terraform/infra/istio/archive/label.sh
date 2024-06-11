@@ -4,6 +4,7 @@ kubectl create namespace example; kubectl label namespace example istio.io/datap
 kubectl create namespace event; kubectl label namespace event istio.io/dataplane-mode=ambient
 kubectl create namespace invoice; kubectl label namespace invoice istio.io/dataplane-mode=ambient
 
+kubectl create namespace dashboard; kubectl label namespace dashboard istio.io/dataplane-mode=ambient
 kubectl create namespace monitoring; kubectl label namespace monitoring istio.io/dataplane-mode=ambient
 
 kubectl label pods -l app.kubernetes.io/name=apisix istio.io/dataplane-mode=ambient -n ingress-apisix --overwrite
