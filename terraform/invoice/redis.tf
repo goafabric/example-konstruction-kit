@@ -15,7 +15,7 @@ resource "helm_release" "redis" {
   }
   set {
     name  = "replica.replicaCount"
-    value = "2"
+    value = "1"
   }
   
   set {

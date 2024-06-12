@@ -35,7 +35,7 @@ data:
   #spring.data.redis.host: "redis-master.invoice"
   #spring.data.redis.port: "6379"
   spring.data.redis.sentinel.master: "mymaster"
-  spring.data.redis.sentinel.nodes: "redis:6379"
+  spring.data.redis.sentinel.nodes: "redis.invoice:26379"
 
   #adapter
   adapter.coreservice.url: "http://core-application.core:8080"
