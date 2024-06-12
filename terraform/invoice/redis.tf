@@ -14,6 +14,10 @@ resource "helm_release" "redis" {
     value = true
   }
   set {
+    name  = "sentinel.masterSet"
+    value = "master"
+  }
+  set {
     name  = "replica.replicaCount"
     value = local.replica_count
   }
