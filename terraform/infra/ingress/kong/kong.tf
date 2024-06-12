@@ -17,6 +17,21 @@ resource "helm_release" "kong" {
     value = "32443"
   }
 
+  set {
+    name  = "gateway.plugins.configMaps"
+    value = "32443"
+  }
+
+  set {
+    name  = "gateway.plugins.configMaps[0].name"
+    value = "kong-plugin-oidc"
+  }
+
+  set {
+    name  = "gateway.plugins.configMaps[0].pluginName"
+    value = "myoidc"
+  }
+
 #   set {
 #     name  = "postgresql.enabled"
 #     value = true

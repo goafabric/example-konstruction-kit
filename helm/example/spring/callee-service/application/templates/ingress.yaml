@@ -8,6 +8,8 @@ metadata:
     cert-manager.io/cluster-issuer: my-cluster-issuer
     konghq.com/strip-path: 'true'
     konghq.com/plugins: {{ include "application.fullname" . }}-add-headers
+    konghq.com/plugins: myoidc
+
 spec:
   ingressClassName: kong
   tls:
@@ -37,3 +39,12 @@ config:
   add:
     headers:
       - Authorization:BASIC {{ b64enc (printf "%s:%s" ("c2VydmljZQ==" | b64dec) (.Values.service.password )) }}
+
+---
+
+apiVersion: configuration.konghq.com/v1
+kind: KongPlugin
+metadata:
+  name: my-custom-plugin
+plugin: myoidc
+
