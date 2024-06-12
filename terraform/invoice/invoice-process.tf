@@ -1,5 +1,5 @@
 resource "helm_release" "invoice-process-application" {
-  depends_on = [helm_release.redis]
+  #depends_on = [helm_release.redis]
   repository = var.helm_repository
   name       = "invoice-process-application"
   chart      = "${var.helm_repository}/invoice-process/application"

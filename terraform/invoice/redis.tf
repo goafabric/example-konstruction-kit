@@ -1,13 +1,3 @@
-# resource "helm_release" "redis" {
-#   repository = var.helm_repository
-#   name       = "redis-master"
-#   chart      = "${var.helm_repository}/invoice-process/redis"
-#   namespace  = "invoice"
-#   create_namespace = false
-#   timeout = var.helm_timeout
-# }
-
-
 resource "helm_release" "redis" {
   name       = "redis"
   repository = "https://charts.bitnami.com/bitnami"
