@@ -29,7 +29,10 @@ resource "helm_release" "invoice-process-application" {
     name  = "s3.password"
     value = "minioadmin" #random_password.s3_password.result
   }
-
+  set {
+    name  = "redis.password"
+    value = random_password.redis_password.result
+  }
 
   set {
     name = "oidc.enabled"

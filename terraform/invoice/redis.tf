@@ -16,6 +16,10 @@ resource "helm_release" "redis" {
   version    = "19.5.2"
 
   set {
+    name  = "architecture"
+    value = "standalone"
+  }
+  set {
     name  = "master.persistence.size"
     value = "2Gi"
   }
@@ -24,12 +28,16 @@ resource "helm_release" "redis" {
     value = "2Gi"
   }
   set {
-    name  = "architecture"
-    value = "standalone"
+    name  = "master.readinessProbe.initialDelaySeconds"
+    value = "5"
   }
   set {
-    name  = "auth.enabled"
-    value = false
+    name  = "replica.readinessProbe.initialDelaySeconds"
+    value = "5"
+  }
+  set {
+    name  = "auth.password"
+    value = random_password.redis_password.result
   }
   set {
     name  = "networkPolicy.enabled"
