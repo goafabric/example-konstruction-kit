@@ -8,7 +8,7 @@ metadata:
     cert-manager.io/cluster-issuer: my-cluster-issuer
     konghq.com/strip-path: 'true'
     konghq.com/plugins: {{ include "application.fullname" . }}-add-headers
-    konghq.com/plugins: myoidc
+    konghq.com/plugins: my-custom-plugin
 
 spec:
   ingressClassName: kong
@@ -42,9 +42,18 @@ config:
 
 ---
 
+#apiVersion: configuration.konghq.com/v1
+#kind: KongPlugin
+#metadata:
+#  name: oidc-plugin-example
+#plugin: myoidc
+
+---
+
 apiVersion: configuration.konghq.com/v1
 kind: KongPlugin
 metadata:
   name: my-custom-plugin
-plugin: myoidc
-
+config:
+  header_value: "my first plugin"
+plugin: myheader

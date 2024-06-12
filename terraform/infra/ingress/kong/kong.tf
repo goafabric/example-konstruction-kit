@@ -6,7 +6,7 @@ resource "helm_release" "kong" {
   namespace        = "kong"
   timeout          = "120"
   create_namespace = false
-
+  
   set {
    name  = "proxy.type"
    value = local.ingress_service_type
@@ -18,23 +18,23 @@ resource "helm_release" "kong" {
   }
 
   set {
-    name  = "gateway.plugins.configMaps"
+    name  = "proxy.tls.nodePort"
     value = "32443"
   }
 
   set {
     name  = "gateway.plugins.configMaps[0].name"
-    value = "kong-plugin-oidc"
+    value = "kong-plugin-myheader"
   }
 
   set {
     name  = "gateway.plugins.configMaps[0].pluginName"
-    value = "myoidc"
+    value = "myheader"
   }
 
-#   set {
-#     name  = "postgresql.enabled"
-#     value = true
-#   }
+  set {
+    name  = "postgresql.enabled"
+    value = false
+  }
 }
 
