@@ -19,24 +19,8 @@ resource "helm_release" "redis" {
   }
   
   set {
-    name  = "master.persistence.size"
+    name  = "sentinel.persistence.size"
     value = "2Gi"
-  }
-  set {
-    name  = "replica.persistence.size"
-    value = "2Gi"
-  }
-  set {
-    name  = "sentinal.persistence.size"
-    value = "2Gi"
-  }
-  set {
-    name  = "master.readinessProbe.initialDelaySeconds"
-    value = "5"
-  }
-  set {
-    name  = "replica.readinessProbe.initialDelaySeconds"
-    value = "5"
   }
   set {
     name  = "sentinel.readinessProbe.initialDelaySeconds"
@@ -46,7 +30,6 @@ resource "helm_release" "redis" {
     name  = "auth.password"
     value = random_password.redis_password.result
   }
-
   set {
     name  = "networkPolicy.enabled"
     value = false
