@@ -62,3 +62,11 @@ datasources:
           hide: false
         nodeGraph:
           enabled: true
+    - name: prometheus
+      type: prometheus
+      uid: prometheus
+      access: proxy
+      orgId: 1
+      url: http://prometheus-server.istio-system:80
+      editable: true
+      isDefault: false

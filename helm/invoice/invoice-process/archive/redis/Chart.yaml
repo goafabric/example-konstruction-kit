@@ -1,9 +1,0 @@
-apiVersion: v2
-name: redis-master
-description: redis
-
-type: application
-
-version: 1.3.2
-
-appVersion: "7.2.4"
