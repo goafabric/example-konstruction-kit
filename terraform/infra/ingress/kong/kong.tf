@@ -2,7 +2,7 @@ resource "helm_release" "kong" {
   name             = "kong"
   repository       = "https://charts.konghq.com"
   chart            = "kong"
-  version          = "2.38.0"
+  version          = "2.39.0"
   namespace        = "kong"
   timeout          = "120"
   create_namespace = false
@@ -36,5 +36,17 @@ resource "helm_release" "kong" {
     name  = "postgresql.enabled"
     value = false
   }
+
+  set {
+    name  = "ingressController.env.log_level"
+    value = "debug"
+  }
+
+  set {
+    name  = "env.log_level"
+    value = "debug"
+  }
+
+
 }
 
