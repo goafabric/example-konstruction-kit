@@ -23,7 +23,15 @@ resource "helm_release" "redis" {
     value = "2Gi"
   }
   set {
+    name  = "replica.persistence.size"
+    value = "2Gi"
+  }
+  set {
     name  = "sentinel.readinessProbe.initialDelaySeconds"
+    value = "5"
+  }
+  set {
+    name  = "replica.readinessProbe.initialDelaySeconds"
     value = "5"
   }
   set {
@@ -34,7 +42,6 @@ resource "helm_release" "redis" {
     name  = "networkPolicy.enabled"
     value = false
   }
-
 }
 
 resource "terraform_data" "remove_redis_pvc" {
