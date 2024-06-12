@@ -15,7 +15,7 @@ resource "helm_release" "redis" {
   }
   set {
     name  = "replica.replicaCount"
-    value = "1"
+    value = local.replica_count
   }
   
   set {
@@ -24,6 +24,10 @@ resource "helm_release" "redis" {
   }
   set {
     name  = "replica.persistence.size"
+    value = "2Gi"
+  }
+  set {
+    name  = "sentinal.persistence.size"
     value = "2Gi"
   }
   set {
@@ -38,17 +42,9 @@ resource "helm_release" "redis" {
     name  = "sentinel.readinessProbe.initialDelaySeconds"
     value = "5"
   }
-#   set {
-#     name  = "auth.password"
-#     value = random_password.redis_password.result
-#   }
   set {
-    name  = "auth.enabled"
-    value = false
-  }
-  set {
-    name  = "auth.sentinel"
-    value = false
+    name  = "auth.password"
+    value = random_password.redis_password.result
   }
 
   set {
