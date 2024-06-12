@@ -23,10 +23,6 @@ resource "helm_release" "s3-minio" {
     value = "2"
   }
   set {
-    name  = "readinessProbe.initialDelaySeconds"
-    value = "2"
-  }
-  set {
     name  = "extraEnvVars[0].name"
     value = "TZ"
   }
