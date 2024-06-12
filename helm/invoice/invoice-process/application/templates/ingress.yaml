@@ -7,6 +7,7 @@ metadata:
   annotations:
     cert-manager.io/cluster-issuer: my-cluster-issuer
     konghq.com/strip-path: 'true'
+    konghq.com/plugins: {{ include "application.fullname" . }}-add-headers
 spec:
   ingressClassName: kong
   tls:
@@ -24,3 +25,15 @@ spec:
                 name: {{ include "application.fullname" . }}
                 port:
                   name: http
+
+---
+
+apiVersion: configuration.konghq.com/v1
+kind: KongPlugin
+metadata:
+  name: {{ include "application.fullname" . }}-add-headers
+plugin: request-transformer
+config:
+  add:
+    headers:
+      - Authorization:BASIC {{ b64enc (printf "%s:%s" ("c2VydmljZQ==" | b64dec) (.Values.service.password )) }}
