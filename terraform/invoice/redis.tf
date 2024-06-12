@@ -7,8 +7,17 @@ resource "helm_release" "redis" {
 
   set {
     name  = "architecture"
-    value = "standalone"
+    value = "replication"
   }
+  set {
+    name  = "sentinel.enabled"
+    value = true
+  }
+  set {
+    name  = "replica.replicaCount"
+    value = "2"
+  }
+  
   set {
     name  = "master.persistence.size"
     value = "2Gi"
@@ -26,9 +35,22 @@ resource "helm_release" "redis" {
     value = "5"
   }
   set {
-    name  = "auth.password"
-    value = random_password.redis_password.result
+    name  = "sentinel.readinessProbe.initialDelaySeconds"
+    value = "5"
   }
+#   set {
+#     name  = "auth.password"
+#     value = random_password.redis_password.result
+#   }
+  set {
+    name  = "auth.enabled"
+    value = false
+  }
+  set {
+    name  = "auth.sentinel"
+    value = false
+  }
+
   set {
     name  = "networkPolicy.enabled"
     value = false

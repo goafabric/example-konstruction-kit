@@ -35,7 +35,7 @@ readinessProbe:
 initContainers:
   - name: wait-for-redis
     image: busybox:stable
-    command: ['sh', '-c', 'until nc -z redis-master.invoice 6379; do echo waiting for redis; sleep 1; done;']
+    command: ['sh', '-c', 'until nc -z redis.invoice 6379; do echo waiting for redis; sleep 1; done;']
 
 service:
   type: ClusterIP
