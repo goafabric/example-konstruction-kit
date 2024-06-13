@@ -1,18 +1,40 @@
+resource "kubernetes_manifest" "keycloak-route" {
+  manifest   = yamldecode(<<-EOF
+  apiVersion: apisix.apache.org/v2
+  kind: ApisixRoute
+  metadata:
+    name: keycloak-route
+  spec:
+    http:
+      - name: keycloak
+        match:
+          hosts:
+            - ${var.hostname}
+          paths:
+            - /oidc
+            - /oidc/*
+        backends:
+          - serviceName: keycloak
+            servicePort: http
+        plugins:
+          - name: redirect
+            enable: true
+            config:
+              http_to_https: true
+  EOF
+  )
+}
+
 resource "kubernetes_manifest" "keycloak-ingress" {
   manifest   = yamldecode(<<-EOF
-  kind: Ingress
   apiVersion: networking.k8s.io/v1
+  kind: Ingress
   metadata:
     name: keycloak-ingress
-    namespace: oidc
     annotations:
       cert-manager.io/cluster-issuer: my-cluster-issuer
-      nginx.ingress.kubernetes.io/rewrite-target: /oidc/$1
-
-      # fix for bad gateway upstream to big
-      nginx.ingress.kubernetes.io/proxy-buffer-size: 10k
   spec:
-    ingressClassName: nginx
+    ingressClassName: kong
     tls:
       - hosts:
           - ${var.hostname}
@@ -21,13 +43,13 @@ resource "kubernetes_manifest" "keycloak-ingress" {
       - host: ${var.hostname}
         http:
           paths:
-            - path: /oidc/?(.*)
+            - path: /oidc
               pathType: ImplementationSpecific
               backend:
                 service:
                   name: keycloak
                   port:
-                    number: 80
+                    name: 80
   EOF
   )
 }

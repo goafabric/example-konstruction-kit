@@ -65,6 +65,22 @@ resource "keycloak_user" "user2_0" {
   }
 }
 
+resource "keycloak_user" "user5_0" {
+  realm_id   = keycloak_realm.tenant-0.id
+  username   = "user5"
+  first_name = "user5"
+  last_name  = "user5"
+  enabled    = true
+
+  email      = "user5@example.com"
+  email_verified = true
+
+  initial_password {
+    value     = "User5user5"
+    temporary = false
+  }
+}
+
 # tenant 5
 
 resource "keycloak_realm" "tenant-5" {
