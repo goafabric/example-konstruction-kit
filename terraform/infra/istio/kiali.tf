@@ -29,11 +29,11 @@ resource "helm_release" "kiali" {
   # grafana
   set {
     name  = "external_services.grafana.in_cluster_url"
-    value = "http://grafana.monitoring:80"
+    value = "http://grafana.grafana:80"
   }
   set {
     name  = "external_services.grafana.health_check_url"
-    value = "http://grafana.monitoring:80/healthz"
+    value = "http://grafana.grafana:80/healthz"
   }
   set {
     name  = "external_services.grafana.url"
@@ -56,7 +56,7 @@ resource "helm_release" "kiali" {
 
   set {
     name  = "external_services.tracing.in_cluster_url"
-    value = "http://tempo.monitoring:3100/"
+    value = "http://tempo.grafana:3100/"
   }
   set {
     name  = "external_services.tracing.tempo_config.org_id"
