@@ -45,7 +45,7 @@ resource "helm_release" "apisix" {
 
   set {
     name  = "apisix.pluginAttrs.opentelemetry.collector.address"
-    value = "tempo-distributor.monitoring:4318"
+    value = "tempo-distributor.grafana:4318"
   }
 
   set {
