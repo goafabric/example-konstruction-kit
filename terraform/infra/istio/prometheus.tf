@@ -2,9 +2,9 @@ resource "helm_release" "prometheus" {
   repository = "https://prometheus-community.github.io/helm-charts"
   name       = "prometheus"
   chart      = "prometheus"
-  version    = "25.19.1"
-  namespace  = "monitoring"
-  create_namespace = true
+  version    = "25.21.0"
+  namespace  = "istio-system"
+  create_namespace = false
 
   set {
     name  = "alertmanager.enabled"
@@ -21,5 +21,13 @@ resource "helm_release" "prometheus" {
   set {
     name = "prometheus-pushgateway.enabled"
     value = false
+  }
+  set {
+    name = "server.global.scrape_interval"
+    value = "15s"
+  }
+  set {
+    name = "server.global.evaluation_interval"
+    value = "1m"
   }
 }

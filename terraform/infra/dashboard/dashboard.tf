@@ -2,9 +2,9 @@ resource "helm_release" "kubernetes_dashboard" {
   name       = "kubernetes-dashboard"
   repository = "https://kubernetes.github.io/dashboard"
   chart      = "kubernetes-dashboard"
-  namespace  = "monitoring"
-  create_namespace = true
-  version    = "5.11.0"
+  namespace  = "dashboard"
+  create_namespace = false
+  version    = "6.0.8"
   wait       = false
 
   set {
@@ -38,41 +38,7 @@ resource "kubernetes_manifest" "dashboard-role" {
     subjects:
       - kind: ServiceAccount
         name: kubernetes-dashboard
-        namespace: monitoring
+        namespace: dashboard
     EOF
   )
 }
-
-resource "kubernetes_manifest" "dashboard-ingress" {
-  manifest   = yamldecode(<<-EOF
-  kind: Ingress
-  apiVersion: networking.k8s.io/v1
-  metadata:
-    name: kubernetes-dashboard
-    namespace: monitoring
-    annotations:
-      cert-manager.io/cluster-issuer: my-cluster-issuer
-      nginx.ingress.kubernetes.io/backend-protocol: HTTPS
-      nginx.ingress.kubernetes.io/rewrite-target: /$1
-      service.alpha.kubernetes.io/app-protocols: '{"https":"HTTPS"}'
-  spec:
-    ingressClassName: nginx
-    tls:
-      - hosts:
-          - ${var.hostname}
-        secretName: root-certificate
-    rules:
-      - host: ${var.hostname}
-        http:
-          paths:
-            - path: /dashboard/?(.*)
-              pathType: ImplementationSpecific
-              backend:
-                service:
-                  name: kubernetes-dashboard
-                  port:
-                    number: 443
-  EOF
-  )
-}
-

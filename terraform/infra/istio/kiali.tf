@@ -3,7 +3,7 @@ resource "helm_release" "kiali" {
   repository = "https://kiali.org/helm-charts"
   chart      = "kiali-server"
   namespace  = "istio-system"
-  create_namespace = true
+  create_namespace = false
   version    = "1.82.0"
   wait       = true
 
@@ -16,18 +16,61 @@ resource "helm_release" "kiali" {
     value = "true"
   }
   set {
-    name  = "external_services.tracing.in_cluster_url"
-    value = "http://jaeger-collector.monitoring:16685/jaeger"
-  }
-  set {
-    name  = "external_services.tracing.use_grpc"
-    value = "true"
-  }
-
-  set {
     name  = "server.web_root"
     value = "/kiali"
   }
+
+  # prometheus
+  set {
+    name  = "external_services.prometheus.url"
+    value = "http://prometheus-server.istio-system:80"
+  }
+
+  # grafana
+  set {
+    name  = "external_services.grafana.in_cluster_url"
+    value = "http://grafana.grafana:80"
+  }
+  set {
+    name  = "external_services.grafana.health_check_url"
+    value = "http://grafana.grafana:80/healthz"
+  }
+  set {
+    name  = "external_services.grafana.url"
+    value = "/grafana"
+  }
+  
+  # tempo
+  set {
+    name  = "external_services.tracing.enabled"
+    value = true
+  }
+  set {
+    name  = "external_services.tracing.provider"
+    value = "tempo"
+  }
+  set {
+    name  = "external_services.tracing.use_grpc"
+    value = false
+  }
+
+  set {
+    name  = "external_services.tracing.in_cluster_url"
+    value = "http://tempo.grafana:3100/"
+  }
+  set {
+    name  = "external_services.tracing.tempo_config.org_id"
+    value = "1"
+  }
+  set {
+    name  = "external_services.tracing.tempo_config.datasource_uid"
+    value = "tempo"
+  }
+  set {
+    name  = "deployment.logger.log_level"
+    value = "info"
+  }
+
 }
 
 resource "kubernetes_manifest" "kiali-route" {
@@ -134,17 +177,4 @@ resource "kubernetes_manifest" "kiali-ingress" {
                     number: 20001
   EOF
   )
-}
-
-resource "terraform_data" "prometheus" {
-  depends_on = [helm_release.kiali]
-  provisioner "local-exec" {
-    when = create
-    command = "kubectl apply -f ./templates/prometheus.yaml"
-  }
-
-  provisioner "local-exec" {
-    when = destroy
-    command = "kubectl delete --ignore-not-found -f ./templates/prometheus.yaml"
-  }
 }

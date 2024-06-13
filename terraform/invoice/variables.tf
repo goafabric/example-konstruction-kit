@@ -3,7 +3,7 @@ variable "hostname" {
 }
 
 variable "helm_timeout" {
-  default = 90
+  default = 60
 }
 
 variable "helm_repository" {
@@ -20,4 +20,5 @@ locals {
   oidc_enabled = local.production_mode
 
   replica_count = local.production_mode ? "1" : "1"
+  redis_replica_count = local.production_mode ? "2" : "1"
 }

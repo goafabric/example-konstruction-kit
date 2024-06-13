@@ -31,7 +31,11 @@ nativeAnnotations:
 
 readinessProbe:
   initialDelaySeconds: 2
-#  scheme: HTTPS
+
+initContainers:
+  - name: wait-for-redis
+    image: busybox:stable
+    command: ['sh', '-c', 'until nc -z redis.invoice 26379; do echo waiting for redis; sleep 1; done;']
 
 service:
   type: ClusterIP

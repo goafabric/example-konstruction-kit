@@ -6,7 +6,7 @@ resource "helm_release" "rabbitmq" {
   chart      = "rabbitmq"
   version    = "13.0.0"
   namespace  = "event"
-  create_namespace = "true"
+  create_namespace = false
 
   set {
     name = "replicaCount"

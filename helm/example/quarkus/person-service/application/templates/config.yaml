@@ -14,8 +14,8 @@ data:
   security.authentication.enabled: "true"
 
   #tracing
-  quarkus.otel.exporter.otlp.traces.endpoint: "http://tempo.monitoring:4317"
-  quarkus.application.name: {{ include "application.fullname" . }}
+  quarkus.otel.exporter.otlp.traces.endpoint: "http://tempo.grafana:4317"
+  quarkus.application.name: {{ include "application.fullname" . }}.{{ .Release.Namespace }}
 
   #persistence
   quarkus.datasource.jdbc.url: "jdbc:postgresql://person-service-postgres-postgresql-ha-pgpool:5432/person"

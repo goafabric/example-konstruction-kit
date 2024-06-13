@@ -5,9 +5,9 @@ resource "helm_release" "tempo" {
 #  version    = "1.8.5"
   chart      = "tempo"
   version    = "1.7.2"
-  namespace  = "monitoring"
+  namespace  = "grafana"
   timeout    = "120"
-  create_namespace = true
+  create_namespace = false
   
   set {
     name  = "traces.otlp.http.enabled"
@@ -54,7 +54,7 @@ resource "helm_release" "tempo" {
 #   name       = "s3-minio"
 #   repository = "https://charts.bitnami.com/bitnami"
 #   chart      = "minio"
-#   namespace  = "monitoring"
+#   namespace  = "grafana"
 #   version    = "14.1.2"
 #   timeout = "90"
 #   create_namespace = "true"

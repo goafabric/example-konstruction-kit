@@ -3,7 +3,7 @@ resource "helm_release" "catalog-application" {
   name       = "catalog-application"
   chart      = "${var.helm_repository}/catalog/application"
   namespace  = "core"
-  create_namespace = true
+  create_namespace = false
   timeout = var.helm_timeout
 
   set {
@@ -40,7 +40,7 @@ resource "helm_release" "catalog-batch" {
   chart      = "${var.helm_repository}/catalog/batch"
   version    = "1.1.2"
   namespace  = "core"
-  create_namespace = true
+  create_namespace = false
   timeout = var.helm_timeout
 
   set {

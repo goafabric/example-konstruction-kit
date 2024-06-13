@@ -8,7 +8,7 @@ provider "kubernetes" {
   config_path = "~/.kube/config"
 }
 
-resource "random_password" "database_password" {
+resource "random_password" "redis_password" {
   length           = 32
   special          = false
 }

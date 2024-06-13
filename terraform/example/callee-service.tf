@@ -3,7 +3,7 @@ resource "helm_release" "callee-service-application" {
   name       = "callee-service-application"
   chart      = "${var.helm_repository}/callee-service/application"
   namespace  = "example"
-  create_namespace = true
+  create_namespace = false
   timeout = var.helm_timeout
 
   set {

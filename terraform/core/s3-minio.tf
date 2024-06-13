@@ -16,11 +16,7 @@ resource "helm_release" "s3-minio" {
   }
   set {
     name  = "auth.rootPassword"
-    value = "${random_password.s3_password.result}"
-  }
-  set {
-    name  = "readinessProbe.initialDelaySeconds"
-    value = "2"
+    value = "minioadmin" #${random_password.s3_password.result}
   }
   set {
     name  = "readinessProbe.initialDelaySeconds"
@@ -33,5 +29,9 @@ resource "helm_release" "s3-minio" {
   set {
     name  = "extraEnvVars[0].value"
     value = "Europe/Berlin"
+  }
+  set {
+    name = "commonLabels.app"
+    value = "s3-minio"
   }
 }

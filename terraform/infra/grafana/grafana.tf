@@ -3,8 +3,8 @@ resource "helm_release" "grafana" {
   name       = "grafana"
   chart      = "grafana"
   version    = "7.3.8"
-  namespace  = "monitoring"
-  create_namespace = true
+  namespace  = "grafana"
+  create_namespace = false
 
   values = [file("values.yaml")]
 
@@ -32,7 +32,7 @@ resource "kubernetes_manifest" "grafana-gateway" {
   apiVersion: apisix.apache.org/v2
   metadata:
     name: grafana
-    namespace: monitoring
+    namespace: grafana
   spec:
     http:
       - name: grafana
