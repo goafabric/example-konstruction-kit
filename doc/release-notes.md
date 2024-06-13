@@ -9,6 +9,7 @@
 - Namespaces are now created ahead of time during initial install
 - moved dashboard to dashboard namespace
 - moved everything grafana to grafana namespace
+- added redis cluster to invoice
 
 # 1.3.1
 - switchable kafka and rabbitmq broker added
