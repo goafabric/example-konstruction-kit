@@ -7,6 +7,8 @@
 - upgrade to kind kubernetes 1.3.0
 - upgrade to kubernetes dashboard 6.0.8 (7.x has a lot of breaking changes)
 - Namespaces are now created ahead of time during initial install
+- moved dashboard to dashboard namespace
+- moved everything grafana to grafana namespace
 
 # 1.3.1
 - switchable kafka and rabbitmq broker added
