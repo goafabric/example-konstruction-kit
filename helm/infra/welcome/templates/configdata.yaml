@@ -32,7 +32,7 @@ data:
     {\n            height: 24px;\n            margin-right: 10px;\n            width:
     24px;\n        }\n        p {\n          height: 1px;\n          border-bottom:
     1px dashed #ffffff54;\n        }\n    </style>\n</head>\n<body>\n<div class=\"box\">\n
-    \   <h1 class=\"title\">Welcome to the Example Cluster 1.3.2</h1>\n    <h2 class=\"subtitle\">Your
+    \   <h1 class=\"title\">Welcome to the Example Cluster 1.3.3</h1>\n    <h2 class=\"subtitle\">Your
     best course would be to tread lightly ...</h2>\n\n    <div class=\"links-container\">\n
     \       <div class=\"links\">\n            <h6>Dashboards</h6>\n            <ul>\n
     \               <p></p>\n                <!--\n                <li>\n                    <a
@@ -74,8 +74,8 @@ data:
     \       </div>\n    </div>\n</div>\n\n</body>\n"
 kind: ConfigMap
 metadata:
-  creationTimestamp: "2024-06-10T11:20:16Z"
+  creationTimestamp: "2024-06-13T06:11:48Z"
   name: welcome-board-data-files
   namespace: dashboard
-  resourceVersion: "1880"
-  uid: 31cf9544-e4c6-4e96-83fc-5e4f43e72233
+  resourceVersion: "22130375"
+  uid: d01a291a-3963-47dd-8898-12020e9c7812
