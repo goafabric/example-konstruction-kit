@@ -5,7 +5,7 @@ export baseurl=https://kind
 #export baseurl=http://localhost:30200
 
 export access_token=$(\
-curl -k -v -s -X POST $baseurl/oidc/realms/$realm/protocol/openid-connect/token \
+curl -k -v -s -X POST https://v2202402203466256255.megasrv.de/oidc/realms/tenant-0/protocol/openid-connect/token \
 -H "Content-Type: application/x-www-form-urlencoded" \
 -d "username=user1" \
 -d "password=User1user1" \

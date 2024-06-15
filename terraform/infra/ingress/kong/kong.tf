@@ -6,7 +6,9 @@ resource "helm_release" "kong" {
   namespace        = "kong"
   timeout          = "120"
   create_namespace = false
-  
+
+  #values = [file("values.yaml")]
+
   set {
    name  = "proxy.type"
    value = local.ingress_service_type
@@ -23,12 +25,12 @@ resource "helm_release" "kong" {
   }
 
   set {
-    name  = "gateway.plugins.configMaps[0].name"
+    name  = "plugins.configMaps[0].name"
     value = "kong-plugin-myheader"
   }
 
   set {
-    name  = "gateway.plugins.configMaps[0].pluginName"
+    name  = "plugins.configMaps[0].pluginName"
     value = "myheader"
   }
 
