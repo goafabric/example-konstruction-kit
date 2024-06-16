@@ -26,12 +26,12 @@ resource "helm_release" "kong" {
 
   set {
     name  = "plugins.configMaps[0].name"
-    value = "kong-plugin-myheader"
+    value = "kong-plugin-oidc" #"kong-plugin-myheader"
   }
 
   set {
     name  = "plugins.configMaps[0].pluginName"
-    value = "myheader"
+    value = "oidc" #"myheader"
   }
 
   set {
