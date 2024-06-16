@@ -4,9 +4,8 @@ resource "helm_release" "kong" {
   chart            = "kong"
   version          = "2.39.0"
   namespace        = "kong"
-  timeout          = "120"
-  create_namespace = false
-  image 
+  timeout          = "60"
+  create_namespace = true
 
   #values = [file("values.yaml")]
 
@@ -25,15 +24,15 @@ resource "helm_release" "kong" {
     value = "32443"
   }
 
-  set {
-    name  = "plugins.configMaps[0].name"
-    value = "kong-plugin-oidc" #"kong-plugin-myheader"
-  }
-
-  set {
-    name  = "plugins.configMaps[0].pluginName"
-    value = "oidc" #"myheader"
-  }
+#   set {
+#     name  = "plugins.configMaps[0].name"
+#     value = "kong-plugin-oidc" #"kong-plugin-myheader"
+#   }
+#
+#   set {
+#     name  = "plugins.configMaps[0].pluginName"
+#     value = "oidc" #"myheader"
+#   }
 
   set {
     name  = "postgresql.enabled"
@@ -48,6 +47,21 @@ resource "helm_release" "kong" {
   set {
     name  = "env.log_level"
     value = "debug"
+  }
+
+  set {
+    name  = "image.repository"
+    value = "goafabric/kong-oidc"
+  }
+
+  set {
+    name  = "image.tag"
+    value = "3.6.0"
+  }
+
+  set {
+    name  = "image.pullPolicy"
+    value = "Always"
   }
 
 
