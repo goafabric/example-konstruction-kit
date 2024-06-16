@@ -6,6 +6,7 @@ resource "helm_release" "kong" {
   namespace        = "kong"
   timeout          = "120"
   create_namespace = false
+  image 
 
   #values = [file("values.yaml")]
 

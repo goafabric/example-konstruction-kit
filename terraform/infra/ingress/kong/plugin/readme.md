@@ -3,3 +3,6 @@ kubectl delete -f ./kong-plugin-oidc.yaml -n kong
 kubectl apply -f ./kong-plugin-oidc.yaml -n kong
 
 kubectl create configmap kong-plugin-myheader --from-file=myheader -n kong
+
+
+docker build -f ./Dockerfile . -t goafabric/kong-oidc:3.7.0
