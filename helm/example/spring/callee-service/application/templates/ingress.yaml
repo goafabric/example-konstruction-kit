@@ -51,7 +51,7 @@ config:
   client_secret: none
 #  discovery: https://{{ .Values.ingress.hosts }}/oidc/realms/tenant-0/.well-known/openid-configuration
   discovery: http://keycloak-application.oidc:8080/oidc/realms/tenant-0/.well-known/openid-configuration
-  #redirect_uri: "{{ .Values.ingress.paths }}/redirect_uri"
+  redirect_uri: "{{ .Values.ingress.paths }}/redirect_uri"
   logout_path: "{{ .Values.ingress.paths }}/logout"
   
 ---
