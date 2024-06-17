@@ -22,6 +22,13 @@ resource "kubernetes_network_policy" "allow_self_ingress_prometheus" {
           }
         }
       }
+      from {
+        namespace_selector {
+          match_labels = {
+            "kubernetes.io/metadata.name" = "kong"
+          }
+        }
+      }
 
       from {
         namespace_selector {
