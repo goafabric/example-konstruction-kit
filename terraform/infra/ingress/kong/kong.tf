@@ -2,7 +2,7 @@ resource "helm_release" "kong" {
   name             = "kong"
   repository       = "https://charts.konghq.com"
   chart            = "kong"
-  version          = "2.39.0"
+  version          = "2.39.2"
   namespace        = "kong"
   timeout          = "60"
   create_namespace = true
