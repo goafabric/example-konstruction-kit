@@ -1,4 +1,0 @@
-plugins:
-  configMaps:
-    - name: kong-plugin-myheader
-      pluginName: myheader
