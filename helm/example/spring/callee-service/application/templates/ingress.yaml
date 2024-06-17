@@ -7,11 +7,7 @@ metadata:
   annotations:
     cert-manager.io/cluster-issuer: my-cluster-issuer
     konghq.com/strip-path: 'true'
-    {{ if .Values.oidc.enabled }}
-    konghq.com/plugins: {{ include "application.fullname" . }}-oidc-plugin,{{ include "application.fullname" . }}-add-headers
-    {{ else }}
-    konghq.com/plugins: {{ include "application.fullname" . }}-add-headers
-    {{ end }}
+    konghq.com/plugins: {{ include "application.fullname" . }}-add-headers{{ if .Values.oidc.enabled }},{{ include "application.fullname" . }}-oidc-plugin{{ end }}
 spec:
   ingressClassName: kong
   tls:
