@@ -7,8 +7,8 @@ metadata:
   annotations:
     cert-manager.io/cluster-issuer: my-cluster-issuer
     konghq.com/strip-path: 'true'
-#    konghq.com/plugins: {{ include "application.fullname" . }}-add-headers
-    konghq.com/plugins: oidc-plugin #my-custom-plugin
+    #konghq.com/plugins: {{ include "application.fullname" . }}-add-headers
+    konghq.com/plugins: oidc-plugin
 spec:
   ingressClassName: kong
   tls:
@@ -49,17 +49,7 @@ plugin: oidc
 config:
   client_id: oauth2-proxy
   client_secret: none
-#  discovery: https://{{ .Values.ingress.hosts }}/oidc/realms/tenant-0/.well-known/openid-configuration
   discovery: http://keycloak-application.oidc:8080/oidc/realms/tenant-0/.well-known/openid-configuration
   redirect_uri: "{{ .Values.ingress.paths }}/redirect_uri"
   logout_path: "{{ .Values.ingress.paths }}/logout"
   
----
-
-#apiVersion: configuration.konghq.com/v1
-#kind: KongPlugin
-#metadata:
-#  name: my-custom-plugin
-#config:
-#  header_value: "my first plugin"
-#plugin: myheader
