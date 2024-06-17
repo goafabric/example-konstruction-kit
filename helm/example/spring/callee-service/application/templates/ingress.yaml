@@ -8,7 +8,9 @@ metadata:
     cert-manager.io/cluster-issuer: my-cluster-issuer
     konghq.com/strip-path: 'true'
     {{ if .Values.oidc.enabled }}
-    konghq.com/plugins: oidc-plugin
+    konghq.com/plugins: {{ include "application.fullname" . }}-oidc-plugin,{{ include "application.fullname" . }}-add-headers
+    {{ else }}
+    konghq.com/plugins: {{ include "application.fullname" . }}-add-headers
     {{ end }}
 spec:
   ingressClassName: kong
@@ -30,13 +32,26 @@ spec:
 
 ---
 
-#apiVersion: configuration.konghq.com/v1
-#kind: KongPlugin
-#metadata:
-#  name: {{ include "application.fullname" . }}-add-headers
-#plugin: request-transformer
-#config:
-#  add:
-#    headers:
-#      - Authorization:BASIC {{ b64enc (printf "%s:%s" ("c2VydmljZQ==" | b64dec) (.Values.service.password )) }}
+apiVersion: configuration.konghq.com/v1
+kind: KongPlugin
+metadata:
+  name: {{ include "application.fullname" . }}-add-headers
+plugin: request-transformer
+config:
+  add:
+    headers:
+      - Authorization:BASIC {{ b64enc (printf "%s:%s" ("c2VydmljZQ==" | b64dec) (.Values.service.password )) }}
 
+---
+
+apiVersion: configuration.konghq.com/v1
+kind: KongPlugin
+metadata:
+  name: {{ include "application.fullname" . }}-oidc-plugin
+plugin: oidc
+config:
+  client_id: oauth2-proxy
+  client_secret: none
+  discovery: http://keycloak-application.oidc:8080/oidc/realms/tenant-0/.well-known/openid-configuration
+  redirect_uri: "{{ .Values.ingress.paths }}/redirect_uri"
+  logout_path: "{{ .Values.ingress.paths }}/logout"
