@@ -18,7 +18,7 @@ locals {
   production_mode = !strcontains(var.hostname, ".local")
 
   server_arch = data.external.server_arch_data.result["server_arch"]
-  oidc_enabled = local.production_mode
+  oidc_enabled = true #local.production_mode
 
   replica_count = local.production_mode ? "2" : "1"
   postgres_ha = "false"
