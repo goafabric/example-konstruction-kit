@@ -38,7 +38,7 @@ resource "helm_release" "istio-cni-kind" {
   chart      = "cni"
   namespace  = "istio-system"
   create_namespace = false
-  version    = "1.22.0"
+  version    = "1.22.1"
   wait       = true
 
   depends_on = [helm_release.istio-base]
@@ -57,7 +57,7 @@ resource "helm_release" "istio-cni-microk8s" {
   chart      = "cni"
   namespace  = "istio-system"
   create_namespace = false
-  version    = "1.22.0"
+  version    = "1.22.1"
   wait       = true
 
   depends_on = [helm_release.istio-base]
@@ -82,7 +82,7 @@ resource "helm_release" "istio-ztunnel" {
   chart      = "ztunnel"
   namespace  = "istio-system"
   create_namespace = false
-  version    = "1.22.0"
+  version    = "1.22.1"
   wait       = true
 
   depends_on = [helm_release.istio-base]
