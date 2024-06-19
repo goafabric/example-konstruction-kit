@@ -46,18 +46,18 @@ resource "helm_release" "kong" {
     value = "Always"
   }
 
-#   set {
-#     name  = "env.nginx_proxy_proxy_buffer_size"
-#     value = "128k"
-#   }
-#   set {
-#     name  = "env.nginx_proxy_proxy_busy_buffers_size"
-#     value = "128k"
-#   }
-#   set {
-#     name  = "env.nginx_proxy_proxy_buffers"
-#     value = "32 128k"
-#   }
+  set {
+    name  = "env.nginx_proxy_proxy_buffer_size"
+    value = "128k"
+  }
+  set {
+    name  = "env.nginx_proxy_proxy_busy_buffers_size"
+    value = "128k"
+  }
+  set {
+    name  = "env.nginx_proxy_proxy_buffers"
+    value = "32 128k"
+  }
 
 }
 
