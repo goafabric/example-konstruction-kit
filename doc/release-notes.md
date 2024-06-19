@@ -1,4 +1,5 @@
 # 1.3.3
+- kong oidc integration
 
 # 1.3.2
 - cleanup of event folder
