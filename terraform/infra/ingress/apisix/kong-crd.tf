@@ -1,12 +1,11 @@
-resource "terraform_data" "destroy_crd" {
-  provisioner "local-exec" {
-    when    = create
-    command = "kubectl get crd kongplugins.configuration.konghq.com > /dev/null 2>&1 && kubectl delete crd kongplugins.configuration.konghq.com"
-  }
-}
+# resource "terraform_data" "destroy_crd" {
+#   provisioner "local-exec" {
+#     when    = create
+#     command = "kubectl get crd kongplugins.configuration.konghq.com > /dev/null 2>&1 && kubectl delete crd kongplugins.configuration.konghq.com"
+#   }
+# }
 
 resource "kubernetes_manifest" "kong-fake-crsd" {
-  depends_on = [terraform_data.destroy_crd]
   manifest   = yamldecode(<<-EOF
   kind: CustomResourceDefinition
   apiVersion: apiextensions.k8s.io/v1
