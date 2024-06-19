@@ -1,2 +1,2 @@
 TF_VAR_hostname=v2202402203466256255.megasrv.de
-INGRESS_TYPE=apisix #nginx
+INGRESS_TYPE=kong #apisix
