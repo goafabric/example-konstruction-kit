@@ -31,9 +31,9 @@ resource "kubernetes_namespace" "dashboard" {
 resource "kubernetes_namespace" "grafana" {
   metadata {
     name = "grafana"
-    labels = {
-      "istio.io/dataplane-mode" = "ambient"
-    }
+#     labels = {
+#       "istio.io/dataplane-mode" = "ambient"
+#     }
   }
 }
 
