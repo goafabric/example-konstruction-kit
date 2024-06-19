@@ -25,11 +25,11 @@ resource "helm_release" "kong" {
   }
   set {
     name  = "ingressController.env.log_level"
-    value = "debug"
+    value = "info"
   }
   set {
     name  = "env.log_level"
-    value = "debug"
+    value = "info"
   }
 
   # oidc
@@ -46,18 +46,18 @@ resource "helm_release" "kong" {
     value = "Always"
   }
 
-  set {
-    name  = "env.nginx_proxy_proxy_buffer_size"
-    value = "128k"
-  }
-  set {
-    name  = "env.nginx_proxy_proxy_busy_buffers_size"
-    value = "128k"
-  }
-  set {
-    name  = "env.nginx_proxy_proxy_buffers"
-    value = "32 128k"
-  }
+#   set {
+#     name  = "env.nginx_proxy_proxy_buffer_size"
+#     value = "128k"
+#   }
+#   set {
+#     name  = "env.nginx_proxy_proxy_busy_buffers_size"
+#     value = "128k"
+#   }
+#   set {
+#     name  = "env.nginx_proxy_proxy_buffers"
+#     value = "32 128k"
+#   }
 
 }
 
