@@ -21,7 +21,7 @@ resource "helm_release" "kong" {
   }
   set {
     name  = "postgresql.enabled"
-    value = false
+    value = local.production_mode
   }
   set {
     name  = "ingressController.env.log_level"
