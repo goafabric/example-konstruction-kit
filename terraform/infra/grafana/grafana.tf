@@ -60,3 +60,35 @@ resource "kubernetes_manifest" "grafana-gateway" {
   EOF
   )
 }
+
+
+resource "kubernetes_manifest" "grafana-ingress" {
+  manifest   = yamldecode(<<-EOF
+  kind: Ingress
+  apiVersion: networking.k8s.io/v1
+  metadata:
+    name: grafana-ingress
+    namespace: grafana
+    annotations:
+      cert-manager.io/cluster-issuer: my-cluster-issuer
+      konghq.com/strip-path: 'true'
+  spec:
+    ingressClassName: kong
+    tls:
+      - hosts:
+          - ${var.hostname}
+        secretName: root-certificate
+    rules:
+      - host: ${var.hostname}
+        http:
+          paths:
+            - path: /grafana
+              pathType: ImplementationSpecific
+              backend:
+                service:
+                  name: grafana
+                  port:
+                    number: 80
+  EOF
+  )
+}

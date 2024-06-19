@@ -5,7 +5,7 @@ resource "helm_release" "kong" {
   version          = "2.39.2"
   namespace        = "kong"
   timeout          = "60"
-  create_namespace = true
+  create_namespace = false
 
   set {
    name  = "proxy.type"
@@ -21,15 +21,15 @@ resource "helm_release" "kong" {
   }
   set {
     name  = "postgresql.enabled"
-    value = false
+    value = local.production_mode
   }
   set {
     name  = "ingressController.env.log_level"
-    value = "debug"
+    value = "info"
   }
   set {
     name  = "env.log_level"
-    value = "debug"
+    value = "info"
   }
 
   # oidc
