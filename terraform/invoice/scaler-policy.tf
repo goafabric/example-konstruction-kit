@@ -9,7 +9,7 @@ resource "kubernetes_manifest" "redis-node-autoscaler" {
     name: redis-node
     namespace: invoice
   spec:
-    maxReplicas: 3
+    maxReplicas: 2
     metrics:
     - resource:
         name: cpu
