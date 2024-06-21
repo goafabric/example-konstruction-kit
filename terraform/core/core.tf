@@ -16,7 +16,7 @@ resource "helm_release" "core-application" {
   }
   set {
     name  = "replicaCount"
-    value = local.replica_count
+    value = "1"
   }
 
   set {
