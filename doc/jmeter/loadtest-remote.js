@@ -31,20 +31,30 @@ function getAccessToken() {
 }
 
 export default function () {
-    const token = getAccessToken();
-
     const headers = {
-        'Authorization': `Bearer ${token}`,
+        'Authorization': `Bearer ${getAccessToken()}`,
     };
 
-    const response1 = http.get("https://v2202402203466256255.megasrv.de/core/patients/findByGivenName?givenName=S", { headers });
-    console.log(response1)
+    const requestOptions = {
+        //headers: headers,
+        redirects: 0, // Disable automatic following of redirects
+    };
+
+    const response1 = http.get("https://v2202402203466256255.megasrv.de/core/patients/findByGivenName?givenName=S", requestOptions);
     check(response1, {
         'status is 200': (r) => r.status === 200,
     });
 
-    const response2 = http.get("https://v2202402203466256255.megasrv.de/catalog/insurances/findByDisplay?display=a", { headers });
+    if (response1.status !== 200) {
+        console.error(`Unexpected status for first request: ${response1.status}`);
+    }
+
+    const response2 = http.get("https://v2202402203466256255.megasrv.de/catalog/insurances/findByDisplay?display=a", requestOptions);
     check(response2, {
         'status is 200': (r) => r.status === 200,
     });
+
+    if (response2.status !== 200) {
+        console.error(`Unexpected status for second request: ${response2.status}`);
+    }
 }
