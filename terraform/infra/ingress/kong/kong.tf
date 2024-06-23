@@ -25,11 +25,11 @@ resource "helm_release" "kong" {
   }
   set {
     name  = "ingressController.env.log_level"
-    value = "info"
+    value = "debug"
   }
   set {
     name  = "env.log_level"
-    value = "info"
+    value = "debug"
   }
 
   # oidc

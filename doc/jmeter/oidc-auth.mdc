@@ -1,0 +1,14 @@
+export access_token=$(\
+curl -k -v -s -X POST https://v2202402203466256255.megasrv.de/oidc/realms/tenant-0/protocol/openid-connect/token \
+-H "Content-Type: application/x-www-form-urlencoded" \
+-d "username=user1" \
+-d "password=User1user1" \
+-d "grant_type=password" \
+-d "client_id=oauth2-proxy" \
+-d "scope=openid" \
+| jq --raw-output '.access_token' \
+)
+echo access token is:
+echo $access_token
+
+curl -k -v -H "Authorization: Bearer $access_token" "https://v2202402203466256255.megasrv.de/core/patients/findByGivenName?givenName=S"
