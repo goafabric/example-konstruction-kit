@@ -36,7 +36,7 @@ export default function () {
     };
 
     const requestOptions = {
-        //headers: headers,
+        headers: headers,
         redirects: 0, // Disable automatic following of redirects
     };
 
