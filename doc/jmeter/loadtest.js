@@ -13,4 +13,4 @@ export default function () {
 
 // https://k6.io/docs/get-started/running-k6/
 // docker run --rm -i grafana/k6 run - < loadtest.js
-// kubectl run -n core -i --rm k6 --image=grafana/k6 --restart=Never -- run - < ./loadtest.js ; k delete pod k6 -n core
+// kubectl run -n core -i --rm k6 --image=grafana/k6 --restart=Never -- run - < ./loadtest.js ; kubectl delete pod k6 -n core
