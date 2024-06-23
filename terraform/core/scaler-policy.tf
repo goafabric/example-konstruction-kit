@@ -47,7 +47,7 @@ resource "kubernetes_manifest" "catalog-application-autoscaler" {
     - resource:
         name: cpu
         target:
-          averageUtilization: 15
+          averageUtilization: 50
           type: Utilization
       type: Resource
     minReplicas: 1
