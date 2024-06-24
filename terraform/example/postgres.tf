@@ -1,5 +1,5 @@
 resource "helm_release" "person-service-postgres" {
-  count = local.postgres_ha == "false" ? 1 : 0
+  count = local.postgres_ha == false ? 1 : 0
 
   repository = var.helm_repository
   name       = "person-service-postgres-postgresql-ha-pgpool"
@@ -15,7 +15,7 @@ resource "helm_release" "person-service-postgres" {
 }
 
 resource "helm_release" "person-service-postgres-ha" {
-  count = local.postgres_ha == "true" ? 1 : 0
+  count = local.postgres_ha == true ? 1 : 0
 
   name       = "person-service-postgres"
   repository = "https://charts.bitnami.com/bitnami"
@@ -25,7 +25,7 @@ resource "helm_release" "person-service-postgres-ha" {
 
   set {
     name  = "postgresql.replicaCount"
-    value = local.replica_count
+    value = "1"
   }
   set {
     name  = "persistence.size"

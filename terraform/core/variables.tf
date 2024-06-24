@@ -19,6 +19,6 @@ locals {
 
   production_mode = !strcontains(var.hostname, ".local")
   oidc_enabled = local.production_mode
-  postgres_ha = "true"
+  postgres_ha = local.production_mode
 }
 

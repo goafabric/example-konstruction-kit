@@ -1,5 +1,5 @@
 resource "helm_release" "core-postgres-postgresql-ha-pgpool" {
-  count = local.postgres_ha == "false" ? 1 : 0
+  count = local.postgres_ha == false ? 1 : 0
 
   repository = var.helm_repository
   name       = "core-postgres-postgresql-ha-pgpool"
@@ -15,7 +15,7 @@ resource "helm_release" "core-postgres-postgresql-ha-pgpool" {
 }
 
 resource "helm_release" "core-postgres-ha" {
-  count = local.postgres_ha == "true" ? 1 : 0
+  count = local.postgres_ha == true ? 1 : 0
 
   name       = "core-postgres"
   repository = "https://charts.bitnami.com/bitnami"
