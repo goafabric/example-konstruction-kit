@@ -1,5 +1,6 @@
 # 1.3.3
 - kong oidc integration
+- autoscaler integration
 
 # 1.3.2
 - cleanup of event folder
