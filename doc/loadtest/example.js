@@ -13,7 +13,6 @@ const baseUrl = 'https://kind.local' //'https://v2202402203466256255.megasrv.de'
 export default function () {
     const requestOptions = getRequestOptions();
     checkResponse(http.get(`${baseUrl}/person/persons/findAll`, requestOptions));
-    //checkResponse(http.get(`${baseUrl}/person/persons/findAll`));
 }
 
 function checkResponse(response) {
@@ -27,12 +26,10 @@ function checkResponse(response) {
 
 function getRequestOptions() {
     if (baseUrl != 'https://kind.local') {
-        const headers = {
-            'Authorization': `Bearer ${getAccessToken()}`,
-        };
-
         return {
-            headers: headers,
+            headers: {
+                'Authorization': `Bearer ${getAccessToken()}`
+            },
             redirects: 0, // Disable automatic following of redirects
         };
     } else {
