@@ -11,15 +11,7 @@ export const options = {
 const baseUrl = 'https://kind.local' //'https://v2202402203466256255.megasrv.de';
 
 export default function () {
-    const headers = {
-        'Authorization': `Bearer ${getAccessToken()}`,
-    };
-
-    const requestOptions = {
-        headers: headers,
-        redirects: 0, // Disable automatic following of redirects
-    };
-
+    const requestOptions = getRequestOptions();
     checkResponse(http.get(`${baseUrl}/person/persons/findAll`, requestOptions));
     //checkResponse(http.get(`${baseUrl}/person/persons/findAll`));
 }
@@ -28,16 +20,27 @@ function checkResponse(response) {
     check(response, {
         'status is 200': (r) => r.status === 200,
     });
-    if (response.status !== 201) {
+    if (response.status !== 200) {
         console.error('Unexpected status for request', response.status, response.body);
     }
 }
 
-function getAccessToken() {
-    if (baseUrl === 'https://kind.local') {
+function getRequestOptions() {
+    if (baseUrl != 'https://kind.local') {
+        const headers = {
+            'Authorization': `Bearer ${getAccessToken()}`,
+        };
+
+        return {
+            headers: headers,
+            redirects: 0, // Disable automatic following of redirects
+        };
+    } else {
         return null;
     }
+}
 
+function getAccessToken() {
     const url = `${baseUrl}/oidc/realms/tenant-0/protocol/openid-connect/token`;
     const headers = {
         'Content-Type': 'application/x-www-form-urlencoded'
