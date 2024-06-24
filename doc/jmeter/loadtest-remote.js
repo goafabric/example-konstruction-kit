@@ -1,10 +1,14 @@
+// https://k6.io/docs/get-started/running-k6/
+
 import http from "k6/http";
 import { check, sleep } from 'k6';
 
 export const options = {
-    vus: 1, // Number of virtual users
-    duration: '1s', // Duration of the test
+    vus: 10, // Number of virtual users
+    duration: '60s', // Duration of the test
 };
+
+const baseUrl = 'https://v2202402203466256255.megasrv.de';
 
 export default function () {
     const headers = {
@@ -16,8 +20,8 @@ export default function () {
         redirects: 0, // Disable automatic following of redirects
     };
 
-    checkResponse(http.get("https://v2202402203466256255.megasrv.de/core/patients/findByGivenName?givenName=S", requestOptions));
-    checkResponse(http.get("https://v2202402203466256255.megasrv.de/catalog/insurances/findByDisplay?display=a", requestOptions));
+    checkResponse(http.get(`${baseUrl}/core/patients/findByGivenName?givenName=S`, requestOptions));
+    checkResponse(http.get(`${baseUrl}/catalog/insurances/findByDisplay?display=a`, requestOptions));
 }
 
 function checkResponse(response) {
@@ -30,7 +34,7 @@ function checkResponse(response) {
 }
 
 function getAccessToken() {
-    const url = 'https://v2202402203466256255.megasrv.de/oidc/realms/tenant-0/protocol/openid-connect/token';
+    const url = `${baseUrl}/oidc/realms/tenant-0/protocol/openid-connect/token`;
     const headers = {
         'Content-Type': 'application/x-www-form-urlencoded'
     };

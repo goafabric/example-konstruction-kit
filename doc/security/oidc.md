@@ -17,7 +17,11 @@ curl -k -v -s -X POST https://v2202402203466256255.megasrv.de/oidc/realms/tenant
 echo access token is: 
 echo $access_token                                                                      
 
-https://your-keycloak-server/auth/admin/realms/your-realm/users
+# request
+curl -k -v -H "Authorization: Bearer $access_token" "https://v2202402203466256255.megasrv.de/core/patients/findByGivenName?givenName=S"
+                                                                                                                                       
+
+
 
 
 # jwt.io 

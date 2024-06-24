@@ -1,5 +1,6 @@
 # https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale-walkthrough/
 # kubectl get hpa core-application --watch -n core
+# kubectl get hpa catalog-application --watch -n core
 
 resource "kubernetes_manifest" "core-application-autoscaler" {
   manifest   = yamldecode(<<-EOF
@@ -47,7 +48,7 @@ resource "kubernetes_manifest" "catalog-application-autoscaler" {
     - resource:
         name: cpu
         target:
-          averageUtilization: 50
+          averageUtilization: 40
           type: Utilization
       type: Resource
     minReplicas: 1
