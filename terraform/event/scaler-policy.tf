@@ -14,7 +14,7 @@ resource "kubernetes_manifest" "event-dispatcher-service-application-autoscaler"
     - resource:
         name: cpu
         target:
-          averageUtilization: 10
+          averageUtilization: 50
           type: Utilization
       type: Resource
     minReplicas: 1
