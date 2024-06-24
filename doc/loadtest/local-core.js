@@ -1,5 +1,5 @@
 // https://k6.io/docs/get-started/running-k6/
-// kubectl run -n core -i --rm k6 --image=grafana/k6 --restart=Never -- run - < ./loadtest.js ; kubectl delete pod k6 -n core
+// kubectl run -n core -i --rm k6 --image=grafana/k6 --restart=Never -- run - < ./local-cire.js ; kubectl delete pod k6 -n core
 
 import http from "k6/http";
 import { check, sleep } from 'k6';
