@@ -80,7 +80,7 @@ resource "kubernetes_manifest" "core-postgres-postgresql-ha-postgresql-autoscale
     - resource:
         name: cpu
         target:
-          averageUtilization: 50
+          averageUtilization: 40
           type: Utilization
       type: Resource
     minReplicas: 1
