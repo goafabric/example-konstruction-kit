@@ -66,3 +66,36 @@ resource "kubernetes_manifest" "catalog-application-autoscaler" {
   EOF
   )
 }
+
+resource "kubernetes_manifest" "core-postgres-postgresql-ha-postgresql-autoscaler" {
+  manifest   = yamldecode(<<-EOF
+  apiVersion: autoscaling/v2
+  kind: HorizontalPodAutoscaler
+  metadata:
+    name: core-postgres-postgresql-ha-postgresql
+    namespace: core
+  spec:
+    maxReplicas: 3
+    metrics:
+    - resource:
+        name: cpu
+        target:
+          averageUtilization: 50
+          type: Utilization
+      type: Resource
+    minReplicas: 1
+    scaleTargetRef:
+      apiVersion: apps/v1
+      kind: StatefulSet
+      name: core-postgres-postgresql-ha-postgresql
+    behavior:
+      scaleDown:
+        stabilizationWindowSeconds: 30
+        selectPolicy: Max
+        policies:
+          - type: Percent
+            value: 100
+            periodSeconds: 15
+  EOF
+  )
+}
