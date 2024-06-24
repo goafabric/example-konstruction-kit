@@ -11,15 +11,7 @@ export const options = {
 const baseUrl = 'https://v2202402203466256255.megasrv.de';
 
 export default function () {
-    const headers = {
-        'Authorization': `Bearer ${getAccessToken()}`,
-    };
-
-    const requestOptions = {
-        headers: headers,
-        redirects: 0, // Disable automatic following of redirects
-    };
-
+    const requestOptions = getRequestOptions();
     checkResponse(http.get(`${baseUrl}/invoice/processes/load?range=1`, requestOptions));
 }
 
@@ -29,6 +21,19 @@ function checkResponse(response) {
     });
     if (response.status !== 200) {
         console.error('Unexpected status for request', response.status, response.body);
+    }
+}
+
+function getRequestOptions() {
+    if (baseUrl != 'https://kind.local') {
+        return {
+            headers: {
+                'Authorization': `Bearer ${getAccessToken()}`
+            },
+            redirects: 0, // Disable automatic following of redirects
+        };
+    } else {
+        return null;
     }
 }
 
