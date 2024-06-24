@@ -27,7 +27,7 @@ nativeAnnotations:
       memory: 32M
       cpu: 250m
 
-  args: ["-Xmx32M"]
+  args: ["-Xmx64M"]
 
 readinessProbe:
   initialDelaySeconds: 2

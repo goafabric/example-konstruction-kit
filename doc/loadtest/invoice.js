@@ -20,8 +20,7 @@ export default function () {
         redirects: 0, // Disable automatic following of redirects
     };
 
-    checkResponse(http.get(`${baseUrl}/core/patients/findByGivenName?givenName=S`, requestOptions));
-    checkResponse(http.get(`${baseUrl}/catalog/insurances/findByDisplay?display=a`, requestOptions));
+    checkResponse(http.get(`${baseUrl}/invoice/processes/load?range=1`, requestOptions));
 }
 
 function checkResponse(response) {

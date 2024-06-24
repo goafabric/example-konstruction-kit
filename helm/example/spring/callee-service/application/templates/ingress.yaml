@@ -50,5 +50,8 @@ config:
   client_id: oauth2-proxy
   client_secret: none
   discovery: http://keycloak-application.oidc:8080/oidc/realms/tenant-0/.well-known/openid-configuration
+  bearer_jwt_auth_enable: "yes"
+  bearer_jwt_auth_allowed_auds:
+    - "account"
 #  redirect_uri: "{{ .Values.ingress.paths }}/redirect_uri"
 #  logout_path: "{{ .Values.ingress.paths }}/logout"
