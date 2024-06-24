@@ -1,5 +1,5 @@
 # https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale-walkthrough/
-# kubectl get hpa person-service-application --watch -n example
+# kubectl get hpa --watch -n example
 
 resource "kubernetes_manifest" "callee-service-application-autoscaler" {
   manifest   = yamldecode(<<-EOF
@@ -66,8 +66,6 @@ resource "kubernetes_manifest" "person-service-application-autoscaler" {
   EOF
   )
 }
-
-# kubectl get hpa --watch -n example
 
 resource "kubernetes_manifest" "person-service-postgres-postgresql-ha-postgresql-autoscaler" {
   manifest   = yamldecode(<<-EOF
