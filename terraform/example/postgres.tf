@@ -20,7 +20,7 @@ resource "helm_release" "person-service-postgres-ha" {
   name       = "person-service-postgres"
   repository = "https://charts.bitnami.com/bitnami"
   chart      = "postgresql-ha"
-  version    = "14.0.0"
+  version    = "14.2.7"
   namespace  = "example"
 
   set {
@@ -60,6 +60,7 @@ resource "helm_release" "person-service-postgres-ha" {
     name  = "postgresql.postgresPassword"
     value = random_password.database_password.result
   }
+
 }
 
 # manually remove the pvc to avoid password problems

@@ -28,7 +28,7 @@ function checkResponse(response) {
         'status is 200': (r) => r.status === 200,
     });
     if (response.status !== 200) {
-        console.error(`Unexpected status for request: ${response.status}`);
+        console.error('Unexpected status for request', response.status, response.body);
     }
 }
 
