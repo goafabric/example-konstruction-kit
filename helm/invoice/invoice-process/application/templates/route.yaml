@@ -25,9 +25,8 @@ spec:
             regex_uri:
               - {{ .Values.ingress.paths }}/(.*)
               - /$1
-#            headers:
-#              X-TenantId: 0
-#              Authorization: BASIC {{ b64enc (printf "%s:%s" ("c2VydmljZQ==" | b64dec) (.Values.service.password )) }} #Should use vault secret
+            headers:
+              X-TenantId: 0
         - name: openid-connect
           enable: {{ .Values.oidc.enabled }}
           config:
