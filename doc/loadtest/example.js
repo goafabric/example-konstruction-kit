@@ -9,11 +9,13 @@ export const options = {
     duration: '60s', // Duration of the test
 };
 
-const baseUrl = 'https://v2202402203466256255.megasrv.de'; //'https://kind.local'
+//const baseUrl = 'https://kind.local'
+const baseUrl = 'https://v2202402203466256255.megasrv.de';
 
 export default function () {
     const requestOptions = getRequestOptions();
     checkResponse(http.get(`${baseUrl}/person/persons/findAll`, requestOptions));
+    checkResponse(http.get(`${baseUrl}/callee/callees/sayMyName?name=Heisenberg`, requestOptions));
 }
 
 function checkResponse(response) {
