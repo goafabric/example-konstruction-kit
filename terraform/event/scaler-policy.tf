@@ -1,6 +1,3 @@
-# https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale-walkthrough/
-# kubectl get hpa event-dispatcher-service-application --watch -n event
-
 resource "kubernetes_manifest" "event-dispatcher-service-application-autoscaler" {
   manifest   = yamldecode(<<-EOF
   apiVersion: autoscaling/v2

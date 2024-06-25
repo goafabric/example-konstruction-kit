@@ -25,7 +25,7 @@ resource "helm_release" "core-postgres-ha" {
 
   set {
     name  = "postgresql.replicaCount"
-    value = "1"
+    value = "2"
   }
   set {
     name  = "persistence.size"

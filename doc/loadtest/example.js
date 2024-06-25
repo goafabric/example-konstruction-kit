@@ -1,4 +1,5 @@
 // https://k6.io/docs/get-started/running-k6/
+// kubectl get hpa --watch -n example
 
 import http from "k6/http";
 import { check, sleep } from 'k6';
