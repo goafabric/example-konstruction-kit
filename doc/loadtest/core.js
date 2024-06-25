@@ -9,7 +9,8 @@ export const options = {
     duration: '60s', // Duration of the test
 };
 
-const baseUrl = 'https://v2202402203466256255.megasrv.de'; //'https://kind.local'
+const baseUrl = 'https://v2202402203466256255.megasrv.de';
+//const baseUrl = 'https://kind.local'
 
 export default function () {
     const requestOptions = getRequestOptions();
