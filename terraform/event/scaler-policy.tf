@@ -14,7 +14,7 @@ resource "kubernetes_manifest" "event-dispatcher-service-application-autoscaler"
           averageUtilization: 50
           type: Utilization
       type: Resource
-    minReplicas: 1
+    minReplicas: 2
     scaleTargetRef:
       apiVersion: apps/v1
       kind: Deployment
