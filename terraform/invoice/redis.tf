@@ -19,7 +19,7 @@ resource "helm_release" "redis" {
   }
   set {
     name  = "replica.replicaCount"
-    value = local.production_mode ? "2" : "1"
+    value = "1"
   }
   
   set {
