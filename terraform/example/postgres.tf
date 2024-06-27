@@ -57,8 +57,12 @@ resource "helm_release" "person-service-postgres-ha" {
     value = random_password.database_password.result
   }
   set {
-    name  = "postgresql.postgresPassword"
+    name  = "postgresql.password"
     value = random_password.database_password.result
+  }
+  set {
+    name  = "pgpool.reservedConnections"
+    value = "0" //https://github.com/bitnami/charts/issues/4219
   }
 
 }
