@@ -1,6 +1,7 @@
 # 1.3.3
 - kong oidc integration
 - autoscaler integration
+- k6 loadtests added
 
 # 1.3.2
 - cleanup of event folder
