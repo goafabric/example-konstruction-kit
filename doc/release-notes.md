@@ -1,3 +1,5 @@
+# 1.3.4
+
 # 1.3.3
 - kong oidc integration
 - autoscaler integration
