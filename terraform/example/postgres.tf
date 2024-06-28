@@ -1,5 +1,5 @@
 resource "helm_release" "person-service-postgres" {
-  count = local.postgres_ha == "false" ? 1 : 0
+  count = local.postgres_ha == false ? 1 : 0
 
   repository = var.helm_repository
   name       = "person-service-postgres-postgresql-ha-pgpool"
@@ -15,17 +15,17 @@ resource "helm_release" "person-service-postgres" {
 }
 
 resource "helm_release" "person-service-postgres-ha" {
-  count = local.postgres_ha == "true" ? 1 : 0
+  count = local.postgres_ha == true ? 1 : 0
 
   name       = "person-service-postgres"
   repository = "https://charts.bitnami.com/bitnami"
   chart      = "postgresql-ha"
-  version    = "14.0.0"
+  version    = "14.2.7"
   namespace  = "example"
 
   set {
     name  = "postgresql.replicaCount"
-    value = local.replica_count
+    value = "2"
   }
   set {
     name  = "persistence.size"
@@ -57,9 +57,14 @@ resource "helm_release" "person-service-postgres-ha" {
     value = random_password.database_password.result
   }
   set {
-    name  = "postgresql.postgresPassword"
+    name  = "postgresql.password"
     value = random_password.database_password.result
   }
+  set {
+    name  = "pgpool.reservedConnections"
+    value = "0" //https://github.com/bitnami/charts/issues/4219
+  }
+
 }
 
 # manually remove the pvc to avoid password problems

@@ -17,7 +17,7 @@ data:
   process.autostart: "false"
 
   #security
-  security.authentication.enabled: "true"
+  security.authentication.enabled: "false"
 
   #monitoring
   management.endpoints.web.exposure.include: "health,circuitbreakers,prometheus"

@@ -15,10 +15,8 @@ data "external" "server_arch_data" {
 }
 
 locals {
-  production_mode = !strcontains(var.hostname, ".local")
   server_arch = data.external.server_arch_data.result["server_arch"]
-  oidc_enabled = local.production_mode
 
-  replica_count = local.production_mode ? "1" : "1"
-  redis_replica_count = local.production_mode ? "2" : "1"
+  production_mode = !strcontains(var.hostname, ".local")
+  oidc_enabled = local.production_mode
 }

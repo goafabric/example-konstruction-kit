@@ -8,7 +8,7 @@ resource "helm_release" "callee-service-application" {
 
   set {
     name  = "replicaCount"
-    value = local.replica_count
+    value = "1"
   }
 
   set {

@@ -24,7 +24,7 @@ service:
   port: 5432
 
 postgres:
-  maxConnections: 30
+  maxConnections: 50
 
 persistence:
   storageClassName:

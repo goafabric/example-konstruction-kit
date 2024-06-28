@@ -1,7 +1,7 @@
 # div
-- kong oidc
+- autoscale
 
-## security
+# security
 - secrets via vault
 - volume encryption
 - rbac                                                                                                               k

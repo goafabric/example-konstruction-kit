@@ -15,12 +15,11 @@ data "external" "server_arch_data" {
 }
 
 locals {
-  production_mode = !strcontains(var.hostname, ".local")
   server_arch = data.external.server_arch_data.result["server_arch"]
+
+  production_mode = !strcontains(var.hostname, ".local")
   oidc_enabled = local.production_mode
 
-  replica_count = local.production_mode ? "2" : "1"
-  messageBroker_replica_count = "1"
-
+  messageBroker_replica_count = "1"  #this is not meant for production ! here we should at least have 3 instances
   dispatcher_profile = "kafka" #rabbitmq
 }

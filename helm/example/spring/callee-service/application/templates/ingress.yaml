@@ -1,3 +1,4 @@
+
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -7,7 +8,7 @@ metadata:
   annotations:
     cert-manager.io/cluster-issuer: my-cluster-issuer
     konghq.com/strip-path: 'true'
-#    konghq.com/plugins: {{ include "application.fullname" . }}-add-headers
+    konghq.com/plugins: {{ include "application.fullname" . }}-add-headers{{ if .Values.oidc.enabled }},{{ include "application.fullname" . }}-oidc-plugin{{ end }}
 spec:
   ingressClassName: kong
   tls:
@@ -28,12 +29,29 @@ spec:
 
 ---
 
-#apiVersion: configuration.konghq.com/v1
-#kind: KongPlugin
-#metadata:
-#  name: {{ include "application.fullname" . }}-add-headers
-#plugin: request-transformer
-#config:
-#  add:
-#    headers:
-#      - Authorization:BASIC {{ b64enc (printf "%s:%s" ("c2VydmljZQ==" | b64dec) (.Values.service.password )) }}
+apiVersion: configuration.konghq.com/v1
+kind: KongPlugin
+metadata:
+  name: {{ include "application.fullname" . }}-add-headers
+plugin: request-transformer
+config:
+  add:
+    headers:
+      - Authorization:BASIC {{ b64enc (printf "%s:%s" ("c2VydmljZQ==" | b64dec) (.Values.service.password )) }}
+
+---
+
+apiVersion: configuration.konghq.com/v1
+kind: KongPlugin
+metadata:
+  name: {{ include "application.fullname" . }}-oidc-plugin
+plugin: oidc
+config:
+  client_id: oauth2-proxy
+  client_secret: none
+  discovery: http://keycloak-application.oidc:8080/oidc/realms/tenant-0/.well-known/openid-configuration
+  bearer_jwt_auth_enable: "yes"
+  bearer_jwt_auth_allowed_auds:
+    - "account"
+#  redirect_uri: "{{ .Values.ingress.paths }}/redirect_uri"
+#  logout_path: "{{ .Values.ingress.paths }}/logout"

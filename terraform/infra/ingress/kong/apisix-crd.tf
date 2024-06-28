@@ -1,4 +1,10 @@
-# kubectl delete crd apisixroutes.apisix.apache.org
+# resource "terraform_data" "destroy_crd" {
+#   provisioner "local-exec" {
+#     when    = create
+#     command = "kubectl get crd apisixroutes.apisix.apache.org > /dev/null 2>&1 && kubectl delete crd apisixroutes.apisix.apache.org"
+#   }
+# }
+
 resource "kubernetes_manifest" "apisix-fake-crsd" {
   manifest   = yamldecode(<<-EOF
   apiVersion: apiextensions.k8s.io/v1

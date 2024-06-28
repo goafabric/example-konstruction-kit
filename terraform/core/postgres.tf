@@ -1,5 +1,5 @@
 resource "helm_release" "core-postgres-postgresql-ha-pgpool" {
-  count = local.postgres_ha == "false" ? 1 : 0
+  count = local.postgres_ha == false ? 1 : 0
 
   repository = var.helm_repository
   name       = "core-postgres-postgresql-ha-pgpool"
@@ -15,17 +15,17 @@ resource "helm_release" "core-postgres-postgresql-ha-pgpool" {
 }
 
 resource "helm_release" "core-postgres-ha" {
-  count = local.postgres_ha == "true" ? 1 : 0
+  count = local.postgres_ha == true ? 1 : 0
 
   name       = "core-postgres"
   repository = "https://charts.bitnami.com/bitnami"
   chart      = "postgresql-ha"
-  version    = "14.0.0"
+  version    = "14.2.7"
   namespace  = "core"
 
   set {
     name  = "postgresql.replicaCount"
-    value = local.replica_count
+    value = "2"
   }
   set {
     name  = "persistence.size"
@@ -57,14 +57,18 @@ resource "helm_release" "core-postgres-ha" {
     value = random_password.core_database_password.result
   }
   set {
-    name  = "postgresql.postgresPassword"
+    name  = "postgresql.password"
     value = random_password.core_database_password.result
+  }
+  set {
+    name  = "pgpool.reservedConnections"
+    value = "0" //https://github.com/bitnami/charts/issues/4219
   }
 }
 
 # manually remove the pvc to avoid password problems
 resource "terraform_data" "remove_postgres_pvc" {
-  count = local.postgres_ha == "true" ? 1 : 0
+  count = local.postgres_ha == true ? 1 : 0
 
   provisioner "local-exec" {
     when    = destroy
