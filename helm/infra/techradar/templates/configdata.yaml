@@ -1,0 +1,708 @@
+apiVersion: v1
+data:
+  config.json: |
+    {
+      "date": "2024.07",
+      "entries": [
+        {
+          "quadrant": 2,
+          "ring": 0,
+          "label": "Java",
+          "active": true,
+          "moved": 0
+        },
+        {
+          "quadrant": 2,
+          "ring": 0,
+          "label": "Kotlin",
+          "active": true,
+          "moved": 0
+        },
+        {
+          "quadrant": 2,
+          "ring": 0,
+          "label": "Typescript",
+          "active": true,
+          "moved": 0
+        },
+        {
+          "quadrant": 2,
+          "ring": 0,
+          "label": "Spring Batch",
+          "active": true,
+          "moved": 0
+        },
+        {
+          "quadrant": 2,
+          "ring": 0,
+          "label": "Spring Boot",
+          "active": true,
+          "moved": 0
+        },
+        {
+          "quadrant": 2,
+          "ring": 0,
+          "label": "Spring Data",
+          "active": true,
+          "moved": 0
+        },
+        {
+          "quadrant": 2,
+          "ring": 3,
+          "label": "Spring Cloud",
+          "active": true,
+          "moved": 0
+        },
+        {
+          "quadrant": 2,
+          "ring": 0,
+          "label": "OpenAPI",
+          "active": true,
+          "moved": 0
+        },
+        {
+          "quadrant": 2,
+          "ring": 0,
+          "label": "Opentelemetry",
+          "active": true,
+          "moved": 0
+        },
+        {
+          "quadrant": 2,
+          "ring": 2,
+          "label": "Quarkus",
+          "active": true,
+          "moved": 0
+        },
+        {
+          "quadrant": 2,
+          "ring": 0,
+          "label": "ReactJS",
+          "active": true,
+          "moved": 0
+        },
+        {
+          "quadrant": 2,
+          "ring": 2,
+          "label": "Langchain4J",
+          "active": true,
+          "moved": 0
+        },
+        {
+          "quadrant": 2,
+          "ring": 2,
+          "label": "JobRunr",
+          "active": true,
+          "moved": 0
+        },
+        {
+          "quadrant": 2,
+          "ring": 3,
+          "label": "Lombok",
+          "active": true,
+          "moved": 0
+        },
+        {
+          "quadrant": 2,
+          "ring": 3,
+          "label": "Testcontainers",
+          "active": true,
+          "moved": 0
+        },
+
+
+        {
+          "quadrant": 1,
+          "ring": 0,
+          "label": "Kubernetes",
+          "active": true,
+          "moved": 0
+        },
+        {
+          "quadrant": 1,
+          "ring": 0,
+          "label": "Docker",
+          "active": true,
+          "moved": 0
+        },
+        {
+          "quadrant": 1,
+          "ring": 0,
+          "label": "Helm",
+          "active": true,
+          "moved": 0
+        },
+        {
+          "quadrant": 1,
+          "ring": 0,
+          "label": "Terraform",
+          "active": true,
+          "moved": 0
+        },
+        {
+          "quadrant": 1,
+          "ring": 0,
+          "label": "ArgoCD",
+          "active": true,
+          "moved": 0
+        },
+        {
+          "quadrant": 1,
+          "ring": 0,
+          "label": "Grafana",
+          "active": true,
+          "moved": 0
+        },
+        {
+          "quadrant": 1,
+          "ring": 0,
+          "label": "Loki",
+          "active": true,
+          "moved": 0
+        },
+        {
+          "quadrant": 1,
+          "ring": 0,
+          "label": "Tempo",
+          "active": true,
+          "moved": 0
+        },
+        {
+          "quadrant": 1,
+          "ring": 0,
+          "label": "Apisix Gateway",
+          "active": true,
+          "moved": 0
+        },
+        {
+          "quadrant": 1,
+          "ring": 1,
+          "label": "Kong Gateway",
+          "active": true,
+          "moved": 0
+        },
+        {
+          "quadrant": 1,
+          "ring": 1,
+          "label": "Istio Ambient Mesh",
+          "active": true,
+          "moved": 0
+        },
+        {
+          "quadrant": 1,
+          "ring": 2,
+          "label": "K6",
+          "active": true,
+          "moved": 0
+        },
+        {
+          "quadrant": 1,
+          "ring": 2,
+          "label": "Backstage",
+          "active": true,
+          "moved": 0
+        },
+        {
+          "quadrant": 1,
+          "ring": 2,
+          "label": "Renovate",
+          "active": true,
+          "moved": 0
+        },
+        {
+          "quadrant": 1,
+          "ring": 0,
+          "label": "Gradle",
+          "active": true,
+          "moved": 0
+        },
+        {
+          "quadrant": 1,
+          "ring": 3,
+          "label": "Maven",
+          "active": true,
+          "moved": 0
+        },
+        {
+          "quadrant": 1,
+          "ring": 3,
+          "label": "Ansible",
+          "active": true,
+          "moved": 0
+        },
+        {
+          "quadrant": 1,
+          "ring": 3,
+          "label": "Jenkins",
+          "active": true,
+          "moved": 0
+        },
+        {
+          "quadrant": 1,
+          "ring": 3,
+          "label": "Linkerd",
+          "active": true,
+          "moved": 0
+        },
+        {
+          "quadrant": 1,
+          "ring": 3,
+          "label": "Jaeger",
+          "active": true,
+          "moved": 0
+        },
+        {
+          "quadrant": 1,
+          "ring": 3,
+          "label": "Jmeter",
+          "active": true,
+          "moved": 0
+        },
+
+
+
+        {
+          "quadrant": 3,
+          "ring": 0,
+          "label": "Postgres",
+          "active": true,
+          "moved": 0
+        },
+        {
+          "quadrant": 3,
+          "ring": 0,
+          "label": "S3",
+          "active": true,
+          "moved": 0
+        },
+        {
+          "quadrant": 3,
+          "ring": 2,
+          "label": "Elasticsearch",
+          "active": true,
+          "moved": 0
+        },
+        {
+          "quadrant": 3,
+          "ring": 2,
+          "label": "Redis",
+          "active": true,
+          "moved": 0
+        },
+
+        {
+          "quadrant": 3,
+          "ring": 2,
+          "label": "Kafka",
+          "active": true,
+          "moved": 0
+        },
+        {
+          "quadrant": 3,
+          "ring": 2,
+          "label": "Nats",
+          "active": true,
+          "moved": 0
+        },
+        {
+          "quadrant": 3,
+          "ring": 3,
+          "label": "RabbitMQ",
+          "active": true,
+          "moved": 0
+        },
+
+
+        {
+          "quadrant": 0,
+          "ring": 0,
+          "label": "Openid Connect",
+          "active": true,
+          "moved": 0
+        },
+        {
+          "quadrant": 0,
+          "ring": 1,
+          "label": "Volume Encryption",
+          "active": true,
+          "moved": 0
+        },
+        {
+          "quadrant": 0,
+          "ring": 0,
+          "label": "Sonarqube",
+          "active": true,
+          "moved": 0
+        },
+        {
+          "quadrant": 0,
+          "ring": 1,
+          "label": "Network Policies",
+          "active": true,
+          "moved": 0
+        },
+        {
+          "quadrant": 0,
+          "ring": 2,
+          "label": "Servicemesh mTLS",
+          "active": true,
+          "moved": 0
+        },
+        {
+          "quadrant": 0,
+          "ring": 2,
+          "label": "Hashicorp Vault",
+          "active": true,
+          "moved": 0
+        },
+        {
+          "quadrant": 0,
+          "ring": 2,
+          "label": "Owasp Zap",
+          "active": true,
+          "moved": 0
+        }
+
+      ]
+    }
+  index.html: |
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <meta name="description" content="Tech Radar: a tool to visualize technology choices, inspire and support Engineering teams at Zalando to pick the best technologies for new projects">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Tech Radar</title>
+    <link rel="shortcut icon" href="https://www.zalando.de/favicon.ico">
+
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="radar.js"></script>
+
+    <link rel="stylesheet" href="radar.css">
+    </head>
+
+    <body>
+
+    <svg id="radar"></svg>
+
+    <script>
+    fetch('./config.json').then(function(response) {
+      return response.json();
+    }).then(function(data) {
+      radar_visualization({
+        repo_url: "https://github.com/zalando/tech-radar",
+        title: "Tech Radar",
+        date: data.date,
+        quadrants: [
+          { name: "Security" },
+          { name: "Infrastructure" },
+          { name: "Languages & Frameworks" },
+          { name: "Data" },
+        ],
+        rings: [
+          { name: "ADOPT", color: "#5ba300" },
+          { name: "TRIAL", color: "#009eb0" },
+          { name: "ASSESS", color: "#c7ba00" },
+          { name: "HOLD", color: "#e09b96" }
+        ],
+        entries: data.entries
+      });
+    }).catch(function(err) {
+      console.log('Error loading config.json', err);
+    });
+    </script>
+
+    <table>
+    <tr>
+    <td>
+
+    <h3>What is the Tech Radar?</h3>
+
+    <p>
+    The Zalando Tech Radar is a list of technologies, complemented by an assessment result, called <em>ring assignment</em>. We use four rings with the following semantics:
+    </p>
+
+    <ul>
+    <li><strong>ADOPT</strong> &mdash; Technologies we have high confidence in to serve our purpose, also in large scale. Technologies with a usage culture in our Zalando production environment, low risk and recommended to be widely used.</li>
+    <li><strong>TRIAL</strong> &mdash; Technologies that we have seen work with success in project work to solve a real problem; first serious usage experience that confirm benefits and can uncover limitations. TRIAL technologies are slightly more risky; some engineers in our organization walked this path and will share knowledge and experiences.</li>
+    <li><strong>ASSESS</strong> &mdash; Technologies that are promising and have clear potential value-add for us; technologies worth to invest some research and prototyping efforts in to see if it has impact. ASSESS technologies have higher risks; they are often brand new and highly unproven in our organisation. You will find some engineers that have knowledge in the technology and promote it, you may even find teams that have started a prototyping effort.</li>
+    <li><strong>HOLD</strong> &mdash; Technologies not recommended to be used for new projects. Technologies that we think are not (yet) worth to (further) invest in. HOLD technologies should not be used for new projects, but usually can be continued for existing projects.</li>
+    </ul>
+
+    </td><td>
+
+    <h3>What is the purpose?</h3>
+
+    <p>
+    The Tech Radar is a tool to inspire and support Engineering teams at Zalando to pick the best technologies for new projects; it provides a platform to share knowledge and experience in technologies, to reflect on technology decisions and continuously evolve our technology landscape. Based on the <a href="https://www.thoughtworks.com/radar">pioneering work of ThoughtWorks</a>, our Tech Radar sets out the changes in technologies that are interesting in software development &mdash; changes that we think our engineering teams should pay attention to and use in their projects.
+    </p>
+
+    <h3>How do we maintain it?</h3>
+
+    <p>
+    The Tech Radar is maintained by our <em>Principal Engineers</em> &mdash; who facilitate and drive the technology selection discussions at Zalando across the Engineering Community. Assignment of technologies to rings is the outcome of ring change proposals, which are discussed and voted on. The Tech Radar is open for contribution for all Engineering teams at Zalando and depends on their active participation to share lessons learned, pitfalls, and contribute to good practices on using the technologies.<br/>
+    </p>
+
+    <p>
+    Check out our <a href="https://engineering.zalando.com/tags/tech-radar.html">Engineering Blog</a> for more information on how we approach Technology Selection and use the Tech Radar at Zalando.
+    </p>
+
+    <p>
+    <em>BTW, if you would like to create your own Tech Radar &mdash; we have <a href="https://github.com/zalando/tech-radar">open sourced the code</a> to generate this visualization.</em>
+    </p>
+
+    </td></tr>
+    </table>
+
+    </body>
+    </html>
+  radar.css: |-
+    body {
+      font-family: 'Source Sans Pro', arial, helvetica, sans-serif;
+      padding-bottom: 50px;
+    }
+    h3 {
+      margin-top: 50px;
+    }
+    li {
+      margin: 25px 50px 0 0;
+    }
+    table {
+      width: 1400px;
+      margin: 0 50px 0 50px;
+    }
+    td {
+      width: 50%;
+      vertical-align: top;
+      padding-right: 60px;
+    }
+    .hover-underline {
+      text-decoration: none;
+    }
+    .hover-underline:hover {
+      text-decoration: underline;
+    }
+  radar.js: "// The MIT License (MIT)\n\n// Copyright (c) 2017-2024 Zalando SE\n\n//
+    Permission is hereby granted, free of charge, to any person obtaining a copy\n//
+    of this software and associated documentation files (the \"Software\"), to deal\n//
+    in the Software without restriction, including without limitation the rights\n//
+    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell\n//
+    copies of the Software, and to permit persons to whom the Software is\n// furnished
+    to do so, subject to the following conditions:\n\n// The above copyright notice
+    and this permission notice shall be included in\n// all copies or substantial
+    portions of the Software.\n\n// THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY
+    OF ANY KIND, EXPRESS OR\n// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+    OF MERCHANTABILITY,\n// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+    IN NO EVENT SHALL THE\n// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+    DAMAGES OR OTHER\n// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+    ARISING FROM,\n// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+    DEALINGS IN\n// THE SOFTWARE.\n\n\nfunction radar_visualization(config) {\n\n
+    \ config.svg_id = config.svg || \"radar\";\n  config.width = config.width || 1450;\n
+    \ config.height = config.height || 1000;\n  config.colors = (\"colors\" in config)
+    ? config.colors : {\n      background: \"#fff\",\n      grid: '#dddde0',\n      inactive:
+    \"#ddd\"\n    };\n  config.print_layout = (\"print_layout\" in config) ? config.print_layout
+    : true;\n  config.links_in_new_tabs = (\"links_in_new_tabs\" in config) ? config.links_in_new_tabs
+    : true;\n  config.repo_url = config.repo_url || '#';\n  config.print_ring_descriptions_table
+    = (\"print_ring_descriptions_table\" in config) ? config.print_ring_descriptions_table
+    : false;\n\n  // custom random number generator, to make random sequence reproducible\n
+    \ // source: https://stackoverflow.com/questions/521295\n  var seed = 42;\n  function
+    random() {\n    var x = Math.sin(seed++) * 10000;\n    return x - Math.floor(x);\n
+    \ }\n\n  function random_between(min, max) {\n    return min + random() * (max
+    - min);\n  }\n\n  function normal_between(min, max) {\n    return min + (random()
+    + random()) * 0.5 * (max - min);\n  }\n\n  // radial_min / radial_max are multiples
+    of PI\n  const quadrants = [\n    { radial_min: 0, radial_max: 0.5, factor_x:
+    1, factor_y: 1 },\n    { radial_min: 0.5, radial_max: 1, factor_x: -1, factor_y:
+    1 },\n    { radial_min: -1, radial_max: -0.5, factor_x: -1, factor_y: -1 },\n
+    \   { radial_min: -0.5, radial_max: 0, factor_x: 1, factor_y: -1 }\n  ];\n\n  const
+    rings = [\n    { radius: 130 },\n    { radius: 220 },\n    { radius: 310 },\n
+    \   { radius: 400 }\n  ];\n\n  const title_offset =\n    { x: -675, y: -420 };\n\n
+    \ const footer_offset =\n    { x: -155, y: 450 };\n\n  const legend_offset = [\n
+    \   { x: 450, y: 90 },\n    { x: -675, y: 90 },\n    { x: -675, y: -310 },\n    {
+    x: 450, y: -310 }\n  ];\n\n  function polar(cartesian) {\n    var x = cartesian.x;\n
+    \   var y = cartesian.y;\n    return {\n      t: Math.atan2(y, x),\n      r: Math.sqrt(x
+    * x + y * y)\n    }\n  }\n\n  function cartesian(polar) {\n    return {\n      x:
+    polar.r * Math.cos(polar.t),\n      y: polar.r * Math.sin(polar.t)\n    }\n  }\n\n
+    \ function bounded_interval(value, min, max) {\n    var low = Math.min(min, max);\n
+    \   var high = Math.max(min, max);\n    return Math.min(Math.max(value, low),
+    high);\n  }\n\n  function bounded_ring(polar, r_min, r_max) {\n    return {\n
+    \     t: polar.t,\n      r: bounded_interval(polar.r, r_min, r_max)\n    }\n  }\n\n
+    \ function bounded_box(point, min, max) {\n    return {\n      x: bounded_interval(point.x,
+    min.x, max.x),\n      y: bounded_interval(point.y, min.y, max.y)\n    }\n  }\n\n
+    \ function segment(quadrant, ring) {\n    var polar_min = {\n      t: quadrants[quadrant].radial_min
+    * Math.PI,\n      r: ring === 0 ? 30 : rings[ring - 1].radius\n    };\n    var
+    polar_max = {\n      t: quadrants[quadrant].radial_max * Math.PI,\n      r: rings[ring].radius\n
+    \   };\n    var cartesian_min = {\n      x: 15 * quadrants[quadrant].factor_x,\n
+    \     y: 15 * quadrants[quadrant].factor_y\n    };\n    var cartesian_max = {\n
+    \     x: rings[3].radius * quadrants[quadrant].factor_x,\n      y: rings[3].radius
+    * quadrants[quadrant].factor_y\n    };\n    return {\n      clipx: function(d)
+    {\n        var c = bounded_box(d, cartesian_min, cartesian_max);\n        var
+    p = bounded_ring(polar(c), polar_min.r + 15, polar_max.r - 15);\n        d.x =
+    cartesian(p).x; // adjust data too!\n        return d.x;\n      },\n      clipy:
+    function(d) {\n        var c = bounded_box(d, cartesian_min, cartesian_max);\n
+    \       var p = bounded_ring(polar(c), polar_min.r + 15, polar_max.r - 15);\n
+    \       d.y = cartesian(p).y; // adjust data too!\n        return d.y;\n      },\n
+    \     random: function() {\n        return cartesian({\n          t: random_between(polar_min.t,
+    polar_max.t),\n          r: normal_between(polar_min.r, polar_max.r)\n        });\n
+    \     }\n    }\n  }\n\n  // position each entry randomly in its segment\n  for
+    (var i = 0; i < config.entries.length; i++) {\n    var entry = config.entries[i];\n
+    \   entry.segment = segment(entry.quadrant, entry.ring);\n    var point = entry.segment.random();\n
+    \   entry.x = point.x;\n    entry.y = point.y;\n    entry.color = entry.active
+    || config.print_layout ?\n      config.rings[entry.ring].color : config.colors.inactive;\n
+    \ }\n\n  // partition entries according to segments\n  var segmented = new Array(4);\n
+    \ for (var quadrant = 0; quadrant < 4; quadrant++) {\n    segmented[quadrant]
+    = new Array(4);\n    for (var ring = 0; ring < 4; ring++) {\n      segmented[quadrant][ring]
+    = [];\n    }\n  }\n  for (var i=0; i<config.entries.length; i++) {\n    var entry
+    = config.entries[i];\n    segmented[entry.quadrant][entry.ring].push(entry);\n
+    \ }\n\n  // assign unique sequential id to each entry\n  var id = 1;\n  for (var
+    quadrant of [2,3,1,0]) {\n    for (var ring = 0; ring < 4; ring++) {\n      var
+    entries = segmented[quadrant][ring];\n      entries.sort(function(a,b) { return
+    a.label.localeCompare(b.label); })\n      for (var i=0; i<entries.length; i++)
+    {\n        entries[i].id = \"\" + id++;\n      }\n    }\n  }\n\n  function translate(x,
+    y) {\n    return \"translate(\" + x + \",\" + y + \")\";\n  }\n\n  function viewbox(quadrant)
+    {\n    return [\n      Math.max(0, quadrants[quadrant].factor_x * 400) - 420,\n
+    \     Math.max(0, quadrants[quadrant].factor_y * 400) - 420,\n      440,\n      440\n
+    \   ].join(\" \");\n  }\n\n  // adjust with config.scale.\n  config.scale = config.scale
+    || 1;\n  var scaled_width = config.width * config.scale;\n  var scaled_height
+    = config.height * config.scale;\n\n  var svg = d3.select(\"svg#\" + config.svg_id)\n
+    \   .style(\"background-color\", config.colors.background)\n    .attr(\"width\",
+    scaled_width)\n    .attr(\"height\", scaled_height);\n\n  var radar = svg.append(\"g\");\n
+    \ if (\"zoomed_quadrant\" in config) {\n    svg.attr(\"viewBox\", viewbox(config.zoomed_quadrant));\n
+    \ } else {\n    radar.attr(\"transform\", translate(scaled_width / 2, scaled_height
+    / 2).concat(`scale(${config.scale})`));\n  }\n\n  var grid = radar.append(\"g\");\n\n
+    \ // define default font-family\n  config.font_family = config.font_family ||
+    \"Arial, Helvetica\";\n\n  // draw grid lines\n  grid.append(\"line\")\n    .attr(\"x1\",
+    0).attr(\"y1\", -400)\n    .attr(\"x2\", 0).attr(\"y2\", 400)\n    .style(\"stroke\",
+    config.colors.grid)\n    .style(\"stroke-width\", 1);\n  grid.append(\"line\")\n
+    \   .attr(\"x1\", -400).attr(\"y1\", 0)\n    .attr(\"x2\", 400).attr(\"y2\", 0)\n
+    \   .style(\"stroke\", config.colors.grid)\n    .style(\"stroke-width\", 1);\n\n
+    \ // background color. Usage `.attr(\"filter\", \"url(#solid)\")`\n  // SOURCE:
+    https://stackoverflow.com/a/31013492/2609980\n  var defs = grid.append(\"defs\");\n
+    \ var filter = defs.append(\"filter\")\n    .attr(\"x\", 0)\n    .attr(\"y\",
+    0)\n    .attr(\"width\", 1)\n    .attr(\"height\", 1)\n    .attr(\"id\", \"solid\");\n
+    \ filter.append(\"feFlood\")\n    .attr(\"flood-color\", \"rgb(0, 0, 0, 0.8)\");\n
+    \ filter.append(\"feComposite\")\n    .attr(\"in\", \"SourceGraphic\");\n\n  //
+    draw rings\n  for (var i = 0; i < rings.length; i++) {\n    grid.append(\"circle\")\n
+    \     .attr(\"cx\", 0)\n      .attr(\"cy\", 0)\n      .attr(\"r\", rings[i].radius)\n
+    \     .style(\"fill\", \"none\")\n      .style(\"stroke\", config.colors.grid)\n
+    \     .style(\"stroke-width\", 1);\n    if (config.print_layout) {\n      grid.append(\"text\")\n
+    \       .text(config.rings[i].name)\n        .attr(\"y\", -rings[i].radius + 62)\n
+    \       .attr(\"text-anchor\", \"middle\")\n        .style(\"fill\", config.rings[i].color)\n
+    \       .style(\"opacity\", 0.35)\n        .style(\"font-family\", config.font_family)\n
+    \       .style(\"font-size\", \"42px\")\n        .style(\"font-weight\", \"bold\")\n
+    \       .style(\"pointer-events\", \"none\")\n        .style(\"user-select\",
+    \"none\");\n    }\n  }\n\n  function legend_transform(quadrant, ring, index=null)
+    {\n    var dx = ring < 2 ? 0 : 140;\n    var dy = (index == null ? -16 : index
+    * 12);\n    if (ring % 2 === 1) {\n      dy = dy + 36 + segmented[quadrant][ring-1].length
+    * 12;\n    }\n    return translate(\n      legend_offset[quadrant].x + dx,\n      legend_offset[quadrant].y
+    + dy\n    );\n  }\n\n  // draw title and legend (only in print layout)\n  if (config.print_layout)
+    {\n\n    // title\n    radar.append(\"a\")\n      .attr(\"href\", config.repo_url)\n
+    \     .attr(\"transform\", translate(title_offset.x, title_offset.y))\n      .append(\"text\")\n
+    \     .attr(\"class\", \"hover-underline\")  // add class for hover effect\n      .text(config.title)\n
+    \     .style(\"font-family\", config.font_family)\n      .style(\"font-size\",
+    \"30\")\n      .style(\"font-weight\", \"bold\")\n\n    // date\n    radar\n      .append(\"text\")\n
+    \     .attr(\"transform\", translate(title_offset.x, title_offset.y + 20))\n      .text(config.date
+    || \"\")\n      .style(\"font-family\", config.font_family)\n      .style(\"font-size\",
+    \"14\")\n      .style(\"fill\", \"#999\")\n\n    // footer\n    radar.append(\"text\")\n
+    \     .attr(\"transform\", translate(footer_offset.x, footer_offset.y))\n      .text(\"▲
+    moved up     ▼ moved down     ★ new     〇 no change\")\n      .attr(\"xml:space\",
+    \"preserve\")\n      .style(\"font-family\", config.font_family)\n      .style(\"font-size\",
+    \"12px\");\n\n    // legend\n    var legend = radar.append(\"g\");\n    for (var
+    quadrant = 0; quadrant < 4; quadrant++) {\n      legend.append(\"text\")\n        .attr(\"transform\",
+    translate(\n          legend_offset[quadrant].x,\n          legend_offset[quadrant].y
+    - 45\n        ))\n        .text(config.quadrants[quadrant].name)\n        .style(\"font-family\",
+    config.font_family)\n        .style(\"font-size\", \"18px\")\n        .style(\"font-weight\",
+    \"bold\");\n      for (var ring = 0; ring < 4; ring++) {\n        legend.append(\"text\")\n
+    \         .attr(\"transform\", legend_transform(quadrant, ring))\n          .text(config.rings[ring].name)\n
+    \         .style(\"font-family\", config.font_family)\n          .style(\"font-size\",
+    \"12px\")\n          .style(\"font-weight\", \"bold\")\n          .style(\"fill\",
+    config.rings[ring].color);\n        legend.selectAll(\".legend\" + quadrant +
+    ring)\n          .data(segmented[quadrant][ring])\n          .enter()\n            .append(\"a\")\n
+    \             .attr(\"href\", function (d, i) {\n                 return d.link
+    ? d.link : \"#\"; // stay on same page if no link was provided\n              })\n
+    \             // Add a target if (and only if) there is a link and we want new
+    tabs\n              .attr(\"target\", function (d, i) {\n                 return
+    (d.link && config.links_in_new_tabs) ? \"_blank\" : null;\n              })\n
+    \           .append(\"text\")\n              .attr(\"transform\", function(d,
+    i) { return legend_transform(quadrant, ring, i); })\n              .attr(\"class\",
+    \"legend\" + quadrant + ring)\n              .attr(\"id\", function(d, i) { return
+    \"legendItem\" + d.id; })\n              .text(function(d, i) { return d.id +
+    \". \" + d.label; })\n              .style(\"font-family\", config.font_family)\n
+    \             .style(\"font-size\", \"11px\")\n              .on(\"mouseover\",
+    function(d) { showBubble(d); highlightLegendItem(d); })\n              .on(\"mouseout\",
+    function(d) { hideBubble(d); unhighlightLegendItem(d); });\n      }\n    }\n  }\n\n
+    \ // layer for entries\n  var rink = radar.append(\"g\")\n    .attr(\"id\", \"rink\");\n\n
+    \ // rollover bubble (on top of everything else)\n  var bubble = radar.append(\"g\")\n
+    \   .attr(\"id\", \"bubble\")\n    .attr(\"x\", 0)\n    .attr(\"y\", 0)\n    .style(\"opacity\",
+    0)\n    .style(\"pointer-events\", \"none\")\n    .style(\"user-select\", \"none\");\n
+    \ bubble.append(\"rect\")\n    .attr(\"rx\", 4)\n    .attr(\"ry\", 4)\n    .style(\"fill\",
+    \"#333\");\n  bubble.append(\"text\")\n    .style(\"font-family\", config.font_family)\n
+    \   .style(\"font-size\", \"10px\")\n    .style(\"fill\", \"#fff\");\n  bubble.append(\"path\")\n
+    \   .attr(\"d\", \"M 0,0 10,0 5,8 z\")\n    .style(\"fill\", \"#333\");\n\n  function
+    showBubble(d) {\n    if (d.active || config.print_layout) {\n      var tooltip
+    = d3.select(\"#bubble text\")\n        .text(d.label);\n      var bbox = tooltip.node().getBBox();\n
+    \     d3.select(\"#bubble\")\n        .attr(\"transform\", translate(d.x - bbox.width
+    / 2, d.y - 16))\n        .style(\"opacity\", 0.8);\n      d3.select(\"#bubble
+    rect\")\n        .attr(\"x\", -5)\n        .attr(\"y\", -bbox.height)\n        .attr(\"width\",
+    bbox.width + 10)\n        .attr(\"height\", bbox.height + 4);\n      d3.select(\"#bubble
+    path\")\n        .attr(\"transform\", translate(bbox.width / 2 - 5, 3));\n    }\n
+    \ }\n\n  function hideBubble(d) {\n    var bubble = d3.select(\"#bubble\")\n      .attr(\"transform\",
+    translate(0,0))\n      .style(\"opacity\", 0);\n  }\n\n  function highlightLegendItem(d)
+    {\n    var legendItem = document.getElementById(\"legendItem\" + d.id);\n    legendItem.setAttribute(\"filter\",
+    \"url(#solid)\");\n    legendItem.setAttribute(\"fill\", \"white\");\n  }\n\n
+    \ function unhighlightLegendItem(d) {\n    var legendItem = document.getElementById(\"legendItem\"
+    + d.id);\n    legendItem.removeAttribute(\"filter\");\n    legendItem.removeAttribute(\"fill\");\n
+    \ }\n\n  // draw blips on radar\n  var blips = rink.selectAll(\".blip\")\n    .data(config.entries)\n
+    \   .enter()\n      .append(\"g\")\n        .attr(\"class\", \"blip\")\n        .attr(\"transform\",
+    function(d, i) { return legend_transform(d.quadrant, d.ring, i); })\n        .on(\"mouseover\",
+    function(d) { showBubble(d); highlightLegendItem(d); })\n        .on(\"mouseout\",
+    function(d) { hideBubble(d); unhighlightLegendItem(d); });\n\n  // configure each
+    blip\n  blips.each(function(d) {\n    var blip = d3.select(this);\n\n    // blip
+    link\n    if (d.active && Object.prototype.hasOwnProperty.call(d, \"link\") &&
+    d.link) {\n      blip = blip.append(\"a\")\n        .attr(\"xlink:href\", d.link);\n\n
+    \     if (config.links_in_new_tabs) {\n        blip.attr(\"target\", \"_blank\");\n
+    \     }\n    }\n\n    // blip shape\n    if (d.moved == 1) {\n      blip.append(\"path\")\n
+    \       .attr(\"d\", \"M -11,5 11,5 0,-13 z\") // triangle pointing up\n        .style(\"fill\",
+    d.color);\n    } else if (d.moved == -1) {\n      blip.append(\"path\")\n        .attr(\"d\",
+    \"M -11,-5 11,-5 0,13 z\") // triangle pointing down\n        .style(\"fill\",
+    d.color);\n    } else if (d.moved == 2) {\n      blip.append(\"path\")\n        .attr(\"d\",
+    d3.symbol().type(d3.symbolStar).size(200))\n        .style(\"fill\", d.color);\n
+    \   } else {\n      blip.append(\"circle\")\n        .attr(\"r\", 9)\n        .attr(\"fill\",
+    d.color);\n    }\n\n    // blip text\n    if (d.active || config.print_layout)
+    {\n      var blip_text = config.print_layout ? d.id : d.label.match(/[a-z]/i);\n
+    \     blip.append(\"text\")\n        .text(blip_text)\n        .attr(\"y\", 3)\n
+    \       .attr(\"text-anchor\", \"middle\")\n        .style(\"fill\", \"#fff\")\n
+    \       .style(\"font-family\", config.font_family)\n        .style(\"font-size\",
+    function(d) { return blip_text.length > 2 ? \"8px\" : \"9px\"; })\n        .style(\"pointer-events\",
+    \"none\")\n        .style(\"user-select\", \"none\");\n    }\n  });\n\n  // make
+    sure that blips stay inside their segment\n  function ticked() {\n    blips.attr(\"transform\",
+    function(d) {\n      return translate(d.segment.clipx(d), d.segment.clipy(d));\n
+    \   })\n  }\n\n  // distribute blips, while avoiding collisions\n  d3.forceSimulation()\n
+    \   .nodes(config.entries)\n    .velocityDecay(0.19) // magic number (found by
+    experimentation)\n    .force(\"collision\", d3.forceCollide().radius(12).strength(0.85))\n
+    \   .on(\"tick\", ticked);\n\n  function ringDescriptionsTable() {\n    var table
+    = d3.select(\"body\").append(\"table\")\n      .attr(\"class\", \"radar-table\")\n
+    \     .style(\"border-collapse\", \"collapse\")\n      .style(\"margin-top\",
+    \"20px\")\n      .style(\"margin-left\", \"50px\")\n      .style(\"margin-right\",
+    \"50px\")\n      .style(\"font-family\", config.font_family)\n      .style(\"font-size\",
+    \"13px\")\n      .style(\"text-align\", \"left\");\n  \n    var thead = table.append(\"thead\");\n
+    \   var tbody = table.append(\"tbody\");\n  \n    // define fixed width for each
+    column\n    var columnWidth = `${100 / config.rings.length}%`;\n  \n    // create
+    table header row with ring names\n    var headerRow = thead.append(\"tr\")\n      .style(\"border\",
+    \"1px solid #ddd\");\n  \n    headerRow.selectAll(\"th\")\n      .data(config.rings)\n
+    \     .enter()\n      .append(\"th\")\n      .style(\"padding\", \"8px\")\n      .style(\"border\",
+    \"1px solid #ddd\")\n      .style(\"background-color\", d => d.color)\n      .style(\"color\",
+    \"#fff\")\n      .style(\"width\", columnWidth)\n      .text(d => d.name);\n  \n
+    \   // create table body row with descriptions\n    var descriptionRow = tbody.append(\"tr\")\n
+    \     .style(\"border\", \"1px solid #ddd\");\n  \n    descriptionRow.selectAll(\"td\")\n
+    \     .data(config.rings)\n      .enter()\n      .append(\"td\")\n      .style(\"padding\",
+    \"8px\")\n      .style(\"border\", \"1px solid #ddd\")\n      .style(\"width\",
+    columnWidth)\n      .text(d => d.description);\n  }\n\n  if (config.print_ring_descriptions_table)
+    {\n    ringDescriptionsTable();\n  }\n}\n"
+kind: ConfigMap
+metadata:
+  creationTimestamp: "2024-06-30T16:24:44Z"
+  name: tech-radar-data-files
+  namespace: dashboard
+  resourceVersion: "27090484"
+  uid: a72b1595-9060-4488-bf96-3f2429c4657e

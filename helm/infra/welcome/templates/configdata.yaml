@@ -44,12 +44,14 @@ data:
     target=\"_blank\">\n                        <span>⛵ Istio Dashboard</span>\n                    </a>\n
     \               </li>\n                <p></p>\n                <li>\n                    <a
     href=\"/oidc/\" target=\"_blank\">\n                        <span>\U0001F510 Keycloak</span>\n
-    \                   </a>\n                </li>\n                <p></p>\n                <a
-    href=\"/sonar/\" target=\"_blank\">\n                    <span>\U0001F4E1 Sonarqube</span>\n
-    \               </a>\n            </ul>\n        </div>\n        <div class=\"links\">\n
-    \           <h6>Core</h6>\n            <ul>\n                <p></p>\n                <li>\n
-    \                   <a href=\"/core-frontend/frontend/\" target=\"_blank\">\n
-    \                       <span>\U0001F30D Core</span>\n                    </a>\n
+    \                   </a>\n                </li>\n                <p></p>\n                <li>\n
+    \                   <a href=\"/techradar/\" target=\"_blank\">\n                        <span>\U0001F4E1
+    Tech Radar</span>\n                    </a>\n                </li>\n                <li>\n
+    \                   <a href=\"/sonar/\" target=\"_blank\">\n                        <span>\U0001F4E1
+    Sonarqube</span>\n                    </a>\n                </li>\n            </ul>\n
+    \       </div>\n        <div class=\"links\">\n            <h6>Core</h6>\n            <ul>\n
+    \               <p></p>\n                <li>\n                    <a href=\"/core-frontend/frontend/\"
+    target=\"_blank\">\n                        <span>\U0001F30D Core</span>\n                    </a>\n
     \                   <a href=\"/core-frontend/logout\" target=\"_blank\">\n                        <span>\U0001F513</span>\n
     \                   </a>\n                </li>\n                <li>\n                    <a
     href=\"/catalog/\" target=\"_blank\">\n                        <span>\U0001F4D9
@@ -74,8 +76,8 @@ data:
     \       </div>\n    </div>\n</div>\n\n</body>\n"
 kind: ConfigMap
 metadata:
-  creationTimestamp: "2024-06-28T07:02:40Z"
+  creationTimestamp: "2024-06-30T16:20:52Z"
   name: welcome-board-data-files
   namespace: dashboard
-  resourceVersion: "26431061"
-  uid: a38a3747-db79-45d0-97a7-207df4ddf5db
+  resourceVersion: "27089335"
+  uid: d2405e10-112d-451b-98ab-e05147301278
