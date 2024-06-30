@@ -52,6 +52,13 @@
     },
     {
       "quadrant": 2,
+      "ring": 3,
+      "label": "Spring Integration",
+      "active": true,
+      "moved": 0
+    },
+    {
+      "quadrant": 2,
       "ring": 0,
       "label": "OpenAPI",
       "active": true,
@@ -281,7 +288,7 @@
     },
     {
       "quadrant": 3,
-      "ring": 2,
+      "ring": 1,
       "label": "Redis",
       "active": true,
       "moved": 0

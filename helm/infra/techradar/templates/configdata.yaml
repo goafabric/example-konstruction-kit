@@ -55,6 +55,13 @@ data:
         },
         {
           "quadrant": 2,
+          "ring": 3,
+          "label": "Spring Integration",
+          "active": true,
+          "moved": 0
+        },
+        {
+          "quadrant": 2,
           "ring": 0,
           "label": "OpenAPI",
           "active": true,
@@ -284,7 +291,7 @@ data:
         },
         {
           "quadrant": 3,
-          "ring": 2,
+          "ring": 1,
           "label": "Redis",
           "active": true,
           "moved": 0
@@ -701,8 +708,8 @@ data:
     {\n    ringDescriptionsTable();\n  }\n}\n"
 kind: ConfigMap
 metadata:
-  creationTimestamp: "2024-06-30T16:24:44Z"
+  creationTimestamp: "2024-06-30T16:31:00Z"
   name: tech-radar-data-files
   namespace: dashboard
-  resourceVersion: "27090484"
-  uid: a72b1595-9060-4488-bf96-3f2429c4657e
+  resourceVersion: "27091933"
+  uid: d992d66f-edd6-4bcb-baef-fd7fc1eea3c0
