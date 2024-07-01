@@ -113,6 +113,13 @@
       "active": true,
       "moved": 0
     },
+    {
+      "quadrant": 2,
+      "ring": 3,
+      "label": "GraphQL",
+      "active": true,
+      "moved": 0
+    },
 
 
     {

@@ -116,6 +116,13 @@ data:
           "active": true,
           "moved": 0
         },
+        {
+          "quadrant": 2,
+          "ring": 3,
+          "label": "GraphQL",
+          "active": true,
+          "moved": 0
+        },
 
 
         {
@@ -715,8 +722,8 @@ data:
     {\n    ringDescriptionsTable();\n  }\n}\n"
 kind: ConfigMap
 metadata:
-  creationTimestamp: "2024-07-01T05:46:37Z"
+  creationTimestamp: "2024-07-01T05:53:40Z"
   name: tech-radar-data-files
   namespace: dashboard
-  resourceVersion: "27244103"
-  uid: 11547d4b-a4e9-4d52-99d9-4dd7259be937
+  resourceVersion: "27245679"
+  uid: 794125b4-c121-4dec-b749-c5329f847f2b
