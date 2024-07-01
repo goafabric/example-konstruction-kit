@@ -39,8 +39,10 @@ spec:
       {{ if eq .Values.dispatcher.profile "nats" }}
       initContainers:
         - name: wait-for-broker
-          image: busybox:stable
-          command: ['sh', '-c', 'until nc -z nats.event 4222; do echo waiting for broker; sleep 1; done;']
+          image: curlimages/curl:7.83.1
+          command: ['sh', '-c', 'until curl -s nats.event:8222/healthz | grep -q "\"status\":\"ok\""; do echo waiting for broker; sleep 1; done']
+#          image: busybox:stable
+#          command: ['sh', '-c', 'until nc -z nats.event 4222; do echo waiting for broker; sleep 1; done;']
       {{- end }}
 
       {{ if .Values.image.pullSecrets }}
