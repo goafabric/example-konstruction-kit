@@ -8,7 +8,7 @@ resource "helm_release" "event-dispatcher-service-application" {
 
   set {
     name  = "replicaCount"
-    value = "1"
+    value = "2"
   }
   set {
     name  = "ingress.hosts"
