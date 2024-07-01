@@ -21,5 +21,5 @@ locals {
   oidc_enabled = local.production_mode
 
   messageBroker_replica_count = "2"  #this is not meant for production ! here we should at least have 3 instances
-  dispatcher_profile = "kafka" #kafka
+  dispatcher_profile = "nats" #kafka
 }
