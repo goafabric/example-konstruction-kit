@@ -29,7 +29,6 @@ resource "helm_release" "nats" {
     value = "2Gi"
   }
 
-
   set {
     name = "auth.enabled"
     value = false
