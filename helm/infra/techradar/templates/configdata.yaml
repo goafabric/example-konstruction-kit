@@ -1,4 +1,6 @@
 apiVersion: v1
+binaryData:
+  favicon.ico: iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2JpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0idXVpZDpFRTE2MTIxNzQ3RUVERTExQkM5RkE3MDBBNkY0RDhDMSIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDpGMUMxRDM5QjBGNzAxMUUzODE3RkU5MEMxMzBDODE2MCIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpGMUMxRDM5QTBGNzAxMUUzODE3RkU5MEMxMzBDODE2MCIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M2IChNYWNpbnRvc2gpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6MkRDNDcwNzY0NDIwNjgxMTgyMkFFRkMyQjhBOEY0MEIiIHN0UmVmOmRvY3VtZW50SUQ9InV1aWQ6RUUxNjEyMTc0N0VFREUxMUJDOUZBNzAwQTZGNEQ4QzEiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz4SMlYtAAACRUlEQVR42oyTXUiTYRTH/+9a9jGTZvMjZZuVzhGrnEmNGmkZVFBESFdhgpYX4VUlUSnRVRfSRVIXQkJB1EWRUFBUOC1mRSNyi+xDg2hbCzc/2ObXyK3/8/a+gZXmgR/PeT7+D+c55zlSzfUy/GFrSS3ZRQpIggyQDnKFxMhe8oIMaYTi2mGPGLSkhbwlJ4iNpJNMsolcIF6yjlwkx4ROUiKQyG1Shf/bhC4tY8lYIhqkb9Ioi2fmKYYQH995CQs02nxOneICE2mejzg3w4ymPe1YY7DBlucQS5Xi3TVk0VzC/OWrsa1wPyqtB6HVLJTXNpoq4A24nVolozPMqC+C3ViO4pwSmPQWLFusn7GfSiVRmLVeuFZxwSp1Y4VuJeqd5ym0zxpNOP4NBl0uDOl5YmrQKKWSrXbL2TnFE4k4fMEeSJJGfUpSXBBQDxTnlM4qHhoL4fLTUyg1VvyKJCaqiC/igpfqocFY4C/hdPIHXB/voPn+IWy3VEG/NEtef+3vEoNL5OAqqRazjt42HNl6Tg5xMOpHb8CN7v67GB2P8HlNKDPvkMWxyRE8fHdDuLfUn3iP7CvK3sC3peH9d8/vCES2qzc3wpxpleeReAit3SfxdfjTB9E3WuVcnSXb/ur07rYCib+65UkDopPDOFBSL+dlfCqGN/5n8AbdeP75ARLTU0lqGtgLKa3STOGBsK+ObqdcZyThH+lHa1fjv/I5So5S06l2oBqqi4PjUd9NR1/II2pZrnxzkegI8ZHHpJ3iiKr7KcAAO/GrgtdfsmsAAAAASUVORK5CYII=
 data:
   config.json: |
     {
@@ -382,7 +384,15 @@ data:
           "label": "Owasp Zap",
           "active": true,
           "moved": 0
+        },
+        {
+          "quadrant": 0,
+          "ring": 3,
+          "label": "JWT Self Creation",
+          "active": true,
+          "moved": 0
         }
+
 
       ]
     }
@@ -392,10 +402,10 @@ data:
 
     <head>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
-    <meta name="description" content="Tech Radar: a tool to visualize technology choices, inspire and support Engineering teams at Zalando to pick the best technologies for new projects">
+    <meta name="description" content="Tech Radar: a tool to visualize technology choices, inspire and support Engineering teams to pick the best technologies for new projects">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Tech Radar</title>
-    <link rel="shortcut icon" href="https://www.zalando.de/favicon.ico">
+    <link rel="shortcut icon" href="favicon.ico">
 
     <script src="https://d3js.org/d3.v4.min.js"></script>
     <script src="radar.js"></script>
@@ -441,7 +451,7 @@ data:
     <h3>What is the Tech Radar?</h3>
 
     <p>
-    The Zalando Tech Radar is a list of technologies, complemented by an assessment result, called <em>ring assignment</em>. We use four rings with the following semantics:
+    The Tech Radar is a list of technologies, complemented by an assessment result, called <em>ring assignment</em>. We use four rings with the following semantics:
     </p>
 
     <ul>
@@ -456,17 +466,17 @@ data:
     <h3>What is the purpose?</h3>
 
     <p>
-    The Tech Radar is a tool to inspire and support Engineering teams at Zalando to pick the best technologies for new projects; it provides a platform to share knowledge and experience in technologies, to reflect on technology decisions and continuously evolve our technology landscape. Based on the <a href="https://www.thoughtworks.com/radar">pioneering work of ThoughtWorks</a>, our Tech Radar sets out the changes in technologies that are interesting in software development &mdash; changes that we think our engineering teams should pay attention to and use in their projects.
+    The Tech Radar is a tool to inspire and support Engineering teams to pick the best technologies for new projects; it provides a platform to share knowledge and experience in technologies, to reflect on technology decisions and continuously evolve our technology landscape. Based on the <a href="https://www.thoughtworks.com/radar">pioneering work of ThoughtWorks</a>, our Tech Radar sets out the changes in technologies that are interesting in software development &mdash; changes that we think our engineering teams should pay attention to and use in their projects.
     </p>
 
     <h3>How do we maintain it?</h3>
 
     <p>
-    The Tech Radar is maintained by our <em>Principal Engineers</em> &mdash; who facilitate and drive the technology selection discussions at Zalando across the Engineering Community. Assignment of technologies to rings is the outcome of ring change proposals, which are discussed and voted on. The Tech Radar is open for contribution for all Engineering teams at Zalando and depends on their active participation to share lessons learned, pitfalls, and contribute to good practices on using the technologies.<br/>
+    The Tech Radar is maintained by our <em>Principal Engineers</em> &mdash; who facilitate and drive the technology selection discussions across the Engineering Community. Assignment of technologies to rings is the outcome of ring change proposals, which are discussed and voted on. The Tech Radar is open for contribution for all Engineering teams and depends on their active participation to share lessons learned, pitfalls, and contribute to good practices on using the technologies.<br/>
     </p>
 
     <p>
-    Check out our <a href="https://engineering.zalando.com/tags/tech-radar.html">Engineering Blog</a> for more information on how we approach Technology Selection and use the Tech Radar at Zalando.
+    Check out our <a href="https://engineering.zalando.com/tags/tech-radar.html">Engineering Blog</a> for more information on how we approach Technology Selection and use the Tech Radar.
     </p>
 
     <p>
@@ -722,8 +732,8 @@ data:
     {\n    ringDescriptionsTable();\n  }\n}\n"
 kind: ConfigMap
 metadata:
-  creationTimestamp: "2024-07-01T05:53:40Z"
+  creationTimestamp: "2024-07-01T07:41:17Z"
   name: tech-radar-data-files
   namespace: dashboard
-  resourceVersion: "27245679"
-  uid: 794125b4-c121-4dec-b749-c5329f847f2b
+  resourceVersion: "27266867"
+  uid: 778d6844-3b2c-4c22-9f46-fd6f99ae8cc7

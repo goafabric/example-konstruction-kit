@@ -379,7 +379,15 @@
       "label": "Owasp Zap",
       "active": true,
       "moved": 0
+    },
+    {
+      "quadrant": 0,
+      "ring": 3,
+      "label": "JWT Self Creation",
+      "active": true,
+      "moved": 0
     }
+
 
   ]
 }
