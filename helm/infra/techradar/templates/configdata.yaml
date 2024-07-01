@@ -323,6 +323,13 @@ data:
         {
           "quadrant": 0,
           "ring": 0,
+          "label": "Certificate Manager",
+          "active": true,
+          "moved": 0
+        },
+        {
+          "quadrant": 0,
+          "ring": 0,
           "label": "Openid Connect",
           "active": true,
           "moved": 0
@@ -708,8 +715,8 @@ data:
     {\n    ringDescriptionsTable();\n  }\n}\n"
 kind: ConfigMap
 metadata:
-  creationTimestamp: "2024-06-30T16:31:00Z"
+  creationTimestamp: "2024-07-01T05:46:37Z"
   name: tech-radar-data-files
   namespace: dashboard
-  resourceVersion: "27091933"
-  uid: d992d66f-edd6-4bcb-baef-fd7fc1eea3c0
+  resourceVersion: "27244103"
+  uid: 11547d4b-a4e9-4d52-99d9-4dd7259be937
