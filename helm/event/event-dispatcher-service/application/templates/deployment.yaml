@@ -36,6 +36,13 @@ spec:
           command: ['sh', '-c', 'until nc -z rabbitmq 5672; do echo waiting for broker; sleep 1; done;']
       {{- end }}
 
+      {{ if eq .Values.dispatcher.profile "nats" }}
+      initContainers:
+        - name: wait-for-broker
+          image: busybox:stable
+          command: ['sh', '-c', 'until nc -z nats.event 4222; do echo waiting for broker; sleep 1; done;']
+      {{- end }}
+
       {{ if .Values.image.pullSecrets }}
       imagePullSecrets:
         - name: {{ .Values.image.pullSecrets }}

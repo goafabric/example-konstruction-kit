@@ -39,6 +39,8 @@ data:
   spring.kafka.properties.sasl.mechanism: "PLAIN"
   spring.kafka.properties.sasl.jaas.config: org.apache.kafka.common.security.plain.PlainLoginModule required username="${spring.kafka.username}" password="${spring.kafka.password}";
 
+  #nats
+  nats.spring.server: "nats.event:4222"
   #spring.kafka.consumer.properties.partition.assignment.strategy: "org.apache.kafka.clients.consumer.RoundRobinAssignor"
 
   #profile
