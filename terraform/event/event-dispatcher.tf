@@ -26,8 +26,8 @@ resource "helm_release" "event-dispatcher-service-application" {
     name = "dispatcher.profile"
     value = local.dispatcher_profile
   }
-  set {
-    name  = "image.arch"
-    value = local.dispatcher_profile == "kafka" ? "-native${local.server_arch}" : ""
-  }
+#   set {
+#     name  = "image.arch"
+#     value = local.dispatcher_profile == "kafka" ? "-native${local.server_arch}" : ""
+#   }
 }
