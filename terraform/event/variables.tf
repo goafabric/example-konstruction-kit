@@ -21,5 +21,5 @@ locals {
   oidc_enabled = local.production_mode
 
   messageBroker_replica_count = "3"
-  dispatcher_profile = "kafka" #kafka
+  dispatcher_profile = "nats" #kafka
 }
