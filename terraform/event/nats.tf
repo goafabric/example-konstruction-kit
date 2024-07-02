@@ -2,49 +2,35 @@ resource "helm_release" "nats" {
   count = local.dispatcher_profile == "nats" ? 1 : 0
 
   name       = "nats"
-  repository = "https://charts.bitnami.com/bitnami"
+  repository = "https://nats-io.github.io/k8s/helm/charts/"
   chart      = "nats"
-  version    = "8.2.9"
+  version    = "1.2.0"
   namespace  = "event"
   create_namespace = false
 
+
   set {
-    name = "replicaCount"
-    value = "2" #local.messageBroker_replica_count
-  }
-  set {
-    name = "jetstream.enabled"
+    name = "config.cluster.enabled"
     value = true
   }
   set {
-    name  = "persistence.enabled"
+    name = "config.cluster.replicas"
+    value = "2"
+  }
+  set {
+    name = "config.jetstream.enabled"
     value = true
   }
   set {
-    name  = "resourceType"
-    value = "statefulset"
-  }
-  set {
-    name  = "persistence.size"
+    name = "config.jetstream.fileStore.pvc.size"
     value = "2Gi"
   }
 
-  set {
-    name = "auth.enabled"
-    value = false
-  }
-  set {
-    name = "auth.user"
-    value = "nats_client"
-  }
-  set {
-    name = "auth.password"
-    value = random_password.messageBroker_password.result
-  }
+  
 
 }
 
-# manually remove the pvc to avoid password problems
+#manually remove the pvc to avoid password problems
 resource "terraform_data" "remove_nats_pvc" {
   count = local.dispatcher_profile == "nats" ? 1 : 0
 
