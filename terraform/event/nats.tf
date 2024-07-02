@@ -15,7 +15,7 @@ resource "helm_release" "nats" {
   }
   set {
     name = "config.cluster.replicas"
-    value = "2"
+    value = "3"
   }
   set {
     name = "config.jetstream.enabled"
@@ -25,9 +25,6 @@ resource "helm_release" "nats" {
     name = "config.jetstream.fileStore.pvc.size"
     value = "2Gi"
   }
-
-  
-
 }
 
 #manually remove the pvc to avoid password problems

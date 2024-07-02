@@ -40,7 +40,7 @@ spec:
       initContainers:
         - name: wait-for-broker
           image: curlimages/curl:7.83.1
-          command: ['sh', '-c', 'until curl -s nats.event:8222/healthz | grep -q "\"status\":\"ok\""; do echo waiting for broker; sleep 1; done']
+          command: ['sh', '-c', 'until curl -s nats-headless.event:8222/healthz | grep -q "\"status\":\"ok\""; do echo waiting for broker; sleep 1; done']
       {{- end }}
 
       {{ if .Values.image.pullSecrets }}
