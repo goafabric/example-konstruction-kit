@@ -25,6 +25,15 @@ resource "helm_release" "nats" {
     name = "config.jetstream.fileStore.pvc.size"
     value = "2Gi"
   }
+
+#   set {
+#     name = "config.merge.authorization.user"
+#     value = "<< nats_client >>"
+#   }
+#   set {
+#     name = "config.merge.authorization.password"
+#     value = "<< ${random_password.messageBroker_password.result} >>"
+#   }
 }
 
 #manually remove the pvc to avoid password problems
