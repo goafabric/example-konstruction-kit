@@ -36,6 +36,8 @@ data:
   spring.kafka.template.observation-enabled: "true"
   spring.kafka.listener.observation-enabled: "true"
 
+  #spring.kafka.consumer.properties.partition.assignment.strategy: "org.apache.kafka.clients.consumer.RoundRobinAssignor"
+
   #nats
   nats.spring.server: "nats-headless.event:4222"
 
