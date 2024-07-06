@@ -26,14 +26,14 @@ resource "helm_release" "nats" {
     value = "2Gi"
   }
 
-#   set {
-#     name = "config.merge.authorization.user"
-#     value = "<< nats_client >>"
-#   }
-#   set {
-#     name = "config.merge.authorization.password"
-#     value = "<< ${random_password.messageBroker_password.result} >>"
-#   }
+  set {
+    name = "config.merge.authorization.user"
+    value = "<< nats_client >>"
+  }
+  set {
+    name = "config.merge.authorization.password"
+    value = "<< ${random_password.messageBroker_password.result} >>"
+  }
 }
 
 #manually remove the pvc to avoid password problems

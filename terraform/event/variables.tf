@@ -20,6 +20,6 @@ locals {
   production_mode = !strcontains(var.hostname, ".local")
   oidc_enabled = local.production_mode
 
-  messageBroker_replica_count = "3"
+  messageBroker_replica_count = "2"
   dispatcher_profile = "nats" #kafka
 }
