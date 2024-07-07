@@ -25,6 +25,10 @@ resource "helm_release" "nats" {
     name = "config.jetstream.fileStore.pvc.size"
     value = "2Gi"
   }
+  set {
+    name = "service.ports.monitor.enabled"
+    value = true
+  }
 
   set {
     name = "config.merge.authorization.user"
