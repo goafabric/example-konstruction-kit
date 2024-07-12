@@ -10,7 +10,7 @@ resource "helm_release" "kafka" {
 
   set {
     name = "controller.replicaCount"
-    value = local.messageBroker_replica_count
+    value = local.kafka_replica_count
   }
   set {
     name  = "persistence.size"
@@ -19,8 +19,8 @@ resource "helm_release" "kafka" {
   set {
     name  = "extraConfig"
     value = <<-EOT
-      offsets.topic.replication.factor=${local.messageBroker_replica_count}
-      transaction.state.log.replication.factor=${local.messageBroker_replica_count}
+      offsets.topic.replication.factor=${local.kafka_replica_count}
+      transaction.state.log.replication.factor=${local.kafka_replica_count}
     EOT
   }
   set {

@@ -15,7 +15,7 @@ resource "helm_release" "nats" {
   }
   set {
     name = "config.cluster.replicas"
-    value = local.messageBroker_replica_count
+    value = local.nats_replica_count
   }
   set {
     name = "config.jetstream.enabled"
