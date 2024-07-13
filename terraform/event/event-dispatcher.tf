@@ -28,6 +28,6 @@ resource "helm_release" "event-dispatcher-service-application" {
   }
   set {
     name  = "image.arch"
-    value = local.dispatcher_profile == "nats" ? "-native${local.server_arch}" : ""
+    value = local.dispatcher_profile == "kafka" ? "-native${local.server_arch}" : ""
   }
 }

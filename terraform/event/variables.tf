@@ -22,5 +22,5 @@ locals {
 
   nats_replica_count = "2"
   kafka_replica_count = "1" #for production this should be 3
-  dispatcher_profile = "nats" #kafka
+  dispatcher_profile = "kafka" #nats
 }
