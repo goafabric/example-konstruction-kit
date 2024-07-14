@@ -43,3 +43,11 @@ resource "helm_release" "cert-manager-issuer" {
     value = var.hostname
   }
 }
+
+resource "terraform_data" "remove_certificate_secrets" {
+
+  provisioner "local-exec" {
+    when = destroy
+    command = "kubectl get namespaces -o jsonpath='{.items[*].metadata.name}' | xargs -n 1 -I{} kubectl delete secret root-certificate --ignore-not-found -n {}"
+  }
+}
