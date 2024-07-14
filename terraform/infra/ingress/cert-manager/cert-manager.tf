@@ -1,3 +1,4 @@
+# kubectl describe certificaterequest cluster-ca-1 -n cert-manager
 resource "helm_release" "cert-manager" {
   name       = "cert-manager"
   repository = "https://charts.jetstack.io"
