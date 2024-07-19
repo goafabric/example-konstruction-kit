@@ -1,5 +1,5 @@
-# div
-- autoscale
+# build 
+- SBOM, Archunit, Renovate
 
 # security
 - secrets via vault
