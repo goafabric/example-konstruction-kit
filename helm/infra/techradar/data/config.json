@@ -303,10 +303,10 @@
 
     {
       "quadrant": 3,
-      "ring": 2,
+      "ring": 1,
       "label": "Kafka",
       "active": true,
-      "moved": 0
+      "moved": 1
     },
     {
       "quadrant": 3,
@@ -314,14 +314,14 @@
       "label": "Nats",
       "link": "http://nats.io",
       "active": true,
-      "moved": 0
+      "moved": -1
     },
     {
       "quadrant": 3,
       "ring": 3,
       "label": "RabbitMQ",
       "active": true,
-      "moved": 0
+      "moved": -1
     },
 
 
@@ -383,10 +383,10 @@
     },
     {
       "quadrant": 0,
-      "ring": 3,
-      "label": "JWT Self Creation",
+      "ring": 2,
+      "label": "Software Bill of Material",
       "active": true,
-      "moved": 0
+      "moved": 2
     }
 
 

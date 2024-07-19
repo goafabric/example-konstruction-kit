@@ -308,24 +308,25 @@ data:
 
         {
           "quadrant": 3,
-          "ring": 2,
+          "ring": 1,
           "label": "Kafka",
           "active": true,
-          "moved": 0
+          "moved": 1
         },
         {
           "quadrant": 3,
-          "ring": 2,
+          "ring": 3,
           "label": "Nats",
+          "link": "http://nats.io",
           "active": true,
-          "moved": 0
+          "moved": -1
         },
         {
           "quadrant": 3,
           "ring": 3,
           "label": "RabbitMQ",
           "active": true,
-          "moved": 0
+          "moved": -1
         },
 
 
@@ -387,10 +388,10 @@ data:
         },
         {
           "quadrant": 0,
-          "ring": 3,
-          "label": "JWT Self Creation",
+          "ring": 2,
+          "label": "Software Bill of Material",
           "active": true,
-          "moved": 0
+          "moved": 2
         }
 
 
@@ -732,8 +733,8 @@ data:
     {\n    ringDescriptionsTable();\n  }\n}\n"
 kind: ConfigMap
 metadata:
-  creationTimestamp: "2024-07-02T05:42:57Z"
+  creationTimestamp: "2024-07-19T10:45:58Z"
   name: tech-radar-data-files
   namespace: dashboard
-  resourceVersion: "116620"
-  uid: b2a2e108-08f0-4882-a01b-7bbe486f6ceb
+  resourceVersion: "32262254"
+  uid: 24d0f71c-ed90-4b0c-af8f-74e6a852aed1

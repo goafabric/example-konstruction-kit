@@ -1,5 +1,5 @@
 # build 
-- SBOM, Archunit, Renovate
+- Archunit, Renovate
 
 # security
 - secrets via vault
