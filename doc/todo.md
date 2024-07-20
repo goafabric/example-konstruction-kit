@@ -1,5 +1,6 @@
 # build 
-- Archunit, Renovate
+- Archunit, noLombok, noReflection, Validated 
+- Renovate
 
 # security
 - secrets via vault
