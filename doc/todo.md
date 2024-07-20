@@ -1,5 +1,4 @@
-# build 
-- Archunit, noLombok, noReflection, Validated 
+# build
 - Renovate
 
 # security
