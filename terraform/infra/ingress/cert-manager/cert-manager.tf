@@ -17,10 +17,10 @@ resource "helm_release" "cert-manager" {
     value = "false"
   }
 
-  set {
-    name  = "extraArgs[0]"
-    value = "--enable-certificate-owner-ref"
-  }
+#   set {
+#     name  = "extraArgs[0]"
+#     value = "--enable-certificate-owner-ref"
+#   }
 
 #   set {
 #     name  = "startupapicheck.enabled"
