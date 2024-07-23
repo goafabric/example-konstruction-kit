@@ -36,5 +36,10 @@ service:
   type: ClusterIP
   port: 8080
 
+initContainers:
+  - name: wait-for-broker
+    image: busybox:stable
+    command: ['sh', '-c', 'until nc -z kafka 9092; do echo waiting for broker; sleep 1; done;']
+
 oidc:
   enabled:

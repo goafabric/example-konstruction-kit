@@ -22,19 +22,10 @@ spec:
       labels:
         {{- include "application.selectorLabels" . | nindent 8 }}
     spec:
-      {{ if eq .Values.dispatcher.profile "kafka" }}
+      {{- with .Values.initContainers }}
       initContainers:
-        - name: wait-for-broker
-          image: busybox:stable
-          command: ['sh', '-c', 'until nc -z kafka 9092; do echo waiting for broker; sleep 1; done;']
-      {{- end }}
-
-      {{ if eq .Values.dispatcher.profile "nats" }}
-      initContainers:
-        - name: wait-for-broker
-          image: curlimages/curl:7.83.1
-          command: ['sh', '-c', 'until curl -s nats.event:8222/healthz | grep -q "\"status\":\"ok\""; do echo waiting for broker; sleep 1; done']
-      {{- end }}
+        {{- toYaml . | nindent 8 }}
+          {{- end }}
 
       {{ if .Values.image.pullSecrets }}
       imagePullSecrets:
