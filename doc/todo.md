@@ -1,5 +1,5 @@
-# div
-- autoscale
+# build
+- Renovate
 
 # security
 - secrets via vault

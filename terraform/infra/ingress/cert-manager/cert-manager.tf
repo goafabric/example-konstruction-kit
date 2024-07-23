@@ -1,9 +1,10 @@
+# kubectl describe certificaterequest cluster-ca-1 -n cert-manager
 resource "helm_release" "cert-manager" {
   name       = "cert-manager"
   repository = "https://charts.jetstack.io"
   chart      = "cert-manager"
   namespace  = "cert-manager"
-  version    = "v1.14.4"
+  version    = "v1.15.1"
   create_namespace = false
 
   set {
@@ -41,5 +42,13 @@ resource "helm_release" "cert-manager-issuer" {
   set {
     name  = "ingress.hosts"
     value = var.hostname
+  }
+}
+
+resource "terraform_data" "remove_certificate_secrets" {
+
+  provisioner "local-exec" {
+    when = destroy
+    command = "kubectl get namespaces -o jsonpath='{.items[*].metadata.name}' | xargs -n 1 -I{} kubectl delete secret root-certificate --ignore-not-found -n {}"
   }
 }

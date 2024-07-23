@@ -30,4 +30,8 @@ resource "helm_release" "prometheus" {
     name = "server.global.evaluation_interval"
     value = "1m"
   }
+#   set {
+#     name = "server.resources.limits.memory"
+#     value = "512Mi"
+#   }
 }

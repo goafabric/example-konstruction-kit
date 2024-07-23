@@ -3,7 +3,7 @@ variable "hostname" {
 }
 
 variable "helm_timeout" {
-  default = 90
+  default = 120
 }
 
 variable "helm_repository" {
@@ -20,6 +20,7 @@ locals {
   production_mode = !strcontains(var.hostname, ".local")
   oidc_enabled = local.production_mode
 
-  messageBroker_replica_count = "1"  #this is not meant for production ! here we should at least have 3 instances
-  dispatcher_profile = "kafka" #rabbitmq
+  nats_replica_count = "2"
+  kafka_replica_count = "1" #for production this should be 3
+  dispatcher_profile = "kafka" #nats
 }

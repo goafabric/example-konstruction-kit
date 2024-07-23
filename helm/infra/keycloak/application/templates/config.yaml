@@ -19,4 +19,4 @@ data:
   KC_DB: "postgres"
   KC_DB_URL: "jdbc:postgresql://keycloak-postgres/keycloak"
 
-  KC_LOG_LEVEL: "DEBUG"
+  KC_LOG_LEVEL: "INFO"

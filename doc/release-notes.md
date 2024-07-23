@@ -1,3 +1,7 @@
+# 1.3.4
+- back to stable invoice release
+- Tech Radar added
+
 # 1.3.3
 - kong oidc integration
 - autoscaler integration

@@ -1,0 +1,14 @@
+replicaCount: 1
+
+ingress:
+  paths: /techradar
+
+image:
+  repository: "nginx"
+  pullPolicy: IfNotPresent
+  pullSecrets: 
+
+
+service:
+  type: ClusterIP
+  port: 8080
