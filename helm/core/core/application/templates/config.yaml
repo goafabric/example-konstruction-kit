@@ -49,6 +49,7 @@ data:
 
   #kafka
   {{ if .Values.kafka.enabled }}spring.kafka.bootstrap-servers: "kafka.event:9092"{{ else }}spring.kafka.bootstrap-servers: ""{{ end }}
+
   spring.kafka.properties.security.protocol: "SASL_PLAINTEXT"
   spring.kafka.properties.sasl.mechanism: "PLAIN"
   spring.kafka.properties.sasl.jaas.config: org.apache.kafka.common.security.plain.PlainLoginModule required username="${spring.kafka.username}" password="${spring.kafka.password}";
@@ -56,4 +57,5 @@ data:
   spring.kafka.template.observation-enabled: "true"
   spring.kafka.listener.observation-enabled: "true"
 
-  event.dispatcher.uri: "http://event-dispatcher-service-application.event:8080/events/dispatch"
+#  spring.kafka.bootstrap-servers: "kafka.event:9092"
+#  event.dispatcher.uri: "http://event-dispatcher-service-application.event:8080/events/dispatch"
