@@ -20,7 +20,5 @@ locals {
   production_mode = !strcontains(var.hostname, ".local")
   oidc_enabled = local.production_mode
 
-  nats_replica_count = "2"
   kafka_replica_count = "1" #for production this should be 3
-  dispatcher_profile = "kafka" #nats
 }
