@@ -56,3 +56,4 @@ data:
   spring.kafka.template.observation-enabled: "true"
   spring.kafka.listener.observation-enabled: "true"
 
+  event.dispatcher.uri: "http://event-dispatcher-service-application.event:8080/events/dispatch"
