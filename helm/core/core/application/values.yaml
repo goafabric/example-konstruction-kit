@@ -44,3 +44,6 @@ initContainers:
 
 oidc:
   enabled:
+
+kafka:
+  enabled:

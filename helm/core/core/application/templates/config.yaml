@@ -48,4 +48,4 @@ data:
   spring.cloud.aws.s3.enabled: "true"
 
   #kafka
-  spring.kafka.bootstrap-servers: ""
+  {{ if .Values.kafka.enabled }}spring.kafka.bootstrap-servers: "kafka.event:9092"{{ else }}spring.kafka.bootstrap-servers: ""{{ end }}

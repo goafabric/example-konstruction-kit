@@ -40,6 +40,11 @@ resource "helm_release" "core-application" {
     name = "oidc.session.secret"
     value = random_password.oidc_session_secret.result
   }
+  set {
+    name = "kafka.enabled"
+    value = local.kafka_enabled
+  }
+
 }
 
 resource "helm_release" "core-frontend" {
