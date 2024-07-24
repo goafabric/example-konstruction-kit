@@ -44,6 +44,10 @@ resource "helm_release" "core-application" {
     name = "kafka.enabled"
     value = local.kafka_enabled
   }
+  set {
+    name  = "messageBroker.password"
+    value = "supersecret" #random_password.messageBroker_password.result
+  }
 
 }
 

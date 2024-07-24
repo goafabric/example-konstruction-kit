@@ -36,7 +36,7 @@ resource "helm_release" "kafka" {
   }
   set {
     name = "sasl.client.passwords[0]"
-    value = random_password.messageBroker_password.result
+    value = "supersecret" #random_password.messageBroker_password.result
   }
   set {
     name  = "networkPolicy.enabled"
