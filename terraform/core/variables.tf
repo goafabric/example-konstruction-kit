@@ -19,7 +19,7 @@ locals {
 
   production_mode = !strcontains(var.hostname, ".local")
   oidc_enabled = local.production_mode
-  kafka_enabled = local.production_mode
+  kafka_enabled = true #local.production_mode
   postgres_ha = false #local.production_mode
 }
 

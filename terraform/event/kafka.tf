@@ -1,6 +1,4 @@
 resource "helm_release" "kafka" {
-  count = local.dispatcher_profile == "kafka" ? 1 : 0
-
   name       = "kafka"
   repository = "https://charts.bitnami.com/bitnami"
   chart      = "kafka"
@@ -48,8 +46,6 @@ resource "helm_release" "kafka" {
 
 # manually remove the pvc to avoid password problems
 resource "terraform_data" "remove_kafka_pvc" {
-  count = local.dispatcher_profile == "kafka" ? 1 : 0
-
   provisioner "local-exec" {
     when = destroy
     command = "kubectl delete pvc -l app.kubernetes.io/instance=kafka -n event"
