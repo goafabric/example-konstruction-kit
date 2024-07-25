@@ -6,7 +6,7 @@ ingress:
 
 image:
   repository: "goafabric/core-service"
-  pullPolicy: Always #IfNotPresent
+  pullPolicy: IfNotPresent #Always
   pullSecrets:
 
 podAnnotations:

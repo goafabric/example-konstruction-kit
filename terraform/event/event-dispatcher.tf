@@ -7,6 +7,10 @@ resource "helm_release" "event-dispatcher-service-application" {
   timeout = var.helm_timeout
 
   set {
+    name  = "image.arch"
+    value = "-native${local.server_arch}"
+  }
+  set {
     name  = "replicaCount"
     value = "1"
   }
