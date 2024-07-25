@@ -7,6 +7,10 @@ resource "helm_release" "event-dispatcher-service-application" {
   timeout = var.helm_timeout
 
   set {
+    name  = "image.arch"
+    value = "-native${local.server_arch}"
+  }
+  set {
     name  = "replicaCount"
     value = "1"
   }
@@ -16,7 +20,7 @@ resource "helm_release" "event-dispatcher-service-application" {
   }
   set {
     name  = "messageBroker.password"
-    value = random_password.messageBroker_password.result
+    value = "supersecret" #random_password.messageBroker_password.result
   }
   set {
     name = "oidc.enabled"
