@@ -1,5 +1,6 @@
 # 1.3.5
 - Nats removed
+- Kafka added directly to cor Service
 
 # 1.3.4
 - back to stable invoice release
