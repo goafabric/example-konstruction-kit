@@ -18,22 +18,22 @@ resource "helm_release" "elasticsearch" {
 
   set {
     name  = "master.replicaCount"
-    value = 1
+    value = 1 #2
   }
 
   set {
     name  = "data.replicaCount"
-    value = 0
+    value = 0 #2
   }
 
   set {
     name  = "coordinating.replicaCount"
-    value = 0
+    value = 0 #2
   }
 
   set {
     name  = "ingest.replicaCount"
-    value = 0
+    value = 0 #2
   }
 
 }
