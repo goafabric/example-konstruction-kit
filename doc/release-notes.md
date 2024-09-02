@@ -2,6 +2,7 @@
 - Nats removed
 - Kafka added directly to core Service
 - Upgrade to Istio 1.23 (needs manual Ztunnel restart)
+- Upgraded Apps to version 3.3.3
 
 # 1.3.4
 - back to stable invoice release
