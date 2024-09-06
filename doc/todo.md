@@ -3,8 +3,6 @@
 - dependency upgrades
 - vault
 
-- remove Basic Auth everywhere
-
 # build
 - Renovate
 
