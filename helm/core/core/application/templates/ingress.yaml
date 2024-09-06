@@ -1,3 +1,4 @@
+
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -7,9 +8,7 @@ metadata:
   annotations:
     cert-manager.io/cluster-issuer: my-cluster-issuer
     konghq.com/strip-path: 'true'
-    {{ if .Values.oidc.enabled }}
-    konghq.com/plugins: {{ include "application.fullname" . }}-oidc-plugin
-    {{ end }}
+    konghq.com/plugins: {{ include "application.fullname" . }}-add-headers{{ if .Values.oidc.enabled }},{{ include "application.fullname" . }}-oidc-plugin{{ end }}
 spec:
   ingressClassName: kong
   tls:
@@ -38,9 +37,7 @@ plugin: oidc
 config:
   client_id: oauth2-proxy
   client_secret: none
+  discovery: http://keycloak-application.oidc:8080/oidc/realms/tenant-0/.well-known/openid-configuration
   bearer_jwt_auth_enable: "yes"
   bearer_jwt_auth_allowed_auds:
-  - "account"
-  discovery: http://keycloak-application.oidc:8080/oidc/realms/tenant-0/.well-known/openid-configuration
-#  redirect_uri: "{{ .Values.ingress.paths }}/redirect_uri"
-#  logout_path: "{{ .Values.ingress.paths }}/logout"
+    - "account"

@@ -24,10 +24,6 @@ resource "helm_release" "person-service-application" {
     name  = "database.password"
     value = random_password.database_password.result
   }
-  set {
-    name = "service.password"
-    value = random_password.service_password.result
-  }
 
   set {
     name = "oidc.enabled"

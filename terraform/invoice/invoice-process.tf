@@ -22,10 +22,6 @@ resource "helm_release" "invoice-process-application" {
   }
 
   set {
-    name = "service.password"
-    value = random_password.service_password.result
-  }
-  set {
     name  = "s3.password"
     value = "minioadmin" #random_password.s3_password.result
   }
