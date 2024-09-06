@@ -26,7 +26,7 @@ spec:
               - {{ .Values.ingress.paths }}/(.*)
               - /$1
             headers:
-#              X-TenantId: 0
+              X-TenantId: 0
         - name: openid-connect
           enable: {{ .Values.oidc.enabled }}
           config:
@@ -39,5 +39,3 @@ spec:
             ssl_verify: false
             redirect_uri: "{{ .Values.ingress.paths }}/redirect_uri"
             logout_path: "{{ .Values.ingress.paths }}/logout"
-            session:
-              secret: "{{ .Values.oidc.session.secret | default "" }}"
