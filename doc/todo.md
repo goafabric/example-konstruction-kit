@@ -1,3 +1,10 @@
+# div
+- kind, microk8s, aws tryouts
+- dependency upgrades
+- vault
+
+- remove Basic Auth everywhere
+
 # build
 - Renovate
 
