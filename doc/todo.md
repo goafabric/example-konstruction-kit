@@ -1,5 +1,5 @@
 # div
-- kind, microk8s, aws tryouts
+- kind, microk8s, aws, azure
 - dependency upgrades
 - vault
 
