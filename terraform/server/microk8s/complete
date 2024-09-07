@@ -18,8 +18,8 @@ function up() {
     apply ../../infra/ingress/cert-manager
     apply ../../infra/ingress/$INGRESS_TYPE
     apply ../../infra/dashboard
-    apply ../../infra/grafana
-    apply ../../infra/oidc
+#    apply ../../infra/grafana
+#    apply ../../infra/oidc
     apply ../../example
     apply ../../core
     apply ../../event
