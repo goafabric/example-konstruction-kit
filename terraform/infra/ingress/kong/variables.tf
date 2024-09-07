@@ -3,8 +3,7 @@ variable "hostname" {
 }
 
 locals {
-  production_mode = !strcontains(var.hostname, "kind.local")
-  ingress_service_type = local.production_mode == true ? "LoadBalancer" : "NodePort"
+  ingress_service_type = !strcontains(var.hostname, "kind.local") == true ? "LoadBalancer" : "NodePort"
 }
 
 output "hostname" {

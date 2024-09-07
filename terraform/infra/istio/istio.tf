@@ -31,7 +31,7 @@ resource "helm_release" "istio-istiod" {
 }
 
 resource "helm_release" "istio-cni-kind" {
-  count = local.production_mode == false ? 1 : 0
+  count = local.microk8s_mode == false ? 1 : 0
 
   name       = "istio-cni"
   repository = "https://istio-release.storage.googleapis.com/charts"
@@ -50,7 +50,7 @@ resource "helm_release" "istio-cni-kind" {
 }
 
 resource "helm_release" "istio-cni-microk8s" {
-  count = local.production_mode == true ? 1 : 0
+  count = local.microk8s_mode == true ? 1 : 0
 
   name       = "istio-cni"
   repository = "https://istio-release.storage.googleapis.com/charts"

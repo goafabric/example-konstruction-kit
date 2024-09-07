@@ -3,5 +3,5 @@ variable "hostname" {
 }
 
 locals {
-  production_mode = !strcontains(var.hostname, ".local")
+  microk8s_mode = false #!strcontains(var.hostname, "kind.local")
 }
