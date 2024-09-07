@@ -1,5 +1,5 @@
 # div
-- kind, microk8s, aws, azure
+- kind, aws, azure
 - dependency upgrades
 - vault
 
