@@ -30,9 +30,10 @@ function down() {
     destroy ../../infra/dashboard
     destroy ../../infra/grafana
     destroy ../../infra/ingress
-    destroy ../../infra/cert-manager
+    destroy ../../infra/ingress/cert-manager
     destroy ../../infra/ingress/$INGRESS_TYPE
     destroy ../../infra/ingress/cert-manager
+    destroy ../../infra/namespaces/
     )
 }
 
