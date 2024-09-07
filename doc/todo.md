@@ -1,5 +1,5 @@
 # div
-- kind, aws, azure
+- aws, azure
 - dependency upgrades
 - vault
 
