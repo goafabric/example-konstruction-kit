@@ -13,7 +13,6 @@ function destroy() {
 
 function up() {
     time(
-    apply ./
     apply ../../infra/namespaces/
     apply ../../infra/ingress/cert-manager
     apply ../../infra/ingress/$INGRESS_TYPE
