@@ -3,5 +3,5 @@ variable "hostname" {
 }
 
 locals {
-  microk8s_mode = false #!strcontains(var.hostname, "kind.local")
+  microk8s_mode = strcontains(var.hostname, "megasrv.de")
 }
