@@ -9,7 +9,7 @@ sudo microk8s enable hostpath-storage
 sudo microk8s enable metallb $(hostname -I | awk '{print $1}')-$(hostname -I | awk '{print $1}')
 
 # Microk8s config
-microk8s config view
+sudo microk8s config view
 
 # uninstall
 sudo snap remove microk8s --purge
