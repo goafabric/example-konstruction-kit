@@ -25,8 +25,9 @@ Node Pools
 - az aks get-credentials --resource-group Development --name myaks
 - cat .kube/config
 
-# current changes
+# current changes !!
 - disabled dashboard deployment due to helm error
+- oidc_enabled = false set for now
 - kong standard image, as the custom with oidc is currently arm only 
 - callee-service changed to loadbalancer deployment with external ip
  

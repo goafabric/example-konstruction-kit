@@ -17,6 +17,6 @@ data "external" "server_arch_data" {
 locals {
   server_arch = data.external.server_arch_data.result["server_arch"]
 
-  oidc_enabled = !strcontains(var.hostname, ".local")
+  oidc_enabled = false
   postgres_ha = false
 }
