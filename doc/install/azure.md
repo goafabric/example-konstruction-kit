@@ -33,7 +33,7 @@ Node Pools
  
 # todos
 - 1st start with example-konstruktion kit
-- 2nd move to real konstruktiok kut
+- 2nd move to real konstruktion kit
 
 - external DNS for web Access (not kube API) is missing, so apisix routes cannot match the host
   - => removing the host field does not seem to work
