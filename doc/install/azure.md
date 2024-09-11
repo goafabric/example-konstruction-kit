@@ -32,6 +32,9 @@ Node Pools
 - callee-service changed to loadbalancer deployment with external ip
  
 # todos
+- 1st start with example-konstruktion kit
+- 2nd move to real konstruktiok kut
+
 - external DNS for web Access (not kube API) is missing, so apisix routes cannot match the host
   - => removing the host field does not seem to work
   - current workaround using external specific IP and type loadbalancer (see callee-service, values.yaml)
@@ -39,3 +42,13 @@ Node Pools
 
 # cluster config workaround
 - kubectl create configmap cluster-config -n default --from-literal=hostname=$TF_VAR_hostname
+
+# C5 (optional)
+- Redundancy Model (Multiple Nodes, Multiple Zones)
+- HashiCorp Vault vs Azure Vault
+- Data Backup => Azure solution ?
+- Volume Encryption: Enabled by Default
+
+
+- Network Policies, Apisix, Cert Manager via Helm ?
+- Grafana: Managed solution vs Helm ?
