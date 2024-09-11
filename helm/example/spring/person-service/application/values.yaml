@@ -35,8 +35,8 @@ readinessProbe:
   initialDelaySeconds: 5
 
 service:
-  type: LoadBalancer #ClusterIP
-  port: 80 #8080
+  type: ClusterIP
+  port: 8080
 
 initContainers:
   - name: check-db-ready

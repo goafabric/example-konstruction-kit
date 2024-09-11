@@ -14,3 +14,9 @@ https://learn.microsoft.com/en-us/azure/aks/learn/quick-kubernetes-deploy-portal
 - disabled dashboard deployment due to helm error
 - kong standard image, as the custom with oidc is currently arm only 
 
+          
+# todos
+- external DNS for web Access (not kube API) is missing, so apisix routes cannot match the host
+  - => removing the host field does not seem to work
+- access and provision server via azure cli / later terraform
+- keep cost under control
