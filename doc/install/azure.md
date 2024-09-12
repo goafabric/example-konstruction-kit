@@ -29,15 +29,10 @@ Node Pools
 - disabled dashboard deployment due to helm error
 - oidc_enabled = false set for now
 - kong standard image, as the custom with oidc is currently arm only 
-- callee-service changed to loadbalancer deployment with external ip
+
+- fix for apisix routes as having just "headers:" without any header, fails on azure with "\n" errors
  
 # todos
-- 1st start with example-konstruktion kit
-- 2nd move to real konstruktion kit
-
-- external DNS for web Access (not kube API) is missing, so apisix routes cannot match the host
-  - => removing the host field does not seem to work
-  - current workaround using external specific IP and type loadbalancer (see callee-service, values.yaml)
 - access and provision server via azure cli / later terraform
 
 # cluster config workaround
