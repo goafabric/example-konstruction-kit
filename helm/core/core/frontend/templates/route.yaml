@@ -25,7 +25,7 @@ spec:
             regex_uri:
               - {{ .Values.ingress.paths }}/(.*)
               - /$1
-#            headers:
+##            headers:
 #              X-TenantId: 0
         - name: openid-connect
           enable: {{ .Values.oidc.enabled }}
