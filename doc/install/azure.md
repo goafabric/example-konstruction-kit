@@ -19,6 +19,15 @@ Node Pools
 - Min Node Count: 1 / Maximum Node Count : 1
 
 => This will create a User Nodepool with a Single node, System Nodepool will also be automatically attached
+=> Not required per se, Application Containers also get deployed to System Nodepool
+                                                                                               
+Public IP Address
+- Home/Public IP Addresses
+- Select your "Kubernetes*" server from the list with the Resource Group matching your Server Name
+=> This will ONLY show up after some deployments beeing done to the server
+- Settings/Configuration/DNS name label (optional)
+
+
 
 # retetrieve k8s config
 - open cloud shell in browser
