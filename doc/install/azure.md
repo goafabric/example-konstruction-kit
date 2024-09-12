@@ -22,7 +22,7 @@ Node Pools
 
 # retetrieve k8s config
 - open cloud shell in browser
-- az aks get-credentials --resource-group Development --name myaks
+- az aks get-credentials --resource-group Development --name adam-eden
 - cat .kube/config
 
 # current changes !!
