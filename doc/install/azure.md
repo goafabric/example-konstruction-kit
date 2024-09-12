@@ -35,7 +35,7 @@ Public IP Address
 - cat .kube/config
 
 # current changes !!
-- disabled dashboard deployment due to helm error
+- changed dashboard deployment to "metrics-server.enabled=false", as there is alread one deployed
 - oidc_enabled = false set for now
 - kong standard image, as the custom with oidc is currently arm only 
 
