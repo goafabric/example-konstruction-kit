@@ -20,12 +20,16 @@ Node Pools
 
 => This will create a User Nodepool with a Single node, System Nodepool will also be automatically attached
 => Not required per se, Application Containers also get deployed to System Nodepool
+
+Network Policies
+- Networking/Network Policy/Azure
                                                                                                
-Public IP Address
+Public IP Address (after Cluster Created)
 - Home/Public IP Addresses
 - Select your "Kubernetes*" server from the list with the Resource Group matching your Server Name
 => This will ONLY show up after some deployments beeing done to the server
 - Settings/Configuration/DNS name label (optional)
+
 
 
 
