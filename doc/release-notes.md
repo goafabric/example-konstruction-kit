@@ -1,7 +1,7 @@
 # 1.3.5
 - Nats removed
 - Kafka added directly to core Service
-- upgrade to Istio 1.23 (needs manual Ztunnel restart)
+- upgrade to Istio 1.23.1 (needs manual Ztunnel restart)
 - upgraded Apps to version 3.3.3
 - upgrade to Apisix to chart 2.9.0
 - upgrade to Postgres 16.4
