@@ -33,14 +33,14 @@ resource "helm_release" "kong" {
   }
 
   # oidc
-#   set {
-#     name  = "image.repository"
-#     value = "goafabric/kong-oidc"
-#   }
-#   set {
-#     name  = "image.tag"
-#     value = "3.6.0"
-#   }
+  set {
+    name  = "image.repository"
+    value = "goafabric/kong-oidc"
+  }
+  set {
+    name  = "image.tag"
+    value = "3.6.0"
+  }
   set {
     name  = "image.pullPolicy"
     value = "Always"
