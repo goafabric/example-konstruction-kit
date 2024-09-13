@@ -21,9 +21,7 @@ resource "helm_release" "istio-istiod" {
 }
 
 
-//kubectl label namespace core istio-injection=enabled
-//kubectl label namespace ingress-apisix istio-injection=enabled
-
+//kubectl label namespace ingress-apisix istio-injection=enabled && kubectl label namespace core istio-injection=enabled
 /*
 resource "helm_release" "istio-cni-kind" {
   count = local.microk8s_mode == false ? 1 : 0
