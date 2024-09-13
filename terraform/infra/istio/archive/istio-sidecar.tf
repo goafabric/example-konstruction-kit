@@ -6,11 +6,6 @@ resource "helm_release" "istio-base" {
   create_namespace = false
   version    = "1.23.0"
   wait       = true
-
-  set {
-    name = "profile"
-    value = "ambient"
-  }
 }
 
 resource "helm_release" "istio-istiod" {
@@ -23,13 +18,13 @@ resource "helm_release" "istio-istiod" {
   wait       = true
 
   depends_on = [helm_release.istio-base]
-
-  set {
-    name = "profile"
-    value = "ambient"
-  }
 }
 
+
+//kubectl label namespace core istio-injection=enabled
+//kubectl label namespace ingress-apisix istio-injection=enabled
+
+/*
 resource "helm_release" "istio-cni-kind" {
   count = local.microk8s_mode == false ? 1 : 0
 
@@ -87,3 +82,4 @@ resource "helm_release" "istio-ztunnel" {
 
   depends_on = [helm_release.istio-base]
 }
+*/
