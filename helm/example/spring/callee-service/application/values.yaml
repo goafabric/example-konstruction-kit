@@ -34,8 +34,8 @@ readinessProbe:
 #  scheme: HTTPS
 
 service:
-  type: ClusterIP #LoadBalancer
-  port: 8080 #80
+  type: ClusterIP
+  port: 8080
 
 oidc:
   enabled:
