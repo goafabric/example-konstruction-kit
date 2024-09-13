@@ -1,14 +1,6 @@
-# div
-- aws, azure
-- dependency upgrades
-- vault
-
-# build
-- Renovate
-
 # security
+- dependency upgras
 - secrets via vault
-- volume encryption
 - rbac                                                                                                               k
                                                                                                
 # info
