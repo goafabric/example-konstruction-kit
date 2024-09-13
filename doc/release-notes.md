@@ -5,6 +5,7 @@
 - upgraded Apps to version 3.3.3
 - upgrade to Apisix to chart 2.9.0
 - upgrade to Postgres 16.4
+- upgrade to Cert Manager 1.15.3
 
 - Compatibility with Azure
 
