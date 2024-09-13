@@ -3,8 +3,9 @@
 - Kafka added directly to core Service
 - upgrade to Istio 1.23 (needs manual Ztunnel restart)
 - upgraded Apps to version 3.3.3
+- upgrade Apisix to chart 2.9.0
 
-- upgrade apisix to chart 2.9.0
+- Compatibility with Azure
 
 # 1.3.4
 - back to stable invoice release
