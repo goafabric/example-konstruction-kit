@@ -27,10 +27,8 @@ Network Policies
 Public IP Address (after Cluster Created)
 - Home/Public IP Addresses
 - Select your "Kubernetes*" server from the list with the Resource Group matching your Server Name
-=> This will ONLY show up after some deployments beeing done to the server
+=> This will ONLY show up after an ingress controller with loadbalancer usages is deployed, it will also get removed upon undeployment !
 - Settings/Configuration/DNS name label (optional)
-
-
 
 
 # retetrieve k8s config
