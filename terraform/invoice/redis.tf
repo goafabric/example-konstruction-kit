@@ -3,7 +3,7 @@ resource "helm_release" "redis" {
   repository = "https://charts.bitnami.com/bitnami"
   chart      = "redis"
   namespace  = "invoice"
-  version    = "19.5.2"
+  version    = "20.1.1"
 
   set {
     name  = "architecture"

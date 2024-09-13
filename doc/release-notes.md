@@ -1,13 +1,15 @@
 # 1.3.5
+- Compatibility with Azure
 - Nats removed
 - Kafka added directly to core Service
-- upgrade to Istio 1.23.1 (needs manual Ztunnel restart)
 - upgraded Apps to version 3.3.3
+
 - upgrade to Apisix to chart 2.9.0
+- upgrade to Istio 1.23.1 (needs manual Ztunnel restart)
 - upgrade to Postgres 16.4
 - upgrade to Cert Manager 1.15.3
-
-- Compatibility with Azure
+- upgrade to Redis Chart 20.1.1
+- upgrade to Kafka Chart 30.1.0
 
 # 1.3.4
 - back to stable invoice release
