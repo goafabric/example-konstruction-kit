@@ -35,7 +35,7 @@ Public IP Address (after Cluster Created)
 
 # retetrieve k8s config
 - open cloud shell in browser
-- az aks get-credentials --resource-group Development --name adam-eden
+- az aks get-credentials --resource-group Development --name xxx
 - cat .kube/config
 
 # current changes !!
