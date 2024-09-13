@@ -1,5 +1,5 @@
 # security
-- dependency upgras
+- dependency upgrades
 - secrets via vault
 - rbac                                                                                                               k
                                                                                                
