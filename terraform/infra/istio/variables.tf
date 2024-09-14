@@ -4,4 +4,5 @@ variable "hostname" {
 
 locals {
   microk8s_mode = strcontains(var.hostname, ".de")
+  istio_mode = "ambient" # sidecar
 }

@@ -1,4 +1,6 @@
 resource "helm_release" "istio-base" {
+  count = local.istio_mode== "ambient" ? 1 : 0
+
   name       = "istio-base"
   repository = "https://istio-release.storage.googleapis.com/charts"
   chart      = "base"
@@ -14,6 +16,8 @@ resource "helm_release" "istio-base" {
 }
 
 resource "helm_release" "istio-istiod" {
+  count = local.istio_mode== "ambient" ? 1 : 0
+
   name       = "istio-istiod"
   repository = "https://istio-release.storage.googleapis.com/charts"
   chart      = "istiod"
@@ -32,7 +36,7 @@ resource "helm_release" "istio-istiod" {
 
 
 resource "helm_release" "istio-cni-kind" {
-  count = local.microk8s_mode == false ? 1 : 0
+  count = (local.istio_mode == "ambient" && !local.microk8s_mode) ? 1 : 0
 
   name       = "istio-cni"
   repository = "https://istio-release.storage.googleapis.com/charts"
@@ -51,7 +55,7 @@ resource "helm_release" "istio-cni-kind" {
 }
 
 resource "helm_release" "istio-cni-microk8s" {
-  count = local.microk8s_mode == true ? 1 : 0
+  count = (local.istio_mode == "ambient" && local.microk8s_mode) ? 1 : 0
 
   name       = "istio-cni"
   repository = "https://istio-release.storage.googleapis.com/charts"
@@ -78,6 +82,8 @@ resource "helm_release" "istio-cni-microk8s" {
 }
 
 resource "helm_release" "istio-ztunnel" {
+  count = local.istio_mode== "ambient" ? 1 : 0
+
   name       = "istio-ztunnel"
   repository = "https://istio-release.storage.googleapis.com/charts"
   chart      = "ztunnel"
