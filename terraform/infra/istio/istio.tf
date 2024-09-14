@@ -63,3 +63,6 @@ resource "helm_release" "istio-ztunnel" {
 
   depends_on = [helm_release.istio-base]
 }
+
+//kubectl label namespace ingress-apisix istio-injection=enabled --overwrite && kubectl label namespace kong istio-injection=enabled
+//kubectl label namespace example istio-injection=enabled --overwrite && kubectl label namespace core istio-injection=enabled --overwrite
