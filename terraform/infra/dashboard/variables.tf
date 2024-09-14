@@ -3,5 +3,5 @@ variable "hostname" {
 }
 
 locals {
-  metrics_server_enabled = !strcontains(var.hostname, "azure")
+  metrics_server_enabled = strcontains(var.hostname, "kind.local")
 }
