@@ -1,6 +1,4 @@
 resource "helm_release" "istio-base" {
-  count = local.istio_mode== "ambient" ? 1 : 0
-
   name       = "istio-base"
   repository = "https://istio-release.storage.googleapis.com/charts"
   chart      = "base"
@@ -11,13 +9,11 @@ resource "helm_release" "istio-base" {
 
   set {
     name = "profile"
-    value = "ambient"
+    value = local.istio_mode== "ambient" ? "ambient" : ""
   }
 }
 
 resource "helm_release" "istio-istiod" {
-  count = local.istio_mode== "ambient" ? 1 : 0
-
   name       = "istio-istiod"
   repository = "https://istio-release.storage.googleapis.com/charts"
   chart      = "istiod"
@@ -30,7 +26,7 @@ resource "helm_release" "istio-istiod" {
 
   set {
     name = "profile"
-    value = "ambient"
+    value = local.istio_mode== "ambient" ? "ambient" : ""
   }
 }
 
