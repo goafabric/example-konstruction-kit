@@ -22,3 +22,5 @@ resource "helm_release" "istio-istiod" {
 
 //kubectl label namespace ingress-apisix istio-injection=enabled --overwrite && kubectl label namespace kong istio-injection=enabled
 //kubectl label namespace example istio-injection=enabled --overwrite && kubectl label namespace core istio-injection=enabled --overwrite
+
+//kubectl label namespace ingress-apisix istio.io/dataplane-mode=ambient
