@@ -23,11 +23,13 @@ function up() {
 #    apply ../../example
     apply ../../core
     apply ../../event
+    apply ../../invoice
     )
 }
 
 function down() {
-    time(
+    time
+    destroy ../../invoice
     destroy ../../event
     destroy ../../core
     destroy ../../example
