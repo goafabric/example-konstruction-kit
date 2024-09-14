@@ -20,7 +20,7 @@ function up() {
     apply ../../infra/dashboard
     apply ../../infra/grafana
     apply ../../infra/oidc
-    apply ../../example
+#    apply ../../example
     apply ../../core
     apply ../../event
     )
