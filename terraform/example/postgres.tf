@@ -20,7 +20,7 @@ resource "helm_release" "person-service-postgres-ha" {
   name       = "person-service-postgres"
   repository = "https://charts.bitnami.com/bitnami"
   chart      = "postgresql-ha"
-  version    = "14.2.7"
+  version    = "14.2.27"
   namespace  = "example"
 
   set {

@@ -20,7 +20,7 @@ resource "helm_release" "core-postgres-ha" {
   name       = "core-postgres"
   repository = "https://charts.bitnami.com/bitnami"
   chart      = "postgresql-ha"
-  version    = "14.2.7"
+  version    = "14.2.27"
   namespace  = "core"
 
   set {
