@@ -5,7 +5,7 @@
 - upgraded Apps to version 3.3.3
 
 - upgrade to Apisix to chart 2.9.0
-- upgrade to Istio 1.23.1 (needs manual Ztunnel restart)
+- upgrade to Istio 1.23.1 
 - upgrade to Postgres 16.4
 - upgrade to Cert Manager 1.15.3
 - upgrade to Redis Chart 20.1.1
