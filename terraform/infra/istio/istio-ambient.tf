@@ -35,8 +35,8 @@ resource "helm_release" "istio-istiod" {
 }
 
 
-resource "helm_release" "istio-cni-kind" {
-  count = (local.istio_mode == "ambient" && !local.microk8s_mode) ? 1 : 0
+resource "helm_release" "istio-cni" {
+  count = local.istio_mode== "ambient" ? 1 : 0
 
   name       = "istio-cni"
   repository = "https://istio-release.storage.googleapis.com/charts"
@@ -51,33 +51,6 @@ resource "helm_release" "istio-cni-kind" {
   set {
     name = "profile"
     value = "ambient"
-  }
-}
-
-resource "helm_release" "istio-cni-microk8s" {
-  count = (local.istio_mode == "ambient" && local.microk8s_mode) ? 1 : 0
-
-  name       = "istio-cni"
-  repository = "https://istio-release.storage.googleapis.com/charts"
-  chart      = "cni"
-  namespace  = "istio-system"
-  create_namespace = false
-  version    = "1.23.1"
-  wait       = true
-
-  depends_on = [helm_release.istio-base]
-
-  set {
-    name = "profile"
-    value = "ambient"
-  }
-  set {
-    name = "cni.cniBinDir"
-    value = "/var/snap/microk8s/current/opt/cni/bin"
-  }
-  set {
-    name = "cni.cniConfDir"
-    value = "/var/snap/microk8s/current/args/cni-network"
   }
 }
 
