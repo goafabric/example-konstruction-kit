@@ -11,6 +11,8 @@
 - upgrade to Redis Chart 20.1.1
 - upgrade to Kafka Chart 30.1.0
 
+- upgrad Kind to Kubernetes 1.31 that supports network policies, currently needs workaround scale down DNS
+
 # 1.3.4
 - back to stable invoice release
 - Tech Radar added
