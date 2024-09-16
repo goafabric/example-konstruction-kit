@@ -21,11 +21,21 @@ resource "kubernetes_network_policy" "allow_self_ingress_prometheus" {
             "kubernetes.io/metadata.name" = "ingress-apisix"
           }
         }
+        pod_selector {
+          match_labels = {
+            "app.kubernetes.io/name" = "apisix"
+          }
+        }
       }
       from {
         namespace_selector {
           match_labels = {
             "kubernetes.io/metadata.name" = "kong"
+          }
+        }
+        pod_selector {
+          match_labels = {
+            "app.kubernetes.io/name" = "kong"
           }
         }
       }
