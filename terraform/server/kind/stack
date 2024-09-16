@@ -11,11 +11,17 @@ function destroy() {
   (cd $1; terraform workspace select -or-create $WORKSPACE && terraform destroy -auto-approve)
 }
 
+function patch() {
+  cp kind-config ~/.kube.profile/.kube.kind/config
+  kubectl create configmap cluster-config -n default --from-literal=hostname=$TF_VAR_hostname
+
+  kubectl -n kube-system scale deployment coredns --replicas 1 #workaround for network policy problem in kind
+}
+
 function up() {
     time(
     apply ./
-    cp kind-config ~/.kube.profile/.kube.kind/config
-    kubectl create configmap cluster-config -n default --from-literal=hostname=$TF_VAR_hostname
+    patch
     apply ../../infra/namespaces/
     apply ../../infra/ingress/cert-manager
     apply ../../infra/ingress/$INGRESS_TYPE
