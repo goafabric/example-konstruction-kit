@@ -13,6 +13,16 @@ resource "helm_release" "apisix" {
   }
 
   set {
+    name  = "autoscaling.enabled"
+    value = "true"
+  }
+
+  set {
+    name  = "autoscaling.maxReplicas"
+    value = "3"
+  }
+
+  set {
     name  = "apisix.ssl.enabled"
     value = "true"
   }
