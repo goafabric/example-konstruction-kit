@@ -13,7 +13,7 @@ resource "helm_release" "kubernetes_dashboard" {
   }
   set {
     name  = "metrics-server.enabled"
-    value = local.metrics_server_enabled
+    value = false
   }
   set {
     name  = "metrics-server.args[0]"
