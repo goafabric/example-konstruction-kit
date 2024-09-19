@@ -7,6 +7,9 @@ resource "kubernetes_namespace" "cert-manager" {
 resource "kubernetes_namespace" "ingress-apisix" {
   metadata {
     name = "ingress-apisix"
+#     labels = {
+#       "istio-injection" = "enabled"
+#     }
   }
 }
 
