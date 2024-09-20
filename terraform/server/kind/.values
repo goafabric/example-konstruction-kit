@@ -1,2 +1,2 @@
 export TF_VAR_hostname=kind.local
-INGRESS_TYPE=kong #apisix
+INGRESS_TYPE=apisix #apisix
