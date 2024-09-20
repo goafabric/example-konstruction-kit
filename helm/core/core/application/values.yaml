@@ -9,9 +9,7 @@ image:
   pullPolicy: IfNotPresent #Always
   pullSecrets:
 
-podAnnotations:
-  linkerd.io/inject: enabled
-  sidecar.istio.io/inject: "true"
+
 
 resourcesAnnotations:
   resources:

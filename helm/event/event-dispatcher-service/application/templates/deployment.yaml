@@ -11,10 +11,7 @@ spec:
       {{- include "application.selectorLabels" . | nindent 6 }}
   template:
     metadata:
-      {{- with .Values.podAnnotations }}
-      annotations:
-        {{- toYaml . | nindent 8 }}
-      {{- end }}
+     annotations:
         prometheus.io/scrape: "true"
         prometheus.io/port: "{{ .Values.service.port }}"
         prometheus.io/scheme: "http"
