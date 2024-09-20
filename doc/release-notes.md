@@ -11,7 +11,9 @@
 - upgrade to Redis Chart 20.1.1
 - upgrade to Kafka Chart 30.1.0
 
-- upgrad Kind to Kubernetes 1.31 that supports network policies, currently needs workaround scale down DNS
+- upgrade Kind to Kubernetes 1.31 that supports network policies, currently needs workaround scale down DNS
+
+- compatibility of Apisix with Istio, via Mixed Mode and Host Name Fix
 
 # 1.3.4
 - back to stable invoice release

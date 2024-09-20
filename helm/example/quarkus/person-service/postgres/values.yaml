@@ -5,8 +5,6 @@ image:
   pullPolicy: IfNotPresent
   pullSecrets:
 
-
-
 resources:
   requests:
     memory: 64M
