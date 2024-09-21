@@ -38,3 +38,5 @@ kubernetes_ca_cert=@/var/run/secrets/kubernetes.io/serviceaccount/ca.crt
 kubectl -n example apply -f ./example-apps/deployment.yaml
 kubectl -n example get pods
 "cat /vault/secrets/helloworld"
+
+kubectl -n example delete -f ./example-apps/deployment.yaml
