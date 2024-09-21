@@ -313,7 +313,7 @@
       "ring": 1,
       "label": "Kafka",
       "active": true,
-      "moved": 1
+      "moved": 0
     },
     {
       "quadrant": 3,
@@ -321,14 +321,14 @@
       "label": "Nats",
       "link": "http://nats.io",
       "active": true,
-      "moved": -1
+      "moved": 0
     },
     {
       "quadrant": 3,
       "ring": 3,
       "label": "RabbitMQ",
       "active": true,
-      "moved": -1
+      "moved": 0
     },
 
 
@@ -348,10 +348,10 @@
     },
     {
       "quadrant": 0,
-      "ring": 1,
+      "ring": 0,
       "label": "Volume Encryption",
       "active": true,
-      "moved": 0
+      "moved": 1
     },
     {
       "quadrant": 0,
@@ -362,24 +362,24 @@
     },
     {
       "quadrant": 0,
-      "ring": 1,
+      "ring": 0,
       "label": "Network Policies",
       "active": true,
-      "moved": 0
+      "moved": 1
     },
     {
       "quadrant": 0,
-      "ring": 2,
+      "ring": 1,
       "label": "Servicemesh mTLS",
       "active": true,
-      "moved": 0
+      "moved": 1
     },
     {
       "quadrant": 0,
-      "ring": 2,
+      "ring": 1,
       "label": "Hashicorp Vault",
       "active": true,
-      "moved": 0
+      "moved": 1
     },
     {
       "quadrant": 0,
@@ -392,6 +392,13 @@
       "quadrant": 0,
       "ring": 2,
       "label": "Software Bill of Material",
+      "active": true,
+      "moved": 0
+    },
+    {
+      "quadrant": 0,
+      "ring": 1,
+      "label": "Azure AKS",
       "active": true,
       "moved": 2
     }
