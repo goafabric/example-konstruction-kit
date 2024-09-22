@@ -14,16 +14,43 @@ function configure() {
   '
 }
 
+function create_roles() {
+  kubectl exec -it vault-0 -n vault -- /bin/sh -c '
+  vault write auth/kubernetes/role/my-secret-role \
+    bound_service_account_names=my-secret-account \
+    bound_service_account_namespaces=example \
+    policies=my-secret-policy \
+ '
+
+kubectl exec -it vault-0 -n vault -- /bin/sh -c '
+cat <<EOF > /home/vault/app-policy.hcl
+path "secret/my-secret/*" {
+ capabilities = ["read"]
+}
+EOF
+'
+
+  kubectl exec -it vault-0 -n vault -- vault policy write my-secret-policy /home/vault/app-policy.hcl
+
+  kubectl exec -it vault-0 -n vault -- vault secrets enable -path=secret/ kv
+  kubectl exec -it vault-0 -n vault -- vault kv put secret/my-secret/helloworld username=dbuser password=sUp3rS3cUr3P@ssw0rd
+}
+
 function up() {
   helm repo add hashicorp https://helm.releases.hashicorp.com
   helm install vault hashicorp/vault --wait --set "server.dev.enabled=true" --namespace vault --create-namespace --version 0.28.1
 
   configure
+  create_roles
+
+  kubectl apply -f ./example-apps/deployment.yaml -n example
 }
 
 function down() {
   helm uninstall vault --namespace vault
+  kubectl delete -f ./example-apps/deployment.yaml -n example
 }
+
 
 
 
