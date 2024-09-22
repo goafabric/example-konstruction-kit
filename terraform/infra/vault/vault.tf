@@ -26,10 +26,3 @@ resource "terraform_data" "create_stack" {
   }
 }
 
-resource "terraform_data" "destroy_stack" {
-  depends_on = [helm_release.vault]
-  provisioner "local-exec" {
-    when    = destroy
-    command = "delete -f ./example-apps/deployment.yaml -n example"
-  }
-}

@@ -41,12 +41,12 @@ function up() {
   configure
   create_roles
 
-  kubectl apply -f ./example-apps/deployment.yaml -n example
+#  kubectl apply -f ./example-apps/deployment.yaml -n example
 }
 
 function down() {
   helm uninstall vault --namespace vault
-  kubectl delete -f ./example-apps/deployment.yaml -n example
+#  kubectl delete -f ./example-apps/deployment.yaml -n example
 }
 
 
