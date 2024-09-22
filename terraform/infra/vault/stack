@@ -34,10 +34,19 @@ EOF
   kubectl exec -it vault-0 -n vault -- vault kv put secret/my-secret/helloworld username=dbuser password=sUp3rS3cUr3P@ssw0rd
 }
 
+function create_deploy_roles {
+   kubectl exec -it vault-0 -n vault -- /bin/sh -c '
+   vault write auth/kubernetes/role/k8s-role \
+      bound_service_account_names=* \
+      bound_service_account_namespaces=* \
+      policies=readonly
+   '
+}
 function up() {
 
   configure
   create_roles
+  create_deploy_roles
 }
 
 if   [ "${COMMAND}" = "up" ]; then up;
