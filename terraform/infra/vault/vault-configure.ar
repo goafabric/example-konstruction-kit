@@ -1,0 +1,44 @@
+provider "vault" {
+  address = "http://localhost:8200"
+  token   = "root"
+}
+
+resource "vault_auth_backend" "kubernetes" {
+  type = "kubernetes"
+}
+
+resource "vault_generic_endpoint" "kubernetes_role" {
+  path = "auth/kubernetes/role/my-secret-role"
+
+  data_json = jsonencode({
+    bound_service_account_names     = ["my-secret-account"]
+    bound_service_account_namespaces = ["example"]
+    policies                        = [vault_policy.my_secret_policy.name]
+  })
+}
+
+resource "vault_policy" "my_secret_policy" {
+  name   = "my-secret-policy"
+  policy = <<EOT
+path "secret/data/my-secret/*" {
+  capabilities = ["read"]
+}
+EOT
+}
+
+resource "vault_mount" "kv" {
+  path = "secret"
+  type = "kv"
+  options = {
+    version = "2"
+  }
+}
+
+resource "vault_kv_secret" "my_secret" {
+  path = "secret/my-secret/helloworld"
+
+  data_json = jsonencode({
+    username = "dbuser"
+    password = "sUp3rS3cUr3P@ssw0rd"
+  })
+}
