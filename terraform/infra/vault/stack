@@ -24,7 +24,7 @@ function create_roles() {
 
 kubectl exec -it vault-0 -n vault -- /bin/sh -c '
 cat <<EOF > /home/vault/app-policy.hcl
-path "secret/my-secret/*" {
+path "secret/data/my-secret/*" {
  capabilities = ["read"]
 }
 EOF
