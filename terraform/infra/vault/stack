@@ -37,8 +37,6 @@ EOF
 }
 
 function up() {
-  helm repo add hashicorp https://helm.releases.hashicorp.com
-  helm install vault hashicorp/vault --wait --set "server.dev.enabled=true" --namespace vault --create-namespace --version 0.28.1
 
   configure
   create_roles
