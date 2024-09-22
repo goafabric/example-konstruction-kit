@@ -16,13 +16,6 @@ spec:
         prometheus.io/port: "{{ .Values.service.port }}"
         prometheus.io/scheme: "http"
         prometheus.io/path: "/actuator/prometheus"
-
-        vault.hashicorp.com/agent-inject: "true"
-        vault.hashicorp.com/tls-skip-verify: "true"
-        vault.hashicorp.com/agent-inject-secret-helloworld: "secret/basic-secret/helloworld"
-
-        vault.hashicorp.com/role: "basic-secret-role"
-
       labels:
         {{- include "application.selectorLabels" . | nindent 8 }}
     spec:
@@ -93,10 +86,3 @@ spec:
           emptyDir: {}
      
 
----
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  name: basic-secret
-  labels:
-    app: basic-secret
