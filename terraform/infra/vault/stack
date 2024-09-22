@@ -1,7 +1,5 @@
 #!/bin/bash
 COMMAND=$1
-IMAGE_ARCH=$2
-
 
 function configure() {
   kubectl exec -it vault-0 -n vault -- vault auth enable kubernetes
@@ -40,17 +38,7 @@ function up() {
 
   configure
   create_roles
-
-#  kubectl apply -f ./example-apps/deployment.yaml -n example
 }
-
-function down() {
-  helm uninstall vault --namespace vault
-#  kubectl delete -f ./example-apps/deployment.yaml -n example
-}
-
-
-
 
 if   [ "${COMMAND}" = "up" ]; then up;
 elif [ "${COMMAND}" = "down" ]; then down;
