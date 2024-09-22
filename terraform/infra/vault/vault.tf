@@ -26,3 +26,5 @@ resource "terraform_data" "create_stack" {
   }
 }
 
+
+## https://github.com/marcel-dempers/docker-development-youtube-series/tree/master/hashicorp/vault-2022/example-apps/basic-secret
