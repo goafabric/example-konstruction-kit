@@ -25,6 +25,3 @@ resource "terraform_data" "create_stack" {
     command = "./stack up"
   }
 }
-
-
-## https://github.com/marcel-dempers/docker-development-youtube-series/tree/master/hashicorp/vault-2022/example-apps/basic-secret
