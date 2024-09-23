@@ -14,9 +14,9 @@ spec:
       annotations:
         vault.hashicorp.com/agent-inject: "true"
         vault.hashicorp.com/tls-skip-verify: "true"
-        vault.hashicorp.com/agent-inject-secret-application.properties: "secret/application/example-service-application"
+        vault.hashicorp.com/agent-inject-secret-application.properties: "secret/application/callee-service-application"
         vault.hashicorp.com/agent-inject-template-application.properties: |-
-          {{- with secret "secret/application/example-service-application" -}}
+          {{- with secret "secret/application/callee-service-application" -}}
           {{- range $k, $v := .Data.data }}
           {{$k}}={{$v}}          
           {{- end }}

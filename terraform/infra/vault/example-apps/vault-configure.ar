@@ -35,7 +35,7 @@ resource "vault_mount" "kv" {
 }
 
 resource "vault_kv_secret" "my_secret" {
-  path = "secret/application/example-service-application"
+  path = "secret/application/callee-service-application"
 
   data_json = jsonencode({
     username = "dbuser"
