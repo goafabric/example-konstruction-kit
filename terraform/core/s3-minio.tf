@@ -14,7 +14,7 @@ resource "helm_release" "s3-minio" {
     name  = "auth.rootUser"
     value = "minioadmin"
   }
-  set {
+  set_sensitive {
     name  = "auth.rootPassword"
     value = "minioadmin" #${random_password.s3_password.result}
   }

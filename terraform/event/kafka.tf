@@ -34,7 +34,7 @@ resource "helm_release" "kafka" {
     name = "sasl.client.users[0]"
     value = "admin"
   }
-  set {
+  set_sensitive {
     name = "sasl.client.passwords[0]"
     value = "supersecret" #random_password.messageBroker_password.result
   }

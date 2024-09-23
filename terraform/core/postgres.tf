@@ -48,15 +48,15 @@ resource "helm_release" "core-postgres-ha" {
     name  = "global.postgresql.database"
     value = "core"
   }
-  set {
+  set_sensitive {
     name  = "global.postgresql.username"
     value = "core"
   }
-  set {
+  set_sensitive {
     name  = "global.postgresql.password"
     value = random_password.core_database_password.result
   }
-  set {
+  set_sensitive {
     name  = "postgresql.password"
     value = random_password.core_database_password.result
   }
