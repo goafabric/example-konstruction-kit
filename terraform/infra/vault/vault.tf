@@ -18,6 +18,16 @@ resource "helm_release" "vault" {
 
 }
 
+resource "helm_release" "vault-secrets-operator" {
+  name       = "vault-secrets-operator"
+  chart      = "vault-secrets-operator"
+  namespace  = "vault"
+  repository = "https://helm.releases.hashicorp.com"
+  create_namespace = true
+  version    = "0.8.1"
+
+}
+
 resource "terraform_data" "create_stack" {
   depends_on = [helm_release.vault]
   provisioner "local-exec" {
