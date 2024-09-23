@@ -14,7 +14,7 @@ resourcesAnnotations:
       memory: 128M
       cpu: 250m
 
-  command: ["java", "-Xms128M", "-Xmx128M", "-cp", "/app/resources:/app/classes:/app/libs/*", "--spring.config.location=file:/vault/secrets/application.properties", "org.goafabric.calleeservice.Application"]
+  command: ["java", "-Xms128M", "-Xmx128M", "-cp", "/app/resources:/app/classes:/app/libs/*", "org.goafabric.calleeservice.Application", "--spring.config.location=file:/vault/secrets/application.properties"]
 #  command: [ "/bin/sh", "-c", ". /vault/secrets/helloworld && java -Xms128M -Xmx128M -cp /app/resources:/app/classes:/app/libs/* org.goafabric.calleeservice.Application" ]
 
 
