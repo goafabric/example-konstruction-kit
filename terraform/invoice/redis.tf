@@ -38,7 +38,7 @@ resource "helm_release" "redis" {
     name  = "replica.readinessProbe.initialDelaySeconds"
     value = "5"
   }
-  set {
+  set_sensitive {
     name  = "auth.password"
     value = random_password.redis_password.result
   }

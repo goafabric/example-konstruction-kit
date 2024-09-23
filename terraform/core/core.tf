@@ -19,12 +19,12 @@ resource "helm_release" "core-application" {
     value = "1"
   }
 
-  set {
+  set_sensitive {
     name  = "database.password"
     value = random_password.core_database_password.result
   }
 
-  set {
+  set_sensitive {
     name  = "s3.password"
     value = "minioadmin" #random_password.s3_password.result
   }
@@ -33,7 +33,7 @@ resource "helm_release" "core-application" {
     name = "oidc.enabled"
     value = local.oidc_enabled
   }
-  set {
+  set_sensitive {
     name = "oidc.session.secret"
     value = random_password.oidc_session_secret.result
   }
@@ -68,7 +68,7 @@ resource "helm_release" "core-frontend" {
     name = "oidc.enabled"
     value = local.oidc_enabled
   }
-  set {
+  set_sensitive {
     name = "oidc.session.secret"
     value = random_password.oidc_session_secret.result
   }
