@@ -16,11 +16,11 @@ spec:
         vault.hashicorp.com/tls-skip-verify: "true"
         vault.hashicorp.com/agent-inject-secret-application.properties: "secret/databases/example-service"
         vault.hashicorp.com/agent-inject-template-application.properties: |-
-          {{`{{- with secret "secret/databases/example-service" -}}`}}
-          {{`{{- range $k, $v := .Data.data }}`}}
-          {{`{{$k}}={{$v}}`}}          
-          {{`{{- end }}`}}
-          {{`{{ end }}`}}
+          {{- with secret "secret/databases/example-service" -}}
+          {{- range $k, $v := .Data.data }}
+          {{$k}}={{$v}}          
+          {{- end }}
+          {{ end }}
         vault.hashicorp.com/role: "my-secret-role"
       labels:
         app: example-app
