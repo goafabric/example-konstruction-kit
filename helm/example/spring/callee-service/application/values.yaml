@@ -38,5 +38,5 @@ oidc:
   enabled:
 
 vault:
-  secrets: secret/data/application/callee-service-application,secret/data/application/person-service-postgres
+  secrets: secret/data/database/person-service-postgres
 

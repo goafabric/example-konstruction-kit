@@ -16,7 +16,7 @@
         vault.security.banzaicloud.io/vault-addr: "http://vault.vault:8200" # optional, the address of the Vault service, default values is https://vault:8200
         vault.security.banzaicloud.io/vault-role: "my-secret-role"
         vault.security.banzaicloud.io/vault-skip-verify: "true"
-        vault.security.banzaicloud.io/vault-env-from-path: "secret/data/application/callee-service-application"
+        vault.security.banzaicloud.io/vault-env-from-path: "secret/data/database/person-service-postgres"
       spec:
         serviceAccountName: my-secret-account
         containers:
