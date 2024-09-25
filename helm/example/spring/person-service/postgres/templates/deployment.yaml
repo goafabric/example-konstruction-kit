@@ -42,7 +42,7 @@ spec:
           env:
             - name: POSTGRES_USER
               value: vault:secret/data/application/callee-service-application#username
-            - name: POSTGRES_PASSWORD2
+            - name: POSTGRES_PASSWORD
               value: vault:secret/data/application/callee-service-application#password
 
 
