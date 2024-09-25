@@ -8,17 +8,17 @@ resource "vault_auth_backend" "kubernetes" {
 }
 
 resource "vault_generic_endpoint" "kubernetes_role" {
-  path = "auth/kubernetes/role/my-secret-role"
+  path = "auth/kubernetes/role/vault-read-role"
 
   data_json = jsonencode({
-    bound_service_account_names     = ["my-secret-account"]
+    bound_service_account_names     = ["vault-read-account"]
     bound_service_account_namespaces = ["example"]
     policies                        = [vault_policy.my_secret_policy.name]
   })
 }
 
 resource "vault_policy" "my_secret_policy" {
-  name   = "my-secret-policy"
+  name   = "vault-read-policy"
   policy = <<EOT
 path "secret/data/my-secret/*" {
   capabilities = ["read"]

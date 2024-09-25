@@ -33,10 +33,10 @@ spec:
   # Kubernetes specific auth configuration, requires that the Method be set to kubernetes.
   kubernetes:
     # role to use when authenticating to Vault
-    role: my-secret-role
+    role: vault-read-role
     # ServiceAccount to use when authenticating to Vault
     # it is recommended to always provide a unique serviceAccount per Pod/application
-    serviceAccount: my-secret-account
+    serviceAccount: vault-read-account
 ---
 ##
 ## Vault-backed secret
@@ -50,7 +50,7 @@ spec:
   vaultAuthRef: baeldung-test
   mount: secret
   type: kv-v2
-  path: application/callee-service-application
+  path: database/person-service-postgres
   refreshAfter: 30s
   hmacSecretData: true
   destination:

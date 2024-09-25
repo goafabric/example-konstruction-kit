@@ -14,10 +14,10 @@ function configure() {
 
 function create_roles() {
   kubectl exec -it vault-0 -n vault -- /bin/sh -c '
-  vault write auth/kubernetes/role/my-secret-role \
-    bound_service_account_names=my-secret-account \
+  vault write auth/kubernetes/role/vault-read-role \
+    bound_service_account_names=vault-read-account \
     bound_service_account_namespaces=example \
-    policies=my-secret-policy \
+    policies=vault-read-policy \
  '
 
 kubectl exec -it vault-0 -n vault -- /bin/sh -c '
@@ -28,7 +28,7 @@ path "secret/data/database/*" {
 EOF
 '
 
-  kubectl exec -it vault-0 -n vault -- vault policy write my-secret-policy /home/vault/app-policy.hcl
+  kubectl exec -it vault-0 -n vault -- vault policy write vault-read-policy /home/vault/app-policy.hcl
 
   kubectl exec -it vault-0 -n vault -- vault secrets enable -path=secret/ kv
   kubectl exec -it vault-0 -n vault -- vault kv put secret/application/callee-service-application username=dbuser password=sUp3rS3cUr3P@ssw0rd

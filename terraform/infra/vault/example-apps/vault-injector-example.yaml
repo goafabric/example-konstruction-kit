@@ -14,18 +14,18 @@ spec:
       annotations:
         vault.hashicorp.com/agent-inject: "true"
         vault.hashicorp.com/tls-skip-verify: "true"
-        vault.hashicorp.com/agent-inject-secret-application.properties: "secret/application/callee-service-application"
+        vault.hashicorp.com/agent-inject-secret-application.properties: "secret/database/person-service-postgres"
         vault.hashicorp.com/agent-inject-template-application.properties: |-
-          {{- with secret "secret/application/callee-service-application" -}}
+          {{- with secret "secret/database/person-service-postgres" -}}
           {{- range $k, $v := .Data.data }}
           {{$k}}={{$v}}          
           {{- end }}
           {{ end }}
-        vault.hashicorp.com/role: "my-secret-role"
+        vault.hashicorp.com/role: "vault-read-role"
       labels:
         app: example-app
     spec:
-      serviceAccountName: my-secret-account
+      serviceAccountName: vault-read-account
       containers:
         - name: app
           image: jweissig/app:0.0.1
@@ -33,6 +33,6 @@ spec:
 apiVersion: v1
 kind: ServiceAccount
 metadata:
-  name: my-secret-account
+  name: vault-read-account
 #  labels:
 #    app: example-app

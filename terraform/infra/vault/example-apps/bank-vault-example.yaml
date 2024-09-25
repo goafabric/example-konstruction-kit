@@ -13,12 +13,12 @@
         labels:
           app.kubernetes.io/name: vault
         annotations:
-        vault.security.banzaicloud.io/vault-addr: "http://vault.vault:8200" # optional, the address of the Vault service, default values is https://vault:8200
-        vault.security.banzaicloud.io/vault-role: "my-secret-role"
-        vault.security.banzaicloud.io/vault-skip-verify: "true"
-        vault.security.banzaicloud.io/vault-env-from-path: "secret/data/database/person-service-postgres"
+          vault.security.banzaicloud.io/vault-addr: "http://vault.vault:8200" # optional, the address of the Vault service, default values is https://vault:8200
+          vault.security.banzaicloud.io/vault-role: "vault-read-role"
+          vault.security.banzaicloud.io/vault-skip-verify: "true"
+          vault.security.banzaicloud.io/vault-env-from-path: "secret/data/database/person-service-postgres"
       spec:
-        serviceAccountName: my-secret-account
+        serviceAccountName: vault-read-account
         containers:
           - name: alpine
             image: alpine
