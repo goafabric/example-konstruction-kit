@@ -29,6 +29,7 @@ resource "helm_release" "vault" {
 # }
 
 
+# banzai bank vault webhook combined with hashicorp vault
 resource "helm_release" "vault-secrets-webhook" {
   name       = "vault-secrets-webhook"
   chart      = "vault-secrets-webhook"
