@@ -49,7 +49,7 @@ spec:
           env:
             - name: username
               value: vault:secret/data/application/callee-service-application#username
-            - name: password2
+            - name: password
               value: vault:secret/data/application/callee-service-application#password
 
           envFrom:
