@@ -18,15 +18,15 @@ resource "helm_release" "vault" {
 
 }
 
-resource "helm_release" "vault-secrets-operator" {
-  name       = "vault-secrets-operator"
-  chart      = "vault-secrets-operator"
-  namespace  = "vault"
-  repository = "https://helm.releases.hashicorp.com"
-  create_namespace = true
-  version    = "0.8.1"
-
-}
+# resource "helm_release" "vault-secrets-operator" {
+#   name       = "vault-secrets-operator"
+#   chart      = "vault-secrets-operator"
+#   namespace  = "vault"
+#   repository = "https://helm.releases.hashicorp.com"
+#   create_namespace = true
+#   version    = "0.8.1"
+#
+# }
 
 resource "terraform_data" "create_stack" {
   depends_on = [helm_release.vault]
@@ -34,4 +34,12 @@ resource "terraform_data" "create_stack" {
     when    = create
     command = "./stack up"
   }
+}
+
+resource "helm_release" "vault-secrets-webhook" {
+  name       = "vault-secrets-webhook"
+  chart      = "vault-secrets-webhook"
+  namespace  = "vault"
+  repository = "oci://ghcr.io/bank-vaults/helm-charts"
+  create_namespace = true
 }
