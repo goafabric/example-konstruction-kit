@@ -17,17 +17,10 @@ spec:
         prometheus.io/scheme: "http"
         prometheus.io/path: "/actuator/prometheus"
 
-        vault.hashicorp.com/agent-inject: "true"
-        vault.hashicorp.com/tls-skip-verify: "true"
-        vault.hashicorp.com/agent-inject-secret-application.properties: "secret/application/{{ include "application.fullname" . }}"
-        vault.hashicorp.com/agent-inject-template-application.properties: |-
-          {{`{{- with secret "secret/application/`}}{{ include "application.fullname" . }}{{`" -}}`}}
-          {{`{{- range $k, $v := .Data.data }}`}}
-          {{`{{$k}}={{$v}}`}}          
-          {{`{{- end }}`}}
-          {{`{{ end }}`}}
-
-        vault.hashicorp.com/role: "my-secret-role"
+        vault.security.banzaicloud.io/vault-addr: "http://vault.vault:8200" # optional, the address of the Vault service, default values is https://vault:8200
+        vault.security.banzaicloud.io/vault-role: "my-secret-role" # optional, the default value is the name of the ServiceAccount the Pod runs in, in case of Secrets and ConfigMaps it is "default"
+        vault.security.banzaicloud.io/vault-skip-verify: "true" # optional, skip TLS verification of the Vault server certificate
+        vault.security.banzaicloud.io/vault-agent: "false" # optional, if true, a Vault Agent will be started to do Vault authentication, by default not needed and vault-env will do Kubernetes Service Account based Vault authentication
 
 
       labels:
@@ -52,6 +45,12 @@ spec:
             - name: http
               containerPort: {{ .Values.service.port }}
               protocol: TCP
+
+          env:
+            - name: username
+              value: vault:secret/data/application/callee-service-application#username
+            - name: password2
+              value: vault:secret/data/application/callee-service-application#password
 
           envFrom:
             - configMapRef:
