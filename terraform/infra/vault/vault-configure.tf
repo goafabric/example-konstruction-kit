@@ -10,6 +10,13 @@ resource "kubernetes_service_account" "vault_read_account" {
   }
 }
 
+#todo: maybe secrets in seperate tf for now
+# resource "vault_mount" "kv" {
+#   path        = "secret"
+#   type        = "kv"
+#   options     = { version = "2" } # Use version 2 of KV engine
+# }
+
 resource "vault_kv_secret" "my_secret" {
   path = "secret/data/application/my-service-application"
 
