@@ -41,3 +41,6 @@ initContainers:
 
 oidc:
   enabled:
+
+vault:
+  secrets: secret/data/application/person-service-postgres
