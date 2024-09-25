@@ -28,13 +28,6 @@ resource "helm_release" "vault" {
 #
 # }
 
-resource "terraform_data" "create_stack" {
-  depends_on = [helm_release.vault]
-  provisioner "local-exec" {
-    when    = create
-    command = "./stack up"
-  }
-}
 
 resource "helm_release" "vault-secrets-webhook" {
   name       = "vault-secrets-webhook"
@@ -43,3 +36,13 @@ resource "helm_release" "vault-secrets-webhook" {
   repository = "oci://ghcr.io/bank-vaults/helm-charts"
   create_namespace = true
 }
+
+
+resource "terraform_data" "create_stack" {
+  depends_on = [helm_release.vault]
+  provisioner "local-exec" {
+    when    = create
+    command = "./stack up"
+  }
+}
+
