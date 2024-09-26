@@ -4,12 +4,6 @@ provider "vault" {
 
 }
 
-resource "kubernetes_service_account" "vault_read_account" {
-  metadata {
-    name = "vault-read-account"
-  }
-}
-
 # resource "vault_mount" "kv" {
 #   path        = "secret"
 #   type        = "kv"

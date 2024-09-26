@@ -42,7 +42,7 @@ resource "terraform_data" "create_stack" {
   depends_on = [helm_release.vault]
   provisioner "local-exec" {
     when    = create
-    command = "./policy-create"
+    command = "./stack up"
   }
 }
 

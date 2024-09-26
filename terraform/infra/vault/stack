@@ -1,0 +1,48 @@
+#!/bin/bash
+COMMAND=$1
+
+function configure() {
+  kubectl exec -it vault-0 -n vault -- vault auth enable kubernetes
+
+  kubectl exec -it vault-0 -n vault -- /bin/sh -c '
+  vault write auth/kubernetes/config \
+    token_reviewer_jwt="$(cat /var/run/secrets/kubernetes.io/serviceaccount/token)" \
+    kubernetes_host="https://${KUBERNETES_PORT_443_TCP_ADDR}:443" \
+    kubernetes_ca_cert=@/var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+  '
+}
+
+function create_roles() {
+  kubectl exec -it vault-0 -n vault -- /bin/sh -c '
+  vault write auth/kubernetes/role/vault-read-role \
+    bound_service_account_names=vault-read-account \
+    bound_service_account_namespaces=* \
+    policies=vault-read-policy \
+ '
+
+kubectl exec -it vault-0 -n vault -- /bin/sh -c '
+cat <<EOF > /home/vault/app-policy.hcl
+path "secret/data/database/*" {
+ capabilities = ["read"]
+}
+EOF
+'
+
+  kubectl exec -it vault-0 -n vault -- vault policy write vault-read-policy /home/vault/app-policy.hcl
+  kubectl exec -it vault-0 -n vault -- vault secrets enable -path=secret/ kv
+  kubectl exec -it vault-0 -n vault -- vault kv put secret/database/person-service-postgres POSTGRES_USER=person-service POSTGRES_PASSWORD=sUp3rS3cUr3P@ssw0rd spring.datasource.username=person-service spring.datasource.password=sUp3rS3cUr3P@ssw0rd
+}
+
+
+function up() {
+  configure
+  create_roles
+}
+
+if   [ "${COMMAND}" = "up" ]; then up;
+elif [ "${COMMAND}" = "down" ]; then down;
+elif [ "${COMMAND}" = "restart" ]; then down && up;
+elif [ "${COMMAND}" = "lint" ]; then helm lint ./;
+elif [ "${COMMAND}" = "proxy" ]; then proxy;
+
+else echo Doing nothing !; fi
