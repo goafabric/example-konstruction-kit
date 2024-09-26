@@ -1,5 +1,5 @@
 provider "vault" {
-  address = "http://localhost:8200"
+  address = "http://localhost:30800"
   token   = "root"
 
 }
