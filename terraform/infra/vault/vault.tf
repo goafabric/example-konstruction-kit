@@ -16,15 +16,15 @@ resource "helm_release" "vault" {
     value = "true"
   }
 
-#   set {
-#     name  = "server.service.type"
-#     value = "NodePort"
-#   }
-# 
-#   set {
-#     name  = "server.service.nodePort"
-#     value = "30800"
-#   }
+  set {
+    name  = "server.service.type"
+    value = "NodePort"
+  }
+
+  set {
+    name  = "server.service.nodePort"
+    value = "30800"
+  }
 
 }
 
