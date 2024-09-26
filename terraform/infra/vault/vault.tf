@@ -37,12 +37,3 @@ resource "helm_release" "vault-secrets-webhook" {
   create_namespace = true
 }
 
-
-resource "terraform_data" "create_stack" {
-  depends_on = [helm_release.vault]
-  provisioner "local-exec" {
-    when    = create
-    command = "./stack up"
-  }
-}
-
