@@ -3,6 +3,8 @@ provider "vault" {
   token   = "root"
 }
 
+## vault kubernetes auth bullshit
+
 resource "vault_auth_backend" "kubernetes" {
   depends_on = [helm_release.vault]
 
@@ -25,11 +27,11 @@ EOT
 }
 
 
-resource "kubernetes_service_account" "vault_read_account" {
-  metadata {
-    name = "vault-read-account"
-  }
-}
+# resource "kubernetes_service_account" "vault_read_account" {
+#   metadata {
+#     name = "vault-read-account"
+#   }
+# }
 
 
 resource "vault_kubernetes_auth_backend_role" "vault_read_role" {
