@@ -26,14 +26,24 @@ EOT
   }
 }
 
+## service account per namespace
 
-# resource "kubernetes_service_account" "vault_read_account" {
-#   metadata {
-#     name = "vault-read-account"
-#   }
-# }
+variable "namespaces" {
+  type    = set(string)
+  default = ["example", "core", "event", "invoice"]
+}
+
+resource "kubernetes_service_account" "vault_read_account" {
+  for_each = var.namespaces
+
+  metadata {
+    name      = "vault-read-account"
+    namespace = each.key
+  }
+}
 
 
+# create read role + policy
 resource "vault_kubernetes_auth_backend_role" "vault_read_role" {
   depends_on = [helm_release.vault]
 
