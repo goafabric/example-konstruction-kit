@@ -10,7 +10,6 @@ resource "kubernetes_service_account" "vault_read_account" {
   }
 }
 
-#todo: maybe secrets in seperate tf for now
 # resource "vault_mount" "kv" {
 #   path        = "secret"
 #   type        = "kv"
@@ -18,6 +17,7 @@ resource "kubernetes_service_account" "vault_read_account" {
 # }
 
 resource "vault_kv_secret" "my_secret" {
+  depends_on = [helm_release.vault]
   path = "secret/data/application/my-service-application"
 
   data_json = jsonencode({

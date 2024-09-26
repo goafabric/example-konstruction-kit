@@ -1,0 +1,18 @@
+#!/bin/bash
+
+kubectl exec -it vault-0 -n vault -- /bin/sh -c '
+vault write auth/kubernetes/role/vault-read-role \
+  bound_service_account_names=vault-read-account \
+  bound_service_account_namespaces=* \
+  policies=vault-read-policy \
+'
+
+kubectl exec -it vault-0 -n vault -- /bin/sh -c '
+cat <<EOF > /home/vault/app-policy.hcl
+path "secret/data/database/*" {
+ capabilities = ["read"]
+}
+EOF
+'
+
+kubectl exec -it vault-0 -n vault -- vault policy write vault-read-policy /home/vault/app-policy.hcl
