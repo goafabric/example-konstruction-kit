@@ -38,5 +38,5 @@ oidc:
   enabled:
 
 vault:
-  secrets: secret/data/database/person-service-postgres
+  secrets: secretmount/data/database/person-service-postgres
 

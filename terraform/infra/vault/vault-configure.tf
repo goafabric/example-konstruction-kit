@@ -60,7 +60,7 @@ resource "vault_policy" "vault_read_policy" {
   name = "vault-read-policy"
 
   policy = <<EOT
-path "secret/data/database/*" {
+path "secretmount/data/database/*" {
   capabilities = ["read"]
 }
 EOT
@@ -68,10 +68,34 @@ EOT
 
 ## secrets
 
+resource "vault_mount" "kvv2" {
+  path        = "secretmount"
+  type        = "kv"
+  options     = { version = "2" }
+  description = "KV Version 2 secret engine mount"
+}
+
+
+resource "vault_kv_secret_v2" "example-service-postgres" {
+  mount                      = vault_mount.kvv2.path
+  name                       = "database/example-service-postgres"
+  cas                        = 1
+  delete_all_versions        = true
+
+  depends_on = [helm_release.vault]
+
+  data_json = jsonencode({
+    POSTGRES_USER = "example-service"
+    POSTGRES_PASSWORD = "sUp3rS3cUr3Passw0rd"
+    "spring.datasource.username" = "example-service"
+    "spring.datasource.password" = "sUp3rS3cUr3Passw0rd"
+  })
+}
+
 
 resource "vault_kv_secret" "person-service-postgres" {
   depends_on = [helm_release.vault]
-  path = "secret/data/database/person-service-postgres"
+  path = "secretmount/data/database/person-service-postgres"
 
   data_json = jsonencode({
     data = {
