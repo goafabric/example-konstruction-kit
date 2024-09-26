@@ -16,4 +16,4 @@
 
 - Vault has to be unsealed, DevMode as Workaround
 - For Terraform Vault needs to be exposed via Nodeport + Password ?
-- 
+- Secrets have to be put from the outside and stupid terraform puts them UNENCRYPTED into the statefile => opentofu ?
