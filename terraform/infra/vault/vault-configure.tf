@@ -90,9 +90,9 @@ resource "vault_kv_secret" "person-service-postgres" {
   data_json = jsonencode({
     data = {
       POSTGRES_USER = "person-service"
-      POSTGRES_PASSWORD = "sUp3rS3cUr3Passw0rd"
+      POSTGRES_PASSWORD = random_password.database_password.result
       "spring.datasource.username" = "person-service"
-      "spring.datasource.password" = "sUp3rS3cUr3Passw0rd"
+      "spring.datasource.password" = random_password.database_password.result
     }
   })
 }
