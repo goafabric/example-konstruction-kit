@@ -20,11 +20,6 @@ resource "helm_release" "person-service-application" {
     value = strcontains(var.helm_repository, "spring") ? "-native${local.server_arch}" : local.server_arch
   }
 
-  set_sensitive {
-    name  = "database.password"
-    value = random_password.database_password.result
-  }
-
   set {
     name = "oidc.enabled"
     value = local.oidc_enabled

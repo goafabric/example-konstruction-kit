@@ -8,10 +8,6 @@ resource "helm_release" "person-service-postgres" {
   create_namespace = false
   timeout = var.helm_timeout
 
-  set {
-    name  = "database.password"
-    value = random_password.database_password.result
-  }
 }
 
 resource "helm_release" "person-service-postgres-ha" {
@@ -54,11 +50,11 @@ resource "helm_release" "person-service-postgres-ha" {
   }
   set {
     name  = "global.postgresql.password"
-    value = random_password.database_password.result
+    value = "secret" #todo
   }
   set {
     name  = "postgresql.password"
-    value = random_password.database_password.result
+    value = "secret" #todo
   }
   set {
     name  = "pgpool.reservedConnections"
