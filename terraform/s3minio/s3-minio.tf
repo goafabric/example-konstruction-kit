@@ -4,6 +4,7 @@ resource "helm_release" "s3-minio" {
   chart      = "minio"
   namespace  = "core"
   version    = "14.1.2"
+  timeout = 60
 
   set {
     name  = "persistence.size"
@@ -51,7 +52,7 @@ resource "helm_release" "s3-minio" {
   }
   set {
     name  = "podAnnotations.vault\\.security\\.banzaicloud\\.io/vault-env-from-path"
-    value = "databases/data/example-service-postgres"
+    value = "databases/data/minio"
   }
   set {
     name  = "serviceAccount.create"
@@ -63,14 +64,14 @@ resource "helm_release" "s3-minio" {
   }
 
 
-  #   set {
-#     name  = "auth.rootUser"
-#     value = "minioadmin"
-#   }
-#   set_sensitive {
-#     name  = "auth.rootPassword"
-#     value = "minioadmin" #${random_password.s3_password.result}
-#   }
+    set {
+    name  = "auth.rootUser"
+    value = ""
+  }
+  set_sensitive {
+    name  = "auth.rootPassword"
+    value = ""
+  }
   
   set {
     name  = "readinessProbe.initialDelaySeconds"
