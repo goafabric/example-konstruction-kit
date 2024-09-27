@@ -1,0 +1,116 @@
+resource "helm_release" "person-service-postgres-ha" {
+
+  name       = "person-service-postgres"
+  repository = "https://charts.bitnami.com/bitnami"
+  chart      = "postgresql-ha"
+  version    = "14.2.31"
+  namespace  = "example"
+
+  timeout = 60
+
+  set {
+    name  = "postgresql.replicaCount"
+    value = "2"
+  }
+  set {
+    name  = "persistence.size"
+    value = "2Gi"
+  }
+
+  set {
+    name  = "postgresql.extraEnvVars[0].name"
+    value = "TZ"
+  }
+  set {
+    name  = "postgresql.extraEnvVars[0].value"
+    value = "Europe/Berlin"
+  }
+  set {
+    name  = "postgresql.initdbScripts.00_pg_statements\\.sql"
+    value = "CREATE EXTENSION pg_stat_statements;"
+  }
+  set {
+    name  = "global.postgresql.database"
+    value = "person"
+  }
+  set {
+    name  = "global.postgresql.username"
+    value = "person-service"
+  }
+  set {
+    name  = "global.postgresql.password"
+    value = "secret" #todo
+  }
+  set {
+    name  = "postgresql.password"
+    value = "secret" #todo
+  }
+  set {
+    name  = "pgpool.reservedConnections"
+    value = "0" //https://github.com/bitnami/charts/issues/4219
+  }
+
+  ### vault stuff
+
+  # vault service account
+
+  set {
+    name  = "postgresql.serviceAccount.create"
+    value = false
+  }
+  set {
+    name  = "postgresql.serviceAccount.name"
+    value = "vault-read-account"
+  }
+
+  # for whatever reason the serviceaccount directory must be mounted manually for bitnami charts
+  set {
+    name  = "postgresql.extraVolumeMounts[0].name"
+    value = "kube-api-access"
+  }
+
+  set {
+    name  = "postgresql.extraVolumeMounts[0].mountPath"
+    value = "/var/run/secrets/kubernetes.io/serviceaccount"
+  }
+
+  set {
+    name  = "postgresql.extraVolumeMounts[0].readOnly"
+    value = "true"
+  }
+
+  set {
+    name  = "postgresql.extraVolumes[0].name"
+    value = "kube-api-access"
+  }
+
+  set {
+    name  = "postgresql.extraVolumes[0].projected.sources[0].serviceAccountToken.path"
+    value = "token"
+  }
+
+  set {
+    name  = "postgresql.extraVolumes[0].projected.sources[0].serviceAccountToken.expirationSeconds"
+    value = "3600"
+  }
+
+  # annotations for vault injection
+
+  set {
+    name  = "postgresql.podAnnotations.vault\\.security\\.banzaicloud\\.io/vault-addr"
+    value = "http://vault.vault:8200"
+  }
+  set {
+    name  = "postgresql.podAnnotations.vault\\.security\\.banzaicloud\\.io/vault-role"
+    value = "vault-read-role"
+  }
+  set {
+    name  = "postgresql.podAnnotations.vault\\.security\\.banzaicloud\\.io/vault-env-from-path"
+    value = "databases/data/person-service-postgres"
+  }
+
+
+}
+
+
+
