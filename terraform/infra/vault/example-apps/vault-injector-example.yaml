@@ -14,9 +14,9 @@ spec:
       annotations:
         vault.hashicorp.com/agent-inject: "true"
         vault.hashicorp.com/tls-skip-verify: "true"
-        vault.hashicorp.com/agent-inject-secret-application.properties: "secretmount/data/database/example-service-postgres"
+        vault.hashicorp.com/agent-inject-secret-application.properties: "database/data/example-service-postgres"
         vault.hashicorp.com/agent-inject-template-application.properties: |-
-          {{- with secret "secretmount/data/database/example-service-postgres" -}}
+          {{- with secret "database/data/example-service-postgres" -}}
           {{- range $k, $v := .Data.data }}
           {{$k}}={{$v}}          
           {{- end }}

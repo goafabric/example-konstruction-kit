@@ -60,7 +60,7 @@ resource "vault_policy" "vault_read_policy" {
   name = "vault-read-policy"
 
   policy = <<EOT
-path "secretmount/data/database/*" {
+path "database/data/*" {
   capabilities = ["read"]
 }
 EOT
@@ -68,31 +68,31 @@ EOT
 
 ## secrets
 
-resource "vault_mount" "secretmount" {
+resource "vault_mount" "database" {
   depends_on = [terraform_data.vault_k8s_config]
 
-  path        = "secretmount"
+  path        = "database"
   type        = "kv"
   options     = { version = "2" }
   description = "KV Version 2 secret engine mount"
 }
 
 resource "terraform_data" "secret-example-service-postgres" {
-  depends_on = [vault_mount.secretmount]
+  depends_on = [vault_mount.database]
   provisioner "local-exec" {
     command = <<EOT
 kubectl exec -it vault-0 -n vault -- sh -c 'U=person-service;P=$(cat /proc/sys/kernel/random/uuid | tr -d '-' | sha256sum | base64 | head -c 32);
-  vault kv put secretmount/database/example-service-postgres POSTGRES_USER=$U POSTGRES_PASSWORD=$P spring.datasource.username=$U spring.datasource.password=$P;'
+  vault kv put database/example-service-postgres POSTGRES_USER=$U POSTGRES_PASSWORD=$P spring.datasource.username=$U spring.datasource.password=$P;'
 EOT
   }
 }
 
 resource "terraform_data" "secret-person-service-postgres" {
-  depends_on = [vault_mount.secretmount]
+  depends_on = [vault_mount.database]
   provisioner "local-exec" {
     command = <<EOT
 kubectl exec -it vault-0 -n vault -- sh -c 'U=person-service;P=$(cat /proc/sys/kernel/random/uuid | tr -d '-' | sha256sum | base64 | head -c 32);
-  vault kv put secretmount/database/person-service-postgres POSTGRES_USER=$U POSTGRES_PASSWORD=$P spring.datasource.username=$U spring.datasource.password=$P;'
+  vault kv put database/person-service-postgres POSTGRES_USER=$U POSTGRES_PASSWORD=$P spring.datasource.username=$U spring.datasource.password=$P;'
 EOT
   }
 }
@@ -118,7 +118,7 @@ EOT
 # resource "vault_kv_secret" "secret-person-service-postgres" {
 #   depends_on = [vault_mount.secretmount]
 #
-#   path = "secretmount/data/database/person-service-postgres"
+#   path = "database/data/person-service-postgres"
 #
 #   data_json = jsonencode({
 #     data = {
