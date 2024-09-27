@@ -98,7 +98,7 @@ EOT
 }
 
 # resource "vault_kv_secret_v2" "secret-example-service-postgres" {
-#   depends_on = [vault_mount.secretmount]
+#   depends_on = [vault_mount.databases]
 #
 #   mount                      = vault_mount.kvv2.path
 #   name                       = "databases/example-service-postgres"
@@ -116,7 +116,7 @@ EOT
 #
 #
 # resource "vault_kv_secret" "secret-person-service-postgres" {
-#   depends_on = [vault_mount.secretmount]
+#   depends_on = [vault_mount.databases]
 #
 #   path = "databases/data/person-service-postgres"
 #
