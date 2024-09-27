@@ -34,6 +34,8 @@ resource "helm_release" "vault-secrets-webhook" {
   chart      = "vault-secrets-webhook"
   namespace  = "vault"
   repository = "oci://ghcr.io/bank-vaults/helm-charts"
+  version    = "1.21.3"
+
   create_namespace = true
 }
 
