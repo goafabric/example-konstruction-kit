@@ -69,6 +69,8 @@ EOT
 ## secrets
 
 resource "vault_mount" "kvv2" {
+  depends_on = [terraform_data.vault_k8s_config]
+
   path        = "secretmount"
   type        = "kv"
   options     = { version = "2" }
@@ -77,12 +79,13 @@ resource "vault_mount" "kvv2" {
 
 
 resource "vault_kv_secret_v2" "example-service-postgres" {
+  depends_on = [vault_mount.kvv2]
+
   mount                      = vault_mount.kvv2.path
   name                       = "database/example-service-postgres"
   cas                        = 1
   delete_all_versions        = true
 
-  depends_on = [helm_release.vault]
 
   data_json = jsonencode({
     POSTGRES_USER = "example-service"
@@ -94,7 +97,8 @@ resource "vault_kv_secret_v2" "example-service-postgres" {
 
 
 resource "vault_kv_secret" "person-service-postgres" {
-  depends_on = [helm_release.vault]
+  depends_on = [vault_mount.kvv2]
+
   path = "secretmount/data/database/person-service-postgres"
 
   data_json = jsonencode({
