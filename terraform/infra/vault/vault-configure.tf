@@ -32,7 +32,7 @@ resource "terraform_data" "vault_k8s_config" {
   depends_on = [vault_auth_backend.kubernetes]
   provisioner "local-exec" {
     command = <<EOT
-kubectl exec -it vault-0 -n vault -- /bin/sh -c '
+kubectl exec vault-0 -n vault -- /bin/sh -c '
 vault write auth/kubernetes/config \
   token_reviewer_jwt="$(cat /var/run/secrets/kubernetes.io/serviceaccount/token)" \
   kubernetes_host="https://$${KUBERNETES_PORT_443_TCP_ADDR}:443" \
@@ -77,16 +77,6 @@ resource "vault_mount" "databases" {
   description = "KV Version 2 secret engine mount"
 }
 
-
-resource "terraform_data" "vault-person-service-postgres" {
-  depends_on = [vault_mount.databases]
-  provisioner "local-exec" {
-    command = <<EOT
-kubectl exec -it vault-0 -n vault -- sh -c 'U=person-service;P=$(cat /proc/sys/kernel/random/uuid | tr -d '-' | sha256sum | base64 | head -c 32);
-  vault kv put databases/person-service-postgres POSTGRES_USER=$U POSTGRES_PASSWORD=$P spring.datasource.username=$U spring.datasource.password=$P;'
-EOT
-  }
-}
 
 
 
