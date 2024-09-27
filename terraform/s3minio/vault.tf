@@ -2,7 +2,7 @@ resource "terraform_data" "vault-create-minio" {
   provisioner "local-exec" {
     when = create
     command = <<EOT
-kubectl exec vault-0 -n vault -- sh -c 'U=myuser;P=$(cat /proc/sys/kernel/random/uuid | tr -d '-' | sha256sum | base64 | head -c 32);
+kubectl exec vault-0 -n vault -- sh -c 'U=admin;P=$(cat /proc/sys/kernel/random/uuid | tr -d '-' | sha256sum | base64 | head -c 32);
   vault kv put databases/minio MINIO_ROOT_USER=$U MINIO_ROOT_PASSWORD=$P;'
 EOT
   }

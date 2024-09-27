@@ -6,11 +6,18 @@ resource "helm_release" "s3-minio" {
   version    = "14.1.2"
   timeout = 60
 
+  # vault service account
+
   set {
-    name  = "persistence.size"
-    value = "2Gi"
+    name  = "serviceAccount.create"
+    value = false
+  }
+  set {
+    name  = "serviceAccount.name"
+    value = "vault-read-account"
   }
 
+  # for whatever reason the serviceaccount directory must be mounted manually for bitnami charts
   set {
     name  = "extraVolumeMounts[0].name"
     value = "kube-api-access"
@@ -41,6 +48,7 @@ resource "helm_release" "s3-minio" {
     value = "3600"
   }
 
+  # annotations for vault injection
 
   set {
     name  = "podAnnotations.vault\\.security\\.banzaicloud\\.io/vault-addr"
@@ -54,25 +62,25 @@ resource "helm_release" "s3-minio" {
     name  = "podAnnotations.vault\\.security\\.banzaicloud\\.io/vault-env-from-path"
     value = "databases/data/minio"
   }
-  set {
-    name  = "serviceAccount.create"
-    value = false
-  }
-  set {
-    name  = "serviceAccount.name"
-    value = "vault-read-account"
-  }
 
+  # set auth to none, as it cannot be disabled, will be overwritten by pod injection
 
-    set {
+  set {
     name  = "auth.rootUser"
-    value = ""
+    value = "none"
   }
   set_sensitive {
     name  = "auth.rootPassword"
-    value = ""
+    value = "none"
   }
-  
+
+  # common propos
+  set {
+    name  = "persistence.size"
+    value = "2Gi"
+  }
+
+
   set {
     name  = "readinessProbe.initialDelaySeconds"
     value = "2"
