@@ -77,15 +77,6 @@ resource "vault_mount" "databases" {
   description = "KV Version 2 secret engine mount"
 }
 
-resource "terraform_data" "secret-example-service-postgres" {
-  depends_on = [vault_mount.databases]
-  provisioner "local-exec" {
-    command = <<EOT
-kubectl exec -it vault-0 -n vault -- sh -c 'U=person-service;P=$(cat /proc/sys/kernel/random/uuid | tr -d '-' | sha256sum | base64 | head -c 32);
-  vault kv put databases/example-service-postgres POSTGRES_USER=$U POSTGRES_PASSWORD=$P spring.datasource.username=$U spring.datasource.password=$P;'
-EOT
-  }
-}
 
 resource "terraform_data" "secret-person-service-postgres" {
   depends_on = [vault_mount.databases]
@@ -96,39 +87,6 @@ kubectl exec -it vault-0 -n vault -- sh -c 'U=person-service;P=$(cat /proc/sys/k
 EOT
   }
 }
-
-# resource "vault_kv_secret_v2" "secret-example-service-postgres" {
-#   depends_on = [vault_mount.databases]
-#
-#   mount                      = vault_mount.kvv2.path
-#   name                       = "databases/example-service-postgres"
-#   cas                        = 1
-#   delete_all_versions        = true
-#
-#
-#   data_json = jsonencode({
-#     POSTGRES_USER = "example-service"
-#     POSTGRES_PASSWORD = "sUp3rS3cUr3Passw0rd"
-#     "spring.datasource.username" = "example-service"
-#     "spring.datasource.password" = "sUp3rS3cUr3Passw0rd"
-#   })
-# }
-#
-#
-# resource "vault_kv_secret" "secret-person-service-postgres" {
-#   depends_on = [vault_mount.databases]
-#
-#   path = "databases/data/person-service-postgres"
-#
-#   data_json = jsonencode({
-#     data = {
-#       POSTGRES_USER = "person-service"
-#       POSTGRES_PASSWORD = random_password.database_password.result
-#       "spring.datasource.username" = "person-service"
-#       "spring.datasource.password" = random_password.database_password.result
-#     }
-#   })
-# }
 
 
 
