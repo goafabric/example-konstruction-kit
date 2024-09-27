@@ -92,7 +92,7 @@ resource "terraform_data" "secret-person-service-postgres" {
   provisioner "local-exec" {
     command = <<EOT
 kubectl exec -it vault-0 -n vault -- sh -c 'U=person-service;P=$(cat /proc/sys/kernel/random/uuid | tr -d '-' | sha256sum | base64 | head -c 32);
-  vault kv put secretmount/person-service-postgres POSTGRES_USER=$U POSTGRES_PASSWORD=$P spring.datasource.username=$U spring.datasource.password=$P;'
+  vault kv put secretmount/database/person-service-postgres POSTGRES_USER=$U POSTGRES_PASSWORD=$P spring.datasource.username=$U spring.datasource.password=$P;'
 EOT
   }
 }
