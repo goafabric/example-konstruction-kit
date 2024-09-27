@@ -11,6 +11,28 @@ resource "helm_release" "s3-minio" {
   }
 
 #   set {
+#     name  = "podAnnotations.vault\\.security\\.banzaicloud\\.io/vault-addr"
+#     value = "http://vault.vault:8200"
+#   }
+#   set {
+#     name  = "podAnnotations.vault\\.security\\.banzaicloud\\.io/vault-role"
+#     value = "vault-read-role"
+#   }
+#   set {
+#     name  = "podAnnotations.vault\\.security\\.banzaicloud\\.io/vault-env-from-path"
+#     value = "databases/data/example-service-postgres"
+#   }
+#   set {
+#     name  = "serviceAccount.create"
+#     value = false
+#   }
+#   set {
+#     name  = "serviceAccount.name"
+#     value = "vault-read-account"
+#   }
+
+
+  #   set {
 #     name  = "auth.rootUser"
 #     value = "minioadmin"
 #   }
@@ -18,6 +40,7 @@ resource "helm_release" "s3-minio" {
 #     name  = "auth.rootPassword"
 #     value = "minioadmin" #${random_password.s3_password.result}
 #   }
+  
   set {
     name  = "readinessProbe.initialDelaySeconds"
     value = "2"
