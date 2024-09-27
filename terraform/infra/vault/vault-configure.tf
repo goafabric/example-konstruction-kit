@@ -78,7 +78,7 @@ resource "vault_mount" "databases" {
 }
 
 
-resource "terraform_data" "secret-person-service-postgres" {
+resource "terraform_data" "vault-person-service-postgres" {
   depends_on = [vault_mount.databases]
   provisioner "local-exec" {
     command = <<EOT

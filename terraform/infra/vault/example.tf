@@ -1,6 +1,6 @@
 # secrets
 
-resource "terraform_data" "secret-example-service-postgres" {
+resource "terraform_data" "vault-example-service-postgres" {
   depends_on = [vault_mount.databases]
   provisioner "local-exec" {
     command = <<EOT
@@ -11,7 +11,7 @@ EOT
 }
 
 
-# resource "vault_kv_secret_v2" "secret-example-service-postgres" {
+# resource "vault_kv_secret_v2" "vault-example-service-postgres" {
 #   depends_on = [vault_mount.databases]
 #
 #   mount                      = vault_mount.kvv2.path
