@@ -22,7 +22,7 @@ function create_roles() {
 
 kubectl exec -it vault-0 -n vault -- /bin/sh -c '
 cat <<EOF > /home/vault/app-policy.hcl
-path "database/data/*" {
+path "databases/data/*" {
  capabilities = ["read"]
 }
 EOF
@@ -30,14 +30,14 @@ EOF
 
   kubectl exec -it vault-0 -n vault -- vault policy write vault-read-policy /home/vault/app-policy.hcl
   kubectl exec -it vault-0 -n vault -- vault secrets enable -path=secretmount/ kv
-  kubectl exec -it vault-0 -n vault -- vault kv put database/person-service-postgres POSTGRES_USER=person-service POSTGRES_PASSWORD=sUp3rS3cUr3P@ssw0rd spring.datasource.username=person-service spring.datasource.password=sUp3rS3cUr3P@ssw0rd
+  kubectl exec -it vault-0 -n vault -- vault kv put databases/person-service-postgres POSTGRES_USER=person-service POSTGRES_PASSWORD=sUp3rS3cUr3P@ssw0rd spring.datasource.username=person-service spring.datasource.password=sUp3rS3cUr3P@ssw0rd
 
-  kubectl exec -it vault-0 -n vault -- vault kv put database/myservice POSTGRES_USER=person-service POSTGRES_PASSWORD=sUp3rS3cUr3P@ssw0rd
+  kubectl exec -it vault-0 -n vault -- vault kv put databases/myservice POSTGRES_USER=person-service POSTGRES_PASSWORD=sUp3rS3cUr3P@ssw0rd
 
-  kubectl exec -it vault-0 -n vault -- sh -c 'vault kv put database/myservice POSTGRES_USER=person-service POSTGRES_PASSWORD=$(date +%s%N | sha256sum | base64 | head -c 32)'
+  kubectl exec -it vault-0 -n vault -- sh -c 'vault kv put databases/myservice POSTGRES_USER=person-service POSTGRES_PASSWORD=$(date +%s%N | sha256sum | base64 | head -c 32)'
 
   kubectl exec -it vault-0 -n vault -- sh -c 'U=person-service;P=$(date +%s%N | sha256sum | base64 | head -c 32);
-    vault kv put database/myservice POSTGRES_USER=$U POSTGRES_PASSWORD=$P spring.datasource.username=$U spring.datasource.password=$P;'
+    vault kv put databases/myservice POSTGRES_USER=$U POSTGRES_PASSWORD=$P spring.datasource.username=$U spring.datasource.password=$P;'
 
 }
 

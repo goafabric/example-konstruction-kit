@@ -60,7 +60,7 @@ resource "vault_policy" "vault_read_policy" {
   name = "vault-read-policy"
 
   policy = <<EOT
-path "database/data/*" {
+path "databases/data/*" {
   capabilities = ["read"]
 }
 EOT
@@ -68,31 +68,31 @@ EOT
 
 ## secrets
 
-resource "vault_mount" "database" {
+resource "vault_mount" "databases" {
   depends_on = [terraform_data.vault_k8s_config]
 
-  path        = "database"
+  path        = "databases"
   type        = "kv"
   options     = { version = "2" }
   description = "KV Version 2 secret engine mount"
 }
 
 resource "terraform_data" "secret-example-service-postgres" {
-  depends_on = [vault_mount.database]
+  depends_on = [vault_mount.databases]
   provisioner "local-exec" {
     command = <<EOT
 kubectl exec -it vault-0 -n vault -- sh -c 'U=person-service;P=$(cat /proc/sys/kernel/random/uuid | tr -d '-' | sha256sum | base64 | head -c 32);
-  vault kv put database/example-service-postgres POSTGRES_USER=$U POSTGRES_PASSWORD=$P spring.datasource.username=$U spring.datasource.password=$P;'
+  vault kv put databases/example-service-postgres POSTGRES_USER=$U POSTGRES_PASSWORD=$P spring.datasource.username=$U spring.datasource.password=$P;'
 EOT
   }
 }
 
 resource "terraform_data" "secret-person-service-postgres" {
-  depends_on = [vault_mount.database]
+  depends_on = [vault_mount.databases]
   provisioner "local-exec" {
     command = <<EOT
 kubectl exec -it vault-0 -n vault -- sh -c 'U=person-service;P=$(cat /proc/sys/kernel/random/uuid | tr -d '-' | sha256sum | base64 | head -c 32);
-  vault kv put database/person-service-postgres POSTGRES_USER=$U POSTGRES_PASSWORD=$P spring.datasource.username=$U spring.datasource.password=$P;'
+  vault kv put databases/person-service-postgres POSTGRES_USER=$U POSTGRES_PASSWORD=$P spring.datasource.username=$U spring.datasource.password=$P;'
 EOT
   }
 }
@@ -101,7 +101,7 @@ EOT
 #   depends_on = [vault_mount.secretmount]
 #
 #   mount                      = vault_mount.kvv2.path
-#   name                       = "database/example-service-postgres"
+#   name                       = "databases/example-service-postgres"
 #   cas                        = 1
 #   delete_all_versions        = true
 #
@@ -118,7 +118,7 @@ EOT
 # resource "vault_kv_secret" "secret-person-service-postgres" {
 #   depends_on = [vault_mount.secretmount]
 #
-#   path = "database/data/person-service-postgres"
+#   path = "databases/data/person-service-postgres"
 #
 #   data_json = jsonencode({
 #     data = {

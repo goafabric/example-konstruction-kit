@@ -26,4 +26,4 @@ persistence:
   storageClassName:
 
 vault:
-  secrets: secretmount/data/database/person-service-postgres
+  secrets: databases/data/person-service-postgres

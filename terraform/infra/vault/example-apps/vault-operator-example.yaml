@@ -50,7 +50,7 @@ spec:
   vaultAuthRef: baeldung-test
   mount: secret
   type: kv-v2
-  path: database/example-service-postgres
+  path: databases/example-service-postgres
   refreshAfter: 30s
   hmacSecretData: true
   destination:
