@@ -14,7 +14,6 @@ spec:
       annotations:
         vault.security.banzaicloud.io/vault-addr: "http://vault.vault:8200" # optional, the address of the Vault service, default values is https://vault:8200
         vault.security.banzaicloud.io/vault-role: "vault-read-role"
-        vault.security.banzaicloud.io/vault-skip-verify: "true"
         {{- if .Values.vault.secrets }}
         vault.security.banzaicloud.io/vault-env-from-path: "{{ .Values.vault.secrets }}"
         {{- end }}
