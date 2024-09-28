@@ -27,13 +27,10 @@ resource "helm_release" "person-service-postgres" {
     name  = "global.postgresql.auth.database"
     value = "person"
   }
+
   set {
-    name  = "global.postgresql.auth.username"
-    value = "person-service"
-  }
-  set {
-    name  = "global.postgresql.auth.password"
-    value = "secret"
+    name  = "auth.enablePostgresUser"
+    value = false
   }
 
   set {
