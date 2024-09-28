@@ -4,6 +4,7 @@ resource "helm_release" "person-service-postgres" {
   chart      = "postgresql"
   version    = "15.5.36"
   namespace  = "example"
+  timeout = "50"
 
   set {
     name  = "persistence.size"
@@ -121,9 +122,9 @@ resource "terraform_data" "remove_postgres_pvc" {
 
 }
 
-resource "kubernetes_service_account" "vault_read_account" {
-  metadata {
-    name      = "vault-read-account"
-    namespace = "example"
-  }
-}
+# resource "kubernetes_service_account" "vault_read_account" {
+#   metadata {
+#     name      = "vault-read-account"
+#     namespace = "example"
+#   }
+# }
