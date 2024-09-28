@@ -28,11 +28,11 @@ resource "helm_release" "person-service-postgres" {
   }
   set {
     name  = "global.postgresql.auth.username"
-    value = "none"
+    value = "person-service"
   }
   set {
     name  = "global.postgresql.auth.password"
-    value = "none"
+    value = "secret"
   }
 
   set {
@@ -103,4 +103,27 @@ resource "helm_release" "person-service-postgres" {
     value = "databases/data/person-service-postgres"
   }
   
+}
+
+
+# manually remove the pvc to avoid password problems
+resource "terraform_data" "remove_postgres_pvc" {
+
+  provisioner "local-exec" {
+    when = destroy
+    command = "kubectl delete pvc -l app.kubernetes.io/instance=person-service-postgres -n example"
+  }
+
+  provisioner "local-exec" {
+    when = destroy
+    command = "kubectl delete pvc -l app.kubernetes.io/instance=person-service-postgres-postgresql-ha-pgpool -n example"
+  }
+
+}
+
+resource "kubernetes_service_account" "vault_read_account" {
+  metadata {
+    name      = "vault-read-account"
+    namespace = "example"
+  }
 }
