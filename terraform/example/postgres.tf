@@ -58,10 +58,11 @@ resource "helm_release" "person-service-postgres" {
     value = "2"
   }
 
-  ### vault stuff
-
   # vault service account
-
+  set {
+    name  = "primary.automountServiceAccountToken"
+    value = true
+  }
   set {
     name  = "serviceAccount.create"
     value = false
@@ -71,39 +72,7 @@ resource "helm_release" "person-service-postgres" {
     value = "vault-read-account"
   }
 
-  # for whatever reason the serviceaccount directory must be mounted manually for bitnami charts
-  set {
-    name  = "primary.extraVolumeMounts[0].name"
-    value = "kube-api-access"
-  }
-
-  set {
-    name  = "primary.extraVolumeMounts[0].mountPath"
-    value = "/var/run/secrets/kubernetes.io/serviceaccount"
-  }
-
-  set {
-    name  = "primary.extraVolumeMounts[0].readOnly"
-    value = "true"
-  }
-
-  set {
-    name  = "primary.extraVolumes[0].name"
-    value = "kube-api-access"
-  }
-
-  set {
-    name  = "primary.extraVolumes[0].projected.sources[0].serviceAccountToken.path"
-    value = "token"
-  }
-
-  set {
-    name  = "primary.extraVolumes[0].projected.sources[0].serviceAccountToken.expirationSeconds"
-    value = "3600"
-  }
-
-  # annotations for vault injection
-
+  # vault injection
   set {
     name  = "primary.podAnnotations.vault\\.security\\.banzaicloud\\.io/vault-addr"
     value = "http://vault.vault:8200"
