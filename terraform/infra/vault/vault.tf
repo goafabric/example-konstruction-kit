@@ -46,12 +46,4 @@ resource "terraform_data" "remove_postgres_pvc" {
   }
 }
 
-resource "terraform_data" "vault_operator_init_hack" {
-  depends_on = [helm_release.vault]
-  provisioner "local-exec" {
-    command = <<EOT
-    kubectl exec vault-0 -n vault -- /bin/sh -c 'vault operator init -key-shares=1 -key-threshold=1 > /vault/data/seals \
-    && vault operator unseal $(grep "Unseal Key 1:" /vault/data/seals | awk "{print \$NF}")'
-EOT
-  }
-}
+
