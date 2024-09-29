@@ -33,6 +33,7 @@ resource "terraform_data" "vault_k8s_config" {
   provisioner "local-exec" {
     command = <<EOT
 kubectl exec vault-0 -n vault -- /bin/sh -c '
+export VAULT_TOKEN=$(grep "Initial Root Token:" /vault/data/seals | awk "{print \$NF}"); \
 vault auth enable kubernetes; \
 vault write auth/kubernetes/config \
   token_reviewer_jwt="$(cat /var/run/secrets/kubernetes.io/serviceaccount/token)" \
@@ -48,7 +49,8 @@ resource "terraform_data" "vault_read_role" {
   depends_on = [terraform_data.vault_k8s_config]
   provisioner "local-exec" {
     command = <<EOT
-kubectl exec -it vault-0 -n vault -- /bin/sh -c '
+kubectl exec vault-0 -n vault -- /bin/sh -c '
+export VAULT_TOKEN=$(grep "Initial Root Token:" /vault/data/seals | awk "{print \$NF}"); \
 vault write auth/kubernetes/role/vault-read-role \
   bound_service_account_names=vault-read-account \
   bound_service_account_namespaces=* \
@@ -62,7 +64,9 @@ resource "terraform_data" "vault_read_policy" {
   depends_on = [terraform_data.vault_k8s_config]
   provisioner "local-exec" {
     command = <<EOT
-kubectl exec -it vault-0 -n vault -- /bin/sh -c '
+kubectl exec vault-0 -n vault -- /bin/sh -c '
+export VAULT_TOKEN=$(grep "Initial Root Token:" /vault/data/seals | awk "{print \$NF}"); \
+vault secrets enable -path=databases -version=2; \
 cat <<EOF > /home/vault/app-policy.hcl
 path "databases/data/*" {
  capabilities = ["read"]

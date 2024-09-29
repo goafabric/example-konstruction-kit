@@ -1,7 +1,7 @@
 # secrets
 
 resource "terraform_data" "vault-create-example-service-postgres" {
-  depends_on = [vault_mount.databases]
+  depends_on = [terraform_data.vault_read_policy]
   provisioner "local-exec" {
     when = create
     command = <<EOT
