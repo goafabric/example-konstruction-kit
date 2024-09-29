@@ -15,8 +15,6 @@ resourcesAnnotations:
       cpu: 250m
 
   command: ["java", "-Xms128M", "-Xmx128M", "-cp", "/app/resources:/app/classes:/app/libs/*", "org.goafabric.calleeservice.Application"]
-#  command: [ "/bin/sh", "-c", ". /vault/secrets/helloworld && java -Xms128M -Xmx128M -cp /app/resources:/app/classes:/app/libs/* org.goafabric.calleeservice.Application" ]
-
 
 nativeAnnotations:
   resources:
@@ -37,6 +35,5 @@ service:
 oidc:
   enabled:
 
-vault:
-  secrets: databases/data/person-service-postgres
+
 

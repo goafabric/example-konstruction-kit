@@ -16,19 +16,9 @@ spec:
         prometheus.io/port: "{{ .Values.service.port }}"
         prometheus.io/scheme: "http"
         prometheus.io/path: "/actuator/prometheus"
-
-        vault.security.banzaicloud.io/vault-addr: "http://vault.vault:8200" # optional, the address of the Vault service, default values is https://vault:8200
-        vault.security.banzaicloud.io/vault-role: "vault-read-role"
-        vault.security.banzaicloud.io/vault-skip-verify: "true"
-        {{- if .Values.vault.secrets }}
-        vault.security.banzaicloud.io/vault-env-from-path: "{{ .Values.vault.secrets }}"
-        {{- end }}
-
       labels:
         {{- include "application.selectorLabels" . | nindent 8 }}
     spec:
-      serviceAccountName: vault-read-account
-
       {{- with .Values.initContainers }}
       initContainers:
         {{- toYaml . | nindent 8 }}
