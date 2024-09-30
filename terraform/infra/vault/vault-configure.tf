@@ -66,7 +66,7 @@ resource "terraform_data" "vault_read_policy" {
     command = <<EOT
 kubectl exec vault-0 -n vault -- /bin/sh -c '
 export VAULT_TOKEN=$(grep "Initial Root Token:" /vault/data/seals | awk "{print \$NF}"); \
-vault secrets enable -path=databases -version=2; \
+vault secrets enable -path=databases -version=2 kv; \
 cat <<EOF > /home/vault/app-policy.hcl
 path "databases/data/*" {
  capabilities = ["read"]
