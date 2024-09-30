@@ -51,16 +51,25 @@ resource "terraform_data" "remove_postgres_pvc" {
   }
 }
 
+data "kubernetes_pod" "vault_pod" {
+  metadata {
+    name      = "vault-0"
+    namespace = "vault"
+  }
+  depends_on = [helm_release.vault]
+}
+
 resource "terraform_data" "vault_operator_init_hack" {
   depends_on = [helm_release.vault]
   provisioner "local-exec" {
     command = <<EOT
+    while [ $(kubectl get pod vault-0 -n vault -o 'jsonpath={.status.phase}') != "Running" ]; do sleep 1; done;
+
     kubectl exec vault-0 -n vault -- /bin/sh -c 'vault operator init -key-shares=1 -key-threshold=1 > /vault/data/seals \
     && vault operator unseal $(grep "Unseal Key 1:" /vault/data/seals | awk "{print \$NF}")'
 EOT
   }
 }
-
 
 # vault unseal
 # kubectl exec vault-0 -n vault -- /bin/sh -c 'vault operator unseal $(grep "Unseal Key 1:" /vault/data/seals | awk "{print \$NF}")'
