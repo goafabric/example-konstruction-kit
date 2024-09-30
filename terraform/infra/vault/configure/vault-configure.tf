@@ -60,10 +60,6 @@ resource "vault_policy" "vault_read_policy" {
   name = "vault-read-policy"
 
   policy = <<EOT
-# Allow login via Kubernetes auth method
-path "auth/kubernetes/login" {
-  capabilities = ["create", "update"]
-}
 
 # Allow read access to the database secrets
 path "databases/data/*" {
