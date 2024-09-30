@@ -32,7 +32,7 @@ resource "terraform_data" "vault_k8s_config" {
   provisioner "local-exec" {
     command = <<EOT
 kubectl exec vault-0 -n vault -- /bin/sh -c '
-export VAULT_TOKEN=hvs.5Eop6jpcqrrdpTbiC4bV8N63 && vault auth enable kubernetes && \
+export VAULT_TOKEN=mytoken && vault auth enable kubernetes && \
 vault write auth/kubernetes/config \
   token_reviewer_jwt="$(cat /var/run/secrets/kubernetes.io/serviceaccount/token)" \
   kubernetes_host="https://$${KUBERNETES_PORT_443_TCP_ADDR}:443" \
