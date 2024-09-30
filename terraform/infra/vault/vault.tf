@@ -46,4 +46,5 @@ resource "terraform_data" "remove_postgres_pvc" {
   }
 }
 
-
+# vault unseal
+# kubectl exec vault-0 -n vault -- /bin/sh -c 'vault operator unseal $(grep "Unseal Key 1:" /vault/data/seals | awk "{print \$NF}")'
