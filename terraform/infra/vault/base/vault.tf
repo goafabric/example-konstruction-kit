@@ -17,6 +17,11 @@ resource "helm_release" "vault" {
   }
 
   set {
+    name  = "injector.enabled"
+    value = "false"
+  }
+
+  set {
     name  = "server.service.type"
     value = "NodePort"
   }
@@ -45,6 +50,17 @@ resource "terraform_data" "remove_postgres_pvc" {
     command = "kubectl delete pvc -l app.kubernetes.io/instance=vault -n vault"
   }
 }
+
+resource "terraform_data" "vault_operator_init_hack" {
+  depends_on = [helm_release.vault]
+  provisioner "local-exec" {
+    command = <<EOT
+    kubectl exec vault-0 -n vault -- /bin/sh -c 'vault operator init -key-shares=1 -key-threshold=1 > /vault/data/seals \
+    && vault operator unseal $(grep "Unseal Key 1:" /vault/data/seals | awk "{print \$NF}")'
+EOT
+  }
+}
+
 
 # vault unseal
 # kubectl exec vault-0 -n vault -- /bin/sh -c 'vault operator unseal $(grep "Unseal Key 1:" /vault/data/seals | awk "{print \$NF}")'

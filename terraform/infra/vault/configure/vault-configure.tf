@@ -1,3 +1,7 @@
+provider "vault" {
+  address = "http://localhost:30800"
+}
+
 ## kubernetes service account per namespace, might be better suited inside namespace creation
 
 variable "namespaces" {
@@ -14,27 +18,20 @@ resource "kubernetes_service_account" "vault_read_account" {
   }
 }
 
-## init hack
-
-resource "terraform_data" "vault_operator_init_hack" {
-  depends_on = [helm_release.vault]
-  provisioner "local-exec" {
-    command = <<EOT
-    kubectl exec vault-0 -n vault -- /bin/sh -c 'vault operator init -key-shares=1 -key-threshold=1 > /vault/data/seals \
-    && vault operator unseal $(grep "Unseal Key 1:" /vault/data/seals | awk "{print \$NF}")'
-EOT
-  }
-}
-
 ## vault kubernetes auth bullshit
 
+resource "vault_auth_backend" "kubernetes" {
+  #depends_on = [helm_release.vault]
+
+  type = "kubernetes"
+  path = "kubernetes"
+}
+
 resource "terraform_data" "vault_k8s_config" {
-  depends_on = [terraform_data.vault_operator_init_hack]
+  depends_on = [vault_auth_backend.kubernetes]
   provisioner "local-exec" {
     command = <<EOT
 kubectl exec vault-0 -n vault -- /bin/sh -c '
-export VAULT_TOKEN=$(grep "Initial Root Token:" /vault/data/seals | awk "{print \$NF}"); \
-vault auth enable kubernetes; \
 vault write auth/kubernetes/config \
   token_reviewer_jwt="$(cat /var/run/secrets/kubernetes.io/serviceaccount/token)" \
   kubernetes_host="https://$${KUBERNETES_PORT_443_TCP_ADDR}:443" \
@@ -45,40 +42,39 @@ EOT
 }
 
 # vault read role + policy
-resource "terraform_data" "vault_read_role" {
+
+resource "vault_kubernetes_auth_backend_role" "vault_read_role" {
   depends_on = [terraform_data.vault_k8s_config]
-  provisioner "local-exec" {
-    command = <<EOT
-kubectl exec vault-0 -n vault -- /bin/sh -c '
-export VAULT_TOKEN=$(grep "Initial Root Token:" /vault/data/seals | awk "{print \$NF}"); \
-vault write auth/kubernetes/role/vault-read-role \
-  bound_service_account_names=vault-read-account \
-  bound_service_account_namespaces=* \
-  policies=vault-read-policy \
-'
-EOT
-  }
+
+  role_name     = "vault-read-role"
+  backend       = "kubernetes"
+  token_policies = ["vault-read-policy"]
+
+  bound_service_account_names      = ["vault-read-account"]
+  bound_service_account_namespaces = ["*"]
 }
 
-resource "terraform_data" "vault_read_policy" {
+resource "vault_policy" "vault_read_policy" {
   depends_on = [terraform_data.vault_k8s_config]
-  provisioner "local-exec" {
-    command = <<EOT
-kubectl exec vault-0 -n vault -- /bin/sh -c '
-export VAULT_TOKEN=$(grep "Initial Root Token:" /vault/data/seals | awk "{print \$NF}"); \
-vault secrets enable -path=databases -version=2 kv; \
-cat <<EOF > /home/vault/app-policy.hcl
+  name = "vault-read-policy"
+
+  policy = <<EOT
 path "databases/data/*" {
- capabilities = ["read"]
+  capabilities = ["read"]
 }
-EOF
-'
 EOT
-  }
 }
 
 ## secrets
 
+resource "vault_mount" "databases" {
+  depends_on = [terraform_data.vault_k8s_config]
+
+  path        = "databases"
+  type        = "kv"
+  options     = { version = "2" }
+  description = "KV Version 2 secret engine mount"
+}
 
 
 
