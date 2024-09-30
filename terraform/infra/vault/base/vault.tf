@@ -67,13 +67,11 @@ resource "terraform_data" "vault_operator_init_hack" {
 
     kubectl exec vault-0 -n vault -- /bin/sh -c 'INIT_OUTPUT=$(vault operator init -key-shares=1 -key-threshold=1) \
     && vault operator unseal $(echo "$INIT_OUTPUT" | grep "Unseal Key 1:" | awk "{print \$NF}") \
-    && echo "$INIT_OUTPUT" > /vault/data/seals \
-    && echo "$INIT_OUTPUT"' > ~/.vault/seals-$TF_VAR_hostname.txt
-
+    && echo "$INIT_OUTPUT"' > ~/.vault/seals-$TF_VAR_hostname
 EOT
   }
 }
 
 # vault unseal
+# source ~/.kube/values && vault_operator_unseal_key=$(grep "Unseal Key 1:" ~/.vault/seals-$TF_VAR_hostname | awk '{print $NF}') && kubectl exec vault-0 -n vault -- /bin/sh -c "vault operator unseal $vault_operator_unseal_key"
 # kubectl exec vault-0 -n vault -- /bin/sh -c 'vault operator unseal $(grep "Unseal Key 1:" /vault/data/seals | awk "{print \$NF}")'
-#source ~/.kube/values && vault_operator_unseal_key=$(grep "Unseal Key 1:" ~/.vault/seals-$TF_VAR_hostname.txt | awk '{print $NF}') && kubectl exec vault-0 -n vault -- /bin/sh -c "vault operator unseal $vault_operator_unseal_key"
