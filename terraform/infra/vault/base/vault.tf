@@ -18,7 +18,7 @@ resource "helm_release" "vault" {
 
   set {
     name  = "injector.enabled"
-    value = "false"
+    value = "true"
   }
 
   set {

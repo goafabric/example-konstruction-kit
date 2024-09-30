@@ -1,12 +1,12 @@
 # secrets
 
 resource "terraform_data" "vault-create-example-service-postgres" {
-  depends_on = [terraform_data.vault_read_policy]
+  depends_on = [terraform_data.vault_k8s_config]
   provisioner "local-exec" {
     when = create
     command = <<EOT
 kubectl exec vault-0 -n vault -- sh -c 'U=person-service;P=$(cat /proc/sys/kernel/random/uuid | tr -d '-' | sha256sum | base64 | head -c 32);
-  export VAULT_TOKEN=$(grep "Initial Root Token:" /vault/data/seals | awk "{print \$NF}");
+  export VAULT_TOKEN=$${VAULT_TOKEN} && echo $${VAULT_TOKEN} \
   vault kv put databases/example-service-postgres POSTGRES_USER=$U POSTGRES_PASSWORD=$P spring.datasource.username=$U spring.datasource.password=$P;'
 EOT
   }
@@ -40,7 +40,7 @@ EOT
 ## apps
 
 resource "terraform_data" "create_vault_example" {
-  depends_on = [helm_release.vault]
+  depends_on = [terraform_data.vault_k8s_config]
   provisioner "local-exec" {
     when    = create
     command = "kubectl apply -f ./example-apps/vault-injector-example.yaml -n example"
@@ -56,7 +56,7 @@ resource "terraform_data" "destroy_vault_example" {
 
 
 resource "terraform_data" "create_bank_vault_example" {
-  depends_on = [helm_release.vault]
+  depends_on = [terraform_data.vault_k8s_config]
   provisioner "local-exec" {
     when    = create
     command = "kubectl apply -f ./example-apps/bank-vault-example.yaml -n example"
