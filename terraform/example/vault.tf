@@ -1,17 +1,22 @@
-resource "terraform_data" "vault-create-person-service-postgres" {
-  provisioner "local-exec" {
-    when = create
-    command = "kubectl exec vault-0 -n vault -- sh -c 'U=person-service;P=${local.password};vault kv put databases/person-service-postgres POSTGRES_USER=$U POSTGRES_PASSWORD=$P spring.datasource.username=$U spring.datasource.password=$P'"
-  }
+provider "vault" {
+  address = "http://localhost:30800"
 }
 
-resource "terraform_data" "vault-destroy-person-service-postgres" {
-  provisioner "local-exec" {
-    when = destroy
-    command = "kubectl exec vault-0 -n vault -- sh -c 'vault kv delete databases/person-service-postgres'"
-  }
+resource "random_password" "database_password" {
+  length           = 32
+  special          = false
 }
 
-locals {
-  password = "$(cat /proc/sys/kernel/random/uuid | tr -d '-' | sha256sum | base64 | head -c 32)"
+resource "vault_kv_secret_v2" "vault-person-service-postgres" {
+  mount                      = "databases"
+  name                       = "person-service-postgres"
+  cas                        = 1
+  delete_all_versions        = true
+
+  data_json = jsonencode({
+    POSTGRES_USER = "person-service"
+    POSTGRES_PASSWORD = random_password.database_password.result
+    "spring.datasource.username" = "person-service"
+    "spring.datasource.password" = random_password.database_password.result
+  })
 }
