@@ -55,7 +55,7 @@ resource "terraform_data" "vault_operator_init" {
     while [ $(kubectl get pod vault-0 -n vault -o 'jsonpath={.status.phase}') != "Running" ]; do sleep 1; done;
     kubectl exec vault-0 -n vault -- /bin/sh -c 'INIT_OUTPUT=$(vault operator init -key-shares=1 -key-threshold=1) \
     && vault operator unseal $(echo "$INIT_OUTPUT" | grep "Unseal Key 1:" | awk "{print \$NF}") \
-     && echo "$INIT_OUTPUT"' > ~/.vault/seals-$TF_VAR_hostname # not meant for production, will dump the seals to a local file
+    && echo "$INIT_OUTPUT"' > ~/.vault/seals-$TF_VAR_hostname # not meant for production, will dump the seals to a local file
 EOT
   }
 }
