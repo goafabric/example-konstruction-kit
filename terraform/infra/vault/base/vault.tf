@@ -18,7 +18,7 @@ resource "helm_release" "vault" {
 
   set {
     name  = "injector.enabled"
-    value = "true"
+    value = "false"
   }
 
   set {
@@ -33,7 +33,7 @@ resource "helm_release" "vault" {
 
 }
 
-# banzai bank vault webhook combined with hashicorp vault
+# banzai bank vault webhook combined with hashicorp vault for environment injection
 resource "helm_release" "vault-secrets-webhook" {
   name       = "vault-secrets-webhook"
   chart      = "vault-secrets-webhook"
@@ -44,33 +44,25 @@ resource "helm_release" "vault-secrets-webhook" {
   create_namespace = false
 }
 
-resource "terraform_data" "remove_postgres_pvc" {
+resource "terraform_data" "vault_operator_init" {
+  depends_on = [helm_release.vault]
+  provisioner "local-exec" {
+    command = <<EOT
+    while [ $(kubectl get pod vault-0 -n vault -o 'jsonpath={.status.phase}') != "Running" ]; do sleep 1; done;
+    kubectl exec vault-0 -n vault -- /bin/sh -c 'INIT_OUTPUT=$(vault operator init -key-shares=1 -key-threshold=1) \
+    && vault operator unseal $(echo "$INIT_OUTPUT" | grep "Unseal Key 1:" | awk "{print \$NF}") \
+    && echo "$INIT_OUTPUT"' > ~/.vault/seals-$TF_VAR_hostname # not meant for production, will dump the seals to a local file
+EOT
+  }
+}
+
+resource "terraform_data" "remove_vault_pvc" {
   provisioner "local-exec" {
     when = destroy
     command = "kubectl delete pvc -l app.kubernetes.io/instance=vault -n vault"
   }
 }
 
-data "kubernetes_pod" "vault_pod" {
-  metadata {
-    name      = "vault-0"
-    namespace = "vault"
-  }
-  depends_on = [helm_release.vault]
-}
-
-resource "terraform_data" "vault_operator_init_hack" {
-  depends_on = [helm_release.vault]
-  provisioner "local-exec" {
-    command = <<EOT
-    while [ $(kubectl get pod vault-0 -n vault -o 'jsonpath={.status.phase}') != "Running" ]; do sleep 1; done;
-
-    kubectl exec vault-0 -n vault -- /bin/sh -c 'INIT_OUTPUT=$(vault operator init -key-shares=1 -key-threshold=1) \
-    && vault operator unseal $(echo "$INIT_OUTPUT" | grep "Unseal Key 1:" | awk "{print \$NF}") \
-    && echo "$INIT_OUTPUT"' > ~/.vault/seals-$TF_VAR_hostname # not meant for production, here we should have auto unseal ! will dump the seals to a file on local machine to be unsealed later
-EOT
-  }
-}
-
 # vault unseal
 # kubectl exec vault-0 -n vault -- /bin/sh -c 'vault operator unseal $(grep "Unseal Key 1:" /vault/data/seals | awk "{print \$NF}")'
+
