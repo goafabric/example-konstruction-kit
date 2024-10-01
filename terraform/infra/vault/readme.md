@@ -19,7 +19,7 @@
 - Secrets have to be put from the outside and stupid terraform puts them UNENCRYPTED into the statefile => opentofu ?
 
 source ~/.kube/values  && \
-kubectl exec vault-0 -i --tty -n vault -- /bin/sh -c "export VAULT_TOKEN=${VAULT_TOKEN}"
+kubectl exec vault-0 -i --tty -n vault -- /bin/sh -c 'export VAULT_TOKEN='"${VAULT_TOKEN}"'; exec echo ${VAULT_TOKEN}'
 
 kubectl exec vault-0 -i --tty -n vault -- /bin/sh -c "export VAULT_TOKEN=${VAULT_TOKEN}; exec echo ${VAULT_TOKEN}"
 kubectl exec vault-0 -i --tty -n vault -- /bin/sh -c 'export JWT="$(cat /var/run/secrets/kubernetes.io/serviceaccount/token)"; exec echo ${JWT}'
