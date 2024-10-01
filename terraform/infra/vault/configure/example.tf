@@ -6,7 +6,7 @@ resource "terraform_data" "vault-create-example-service-postgres" {
     when = create
     command = <<EOT
 kubectl exec vault-0 -n vault -- sh -c "U=person-service;P=$(cat /proc/sys/kernel/random/uuid | tr -d '-' | sha256sum | base64 | head -c 32);
-  export VAULT_TOKEN=$${VAULT_TOKEN} && vault kv put databases/example-service-postgres POSTGRES_USER=$U POSTGRES_PASSWORD=$P spring.datasource.username=$U spring.datasource.password=$P;"
+  export VAULT_TOKEN='"$${VAULT_TOKEN}"' && vault kv put databases/example-service-postgres POSTGRES_USER=$U POSTGRES_PASSWORD=$P spring.datasource.username=$U spring.datasource.password=$P;"
 EOT
   }
 }
