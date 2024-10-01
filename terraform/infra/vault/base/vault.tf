@@ -67,7 +67,7 @@ resource "terraform_data" "vault_operator_init_hack" {
 
     kubectl exec vault-0 -n vault -- /bin/sh -c 'INIT_OUTPUT=$(vault operator init -key-shares=1 -key-threshold=1) \
     && vault operator unseal $(echo "$INIT_OUTPUT" | grep "Unseal Key 1:" | awk "{print \$NF}") \
-    && echo "$INIT_OUTPUT"' > ~/.vault/seals-$TF_VAR_hostname # not meant for production ! will dump the seals to a file on local machine to be unsealed later
+    && echo "$INIT_OUTPUT"' > ~/.vault/seals-$TF_VAR_hostname # not meant for production, here we should have auto unseal ! will dump the seals to a file on local machine to be unsealed later
 EOT
   }
 }
