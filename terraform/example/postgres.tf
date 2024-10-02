@@ -23,11 +23,6 @@ resource "helm_release" "person-service-postgres" {
   timeout = var.helm_timeout
 
   set {
-    name  = "persistence.size"
-    value = "2Gi"
-  }
-
-  set {
     name  = "postgresql.extraEnvVars[0].name"
     value = "TZ"
   }
