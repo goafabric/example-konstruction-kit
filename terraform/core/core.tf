@@ -18,12 +18,6 @@ resource "helm_release" "core-application" {
     name  = "replicaCount"
     value = "1"
   }
-
-  set_sensitive {
-    name  = "s3.password"
-    value = "minioadmin" #random_password.s3_password.result
-  }
-
   set {
     name = "oidc.enabled"
     value = local.oidc_enabled
@@ -34,7 +28,7 @@ resource "helm_release" "core-application" {
   }
   set {
     name = "kafka.enabled"
-    value = false #local.kafka_enabled
+    value = local.kafka_enabled
   }
   set {
     name  = "messageBroker.password"

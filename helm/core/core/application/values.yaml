@@ -47,4 +47,4 @@ kafka:
   enabled:
 
 vault:
-  secretsPath: databases/data/core-service-postgres
+  secretsPath: databases/data/core-service-postgres,databases/data/core-minio
