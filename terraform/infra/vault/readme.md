@@ -24,6 +24,7 @@
 
 # dev hacks
 ## vault unseal
-kubectl exec vault-0 -n vault -- /bin/sh -c 'vault operator unseal $(grep "Unseal Key 1:" /vault/data/seals | awk "{print \$NF}")'
+$(grep "Unseal Key 1:" ~/.vault/seals-$TF_VAR_hostname | awk '{print $NF}') && kubectl exec vault-0 -n vault -- /bin/sh -c "vault operator unseal $vault_operator_unseal_key"
+
 ## vault token export
 export VAULT_TOKEN=$(grep "Token:" ~/.vault/seals-$TF_VAR_hostname | awk '{print $NF}')
