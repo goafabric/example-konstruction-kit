@@ -1,4 +1,3 @@
-/*
 resource "helm_release" "person-service-postgres" {
   count = local.postgres_ha == false ? 1 : 0
 
@@ -10,8 +9,7 @@ resource "helm_release" "person-service-postgres" {
   timeout = var.helm_timeout
 }
 
- */
-
+/*
 resource "helm_release" "person-service-postgres" {
   count = local.postgres_ha == false ? 1 : 0
 
@@ -91,6 +89,5 @@ resource "terraform_data" "remove_postgres_pvc" {
     when = destroy
     command = "kubectl delete pvc -l app.kubernetes.io/instance=person-service-postgres-postgresql-ha-pgpool -n example"
   }
-
 }
-
+*/

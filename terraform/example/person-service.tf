@@ -30,10 +30,6 @@ resource "helm_release" "person-service-application" {
     value = random_password.oidc_session_secret.result
   }
 
-  set {
-    name = "vault.secretsPath"
-    value = "databases/data/${local.postgres_secret_path}"
-  }
 }
 
 
