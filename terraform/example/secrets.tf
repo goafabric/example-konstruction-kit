@@ -7,7 +7,7 @@ resource "random_password" "database_password" {
   special          = false
 }
 
-resource "vault_kv_secret_v2" "vault-person-service-postgres" {
+resource "vault_kv_secret_v2" "vault-secret-person-service-postgres" {
   mount                      = "databases"
   name                       = "person-service-postgres"
   cas                        = 1
