@@ -1,3 +1,4 @@
+/*
 resource "helm_release" "core-postgres-postgresql-ha-pgpool" {
   count = local.postgres_ha == false ? 1 : 0
 
@@ -8,24 +9,18 @@ resource "helm_release" "core-postgres-postgresql-ha-pgpool" {
   create_namespace = false
   timeout = var.helm_timeout
 }
+*/
 
-resource "helm_release" "core-postgres-ha" {
-  count = local.postgres_ha == true ? 1 : 0
 
-  name       = "core-postgres"
+resource "helm_release" "core-postgres-postgresql-ha-pgpool" {
+  count = local.postgres_ha == false ? 1 : 0
+
+  name       = "core-postgres-postgresql-ha-pgpool"
   repository = "https://charts.bitnami.com/bitnami"
-  chart      = "postgresql-ha"
-  version    = "14.2.27"
+  chart      = "postgresql"
+  version    = "15.5.36"
   namespace  = "core"
-
-  set {
-    name  = "postgresql.replicaCount"
-    value = "2"
-  }
-  set {
-    name  = "persistence.size"
-    value = "2Gi"
-  }
+  timeout = var.helm_timeout
 
   set {
     name  = "postgresql.extraEnvVars[0].name"
@@ -40,25 +35,60 @@ resource "helm_release" "core-postgres-ha" {
     value = "CREATE EXTENSION pg_stat_statements;"
   }
   set {
-    name  = "global.postgresql.database"
+    name  = "global.postgresql.auth.database"
     value = "core"
   }
-  set_sensitive {
-    name  = "global.postgresql.username"
-    value = "core"
+
+  set {
+    name  = "auth.enablePostgresUser"
+    value = false
+  }
+
+  set {
+    name  = "primary.readinessProbe.initialDelaySeconds"
+    value = "2"
   }
   set {
-    name  = "pgpool.reservedConnections"
-    value = "0" //https://github.com/bitnami/charts/issues/4219
+    name  = "primary.readinessProbe.periodSeconds"
+    value = "2"
   }
+
+  # vault service account
+  set {
+    name  = "primary.automountServiceAccountToken"
+    value = true
+  }
+  set {
+    name  = "serviceAccount.create"
+    value = false
+  }
+  set {
+    name  = "serviceAccount.name"
+    value = "vault-read-account"
+  }
+
+  # vault injection
+  set {
+    name  = "primary.podAnnotations.vault\\.security\\.banzaicloud\\.io/vault-addr"
+    value = "http://vault.vault:8200"
+  }
+  set {
+    name  = "primary.podAnnotations.vault\\.security\\.banzaicloud\\.io/vault-role"
+    value = "vault-read-role"
+  }
+  set {
+    name  = "primary.podAnnotations.vault\\.security\\.banzaicloud\\.io/vault-env-from-path"
+    value = "databases/data/core-service-postgres"
+  }
+
 }
+
 
 # manually remove the pvc to avoid password problems
 resource "terraform_data" "remove_postgres_pvc" {
-  count = local.postgres_ha == true ? 1 : 0
 
   provisioner "local-exec" {
-    when    = destroy
-    command = "kubectl delete pvc -l app.kubernetes.io/instance=core-postgres -n core"
+    when = destroy
+    command = "kubectl delete pvc -l app.kubernetes.io/name=postgresql -n core"
   }
 }
