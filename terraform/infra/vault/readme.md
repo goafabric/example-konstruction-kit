@@ -15,6 +15,7 @@
 - Vault has to be unsealed, DevMode or Manual Unseal as Workaround, for Production Azure Auto Unseal
 - For Terraform Vault needs to be exposed via Nodeport or we use kubcetl portforward in the deployment automation
 - Secrets have to be put from the outside and stupid terraform puts them UNENCRYPTED into the statefile => opentofu ?
+- All Application Deployments might need Init Container for Vault, or Vault is deployed to a seperate Server, othwise Pods could crash multiple times on server restart
 
 # links
 - Vault Intro https://youtu.be/2Owo4Ioo9tQ?si=mFLEmPVjeBn8-Cm4
