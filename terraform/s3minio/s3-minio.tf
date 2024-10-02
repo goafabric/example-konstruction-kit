@@ -33,7 +33,7 @@ resource "helm_release" "s3-minio" {
   
   # vault service account
   set {
-    name  = "primary.automountServiceAccountToken"
+    name  = "automountServiceAccountToken"
     value = true
   }
   set {
@@ -46,18 +46,18 @@ resource "helm_release" "s3-minio" {
   }
 
   # vault injection
-  set {
-    name  = "podAnnotations.vault\\.security\\.banzaicloud\\.io/vault-addr"
-    value = "http://vault.vault:8200"
-  }
-  set {
-    name  = "podAnnotations.vault\\.security\\.banzaicloud\\.io/vault-role"
-    value = "vault-read-role"
-  }
-  set {
-    name  = "podAnnotations.vault\\.security\\.banzaicloud\\.io/vault-env-from-path"
-    value = "databases/data/minio"
-  }
+#   set {
+#     name  = "podAnnotations.vault\\.security\\.banzaicloud\\.io/vault-addr"
+#     value = "http://vault.vault:8200"
+#   }
+#   set {
+#     name  = "podAnnotations.vault\\.security\\.banzaicloud\\.io/vault-role"
+#     value = "vault-read-role"
+#   }
+#   set {
+#     name  = "podAnnotations.vault\\.security\\.banzaicloud\\.io/vault-env-from-path"
+#     value = "databases/data/minio"
+#   }
 
   # set auth to none, as it cannot be disabled, will be overwritten by pod injection
 
