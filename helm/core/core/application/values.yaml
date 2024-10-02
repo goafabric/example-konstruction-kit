@@ -45,3 +45,6 @@ oidc:
 
 kafka:
   enabled:
+
+vault:
+  secretsPath: databases/data/core-service-postgres

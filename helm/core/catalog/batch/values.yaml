@@ -38,3 +38,6 @@ initContainers:
   - name: check-db-ready
     image: postgres:16.4
     command: ['sh', '-c','until pg_isready -h core-postgres-postgresql-ha-pgpool -p 5432;do echo waiting for database; sleep 1; done;']
+
+vault:
+  secretsPath: databases/data/core-service-postgres

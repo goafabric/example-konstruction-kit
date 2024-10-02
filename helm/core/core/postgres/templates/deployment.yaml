@@ -12,9 +12,16 @@ spec:
   template:
     metadata:
       annotations:
+        vault.security.banzaicloud.io/vault-addr: "http://vault.vault:8200" # optional, the address of the Vault service, default values is https://vault:8200
+        vault.security.banzaicloud.io/vault-role: "vault-read-role"
+        {{- if .Values.vault.secretsPath }}
+        vault.security.banzaicloud.io/vault-env-from-path: "{{ .Values.vault.secretsPath }}"
+        {{- end }}
       labels:
         {{- include "application.selectorLabels" . | nindent 8 }}
     spec:
+      serviceAccountName: vault-read-account
+
       {{- with .Values.initContainers }}
       initContainers:
         {{- toYaml . | nindent 8 }}
@@ -36,8 +43,6 @@ spec:
           envFrom:
             - configMapRef:
                 name: {{ include "application.fullname" . }}-config
-            - secretRef:
-                name: {{ include "application.fullname" . }}-secret
 
           args: ["postgres",
                  "-c", "shared_preload_libraries=pg_stat_statements",

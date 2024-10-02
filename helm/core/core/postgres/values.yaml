@@ -26,3 +26,6 @@ postgres:
 
 persistence:
   storageClassName:
+
+vault:
+  secretsPath: databases/data/core-service-postgres

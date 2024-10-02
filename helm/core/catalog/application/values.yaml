@@ -41,3 +41,6 @@ initContainers:
 
 oidc:
   enabled:
+
+vault:
+  secretsPath: databases/data/core-service-postgres
