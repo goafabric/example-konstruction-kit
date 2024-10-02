@@ -27,7 +27,7 @@ resource "vault_auth_backend" "kubernetes" {
   path = "kubernetes"
 }
 
-resource "terraform_data" "vault_k8s_config" {
+resource "terraform_data" "vault_authentication" {
   depends_on = [vault_auth_backend.kubernetes]
   provisioner "local-exec" {
     command = <<EOT
@@ -45,7 +45,7 @@ EOT
 # vault read role + policy
 
 resource "vault_kubernetes_auth_backend_role" "vault_read_role" {
-  depends_on = [terraform_data.vault_k8s_config]
+  depends_on = [terraform_data.vault_authentication]
 
   role_name     = "vault-read-role"
   backend       = "kubernetes"
@@ -56,7 +56,7 @@ resource "vault_kubernetes_auth_backend_role" "vault_read_role" {
 }
 
 resource "vault_policy" "vault_read_policy" {
-  depends_on = [terraform_data.vault_k8s_config]
+  depends_on = [terraform_data.vault_authentication]
   name = "vault-read-policy"
 
   policy = <<EOT
@@ -71,7 +71,7 @@ EOT
 ## secrets
 
 resource "vault_mount" "databases" {
-  depends_on = [terraform_data.vault_k8s_config]
+  depends_on = [terraform_data.vault_authentication]
 
   path        = "databases"
   type        = "kv"
