@@ -20,5 +20,7 @@ locals {
   oidc_enabled = strcontains(var.hostname, ".de")
   kafka_enabled = true
   postgres_ha = false
+
+  postgres_secret_path = "core-service-postgres"
 }
 

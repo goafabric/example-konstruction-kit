@@ -1,5 +1,5 @@
 resource "helm_release" "catalog-application" {
-  depends_on = [helm_release.catalog-batch]
+  #depends_on = [helm_release.catalog-batch]
   repository = var.helm_repository
   name       = "catalog-application"
   chart      = "${var.helm_repository}/catalog/application"
@@ -35,25 +35,25 @@ resource "helm_release" "catalog-application" {
   }
 }
 
-resource "helm_release" "catalog-batch" {
-  repository = var.helm_repository
-  name       = "catalog-batch"
-  chart      = "${var.helm_repository}/catalog/batch"
-  version    = "1.1.2"
-  namespace  = "core"
-  create_namespace = false
-  timeout = var.helm_timeout
-
-  set {
-    name  = "image.arch"
-    value = "-native${local.server_arch}"
-  }
-  set_sensitive {
-    name  = "database.password"
-    value = random_password.core_database_password.result
-  }
-  set {
-    name = "oidc.enabled"
-    value = local.oidc_enabled
-  }
-}
+# resource "helm_release" "catalog-batch" {
+#   repository = var.helm_repository
+#   name       = "catalog-batch"
+#   chart      = "${var.helm_repository}/catalog/batch"
+#   version    = "1.1.2"
+#   namespace  = "core"
+#   create_namespace = false
+#   timeout = 60 #var.helm_timeout
+#
+#   set {
+#     name  = "image.arch"
+#     value = "-native${local.server_arch}"
+#   }
+#   set_sensitive {
+#     name  = "database.password"
+#     value = random_password.core_database_password.result
+#   }
+#   set {
+#     name = "oidc.enabled"
+#     value = local.oidc_enabled
+#   }
+# }
