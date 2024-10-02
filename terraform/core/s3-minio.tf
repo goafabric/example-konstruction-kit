@@ -33,7 +33,7 @@ resource "helm_release" "s3-minio" {
   
   # vault service account
   set {
-    name  = "primary.automountServiceAccountToken"
+    name  = "automountServiceAccountToken"
     value = true
   }
   set {
