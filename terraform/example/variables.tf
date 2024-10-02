@@ -19,6 +19,4 @@ locals {
 
   oidc_enabled = strcontains(var.hostname, ".de")
   postgres_ha = false
-
-  postgres_secret_path = "person-service-postgres"
 }
