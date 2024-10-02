@@ -78,7 +78,7 @@ resource "helm_release" "person-service-postgres" {
   }
   set {
     name  = "primary.podAnnotations.vault\\.security\\.banzaicloud\\.io/vault-env-from-path"
-    value = "databases/data/person-service-postgres"
+    value = "databases/data/${local.postgres_secret_path}"
   }
 
 }

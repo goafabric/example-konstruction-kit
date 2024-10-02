@@ -9,7 +9,7 @@ resource "random_password" "database_password" {
 
 resource "vault_kv_secret_v2" "vault-person-service-postgres" {
   mount                      = "databases"
-  name                       = "person-service-postgres"
+  name                       = local.postgres_secret_path
   cas                        = 1
   delete_all_versions        = true
 
@@ -20,3 +20,4 @@ resource "vault_kv_secret_v2" "vault-person-service-postgres" {
     "spring.datasource.password" = random_password.database_password.result
   })
 }
+
