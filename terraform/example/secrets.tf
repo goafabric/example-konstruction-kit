@@ -21,3 +21,8 @@ resource "vault_kv_secret_v2" "vault-person-service-postgres" {
   })
 }
 
+resource "random_password" "oidc_session_secret" {
+  length           = 32
+  special          = false
+}
+

@@ -7,11 +7,6 @@ resource "helm_release" "core-postgres-postgresql-ha-pgpool" {
   namespace  = "core"
   create_namespace = false
   timeout = var.helm_timeout
-
-  set {
-    name  = "database.password"
-    value = random_password.core_database_password.result
-  }
 }
 
 resource "helm_release" "core-postgres-ha" {
@@ -51,14 +46,6 @@ resource "helm_release" "core-postgres-ha" {
   set_sensitive {
     name  = "global.postgresql.username"
     value = "core"
-  }
-  set_sensitive {
-    name  = "global.postgresql.password"
-    value = random_password.core_database_password.result
-  }
-  set_sensitive {
-    name  = "postgresql.password"
-    value = random_password.core_database_password.result
   }
   set {
     name  = "pgpool.reservedConnections"

@@ -19,12 +19,6 @@ resource "helm_release" "catalog-application" {
     name  = "image.arch"
     value = "-native${local.server_arch}"
   }
-
-  set_sensitive {
-    name  = "database.password"
-    value = random_password.core_database_password.result
-  }
-
   set {
     name = "oidc.enabled"
     value = local.oidc_enabled
@@ -48,10 +42,7 @@ resource "helm_release" "catalog-batch" {
     name  = "image.arch"
     value = "-native${local.server_arch}"
   }
-  set_sensitive {
-    name  = "database.password"
-    value = random_password.core_database_password.result
-  }
+
   set {
     name = "oidc.enabled"
     value = local.oidc_enabled
