@@ -5,7 +5,7 @@ resource "helm_release" "kafka" {
   version    = "30.1.0"
   namespace  = "event"
   create_namespace = false
-  timeout = var.helm_timeout
+  timeout = 60
 
   set {
     name = "controller.replicaCount"
@@ -29,6 +29,12 @@ resource "helm_release" "kafka" {
     value = "SASL_PLAINTEXT"
   }
 
+
+#   set {
+#     name = "sasl.existingSecret"
+#     value = "none"
+#   }
+
   set {
     name = "sasl.client.users[0]"
     value = "admin"
@@ -37,6 +43,8 @@ resource "helm_release" "kafka" {
     name = "sasl.client.passwords[0]"
     value = "none"
   }
+
+
   set {
     name  = "automountServiceAccountToken"
     value = true
