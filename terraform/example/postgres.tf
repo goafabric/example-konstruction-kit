@@ -87,7 +87,7 @@ resource "terraform_data" "remove_postgres_pvc" {
 
   provisioner "local-exec" {
     when = destroy
-    command = "kubectl delete pvc -l app.kubernetes.io/instance=app.kubernetes.io/name=postgresql -n example"
+    command = "kubectl delete pvc -l app.kubernetes.io/name=postgresql -n example"
   }
 }
 */
