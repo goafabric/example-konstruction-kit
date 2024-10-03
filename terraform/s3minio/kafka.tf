@@ -40,6 +40,73 @@ resource "helm_release" "kafka" {
     name  = "networkPolicy.enabled"
     value = false
   }
+
+  # vault service account
+  set {
+    name  = "automountServiceAccountToken"
+    value = true
+  }
+  set {
+    name  = "serviceAccount.create"
+    value = false
+  }
+  set {
+    name  = "serviceAccount.name"
+    value = "vault-read-account"
+  }
+
+  set {
+    name  = "controller.automountServiceAccountToken"
+    value = true
+  }
+  set {
+    name  = "controller.serviceAccount.create"
+    value = false
+  }
+  set {
+    name  = "controller.serviceAccount.name"
+    value = "vault-read-account"
+  }
+
+  set {
+    name  = "broker.automountServiceAccountToken"
+    value = true
+  }
+  set {
+    name  = "broker.serviceAccount.create"
+    value = false
+  }
+  set {
+    name  = "broker.serviceAccount.name"
+    value = "vault-read-account"
+  }
+
+  # vault injection
+  set {
+    name  = "controller.podAnnotations.vault\\.security\\.banzaicloud\\.io/vault-addr"
+    value = "http://vault.vault:8200"
+  }
+  set {
+    name  = "controller.podAnnotations.vault\\.security\\.banzaicloud\\.io/vault-role"
+    value = "vault-read-role"
+  }
+  set {
+    name  = "controller.podAnnotations.vault\\.security\\.banzaicloud\\.io/vault-env-from-path"
+    value = "databases/data/event-kafka"
+  }
+
+  set {
+    name  = "broker.podAnnotations.vault\\.security\\.banzaicloud\\.io/vault-addr"
+    value = "http://vault.vault:8200"
+  }
+  set {
+    name  = "broker.podAnnotations.vault\\.security\\.banzaicloud\\.io/vault-role"
+    value = "vault-read-role"
+  }
+  set {
+    name  = "broker.podAnnotations.vault\\.security\\.banzaicloud\\.io/vault-env-from-path"
+    value = "databases/data/event-kafka"
+  }
 }
 
 # manually remove the pvc to avoid password problems

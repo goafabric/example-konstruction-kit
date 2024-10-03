@@ -17,6 +17,11 @@ resource "random_password" "redis_password" {
   special          = false
 }
 
+resource "random_password" "kafka_password" {
+  length           = 32
+  special          = false
+}
+
 resource "vault_kv_secret_v2" "vault-secret-person-service-postgres" {
   mount                      = "databases"
   name                       = "person-service-postgres"
@@ -60,5 +65,23 @@ resource "vault_kv_secret_v2" "vault-secret-invoice-redis" {
 
     "spring.data.redis.password": random_password.redis_password.result
     "spring.data.redis.sentinel.password": random_password.redis_password.result
+  })
+}
+
+
+resource "vault_kv_secret_v2" "vault-secret-event-kafka" {
+  mount                      = "databases"
+  name                       = "event-kafka"
+  cas                        = 1
+  delete_all_versions        = true
+
+
+  data_json = jsonencode({
+#    KAFKA_CLIENT_PASSWORDS: random_password.kafka_password.result
+#    KAFKA_INTER_BROKER_PASSWORD=
+#    KAFKA_CONTROLLER_PASSWORD=
+
+    "spring.kafka.username": "admin"
+    "spring.kafka.password": random_password.kafka_password.result
   })
 }
