@@ -39,3 +39,6 @@ initContainers:
 
 oidc:
   enabled:
+
+vault:
+  secretsPath: databases/data/event-kafka

@@ -18,10 +18,6 @@ resource "helm_release" "event-dispatcher-service-application" {
     name  = "ingress.hosts"
     value = var.hostname
   }
-  set_sensitive {
-    name  = "messageBroker.password"
-    value = random_password.kafka_password.result
-  }
   set {
     name = "oidc.enabled"
     value = local.oidc_enabled
