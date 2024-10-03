@@ -7,11 +7,15 @@ resource "random_password" "database_password" {
   special          = false
 }
 
-resource "random_password" "redis_password" {
+resource "random_password" "minio_password" {
   length           = 32
   special          = false
 }
 
+resource "random_password" "redis_password" {
+  length           = 32
+  special          = false
+}
 
 resource "vault_kv_secret_v2" "vault-secret-person-service-postgres" {
   mount                      = "databases"
@@ -26,7 +30,6 @@ resource "vault_kv_secret_v2" "vault-secret-person-service-postgres" {
     "spring.datasource.password" = random_password.database_password.result
   })
 }
-
 
 resource "vault_kv_secret_v2" "vault-secret-core-minio" {
   mount                      = "databases"
@@ -44,7 +47,18 @@ resource "vault_kv_secret_v2" "vault-secret-core-minio" {
   })
 }
 
-resource "random_password" "minio_password" {
-  length           = 32
-  special          = false
+
+resource "vault_kv_secret_v2" "vault-secret-invoice-redis" {
+  mount                      = "databases"
+  name                       = "invoice-redis"
+  cas                        = 1
+  delete_all_versions        = true
+
+  data_json = jsonencode({
+#    REDIS_PASSWORD: random_password.redis_password.result
+#    REDIS_MASTER_PASSWORD: random_password.redis_password.result
+
+    "spring.data.redis.password": random_password.redis_password.result
+    "spring.data.redis.sentinel.password": random_password.redis_password.result
+  })
 }
