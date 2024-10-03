@@ -77,7 +77,7 @@ resource "vault_kv_secret_v2" "vault-secret-event-kafka" {
 
 
   data_json = jsonencode({
-#    KAFKA_CLIENT_PASSWORDS: random_password.kafka_password.result
+    KAFKA_CLIENT_PASSWORDS: random_password.kafka_password.result
 #    KAFKA_INTER_BROKER_PASSWORD=
 #    KAFKA_CONTROLLER_PASSWORD=
 
