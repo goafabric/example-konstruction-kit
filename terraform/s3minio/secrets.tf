@@ -7,6 +7,12 @@ resource "random_password" "database_password" {
   special          = false
 }
 
+resource "random_password" "redis_password" {
+  length           = 32
+  special          = false
+}
+
+
 resource "vault_kv_secret_v2" "vault-secret-person-service-postgres" {
   mount                      = "databases"
   name                       = "person-service-postgres"

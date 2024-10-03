@@ -40,7 +40,7 @@ resource "helm_release" "redis" {
   }
   set_sensitive {
     name  = "auth.password"
-    value = random_password.redis_password.result
+    value = "secret" #random_password.redis_password.result
   }
   set {
     name  = "networkPolicy.enabled"
