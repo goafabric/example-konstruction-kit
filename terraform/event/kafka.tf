@@ -30,11 +30,13 @@ resource "helm_release" "kafka" {
   }
 
   set {
-    name  = "networkPolicy.enabled"
-    value = false
+    name = "sasl.client.users[0]"
+    value = "admin"
   }
-
-  # vault service account
+  set_sensitive {
+    name = "sasl.client.passwords[0]"
+    value = random_password.kafka_password.result
+  }
   set {
     name  = "automountServiceAccountToken"
     value = true
