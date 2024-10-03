@@ -33,10 +33,10 @@ resource "helm_release" "kafka" {
     name = "sasl.client.users[0]"
     value = "admin"
   }
-#   set_sensitive {
-#     name = "sasl.client.passwords[0]"
-#     value = random_password.kafka_password.result
-#   }
+  set_sensitive {
+    name = "sasl.client.passwords[0]"
+    value = "none"
+  }
   set {
     name  = "automountServiceAccountToken"
     value = true
