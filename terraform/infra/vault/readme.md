@@ -17,6 +17,22 @@
 - Secrets have to be put from the outside and stupid terraform puts them UNENCRYPTED into the statefile => opentofu ?
 - All Application Deployments might need Init Container for Vault, or Vault is deployed to a seperate Server, othwise Pods could crash multiple times on server restart
 
+# possible other options
+- secrets via banzai bank vaults
+  - advantage: secrets injected via environment, which makes it secure and also easy to pick up by helm charts
+  - disadvantage: needs extra config for every helm chart, also secrets are "shadowed", because helm chart does not allow to shut down their secrets
+- secrets via vault injector
+  - advantage: seems to be default
+  - drawback: sidecar that uses extra resources, also only writes to file which is hard to pick up from helm charts
+- secrets via vault secrets operator
+  - advantage: most transprent solution as the same secrets configured now everywhere can be used
+  - drawback: secrets have to be encrypted, which needs a KMS like vault, also where is the benefit in directly creating the secrets with terraform ?
+- secrets via csi provider
+  - did not try this out, secrets can be mounted via filesystem, similar to vault injector, without sidcar
+- secrets via Azure Vault
+  - advantage: most straight forward way on azure
+  - disadvantage: there currently seems to be no way to inject secrets via environment
+
 # links
 - Vault Intro https://youtu.be/2Owo4Ioo9tQ?si=mFLEmPVjeBn8-Cm4
   - https://github.com/marcel-dempers/docker-development-youtube-series/tree/master/hashicorp/vault-2022/example-apps/basic-secret
