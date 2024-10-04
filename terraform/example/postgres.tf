@@ -64,6 +64,4 @@ resource "terraform_data" "remove_postgres_pvc" {
     command = "kubectl delete pvc -l app.kubernetes.io/name=postgresql -n example"
   }
 }
-
-
- */
+*/
