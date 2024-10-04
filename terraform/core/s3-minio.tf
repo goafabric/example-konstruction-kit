@@ -4,6 +4,7 @@ resource "helm_release" "s3-minio" {
   chart      = "minio"
   namespace  = "core"
   version    = "14.1.2"
+  timeout = 60
 
   set {
     name  = "persistence.size"

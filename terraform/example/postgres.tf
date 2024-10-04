@@ -10,7 +10,7 @@ resource "helm_release" "person-service-postgres" {
 
   set {
     name  = "database.password"
-    value = random_password.database_password.result
+    value = random_password.postgres_password.result
   }
 }
 
