@@ -16,14 +16,17 @@ resource "helm_release" "person-service-postgres" {
 
 /*
 resource "helm_release" "person-service-postgres" {
-  count = local.postgres_ha == false ? 1 : 0
-
   name       = "person-service-postgres-postgresql-ha-pgpool"
   repository = "https://charts.bitnami.com/bitnami"
   chart      = "postgresql"
   version    = "15.5.36"
   namespace  = "example"
-  timeout = var.helm_timeout
+  timeout    = "50"
+
+  set {
+    name  = "persistence.size"
+    value = "2Gi"
+  }
 
   set {
     name  = "postgresql.extraEnvVars[0].name"
@@ -41,47 +44,13 @@ resource "helm_release" "person-service-postgres" {
     name  = "global.postgresql.auth.database"
     value = "person"
   }
-
   set {
-    name  = "auth.enablePostgresUser"
-    value = false
-  }
-
-  set {
-    name  = "primary.readinessProbe.initialDelaySeconds"
-    value = "2"
+    name  = "global.postgresql.auth.username"
+    value = "person-service"
   }
   set {
-    name  = "primary.readinessProbe.periodSeconds"
-    value = "2"
-  }
-
-  # vault service account
-  set {
-    name  = "primary.automountServiceAccountToken"
-    value = true
-  }
-  set {
-    name  = "serviceAccount.create"
-    value = false
-  }
-  set {
-    name  = "serviceAccount.name"
-    value = "vault-read-account"
-  }
-
-  # vault injection
-  set {
-    name  = "primary.podAnnotations.vault\\.security\\.banzaicloud\\.io/vault-addr"
-    value = "http://vault.vault:8200"
-  }
-  set {
-    name  = "primary.podAnnotations.vault\\.security\\.banzaicloud\\.io/vault-role"
-    value = "vault-read-role"
-  }
-  set {
-    name  = "primary.podAnnotations.vault\\.security\\.banzaicloud\\.io/vault-env-from-path"
-    value = "databases/data/person-service-postgres"
+    name  = "global.postgresql.auth.password"
+    value = random_password.postgres_password.result
   }
 
 }
@@ -95,4 +64,6 @@ resource "terraform_data" "remove_postgres_pvc" {
     command = "kubectl delete pvc -l app.kubernetes.io/name=postgresql -n example"
   }
 }
-*/
+
+
+ */
