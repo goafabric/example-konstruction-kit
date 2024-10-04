@@ -14,6 +14,7 @@ resource "helm_release" "core-postgres-postgresql-ha-pgpool" {
   }
 }
 
+/*
 resource "helm_release" "core-postgres-ha" {
   count = local.postgres_ha == true ? 1 : 0
 
@@ -75,3 +76,5 @@ resource "terraform_data" "remove_postgres_pvc" {
     command = "kubectl delete pvc -l app.kubernetes.io/name=postgresql -n core"
   }
 }
+
+ */
