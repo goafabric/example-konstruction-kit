@@ -3,7 +3,7 @@ resource "helm_release" "vault" {
   chart      = "vault"
   namespace  = "vault"
   repository = "https://helm.releases.hashicorp.com"
-  create_namespace = false
+  create_namespace = true
   version    = "0.28.1"
 
   set {
@@ -45,7 +45,7 @@ resource "helm_release" "vault-secrets-webhook" {
   repository = "oci://ghcr.io/bank-vaults/helm-charts"
   version    = "1.21.3"
 
-  create_namespace = false
+  create_namespace = true
 }
 
 resource "terraform_data" "vault_operator_init" {
