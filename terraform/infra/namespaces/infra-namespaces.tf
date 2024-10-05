@@ -48,14 +48,3 @@ resource "kubernetes_namespace" "istio-system" {
     }
   }
 }
-
-
-resource "kubernetes_namespace" "vault" {
-  metadata {
-    name = "vault"
-    labels = {
-      "istio.io/dataplane-mode" = "ambient"
-    }
-  }
-}
-
