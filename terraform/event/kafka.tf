@@ -42,6 +42,10 @@ resource "helm_release" "kafka" {
     name  = "networkPolicy.enabled"
     value = false
   }
+  set {
+    name  = "metrics.jmx.enabled"
+    value = true
+  }
 }
 
 # manually remove the pvc to avoid password problems
