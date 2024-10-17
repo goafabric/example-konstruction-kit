@@ -64,7 +64,7 @@
       },
       "gridPos": {
         "h": 5,
-        "w": 5,
+        "w": 7,
         "x": 0,
         "y": 1
       },
@@ -89,24 +89,35 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "fe0j9kdrl9ngga"
+            "uid": "prometheus"
           },
           "disableTextWrap": false,
-          "editorMode": "builder",
+          "editorMode": "code",
           "expr": "application_started_time_seconds{app=\"$Application\"}",
           "fullMetaSearch": false,
           "includeNullMetadata": true,
-          "instant": false,
-          "legendFormat": "__auto",
-          "limit": 20,
-          "queryType": "traceql",
           "range": true,
           "refId": "A",
-          "tableType": "traces",
           "useBackend": false
         }
       ],
       "title": "App Start Time",
+      "transformations": [
+        {
+          "id": "reduce",
+          "options": {
+            "reducers": [
+              "last"
+            ]
+          }
+        },
+        {
+          "id": "limit",
+          "options": {
+            "limitField": "1"
+          }
+        }
+      ],
       "type": "gauge"
     },
     {
@@ -135,12 +146,20 @@
             ]
           }
         },
-        "overrides": []
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Field"
+            },
+            "properties": []
+          }
+        ]
       },
       "gridPos": {
         "h": 5,
-        "w": 5,
-        "x": 5,
+        "w": 6,
+        "x": 7,
         "y": 1
       },
       "id": 4,
@@ -178,7 +197,19 @@
       "transformations": [
         {
           "id": "reduce",
-          "options": {}
+          "options": {
+            "includeTimeField": false,
+            "mode": "seriesToRows",
+            "reducers": [
+              "last"
+            ]
+          }
+        },
+        {
+          "id": "limit",
+          "options": {
+            "limitField": "1"
+          }
         }
       ],
       "type": "gauge"
@@ -213,8 +244,8 @@
       },
       "gridPos": {
         "h": 5,
-        "w": 4,
-        "x": 10,
+        "w": 6,
+        "x": 13,
         "y": 1
       },
       "id": 1,
@@ -249,6 +280,22 @@
         }
       ],
       "title": "Live Threads",
+      "transformations": [
+        {
+          "id": "reduce",
+          "options": {
+            "reducers": [
+              "last"
+            ]
+          }
+        },
+        {
+          "id": "limit",
+          "options": {
+            "limitField": "1"
+          }
+        }
+      ],
       "type": "gauge"
     },
     {
@@ -280,9 +327,9 @@
       },
       "gridPos": {
         "h": 5,
-        "w": 4,
-        "x": 14,
-        "y": 1
+        "w": 7,
+        "x": 0,
+        "y": 6
       },
       "id": 8,
       "options": {
@@ -340,7 +387,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 6
+        "y": 11
       },
       "id": 3,
       "panels": [],
@@ -377,9 +424,9 @@
       },
       "gridPos": {
         "h": 5,
-        "w": 5,
+        "w": 6,
         "x": 0,
-        "y": 7
+        "y": 12
       },
       "id": 5,
       "options": {
@@ -456,8 +503,8 @@
       "gridPos": {
         "h": 5,
         "w": 5,
-        "x": 5,
-        "y": 7
+        "x": 6,
+        "y": 12
       },
       "id": 7,
       "options": {
@@ -534,8 +581,8 @@
       "gridPos": {
         "h": 5,
         "w": 4,
-        "x": 10,
-        "y": 7
+        "x": 11,
+        "y": 12
       },
       "id": 9,
       "options": {
@@ -561,7 +608,7 @@
             "uid": "prometheus"
           },
           "editorMode": "code",
-          "expr": "kafka_controller_kafkacontroller_globaltopiccount_value",
+          "expr": "max(kafka_controller_kafkacontroller_globaltopiccount_value)",
           "instant": false,
           "legendFormat": "__auto",
           "range": true,
@@ -579,8 +626,8 @@
       {
         "current": {
           "selected": true,
-          "text": "core-application",
-          "value": "core-application"
+          "text": "catalog-application",
+          "value": "catalog-application"
         },
         "datasource": {
           "type": "prometheus",
@@ -613,6 +660,6 @@
   "timezone": "browser",
   "title": "MyDashboard",
   "uid": "fe0mihq4tn6yof",
-  "version": 17,
+  "version": 27,
   "weekStart": ""
 }

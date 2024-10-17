@@ -381,13 +381,6 @@ data:
         },
         {
           "quadrant": 0,
-          "ring": 1,
-          "label": "Hashicorp Vault",
-          "active": true,
-          "moved": 1
-        },
-        {
-          "quadrant": 0,
           "ring": 2,
           "label": "Owasp Zap",
           "active": true,
@@ -406,9 +399,14 @@ data:
           "label": "Azure AKS",
           "active": true,
           "moved": 2
+        },
+        {
+          "quadrant": 0,
+          "ring": 1,
+          "label": "Azure Vault",
+          "active": true,
+          "moved": 2
         }
-
-
       ]
     }
   index.html: |
@@ -747,8 +745,8 @@ data:
     {\n    ringDescriptionsTable();\n  }\n}\n"
 kind: ConfigMap
 metadata:
-  creationTimestamp: "2024-09-21T08:20:52Z"
+  creationTimestamp: "2024-10-10T05:55:51Z"
   name: tech-radar-data-files
   namespace: dashboard
-  resourceVersion: "1824737"
-  uid: c8f6bccf-ab29-4b49-9239-4a5af69350e6
+  resourceVersion: "6804881"
+  uid: 29e929ad-4feb-4f5f-bb54-fdb883b2f417
