@@ -46,6 +46,10 @@ resource "helm_release" "kafka" {
     name  = "metrics.jmx.enabled"
     value = true
   }
+  set {
+    name  = "commonLabels.app"
+    value = "kafka"
+  }
 }
 
 # manually remove the pvc to avoid password problems

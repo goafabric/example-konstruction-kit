@@ -13,6 +13,7 @@ spec:
     metadata:
       annotations:
       labels:
+        {{- include "application.labels" . | nindent 8 }}
         {{- include "application.selectorLabels" . | nindent 8 }}
     spec:
       {{- with .Values.initContainers }}

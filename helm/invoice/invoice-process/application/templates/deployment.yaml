@@ -17,6 +17,7 @@ spec:
         prometheus.io/scheme: "http"
         prometheus.io/path: "/actuator/prometheus"
       labels:
+        {{- include "application.labels" . | nindent 8 }}
         {{- include "application.selectorLabels" . | nindent 8 }}
     spec:
       {{- with .Values.initContainers }}

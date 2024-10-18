@@ -46,6 +46,11 @@ resource "helm_release" "redis" {
     name  = "networkPolicy.enabled"
     value = false
   }
+  set {
+    name  = "commonLabels.app"
+    value = "redis"
+  }
+
 }
 
 resource "terraform_data" "remove_redis_pvc" {

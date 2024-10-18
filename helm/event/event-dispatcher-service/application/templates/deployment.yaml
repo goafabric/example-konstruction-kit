@@ -17,12 +17,13 @@ spec:
         prometheus.io/scheme: "http"
         prometheus.io/path: "/actuator/prometheus"
       labels:
+        {{- include "application.labels" . | nindent 8 }}
         {{- include "application.selectorLabels" . | nindent 8 }}
     spec:
       {{- with .Values.initContainers }}
       initContainers:
         {{- toYaml . | nindent 8 }}
-          {{- end }}
+        {{- end }}
 
       {{ if .Values.image.pullSecrets }}
       imagePullSecrets:
@@ -84,4 +85,5 @@ spec:
       volumes:
         - name: {{ include "application.fullname" . }}-applogs
           emptyDir: {}
+     
 
