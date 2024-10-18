@@ -17,6 +17,7 @@ spec:
         prometheus.io/scheme: "http"
         prometheus.io/path: "/actuator/prometheus"
       labels:
+        {{- include "application.labels" . | nindent 8 }}
         {{- include "application.selectorLabels" . | nindent 8 }}
     spec:
       {{- with .Values.initContainers }}
@@ -44,6 +45,19 @@ spec:
                 name: {{ include "application.fullname" . }}-config-log
             - secretRef:
                 name: {{ include "application.fullname" . }}-secret
+
+          #resources and commands and args
+          {{ if and (ne .Values.image.arch "-native") (ne .Values.image.arch "-native-arm64v8") }}
+            {{- with .Values.resourcesAnnotations }}
+              {{- toYaml . | nindent 10 }}
+              {{- end }}
+          {{- end }}
+
+          {{ if or (eq .Values.image.arch "-native") (eq .Values.image.arch "-native-arm64v8") }}
+            {{- with .Values.nativeAnnotations }}
+              {{- toYaml . | nindent 10 }}
+              {{- end }}
+          {{- end }}
 
           readinessProbe:
             httpGet:
