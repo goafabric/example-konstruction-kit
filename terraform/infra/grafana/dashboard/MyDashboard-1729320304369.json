@@ -18,7 +18,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 2,
+  "id": 1,
   "links": [],
   "panels": [
     {
@@ -84,7 +84,7 @@
         "showThresholdMarkers": true,
         "sizing": "auto"
       },
-      "pluginVersion": "11.2.0",
+      "pluginVersion": "11.2.2",
       "targets": [
         {
           "datasource": {
@@ -93,31 +93,17 @@
           },
           "disableTextWrap": false,
           "editorMode": "code",
-          "expr": "application_started_time_seconds{app=\"$Application\"}",
+          "exemplar": false,
+          "expr": "max(application_started_time_seconds{app=\"$Application\"})",
           "fullMetaSearch": false,
           "includeNullMetadata": true,
-          "range": true,
+          "instant": true,
+          "range": false,
           "refId": "A",
           "useBackend": false
         }
       ],
       "title": "App Start Time",
-      "transformations": [
-        {
-          "id": "reduce",
-          "options": {
-            "reducers": [
-              "last"
-            ]
-          }
-        },
-        {
-          "id": "limit",
-          "options": {
-            "limitField": "1"
-          }
-        }
-      ],
       "type": "gauge"
     },
     {
@@ -131,9 +117,12 @@
           "color": {
             "mode": "thresholds"
           },
+          "fieldMinMax": false,
           "mappings": [],
+          "max": 150,
+          "min": 10,
           "thresholds": {
-            "mode": "absolute",
+            "mode": "percentage",
             "steps": [
               {
                 "color": "green",
@@ -178,7 +167,7 @@
         "showThresholdMarkers": true,
         "sizing": "auto"
       },
-      "pluginVersion": "11.2.0",
+      "pluginVersion": "11.2.2",
       "targets": [
         {
           "datasource": {
@@ -186,32 +175,15 @@
             "uid": "prometheus"
           },
           "editorMode": "code",
-          "expr": "jvm_memory_used_bytes{app=\"$Application\", area=\"heap\", id=\"eden space\"} / 1024 / 100",
-          "instant": false,
+          "exemplar": false,
+          "expr": "max(jvm_memory_used_bytes{app=\"$Application\", area=\"heap\", id=\"eden space\"} / 1024 / 100)",
+          "instant": true,
           "legendFormat": "__auto",
-          "range": true,
+          "range": false,
           "refId": "A"
         }
       ],
       "title": "Memory Used",
-      "transformations": [
-        {
-          "id": "reduce",
-          "options": {
-            "includeTimeField": false,
-            "mode": "seriesToRows",
-            "reducers": [
-              "last"
-            ]
-          }
-        },
-        {
-          "id": "limit",
-          "options": {
-            "limitField": "1"
-          }
-        }
-      ],
       "type": "gauge"
     },
     {
@@ -226,8 +198,10 @@
             "mode": "thresholds"
           },
           "mappings": [],
+          "max": 50,
+          "min": 10,
           "thresholds": {
-            "mode": "absolute",
+            "mode": "percentage",
             "steps": [
               {
                 "color": "green",
@@ -264,7 +238,7 @@
         "showThresholdMarkers": true,
         "sizing": "auto"
       },
-      "pluginVersion": "11.2.0",
+      "pluginVersion": "11.2.2",
       "targets": [
         {
           "datasource": {
@@ -272,30 +246,15 @@
             "uid": "prometheus"
           },
           "editorMode": "code",
-          "expr": "jvm_threads_live_threads{app=\"$Application\"}",
-          "instant": false,
+          "exemplar": false,
+          "expr": "max(jvm_threads_live_threads{app=\"$Application\"})",
+          "instant": true,
           "legendFormat": "__auto",
-          "range": true,
+          "range": false,
           "refId": "A"
         }
       ],
       "title": "Live Threads",
-      "transformations": [
-        {
-          "id": "reduce",
-          "options": {
-            "reducers": [
-              "last"
-            ]
-          }
-        },
-        {
-          "id": "limit",
-          "options": {
-            "limitField": "1"
-          }
-        }
-      ],
       "type": "gauge"
     },
     {
@@ -309,8 +268,10 @@
             "mode": "thresholds"
           },
           "mappings": [],
+          "max": 50,
+          "min": 0,
           "thresholds": {
-            "mode": "absolute",
+            "mode": "percentage",
             "steps": [
               {
                 "color": "green",
@@ -327,9 +288,9 @@
       },
       "gridPos": {
         "h": 5,
-        "w": 7,
-        "x": 0,
-        "y": 6
+        "w": 4,
+        "x": 19,
+        "y": 1
       },
       "id": 8,
       "options": {
@@ -347,7 +308,7 @@
         "showThresholdMarkers": true,
         "sizing": "auto"
       },
-      "pluginVersion": "11.2.0",
+      "pluginVersion": "11.2.2",
       "targets": [
         {
           "datasource": {
@@ -387,7 +348,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 11
+        "y": 6
       },
       "id": 3,
       "panels": [],
@@ -406,8 +367,10 @@
             "mode": "thresholds"
           },
           "mappings": [],
+          "max": 150,
+          "min": 10,
           "thresholds": {
-            "mode": "absolute",
+            "mode": "percentage",
             "steps": [
               {
                 "color": "green",
@@ -426,7 +389,7 @@
         "h": 5,
         "w": 6,
         "x": 0,
-        "y": 12
+        "y": 7
       },
       "id": 5,
       "options": {
@@ -444,7 +407,7 @@
         "showThresholdMarkers": true,
         "sizing": "auto"
       },
-      "pluginVersion": "11.2.0",
+      "pluginVersion": "11.2.2",
       "targets": [
         {
           "datasource": {
@@ -453,6 +416,7 @@
           },
           "disableTextWrap": false,
           "editorMode": "code",
+          "exemplar": false,
           "expr": "max(http_server_requests_seconds_max{app=\"$Application\"}) * 1000",
           "fullMetaSearch": false,
           "includeNullMetadata": true,
@@ -467,7 +431,13 @@
       "transformations": [
         {
           "id": "reduce",
-          "options": {}
+          "options": {
+            "includeTimeField": false,
+            "mode": "seriesToRows",
+            "reducers": [
+              "max"
+            ]
+          }
         }
       ],
       "type": "gauge"
@@ -484,8 +454,10 @@
             "mode": "thresholds"
           },
           "mappings": [],
+          "max": 100,
+          "min": 10,
           "thresholds": {
-            "mode": "absolute",
+            "mode": "percentage",
             "steps": [
               {
                 "color": "green",
@@ -504,7 +476,7 @@
         "h": 5,
         "w": 5,
         "x": 6,
-        "y": 12
+        "y": 7
       },
       "id": 7,
       "options": {
@@ -522,7 +494,7 @@
         "showThresholdMarkers": true,
         "sizing": "auto"
       },
-      "pluginVersion": "11.2.0",
+      "pluginVersion": "11.2.2",
       "targets": [
         {
           "datasource": {
@@ -559,6 +531,116 @@
       "fieldConfig": {
         "defaults": {
           "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 5,
+        "x": 11,
+        "y": 7
+      },
+      "id": 11,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "editorMode": "code",
+          "expr": "max(http_server_requests_seconds_max{app=\"$Application\"}) * 1000",
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Request Alert",
+      "type": "timeseries"
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 12
+      },
+      "id": 10,
+      "panels": [],
+      "title": "Misc",
+      "type": "row"
+    },
+    {
+      "datasource": {
+        "default": false,
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
             "mode": "thresholds"
           },
           "mappings": [],
@@ -581,8 +663,8 @@
       "gridPos": {
         "h": 5,
         "w": 4,
-        "x": 11,
-        "y": 12
+        "x": 0,
+        "y": 13
       },
       "id": 9,
       "options": {
@@ -600,7 +682,7 @@
         "showThresholdMarkers": true,
         "sizing": "auto"
       },
-      "pluginVersion": "11.2.0",
+      "pluginVersion": "11.2.2",
       "targets": [
         {
           "datasource": {
@@ -625,7 +707,7 @@
     "list": [
       {
         "current": {
-          "selected": true,
+          "selected": false,
           "text": "catalog-application",
           "value": "catalog-application"
         },
@@ -649,6 +731,33 @@
         "skipUrlSync": false,
         "sort": 0,
         "type": "query"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "calico-kube-controllers-796fb75cc-gfpm7",
+          "value": "calico-kube-controllers-796fb75cc-gfpm7"
+        },
+        "datasource": {
+          "type": "prometheus",
+          "uid": "prometheus"
+        },
+        "definition": "label_values(kube_pod_info,pod)",
+        "hide": 0,
+        "includeAll": false,
+        "multi": false,
+        "name": "pod",
+        "options": [],
+        "query": {
+          "qryType": 1,
+          "query": "label_values(kube_pod_info,pod)",
+          "refId": "PrometheusVariableQueryEditor-VariableQuery"
+        },
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
       }
     ]
   },
@@ -660,6 +769,6 @@
   "timezone": "browser",
   "title": "MyDashboard",
   "uid": "fe0mihq4tn6yof",
-  "version": 27,
+  "version": 26,
   "weekStart": ""
 }
