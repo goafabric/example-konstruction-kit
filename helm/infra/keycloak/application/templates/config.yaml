@@ -20,3 +20,5 @@ data:
   KC_DB_URL: "jdbc:postgresql://keycloak-postgres/keycloak"
 
   KC_LOG_LEVEL: "INFO"
+
+  JAVA_OPTS: "-Xmx384m"
