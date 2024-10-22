@@ -1,4 +1,4 @@
-FROM kong:3.6.0
+FROM kong:3.8.0
 
 USER root
 

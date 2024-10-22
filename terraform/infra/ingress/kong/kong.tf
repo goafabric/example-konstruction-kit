@@ -2,7 +2,7 @@ resource "helm_release" "kong" {
   name             = "kong"
   repository       = "https://charts.konghq.com"
   chart            = "kong"
-  version          = "2.39.2"
+  version          = "2.42.0"
   namespace        = "kong"
   timeout          = "60"
   create_namespace = false
@@ -21,7 +21,7 @@ resource "helm_release" "kong" {
   }
   set {
     name  = "postgresql.enabled"
-    value = false
+    value = true
   }
   set {
     name  = "ingressController.env.log_level"
@@ -39,7 +39,7 @@ resource "helm_release" "kong" {
   }
   set {
     name  = "image.tag"
-    value = "3.6.0"
+    value = "3.8.0"
   }
   set {
     name  = "image.pullPolicy"
