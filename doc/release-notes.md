@@ -11,7 +11,7 @@
 - upgrade to Redis Chart 20.1.1
 - upgrade to Kafka Chart 30.1.
 - upgrade to Kong 3.8.0
-- upgrdae to Grafan 8.x
+- upgrdae to Grafana 8.x
 
 - upgrade Kind to Kubernetes 1.31 that supports network policies, currently needs workaround scale down DNS
 
