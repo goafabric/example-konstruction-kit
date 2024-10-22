@@ -22,11 +22,12 @@ spec:
         - name: proxy-rewrite
           enable: true
           config:
+            host: "{{ include "application.fullname" . }}.{{ .Release.Namespace }}"
             regex_uri:
               - {{ .Values.ingress.paths }}/(.*)
               - /$1
-            headers:
-              X-TenantId: 0 #just a dummy to avaoid privilige escalation, should be changed to the real tenantId retrieved during Authentication
+#            headers:
+#              X-TenantId: 0
         - name: openid-connect
           enable: {{ .Values.oidc.enabled }}
           config:
@@ -40,4 +41,4 @@ spec:
             redirect_uri: "{{ .Values.ingress.paths }}/redirect_uri"
             logout_path: "{{ .Values.ingress.paths }}/logout"
             session:
-              secret: "{{ .Values.oidc.session.secret | default "" }}" #it's important to SET the SAME secret for all routes ! otherwise reauth will happen
+              secret: "{{ .Values.oidc.session.secret | default "" }}"

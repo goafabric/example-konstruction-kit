@@ -1,7 +1,7 @@
 grafana.ini:
   server:
-    root_url: "%(protocol)s://%(domain)s/grafana"
-    serve_from_sub_path: false
+    root_url: '%(protocol)s://%(domain)s:/grafana/'
+    serve_from_sub_path: true
   security:
     allow_embedding: "true"
 
@@ -62,11 +62,11 @@ datasources:
           hide: false
         nodeGraph:
           enabled: true
-#    - name: prometheus
-#      type: prometheus
-#      uid: prometheus
-#      access: proxy
-#      orgId: 1
-#      url: http://prometheus-server.istio-system:80
-#      editable: true
-#      isDefault: false
+    - name: prometheus
+      type: prometheus
+      uid: prometheus
+      access: proxy
+      orgId: 1
+      url: http://prometheus-server.istio-system:80
+      editable: true
+      isDefault: false

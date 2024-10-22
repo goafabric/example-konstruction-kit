@@ -17,10 +17,7 @@ data "external" "server_arch_data" {
 locals {
   server_arch = data.external.server_arch_data.result["server_arch"]
 
-  production_mode = !strcontains(var.hostname, ".local")
-  oidc_enabled = local.production_mode
+  oidc_enabled = strcontains(var.hostname, ".de")
 
-  nats_replica_count = "2"
   kafka_replica_count = "1" #for production this should be 3
-  dispatcher_profile = "kafka" #nats
 }

@@ -9,9 +9,6 @@ image:
   pullPolicy: IfNotPresent #Always
   pullSecrets:
 
-podAnnotations:
-  linkerd.io/inject: enabled
-  sidecar.istio.io/inject: "true"
 
 resourcesAnnotations:
   resources:
@@ -39,7 +36,7 @@ service:
 
 initContainers:
   - name: check-db-ready
-    image: postgres:16.2
+    image: postgres:16.4
     command: ['sh', '-c','until pg_isready -h core-postgres-postgresql-ha-pgpool -p 5432;do echo waiting for database; sleep 1; done;']
 
 oidc:

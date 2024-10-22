@@ -5,10 +5,6 @@ image:
   pullPolicy: IfNotPresent
   pullSecrets:
 
-podAnnotations:
-  linkerd.io/inject: enabled
-  sidecar.istio.io/inject: "true"
-
 resources:
   requests:
     memory: 64M

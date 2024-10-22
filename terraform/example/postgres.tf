@@ -10,23 +10,19 @@ resource "helm_release" "person-service-postgres" {
 
   set {
     name  = "database.password"
-    value = random_password.database_password.result
+    value = random_password.postgres_password.result
   }
 }
 
-resource "helm_release" "person-service-postgres-ha" {
-  count = local.postgres_ha == true ? 1 : 0
-
-  name       = "person-service-postgres"
+/*
+resource "helm_release" "person-service-postgres" {
+  name       = "person-service-postgres-postgresql-ha-pgpool"
   repository = "https://charts.bitnami.com/bitnami"
-  chart      = "postgresql-ha"
-  version    = "14.2.7"
+  chart      = "postgresql"
+  version    = "15.5.36"
   namespace  = "example"
+  timeout    = "50"
 
-  set {
-    name  = "postgresql.replicaCount"
-    value = "2"
-  }
   set {
     name  = "persistence.size"
     value = "2Gi"
@@ -45,33 +41,27 @@ resource "helm_release" "person-service-postgres-ha" {
     value = "CREATE EXTENSION pg_stat_statements;"
   }
   set {
-    name  = "global.postgresql.database"
+    name  = "global.postgresql.auth.database"
     value = "person"
   }
   set {
-    name  = "global.postgresql.username"
+    name  = "global.postgresql.auth.username"
     value = "person-service"
   }
   set {
-    name  = "global.postgresql.password"
-    value = random_password.database_password.result
-  }
-  set {
-    name  = "postgresql.password"
-    value = random_password.database_password.result
-  }
-  set {
-    name  = "pgpool.reservedConnections"
-    value = "0" //https://github.com/bitnami/charts/issues/4219
+    name  = "global.postgresql.auth.password"
+    value = random_password.postgres_password.result
   }
 
 }
+
 
 # manually remove the pvc to avoid password problems
 resource "terraform_data" "remove_postgres_pvc" {
 
   provisioner "local-exec" {
     when = destroy
-    command = "kubectl delete pvc -l app.kubernetes.io/instance=person-service-postgres -n example"
+    command = "kubectl delete pvc -l app.kubernetes.io/name=postgresql -n example"
   }
 }
+*/

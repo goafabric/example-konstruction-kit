@@ -3,5 +3,5 @@ variable "hostname" {
 }
 
 locals {
-  production_mode = !strcontains(var.hostname, ".local")
+  istio_mode = "ambient" # sidecar
 }

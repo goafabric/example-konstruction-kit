@@ -37,9 +37,3 @@ data:
   spring.kafka.listener.observation-enabled: "true"
 
   #spring.kafka.consumer.properties.partition.assignment.strategy: "org.apache.kafka.clients.consumer.RoundRobinAssignor"
-
-  #nats
-  nats.spring.server: "nats.event:4222"
-
-  #profile
-  spring.profiles.active: {{ .Values.dispatcher.profile }}

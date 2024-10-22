@@ -7,3 +7,4 @@ metadata:
 data:
   #application
   TZ: Europe/Berlin
+  POSTGRES_DB: person

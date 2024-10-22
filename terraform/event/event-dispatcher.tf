@@ -7,6 +7,10 @@ resource "helm_release" "event-dispatcher-service-application" {
   timeout = var.helm_timeout
 
   set {
+    name  = "image.arch"
+    value = "-native${local.server_arch}"
+  }
+  set {
     name  = "replicaCount"
     value = "1"
   }
@@ -14,20 +18,12 @@ resource "helm_release" "event-dispatcher-service-application" {
     name  = "ingress.hosts"
     value = var.hostname
   }
-  set {
+  set_sensitive {
     name  = "messageBroker.password"
-    value = random_password.messageBroker_password.result
+    value = "supersecret" #random_password.messageBroker_password.result
   }
   set {
     name = "oidc.enabled"
     value = local.oidc_enabled
-  }
-  set {
-    name = "dispatcher.profile"
-    value = local.dispatcher_profile
-  }
-  set {
-    name  = "image.arch"
-    value = local.dispatcher_profile == "kafka" ? "-native${local.server_arch}" : ""
   }
 }

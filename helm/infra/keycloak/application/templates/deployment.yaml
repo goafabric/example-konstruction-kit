@@ -11,14 +11,11 @@ spec:
       {{- include "application.selectorLabels" . | nindent 6 }}
   template:
     metadata:
-      {{- with .Values.podAnnotations }}
-      annotations:
-        {{- toYaml . | nindent 8 }}
-      {{- end }}
-        prometheus.io/scrape: "true"
-        prometheus.io/port: "{{ .Values.service.port }}"
-        prometheus.io/scheme: "http"
-        prometheus.io/path: "/actuator/prometheus"
+#     annotations:
+#        prometheus.io/scrape: "true"
+#        prometheus.io/port: "{{ .Values.service.port }}"
+#        prometheus.io/scheme: "http"
+#        prometheus.io/path: "/actuator/prometheus"
       labels:
         {{- include "application.selectorLabels" . | nindent 8 }}
     spec:

@@ -1,3 +1,22 @@
+# 1.3.5
+- Compatibility with Azure
+- Nats removed
+- Kafka added directly to core Service
+- upgraded Apps to version 3.3.3
+
+- upgrade to Apisix to chart 2.9.0
+- upgrade to Istio 1.23.1 
+- upgrade to Postgres 16.4
+- upgrade to Cert Manager 1.15.3
+- upgrade to Redis Chart 20.1.1
+- upgrade to Kafka Chart 30.1.
+- upgrade to Kong 3.8.0
+- upgrdae to Grafana 8.x
+
+- upgrade Kind to Kubernetes 1.31 that supports network policies, currently needs workaround scale down DNS
+
+- compatibility of Apisix with Istio, via Mixed Mode and Host Name Fix
+
 # 1.3.4
 - back to stable invoice release
 - Tech Radar added

@@ -2,7 +2,7 @@ resource "helm_release" "grafana" {
   repository = "https://grafana.github.io/helm-charts"
   name       = "grafana"
   chart      = "grafana"
-  version    = "7.3.8"
+  version    = "8.5.5"
   namespace  = "grafana"
   create_namespace = false
 
@@ -71,7 +71,7 @@ resource "kubernetes_manifest" "grafana-ingress" {
     namespace: grafana
     annotations:
       cert-manager.io/cluster-issuer: my-cluster-issuer
-      konghq.com/strip-path: 'true'
+#      konghq.com/strip-path: 'true'
   spec:
     ingressClassName: kong
     tls:

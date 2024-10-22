@@ -17,8 +17,8 @@ data "external" "server_arch_data" {
 locals {
   server_arch = data.external.server_arch_data.result["server_arch"]
 
-  production_mode = !strcontains(var.hostname, ".local")
-  oidc_enabled = local.production_mode
-  postgres_ha = false #local.production_mode
+  oidc_enabled = strcontains(var.hostname, ".de")
+  kafka_enabled = true
+  postgres_ha = false
 }
 

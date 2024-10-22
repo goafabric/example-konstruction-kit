@@ -3,7 +3,7 @@ resource "helm_release" "redis" {
   repository = "https://charts.bitnami.com/bitnami"
   chart      = "redis"
   namespace  = "invoice"
-  version    = "19.5.2"
+  version    = "20.1.1"
 
   set {
     name  = "architecture"
@@ -38,7 +38,7 @@ resource "helm_release" "redis" {
     name  = "replica.readinessProbe.initialDelaySeconds"
     value = "5"
   }
-  set {
+  set_sensitive {
     name  = "auth.password"
     value = random_password.redis_password.result
   }
@@ -46,6 +46,11 @@ resource "helm_release" "redis" {
     name  = "networkPolicy.enabled"
     value = false
   }
+  set {
+    name  = "commonLabels.app"
+    value = "redis"
+  }
+
 }
 
 resource "terraform_data" "remove_redis_pvc" {

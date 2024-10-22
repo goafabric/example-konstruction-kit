@@ -1,6 +1,5 @@
 #!/bin/bash
-source ~/.kube/values
-
+source .values
 COMMAND=$1
 WORKSPACE=$TF_VAR_hostname
 
@@ -18,26 +17,15 @@ function up() {
     apply ../../infra/ingress/cert-manager
     apply ../../infra/ingress/$INGRESS_TYPE
     apply ../../infra/dashboard
-    apply ../../infra/grafana
-    apply ../../infra/oidc
-#   apply ../../example
-    apply ../../core
-    apply ../../event
     )
 }
 
 function down() {
     time(
-    destroy ../../event
-    destroy ../../core
-    destroy ../../example
-    destroy ../../infra/oidc
     destroy ../../infra/dashboard
-    destroy ../../infra/grafana
-    destroy ../../infra/ingress
-    destroy ../../infra/cert-manager
     destroy ../../infra/ingress/$INGRESS_TYPE
     destroy ../../infra/ingress/cert-manager
+    destroy ../../infra/namespaces/
     )
 }
 

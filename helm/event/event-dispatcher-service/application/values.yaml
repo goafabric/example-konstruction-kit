@@ -6,12 +6,8 @@ ingress:
 
 image:
   repository: "goafabric/event-dispatcher-service"
-  pullPolicy: Always
+  pullPolicy: Always #IfNotPresent
   pullSecrets: 
-
-podAnnotations:
-  linkerd.io/inject: enabled
-  sidecar.istio.io/inject: "true"
 
 resourcesAnnotations:
   resources:
@@ -35,6 +31,11 @@ readinessProbe:
 service:
   type: ClusterIP
   port: 8080
+
+initContainers:
+  - name: wait-for-broker
+    image: busybox:stable
+    command: ['sh', '-c', 'until nc -z kafka 9092; do echo waiting for broker; sleep 1; done;']
 
 oidc:
   enabled:

@@ -2,7 +2,7 @@ resource "helm_release" "apisix" {
   name       = "apisix"
   repository = "https://apache.github.io/apisix-helm-chart"
   chart      = "apisix"
-  version    = "2.8.0"
+  version    = "2.9.0"
   namespace  = "ingress-apisix"
   timeout    = "300"
   create_namespace = false
@@ -10,6 +10,16 @@ resource "helm_release" "apisix" {
   set {
     name  = "service.type"
     value = local.ingress_service_type
+  }
+
+  set {
+    name  = "autoscaling.enabled"
+    value = "true"
+  }
+
+  set {
+    name  = "autoscaling.maxReplicas"
+    value = "3"
   }
 
   set {

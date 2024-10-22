@@ -1,10 +1,8 @@
 resource "helm_release" "kafka" {
-  count = local.dispatcher_profile == "kafka" ? 1 : 0
-
   name       = "kafka"
   repository = "https://charts.bitnami.com/bitnami"
   chart      = "kafka"
-  version    = "29.1.1"
+  version    = "30.1.0"
   namespace  = "event"
   create_namespace = false
 
@@ -36,20 +34,26 @@ resource "helm_release" "kafka" {
     name = "sasl.client.users[0]"
     value = "admin"
   }
-  set {
+  set_sensitive {
     name = "sasl.client.passwords[0]"
-    value = random_password.messageBroker_password.result
+    value = "supersecret" #random_password.messageBroker_password.result
   }
   set {
     name  = "networkPolicy.enabled"
     value = false
   }
+  set {
+    name  = "metrics.jmx.enabled"
+    value = true
+  }
+  set {
+    name  = "commonLabels.app"
+    value = "kafka"
+  }
 }
 
 # manually remove the pvc to avoid password problems
 resource "terraform_data" "remove_kafka_pvc" {
-  count = local.dispatcher_profile == "kafka" ? 1 : 0
-
   provisioner "local-exec" {
     when = destroy
     command = "kubectl delete pvc -l app.kubernetes.io/instance=kafka -n event"

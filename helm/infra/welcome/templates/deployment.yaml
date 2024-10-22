@@ -11,10 +11,6 @@ spec:
       {{- include "application.selectorLabels" . | nindent 6 }}
   template:
     metadata:
-      {{- with .Values.podAnnotations }}
-      annotations:
-        {{- toYaml . | nindent 8 }}
-      {{- end }}
       labels:
         {{- include "application.selectorLabels" . | nindent 8 }}
     spec:
@@ -40,8 +36,6 @@ spec:
                 name: {{ include "application.fullname" . }}-config
             - configMapRef:
                 name: {{ include "application.fullname" . }}-config-log
-            - secretRef:
-                name: {{ include "application.fullname" . }}-secret
 
           #resources and commands and args
           {{- with .Values.resourcesAnnotations }}

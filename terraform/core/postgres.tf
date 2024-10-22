@@ -14,13 +14,14 @@ resource "helm_release" "core-postgres-postgresql-ha-pgpool" {
   }
 }
 
+/*
 resource "helm_release" "core-postgres-ha" {
   count = local.postgres_ha == true ? 1 : 0
 
   name       = "core-postgres"
   repository = "https://charts.bitnami.com/bitnami"
   chart      = "postgresql-ha"
-  version    = "14.2.7"
+  version    = "14.2.27"
   namespace  = "core"
 
   set {
@@ -48,15 +49,15 @@ resource "helm_release" "core-postgres-ha" {
     name  = "global.postgresql.database"
     value = "core"
   }
-  set {
+  set_sensitive {
     name  = "global.postgresql.username"
     value = "core"
   }
-  set {
+  set_sensitive {
     name  = "global.postgresql.password"
     value = random_password.core_database_password.result
   }
-  set {
+  set_sensitive {
     name  = "postgresql.password"
     value = random_password.core_database_password.result
   }
@@ -72,6 +73,8 @@ resource "terraform_data" "remove_postgres_pvc" {
 
   provisioner "local-exec" {
     when    = destroy
-    command = "kubectl delete pvc -l app.kubernetes.io/instance=core-postgres -n core"
+    command = "kubectl delete pvc -l app.kubernetes.io/name=postgresql -n core"
   }
 }
+
+ */

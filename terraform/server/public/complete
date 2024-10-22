@@ -1,0 +1,50 @@
+#!/bin/bash
+source .values
+
+COMMAND=$1
+WORKSPACE=$TF_VAR_hostname
+
+function apply() {
+  (cd $1; terraform workspace select -or-create $WORKSPACE && terraform init && terraform apply -auto-approve)
+}
+
+function destroy() {
+  (cd $1; terraform workspace select -or-create $WORKSPACE && terraform destroy -auto-approve)
+}
+
+function up() {
+    time(
+    apply ../../infra/namespaces/
+    apply ../../infra/ingress/cert-manager
+    apply ../../infra/ingress/$INGRESS_TYPE
+    apply ../../infra/dashboard
+    apply ../../infra/grafana
+    apply ../../infra/oidc
+#    apply ../../example
+    apply ../../core
+    apply ../../event
+    apply ../../invoice
+    )
+}
+
+function down() {
+    time
+    destroy ../../invoice
+    destroy ../../event
+    destroy ../../core
+    destroy ../../example
+    destroy ../../infra/oidc
+    destroy ../../infra/dashboard
+    destroy ../../infra/grafana
+    destroy ../../infra/ingress
+    destroy ../../infra/ingress/cert-manager
+    destroy ../../infra/ingress/$INGRESS_TYPE
+    destroy ../../infra/ingress/cert-manager
+    destroy ../../infra/namespaces/
+    )
+}
+
+if   [ "${COMMAND}" = "init" ]; then up;
+elif [ "${COMMAND}" = "prune" ]; then down;
+
+else echo Doing nothing !; fi

@@ -28,7 +28,6 @@ resource "helm_release" "keycloak-postgres" {
   repository = var.infra_repository
   name       = "keycloak-postgres"
   chart      = "${var.infra_repository}/keycloak/postgres"
-  version    = "1.1.2"
   namespace  = "oidc"
   create_namespace = true
   timeout = var.helm_timeout
