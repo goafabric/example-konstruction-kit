@@ -276,7 +276,13 @@
       "active": true,
       "moved": 0
     },
-
+    {
+      "quadrant": 1,
+      "ring": 1,
+      "label": "Azure AKS",
+      "active": true,
+      "moved": 2
+    },
 
 
     {
@@ -387,13 +393,6 @@
       "label": "Software Bill of Material",
       "active": true,
       "moved": 0
-    },
-    {
-      "quadrant": 0,
-      "ring": 1,
-      "label": "Azure AKS",
-      "active": true,
-      "moved": 2
     },
     {
       "quadrant": 0,
