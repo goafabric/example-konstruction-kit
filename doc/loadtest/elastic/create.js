@@ -35,7 +35,7 @@ export default function () {
   const personData = generatePersonData(tenantId);  // Pass iteration ID as tenantId
 
   // Create a person document in Elasticsearch
-  const res = http.post(`${esUrl}/${indexName}/_doc`, personData, {
+  const res = http.post(`${esUrl}/${indexName}-${tenantId}/_doc`, personData, {
     headers: { 'Content-Type': 'application/json' },
   });
 
