@@ -1,0 +1,2 @@
+http://localhost:9200/persons/_search?size=100
+http://localhost:9200/_cat/indices?v
