@@ -27,7 +27,7 @@ export default function () {
   });
 
   // Perform the search query on Elasticsearch
-  const res = http.post(`${esUrl}/${indexName}/_search`, query, {
+  const res = http.post(`${esUrl}/${indexName}-${tenantId}/_search`, query, {
     headers: { 'Content-Type': 'application/json' },
   });
 
