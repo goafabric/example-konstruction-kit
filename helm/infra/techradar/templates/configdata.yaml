@@ -132,6 +132,13 @@ data:
           "active": true,
           "moved": 0
         },
+        {
+          "quadrant": 2,
+          "ring": 3,
+          "label": "Spring AI",
+          "active": true,
+          "moved": 2
+        },
 
 
         {
@@ -404,7 +411,7 @@ data:
           "ring": 1,
           "label": "(Azure) Vault",
           "active": true,
-          "moved": 2
+          "moved": 1
         }
       ]
     }
@@ -744,8 +751,8 @@ data:
     {\n    ringDescriptionsTable();\n  }\n}\n"
 kind: ConfigMap
 metadata:
-  creationTimestamp: "2024-11-02T09:36:22Z"
+  creationTimestamp: "2024-11-02T09:41:34Z"
   name: tech-radar-data-files
   namespace: dashboard
-  resourceVersion: "12958573"
-  uid: 5b1314bc-643f-483e-9904-d8440dac19a5
+  resourceVersion: "12959798"
+  uid: 82256044-a07e-4ddc-be78-09c96fe28358
