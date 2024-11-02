@@ -208,10 +208,10 @@
     },
     {
       "quadrant": 1,
-      "ring": 2,
+      "ring": 1,
       "label": "K6",
       "active": true,
-      "moved": 0
+      "moved": 1
     },
     {
       "quadrant": 1,
@@ -308,7 +308,7 @@
     },
     {
       "quadrant": 3,
-      "ring": 1,
+      "ring": 2,
       "label": "Redis",
       "active": true,
       "moved": 0
@@ -319,7 +319,7 @@
       "ring": 1,
       "label": "Kafka",
       "active": true,
-      "moved": 0
+      "moved": 1
     },
     {
       "quadrant": 3,
@@ -389,10 +389,10 @@
     },
     {
       "quadrant": 0,
-      "ring": 2,
-      "label": "Software Bill of Material",
+      "ring": 1,
+      "label": "Software Bill of Materials",
       "active": true,
-      "moved": 0
+      "moved": 1
     },
     {
       "quadrant": 0,

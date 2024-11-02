@@ -213,10 +213,10 @@ data:
         },
         {
           "quadrant": 1,
-          "ring": 2,
+          "ring": 1,
           "label": "K6",
           "active": true,
-          "moved": 0
+          "moved": 1
         },
         {
           "quadrant": 1,
@@ -313,7 +313,7 @@ data:
         },
         {
           "quadrant": 3,
-          "ring": 1,
+          "ring": 2,
           "label": "Redis",
           "active": true,
           "moved": 0
@@ -324,7 +324,7 @@ data:
           "ring": 1,
           "label": "Kafka",
           "active": true,
-          "moved": 0
+          "moved": 1
         },
         {
           "quadrant": 3,
@@ -394,10 +394,10 @@ data:
         },
         {
           "quadrant": 0,
-          "ring": 2,
-          "label": "Software Bill of Material",
+          "ring": 1,
+          "label": "Software Bill of Materials",
           "active": true,
-          "moved": 0
+          "moved": 1
         },
         {
           "quadrant": 0,
@@ -744,8 +744,8 @@ data:
     {\n    ringDescriptionsTable();\n  }\n}\n"
 kind: ConfigMap
 metadata:
-  creationTimestamp: "2024-11-02T09:31:56Z"
+  creationTimestamp: "2024-11-02T09:36:22Z"
   name: tech-radar-data-files
   namespace: dashboard
-  resourceVersion: "12957412"
-  uid: bdf9d954-a56e-467d-9646-80f301ca2d13
+  resourceVersion: "12958573"
+  uid: 5b1314bc-643f-483e-9904-d8440dac19a5
