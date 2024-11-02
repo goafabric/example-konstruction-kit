@@ -227,10 +227,10 @@ data:
         },
         {
           "quadrant": 1,
-          "ring": 2,
+          "ring": 1,
           "label": "Renovate",
           "active": true,
-          "moved": 0
+          "moved": 1
         },
         {
           "quadrant": 1,
@@ -281,7 +281,13 @@ data:
           "active": true,
           "moved": 0
         },
-
+        {
+          "quadrant": 1,
+          "ring": 1,
+          "label": "Azure AKS",
+          "active": true,
+          "moved": 1
+        },
 
 
         {
@@ -375,7 +381,7 @@ data:
         {
           "quadrant": 0,
           "ring": 1,
-          "label": "Servicemesh mTLS",
+          "label": "Istio Servicemesh mTLS",
           "active": true,
           "moved": 1
         },
@@ -396,14 +402,7 @@ data:
         {
           "quadrant": 0,
           "ring": 1,
-          "label": "Azure AKS",
-          "active": true,
-          "moved": 2
-        },
-        {
-          "quadrant": 0,
-          "ring": 1,
-          "label": "Azure Vault",
+          "label": "(Azure) Vault",
           "active": true,
           "moved": 2
         }
@@ -745,8 +744,8 @@ data:
     {\n    ringDescriptionsTable();\n  }\n}\n"
 kind: ConfigMap
 metadata:
-  creationTimestamp: "2024-10-10T05:55:51Z"
+  creationTimestamp: "2024-11-02T09:31:56Z"
   name: tech-radar-data-files
   namespace: dashboard
-  resourceVersion: "6804881"
-  uid: 29e929ad-4feb-4f5f-bb54-fdb883b2f417
+  resourceVersion: "12957412"
+  uid: bdf9d954-a56e-467d-9646-80f301ca2d13
