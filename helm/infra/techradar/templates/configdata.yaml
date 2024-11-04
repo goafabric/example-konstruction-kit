@@ -4,7 +4,7 @@ binaryData:
 data:
   config.json: |
     {
-      "date": "2024.07",
+      "date": "2024.11",
       "entries": [
         {
           "quadrant": 2,
@@ -751,8 +751,8 @@ data:
     {\n    ringDescriptionsTable();\n  }\n}\n"
 kind: ConfigMap
 metadata:
-  creationTimestamp: "2024-11-02T09:41:34Z"
+  creationTimestamp: "2024-11-02T09:46:27Z"
   name: tech-radar-data-files
   namespace: dashboard
-  resourceVersion: "12959798"
-  uid: 82256044-a07e-4ddc-be78-09c96fe28358
+  resourceVersion: "12960770"
+  uid: 164150df-aa29-4be2-9214-7e1a5b4861f7

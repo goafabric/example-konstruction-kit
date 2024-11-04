@@ -2,12 +2,12 @@ import http from 'k6/http';
 import { check, sleep } from 'k6';
 
 export const options = {
-  vus: 10,  // Number of virtual users
-  iterations: 100,  // Total number of requests
+  vus: 100,  // Number of virtual users
+  iterations: 100000,  // Total number of requests
+
 };
 
 const esUrl = 'http://localhost:9200';  // Update this to your Elasticsearch URL
-const indexName = 'persons';  // Update this to your desired index name
 let totalDocumentsCreated = 0;  // Global counter
 
 // Generate person data with iteration-based tenantId, firstname, and lastname
@@ -32,11 +32,14 @@ export default function () {
   totalDocumentsCreated++;
   
   const tenantId = __VU;
+
+  const indexName = 'persons';
+  //const indexName = `persons-${tenantId}`;
+
   const personData = generatePersonData(tenantId);  // Pass iteration ID as tenantId
 
   // Create a person document in Elasticsearch
-    //const res = http.post(`${esUrl}/${indexName}/_doc`, personData, {
-    const res = http.post(`${esUrl}/${indexName}-${tenantId}/_doc`, personData, {
+  const res = http.post(`${esUrl}/${indexName}/_doc`, personData, {
     headers: { 'Content-Type': 'application/json' },
   });
 
@@ -45,6 +48,6 @@ export default function () {
     'status is 201': (r) => r.status === 201,
   });
 
-  sleep(0.5);  // Pause between requests
+  //sleep(0.5);  // Pause between requests
 }
 

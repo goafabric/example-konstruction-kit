@@ -14,6 +14,9 @@ export default function () {
   const tenantId = Math.floor(Math.random() * 10) + 1;
   const personId = Math.floor(Math.random() * 100);
 
+  const indexName = 'persons';
+  //const indexName = `persons-${tenantId}`;
+
   // Define the search query to match tenantId and personId fields
   const query = JSON.stringify({
     query: {
@@ -27,7 +30,7 @@ export default function () {
   });
 
   // Perform the search query on Elasticsearch
-  const res = http.post(`${esUrl}/${indexName}-${tenantId}/_search`, query, {
+  const res = http.post(`${esUrl}/${indexName}/_search`, query, {
     headers: { 'Content-Type': 'application/json' },
   });
 
@@ -37,5 +40,4 @@ export default function () {
     'found results': (r) => JSON.parse(r.body).hits.total.value > 0,
   });
 
-  sleep(0.5);  // Pause between requests
 }
