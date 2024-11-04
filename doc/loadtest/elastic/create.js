@@ -4,7 +4,6 @@ import { check, sleep } from 'k6';
 export const options = {
   vus: 100,  // Number of virtual users
   iterations: 100000,  // Total number of requests
-
 };
 
 const esUrl = 'http://localhost:9200';  // Update this to your Elasticsearch URL
@@ -12,7 +11,7 @@ let totalDocumentsCreated = 0;  // Global counter
 
 // Generate person data with iteration-based tenantId, firstname, and lastname
 function generatePersonData(iterationId) {
-  const id = Math.floor(Math.random() * 10000);
+  const id = Math.floor(Math.random() * 1000000);
   return JSON.stringify({
     tenantId: iterationId,  // Use the iteration ID as the tenantId
     personId: id,
