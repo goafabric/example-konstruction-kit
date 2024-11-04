@@ -3,7 +3,7 @@ import { check, sleep } from 'k6';
 
 export const options = {
   vus: 100,  // Number of virtual users
-  iterations: 10000,  // Total number of requests
+  iterations: 100000,  // Total number of requests
 
 };
 
