@@ -2,8 +2,8 @@ import http from 'k6/http';
 import { check, sleep } from 'k6';
 
 export const options = {
-  vus: 10,  // Number of virtual users
-  iterations: 100,  // Total number of requests
+  vus: 100,  // Number of virtual users
+  iterations: 10000,  // Total number of requests
 };
 
 const esUrl = 'http://localhost:9200';  // Update this to your Elasticsearch URL
@@ -14,20 +14,8 @@ export default function () {
   const tenantId = Math.floor(Math.random() * 10) + 1;
   const personId = Math.floor(Math.random() * 100);
 
-  const indexName = 'persons';
-  //const indexName = `persons-${tenantId}`;
-
-  // Define the search query to match tenantId and personId fields
-  const query = JSON.stringify({
-    query: {
-      bool: {
-        must: [
-          { match: { tenantId: tenantId } },
-          { match: { personId: personId } },
-        ],
-      },
-    },
-  });
+  const indexName = 'persons'; const query = JSON.stringify({ query: { bool: { must: [{ match: { tenantId: tenantId } }, { match_phrase_prefix: { firstName: "Homer" } }] } } });
+  //const indexName = `persons-${tenantId}`; const query = JSON.stringify({ query: { bool: { must: [{ match_phrase_prefix: { firstName: "Homer" } }] } } });
 
   // Perform the search query on Elasticsearch
   const res = http.post(`${esUrl}/${indexName}/_search`, query, {
@@ -37,7 +25,7 @@ export default function () {
   // Check if the response was successful and found results
   check(res, {
     'status is 200': (r) => r.status === 200,
-    'found results': (r) => JSON.parse(r.body).hits.total.value > 0,
+    'found results': (r) => JSON.parse(r.body).hits.total.value = 1,
   });
 
 }
