@@ -4,7 +4,7 @@ resource "helm_release" "kiali" {
   chart      = "kiali-server"
   namespace  = "istio-system"
   create_namespace = false
-  version    = "1.87.0"
+  version    = "2.0.0"
   wait       = true
 
   set {
@@ -28,7 +28,7 @@ resource "helm_release" "kiali" {
 
   # grafana
   set {
-    name  = "external_services.grafana.in_cluster_url"
+    name  = "external_services.grafana.internal_url"
     value = "http://grafana.grafana:80"
   }
   set {
@@ -36,7 +36,7 @@ resource "helm_release" "kiali" {
     value = "http://grafana.grafana:80/healthz"
   }
   set {
-    name  = "external_services.grafana.url"
+    name  = "external_services.grafana.external_url"
     value = "/grafana"
   }
   
@@ -55,7 +55,7 @@ resource "helm_release" "kiali" {
   }
 
   set {
-    name  = "external_services.tracing.in_cluster_url"
+    name  = "external_services.tracing.internal_url"
     value = "http://tempo.grafana:3100/"
   }
   set {
