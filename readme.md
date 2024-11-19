@@ -15,7 +15,7 @@
 - Password is currently just admin/admin
 
 # Additional Modules
-- Additional modules can the be installed with terraform by going into the specific terraform folder (e.g. terraform example)
+- Additional modules can the be installed with terraform by going into the specific terraform folder (e.g. terraform/example)
 - And then just execute terraform apply (default server is kind)
 
 # Uninstall
