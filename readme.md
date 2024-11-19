@@ -26,5 +26,4 @@
 - To start specific applications change to the folder representing the namespace (e.g. helm/templates/example/spring)
 - And do "./stack up"
 - To shut everything down do "./stack down"
--
 - In case you need a localhost direct connection to your pod do "./stack proxy" (e.g. connecting with a frontend)
