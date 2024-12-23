@@ -1,6 +1,6 @@
 # 1.3.6
-- upgrade to Istio 1.24.0 
-- upgrade to Kiali 2.0.0
+- upgrade to Istio 1.24.2 
+- upgrade to Kiali 2.3.0
 - upgrade to Prometheus Chart 25.27.0
 
 # 1.3.5
