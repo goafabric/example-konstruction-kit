@@ -4,6 +4,7 @@
 - upgrade to Prometheus Chart 25.27.0
 - upgrade to Postgres 17.2
 - upgrade to Kafka Chart 31.0.0
+- upgrade of example to 3.4.1
 
 # 1.3.5
 - Compatibility with Azure
