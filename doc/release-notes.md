@@ -3,7 +3,7 @@
 - upgrade to Kiali 2.3.0
 - upgrade to Prometheus Chart 25.27.0
 - upgrade to Postgres 17.2
-- upgrade to Kafka Chart 31.1.1
+- upgrade to Kafka Chart 31.0.0
 
 # 1.3.5
 - Compatibility with Azure
