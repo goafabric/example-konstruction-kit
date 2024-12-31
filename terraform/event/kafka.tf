@@ -2,7 +2,7 @@ resource "helm_release" "kafka" {
   name       = "kafka"
   repository = "https://charts.bitnami.com/bitnami"
   chart      = "kafka"
-  version    = "30.1.0"
+  version    = "31.1.1"
   namespace  = "event"
   create_namespace = false
 
