@@ -64,6 +64,13 @@ data:
         },
         {
           "quadrant": 2,
+          "ring": 1,
+          "label": "Spring Mail",
+          "active": true,
+          "moved": 2
+        },
+        {
+          "quadrant": 2,
           "ring": 0,
           "label": "OpenAPI",
           "active": true,
@@ -137,7 +144,7 @@ data:
           "ring": 3,
           "label": "Spring AI",
           "active": true,
-          "moved": 2
+          "moved": 0
         },
 
 
@@ -223,7 +230,7 @@ data:
           "ring": 1,
           "label": "K6",
           "active": true,
-          "moved": 1
+          "moved": 0
         },
         {
           "quadrant": 1,
@@ -234,7 +241,7 @@ data:
         },
         {
           "quadrant": 1,
-          "ring": 1,
+          "ring": 0,
           "label": "Renovate",
           "active": true,
           "moved": 1
@@ -290,7 +297,7 @@ data:
         },
         {
           "quadrant": 1,
-          "ring": 1,
+          "ring": 0,
           "label": "Azure AKS",
           "active": true,
           "moved": 1
@@ -331,7 +338,7 @@ data:
           "ring": 1,
           "label": "Kafka",
           "active": true,
-          "moved": 1
+          "moved": 0
         },
         {
           "quadrant": 3,
@@ -369,7 +376,7 @@ data:
           "ring": 0,
           "label": "Volume Encryption",
           "active": true,
-          "moved": 1
+          "moved": 0
         },
         {
           "quadrant": 0,
@@ -383,14 +390,14 @@ data:
           "ring": 0,
           "label": "Network Policies",
           "active": true,
-          "moved": 1
+          "moved": 0
         },
         {
           "quadrant": 0,
           "ring": 1,
           "label": "Istio Servicemesh mTLS",
           "active": true,
-          "moved": 1
+          "moved": 0
         },
         {
           "quadrant": 0,
@@ -404,11 +411,11 @@ data:
           "ring": 1,
           "label": "Software Bill of Materials",
           "active": true,
-          "moved": 1
+          "moved": 0
         },
         {
           "quadrant": 0,
-          "ring": 1,
+          "ring": 0,
           "label": "(Azure) Vault",
           "active": true,
           "moved": 1
@@ -751,8 +758,8 @@ data:
     {\n    ringDescriptionsTable();\n  }\n}\n"
 kind: ConfigMap
 metadata:
-  creationTimestamp: "2024-11-02T09:46:27Z"
+  creationTimestamp: "2025-01-06T08:45:36Z"
   name: tech-radar-data-files
   namespace: dashboard
-  resourceVersion: "12960770"
-  uid: 164150df-aa29-4be2-9214-7e1a5b4861f7
+  resourceVersion: "30537730"
+  uid: 37db8a3c-d98e-487a-8327-71309242d251

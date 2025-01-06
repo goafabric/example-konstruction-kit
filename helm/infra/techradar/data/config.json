@@ -59,6 +59,13 @@
     },
     {
       "quadrant": 2,
+      "ring": 1,
+      "label": "Spring Mail",
+      "active": true,
+      "moved": 2
+    },
+    {
+      "quadrant": 2,
       "ring": 0,
       "label": "OpenAPI",
       "active": true,
@@ -132,7 +139,7 @@
       "ring": 3,
       "label": "Spring AI",
       "active": true,
-      "moved": 2
+      "moved": 0
     },
 
 
@@ -218,7 +225,7 @@
       "ring": 1,
       "label": "K6",
       "active": true,
-      "moved": 1
+      "moved": 0
     },
     {
       "quadrant": 1,
@@ -229,7 +236,7 @@
     },
     {
       "quadrant": 1,
-      "ring": 1,
+      "ring": 0,
       "label": "Renovate",
       "active": true,
       "moved": 1
@@ -285,7 +292,7 @@
     },
     {
       "quadrant": 1,
-      "ring": 1,
+      "ring": 0,
       "label": "Azure AKS",
       "active": true,
       "moved": 1
@@ -326,7 +333,7 @@
       "ring": 1,
       "label": "Kafka",
       "active": true,
-      "moved": 1
+      "moved": 0
     },
     {
       "quadrant": 3,
@@ -364,7 +371,7 @@
       "ring": 0,
       "label": "Volume Encryption",
       "active": true,
-      "moved": 1
+      "moved": 0
     },
     {
       "quadrant": 0,
@@ -378,14 +385,14 @@
       "ring": 0,
       "label": "Network Policies",
       "active": true,
-      "moved": 1
+      "moved": 0
     },
     {
       "quadrant": 0,
       "ring": 1,
       "label": "Istio Servicemesh mTLS",
       "active": true,
-      "moved": 1
+      "moved": 0
     },
     {
       "quadrant": 0,
@@ -399,11 +406,11 @@
       "ring": 1,
       "label": "Software Bill of Materials",
       "active": true,
-      "moved": 1
+      "moved": 0
     },
     {
       "quadrant": 0,
-      "ring": 1,
+      "ring": 0,
       "label": "(Azure) Vault",
       "active": true,
       "moved": 1
