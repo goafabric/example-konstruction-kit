@@ -59,13 +59,6 @@
     },
     {
       "quadrant": 2,
-      "ring": 1,
-      "label": "Spring Mail",
-      "active": true,
-      "moved": 2
-    },
-    {
-      "quadrant": 2,
       "ring": 0,
       "label": "OpenAPI",
       "active": true,

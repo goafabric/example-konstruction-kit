@@ -4,7 +4,7 @@ binaryData:
 data:
   config.json: |
     {
-      "date": "2024.11",
+      "date": "2025.1",
       "entries": [
         {
           "quadrant": 2,
@@ -61,13 +61,6 @@ data:
           "label": "Spring Integration",
           "active": true,
           "moved": 0
-        },
-        {
-          "quadrant": 2,
-          "ring": 1,
-          "label": "Spring Mail",
-          "active": true,
-          "moved": 2
         },
         {
           "quadrant": 2,
@@ -758,8 +751,8 @@ data:
     {\n    ringDescriptionsTable();\n  }\n}\n"
 kind: ConfigMap
 metadata:
-  creationTimestamp: "2025-01-06T08:45:36Z"
+  creationTimestamp: "2025-01-06T10:28:43Z"
   name: tech-radar-data-files
   namespace: dashboard
-  resourceVersion: "30537730"
-  uid: 37db8a3c-d98e-487a-8327-71309242d251
+  resourceVersion: "30559369"
+  uid: 85e3e9e3-8175-4c72-b68f-b9ebe088730a
