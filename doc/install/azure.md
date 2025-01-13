@@ -53,6 +53,7 @@ Public IP Address (after Cluster Created)
 - access
   - network access can be set to public at the beginning by granting public IPS via Firewall
       - including Option "Allow public access from any Azure service within Azure to this server"
+  - !! you might still have to click "Add current client IP address" in the firewall section !!
   - could be changed later to private Network
   - jdbc connection needs to be at least configured with /postgres?sslmode=require
   - better is /postgres?sslmode=verify-full
