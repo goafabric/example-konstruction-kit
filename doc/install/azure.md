@@ -68,3 +68,22 @@ Public IP Address (after Cluster Created)
   - api is not s3 compatible, proxy solutions are not recommend as possible bottlneck and expensive (400 euros per month)
   - recommended way via azure SDK and feature toggle between AWS + Azure
     - needs account name and account key as config parameters, can be found under "Security + Networking/Access Keys"
+
+# kafka / event hub
+- create event hub with the standard 22$ tier
+- retrieve connection string from settings\Shared Access Policies\RootManageSharedAccessKey
+- spring boot config
+```yaml
+spring:
+  kafka:
+    bootstrap-servers: "<namespace-name>.servicebus.windows.net:9093"
+    properties:
+      security.protocol: SASL_SSL
+      sasl.mechanism: PLAIN
+      sasl.jaas.config: >
+        org.apache.kafka.common.security.plain.PlainLoginModule required
+        username="$ConnectionString"
+        password="Endpoint=sb://<namespace-name>.servicebus.windows.net/;SharedAccessKeyName=<policy-name>;SharedAccessKey=<access-key>";
+    admin:
+      auto-create-topics: true
+```
