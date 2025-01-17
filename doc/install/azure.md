@@ -34,6 +34,7 @@ Public IP Address (after Cluster Created)
 - open cloud shell in browser
 - az aks get-credentials --resource-group Development --name xxx
 - cat .kube/config
+- might need az account set --subscription <id>
 
 # C5 (optional)
 - Redundancy Model (Multiple Nodes, Multiple Zones)
