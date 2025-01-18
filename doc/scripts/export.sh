@@ -1,5 +1,7 @@
+#!/bin/bash
+
 TENANT_ID=5
-PASSWORD=mc35PtnaJBuDH1cT1IPv9vBggiWaDKWTH
+PASSWORD=mc3PtnaJBuDH1cT1IPv9vBggiWaDKWTH
 
 #echo please enter the tenantid && read -t 10 TENANT_ID
 
