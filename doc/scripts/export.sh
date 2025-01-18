@@ -10,6 +10,8 @@ kubectl run postgres-export -n core --rm -it --restart=Never --image=postgres:16
 
 export PGPASSWORD=$PASSWORD &&
 
+sleep 1 &&
+
 echo 'dumping core ...' &&
 pg_dump -h core-postgres-postgresql-ha-pgpool.core --data-only -U core -d core --schema core_$TENANT_ID &&
 
