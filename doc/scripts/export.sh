@@ -9,7 +9,7 @@ echo exporting data to $LOCAL_DOWNLOAD_FOLDER for Tenant $TENANT_ID @ $HOST_NAME
 
 #echo please enter the tenantid && read TENANT_ID
 
-kubectl delete pod postgres-export -n core > /dev/null
+kubectl delete pod postgres-export -n core &> /dev/null
 kubectl run postgres-export -n core --rm -it --restart=Never --image=postgres:16.4 -- sh -c "
 
 export PGPASSWORD=$PASSWORD &&
