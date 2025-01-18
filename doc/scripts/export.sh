@@ -17,5 +17,5 @@ pg_dump -h core-postgres-postgresql-ha-pgpool.core --data-only -U core -d core -
 
 echo 'dump done'
 
-" | tee ~/Downloads/pg_dumps_$TENANT_ID
+" | tee >(gzip > ~/Downloads/pgdump_$TENANT_ID.sql.gz)
 
