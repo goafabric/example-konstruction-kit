@@ -2,6 +2,7 @@
 
 PASSWORD=mc3PtnaJBuDH1cT1IPv9vBggiWaDKWTH
 
+HOST_NAME=core-postgres-postgresql-ha-pgpool.core
 TENANT_ID=5
 #echo please enter the tenantid && read TENANT_ID
 
@@ -13,10 +14,10 @@ export PGPASSWORD=$PASSWORD &&
 sleep 1 &&
 
 echo 'dumping core ...' &&
-pg_dump -h core-postgres-postgresql-ha-pgpool.core --data-only -U core -d core --schema core_$TENANT_ID &&
+pg_dump -h $HOST_NAME --data-only -U core -d core --schema core_$TENANT_ID &&
 
 echo 'dumping catalog ...' &&
-pg_dump -h core-postgres-postgresql-ha-pgpool.core --data-only -U core -d core --schema catalog &&
+pg_dump -h $HOST_NAME --data-only -U core -d core --schema catalog &&
 
 echo 'dump done'
 
