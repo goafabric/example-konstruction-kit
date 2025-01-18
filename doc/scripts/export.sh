@@ -1,10 +1,11 @@
 #!/bin/bash
 
-TENANT_ID=5
 PASSWORD=mc3PtnaJBuDH1cT1IPv9vBggiWaDKWTH
 
-#echo please enter the tenantid && read -t 10 TENANT_ID
+TENANT_ID=5
+#echo please enter the tenantid && read TENANT_ID
 
+kubectl delete pod postgres-export -n core > /dev/null
 kubectl run postgres-export -n core --rm -it --restart=Never --image=postgres:16.4 -- sh -c "
 
 export PGPASSWORD=$PASSWORD &&
