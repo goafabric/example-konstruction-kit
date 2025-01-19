@@ -1,4 +1,5 @@
 #!/bin/bash
+PASSWORD=mc3PtnaJBuDH1cT1IPv9vBggiWaDKWTH
 
 LOCAL_DOWNLOAD_FOLDER=~/Downloads
 HOST_NAME=core-postgres-postgresql-ha-pgpool.core
