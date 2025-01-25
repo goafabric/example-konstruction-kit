@@ -47,6 +47,10 @@ resource "helm_release" "apisix" {
     value = ["opentelemetry", "openid-connect", "redirect", "proxy-rewrite", "basic-auth", "serverless-post-function"]
   }
 
+  set {
+    name  = "apisix.customPlugins.enabled"
+    value = "true"
+  }
 
   set {
     name  = "apisix.pluginAttrs.opentelemetry.resource.service.name"
