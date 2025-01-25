@@ -1,0 +1,77 @@
+apiVersion: apisix.apache.org/v2
+kind: ApisixRoute
+metadata:
+  name: {{ include "application.fullname" . }}
+spec:
+  http:
+    - name: {{ include "application.fullname" . }}
+      match:
+        hosts:
+          - {{ .Values.ingress.hosts }}
+        paths:
+          - {{ .Values.ingress.paths }}
+          - {{ .Values.ingress.paths }}/*
+      backends:
+        - serviceName: {{ include "application.fullname" . }}
+          servicePort: http
+      plugins:
+        - name: redirect
+          enable: true
+          config:
+            http_to_https: true
+        - name: proxy-rewrite
+          enable: true
+          config:
+            host: "{{ include "application.fullname" . }}.{{ .Release.Namespace }}"
+            regex_uri:
+              - {{ .Values.ingress.paths }}/(.*)
+              - /$1
+#            headers:
+#              X-TenantId: 0
+        - name: openid-connect
+          enable: {{ .Values.oidc.enabled }}
+          config:
+            client_id: oauth2-proxy
+            client_secret: none
+            discovery: https://{{ .Values.ingress.hosts }}/oidc/realms/tenant-0/.well-known/openid-configuration
+            access_token_in_authorization_header: false
+            set_id_token_header: false
+            set_userinfo_header: true
+            ssl_verify: false
+            redirect_uri: "{{ .Values.ingress.paths }}/redirect_uri"
+            logout_path: "{{ .Values.ingress.paths }}/logout"
+            session:
+              secret: "{{ .Values.oidc.session.secret | default "" }}"
+
+        - name: serverless-post-function
+          enable: true
+          config:
+            phase: "rewrite"
+            functions:
+              - |
+                return function()
+                  local http = require("socket.http")
+                  local ltn12 = require("ltn12")
+                  
+                  local url = "http://callee-service-application.example:8080/authorizations/getTenantBySubject"
+                  local response = {}
+                      
+                  local res, status_code, response_headers, status = http.request{
+                    headers = ngx.req.get_headers(),
+                    url = url,
+                    sink = ltn12.sink.table(response)
+                  }
+                  
+                  local tenantId = table.concat(response) 
+                
+                  if status_code == 200 then
+                    ngx.log(ngx.ERR, "got tenant:", tenantId)
+                    ngx.log(ngx.ERR, "userinfo is ", ngx.req.get_headers()["x-userinfo"]) 
+                  else
+                    ngx.log(ngx.ERR, "Http request failed : ", status_code) 
+                  end                                                
+                  
+                  ngx.req.set_header("X-TenantId", tenantId)
+                  ngx.log(ngx.ERR, "X-TenantId set to: ", tenantId)
+                                
+                end
