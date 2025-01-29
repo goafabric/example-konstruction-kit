@@ -68,6 +68,7 @@ resource "helm_release" "apisix" {
     proxy_buffer_size 128k;
     proxy_buffers 32 128k;
     proxy_busy_buffers_size 128k;
+    lua_shared_dict tenant_cache 10m;
     EOF
   }
 
