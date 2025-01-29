@@ -21,7 +21,9 @@ data:
   quarkus.datasource.jdbc.url: "jdbc:postgresql://person-service-postgres-postgresql-ha-pgpool:5432/person"
   quarkus.datasource.jdbc.max-size: "10"
 
-  database.provisioning.goals: "-import-demo-data"
+  multi-tenancy.tenants: "{{ .Values.multiTenancy.tenants }}"
+  multi-tenancy.schema-prefix: "core_"
+  #database.provisioning.goals: "-import-demo-data"
 
   #adapter
   adapter.calleeservice.url: "http://callee-service-application:8080"

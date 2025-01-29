@@ -41,3 +41,6 @@ initContainers:
 
 oidc:
   enabled:
+
+multiTenancy:
+  tenants: "0,5"
