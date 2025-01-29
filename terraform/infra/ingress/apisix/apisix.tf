@@ -44,12 +44,12 @@ resource "helm_release" "apisix" {
 
   set_list {
     name  = "apisix.plugins"
-    value = ["opentelemetry", "openid-connect", "redirect", "proxy-rewrite", "basic-auth", "serverless-post-function"]
+    value = ["opentelemetry", "openid-connect", "redirect", "proxy-rewrite", "basic-auth", "serverless-pre-function", "serverless-post-function"]
   }
 
   set {
     name  = "apisix.customPlugins.enabled"
-    value = "true"
+    value = "false"
   }
 
   set {

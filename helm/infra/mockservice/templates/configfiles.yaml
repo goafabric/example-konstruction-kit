@@ -1,0 +1,52 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "application.fullname" . }}-config-files
+  labels:
+    {{- include "application.labels" . | nindent 4 }}
+data:
+  nginx.conf: >-
+    events {
+    }
+    http {
+        server {
+            listen 8080 default_server;
+            root /www/data;
+            location / {
+            }
+            
+            location /tenants {
+               default_type application/json;
+    
+               if ($arg_subject = 02750d58-2d48-403c-80ec-fd51927e7731) {
+                   return 200 '{"tenantId": "0"}';
+               }
+        
+               if ($arg_subject = a7dfc2ff-7d3e-4693-b448-89ea1aeda081) {
+                   return 200 '{"tenantId": "5"}';
+               }
+
+               if ($arg_subject = b336b162-e081-4f5d-8821-dcaca52949d1) {
+                   return 200 '{"tenantId": "0"}';
+               }
+    
+               if ($arg_subject = 3b4ff46b-560f-4e73-af9e-56c10209ea1f) {
+                   return 200 '{"tenantId": "5"}';
+               }
+    
+               if ($arg_subject = 0) {
+                   return 200 '{"tenantId": "0"}';
+               }
+    
+               if ($arg_subject = 5) {
+                   return 200 '{"tenantId": "5"}';
+               }
+    
+               if ($arg_subject = 7) {
+                  return 200 '{"tenantId": "7"}';
+               }
+    
+               return 200 '{"tenantId": "none"}';
+            }
+        }
+    }
