@@ -22,3 +22,7 @@ locals {
   postgres_ha = false
 }
 
+# terraform taint helm_release.core-application
+variable "multi_tenancy_tenants" {
+  default = "0\\,5\\,8"
+}

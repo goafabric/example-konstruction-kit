@@ -45,6 +45,10 @@ resource "helm_release" "core-application" {
     name  = "messageBroker.password"
     value = "supersecret" #random_password.messageBroker_password.result
   }
+  set {
+    name = "multiTenancy.tenants"
+    value = var.multi_tenancy_tenants
+  }
 
 }
 

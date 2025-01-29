@@ -45,3 +45,6 @@ oidc:
 
 kafka:
   enabled:
+
+multiTenancy:
+  tenants: "0,5"
