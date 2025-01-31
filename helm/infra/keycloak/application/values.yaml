@@ -36,3 +36,6 @@ database:
 
 admin:
   password:
+
+log:
+  level: "INFO"

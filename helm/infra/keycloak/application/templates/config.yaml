@@ -19,6 +19,6 @@ data:
   KC_DB: "postgres"
   KC_DB_URL: "jdbc:postgresql://keycloak-postgres/keycloak"
 
-  KC_LOG_LEVEL: "INFO"
+  KC_LOG_LEVEL: "{{ .Values.log.level}}"
 
   JAVA_OPTS: "-Xmx384m"
