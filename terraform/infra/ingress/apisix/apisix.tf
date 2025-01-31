@@ -101,6 +101,11 @@ resource "helm_release" "apisix" {
     name  = "ingress-controller.enabled"
     value = "true"
   }
+
+  set {
+    name  = "apisix.nginx.logs.errorLogLevel"
+    value = "warn"
+  }
 }
 
 
