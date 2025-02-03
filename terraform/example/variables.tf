@@ -22,6 +22,7 @@ locals {
 }
 
 # terraform taint helm_release.person-service-application
+# terraform taint 'helm_release.person-service["person-service-provisioning"]'
 variable "multi_tenancy_tenants" {
   default = "0\\,5\\,8"
 }
