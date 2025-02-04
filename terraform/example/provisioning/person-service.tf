@@ -1,6 +1,6 @@
 locals {
   helm_releases = {
-    person-service-application = {  provisioning_enabled = "false"  }
+    person-service-application = { provisioning_enabled = "false" }
     person-service-provisioning = {  provisioning_enabled = "true" }
   }
 }
@@ -13,6 +13,7 @@ resource "helm_release" "person-service" {
   namespace        = "example"
   create_namespace = false
   timeout          = var.helm_timeout
+  depends_on = [helm_release.person-service["person-service-provisioning"]]
 
   set {
     name  = "replicaCount"
