@@ -1,11 +1,11 @@
 locals {
   helm_releases = {
-    person-service-application = { provisioning_enabled = "false" }
-    person-service-provisioning = {  provisioning_enabled = "true" }
+    application = { provisioning_enabled = "false" }
+    provisioning = {  provisioning_enabled = "true" }
   }
 }
 
-resource "helm_release" "person-service" {
+resource "helm_release" "person-service-application" {
   repository         = var.helm_repository
   for_each           = local.helm_releases
   name               = each.key
@@ -13,7 +13,7 @@ resource "helm_release" "person-service" {
   namespace        = "example"
   create_namespace = false
   timeout          = var.helm_timeout
-  depends_on = [helm_release.person-service["person-service-provisioning"]]
+  depends_on = [helm_release.person-service-application["provisioning"]]
 
   set {
     name  = "replicaCount"
