@@ -38,7 +38,7 @@ resource "helm_release" "catalog-application" {
 
 resource "helm_release" "catalog-batch" {
   repository = var.helm_repository
-  name       = "catalog-batch"
+  name       = "catalog-batch-${formatdate("MMDDHHmmss", timestamp())}"
   chart      = "${var.helm_repository}/catalog/batch"
   namespace  = "core"
   create_namespace = false
