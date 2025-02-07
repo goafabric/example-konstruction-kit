@@ -8,7 +8,7 @@ locals {
 resource "helm_release" "person-service-application" {
   repository         = var.helm_repository
   for_each           = local.helm_releases
-  name               = each.key
+  name               = "person-service-application-${each.key}"
   chart            = "${var.helm_repository}/person-service/application"
   namespace        = "example"
   create_namespace = false
