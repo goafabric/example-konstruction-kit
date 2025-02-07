@@ -40,7 +40,6 @@ resource "helm_release" "catalog-batch" {
   repository = var.helm_repository
   name       = "catalog-batch-${formatdate("MMDDHHmmss", timestamp())}"
   chart      = "${var.helm_repository}/catalog/batch"
-  version    = "1.1.3"
   namespace  = "core"
   create_namespace = false
   timeout = var.helm_timeout
