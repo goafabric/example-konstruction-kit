@@ -43,3 +43,8 @@ resource "azurerm_public_ip" "aks_public_ip" {
 
   domain_name_label = local.cluster_name
 }
+
+output "kube_config" {
+  value     = azurerm_kubernetes_cluster.k8s.kube_config_raw
+  sensitive = true
+}
