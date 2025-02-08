@@ -1,7 +1,13 @@
-variable "node_count" {
+variable "default_node_count" {
   type        = number
   description = "The initial quantity of nodes for the node pool."
-  default     = 2
+  default     = 1
+}
+
+variable "default_vm_size" {
+  type        = string
+  description = "VM SIZE"
+  default     = "Standard_D4ds_v5"
 }
 
 variable "username" {
