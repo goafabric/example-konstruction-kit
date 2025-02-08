@@ -22,5 +22,11 @@ terraform {
 }
 
 provider "azurerm" {
-  features {}
+  subscription_id = var.subscription_id
+
+  features {
+    key_vault {
+      purge_soft_delete_on_destroy = false # https://github.com/hashicorp/terraform-provider-azurerm/issues/26851
+    }
+  }
 }
