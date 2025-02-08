@@ -1,8 +1,3 @@
-# Generate random resource group name
-resource "random_pet" "azurerm_kubernetes_cluster_dns_prefix" {
-  prefix = "dns"
-}
-
 resource "azurerm_resource_group" "rg" {
   location = var.resource_group_location
   name     = var.resource_group_name
@@ -11,8 +6,8 @@ resource "azurerm_resource_group" "rg" {
 resource "azurerm_kubernetes_cluster" "k8s" {
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
-  name                = azurerm_resource_group.rg.name
-  dns_prefix          = random_pet.azurerm_kubernetes_cluster_dns_prefix.id
+  name                = local.cluster_name
+  dns_prefix          = "myaks"
   kubernetes_version  = "1.30"
 
   identity {
@@ -20,18 +15,10 @@ resource "azurerm_kubernetes_cluster" "k8s" {
   }
 
   default_node_pool {
-    name       = "agentpool"
-    vm_size    = var.default_vm_size
-    node_count = var.default_node_count
+    name                = "agentpool"
+    vm_size             = var.default_vm_size
+    node_count          = var.default_node_count
   }
-
-  # linux_profile {
-  #   admin_username = var.username
-  #
-  #   ssh_key {
-  #     key_data = azapi_resource_action.ssh_public_key_gen.output.publicKey
-  #   }
-  # }
 
   network_profile {
     network_plugin      = "azure"
@@ -39,5 +26,20 @@ resource "azurerm_kubernetes_cluster" "k8s" {
     network_plugin_mode = "overlay"
 
     load_balancer_sku = "standard"
+
+    load_balancer_profile {
+      outbound_ip_address_ids = [azurerm_public_ip.aks_public_ip.id]
+    }
+
   }
+}
+
+resource "azurerm_public_ip" "aks_public_ip" {
+  name                = "aks-public-ip"
+  resource_group_name = azurerm_resource_group.rg.name
+  location            = azurerm_resource_group.rg.location
+  allocation_method   = "Static"
+  sku                 = "Standard"
+
+  domain_name_label = local.cluster_name
 }

@@ -13,14 +13,18 @@ variable "default_vm_size" {
   default     = "Standard_D4ds_v5"
 }
 
-variable "resource_group_name" {
-  type        = string
-  default     = "eden-eve"
-}
-
 variable "resource_group_location" {
   type        = string
   default     = "Germany West Central"
+}
+
+variable "resource_group_name" {
+  type        = string
+  default     = "my-eve"
+}
+
+locals {
+  cluster_name = var.resource_group_name
 }
 
 # terraform output -raw kube_config > ~/.kube/config
