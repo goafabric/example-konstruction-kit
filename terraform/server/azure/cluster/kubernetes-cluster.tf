@@ -27,22 +27,22 @@ resource "azurerm_kubernetes_cluster" "k8s" {
 
     load_balancer_sku = "standard"
 
-    load_balancer_profile {
-      outbound_ip_address_ids = [azurerm_public_ip.aks_public_ip.id]
-    }
+    # load_balancer_profile {
+    #   outbound_ip_address_ids = [azurerm_public_ip.aks_public_ip.id]
+    # }
 
   }
 }
 
-resource "azurerm_public_ip" "aks_public_ip" {
-  name                = "aks-public-ip"
-  resource_group_name = azurerm_resource_group.rg.name
-  location            = azurerm_resource_group.rg.location
-  allocation_method   = "Static"
-  sku                 = "Standard"
-
-  domain_name_label = local.cluster_name
-}
+# resource "azurerm_public_ip" "aks_public_ip" {
+#   name                = "aks-public-ip"
+#   resource_group_name = azurerm_resource_group.rg.name
+#   location            = azurerm_resource_group.rg.location
+#   allocation_method   = "Static"
+#   sku                 = "Standard"
+#
+#   domain_name_label = local.cluster_name
+# }
 
 output "kube_config" {
   value     = azurerm_kubernetes_cluster.k8s.kube_config_raw
