@@ -22,10 +22,3 @@ provider "azurerm" {
     }
   }
 }
-
-resource "null_resource" "set_kubeconfig" {
-  depends_on = [azurerm_kubernetes_cluster.k8s]
-  provisioner "local-exec" {
-    command = "terraform output -raw kube_config > ~/.kube/config"
-  }
-}

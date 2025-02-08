@@ -52,6 +52,7 @@ output "kube_config" {
 resource "null_resource" "set_kubeconfig" {
   depends_on = [azurerm_kubernetes_cluster.k8s]
   provisioner "local-exec" {
+    when = create
     command = "terraform output -raw kube_config > ~/.kube/config"
   }
 }

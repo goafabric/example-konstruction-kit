@@ -1,2 +1,2 @@
-export TF_VAR_hostname=my-eve.westeurope.cloudapp.azure.com
+export TF_VAR_hostname=my-eve.germanywestcentral.cloudapp.azure.com
 INGRESS_TYPE=kong #apisix
