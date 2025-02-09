@@ -80,10 +80,21 @@ spec:
           volumeMounts:
             - mountPath: /usr/share/logs
               name: {{ include "application.fullname" . }}-applogs
+            - mountPath: /mnt/secrets/spring/datasourcex
+              name: {{ include "application.fullname" . }}-db-secrets
+              readOnly: true
+
 
       volumes:
         - name: {{ include "application.fullname" . }}-applogs
           emptyDir: {}
+        - name: {{ include "application.fullname" . }}-db-secrets
+          csi:
+            driver: secrets-store.csi.k8s.io
+            readOnly: true
+            volumeAttributes:
+              secretProviderClass: {{ include "application.fullname" . }}-db-secret-provider-class
+
      
 
 {{- end }}
