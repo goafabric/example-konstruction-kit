@@ -10,6 +10,11 @@ resource "azurerm_kubernetes_cluster" "k8s" {
   dns_prefix          = "myaks"
   kubernetes_version  = "1.30"
 
+  key_vault_secrets_provider { # enables csi driver
+    secret_rotation_enabled  = "true"
+    secret_rotation_interval = "2m"
+  }
+
   identity {
     type = "SystemAssigned"
   }
@@ -26,12 +31,11 @@ resource "azurerm_kubernetes_cluster" "k8s" {
     }
   }
 
-  network_profile {
+  network_profile { #important for network policies
     network_plugin      = "azure"
     network_policy      = "calico"
     network_plugin_mode = "overlay"
-
-    load_balancer_sku = "standard"
+    load_balancer_sku   = "standard"
 
     # load_balancer_profile {
     #   outbound_ip_address_ids = [azurerm_public_ip.aks_public_ip.id]
