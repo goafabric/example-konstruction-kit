@@ -29,3 +29,9 @@ variable "multi_tenancy_tenants" {
 variable "tenant_id" {
   type        = string
 }
+
+variable "client_id" {
+  type        = string
+  default     = "cdf7e326-009d-4aec-bd82-1be8533126b6"
+}
+

@@ -44,7 +44,7 @@ resource "helm_release" "person-service-application" {
 
   set {
     name = "identityClientId"
-    value = "cdf7e326-009d-4aec-bd82-1be8533126b6"
+    value = var.client_id
   }
   
 }
@@ -54,7 +54,7 @@ resource "kubernetes_service_account" "person-vault-read-account" {
     name      = "vault-read-account"
     namespace = "example"
     annotations = {
-      "azure.workload.identity/client-id" = "cdf7e326-009d-4aec-bd82-1be8533126b6"
+      "azure.workload.identity/client-id" = var.client_id
     }
   }
 }
