@@ -3,6 +3,10 @@ variable "subscription_id" {
   type        = string
 }
 
+variable "tenant_id" {
+  type        = string
+}
+
 variable "default_node_count" {
   type        = number
   default     = 1
