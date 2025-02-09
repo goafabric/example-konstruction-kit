@@ -3,6 +3,7 @@ variable "subscription_id" {
   type        = string
 }
 
+#should be set from environment
 variable "tenant_id" {
   type        = string
 }
