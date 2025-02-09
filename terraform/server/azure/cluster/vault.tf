@@ -29,3 +29,21 @@ resource "azurerm_role_assignment" "role-assignment-sa" {
   role_definition_name = "Key Vault Administrator"
   principal_id         = data.azurerm_client_config.current.object_id
 }
+
+
+resource "azurerm_key_vault_secret" "example-service-database-user" {
+  name         = "example-service-database-user"
+  value        = "example"
+  key_vault_id = azurerm_key_vault.vault.id
+}
+
+resource "azurerm_key_vault_secret" "example-service-database-password" {
+  name         = "example-service-database-password"
+  value        = random_password.example-service-database-password.result
+  key_vault_id = azurerm_key_vault.vault.id
+}
+
+resource "random_password" "example-service-database-password" {
+  length  = 32
+  special = false
+}
