@@ -18,7 +18,15 @@ provider "azurerm" {
 
   features {
     key_vault {
-      purge_soft_delete_on_destroy = false # https://github.com/hashicorp/terraform-provider-azurerm/issues/26851
+      purge_soft_delete_on_destroy = false
     }
+  }
+}
+
+resource "null_resource" "set_kubeconfig" {
+  depends_on = [azurerm_kubernetes_cluster.k8s]
+  provisioner "local-exec" {
+    when = create
+    command = "terraform output -raw kube_config > ~/.kube/config"
   }
 }

@@ -18,6 +18,12 @@ resource "azurerm_kubernetes_cluster" "k8s" {
     name                = "agentpool"
     vm_size             = var.default_vm_size
     node_count          = var.default_node_count
+
+    upgrade_settings {
+      drain_timeout_in_minutes      = 15
+      max_surge                     = "10%"
+      node_soak_duration_in_minutes = 0
+    }
   }
 
   network_profile {
@@ -47,12 +53,4 @@ resource "azurerm_kubernetes_cluster" "k8s" {
 output "kube_config" {
   value     = azurerm_kubernetes_cluster.k8s.kube_config_raw
   sensitive = true
-}
-
-resource "null_resource" "set_kubeconfig" {
-  depends_on = [azurerm_kubernetes_cluster.k8s]
-  provisioner "local-exec" {
-    when = create
-    command = "terraform output -raw kube_config > ~/.kube/config"
-  }
 }
