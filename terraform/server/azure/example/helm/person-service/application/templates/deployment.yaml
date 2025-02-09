@@ -30,6 +30,7 @@ spec:
       imagePullSecrets:
         - name: {{ .Values.image.pullSecrets }}
       {{- end }}
+      serviceAccountName: vault-read-account
       containers:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}{{ .Values.image.arch }}:{{ .Values.image.tag | default .Chart.AppVersion }}"

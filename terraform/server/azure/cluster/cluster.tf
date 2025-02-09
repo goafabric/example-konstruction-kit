@@ -10,6 +10,9 @@ resource "azurerm_kubernetes_cluster" "k8s" {
   dns_prefix          = "myaks"
   kubernetes_version  = "1.30"
 
+  oidc_issuer_enabled       = "true"
+  workload_identity_enabled = "true"
+
   key_vault_secrets_provider { # enables csi driver
     secret_rotation_enabled  = "true"
     secret_rotation_interval = "2m"

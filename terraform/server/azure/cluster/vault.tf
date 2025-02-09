@@ -49,6 +49,15 @@ resource "random_password" "person-service-database-password" {
 }
 
 output "identity_id" {
-  value = azurerm_user_assigned_identity.identity.id
+  value = azurerm_user_assigned_identity.identity.client_id
   description = "The ID of the Azure User Assigned Identity"
+}
+
+resource "azurerm_federated_identity_credential" "federated-identity-example" {
+  name                = "federated-identity-example"
+  resource_group_name = var.resource_group_name
+  parent_id           = azurerm_user_assigned_identity.identity.id
+  audience            = ["api://AzureADTokenExchange"]
+  issuer              = azurerm_kubernetes_cluster.k8s.oidc_issuer_url
+  subject             = "system:serviceaccount:example:vault-read-account"
 }
