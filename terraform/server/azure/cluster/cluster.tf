@@ -12,7 +12,7 @@ resource "azurerm_kubernetes_cluster" "k8s" {
   kubernetes_version  = "1.30"
 
   oidc_issuer_enabled       = "true"
-  key_vault_secrets_provider { # enables csi driver
+  key_vault_secrets_provider { # enables csi driver for vault integration
     secret_rotation_enabled  = "true"
     secret_rotation_interval = "2m"
   }
