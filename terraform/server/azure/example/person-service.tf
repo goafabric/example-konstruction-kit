@@ -41,6 +41,11 @@ resource "helm_release" "person-service-application" {
     value = var.tenant_id
   }
 
+  set {
+    name = "identityClientId"
+    value = ""
+  }
+
 
 }
 

@@ -47,3 +47,8 @@ resource "random_password" "person-service-database-password" {
   length  = 32
   special = false
 }
+
+output "identity_id" {
+  value = azurerm_user_assigned_identity.identity.id
+  description = "The ID of the Azure User Assigned Identity"
+}
