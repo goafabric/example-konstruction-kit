@@ -30,6 +30,7 @@ resource "azurerm_role_assignment" "role-assignment-sa" {
   principal_id         = data.azurerm_client_config.current.object_id
 }
 
+#### from here on additional example specific stuff
 
 resource "azurerm_key_vault_secret" "person-service-database-user" {
   name         = "person-service-database-user"
@@ -48,9 +49,9 @@ resource "random_password" "person-service-database-password" {
   special = false
 }
 
-output "identity_id" {
+output "client_identity_id" {
   value = azurerm_user_assigned_identity.identity.client_id
-  description = "The ID of the Azure User Assigned Identity"
+  description = "Id of Azure Vault Client ID"
 }
 
 resource "azurerm_federated_identity_credential" "federated-identity-example" {
