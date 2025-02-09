@@ -15,10 +15,10 @@ resource "helm_release" "person-service-application" {
     name  = "ingress.hosts"
     value = var.hostname
   }
-  set {
-    name  = "image.arch"
-    value = "-native${local.server_arch}"
-  }
+  # set {
+  #   name  = "image.arch"
+  #   value = "-native${local.server_arch}"
+  # }
 
 
   set {
@@ -35,6 +35,13 @@ resource "helm_release" "person-service-application" {
     name = "multiTenancy.tenants"
     value = var.multi_tenancy_tenants
   }
+
+  set {
+    name = "kubernetesClusterIdentityTenantId"
+    value = var.tenant_id
+  }
+
+
 }
 
 

@@ -25,3 +25,7 @@ locals {
 variable "multi_tenancy_tenants" {
   default = "0\\,5\\,8"
 }
+
+variable "tenant_id" {
+  type        = string
+}
