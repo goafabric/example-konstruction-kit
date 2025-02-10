@@ -1,7 +1,7 @@
 #should be set from environment
-variable "subscription_id" {
-  type        = string
-}
+# variable "subscription_id" {
+#   type        = string
+# }
 
 #should be set from environment
 variable "tenant_id" {
