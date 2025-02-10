@@ -1,4 +1,5 @@
 resource "azurerm_key_vault" "vault" {
+  depends_on = [azurerm_kubernetes_cluster.k8s]
   name                       = "${var.resource_group_name}-vault"
   location                   = var.resource_group_location
   resource_group_name        = var.resource_group_name
@@ -32,6 +33,12 @@ resource "azurerm_role_assignment" "role-assignment-sa" {
 
 #########
 #### from here on additional example specific stuff
+
+resource "kubernetes_namespace" "example" {
+  metadata {
+    name = "example"
+  }
+}
 
 resource "kubernetes_service_account" "example-vault-read-account" {
   metadata {
