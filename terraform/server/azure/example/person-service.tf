@@ -36,6 +36,7 @@ resource "helm_release" "person-service-application" {
     value = var.multi_tenancy_tenants
   }
 
+  # required variables for vault
   set {
     name = "kubernetesClusterIdentityTenantId"
     value = var.tenant_id
@@ -44,6 +45,11 @@ resource "helm_release" "person-service-application" {
   set {
     name = "identityClientId"
     value = var.client_id
+  }
+
+  set {
+    name = "keyVault.name"
+    value = var.key_vault_name
   }
   
 }

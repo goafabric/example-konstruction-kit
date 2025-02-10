@@ -26,6 +26,7 @@ variable "multi_tenancy_tenants" {
   default = "0\\,5\\,8"
 }
 
+#from environment
 variable "tenant_id" {
   type        = string
 }
@@ -35,3 +36,8 @@ variable "client_id" {
   default     = "cdf7e326-009d-4aec-bd82-1be8533126b6"
 }
 
+
+variable "key_vault_name" {
+  type        = string
+  default     = "my-eve-vault"
+}
