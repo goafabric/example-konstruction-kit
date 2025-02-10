@@ -33,6 +33,16 @@ resource "azurerm_role_assignment" "role-assignment-sa" {
 #########
 #### from here on additional example specific stuff
 
+resource "kubernetes_service_account" "example-vault-read-account" {
+  metadata {
+    name      = "vault-read-account"
+    namespace = "example"
+    annotations = {
+      "azure.workload.identity/client-id" = azurerm_user_assigned_identity.identity.client_id
+    }
+  }
+}
+
 resource "azurerm_federated_identity_credential" "federated-identity-example" {
   name                = "federated-identity-example"
   resource_group_name = var.resource_group_name

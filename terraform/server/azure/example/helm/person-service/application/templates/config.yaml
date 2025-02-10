@@ -14,11 +14,14 @@ data:
   server.max-http-request-header-size: "10KB" #required for Gateway OIDC
   server.tomcat.max-http-response-header-size: "10KB"
 
+  #secrets
+  spring.config.import: configtree:/mnt/secrets/
+
   #security
   security.authentication.enabled: "false"
 
   #monitoring
-  management.endpoints.web.exposure.include: "health,circuitbreakers,prometheus"
+  management.endpoints.web.exposure.include: "health,circuitbreakers,prometheus,env"
   management.endpoint.health.show-details: never
   springdoc.swagger-ui.path: "//"
   springdoc.api-docs.path: "//"

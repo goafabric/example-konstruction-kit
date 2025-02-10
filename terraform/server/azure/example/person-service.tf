@@ -1,5 +1,4 @@
 resource "helm_release" "person-service-application" {
-  depends_on = [kubernetes_service_account.person-vault-read-account]
   repository = var.helm_repository
   name       = "person-service-application"
   chart      = "${var.helm_repository}/person-service/application"
@@ -47,16 +46,6 @@ resource "helm_release" "person-service-application" {
     value = var.client_id
   }
   
-}
-
-resource "kubernetes_service_account" "person-vault-read-account" {
-  metadata {
-    name      = "vault-read-account"
-    namespace = "example"
-    annotations = {
-      "azure.workload.identity/client-id" = var.client_id
-    }
-  }
 }
 
 

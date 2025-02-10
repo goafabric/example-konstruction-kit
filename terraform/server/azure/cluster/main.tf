@@ -23,6 +23,10 @@ provider "azurerm" {
   }
 }
 
+provider "kubernetes" {
+  config_path = "~/.kube/config"
+}
+
 resource "null_resource" "set_kubeconfig" {
   depends_on = [azurerm_kubernetes_cluster.k8s]
   provisioner "local-exec" {
