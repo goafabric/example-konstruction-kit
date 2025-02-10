@@ -44,7 +44,7 @@ resource "helm_release" "person-service-application" {
 
   set {
     name = "identityClientId"
-    value = var.client_id
+    value = var.key_vault_client_id
   }
 
   set {

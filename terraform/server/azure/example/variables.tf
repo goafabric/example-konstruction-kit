@@ -31,11 +31,9 @@ variable "tenant_id" {
   type        = string
 }
 
-variable "client_id" {
+variable "key_vault_client_id" {
   type        = string
-  default     = "cdf7e326-009d-4aec-bd82-1be8533126b6"
 }
-
 
 variable "key_vault_name" {
   type        = string
