@@ -30,7 +30,17 @@ resource "azurerm_role_assignment" "role-assignment-sa" {
   principal_id         = data.azurerm_client_config.current.object_id
 }
 
+#########
 #### from here on additional example specific stuff
+
+resource "azurerm_federated_identity_credential" "federated-identity-example" {
+  name                = "federated-identity-example"
+  resource_group_name = var.resource_group_name
+  parent_id           = azurerm_user_assigned_identity.identity.id
+  audience            = ["api://AzureADTokenExchange"]
+  issuer              = azurerm_kubernetes_cluster.k8s.oidc_issuer_url
+  subject             = "system:serviceaccount:example:vault-read-account"
+}
 
 resource "azurerm_key_vault_secret" "person-service-database-user" {
   name         = "person-service-database-user"
@@ -54,11 +64,3 @@ output "client_identity_id" {
   description = "Id of Azure Vault Client ID"
 }
 
-resource "azurerm_federated_identity_credential" "federated-identity-example" {
-  name                = "federated-identity-example"
-  resource_group_name = var.resource_group_name
-  parent_id           = azurerm_user_assigned_identity.identity.id
-  audience            = ["api://AzureADTokenExchange"]
-  issuer              = azurerm_kubernetes_cluster.k8s.oidc_issuer_url
-  subject             = "system:serviceaccount:example:vault-read-account"
-}
