@@ -6,7 +6,7 @@ resource "azurerm_resource_group" "rg" {
 resource "azurerm_kubernetes_cluster" "k8s" {
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
-  name                = local.cluster_name
+  name                = azurerm_resource_group.rg.name
   workload_identity_enabled = "true"
   dns_prefix          = "myaks"
   kubernetes_version  = "1.30"
