@@ -14,7 +14,7 @@ resource "azurerm_postgresql_flexible_server" "postgres" {
   geo_redundant_backup_enabled = false
   auto_grow_enabled            = false
 
-  public_network_access_enabled = true
+  public_network_access_enabled = false
 }
 
 resource "random_password" "postgres-password" {
