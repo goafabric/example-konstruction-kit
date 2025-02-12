@@ -19,14 +19,17 @@ function destroy() {
 function up() {
     time(
     apply ./cluster
+    az aks get-credentials --resource-group $TF_VAR_resource_group_name --name $TF_VAR_resource_group_name --overwrite-existing
     apply ./vault
+    apply ./xexample
 #    apply ./postgres
-    az aks get-credentials --resource-group $TF_VAR_resource_group_name --name $TF_VAR_resource_group_name
     )
 }
 
 function down() {
     time(
+    destroy ./xexample
+    destroy ./postgres
     destroy ./postgres
     destroy ./vault
     destroy ./cluster
