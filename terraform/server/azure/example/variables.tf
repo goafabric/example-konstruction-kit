@@ -20,8 +20,6 @@ locals {
   oidc_enabled = strcontains(var.hostname, ".de")
 }
 
-# terraform taint helm_release.person-service-application
-# terraform taint 'helm_release.person-service-application["provisioning"]'
 variable "multi_tenancy_tenants" {
   default = "0\\,5\\,8"
 }
