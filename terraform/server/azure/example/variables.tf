@@ -34,5 +34,4 @@ variable "tenant_id" {
 
 variable "resource_group_name" {
   type        = string
-  default     = "my-eve"
 }

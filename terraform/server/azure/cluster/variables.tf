@@ -15,7 +15,6 @@ variable "resource_group_location" {
 
 variable "resource_group_name" {
   type        = string
-  default     = "my-eve"
 }
 
 variable "default_node_count" {
