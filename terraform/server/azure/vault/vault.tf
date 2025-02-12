@@ -1,5 +1,9 @@
+data "azurerm_kubernetes_cluster" "k8s" {
+  name                = var.resource_group_name
+  resource_group_name = var.resource_group_name
+}
+
 resource "azurerm_key_vault" "vault" {
-  depends_on = [azurerm_kubernetes_cluster.k8s]
   name                       = "${var.resource_group_name}-vault"
   location                   = var.resource_group_location
   resource_group_name        = var.resource_group_name
@@ -55,7 +59,7 @@ resource "azurerm_federated_identity_credential" "federated-identity-example" {
   resource_group_name = var.resource_group_name
   parent_id           = azurerm_user_assigned_identity.identity.id
   audience            = ["api://AzureADTokenExchange"]
-  issuer              = azurerm_kubernetes_cluster.k8s.oidc_issuer_url
+  issuer              = data.azurerm_kubernetes_cluster.k8s.oidc_issuer_url
   subject             = "system:serviceaccount:example:vault-read-account"
 }
 
@@ -75,9 +79,3 @@ resource "random_password" "person-service-database-password" {
   length  = 32
   special = false
 }
-
-output "client_identity_id" {
-  value = azurerm_user_assigned_identity.identity.client_id
-  description = "Id of Azure Vault Client ID"
-}
-

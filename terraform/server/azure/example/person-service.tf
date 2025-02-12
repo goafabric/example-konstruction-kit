@@ -44,12 +44,12 @@ resource "helm_release" "person-service-application" {
 
   set {
     name = "identityClientId"
-    value = var.key_vault_client_id
+    value = data.azurerm_user_assigned_identity.key_vault_identity.client_id
   }
 
   set {
     name = "keyVault.name"
-    value = var.key_vault_name
+    value = "${var.resource_group_name}-vault"
   }
   
 }

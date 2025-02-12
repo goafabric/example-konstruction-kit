@@ -16,7 +16,6 @@ data "external" "server_arch_data" {
 
 locals {
   server_arch = data.external.server_arch_data.result["server_arch"]
-
   oidc_enabled = strcontains(var.hostname, ".de")
 }
 
@@ -25,15 +24,15 @@ variable "multi_tenancy_tenants" {
 }
 
 #from environment
+variable "subscription_id" {
+  type        = string
+}
+
 variable "tenant_id" {
   type        = string
 }
 
-variable "key_vault_client_id" {
+variable "resource_group_name" {
   type        = string
-}
-
-variable "key_vault_name" {
-  type        = string
-  default     = "my-eve-vault"
+  default     = "my-eve"
 }
