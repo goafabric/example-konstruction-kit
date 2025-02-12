@@ -55,16 +55,3 @@ resource "azurerm_kubernetes_cluster" "k8s" {
 #
 #   domain_name_label = local.cluster_name
 # }
-
-output "kube_config" {
-  value     = azurerm_kubernetes_cluster.k8s.kube_config_raw
-  sensitive = true
-}
-
-resource "null_resource" "set_kubeconfig" {
-  depends_on = [azurerm_kubernetes_cluster.k8s]
-  provisioner "local-exec" {
-    when = create
-    command = "terraform output -raw kube_config > ~/.kube/config"
-  }
-}
