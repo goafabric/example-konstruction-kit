@@ -51,7 +51,12 @@ resource "helm_release" "person-service-application" {
     name = "keyVault.name"
     value = "${var.resource_group_name}-vault"
   }
-  
+
+  set {
+    name = "datasource.url"
+    value = "jdbc:postgresql://${var.resource_group_name}-postgres.postgres.database.azure.com:5432/postgres?sslmode=require"
+  }
+
 }
 
 

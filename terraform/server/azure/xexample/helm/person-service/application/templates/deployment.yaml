@@ -81,7 +81,7 @@ spec:
           volumeMounts:
             - mountPath: /usr/share/logs
               name: {{ include "application.fullname" . }}-applogs
-            - mountPath: /mnt/secrets/spring/datasourcex
+            - mountPath: /mnt/secrets/spring/datasource
               name: {{ include "application.fullname" . }}-db-secrets
               readOnly: true
 

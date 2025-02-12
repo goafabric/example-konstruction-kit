@@ -32,7 +32,7 @@ data:
   management.tracing.sampling.probability: "1.0"
 
   #persistence
-  #spring.datasource.url: "jdbc:postgresql://person-service-postgres-postgresql-ha-pgpool:5432/person"
+  #spring.datasource.url: "{{ .Values.datasource.url }}"
   spring.datasource.hikari.maximum-pool-size: "10"
   spring.datasource.hikari.connection-timeout: "10000"
 

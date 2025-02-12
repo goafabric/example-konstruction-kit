@@ -25,7 +25,7 @@ resource "azurerm_federated_identity_credential" "federated-identity-example" {
 
 resource "azurerm_key_vault_secret" "person-service-database-user" {
   name         = "person-service-database-user"
-  value        = "example"
+  value        = "personservice"
   key_vault_id = azurerm_key_vault.vault.id
 }
 
