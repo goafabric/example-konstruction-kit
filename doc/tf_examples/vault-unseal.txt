@@ -1,0 +1,2 @@
+
+function vault-unseal() { while [[ "$(kubectl get pod vault-0 -n vault -o 'jsonpath={.status.phase}' 2>/dev/null || echo Error)" != "Running" ]]; do echo "waiting..."; sleep 2; done; sleep 2; source ~/.kube/values && vault_operator_unseal_key=$(grep "Unseal Key 1:" ~/.vault/seals-$TF_VAR_hostname | awk '{print $NF}') && kubectl exec vault-0 -n vault -- /bin/sh -c "vault operator unseal $vault_operator_unseal_key" }
