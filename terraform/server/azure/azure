@@ -1,0 +1,42 @@
+#!/bin/bash
+source .values
+COMMAND=$1
+WORKSPACE=${TF_VAR_hostname:-default}
+
+if [ -z "$TF_VAR_subscription_id" ] || [ -z "$TF_VAR_tenant_id" ] || [ -z "$TF_VAR_resource_group_name" ]; then
+  echo "Error: One or more required variables are not set"
+  exit 1
+fi
+
+function apply() {
+  (cd $1; terraform workspace select -or-create $WORKSPACE && terraform init && terraform apply -auto-approve)
+}
+
+function destroy() {
+  (cd $1; terraform workspace select -or-create $WORKSPACE && terraform destroy -auto-approve)
+}
+
+function up() {
+    time(
+    apply ./cluster
+    az aks get-credentials --resource-group $TF_VAR_resource_group_name --name $TF_VAR_resource_group_name --overwrite-existing
+    apply ./vault
+    apply ./xexample
+#    apply ./postgres
+    )
+}
+
+function down() {
+    time(
+    destroy ./xexample
+    destroy ./postgres
+    destroy ./postgres
+    destroy ./vault
+    destroy ./cluster
+    )
+}
+
+if   [ "${COMMAND}" = "init" ]; then up;
+elif [ "${COMMAND}" = "prune" ]; then down;
+
+else echo Doing nothing !; fi

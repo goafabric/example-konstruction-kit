@@ -34,6 +34,11 @@ resource "helm_release" "person-service-application" {
     name = "oidc.session.secret"
     value = random_password.oidc_session_secret.result
   }
+
+  set {
+    name = "multiTenancy.tenants"
+    value = var.multi_tenancy_tenants
+  }
 }
 
 

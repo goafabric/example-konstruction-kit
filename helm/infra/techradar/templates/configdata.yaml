@@ -4,7 +4,7 @@ binaryData:
 data:
   config.json: |
     {
-      "date": "2024.07",
+      "date": "2025.1",
       "entries": [
         {
           "quadrant": 2,
@@ -114,13 +114,6 @@ data:
         {
           "quadrant": 2,
           "ring": 3,
-          "label": "Testcontainers",
-          "active": true,
-          "moved": 0
-        },
-        {
-          "quadrant": 2,
-          "ring": 3,
           "label": "GraphQL",
           "active": true,
           "moved": 0
@@ -129,6 +122,13 @@ data:
           "quadrant": 2,
           "ring": 1,
           "label": "ArchUnit",
+          "active": true,
+          "moved": 0
+        },
+        {
+          "quadrant": 2,
+          "ring": 3,
+          "label": "Spring AI",
           "active": true,
           "moved": 0
         },
@@ -213,7 +213,7 @@ data:
         },
         {
           "quadrant": 1,
-          "ring": 2,
+          "ring": 1,
           "label": "K6",
           "active": true,
           "moved": 0
@@ -227,10 +227,10 @@ data:
         },
         {
           "quadrant": 1,
-          "ring": 2,
+          "ring": 0,
           "label": "Renovate",
           "active": true,
-          "moved": 0
+          "moved": 1
         },
         {
           "quadrant": 1,
@@ -281,7 +281,13 @@ data:
           "active": true,
           "moved": 0
         },
-
+        {
+          "quadrant": 1,
+          "ring": 0,
+          "label": "Azure AKS",
+          "active": true,
+          "moved": 1
+        },
 
 
         {
@@ -307,7 +313,7 @@ data:
         },
         {
           "quadrant": 3,
-          "ring": 1,
+          "ring": 2,
           "label": "Redis",
           "active": true,
           "moved": 0
@@ -356,7 +362,7 @@ data:
           "ring": 0,
           "label": "Volume Encryption",
           "active": true,
-          "moved": 1
+          "moved": 0
         },
         {
           "quadrant": 0,
@@ -370,14 +376,14 @@ data:
           "ring": 0,
           "label": "Network Policies",
           "active": true,
-          "moved": 1
+          "moved": 0
         },
         {
           "quadrant": 0,
           "ring": 1,
-          "label": "Servicemesh mTLS",
+          "label": "Istio Servicemesh mTLS",
           "active": true,
-          "moved": 1
+          "moved": 0
         },
         {
           "quadrant": 0,
@@ -388,24 +394,17 @@ data:
         },
         {
           "quadrant": 0,
-          "ring": 2,
-          "label": "Software Bill of Material",
+          "ring": 1,
+          "label": "Software Bill of Materials",
           "active": true,
           "moved": 0
         },
         {
           "quadrant": 0,
-          "ring": 1,
-          "label": "Azure AKS",
+          "ring": 0,
+          "label": "(Azure) Vault",
           "active": true,
-          "moved": 2
-        },
-        {
-          "quadrant": 0,
-          "ring": 1,
-          "label": "Azure Vault",
-          "active": true,
-          "moved": 2
+          "moved": 1
         }
       ]
     }
@@ -745,8 +744,8 @@ data:
     {\n    ringDescriptionsTable();\n  }\n}\n"
 kind: ConfigMap
 metadata:
-  creationTimestamp: "2024-10-10T05:55:51Z"
+  creationTimestamp: "2025-02-20T06:29:02Z"
   name: tech-radar-data-files
   namespace: dashboard
-  resourceVersion: "6804881"
-  uid: 29e929ad-4feb-4f5f-bb54-fdb883b2f417
+  resourceVersion: "43373910"
+  uid: 9ca091f9-5c8c-4f81-920b-64bfb5370035

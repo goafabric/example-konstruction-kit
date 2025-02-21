@@ -4,7 +4,7 @@ resource "helm_release" "istio-base" {
   chart      = "base"
   namespace  = "istio-system"
   create_namespace = false
-  version    = "1.23.1"
+  version    = "1.24.2"
   wait       = true
 
   set {
@@ -19,7 +19,7 @@ resource "helm_release" "istio-istiod" {
   chart      = "istiod"
   namespace  = "istio-system"
   create_namespace = false
-  version    = "1.23.1"
+  version    = "1.24.2"
   wait       = true
 
   depends_on = [helm_release.istio-base]
@@ -39,7 +39,7 @@ resource "helm_release" "istio-cni" {
   chart      = "cni"
   namespace  = "istio-system"
   create_namespace = false
-  version    = "1.23.1"
+  version    = "1.24.2"
   wait       = true
 
   depends_on = [helm_release.istio-base]
@@ -58,11 +58,11 @@ resource "helm_release" "istio-ztunnel" {
   chart      = "ztunnel"
   namespace  = "istio-system"
   create_namespace = false
-  version    = "1.23.1"
+  version    = "1.24.2"
   wait       = true
 
   depends_on = [helm_release.istio-base]
 }
 
-//kubectl label namespace ingress-apisix istio-injection=enabled --overwrite && kubectl label namespace kong istio-injection=enabled
-//kubectl label namespace example istio-injection=enabled --overwrite && kubectl label namespace core istio-injection=enabled --overwrite
+//uninstall crd
+//kubectl get crd -oname | grep --color=never 'istio.io' | xargs kubectl delete

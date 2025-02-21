@@ -44,9 +44,13 @@ resource "helm_release" "apisix" {
 
   set_list {
     name  = "apisix.plugins"
-    value = ["opentelemetry", "openid-connect", "redirect", "proxy-rewrite", "basic-auth", "serverless-post-function"]
+    value = ["opentelemetry", "openid-connect", "redirect", "proxy-rewrite", "basic-auth", "serverless-pre-function", "serverless-post-function"]
   }
 
+  set {
+    name  = "apisix.customPlugins.enabled"
+    value = "false"
+  }
 
   set {
     name  = "apisix.pluginAttrs.opentelemetry.resource.service.name"
@@ -64,6 +68,7 @@ resource "helm_release" "apisix" {
     proxy_buffer_size 128k;
     proxy_buffers 32 128k;
     proxy_busy_buffers_size 128k;
+    lua_shared_dict tenant_cache 10m;
     EOF
   }
 
@@ -95,6 +100,11 @@ resource "helm_release" "apisix" {
   set {
     name  = "ingress-controller.enabled"
     value = "true"
+  }
+
+  set {
+    name  = "apisix.nginx.logs.errorLogLevel"
+    value = "warn"
   }
 }
 

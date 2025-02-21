@@ -1,3 +1,12 @@
+# 1.3.6
+- upgrade to Istio 1.24.2 
+- upgrade to Kiali 2.3.0
+- upgrade to Prometheus Chart 25.27.0
+- upgrade to Postgres 17.2
+- upgrade to Kafka Chart 31.0.0
+- multi tenancy handling added
+- Azure Server Handling added 
+
 # 1.3.5
 - Compatibility with Azure
 - Nats removed

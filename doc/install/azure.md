@@ -30,24 +30,11 @@ Public IP Address (after Cluster Created)
 => This will ONLY show up after an ingress controller with loadbalancer usages is deployed, it will also get removed upon undeployment !
 - Settings/Configuration/DNS name label (optional)
 
-
 # retetrieve k8s config
 - open cloud shell in browser
 - az aks get-credentials --resource-group Development --name xxx
 - cat .kube/config
-
-# current changes !!
-- changed dashboard deployment to "metrics-server.enabled=false", as there is alread one deployed
-- oidc_enabled = false set for now
-- kong standard image, as the custom with oidc is currently arm only 
-
-- fix for apisix routes as having just "headers:" without any header, fails on azure with "\n" errors
- 
-# todos
-- access and provision server via azure cli / later terraform
-
-# cluster config workaround
-- kubectl create configmap cluster-config -n default --from-literal=hostname=$TF_VAR_hostname
+- might need az account set --subscription <id>
 
 # C5 (optional)
 - Redundancy Model (Multiple Nodes, Multiple Zones)
@@ -55,6 +42,50 @@ Public IP Address (after Cluster Created)
 - Data Backup => Azure solution ?
 - Volume Encryption: Enabled by Default
 
-
 - Network Policies, Apisix, Cert Manager via Helm ?
 - Grafana: Managed solution vs Helm ?
+                                        
+# managed postgres
+- NAME: Azure Database for PostgreSQL Flexible Server
+- costs 
+  - start at 30 euros per month, for the cheapest 1 core machine
+  - a more production ready 4 core 250 euros per month
+  - replicas are not available, instead hot standby that will just cost the same amount on top
+- access
+  - network access can be set to public at the beginning by granting public IPS via Firewall
+      - including Option "Allow public access from any Azure service within Azure to this server"
+  - !! you might still have to click "Add current client IP address" in the firewall section !!
+  - could be changed later to private Network
+  - jdbc connection needs to be at least configured with /postgres?sslmode=require
+  - better is /postgres?sslmode=verify-full
+    - this needs the azure root certificate to be download and installed in AKS, either via ConfigMap or Vault Config
+
+# managed blob storage
+- NAME Storage Account, covers multiple things
+- blob storage is found under "containers"
+- costs
+  - costs are not very evident, but seems to be cheap
+- access 
+  - should be anonymous
+  - api is not s3 compatible, proxy solutions are not recommend as possible bottlneck and expensive (400 euros per month)
+  - recommended way via azure SDK and feature toggle between AWS + Azure
+    - needs account name and account key as config parameters, can be found under "Security + Networking/Access Keys"
+
+# kafka / event hub
+- create event hub with the standard 22$ tier
+- retrieve connection string from settings\Shared Access Policies\RootManageSharedAccessKey
+- spring boot config
+```yaml
+spring:
+  kafka:
+    bootstrap-servers: "<namespace-name>.servicebus.windows.net:9093"
+    properties:
+      security.protocol: SASL_SSL
+      sasl.mechanism: PLAIN
+      sasl.jaas.config: >
+        org.apache.kafka.common.security.plain.PlainLoginModule required
+        username="$ConnectionString"
+        password="Endpoint=sb://<namespace-name>.servicebus.windows.net/;SharedAccessKeyName=<policy-name>;SharedAccessKey=<access-key>";
+    admin:
+      auto-create-topics: true
+```

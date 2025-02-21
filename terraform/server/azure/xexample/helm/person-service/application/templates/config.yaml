@@ -1,0 +1,53 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "application.fullname" . }}-config
+  labels:
+    {{- include "application.labels" . | nindent 4 }}
+data:
+  #application
+  TZ: Europe/Berlin
+  server.port: "{{ .Values.service.port }}"
+  server.tomcat.threads.max: "20"
+  server.forward-headers-strategy: FRAMEWORK
+
+  server.max-http-request-header-size: "10KB" #required for Gateway OIDC
+  server.tomcat.max-http-response-header-size: "10KB"
+
+  #secrets
+  spring.config.import: configtree:/mnt/secrets/
+
+  #security
+  security.authentication.enabled: "false"
+
+  #monitoring
+  management.endpoints.web.exposure.include: "health,circuitbreakers,prometheus,env"
+  management.endpoint.health.show-details: never
+  springdoc.swagger-ui.path: "//"
+  springdoc.api-docs.path: "//"
+
+  #tracing
+  spring.application.name: "{{ include "application.fullname" . }}.{{ .Release.Namespace }}"
+  management.otlp.tracing.endpoint: "http://tempo.grafana:4318/v1/traces"
+  management.tracing.sampling.probability: "1.0"
+
+  #persistence
+  #spring.datasource.url: "{{ .Values.datasource.url }}"
+  spring.datasource.hikari.maximum-pool-size: "10"
+  spring.datasource.hikari.connection-timeout: "10000"
+
+  multi-tenancy.tenants: "{{ .Values.multiTenancy.tenants }}"
+  multi-tenancy.schema-prefix: "core_"
+  database.provisioning.goals: "-migrate -import-demo-data"
+
+  #adapter
+  adapter.calleeservice.url: "http://callee-service-application:8080"
+  adapter.timeout: "10000"
+
+  #resilience4j
+  resilience4j.circuitbreaker.configs.default.slowCallDurationThreshold: "10000"
+  resilience4j.circuitbreaker.configs.default.slowCallRateThreshold: "100"
+  resilience4j.circuitbreaker.configs.default.failureRateThreshold: "50"
+  resilience4j.circuitbreaker.configs.default.waitDurationInOpenState: "30s"
+  resilience4j.circuitbreaker.configs.default.minimumNumberOfCalls: "5"
+  resilience4j.circuitbreaker.configs.default.permittedNumberOfCallsInHalfOpenState: "10"

@@ -22,6 +22,12 @@ resource "helm_release" "keycloak" {
     name  = "admin.password"
     value = random_password.admin_password.result
   }
+
+  set {
+    name  = "log.level"
+    value = "INFO"
+  }
+
 }
 
 resource "helm_release" "keycloak-postgres" {
