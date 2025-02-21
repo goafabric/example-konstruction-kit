@@ -1,6 +1,6 @@
 # 1.3.7
 - upgrade Kind to Kubernetes 1.32 
-- upgrade of Spring Application to 3.4.3
+- upgrade of Spring Applications to 3.4.3
 
 # 1.3.6
 - upgrade to Istio 1.24.2 
