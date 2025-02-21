@@ -114,13 +114,6 @@ data:
         {
           "quadrant": 2,
           "ring": 3,
-          "label": "Testcontainers",
-          "active": true,
-          "moved": 0
-        },
-        {
-          "quadrant": 2,
-          "ring": 3,
           "label": "GraphQL",
           "active": true,
           "moved": 0
@@ -751,8 +744,8 @@ data:
     {\n    ringDescriptionsTable();\n  }\n}\n"
 kind: ConfigMap
 metadata:
-  creationTimestamp: "2025-01-06T10:28:43Z"
+  creationTimestamp: "2025-02-20T06:29:02Z"
   name: tech-radar-data-files
   namespace: dashboard
-  resourceVersion: "30559369"
-  uid: 85e3e9e3-8175-4c72-b68f-b9ebe088730a
+  resourceVersion: "43373910"
+  uid: 9ca091f9-5c8c-4f81-920b-64bfb5370035
