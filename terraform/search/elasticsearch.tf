@@ -2,7 +2,7 @@ resource "helm_release" "elasticsearch" {
   name       = "elasticsearch"
   repository = "https://charts.bitnami.com/bitnami"
   chart      = "elasticsearch"
-  version    = "21.3.6"
+  version    = "21.3.7"
   namespace  = "search"
   create_namespace = true
 
