@@ -1,5 +1,5 @@
 # 1.3.7
-
+- upgrade Kind to Kubernetes 1.32 
 
 # 1.3.6
 - upgrade to Istio 1.24.2 
