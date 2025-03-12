@@ -32,7 +32,7 @@ data:
 
   #cache
   spring.profiles.active: "redis"
-  spring.data.redis.sentinel.master: "master"
+#  spring.data.redis.sentinel.master: "master"
 #  spring.data.redis.sentinel.nodes: "redis.invoice:26379"
 
   spring.data.redis.host: "dragonfly.invoice"
