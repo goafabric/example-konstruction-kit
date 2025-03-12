@@ -5,5 +5,10 @@ resource "helm_release" "dragonfly" {
   namespace  = "invoice"
   version    = "v1.27.2"
 
+  set {
+    name  = "replicaCount"
+    value = "2"
+  }
+
 }
 
