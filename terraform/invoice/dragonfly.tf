@@ -10,7 +10,7 @@ resource "helm_release" "dragonfly" {
 
   set {
     name  = "replicaCount"
-    value = "1" #@ see scaler-policy
+    value = "1"
   }
 
   set {
