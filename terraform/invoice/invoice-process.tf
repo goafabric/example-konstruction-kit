@@ -34,4 +34,8 @@ resource "helm_release" "invoice-process-application" {
     name = "oidc.enabled"
     value = local.oidc_enabled
   }
+  set {
+    name = "cache.type"
+    value = local.cache_type
+  }
 }

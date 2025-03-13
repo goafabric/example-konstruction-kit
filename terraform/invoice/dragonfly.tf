@@ -1,4 +1,6 @@
 resource "helm_release" "dragonfly" {
+  count = local.cache_type == "dragonfly" ? 1 : 0
+
   name       = "dragonfly"
   repository = "oci://ghcr.io/dragonflydb/dragonfly/helm"
   chart      = "dragonfly"
@@ -7,8 +9,12 @@ resource "helm_release" "dragonfly" {
 
   set {
     name  = "replicaCount"
-    value = "2"
+    value = local.cache_replica_count
   }
 
+  set {
+    name  = "commonLabels.app"
+    value = "dragonfly"
+  }
 }
 
