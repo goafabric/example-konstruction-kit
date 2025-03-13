@@ -1,4 +1,4 @@
-resource "random_password" "redis_password" {
+resource "random_password" "cache_password" {
   length           = 32
   special          = false
 }

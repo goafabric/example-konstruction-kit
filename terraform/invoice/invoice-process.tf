@@ -27,7 +27,7 @@ resource "helm_release" "invoice-process-application" {
   }
   set_sensitive {
     name  = "redis.password"
-    value = random_password.redis_password.result
+    value = random_password.cache_password.result
   }
 
   set {

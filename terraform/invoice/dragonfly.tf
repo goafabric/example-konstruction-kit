@@ -1,4 +1,5 @@
 resource "helm_release" "dragonfly" {
+  depends_on = [kubernetes_secret.cache_secret]
   count = local.cache_type == "dragonfly" ? 1 : 0
 
   name       = "dragonfly"
@@ -16,5 +17,32 @@ resource "helm_release" "dragonfly" {
     name  = "commonLabels.app"
     value = "dragonfly"
   }
+
+  set {
+    name  = "passwordFromSecret.enable"
+    value = true
+  }
+  set {
+    name  = "passwordFromSecret.existingSecret.name"
+    value = "cache-secret"
+  }
+  set {
+    name  = "passwordFromSecret.existingSecret.key"
+    value = "password"
+  }
+}
+
+
+resource "kubernetes_secret" "cache_secret" {
+  metadata {
+    name      = "cache-secret"
+    namespace = "invoice" # Change if needed
+  }
+
+  data = {
+    password = random_password.cache_password.result
+  }
+
+  type = "Opaque"
 }
 
