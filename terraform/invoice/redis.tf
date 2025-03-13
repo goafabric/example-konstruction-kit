@@ -21,7 +21,7 @@ resource "helm_release" "redis" {
   }
   set {
     name  = "replica.replicaCount"
-    value = local.cache_replica_count
+    value = "1" #@ see scaler-policy
   }
   
   set {

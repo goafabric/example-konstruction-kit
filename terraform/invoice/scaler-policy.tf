@@ -33,3 +33,37 @@ resource "kubernetes_manifest" "redis-node-autoscaler" {
   EOF
   )
 }
+
+
+resource "kubernetes_manifest" "dragonfly-autoscaler" {
+  manifest   = yamldecode(<<-EOF
+  apiVersion: autoscaling/v2
+  kind: HorizontalPodAutoscaler
+  metadata:
+    name: dragonfly
+    namespace: invoice
+  spec:
+    maxReplicas: 3
+    metrics:
+    - resource:
+        name: cpu
+        target:
+          averageUtilization: 50
+          type: Utilization
+      type: Resource
+    minReplicas: 1
+    scaleTargetRef:
+      apiVersion: apps/v1
+      kind: StatefulSet
+      name: dragonfly
+    behavior:
+      scaleDown:
+        stabilizationWindowSeconds: 30
+        selectPolicy: Max
+        policies:
+          - type: Percent
+            value: 100
+            periodSeconds: 50
+  EOF
+  )
+}
