@@ -50,10 +50,10 @@ resource "helm_release" "istio-cni" {
   }
 }
 
-resource "helm_release" "istio-ztunnel" {
+resource "helm_release" "ztunnel" {
   count = local.istio_mode== "ambient" ? 1 : 0
 
-  name       = "istio-ztunnel"
+  name       = "ztunnel"
   repository = "https://istio-release.storage.googleapis.com/charts"
   chart      = "ztunnel"
   namespace  = "istio-system"
