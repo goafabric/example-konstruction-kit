@@ -1,2 +1,2 @@
-core-service
 person-service
+invoice-process
