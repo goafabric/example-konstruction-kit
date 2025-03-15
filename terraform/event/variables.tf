@@ -16,8 +16,6 @@ data "external" "server_arch_data" {
 
 locals {
   server_arch = data.external.server_arch_data.result["server_arch"]
-
   oidc_enabled = strcontains(var.hostname, ".de")
-
   kafka_replica_count = "1" #for production this should be 3
 }
