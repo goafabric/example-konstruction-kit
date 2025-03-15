@@ -4,7 +4,7 @@ resource "helm_release" "argocd" {
   chart      = "argo-cd"
   namespace  = "argocd"
   create_namespace = true
-  version    = "5.51.2"
+  version    = "7.8.11"
 
   set {
     name  = "crds.keep"
