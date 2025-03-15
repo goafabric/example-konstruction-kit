@@ -41,7 +41,13 @@ resource "kubernetes_manifest" "person-service-application" {
             {
               name  = "database.password"
               value = random_password.postgres_password.result
+            },
+
+            {
+              name  = "multiTenancy.tenants"
+              value = var.multi_tenancy_tenants
             }
+
 
           ]
         }
