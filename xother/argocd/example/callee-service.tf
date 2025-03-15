@@ -29,6 +29,15 @@ resource "kubernetes_manifest" "callee-service-application" {
               name  = "replicaCount"
               value = "1"
             },
+
+            {
+              name  = "oidc.enabled"
+              value = local.oidc_enabled
+            },
+            {
+              name  = "oidc.session.secret"
+              value = random_password.oidc_session_secret.result
+            },
           ]
         }
       }
@@ -43,3 +52,4 @@ resource "kubernetes_manifest" "callee-service-application" {
     }
   }
 }
+
