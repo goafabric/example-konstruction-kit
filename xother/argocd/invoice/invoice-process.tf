@@ -1,4 +1,4 @@
-resource "kubernetes_manifest" "invoice-process-applicationperson-service-application" {
+resource "kubernetes_manifest" "invoice-process-application" {
   manifest = {
     apiVersion = "argoproj.io/v1alpha1"
     kind       = "Application"
