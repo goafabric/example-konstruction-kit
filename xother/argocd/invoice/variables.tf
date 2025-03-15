@@ -3,7 +3,7 @@ variable "hostname" {
 }
 
 variable "helm_timeout" {
-  default = 90
+  default = 60
 }
 
 variable "helm_repository" {
@@ -18,6 +18,5 @@ locals {
   server_arch = data.external.server_arch_data.result["server_arch"]
 
   oidc_enabled = strcontains(var.hostname, ".de")
+  cache_type = "dragonfly" #redis
 }
-
-

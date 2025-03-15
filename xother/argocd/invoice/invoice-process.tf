@@ -1,9 +1,9 @@
-resource "kubernetes_manifest" "person-service-application" {
+resource "kubernetes_manifest" "invoice-process-applicationperson-service-application" {
   manifest = {
     apiVersion = "argoproj.io/v1alpha1"
     kind       = "Application"
     metadata = {
-      name      = "person-service-application"
+      name      = "invoice-process-application"
       namespace = "argocd"
       finalizers = [
         "resources-finalizer.argocd.argoproj.io",
@@ -14,7 +14,7 @@ resource "kubernetes_manifest" "person-service-application" {
       source = {
         repoURL        = var.helm_repository
         targetRevision = "refactoring"
-        path           = "helm/example/spring/person-service/application"
+        chart          = "helm/invoice/invoice-process/application"
         helm = {
           parameters = [
             {
@@ -35,20 +35,30 @@ resource "kubernetes_manifest" "person-service-application" {
               value = local.oidc_enabled
             },
             {
+              name  = "cache.type"
+              value = local.cache_type
+            },
+            {
               name  = "oidc.session.secret"
               value = random_password.oidc_session_secret.result
             },
+
             {
-              name  = "database.password"
-              value = random_password.postgres_password.result
-            }
+              name  = "s3.password"
+              value = "minioadmin"
+            },
+            {
+              name  = "redis.password"
+              value = random_password.cache_password.result
+            },
+
 
           ]
         }
       }
       destination = {
         server    = "https://kubernetes.default.svc"
-        namespace = "example"
+        namespace = "invoice"
       }
       syncPolicy = {
         automated  = {}
@@ -57,4 +67,6 @@ resource "kubernetes_manifest" "person-service-application" {
     }
   }
 }
+
+
 
