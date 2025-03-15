@@ -1,17 +1,13 @@
 variable "hostname" {
-  default = "kind"
+  default = "kind.local"
 }
 
 variable "helm_timeout" {
-  default = 60
-}
-
-variable "server_arch" {
-  default = "" #should be set from environment, only required for native images on apple silicon m1
+  default = 90
 }
 
 variable "helm_repository" {
-  default = "https://github.com/goafabric/example-konstruction-kit"
+  default = "../../helm/example/spring" #"../../helm/example/quarkus"
 }
 
 data "external" "server_arch_data" {
@@ -20,6 +16,13 @@ data "external" "server_arch_data" {
 
 locals {
   server_arch = data.external.server_arch_data.result["server_arch"]
-  oidc_enabled = strcontains(var.hostname, ".de")
 
+  oidc_enabled = strcontains(var.hostname, ".de")
+  postgres_ha = false
+}
+
+# terraform taint helm_release.person-service-application
+# terraform taint 'helm_release.person-service-application["provisioning"]'
+variable "multi_tenancy_tenants" {
+  default = "0\\,5\\,8"
 }
