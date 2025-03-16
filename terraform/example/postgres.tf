@@ -1,6 +1,4 @@
 resource "helm_release" "person-service-postgres" {
-  count = local.postgres_ha == false ? 1 : 0
-
   repository = var.helm_repository
   name       = "person-service-postgres-postgresql-ha-pgpool"
   chart      = "${var.helm_repository}/person-service/postgres"
