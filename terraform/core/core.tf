@@ -15,18 +15,8 @@ resource "helm_release" "core-application" {
     value = var.hostname
   }
   set {
-    name  = "replicaCount"
-    value = "1"
-  }
-
-  set_sensitive {
-    name  = "database.password"
-    value = random_password.core_database_password.result
-  }
-
-  set_sensitive {
-    name  = "s3.password"
-    value = "minioadmin" #random_password.s3_password.result
+    name  = "maxReplicas"
+    value = "3"
   }
 
   set {
@@ -50,6 +40,16 @@ resource "helm_release" "core-application" {
     value = var.multi_tenancy_tenants
   }
 
+  set_sensitive {
+    name  = "database.password"
+    value = random_password.core_database_password.result
+  }
+
+  set_sensitive {
+    name  = "s3.password"
+    value = "minioadmin" #random_password.s3_password.result
+  }
+
 }
 
 resource "helm_release" "core-frontend" {
@@ -65,8 +65,8 @@ resource "helm_release" "core-frontend" {
     value = var.hostname
   }
   set {
-    name  = "replicaCount"
-    value = "1"
+    name  = "maxReplicas"
+    value = "3"
   }
   set {
     name = "oidc.enabled"

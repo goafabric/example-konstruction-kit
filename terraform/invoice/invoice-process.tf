@@ -8,8 +8,8 @@ resource "helm_release" "invoice-process-application" {
   timeout = var.helm_timeout
 
   set {
-    name  = "replicaCount"
-    value = "1"
+    name  = "maxReplicas"
+    value = "3"
   }
 
   set {
@@ -19,15 +19,6 @@ resource "helm_release" "invoice-process-application" {
   set {
     name  = "image.arch"
     value = "-native${local.server_arch}"
-  }
-
-  set_sensitive {
-    name  = "s3.password"
-    value = "minioadmin" #random_password.s3_password.result
-  }
-  set_sensitive {
-    name  = "redis.password"
-    value = random_password.cache_password.result
   }
 
   set {
@@ -42,4 +33,14 @@ resource "helm_release" "invoice-process-application" {
     name = "cache.type"
     value = local.cache_type
   }
+
+  set_sensitive {
+    name  = "s3.password"
+    value = "minioadmin" #random_password.s3_password.result
+  }
+  set_sensitive {
+    name  = "redis.password"
+    value = random_password.cache_password.result
+  }
+
 }

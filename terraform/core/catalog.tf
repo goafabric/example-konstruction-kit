@@ -9,8 +9,8 @@ resource "helm_release" "catalog-application" {
   force_update = true
 
   set {
-    name  = "replicaCount"
-    value = "1"
+    name  = "maxReplicas"
+    value = "3"
   }
   set {
     name  = "ingress.hosts"

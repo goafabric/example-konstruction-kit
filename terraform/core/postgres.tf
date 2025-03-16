@@ -1,5 +1,4 @@
 resource "helm_release" "core-postgres-postgresql-ha-pgpool" {
-  count = local.postgres_ha == false ? 1 : 0
 
   repository = var.helm_repository
   name       = "core-postgres-postgresql-ha-pgpool"
@@ -77,4 +76,4 @@ resource "terraform_data" "remove_postgres_pvc" {
   }
 }
 
- */
+*/
