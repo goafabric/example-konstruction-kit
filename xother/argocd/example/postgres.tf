@@ -34,7 +34,7 @@ resource "kubernetes_manifest" "person-service-postgres" {
       }
       syncPolicy = {
         automated  = {}
-        syncOptions = ["CreateNamespace=true"]
+        syncOptions = ["CreateNamespace=false"]
       }
     }
   }

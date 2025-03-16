@@ -66,7 +66,7 @@ resource "kubernetes_manifest" "core-application" {
       }
       syncPolicy = {
         automated  = {}
-        syncOptions = ["CreateNamespace=true"]
+        syncOptions = ["CreateNamespace=false"]
       }
     }
   }
@@ -123,7 +123,7 @@ resource "kubernetes_manifest" "core-frontend" {
       }
       syncPolicy = {
         automated  = {}
-        syncOptions = ["CreateNamespace=true"]
+        syncOptions = ["CreateNamespace=false"]
       }
     }
   }

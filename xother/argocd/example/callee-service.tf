@@ -47,7 +47,7 @@ resource "kubernetes_manifest" "callee-service-application" {
       }
       syncPolicy = {
         automated  = {}
-        syncOptions = ["CreateNamespace=true"]
+        syncOptions = ["CreateNamespace=false"]
       }
     }
   }

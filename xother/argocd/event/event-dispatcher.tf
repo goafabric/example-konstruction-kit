@@ -50,7 +50,7 @@ resource "kubernetes_manifest" "event-dispatcher-service-application" {
       }
       syncPolicy = {
         automated  = {}
-        syncOptions = ["CreateNamespace=true"]
+        syncOptions = ["CreateNamespace=false"]
       }
     }
   }

@@ -62,7 +62,7 @@ resource "kubernetes_manifest" "invoice-process-application" {
       }
       syncPolicy = {
         automated  = {}
-        syncOptions = ["CreateNamespace=true"]
+        syncOptions = ["CreateNamespace=false"]
       }
     }
   }

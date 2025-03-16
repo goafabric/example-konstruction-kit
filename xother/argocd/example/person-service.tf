@@ -58,7 +58,7 @@ resource "kubernetes_manifest" "person-service-application" {
       }
       syncPolicy = {
         automated  = {}
-        syncOptions = ["CreateNamespace=true"]
+        syncOptions = ["CreateNamespace=false"]
       }
     }
   }

@@ -53,7 +53,7 @@ resource "kubernetes_manifest" "catalog-application" {
       }
       syncPolicy = {
         automated  = {}
-        syncOptions = ["CreateNamespace=true"]
+        syncOptions = ["CreateNamespace=false"]
       }
     }
   }
@@ -115,11 +115,11 @@ resource "kubernetes_manifest" "catalog-application" {
 #       }
 #       syncPolicy = {
 #         automated  = {}
-#         syncOptions = ["CreateNamespace=true"]
+#         syncOptions = ["CreateNamespace=false"]
 #       }
 #     }
 #   }
 # }
-#
+
 
 
