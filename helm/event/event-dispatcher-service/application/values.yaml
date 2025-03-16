@@ -1,4 +1,5 @@
 replicaCount: 1
+maxReplicas: 3
 
 ingress:
   paths: /event
