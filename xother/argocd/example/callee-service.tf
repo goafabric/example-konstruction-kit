@@ -26,8 +26,8 @@ resource "kubernetes_manifest" "callee-service-application" {
               value = "-native${local.server_arch}"
             },
             {
-              name  = "replicaCount"
-              value = "1"
+              name  = "maxReplicas"
+              value = "3"
             },
 
             {

@@ -18,8 +18,8 @@ resource "kubernetes_manifest" "person-service-postgres" {
         helm = {
           parameters = [
             {
-              name  = "replicaCount"
-              value = "1"
+              name  = "maxReplicas"
+              value = "3"
             },
             {
               name  = "database.password"

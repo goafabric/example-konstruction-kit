@@ -26,8 +26,8 @@ resource "kubernetes_manifest" "core-application" {
               value = "-native${local.server_arch}"
             },
             {
-              name  = "replicaCount"
-              value = "1"
+              name  = "maxReplicas"
+              value = "3"
             },
 
             {
@@ -97,8 +97,8 @@ resource "kubernetes_manifest" "core-frontend" {
               value = var.hostname
             },
             {
-              name  = "replicaCount"
-              value = "1"
+              name  = "maxReplicas"
+              value = "3"
             },
 
             {
@@ -119,7 +119,7 @@ resource "kubernetes_manifest" "core-frontend" {
       }
       destination = {
         server    = "https://kubernetes.default.svc"
-        namespace = "example"
+        namespace = "core"
       }
       syncPolicy = {
         automated  = {}
