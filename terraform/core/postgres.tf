@@ -3,7 +3,7 @@ resource "helm_release" "core-postgres-postgresql-ha-pgpool" {
   repository = var.helm_repository
   name       = "core-postgres-postgresql-ha-pgpool"
   chart      = "${var.helm_repository}/core/postgres"
-  namespace  = "core"
+  namespace  = "data"
   create_namespace = false
   timeout = var.helm_timeout
 
@@ -21,7 +21,7 @@ resource "helm_release" "core-postgres-ha" {
   repository = "https://charts.bitnami.com/bitnami"
   chart      = "postgresql-ha"
   version    = "14.2.27"
-  namespace  = "core"
+  namespace  = "data"
 
   set {
     name  = "postgresql.replicaCount"
