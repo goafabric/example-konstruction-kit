@@ -2,7 +2,7 @@ resource "helm_release" "s3-minio" {
   name       = "s3-minio"
   repository = "https://charts.bitnami.com/bitnami"
   chart      = "minio"
-  namespace  = "core"
+  namespace  = "data"
   version    = "14.1.2"
   timeout = 60
 
