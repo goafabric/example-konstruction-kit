@@ -1,4 +1,4 @@
-resource "kubernetes_network_policy" "allow_self_ingress_prometheus" {
+resource "kubernetes_network_policy" "allow_self_ingress_prometheus_core" {
   metadata {
     name      = "allow-ingress"
     namespace = "core"

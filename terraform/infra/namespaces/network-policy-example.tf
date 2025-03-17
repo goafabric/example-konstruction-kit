@@ -1,7 +1,7 @@
-resource "kubernetes_network_policy" "allow_self_ingress_prometheus" {
+resource "kubernetes_network_policy" "allow_self_ingress_prometheus_example" {
   metadata {
     name      = "allow-ingress"
-    namespace = "event"
+    namespace = "example"
   }
 
   spec {
@@ -10,7 +10,7 @@ resource "kubernetes_network_policy" "allow_self_ingress_prometheus" {
       from {
         namespace_selector {
           match_labels = {
-            "kubernetes.io/metadata.name" = "event"
+            "kubernetes.io/metadata.name" = "example"
           }
         }
       }
@@ -49,33 +49,6 @@ resource "kubernetes_network_policy" "allow_self_ingress_prometheus" {
         pod_selector {
           match_labels = {
             "app.kubernetes.io/name" = "prometheus"
-          }
-        }
-      }
-    }
-
-    policy_types = ["Ingress"]
-  }
-}
-
-resource "kubernetes_network_policy" "allow_core" {
-  metadata {
-    name      = "allow-core"
-    namespace = "event"
-  }
-
-  spec {
-    pod_selector {}
-    ingress {
-      from {
-        namespace_selector {
-          match_labels = {
-            "kubernetes.io/metadata.name" = "core"
-          }
-        }
-        pod_selector {
-          match_labels = {
-            app = "core-application"
           }
         }
       }
