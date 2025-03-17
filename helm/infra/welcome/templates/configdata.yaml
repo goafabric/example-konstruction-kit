@@ -42,16 +42,19 @@ data:
     \                       <span>\U0001F4CA Grafana</span>\n                    </a>\n
     \               </li>\n                <li>\n                    <a href=\"/kiali/\"
     target=\"_blank\">\n                        <span>⛵ Istio Dashboard</span>\n                    </a>\n
-    \               </li>\n                <p></p>\n                <li>\n                    <a
-    href=\"/oidc/\" target=\"_blank\">\n                        <span>\U0001F510 Keycloak</span>\n
+    \               </li>\n                <li>\n                    <a href=\"/argocd/\"
+    target=\"_blank\">\n                        <span>\U0001F419 Argo CD</span>\n
     \                   </a>\n                </li>\n                <p></p>\n                <li>\n
-    \                   <a href=\"/sonar/\" target=\"_blank\">\n                        <span>\U0001F4E1
-    Sonarqube</span>\n                    </a>\n                </li>\n                <p></p>\n
-    \               <li>\n                    <a href=\"/techradar/\" target=\"_blank\">\n
-    \                       <span>\U0001F4E1 Tech Radar</span>\n                    </a>\n
-    \               </li>\n                <li>\n                    <a href=\"https://github.com/goafabric\"
-    target=\"_blank\">\n                        <span>\U0001F419 Github</span>\n                    </a>\n
-    \               </li>\n\n            </ul>\n        </div>\n        <div class=\"links\">\n
+    \                   <a href=\"/oidc/\" target=\"_blank\">\n                        <span>\U0001F510
+    Keycloak</span>\n                    </a>\n                </li>\n                <p></p>\n
+    \               <li>\n                    <a href=\"/sonar/\" target=\"_blank\">\n
+    \                       <span>\U0001F4E1 Sonarqube</span>\n                    </a>\n
+    \               </li>\n                <p></p>\n                <li>\n                    <a
+    href=\"/techradar/\" target=\"_blank\">\n                        <span>\U0001F4E1
+    Tech Radar</span>\n                    </a>\n                </li>\n                <li>\n
+    \                   <a href=\"https://github.com/goafabric\" target=\"_blank\">\n
+    \                       <span>\U0001F419 Github</span>\n                    </a>\n
+    \               </li>\n            </ul>\n        </div>\n        <div class=\"links\">\n
     \           <h6>Core</h6>\n            <ul>\n                <p></p>\n                <li>\n
     \                   <a href=\"/core-frontend/frontend/\" target=\"_blank\">\n
     \                       <span>\U0001F30D Core</span>\n                    </a>\n
@@ -79,8 +82,8 @@ data:
     \       </div>\n    </div>\n</div>\n\n</body>\n"
 kind: ConfigMap
 metadata:
-  creationTimestamp: "2025-02-17T11:24:17Z"
+  creationTimestamp: "2025-03-17T12:08:05Z"
   name: welcome-board-data-files
   namespace: dashboard
-  resourceVersion: "42570273"
-  uid: cfa6f87d-07bd-49d6-9e7b-a4843af3a0ff
+  resourceVersion: "12430"
+  uid: 5065e6f4-d80f-4da5-b845-30ace1c687d7

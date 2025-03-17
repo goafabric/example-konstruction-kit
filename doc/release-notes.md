@@ -4,6 +4,8 @@
 - dragonfly added as redis alternative
 - upgrade to istio 1.25.0
 
+- argocd added for all deployments
+
 # 1.3.6
 - upgrade to Istio 1.24.2 
 - upgrade to Kiali 2.3.0

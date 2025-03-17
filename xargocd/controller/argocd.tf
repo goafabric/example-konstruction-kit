@@ -79,3 +79,31 @@ resource "kubernetes_manifest" "argocd-ingress" {
   EOF
   )
 }
+
+resource "kubernetes_manifest" "argocd-route" {
+  manifest   = yamldecode(<<-EOF
+  kind: ApisixRoute
+  apiVersion: apisix.apache.org/v2
+  metadata:
+    name: kiali
+    namespace: istio-system
+  spec:
+    http:
+      - name: kiali
+        match:
+          hosts:
+            - ${var.hostname}
+          paths:
+            - /argocd
+            - /argocd/*
+        backends:
+          - serviceName: argocd-server
+            servicePort: 80
+        plugins:
+          - name: redirect
+            enable: true
+            config:
+              http_to_https: true
+  EOF
+  )
+}
