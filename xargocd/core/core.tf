@@ -13,7 +13,7 @@ resource "kubernetes_manifest" "core-application" {
       project = "default"
       source = {
         repoURL        = var.helm_repository
-        targetRevision = "refactoring"
+        targetRevision = "data"
         path           = "helm/core/core/application"
         helm = {
           parameters = [
@@ -88,7 +88,7 @@ resource "kubernetes_manifest" "core-frontend" {
       project = "default"
       source = {
         repoURL        = var.helm_repository
-        targetRevision = "refactoring"
+        targetRevision = "data"
         path           = "helm/core/core/frontend"
         helm = {
           parameters = [
