@@ -5,6 +5,8 @@
 - upgrade to istio 1.25.0
 
 - argocd added for all deployments
+- moved specific network polices to terraform/infra/network-policies
+- moved specific auto-scaler policies from terraform to helm charts
 
 # 1.3.6
 - upgrade to Istio 1.24.2 
