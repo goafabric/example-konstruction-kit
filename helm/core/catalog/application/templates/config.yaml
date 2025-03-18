@@ -34,7 +34,7 @@ data:
   management.tracing.sampling.probability: "1.0"
 
   #persistence
-  spring.datasource.url: "jdbc:postgresql://core-postgres-postgresql-ha-pgpool.data:5432/core"
+  spring.datasource.url: "jdbc:postgresql://postgresql.data:5432/main"
   spring.datasource.hikari.maximum-pool-size: "10"
   spring.datasource.hikari.connection-timeout: "10000"
 
