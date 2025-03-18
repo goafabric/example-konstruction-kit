@@ -61,7 +61,7 @@ resource "kubernetes_network_policy" "allow_self_ingress_prometheus_data" {
 
 resource "kubernetes_network_policy" "allow_core_data" {
   metadata {
-    name      = "allow-invoice"
+    name      = "allow-core"
     namespace = "data"
   }
 
