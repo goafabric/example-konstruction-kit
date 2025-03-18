@@ -38,7 +38,7 @@ service:
 initContainers:
   - name: check-db-ready
     image: postgres:17.2
-    command: ['sh', '-c','until pg_isready -h person-service-postgres-postgresql-ha-pgpool -p 5432;do echo waiting for database; sleep 1; done;']
+    command: ['sh', '-c','until pg_isready -h postgresql.example -p 5432;do echo waiting for database; sleep 1; done;']
 
 oidc:
   enabled:
