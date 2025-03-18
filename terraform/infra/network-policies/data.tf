@@ -1,7 +1,7 @@
-resource "kubernetes_network_policy" "allow_self_ingress_prometheus_event" {
+resource "kubernetes_network_policy" "allow_self_ingress_prometheus_data" {
   metadata {
     name      = "allow-ingress"
-    namespace = "event"
+    namespace = "data"
   }
 
   spec {
@@ -10,7 +10,7 @@ resource "kubernetes_network_policy" "allow_self_ingress_prometheus_event" {
       from {
         namespace_selector {
           match_labels = {
-            "kubernetes.io/metadata.name" = "event"
+            "kubernetes.io/metadata.name" = "data"
           }
         }
       }
@@ -58,10 +58,11 @@ resource "kubernetes_network_policy" "allow_self_ingress_prometheus_event" {
   }
 }
 
-resource "kubernetes_network_policy" "allow_core_event" {
+
+resource "kubernetes_network_policy" "allow_core_data" {
   metadata {
-    name      = "allow-core"
-    namespace = "event"
+    name      = "allow-invoice"
+    namespace = "data"
   }
 
   spec {
@@ -76,6 +77,30 @@ resource "kubernetes_network_policy" "allow_core_event" {
         pod_selector {
           match_labels = {
             app = "core-application"
+          }
+        }
+      }
+      from {
+        namespace_selector {
+          match_labels = {
+            "kubernetes.io/metadata.name" = "core"
+          }
+        }
+        pod_selector {
+          match_labels = {
+            app = "catalog-application"
+          }
+        }
+      }
+      from {
+        namespace_selector {
+          match_labels = {
+            "kubernetes.io/metadata.name" = "core"
+          }
+        }
+        pod_selector {
+          match_labels = {
+            app = "core-batch"
           }
         }
       }
