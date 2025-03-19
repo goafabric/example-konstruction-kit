@@ -44,7 +44,7 @@ s3:
 
 kafka:
   enabled:
-  server: "kafka.event:9092"
+  server: "kafka.data:9092"
 
 initContainers:
   - name: check-db-ready

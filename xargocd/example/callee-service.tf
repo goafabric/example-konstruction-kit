@@ -13,7 +13,7 @@ resource "kubernetes_manifest" "callee-service-application" {
       project = "default"
       source = {
         repoURL        = var.helm_repository
-        targetRevision = "refactoring"
+        targetRevision = "data"
         path           = "helm/example/spring/callee-service/application"
         helm = {
           parameters = [
