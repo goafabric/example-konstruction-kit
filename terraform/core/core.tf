@@ -29,7 +29,7 @@ resource "helm_release" "core-application" {
   }
   set {
     name = "kafka.enabled"
-    value = local.oidc_enabled
+    value = true #local.oidc_enabled
   }
   set {
     name  = "messageBroker.password"

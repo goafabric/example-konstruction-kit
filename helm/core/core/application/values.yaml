@@ -40,7 +40,7 @@ postgresql:
   host: postgresql.data
 
 s3:
-  endpoint: "http://s3-minio:9000"
+  endpoint: "http://s3-minio.data:9000"
 
 kafka:
   enabled:
