@@ -13,7 +13,7 @@ resource "kubernetes_manifest" "catalog-application" {
       project = "default"
       source = {
         repoURL        = var.helm_repository
-        targetRevision = "data"
+        targetRevision = "refactoring"
         path           = "helm/core/catalog/application"
         helm = {
           parameters = [
@@ -75,7 +75,7 @@ resource "kubernetes_manifest" "catalog-batch" {
       project = "default"
       source = {
         repoURL        = var.helm_repository
-        targetRevision = "data"
+        targetRevision = "refactoring"
         path           = "helm/core/catalog/batch"
         helm = {
           parameters = [

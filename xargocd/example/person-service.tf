@@ -13,7 +13,7 @@ resource "kubernetes_manifest" "person-service-application" {
       project = "default"
       source = {
         repoURL        = var.helm_repository
-        targetRevision = "data"
+        targetRevision = "refactoring"
         path           = "helm/example/spring/person-service/application"
         helm = {
           parameters = [

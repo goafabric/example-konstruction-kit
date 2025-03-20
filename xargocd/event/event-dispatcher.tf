@@ -13,7 +13,7 @@ resource "kubernetes_manifest" "event-dispatcher-service-application" {
       project = "default"
       source = {
         repoURL        = var.helm_repository
-        targetRevision = "data"
+        targetRevision = "refactoring"
         path          = "helm/event/event-dispatcher-service/application"
         helm = {
           parameters = [
