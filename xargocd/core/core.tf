@@ -36,7 +36,7 @@ resource "kubernetes_manifest" "core-application" {
             },
             {
               name  = "kafka.enabled"
-              value = "true"
+              value = local.oidc_enabled
             },
 
             {
