@@ -100,7 +100,7 @@ resource "kubernetes_network_policy" "allow_core_data" {
         }
         pod_selector {
           match_labels = {
-            app = "core-batch"
+            app = "catalog-batch"
           }
         }
       }
