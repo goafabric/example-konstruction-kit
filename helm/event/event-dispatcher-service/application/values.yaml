@@ -34,13 +34,13 @@ service:
   port: 8080
 
 kafka:
-  enabled:
-  server: "kafka.data:9092"
+  server: "kafka.data"
+  port: "9092"
 
 initContainers:
   - name: wait-for-broker
     image: busybox:stable
-    command: ['sh', '-c', 'until nc -z kafka.data 9092; do echo waiting for broker; sleep 1; done;']
+    command: ['sh', '-c', 'until nc -z {{ .Values.kafka.server }} {{ .Values.kafka.port }}; do echo waiting for broker; sleep 1; done;']
 
 oidc:
   enabled:

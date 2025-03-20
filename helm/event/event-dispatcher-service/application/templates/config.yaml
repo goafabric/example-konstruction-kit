@@ -28,7 +28,7 @@ data:
   logging.level.io.opentelemetry: "INFO"
 
   #kafka
-  spring.kafka.bootstrap-servers: {{ .Values.kafka.server }}
+  spring.kafka.bootstrap-servers: {{ .Values.kafka.server }}:{{ .Values.kafka.port }}
   spring.kafka.properties.security.protocol: "SASL_PLAINTEXT"
   spring.kafka.properties.sasl.mechanism: "PLAIN"
   spring.kafka.properties.sasl.jaas.config: org.apache.kafka.common.security.plain.PlainLoginModule required username="${spring.kafka.username}" password="${spring.kafka.password}";
