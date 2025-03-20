@@ -48,8 +48,7 @@ data:
   spring.cloud.aws.s3.enabled: "true"
 
   #kafka
-  {{ if .Values.kafka.enabled }}spring.kafka.bootstrap-servers:
-  {{ .Values.kafka.server }}:{{ .Values.kafka.port }} 
+  {{ if .Values.kafka.enabled }}spring.kafka.bootstrap-servers: {{ .Values.kafka.server }}:{{ .Values.kafka.port }}
   {{ else }}spring.kafka.bootstrap-servers: ""
   {{ end }}
 
