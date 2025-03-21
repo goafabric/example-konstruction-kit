@@ -7,21 +7,6 @@ resource "helm_release" "postgresql" {
   namespace  = "example"
 
   set {
-    name  = "postgresql.extraEnvVars[0].name"
-    value = "TZ"
-  }
-
-  set {
-    name  = "postgresql.extraEnvVars[0].value"
-    value = "Europe/Berlin"
-  }
-
-  set {
-    name  = "postgresql.initdbScripts.00_pg_statements\\.sql"
-    value = "CREATE EXTENSION pg_stat_statements;"
-  }
-  
-  set {
     name  = "global.postgresql.auth.database"
     value = "main"
   }
@@ -31,7 +16,7 @@ resource "helm_release" "postgresql" {
   }
   set_sensitive {
     name  = "global.postgresql.auth.password"
-    value = random_password.postgresql_password.result
+    value = "postgres"
   }
 
 }
