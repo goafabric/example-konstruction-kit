@@ -14,7 +14,9 @@ export AWS_DEFAULT_REGION="eu-central-1"
 awslocal s3api create-bucket --bucket sample-bucket2 --create-bucket-configuration LocationConstraint=$AWS_DEFAULT_REGION
 awslocal s3api list-buckets
 
-curl http://s3.eu-central-1.es.localhost.localstack.cloud:4566/sample-bucket2  #curl http://localhost:4566/sample-bucket2
+curl http://s3.eu-central-1.es.localhost.localstack.cloud:4566/sample-bucket2  #
+
+curl http://localstack.cloud:4566/sample-bucket2
 
 
 # sqs
