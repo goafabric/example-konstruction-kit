@@ -34,9 +34,17 @@ awslocal iam create-access-key --user-name test
 # api gateway
 awslocal apigateway create-rest-api --name 'API Gateway Lambda integration'
 awslocal apigateway get-resources --rest-api-id <REST_API_ID>
-                                       
-# kafka
-pro edition only                
 
-# dynamodb
-https://docs.localstack.cloud/references/coverage/coverage_dynamodb/
+# lambda
+see lambda folder for nodejs example
+
+## pro features only
+# eks
+https://docs.localstack.cloud/user-guide/aws/eks/
+        
+# kafka
+https://docs.localstack.cloud/user-guide/aws/msk/     
+
+# postgres
+https://docs.localstack.cloud/user-guide/aws/rds/#postgresql-engine
+
