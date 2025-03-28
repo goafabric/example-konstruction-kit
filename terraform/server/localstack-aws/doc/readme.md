@@ -5,7 +5,7 @@ https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources
 
 # installation
 pip install awscli && pip install awscli-local
-docker run --rm --name localstack -p 4566:4566 -p 4510-4559:4510-4559 localstack/localstack:3.7.2
+docker run --rm --name localstack -p 4566:4566 -p 4510-4559:4510-4559 localstack/localstack:4.2.0
 
 # export
 export AWS_DEFAULT_REGION="eu-central-1"
@@ -14,7 +14,8 @@ export AWS_DEFAULT_REGION="eu-central-1"
 awslocal s3api create-bucket --bucket sample-bucket2 --create-bucket-configuration LocationConstraint=$AWS_DEFAULT_REGION
 awslocal s3api list-buckets
 
-curl http://s3.eu-central-1.es.localhost.localstack.cloud:4566/sample-bucket2
+curl http://s3.eu-central-1.es.localhost.localstack.cloud:4566/sample-bucket2  #curl http://localhost:4566/sample-bucket2
+
 
 # sqs
 awslocal sqs create-queue --queue-name localstack-queue

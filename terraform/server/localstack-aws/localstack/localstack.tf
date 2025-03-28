@@ -1,6 +1,14 @@
+resource "kubernetes_namespace" "cloud" {
+  metadata {
+    name = "cloud"
+  }
+}
+
 resource "kubernetes_deployment" "localstack" {
+  
   metadata {
     name = "localstack"
+    namespace = "cloud"
     labels = {
       app = "localstack"
     }
@@ -30,10 +38,10 @@ resource "kubernetes_deployment" "localstack" {
             container_port = 4566
           }
 
-          env {
-            name  = "AWS_DEFAULT_REGION"
-            value = "eu-central-1"  
-          }
+          # env {
+          #   name  = "AWS_DEFAULT_REGION"
+          #   value = "eu-central-1"
+          # }
 
         }
       }
@@ -44,6 +52,7 @@ resource "kubernetes_deployment" "localstack" {
 resource "kubernetes_service" "localstack" {
   metadata {
     name = "localstack"
+    namespace = "cloud"
   }
 
   spec {
