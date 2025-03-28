@@ -7,6 +7,9 @@ https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources
 pip install awscli && pip install awscli-local
 docker run --rm --name localstack -p 4566:4566 -p 4510-4559:4510-4559 localstack/localstack:4.2.0
 
+docker run --rm -p 4566:5000 --name moto motoserver/moto:5.1.1
+
+
 # export
 export AWS_DEFAULT_REGION="eu-central-1"
                  
@@ -16,8 +19,8 @@ export AWS_DEFAULT_REGION="eu-central-1"
 awslocal s3api create-bucket --bucket sample-bucket2 --create-bucket-configuration LocationConstraint=$AWS_DEFAULT_REGION
 awslocal s3api list-buckets
 
-curl http://s3.eu-central-1.es.localhost.localstack.cloud:4566/sample-bucket2  #
-curl http://localstack.cloud:4566/sample-bucket2
+curl http://s3.eu-central-1.es.localhost.localstack.cloud:4566/sample-bucket2  
+curl http://sample-bucket2.s3.eu-central-1.es.localhost.localstack.cloud:4566
  
 # elasticsearch 
 awslocal es create-elasticsearch-domain --domain-name goafabric
