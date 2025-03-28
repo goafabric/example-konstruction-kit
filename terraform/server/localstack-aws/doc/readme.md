@@ -9,23 +9,26 @@ docker run --rm --name localstack -p 4566:4566 -p 4510-4559:4510-4559 localstack
 
 # export
 export AWS_DEFAULT_REGION="eu-central-1"
+                 
+## important
 
 # s3 bucket
 awslocal s3api create-bucket --bucket sample-bucket2 --create-bucket-configuration LocationConstraint=$AWS_DEFAULT_REGION
 awslocal s3api list-buckets
 
 curl http://s3.eu-central-1.es.localhost.localstack.cloud:4566/sample-bucket2  #
-
 curl http://localstack.cloud:4566/sample-bucket2
-
+ 
+# elasticsearch 
+awslocal es create-elasticsearch-domain --domain-name goafabric
+curl http://goafabric.eu-central-1.es.localhost.localstack.cloud:4566
 
 # sqs
 awslocal sqs create-queue --queue-name localstack-queue
 awslocal sqs list-queues
-                                  
-# elasticsearch 
-awslocal es create-elasticsearch-domain --domain-name goafabric
-curl http://goafabric.eu-central-1.es.localhost.localstack.cloud:4566
+           
+
+## div
 
 # identity and access management
 awslocal iam create-user --user-name test
@@ -37,6 +40,7 @@ awslocal apigateway get-resources --rest-api-id <REST_API_ID>
 
 # lambda
 see lambda folder for nodejs example
+      
 
 ## pro features only
 # eks
