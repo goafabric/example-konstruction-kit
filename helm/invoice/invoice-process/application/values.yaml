@@ -31,11 +31,13 @@ nativeAnnotations:
 readinessProbe:
   initialDelaySeconds: 2
 
+s3:
+  endpoint: "http://s3-minio.data:9000"
+
 initContainers:
   - name: wait-for-redis
     image: redis:7.2.4
     command: ['sh', '-c', 'until redis-cli -h redis.invoice ping || redis-cli -h dragonfly.invoice ping; do echo waiting for redis; sleep 1; done;']
-
 
 service:
   type: ClusterIP

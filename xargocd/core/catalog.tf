@@ -41,7 +41,7 @@ resource "kubernetes_manifest" "catalog-application" {
             },
             {
               name  = "database.password"
-              value = random_password.core_database_password.result
+              value = random_password.postgresql_password.result
             }
 
           ]
@@ -103,7 +103,7 @@ resource "kubernetes_manifest" "catalog-batch" {
             },
             {
               name  = "database.password"
-              value = random_password.core_database_password.result
+              value = random_password.postgresql_password.result
             }
 
           ]
@@ -121,5 +121,6 @@ resource "kubernetes_manifest" "catalog-batch" {
   }
 }
 
+# kubectl patch application catalog-batch -n argocd --type=merge -p '{"metadata":{"finalizers":null}}'
 
 

@@ -50,6 +50,7 @@ resource "helm_release" "argocd" {
 
 
 resource "kubernetes_manifest" "argocd-ingress" {
+  depends_on = [helm_release.argocd]
   manifest   = yamldecode(<<-EOF
   kind: Ingress
   apiVersion: networking.k8s.io/v1

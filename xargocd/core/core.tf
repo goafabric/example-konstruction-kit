@@ -36,7 +36,7 @@ resource "kubernetes_manifest" "core-application" {
             },
             {
               name  = "kafka.enabled"
-              value = "true"
+              value = local.oidc_enabled
             },
 
             {
@@ -45,7 +45,7 @@ resource "kubernetes_manifest" "core-application" {
             },
             {
               name  = "database.password"
-              value = random_password.core_database_password.result
+              value = random_password.postgresql_password.result
             },
             {
               name  = "s3.password"

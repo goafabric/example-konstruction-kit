@@ -22,8 +22,8 @@ spec:
     spec:
       {{- with .Values.initContainers }}
       initContainers:
-        {{- toYaml . | nindent 8 }}
-        {{- end }}
+        {{ tpl (toYaml .) $ | nindent 8 }}
+      {{- end }}
 
       {{ if .Values.image.pullSecrets }}
       imagePullSecrets:
@@ -85,5 +85,3 @@ spec:
       volumes:
         - name: {{ include "application.fullname" . }}-applogs
           emptyDir: {}
-     
-

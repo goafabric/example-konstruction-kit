@@ -1,4 +1,4 @@
-resource "random_password" "core_database_password" {
+resource "random_password" "postgresql_password" {
   length           = 32
   special          = false
 }

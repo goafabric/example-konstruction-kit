@@ -1,9 +1,0 @@
-apiVersion: v2
-name: person-service-postgres-postgresql-ha-pgpool
-description: person-service-postgres
-
-type: application
-
-version: 1.3.7
-
-appVersion: "17.2"

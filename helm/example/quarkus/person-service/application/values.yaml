@@ -27,10 +27,13 @@ service:
   type: ClusterIP
   port: 8080
 
+postgresql:
+  host: postgresql.example
+
 initContainers:
   - name: check-db-ready
-    image: postgres:17.2
-    command: ['sh', '-c','until pg_isready -h person-service-postgres-postgresql-ha-pgpool -p 5432;do echo waiting for database; sleep 1; done;']
+    image: postgres:17.4
+    command: ['sh', '-c','until pg_isready -h {{ .Values.postgresql.host }} -p 5432;do echo waiting for database; sleep 1; done;']
 
 oidc:
   enabled:

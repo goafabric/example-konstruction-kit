@@ -23,7 +23,7 @@ resource "helm_release" "catalog-application" {
 
   set_sensitive {
     name  = "database.password"
-    value = random_password.core_database_password.result
+    value = random_password.postgresql_password.result
   }
 
   set {
@@ -50,7 +50,7 @@ resource "helm_release" "catalog-batch" {
   }
   set_sensitive {
     name  = "database.password"
-    value = random_password.core_database_password.result
+    value = random_password.postgresql_password.result
   }
   set {
     name = "oidc.enabled"

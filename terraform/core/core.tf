@@ -29,7 +29,7 @@ resource "helm_release" "core-application" {
   }
   set {
     name = "kafka.enabled"
-    value = "true"
+    value = local.oidc_enabled
   }
   set {
     name  = "messageBroker.password"
@@ -42,7 +42,7 @@ resource "helm_release" "core-application" {
 
   set_sensitive {
     name  = "database.password"
-    value = random_password.core_database_password.result
+    value = random_password.postgresql_password.result
   }
 
   set_sensitive {
