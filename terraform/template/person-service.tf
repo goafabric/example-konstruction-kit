@@ -13,7 +13,7 @@ resource "helm_release" "person-service-application" {
 
   set {
     name  = "image.fullName"
-    value = "goafabric/person-service:3.4.3"
+    value = "${var.image_registry}/person-service:3.4.3"
   }
 
   set {

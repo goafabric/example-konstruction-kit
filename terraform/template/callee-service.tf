@@ -13,7 +13,7 @@ resource "helm_release" "callee-service-application" {
 
   set {
     name  = "image.fullName"
-    value = "goafabric/callee-service:3.4.3"
+    value = "${var.image_registry}/callee-service:3.4.3"
   }
 
   set {
