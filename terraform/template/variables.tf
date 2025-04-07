@@ -3,7 +3,7 @@ variable "hostname" {
 }
 
 variable "helm_timeout" {
-  default = 20
+  default = 60
 }
 
 data "external" "server_arch_data" {

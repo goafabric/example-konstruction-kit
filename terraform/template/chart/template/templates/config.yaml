@@ -27,3 +27,16 @@ data:
   spring.application.name: "{{ include "application.fullname" . }}.{{ .Release.Namespace }}"
   management.otlp.tracing.endpoint: "http://tempo.grafana:4318/v1/traces"
   management.tracing.sampling.probability: "1.0"
+
+  #persistence
+  spring.datasource.url: "jdbc:postgresql://{{ .Values.postgresql.host }}:5432/main"
+  spring.datasource.hikari.maximum-pool-size: "10"
+  spring.datasource.hikari.connection-timeout: "10000"
+
+  multi-tenancy.tenants: "{{ .Values.multiTenancy.tenants }}"
+#  multi-tenancy.schema-prefix: "core_"
+  database.provisioning.goals: "-migrate -import-demo-data"
+
+  #s3
+  spring.cloud.aws.s3.endpoint: {{ .Values.s3.endpoint }}
+  spring.cloud.aws.s3.enabled: "true"

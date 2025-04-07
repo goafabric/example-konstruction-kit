@@ -26,6 +26,10 @@ resource "helm_release" "person-service-application" {
     value = false
   }
 
+  set_sensitive {
+    name  = "database.password"
+    value = random_password.postgresql_password.result
+  }
 
 
 }
