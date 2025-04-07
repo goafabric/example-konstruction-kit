@@ -2,7 +2,7 @@ resource "helm_release" "person-service-application" {
   repository = "./chart"
   name       = "person-service-application"
   chart      = "./chart/template"
-  namespace  = "example"
+  namespace  = "core"
   create_namespace = false
   timeout = var.helm_timeout
 
@@ -21,15 +21,9 @@ resource "helm_release" "person-service-application" {
     value = var.hostname
   }
 
-  set {
-    name = "oidc.enabled"
-    value = false
-  }
-
   set_sensitive {
     name  = "database.password"
     value = random_password.postgresql_password.result
   }
-
 
 }

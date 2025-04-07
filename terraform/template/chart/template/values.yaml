@@ -34,7 +34,7 @@ service:
   port: 8080
 
 oidc:
-  enabled:
+  enabled: false
 
 #initContainers:
 #  - name: check-db-ready

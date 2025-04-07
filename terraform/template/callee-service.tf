@@ -2,7 +2,7 @@ resource "helm_release" "callee-service-application" {
   repository = "./chart"
   name       = "callee-service-application"
   chart      = "./chart/template"
-  namespace  = "example"
+  namespace  = "core"
   create_namespace = false
   timeout = var.helm_timeout
 
@@ -19,11 +19,6 @@ resource "helm_release" "callee-service-application" {
   set {
     name  = "ingress.hosts"
     value = var.hostname
-  }
-
-  set {
-    name = "oidc.enabled"
-    value = false
   }
 
   set_sensitive {
