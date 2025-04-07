@@ -15,7 +15,7 @@ resourcesAnnotations:
       memory: 128M
       cpu: 250m
 
-  command: ["java", "-Xms128M", "-Xmx128M", "-cp", "/app/resources:/app/classes:/app/libs/*", "org.goafabric.calleeservice.Application"]
+#  command: ["java", "-Xms128M", "-Xmx128M", "-cp", "/app/resources:/app/classes:/app/libs/*", "org.goafabric.calleeservice.Application"]
 
 nativeAnnotations:
   resources:

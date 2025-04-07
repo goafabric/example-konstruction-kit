@@ -1,6 +1,6 @@
-resource "helm_release" "callee-service-application" {
+resource "helm_release" "person-service-application" {
   repository = "./chart"
-  name       = "callee-service-application"
+  name       = "person-service-application"
   chart      = "./chart/template"
   namespace  = "example"
   create_namespace = false
@@ -8,12 +8,12 @@ resource "helm_release" "callee-service-application" {
 
   set {
     name  = "ingress.paths"
-    value = "/callee"
+    value = "/person"
   }
 
   set {
     name  = "image.fullName"
-    value = "goafabric/callee-service:3.4.3"
+    value = "goafabric/person-service:3.4.3"
   }
 
   set {

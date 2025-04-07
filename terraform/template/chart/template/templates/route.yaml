@@ -40,5 +40,3 @@ spec:
             ssl_verify: false
             redirect_uri: "{{ .Values.ingress.paths }}/redirect_uri"
             logout_path: "{{ .Values.ingress.paths }}/logout"
-#            session:
-#              secret: "{{ .Values.oidc.session.secret | default "" }}"
