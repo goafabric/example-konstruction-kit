@@ -4,6 +4,9 @@
 - For https to work you need to import the certificate from your browser's certificate warning
 - Corporate Proxies usually need to be deactivated as they often block image downloading
 
+# Rancher Desktop
+- While everything seems to work inside Rancher, you'll have to disable any already enabled Kubernetes inside the Settings
+
 # Basic Installation
 - Go to "/terraform/server/kind"
 - ./stack init
