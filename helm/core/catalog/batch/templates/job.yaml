@@ -20,8 +20,8 @@ spec:
       restartPolicy: Never
       {{- with .Values.initContainers }}
       initContainers:
-        {{- toYaml . | nindent 8 }}
-        {{- end }}
+        {{ tpl (toYaml .) $ | nindent 8 }}
+      {{- end }}
 
       {{ if .Values.image.pullSecrets }}
       imagePullSecrets:

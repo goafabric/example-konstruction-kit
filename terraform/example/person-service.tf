@@ -7,8 +7,8 @@ resource "helm_release" "person-service-application" {
   timeout = var.helm_timeout
 
   set {
-    name  = "replicaCount"
-    value = "1"
+    name  = "maxReplicas"
+    value = "3"
   }
 
   set {
@@ -18,11 +18,6 @@ resource "helm_release" "person-service-application" {
   set {
     name  = "image.arch"
     value = strcontains(var.helm_repository, "spring") ? "-native${local.server_arch}" : local.server_arch
-  }
-
-  set_sensitive {
-    name  = "database.password"
-    value = random_password.postgres_password.result
   }
 
   set {
@@ -38,6 +33,11 @@ resource "helm_release" "person-service-application" {
   set {
     name = "multiTenancy.tenants"
     value = var.multi_tenancy_tenants
+  }
+
+  set_sensitive {
+    name  = "database.password"
+    value = random_password.postgresql_password.result
   }
 }
 

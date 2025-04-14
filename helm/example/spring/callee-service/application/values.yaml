@@ -1,4 +1,5 @@
 replicaCount: 1
+maxReplicas: 3
 
 ingress:
   paths: /callee
@@ -34,6 +35,7 @@ service:
 
 oidc:
   enabled:
+
 
 
 

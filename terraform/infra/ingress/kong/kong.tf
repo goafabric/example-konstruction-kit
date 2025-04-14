@@ -41,10 +41,6 @@ resource "helm_release" "kong" {
     name  = "image.tag"
     value = "3.8.0"
   }
-  set {
-    name  = "image.pullPolicy"
-    value = "Always"
-  }
 
   set {
     name  = "env.nginx_proxy_proxy_buffer_size"

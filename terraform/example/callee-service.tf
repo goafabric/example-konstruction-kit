@@ -7,8 +7,8 @@ resource "helm_release" "callee-service-application" {
   timeout = var.helm_timeout
 
   set {
-    name  = "replicaCount"
-    value = "1"
+    name  = "maxReplicas"
+    value = "3"
   }
 
   set {

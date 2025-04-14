@@ -4,7 +4,7 @@ resource "helm_release" "istio-base" {
   chart      = "base"
   namespace  = "istio-system"
   create_namespace = false
-  version    = "1.24.2"
+  version    = "1.25.0"
   wait       = true
 
   set {
@@ -19,7 +19,7 @@ resource "helm_release" "istio-istiod" {
   chart      = "istiod"
   namespace  = "istio-system"
   create_namespace = false
-  version    = "1.24.2"
+  version    = "1.25.0"
   wait       = true
 
   depends_on = [helm_release.istio-base]
@@ -39,7 +39,7 @@ resource "helm_release" "istio-cni" {
   chart      = "cni"
   namespace  = "istio-system"
   create_namespace = false
-  version    = "1.24.2"
+  version    = "1.25.0"
   wait       = true
 
   depends_on = [helm_release.istio-base]
@@ -50,15 +50,15 @@ resource "helm_release" "istio-cni" {
   }
 }
 
-resource "helm_release" "istio-ztunnel" {
+resource "helm_release" "ztunnel" {
   count = local.istio_mode== "ambient" ? 1 : 0
 
-  name       = "istio-ztunnel"
+  name       = "ztunnel"
   repository = "https://istio-release.storage.googleapis.com/charts"
   chart      = "ztunnel"
   namespace  = "istio-system"
   create_namespace = false
-  version    = "1.24.2"
+  version    = "1.25.0"
   wait       = true
 
   depends_on = [helm_release.istio-base]

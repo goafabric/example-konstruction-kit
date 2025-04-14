@@ -4,6 +4,6 @@ description: keycloak-postgres
 
 type: application
 
-version: 1.3.6
+version: 1.3.7
 
 appVersion: "17.2"

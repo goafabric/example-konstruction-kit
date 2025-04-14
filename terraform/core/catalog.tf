@@ -9,8 +9,8 @@ resource "helm_release" "catalog-application" {
   force_update = true
 
   set {
-    name  = "replicaCount"
-    value = "1"
+    name  = "maxReplicas"
+    value = "3"
   }
   set {
     name  = "ingress.hosts"
@@ -23,7 +23,7 @@ resource "helm_release" "catalog-application" {
 
   set_sensitive {
     name  = "database.password"
-    value = random_password.core_database_password.result
+    value = random_password.postgresql_password.result
   }
 
   set {
@@ -50,7 +50,7 @@ resource "helm_release" "catalog-batch" {
   }
   set_sensitive {
     name  = "database.password"
-    value = random_password.core_database_password.result
+    value = random_password.postgresql_password.result
   }
   set {
     name = "oidc.enabled"

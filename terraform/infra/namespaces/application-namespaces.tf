@@ -33,3 +33,12 @@ resource "kubernetes_namespace" "invoice" {
     }
   }
 }
+
+resource "kubernetes_namespace" "data" {
+  metadata {
+    name = "data"
+    labels = {
+      "istio.io/dataplane-mode" = "ambient"
+    }
+  }
+}

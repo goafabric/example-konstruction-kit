@@ -8,8 +8,8 @@ resource "helm_release" "invoice-process-application" {
   timeout = var.helm_timeout
 
   set {
-    name  = "replicaCount"
-    value = "1"
+    name  = "maxReplicas"
+    value = "3"
   }
 
   set {
@@ -21,17 +21,26 @@ resource "helm_release" "invoice-process-application" {
     value = "-native${local.server_arch}"
   }
 
+  set {
+    name = "oidc.enabled"
+    value = local.oidc_enabled
+  }
+  set_sensitive {
+    name = "oidc.session.secret"
+    value = random_password.oidc_session_secret.result
+  }
+  set {
+    name = "cache.type"
+    value = local.cache_type
+  }
+
   set_sensitive {
     name  = "s3.password"
     value = "minioadmin" #random_password.s3_password.result
   }
   set_sensitive {
     name  = "redis.password"
-    value = random_password.redis_password.result
+    value = random_password.cache_password.result
   }
 
-  set {
-    name = "oidc.enabled"
-    value = local.oidc_enabled
-  }
 }

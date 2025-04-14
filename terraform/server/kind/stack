@@ -16,7 +16,7 @@ function patch() {
   kubectl create configmap cluster-config -n default --from-literal=hostname=$TF_VAR_hostname
 
   kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/download/v0.7.2/components.yaml && kubectl patch deployment metrics-server -n kube-system --type='json' -p='[{"op": "add", "path": "/spec/template/spec/containers/0/args/-", "value": "--kubelet-insecure-tls"}]'
-  kubectl -n kube-system scale deployment coredns --replicas 1 #workaround for network policy problem in kind
+  #kubectl -n kube-system scale deployment coredns --replicas 1 #workaround for network policy problem in kind
 }
 
 function up() {
@@ -24,6 +24,7 @@ function up() {
     apply ./
     patch
     apply ../../infra/namespaces/
+    apply ../../infra/network-policies/
     apply ../../infra/ingress/cert-manager
     apply ../../infra/ingress/$INGRESS_TYPE
     apply ../../infra/dashboard
@@ -35,6 +36,7 @@ function down() {
     destroy ../../infra/dashboard
     destroy ../../infra/ingress/$INGRESS_TYPE
     destroy ../../infra/ingress/cert-manager
+    destroy ../../infra/network-policies/
     destroy ../../infra/namespaces/
     destroy ./
     )

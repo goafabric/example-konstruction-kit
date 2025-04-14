@@ -1,4 +1,6 @@
 resource "helm_release" "redis" {
+  count = local.cache_type == "redis" ? 1 : 0
+
   name       = "redis"
   repository = "https://charts.bitnami.com/bitnami"
   chart      = "redis"
@@ -40,7 +42,7 @@ resource "helm_release" "redis" {
   }
   set_sensitive {
     name  = "auth.password"
-    value = random_password.redis_password.result
+    value = random_password.cache_password.result
   }
   set {
     name  = "networkPolicy.enabled"
@@ -54,6 +56,8 @@ resource "helm_release" "redis" {
 }
 
 resource "terraform_data" "remove_redis_pvc" {
+  count = local.cache_type == "redis" ? 1 : 0
+
   provisioner "local-exec" {
     when    = destroy
     command = "kubectl delete pvc -l app.kubernetes.io/instance=redis -n invoice"

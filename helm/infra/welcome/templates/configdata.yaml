@@ -32,7 +32,7 @@ data:
     {\n            height: 24px;\n            margin-right: 10px;\n            width:
     24px;\n        }\n        p {\n          height: 1px;\n          border-bottom:
     1px dashed #ffffff54;\n        }\n    </style>\n</head>\n<body>\n<div class=\"box\">\n
-    \   <h1 class=\"title\">Welcome to the Example Cluster 1.3.6</h1>\n    <h2 class=\"subtitle\">Your
+    \   <h1 class=\"title\">Welcome to the Example Cluster 1.3.7</h1>\n    <h2 class=\"subtitle\">Your
     best course would be to tread lightly ...</h2>\n\n    <div class=\"links-container\">\n
     \       <div class=\"links\">\n            <h6>Dashboards</h6>\n            <ul>\n
     \               <p></p>\n                <!--\n                <li>\n                    <a
@@ -42,16 +42,19 @@ data:
     \                       <span>\U0001F4CA Grafana</span>\n                    </a>\n
     \               </li>\n                <li>\n                    <a href=\"/kiali/\"
     target=\"_blank\">\n                        <span>⛵ Istio Dashboard</span>\n                    </a>\n
-    \               </li>\n                <p></p>\n                <li>\n                    <a
-    href=\"/oidc/\" target=\"_blank\">\n                        <span>\U0001F510 Keycloak</span>\n
+    \               </li>\n                <li>\n                    <a href=\"/argocd/\"
+    target=\"_blank\">\n                        <span>\U0001F419 Argo CD</span>\n
     \                   </a>\n                </li>\n                <p></p>\n                <li>\n
-    \                   <a href=\"/sonar/\" target=\"_blank\">\n                        <span>\U0001F4E1
-    Sonarqube</span>\n                    </a>\n                </li>\n                <p></p>\n
-    \               <li>\n                    <a href=\"/techradar/\" target=\"_blank\">\n
-    \                       <span>\U0001F4E1 Tech Radar</span>\n                    </a>\n
-    \               </li>\n                <li>\n                    <a href=\"https://github.com/goafabric\"
-    target=\"_blank\">\n                        <span>\U0001F419 Github</span>\n                    </a>\n
-    \               </li>\n\n            </ul>\n        </div>\n        <div class=\"links\">\n
+    \                   <a href=\"/oidc/\" target=\"_blank\">\n                        <span>\U0001F510
+    Keycloak</span>\n                    </a>\n                </li>\n                <p></p>\n
+    \               <li>\n                    <a href=\"/sonar/\" target=\"_blank\">\n
+    \                       <span>\U0001F4E1 Sonarqube</span>\n                    </a>\n
+    \               </li>\n                <p></p>\n                <li>\n                    <a
+    href=\"/techradar/\" target=\"_blank\">\n                        <span>\U0001F4E1
+    Tech Radar</span>\n                    </a>\n                </li>\n                <li>\n
+    \                   <a href=\"https://github.com/goafabric\" target=\"_blank\">\n
+    \                       <span>\U0001F419 Github</span>\n                    </a>\n
+    \               </li>\n            </ul>\n        </div>\n        <div class=\"links\">\n
     \           <h6>Core</h6>\n            <ul>\n                <p></p>\n                <li>\n
     \                   <a href=\"/core-frontend/frontend/\" target=\"_blank\">\n
     \                       <span>\U0001F30D Core</span>\n                    </a>\n
@@ -79,8 +82,8 @@ data:
     \       </div>\n    </div>\n</div>\n\n</body>\n"
 kind: ConfigMap
 metadata:
-  creationTimestamp: "2025-02-17T11:24:17Z"
+  creationTimestamp: "2025-04-14T07:00:38Z"
   name: welcome-board-data-files
   namespace: dashboard
-  resourceVersion: "42570273"
-  uid: cfa6f87d-07bd-49d6-9e7b-a4843af3a0ff
+  resourceVersion: "119871"
+  uid: 97c9ee89-a5d6-4ef3-8f85-b4853c82ba9e

@@ -48,3 +48,9 @@ resource "kubernetes_namespace" "istio-system" {
     }
   }
 }
+
+# resource "kubernetes_namespace" "argocd" {
+#   metadata {
+#     name = "argocd"
+#   }
+# }
