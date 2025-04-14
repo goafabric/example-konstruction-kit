@@ -1,3 +1,5 @@
+# 1.3.8
+
 # 1.3.7
 - upgrade Kind to Kubernetes 1.32 
 - upgrade of Spring Applications to 3.4.3
