@@ -7,9 +7,6 @@
 # Rancher Desktop
 - While everything seems to work inside Rancher, you'll have to disable any already enabled Kubernetes inside the Settings
 
-# Rancher Desktop
-- While everything seems to work inside Rancher, you'll have to disable any already enabled Kubernetes inside the Settings
-
 # Basic Installation
 - Go to "/terraform/server/kind"
 - ./stack init
