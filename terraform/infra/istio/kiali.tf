@@ -4,7 +4,7 @@ resource "helm_release" "kiali" {
   chart      = "kiali-server"
   namespace  = "istio-system"
   create_namespace = false
-  version    = "2.5.0"
+  version    = "2.8.0"
   wait       = true
 
   set {
