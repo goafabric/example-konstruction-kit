@@ -1,9 +1,9 @@
 resource "helm_release" "s3-minio" {
   name       = "s3-minio"
-  repository = "https://charts.bitnami.com/bitnami"
+  repository = "oci://registry-1.docker.io/bitnamicharts"
   chart      = "minio"
   namespace  = "data"
-  version    = "14.1.2"
+  version    = "16.0.8"
   timeout = 60
 
   set {
