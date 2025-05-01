@@ -52,5 +52,5 @@ spec:
   mtls:
     mode: STRICT
 
-# wget http://callee-service-application.example:8080
+# curl http://callee-service-application.example:8080
 
