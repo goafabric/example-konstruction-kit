@@ -13,4 +13,5 @@ const baseUrl = 'https://v2202402203466256255.megasrv.de'; //'https://kind.local
 
 export default function () {
     http.get(`${baseUrl}/person/persons/findByFirstName?firstName=Homer`);
+    http.get(`${baseUrl}/person/persons/name?name=Heisenberg`);
 }
