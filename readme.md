@@ -14,7 +14,7 @@
     - apisix also needs the oidc namespace installed (terraform apply inside infra/oidc)
 
 # Welcome
-- And that's basically it just navigate to http(s)://kubernetes/welcome and you see the Welcome Page
+- And that's basically it just navigate to http(s)://kind.local/welcome/ and you see the Welcome Page
 - Password is currently just admin/admin
 
 # Additional Modules
