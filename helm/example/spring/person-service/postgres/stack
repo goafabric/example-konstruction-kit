@@ -17,6 +17,7 @@ function up() {
 
 function down() {
     helm uninstall postgresql --namespace example
+    kubectl delete pvc -l app.kubernetes.io/name=postgresql -n example
 }
 
 

@@ -3,7 +3,7 @@ resource "helm_release" "kafka" {
   repository = "https://charts.bitnami.com/bitnami"
   chart      = "kafka"
   version    = "31.0.0"
-  namespace  = "event"
+  namespace  = "data"
   create_namespace = false
 
   set {
@@ -44,7 +44,7 @@ resource "helm_release" "kafka" {
   }
   set {
     name  = "metrics.jmx.enabled"
-    value = true
+    value = false
   }
   set {
     name  = "commonLabels.app"
@@ -56,6 +56,6 @@ resource "helm_release" "kafka" {
 resource "terraform_data" "remove_kafka_pvc" {
   provisioner "local-exec" {
     when = destroy
-    command = "kubectl delete pvc -l app.kubernetes.io/instance=kafka -n event"
+    command = "kubectl delete pvc -l app.kubernetes.io/instance=kafka -n data"
   }
 }

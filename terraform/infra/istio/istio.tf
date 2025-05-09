@@ -4,7 +4,7 @@ resource "helm_release" "istio-base" {
   chart      = "base"
   namespace  = "istio-system"
   create_namespace = false
-  version    = "1.25.0"
+  version    = "1.25.2"
   wait       = true
 
   set {
@@ -19,7 +19,7 @@ resource "helm_release" "istio-istiod" {
   chart      = "istiod"
   namespace  = "istio-system"
   create_namespace = false
-  version    = "1.25.0"
+  version    = "1.25.2"
   wait       = true
 
   depends_on = [helm_release.istio-base]
@@ -39,7 +39,7 @@ resource "helm_release" "istio-cni" {
   chart      = "cni"
   namespace  = "istio-system"
   create_namespace = false
-  version    = "1.25.0"
+  version    = "1.25.2"
   wait       = true
 
   depends_on = [helm_release.istio-base]
@@ -58,7 +58,7 @@ resource "helm_release" "ztunnel" {
   chart      = "ztunnel"
   namespace  = "istio-system"
   create_namespace = false
-  version    = "1.25.0"
+  version    = "1.25.2"
   wait       = true
 
   depends_on = [helm_release.istio-base]
@@ -66,3 +66,6 @@ resource "helm_release" "ztunnel" {
 
 //uninstall crd
 //kubectl get crd -oname | grep --color=never 'istio.io' | xargs kubectl delete
+
+//kubectl label namespace example istio-injection=enabled && kubectl label namespace example "istio.io/dataplane-mode"-
+//kubectl label namespace example "istio.io/dataplane-mode"=ambient && kubectl label namespace example istio-injection-

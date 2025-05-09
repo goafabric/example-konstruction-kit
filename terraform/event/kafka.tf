@@ -1,8 +1,8 @@
 resource "helm_release" "kafka" {
   name       = "kafka"
-  repository = "https://charts.bitnami.com/bitnami"
+  repository = "oci://registry-1.docker.io/bitnamicharts"
   chart      = "kafka"
-  version    = "31.0.0"
+  version    = "31.0.0" #32.2.1
   namespace  = "data"
   create_namespace = false
 
@@ -44,7 +44,7 @@ resource "helm_release" "kafka" {
   }
   set {
     name  = "metrics.jmx.enabled"
-    value = true
+    value = false
   }
   set {
     name  = "commonLabels.app"
@@ -56,6 +56,6 @@ resource "helm_release" "kafka" {
 resource "terraform_data" "remove_kafka_pvc" {
   provisioner "local-exec" {
     when = destroy
-    command = "kubectl delete pvc -l app.kubernetes.io/instance=kafka -n event"
+    command = "kubectl delete pvc -l app.kubernetes.io/instance=kafka -n data"
   }
 }
