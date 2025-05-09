@@ -7,6 +7,8 @@ resource "helm_release" "kiali" {
   version    = "2.8.0"
   wait       = true
 
+  depends_on = [helm_release.istio-base, helm_release.istio-cni, helm_release.istio-istiod, helm_release.ztunnel]
+
   set {
     name  = "auth.strategy"
     value = "anonymous"
