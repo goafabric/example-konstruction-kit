@@ -6,7 +6,7 @@ import { check, sleep } from 'k6';
 
 export const options = {
     vus: 10, // Number of virtual users
-    duration: '10s', // Duration of the test
+    duration: '100s', // Duration of the test
 };
 
 const baseUrl = 'https://kind.local'
