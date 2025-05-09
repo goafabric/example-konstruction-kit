@@ -1,6 +1,7 @@
 # 1.3.8
 - update to istio 1.25.0
 - update to s3minio chart 16.0.8
+- multiple smaller fixes to charts, terraform + argocd
 
 # 1.3.7
 - upgrade Kind to Kubernetes 1.32 
