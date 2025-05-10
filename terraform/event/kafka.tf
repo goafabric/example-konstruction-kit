@@ -2,7 +2,7 @@ resource "helm_release" "kafka" {
   name       = "kafka"
   repository = "oci://registry-1.docker.io/bitnamicharts"
   chart      = "kafka"
-  version    = "31.0.0" #32.2.1
+  version    = "31.0.0" #32.2.3
   namespace  = "data"
   create_namespace = false
 
