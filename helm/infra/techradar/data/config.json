@@ -122,6 +122,13 @@
     },
     {
       "quadrant": 2,
+      "ring": 1,
+      "label": "Architecture Decision Records",
+      "active": true,
+      "moved": 0
+    },
+    {
+      "quadrant": 2,
       "ring": 3,
       "label": "Spring AI",
       "active": true,
@@ -215,7 +222,7 @@
     },
     {
       "quadrant": 1,
-      "ring": 2,
+      "ring": 1,
       "label": "Backstage",
       "active": true,
       "moved": 0
