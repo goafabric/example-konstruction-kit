@@ -1,5 +1,5 @@
 replicaCount: 1
-maxReplicas: 3
+maxReplicas: 1
 
 ingress:
   paths: /backstage
