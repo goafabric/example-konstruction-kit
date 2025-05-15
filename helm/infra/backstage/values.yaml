@@ -2,7 +2,7 @@ replicaCount: 1
 maxReplicas: 3
 
 ingress:
-  paths: /
+  paths: /backstage
 
 image:
   repository: "goafabric/backstage" # image name
