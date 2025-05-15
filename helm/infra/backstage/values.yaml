@@ -6,7 +6,7 @@ ingress:
 
 image:
   repository: "goafabric/backstage" # image name
-  pullPolicy: IfNotPresent #Always
+  pullPolicy: Always #IfNotPresent
   pullSecrets: 
 
 resourcesAnnotations:
