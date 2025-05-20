@@ -28,7 +28,7 @@ function up() {
     exit
 
     curl -X POST \
-        'http://82btgeje4n8mcbg42ga1ug25jljnivm2.lambda-url.eu-central-1.localhost.localstack.cloud:4566/"' \
+        "$(awslocal lambda get-function-url-config --function-name localstack-lambda-url-example --query 'FunctionUrl' --output text)" \
         -H 'Content-Type: application/json' \
         -d '{"num1": "10", "num2": "10"}'
 

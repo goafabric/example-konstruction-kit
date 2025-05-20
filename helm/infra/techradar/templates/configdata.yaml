@@ -127,6 +127,13 @@ data:
         },
         {
           "quadrant": 2,
+          "ring": 1,
+          "label": "Architecture Decision Records",
+          "active": true,
+          "moved": 0
+        },
+        {
+          "quadrant": 2,
           "ring": 3,
           "label": "Spring AI",
           "active": true,
@@ -220,7 +227,7 @@ data:
         },
         {
           "quadrant": 1,
-          "ring": 2,
+          "ring": 1,
           "label": "Backstage",
           "active": true,
           "moved": 0
@@ -744,8 +751,8 @@ data:
     {\n    ringDescriptionsTable();\n  }\n}\n"
 kind: ConfigMap
 metadata:
-  creationTimestamp: "2025-02-20T06:29:02Z"
+  creationTimestamp: "2025-05-14T05:05:36Z"
   name: tech-radar-data-files
   namespace: dashboard
-  resourceVersion: "43373910"
-  uid: 9ca091f9-5c8c-4f81-920b-64bfb5370035
+  resourceVersion: "67691365"
+  uid: a526cbf5-fac1-4a1b-9dd3-39e8d4b92df6

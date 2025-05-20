@@ -16,7 +16,11 @@ resource "helm_release" "postgresql" {
   }
   set_sensitive {
     name  = "global.postgresql.auth.password"
-    value = "postgres"
+    value = random_password.postgresql_password.result
+  }
+  set {
+    name  = "primary.networkPolicy.enabled"
+    value = false
   }
 
 }

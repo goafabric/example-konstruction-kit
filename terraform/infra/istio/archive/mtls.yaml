@@ -52,9 +52,5 @@ spec:
   mtls:
     mode: STRICT
 
-# wget http://callee-service-application.example:8080
+# curl http://callee-service-application.example:8080
 
-# k delete -f mtls.yaml
-# k get secret callee-service-application-secret -n example -o yaml | grep spring.security
-
-# wget --header="Authorization: Basic c2VydmljZTpZVkltZGZodTBCT3R2clFrRVY1QnIyZjNOMmhjbHNUQQ==" http://callee-service-application.example:8080/

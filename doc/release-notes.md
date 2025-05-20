@@ -1,3 +1,12 @@
+# 1.4.0
+- added  missing network policy invoice -> data
+
+# 1.3.8
+- update to istio 1.25.2
+- update to s3minio chart 16.0.8
+- multiple smaller fixes to charts, terraform + argocd
+- network policies for bitnami postgres disabled due to ambient mesh incompatibility
+
 # 1.3.7
 - upgrade Kind to Kubernetes 1.32 
 - upgrade of Spring Applications to 3.4.3

@@ -33,6 +33,10 @@ resource "helm_release" "postgresql" {
     name  = "global.postgresql.auth.password"
     value = random_password.postgresql_password.result
   }
+  set {
+    name  = "primary.networkPolicy.enabled"
+    value = false
+  }
 
 }
 

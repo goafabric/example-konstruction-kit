@@ -2,16 +2,19 @@
 - For local installations you need an entry in /etc/hosts like "127.0.0.1 kind.local"
 - Docker Desktop, Terraform and latest kubectl need to be installed, k9s is optional but might help
 - For https to work you need to import the certificate from your browser's certificate warning
-- Corporate Proxies usually need to be deactivated as they often block image downloading 
+- Corporate Proxies usually need to be deactivated as they often block image downloading
+
+# Rancher Desktop
+- While everything seems to work inside Rancher, you'll have to disable any already enabled Kubernetes inside the Settings
 
 # Basic Installation
 - Go to "/terraform/server/kind"
 - ./stack init
-- in .values you may choose between apsix or nginx, 
-  - apisix also needs the oidc namespace installed (terraform apply inside infra/oidc) 
+- in .values you may choose between apsix or nginx,
+  - apisix also needs the oidc namespace installed (terraform apply inside infra/oidc)
 
 # Welcome
-- And that's basically it just navigate to http(s)://kubernetes/welcome and you see the Welcome Page
+- And that's basically it just navigate to http(s)://kind.local/welcome/ and you see the Welcome Page
 - Password is currently just admin/admin
 
 # Additional Modules

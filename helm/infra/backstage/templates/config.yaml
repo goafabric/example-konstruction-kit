@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "application.fullname" . }}-config
+  labels:
+    {{- include "application.labels" . | nindent 4 }}
+data:
+  #application
+  TZ: Europe/Berlin
+  APP_CONFIG_app_baseUrl: https://{{ .Values.ingress.hosts }}/backstage #"https://kind.local/backstage"
+  APP_CONFIG_backend_baseUrl: https://{{ .Values.ingress.hosts }}/backstage #"https://kind.local/backstage"
