@@ -86,11 +86,11 @@ resource "kubernetes_manifest" "argocd-route" {
   kind: ApisixRoute
   apiVersion: apisix.apache.org/v2
   metadata:
-    name: kiali
-    namespace: istio-system
+    name: argocd
+    namespace: argocd
   spec:
     http:
-      - name: kiali
+      - name: argocd
         match:
           hosts:
             - ${var.hostname}
@@ -105,6 +105,12 @@ resource "kubernetes_manifest" "argocd-route" {
             enable: true
             config:
               http_to_https: true
+          - name: proxy-rewrite
+            enable: true
+            config:
+              regex_uri:
+                - /argocd/(.*)
+                - /$1
   EOF
   )
 }
