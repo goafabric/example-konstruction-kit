@@ -13,7 +13,7 @@ resource "kubernetes_manifest" "invoice-process-application" {
       project = "default"
       source = {
         repoURL        = var.helm_repository
-        targetRevision = "refactoring"
+        targetRevision = "develop"
         path          = "helm/invoice/invoice-process/application"
         helm = {
           parameters = [
