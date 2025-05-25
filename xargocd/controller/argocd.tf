@@ -46,6 +46,11 @@ resource "helm_release" "argocd" {
     name  = "controller.metrics.enabled"
     value = "true"
   }
+  set {
+    name  = "dex.enabled"
+    value = "false"
+  }
+
 }
 
 
