@@ -1,5 +1,6 @@
 # 1.4.0
 - added  missing network policy invoice -> data
+- multipl argocd fixed
 
 # 1.3.8
 - update to istio 1.25.2
