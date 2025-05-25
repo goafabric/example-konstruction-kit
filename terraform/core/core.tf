@@ -42,7 +42,7 @@ resource "helm_release" "core-application" {
 
   set_sensitive {
     name  = "database.password"
-    value = random_password.postgresql_password.result
+    value = "supersecret" #random_password.postgresql_password.result
   }
 
   set_sensitive {
