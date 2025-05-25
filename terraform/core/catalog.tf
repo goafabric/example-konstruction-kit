@@ -23,7 +23,7 @@ resource "helm_release" "catalog-application" {
 
   set_sensitive {
     name  = "database.password"
-    value = "supersecret" #random_password.postgresql_password.result
+    value = data.kubernetes_secret.postgresql.data["password"]
   }
 
   set {
@@ -50,7 +50,7 @@ resource "helm_release" "catalog-batch" {
   }
   set_sensitive {
     name  = "database.password"
-    value = "supersecret" #random_password.postgresql_password.result
+    value = data.kubernetes_secret.postgresql.data["password"]
   }
   set {
     name = "oidc.enabled"

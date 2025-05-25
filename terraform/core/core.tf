@@ -42,7 +42,7 @@ resource "helm_release" "core-application" {
 
   set_sensitive {
     name  = "database.password"
-    value = "supersecret" #random_password.postgresql_password.result
+    value = data.kubernetes_secret.postgresql.data["password"]
   }
 
   set_sensitive {
