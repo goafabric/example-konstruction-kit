@@ -41,7 +41,7 @@ resource "kubernetes_manifest" "catalog-application" {
             },
             {
               name  = "database.password"
-              value = random_password.postgresql_password.result
+              value = data.kubernetes_secret.postgresql.data["password"]
             }
 
           ]
@@ -103,7 +103,7 @@ resource "kubernetes_manifest" "catalog-batch" {
             },
             {
               name  = "database.password"
-              value = random_password.postgresql_password.result
+              value = data.kubernetes_secret.postgresql.data["password"]
             }
 
           ]

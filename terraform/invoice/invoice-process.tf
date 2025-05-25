@@ -36,8 +36,9 @@ resource "helm_release" "invoice-process-application" {
 
   set_sensitive {
     name  = "s3.password"
-    value = "minioadmin" #random_password.s3_password.result
+    value = data.kubernetes_secret.s3.data["root-password"]
   }
+  
   set_sensitive {
     name  = "redis.password"
     value = random_password.cache_password.result

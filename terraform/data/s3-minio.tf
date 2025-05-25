@@ -17,7 +17,7 @@ resource "helm_release" "s3-minio" {
   }
   set_sensitive {
     name  = "auth.rootPassword"
-    value = "minioadmin" #${random_password.s3_password.result}
+    value = random_password.s3_password.result
   }
   set {
     name  = "readinessProbe.initialDelaySeconds"

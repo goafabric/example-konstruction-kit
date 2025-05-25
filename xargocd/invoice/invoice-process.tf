@@ -45,7 +45,7 @@ resource "kubernetes_manifest" "invoice-process-application" {
 
             {
               name  = "s3.password"
-              value = "minioadmin"
+              value = data.kubernetes_secret.s3.data["root-password"]
             },
             {
               name  = "redis.password"
