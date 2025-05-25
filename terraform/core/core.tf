@@ -42,12 +42,12 @@ resource "helm_release" "core-application" {
 
   set_sensitive {
     name  = "database.password"
-    value = data.kubernetes_secret.postgresql.data["password"]
+    value = data.kubernetes_secret.postgresql_secret.data["password"]
   }
 
   set_sensitive {
     name  = "s3.password"
-    value = data.kubernetes_secret.s3.data["root-password"]
+    value = data.kubernetes_secret.s3_secret.data["password"]
   }
 
 }

@@ -8,9 +8,9 @@ resource "random_password" "oidc_session_secret" {
   special          = false
 }
 
-data "kubernetes_secret" "s3" {
+data "kubernetes_secret" "s3_secret" {
   metadata {
-    name      = "s3-minio"
+    name      = "s3-secret"
     namespace = "data"
   }
 }

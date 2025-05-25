@@ -45,11 +45,11 @@ resource "kubernetes_manifest" "core-application" {
             },
             {
               name  = "database.password"
-              value = data.kubernetes_secret.postgresql.data["password"]
+              value = data.kubernetes_secret.postgresql_secret.data["password"]
             },
             {
               name  = "s3.password"
-              value = data.kubernetes_secret.s3.data["root-password"]
+              value = data.kubernetes_secret.s3_secret.data["password"]
             },
             {
               name  = "messageBroker.password"
