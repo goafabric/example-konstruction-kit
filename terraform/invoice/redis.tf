@@ -6,6 +6,7 @@ resource "helm_release" "redis" {
   chart      = "redis"
   namespace  = "invoice"
   version    = "20.1.1"
+  timeout = var.helm_timeout
 
   set {
     name  = "architecture"

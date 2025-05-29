@@ -7,6 +7,7 @@ resource "helm_release" "dragonfly" {
   chart      = "dragonfly"
   namespace  = "invoice"
   version    = "v1.27.2"
+  timeout = var.helm_timeout
 
   set {
     name  = "replicaCount"
