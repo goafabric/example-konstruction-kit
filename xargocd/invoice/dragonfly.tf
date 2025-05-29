@@ -31,6 +31,16 @@ resource "helm_release" "dragonfly" {
     name  = "passwordFromSecret.existingSecret.key"
     value = "password"
   }
+
+  set {
+    name  = "passwordFromSecret.existingSecret.key"
+    value = "password"
+  }
+
+  set {
+    name  = "extraArgs[0]"
+    value = "--proactor_threads=2"
+  }
 }
 
 
