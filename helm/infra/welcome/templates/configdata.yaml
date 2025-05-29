@@ -49,7 +49,7 @@ data:
     Keycloak</span>\n                    </a>\n                </li>\n                <p></p>\n
     \               <li>\n                    <a href=\"/techradar/\" target=\"_blank\">\n
     \                       <span>\U0001F4E1 Tech Radar</span>\n                    </a>\n
-    \               </li>\n                <li>\n                    <a href=\"/backstage/\"
+    \               </li>\n                <li>\n                    <a href=\"/\"
     target=\"_blank\">\n                        <span>\U0001F3AD Backstage</span>\n
     \                   </a>\n                </li>\n            </ul>\n        </div>\n
     \       <div class=\"links\">\n            <h6>Core</h6>\n            <ul>\n                <p></p>\n
@@ -79,8 +79,8 @@ data:
     \       </div>\n    </div>\n</div>\n\n</body>\n"
 kind: ConfigMap
 metadata:
-  creationTimestamp: "2025-05-15T07:08:22Z"
+  creationTimestamp: "2025-05-29T10:35:15Z"
   name: welcome-board-data-files
   namespace: dashboard
-  resourceVersion: "68008190"
-  uid: 1c6c71d8-d245-4abe-8f3e-7ac6dd19407e
+  resourceVersion: "72218122"
+  uid: 552ebf87-e540-4908-9b42-63e28f2e8505
