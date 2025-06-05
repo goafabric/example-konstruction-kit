@@ -8,7 +8,7 @@ resource "helm_release" "core-application" {
 
   set {
     name  = "image.arch"
-    value = "-native${local.server_arch}"
+    value = "-native"
   }
   set {
     name  = "ingress.hosts"

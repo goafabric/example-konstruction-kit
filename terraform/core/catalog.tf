@@ -18,7 +18,7 @@ resource "helm_release" "catalog-application" {
   }
   set {
     name  = "image.arch"
-    value = "-native${local.server_arch}"
+    value = "-native"
   }
 
   set_sensitive {
@@ -46,7 +46,7 @@ resource "helm_release" "catalog-batch" {
 
   set {
     name  = "image.arch"
-    value = "-native${local.server_arch}"
+    value = "-native"
   }
   set_sensitive {
     name  = "database.password"

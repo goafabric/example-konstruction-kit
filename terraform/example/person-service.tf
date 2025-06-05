@@ -17,7 +17,7 @@ resource "helm_release" "person-service-application" {
   }
   set {
     name  = "image.arch"
-    value = strcontains(var.helm_repository, "spring") ? "-native${local.server_arch}" : local.server_arch
+    value = strcontains(var.helm_repository, "spring") ? "-native" : local.server_arch
   }
 
   set {

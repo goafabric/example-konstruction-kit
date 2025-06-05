@@ -18,7 +18,7 @@ resource "helm_release" "invoice-process-application" {
   }
   set {
     name  = "image.arch"
-    value = "-native${local.server_arch}"
+    value = "-native"
   }
 
   set {
