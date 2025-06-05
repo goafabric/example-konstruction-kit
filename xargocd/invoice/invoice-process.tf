@@ -23,7 +23,7 @@ resource "kubernetes_manifest" "invoice-process-application" {
             },
             {
               name  = "image.arch"
-              value = "-native${local.server_arch}"
+              value = "-native"
             },
             {
               name  = "maxReplicas"

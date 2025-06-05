@@ -23,7 +23,7 @@ resource "kubernetes_manifest" "event-dispatcher-service-application" {
             },
             {
               name  = "image.arch"
-              value = "-native${local.server_arch}"
+              value = "-native"
             },
             {
               name  = "maxReplicas"

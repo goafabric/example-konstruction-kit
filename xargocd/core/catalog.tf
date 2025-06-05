@@ -23,7 +23,7 @@ resource "kubernetes_manifest" "catalog-application" {
             },
             {
               name  = "image.arch"
-              value = "-native${local.server_arch}"
+              value = "-native"
             },
             {
               name  = "maxReplicas"
@@ -85,7 +85,7 @@ resource "kubernetes_manifest" "catalog-batch" {
             },
             {
               name  = "image.arch"
-              value = "-native${local.server_arch}"
+              value = "-native"
             },
             {
               name  = "maxReplicas"
