@@ -4,6 +4,7 @@
 - secret handling improved
 - upgrade of argocd helm chart to 8.0.9
 - upgrade to kafka 4.0
+- upgrade of all services to spring boot 3.5.0
 
 # 1.3.8
 - update to istio 1.25.2

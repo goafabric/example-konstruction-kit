@@ -20,7 +20,7 @@ resourcesAnnotations:
 
 
 readinessProbe:
-  initialDelaySeconds: 30
+  initialDelaySeconds: 60
 
 service:
   type: ClusterIP
