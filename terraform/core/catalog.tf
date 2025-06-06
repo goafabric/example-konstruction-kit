@@ -1,5 +1,5 @@
 resource "helm_release" "catalog-application" {
-  depends_on = [helm_release.catalog-batch]
+  #depends_on = [helm_release.catalog-batch]
   repository = var.helm_repository
   name       = "catalog-application"
   chart      = "${var.helm_repository}/catalog/application"
