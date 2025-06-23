@@ -81,9 +81,13 @@ spec:
           volumeMounts:
             - mountPath: /usr/share/logs
               name: {{ include "application.fullname" . }}-applogs
+            - mountPath: /tmp
+              name: {{ include "application.fullname" . }}-tmp
 
       volumes:
         - name: {{ include "application.fullname" . }}-applogs
+          emptyDir: {}
+        - name: {{ include "application.fullname" . }}-tmp
           emptyDir: {}
      
 
