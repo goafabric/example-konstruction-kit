@@ -61,11 +61,10 @@ resource "helm_release" "ztunnel" {
   version    = "1.26.2"
   wait       = true
 
-
-  set {
-    name  = "env.ENABLE_ORIG_SRC" # twistlock issue https://github.com/istio/istio/issues/55937
-    value = "false"
-  }
+  # set {
+  #   name  = "env.ENABLE_ORIG_SRC" # fix twistlock issue in ambient mode https://github.com/istio/istio/issues/55937, however apisix issue persists in ambient mode "failed to match any SSL certificate by SNI:"
+  #   value = "false"
+  # }
 
   depends_on = [helm_release.istio-base]
 }
@@ -74,4 +73,4 @@ resource "helm_release" "ztunnel" {
 //kubectl get crd -oname | grep --color=never 'istio.io' | xargs kubectl delete
 
 //kubectl label namespace example istio-injection=enabled && kubectl label namespace example "istio.io/dataplane-mode"-
-//kubectl label namespace example "istio.io/dataplane-mode"=ambient && kubectl label namespace example istio-injection-
+//kubectl label namespace ingress-apisix "istio.io/dataplane-mode"=ambient && kubectl label namespace ingress-apisix istio-injection-
