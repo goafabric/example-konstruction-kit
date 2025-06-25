@@ -4,7 +4,7 @@ resource "helm_release" "istio-base" {
   chart      = "base"
   namespace  = "istio-system"
   create_namespace = false
-  version    = "1.26.0"
+  version    = "1.26.2"
   wait       = true
 
   set {
@@ -19,7 +19,7 @@ resource "helm_release" "istio-istiod" {
   chart      = "istiod"
   namespace  = "istio-system"
   create_namespace = false
-  version    = "1.26.0"
+  version    = "1.26.2"
   wait       = true
 
   depends_on = [helm_release.istio-base]
@@ -39,7 +39,7 @@ resource "helm_release" "istio-cni" {
   chart      = "cni"
   namespace  = "istio-system"
   create_namespace = false
-  version    = "1.26.0"
+  version    = "1.26.2"
   wait       = true
 
   depends_on = [helm_release.istio-base]
@@ -58,8 +58,14 @@ resource "helm_release" "ztunnel" {
   chart      = "ztunnel"
   namespace  = "istio-system"
   create_namespace = false
-  version    = "1.26.0"
+  version    = "1.26.2"
   wait       = true
+
+
+  set {
+    name  = "env.ENABLE_ORIG_SRC" # twistlock issue https://github.com/istio/istio/issues/55937
+    value = "false"
+  }
 
   depends_on = [helm_release.istio-base]
 }
