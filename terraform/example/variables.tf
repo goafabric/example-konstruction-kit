@@ -7,7 +7,7 @@ variable "helm_timeout" {
 }
 
 variable "helm_repository" {
-  default = "../../helm/example/quarkus" #"../../helm/example/quarkus"
+  default = "../../helm/example/spring" #"../../helm/example/quarkus"
 }
 
 locals {
