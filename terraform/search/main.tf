@@ -1,3 +1,12 @@
+terraform {
+  required_providers {
+    helm = {
+      source  = "hashicorp/helm"
+      version = "2.17.0"
+    }
+  }
+}
+
 provider "helm" {
   kubernetes {
     config_path = "~/.kube/config"
@@ -6,14 +15,4 @@ provider "helm" {
 
 provider "kubernetes" {
   config_path = "~/.kube/config"
-}
-
-resource "random_password" "database_password" {
-  length           = 32
-  special          = false
-}
-
-resource "random_password" "oidc_session_secret" {
-  length           = 32
-  special          = false
 }
