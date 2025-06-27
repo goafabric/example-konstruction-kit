@@ -11,7 +11,7 @@
 - Go to "/terraform/server/kind"
 - ./stack init
 - in .values you may choose between apsix or nginx,
-    - apisix also needs the oidc namespace installed (terraform apply inside infra/oidc)
+  - apisix also needs the oidc namespace installed (terraform apply inside infra/oidc)
 
 # Welcome
 - And that's basically it just navigate to https://kind.local/welcome/ and you see the Welcome Page

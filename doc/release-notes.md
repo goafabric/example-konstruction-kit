@@ -1,3 +1,17 @@
+# 1.4.0
+- fix for helm provider breaking change
+
+- update to istio 1.26.2
+- upgrade of argocd helm chart to 8.0.9
+- upgrade to kafka 4.0
+
+- added  missing network policy invoice -> data
+- multiple argocd fixes
+- secret handling improved
+
+- upgrade of all services to spring boot 3.5.0
+- native images are now arm only
+
 # 1.3.8
 - update to istio 1.25.2
 - update to s3minio chart 16.0.8

@@ -136,3 +136,30 @@ resource "kubernetes_network_policy" "allow_core_event2" {
     policy_types = ["Ingress"]
   }
 }
+
+resource "kubernetes_network_policy" "allow_invoice_data" {
+  metadata {
+    name      = "allow-invoice"
+    namespace = "data"
+  }
+
+  spec {
+    pod_selector {}
+    ingress {
+      from {
+        namespace_selector {
+          match_labels = {
+            "kubernetes.io/metadata.name" = "invoice"
+          }
+        }
+        pod_selector {
+          match_labels = {
+            app = "invoice-process-application"
+          }
+        }
+      }
+    }
+
+    policy_types = ["Ingress"]
+  }
+}

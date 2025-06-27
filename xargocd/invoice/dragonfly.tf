@@ -7,6 +7,7 @@ resource "helm_release" "dragonfly" {
   chart      = "dragonfly"
   namespace  = "invoice"
   version    = "v1.27.2"
+  timeout = var.helm_timeout
 
   set {
     name  = "replicaCount"
@@ -29,6 +30,16 @@ resource "helm_release" "dragonfly" {
   set {
     name  = "passwordFromSecret.existingSecret.key"
     value = "password"
+  }
+
+  set {
+    name  = "passwordFromSecret.existingSecret.key"
+    value = "password"
+  }
+
+  set {
+    name  = "extraArgs[0]"
+    value = "--proactor_threads=2"
   }
 }
 

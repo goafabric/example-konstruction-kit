@@ -23,7 +23,7 @@ resource "kubernetes_manifest" "catalog-application" {
             },
             {
               name  = "image.arch"
-              value = "-native${local.server_arch}"
+              value = "-native"
             },
             {
               name  = "maxReplicas"
@@ -41,7 +41,7 @@ resource "kubernetes_manifest" "catalog-application" {
             },
             {
               name  = "database.password"
-              value = random_password.postgresql_password.result
+              value = data.kubernetes_secret.postgresql_secret.data["password"]
             }
 
           ]
@@ -85,7 +85,7 @@ resource "kubernetes_manifest" "catalog-batch" {
             },
             {
               name  = "image.arch"
-              value = "-native${local.server_arch}"
+              value = "-native"
             },
             {
               name  = "maxReplicas"
@@ -103,7 +103,7 @@ resource "kubernetes_manifest" "catalog-batch" {
             },
             {
               name  = "database.password"
-              value = random_password.postgresql_password.result
+              value = data.kubernetes_secret.postgresql_secret.data["password"]
             }
 
           ]

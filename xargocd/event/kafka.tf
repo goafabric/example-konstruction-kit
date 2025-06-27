@@ -1,8 +1,8 @@
 resource "helm_release" "kafka" {
   name       = "kafka"
-  repository = "https://charts.bitnami.com/bitnami"
+  repository = "oci://registry-1.docker.io/bitnamicharts"
   chart      = "kafka"
-  version    = "31.0.0"
+  version    = "32.2.8"
   namespace  = "data"
   create_namespace = false
 
@@ -15,10 +15,10 @@ resource "helm_release" "kafka" {
     value = "2Gi"
   }
   set {
-    name  = "extraConfig"
+    name  = "overrideConfiguration"
     value = <<-EOT
-      offsets.topic.replication.factor=${local.kafka_replica_count}
-      transaction.state.log.replication.factor=${local.kafka_replica_count}
+      offsets.topic.replication.factor: ${local.kafka_replica_count}
+      transaction.state.log.replication.factor: ${local.kafka_replica_count}
     EOT
   }
   set {

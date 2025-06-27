@@ -1,5 +1,5 @@
 resource "helm_release" "catalog-application" {
-  depends_on = [helm_release.catalog-batch]
+  #depends_on = [helm_release.catalog-batch]
   repository = var.helm_repository
   name       = "catalog-application"
   chart      = "${var.helm_repository}/catalog/application"
@@ -18,12 +18,12 @@ resource "helm_release" "catalog-application" {
   }
   set {
     name  = "image.arch"
-    value = "-native${local.server_arch}"
+    value = "-native"
   }
 
   set_sensitive {
     name  = "database.password"
-    value = random_password.postgresql_password.result
+    value = data.kubernetes_secret.postgresql_secret.data["password"]
   }
 
   set {
@@ -46,11 +46,11 @@ resource "helm_release" "catalog-batch" {
 
   set {
     name  = "image.arch"
-    value = "-native${local.server_arch}"
+    value = "-native"
   }
   set_sensitive {
     name  = "database.password"
-    value = random_password.postgresql_password.result
+    value = data.kubernetes_secret.postgresql_secret.data["password"]
   }
   set {
     name = "oidc.enabled"

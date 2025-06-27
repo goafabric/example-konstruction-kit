@@ -4,7 +4,7 @@ resource "helm_release" "argocd" {
   chart      = "argo-cd"
   namespace  = "argocd"
   create_namespace = true
-  version    = "7.8.11"
+  version    = "8.0.9"
 
   set {
     name  = "crds.keep"
@@ -46,6 +46,13 @@ resource "helm_release" "argocd" {
     name  = "controller.metrics.enabled"
     value = "true"
   }
+  set {
+    name  = "dex.enabled"
+    value = "false"
+  }
+
+  values = [file("${path.module}/argocd-values.yaml")]
+
 }
 
 

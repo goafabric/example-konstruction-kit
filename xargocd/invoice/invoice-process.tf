@@ -23,7 +23,7 @@ resource "kubernetes_manifest" "invoice-process-application" {
             },
             {
               name  = "image.arch"
-              value = "-native${local.server_arch}"
+              value = "-native"
             },
             {
               name  = "maxReplicas"
@@ -45,7 +45,7 @@ resource "kubernetes_manifest" "invoice-process-application" {
 
             {
               name  = "s3.password"
-              value = "minioadmin"
+              value = data.kubernetes_secret.s3_secret.data["password"]
             },
             {
               name  = "redis.password"

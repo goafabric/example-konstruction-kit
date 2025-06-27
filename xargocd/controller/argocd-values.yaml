@@ -1,0 +1,7 @@
+configs:
+  cm:
+    accounts.backstage: "login,apiKey"
+  rbac:
+    policy.csv: |
+      p, backstage, applications, get, *, allow
+      p, backstage, projects, get, *, allow

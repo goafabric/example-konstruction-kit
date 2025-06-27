@@ -8,7 +8,7 @@ resource "helm_release" "event-dispatcher-service-application" {
 
   set {
     name  = "image.arch"
-    value = "-native${local.server_arch}"
+    value = "-native"
   }
   set {
     name  = "maxReplicas"

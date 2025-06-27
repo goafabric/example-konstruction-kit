@@ -18,7 +18,7 @@ resourcesAnnotations:
       memory: 16M
       cpu: 250m
 
-  args: ["-Xmx16M"]
+  args: ["-Xmx32M"]
 
 readinessProbe:
   initialDelaySeconds: 1

@@ -8,7 +8,7 @@ resource "helm_release" "core-application" {
 
   set {
     name  = "image.arch"
-    value = "-native${local.server_arch}"
+    value = "-native"
   }
   set {
     name  = "ingress.hosts"
@@ -42,12 +42,12 @@ resource "helm_release" "core-application" {
 
   set_sensitive {
     name  = "database.password"
-    value = random_password.postgresql_password.result
+    value = data.kubernetes_secret.postgresql_secret.data["password"]
   }
 
   set_sensitive {
     name  = "s3.password"
-    value = "minioadmin" #random_password.s3_password.result
+    value = data.kubernetes_secret.s3_secret.data["password"]
   }
 
 }

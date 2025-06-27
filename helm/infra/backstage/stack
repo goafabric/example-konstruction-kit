@@ -10,20 +10,23 @@ function up() {
     helm install --create-namespace \
     --set image.arch=$IMAGE_ARCH $INGRESS_AUTHENTICATION \
     --set ingress.hosts=`kubectl get configmaps cluster-config -o jsonpath='{.data.hostname}' -n default` \
-    --namespace sonarqube \
+    --set database.password=postgres \
+    --set oidc.session.secret=secretsecretsecret \
+    --set argocd.auth.token=$ARGOCD_AUTH_TOKEN \
+    --namespace dashboard \
     `cat ./Chart.yaml | grep "name" | cut -d':' -f2 | xargs` ./
 }
 
 function down() {
     helm uninstall \
-    --namespace sonarqube \
+    --namespace dashboard \
     `cat ./Chart.yaml | grep "name" | cut -d':' -f2 | xargs`
 }
 
 function proxy() {
     kubectl port-forward deployment/`cat ./Chart.yaml | grep "name" | cut -d':' -f2 | xargs` \
     `cat ./values.yaml | grep "port" | cut -d':' -f2 | xargs`:`cat ./values.yaml | grep "port" | cut -d':' -f2 | xargs` \
-    -n `pwd | rev | cut -d '/' -f4 | rev`
+    -n dashboard
 }
 
 if   [ "${COMMAND}" = "up" ]; then up;

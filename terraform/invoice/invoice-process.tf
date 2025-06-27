@@ -18,7 +18,7 @@ resource "helm_release" "invoice-process-application" {
   }
   set {
     name  = "image.arch"
-    value = "-native${local.server_arch}"
+    value = "-native"
   }
 
   set {
@@ -36,8 +36,9 @@ resource "helm_release" "invoice-process-application" {
 
   set_sensitive {
     name  = "s3.password"
-    value = "minioadmin" #random_password.s3_password.result
+    value = data.kubernetes_secret.s3_secret.data["password"]
   }
+  
   set_sensitive {
     name  = "redis.password"
     value = random_password.cache_password.result

@@ -27,11 +27,11 @@ resource "helm_release" "postgresql" {
   }
   set_sensitive {
     name  = "global.postgresql.auth.username"
-    value = "main"
+    value = kubernetes_secret.postgresql_secret.data["username"]
   }
   set_sensitive {
     name  = "global.postgresql.auth.password"
-    value = random_password.postgresql_password.result
+    value = kubernetes_secret.postgresql_secret.data["password"]
   }
   set {
     name  = "primary.networkPolicy.enabled"
