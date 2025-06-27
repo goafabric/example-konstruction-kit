@@ -32,7 +32,7 @@ resource "helm_release" "prometheus" {
   }
   set {
     name = "prometheus.server.retention"
-    value = "2d"
+    value = "1d"
   }
 
 #   set {
