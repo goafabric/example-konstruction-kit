@@ -38,9 +38,9 @@ resource "kind_cluster" "kind" {
       }
     }
 
-#    node {
-#      role = "worker"
-#    }
+    #    node {
+    #      role = "worker"
+    #    }
   }
 }
 

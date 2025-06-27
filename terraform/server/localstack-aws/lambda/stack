@@ -27,10 +27,12 @@ function up() {
 
     exit
 
+
     curl -X POST \
         "$(awslocal lambda get-function-url-config --function-name localstack-lambda-url-example --query 'FunctionUrl' --output text)" \
         -H 'Content-Type: application/json' \
         -d '{"num1": "10", "num2": "10"}'
+
 
     #awslocal lambda list-functions
 }
