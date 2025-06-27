@@ -1,4 +1,6 @@
 # 1.4.0
+- fix for helm provider breaking change
+
 - update to istio 1.26.0
 - upgrade of argocd helm chart to 8.0.9
 - upgrade to kafka 4.0
