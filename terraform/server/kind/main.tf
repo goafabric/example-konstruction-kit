@@ -36,18 +36,11 @@ resource "kind_cluster" "kind" {
         container_port = 30800
         host_port      = 30800
       }
-
-      extra_port_mappings {
-        container_port = 30566
-        host_port      = 4566
-      }
-
-
     }
 
-#    node {
-#      role = "worker"
-#    }
+    #    node {
+    #      role = "worker"
+    #    }
   }
 }
 
