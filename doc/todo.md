@@ -1,4 +1,5 @@
 # security
+- secrets handling passing secrets to charts instead of passwords
 - vault, rbac
                                                                                                
 # info
