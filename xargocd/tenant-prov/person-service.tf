@@ -1,4 +1,5 @@
-#  kubectl patch application person-service-provisioning -n argocd --type=merge -p '{"metadata":{"finalizers":null}}'
+# kubectl patch application person-service-provisioning -n argocd --type=merge -p '{"metadata":{"finalizers":null}}'
+# kubectl patch job person-service-provisioning -n example --type=merge -p '{"metadata":{"finalizers":null}}'
 resource "kubernetes_manifest" "person-service-provisioning" {
   manifest = {
     apiVersion = "argoproj.io/v1alpha1"
@@ -17,6 +18,7 @@ resource "kubernetes_manifest" "person-service-provisioning" {
         targetRevision = "develop"
         path           = "helm/example/spring/person-service/provisioning"
         helm = {
+          valueFiles = ["../../../../../xargocd/tenant-prov/values.yaml"]
           parameters = [
             {
               name  = "ingress.hosts"
