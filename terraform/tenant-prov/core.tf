@@ -6,15 +6,15 @@ resource "helm_release" "core-provisioning" {
   create_namespace = false
   timeout = var.helm_timeout
 
+  values = [
+    file("${var.helm_repository}/values.yaml")
+  ]
+
   set {
     name  = "ingress.hosts"
     value = var.hostname
   }
 
-  set {
-    name = "multiTenancy.tenants"
-    value = var.multi_tenancy_tenants
-  }
 
   # secrets
   set {
