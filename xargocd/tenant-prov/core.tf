@@ -16,6 +16,8 @@ resource "kubernetes_manifest" "core-provisioning" {
         targetRevision = "develop"
         path           = "helm/core/core/provisioning"
         helm = {
+          valueFiles = ["../../../../xargocd/tenant-prov/values.yaml"]
+          
           parameters = [
             {
               name  = "ingress.hosts"
