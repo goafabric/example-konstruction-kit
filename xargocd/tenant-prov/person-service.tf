@@ -18,7 +18,7 @@ resource "kubernetes_manifest" "person-service-provisioning" {
         targetRevision = "develop"
         path           = "helm/example/spring/person-service/provisioning"
         helm = {
-          valueFiles = ["../../../../../xargocd/tenant-prov/values.yaml"]
+          valueFiles = ["../../../../../helm/values.yaml"]
           parameters = [
             {
               name  = "ingress.hosts"

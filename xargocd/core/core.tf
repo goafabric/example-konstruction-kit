@@ -16,6 +16,8 @@ resource "kubernetes_manifest" "core-application" {
         targetRevision = "develop"
         path           = "helm/core/core/application"
         helm = {
+          valueFiles = ["../../../../helm/values.yaml"]
+
           parameters = [
             {
               name  = "ingress.hosts"
