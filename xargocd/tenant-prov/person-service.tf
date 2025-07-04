@@ -37,11 +37,7 @@ resource "kubernetes_manifest" "person-service-provisioning" {
               name  = "database.password"
               value = data.kubernetes_secret.postgresql_secret.data["password"]
             },
-
-            {
-              name  = "multiTenancy.tenants"
-              value = var.multi_tenancy_tenants
-            },
+            
 
             {
               name = "postgresql.host"
