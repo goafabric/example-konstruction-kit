@@ -1,3 +1,4 @@
+#  kubectl patch application person-service-provisioning -n argocd --type=merge -p '{"metadata":{"finalizers":null}}'
 resource "kubernetes_manifest" "person-service-provisioning" {
   manifest = {
     apiVersion = "argoproj.io/v1alpha1"
