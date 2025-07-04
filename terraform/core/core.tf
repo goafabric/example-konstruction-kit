@@ -6,6 +6,10 @@ resource "helm_release" "core-application" {
   create_namespace = false
   timeout = var.helm_timeout
 
+  values = [
+    file("../../helm/values.yaml")
+  ]
+
 
   set {
     name  = "ingress.hosts"
@@ -20,11 +24,6 @@ resource "helm_release" "core-application" {
   set {
     name = "kafka.enabled"
     value = local.oidc_enabled
-  }
-
-  set {
-    name = "multiTenancy.tenants"
-    value = var.multi_tenancy_tenants
   }
 
   # secrets

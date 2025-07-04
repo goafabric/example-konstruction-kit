@@ -6,6 +6,10 @@ resource "helm_release" "person-service-application" {
   create_namespace = false
   timeout = var.helm_timeout
 
+  values = [
+    file("../../helm/values.yaml")
+  ]
+
   set {
     name  = "ingress.hosts"
     value = var.hostname
@@ -14,11 +18,6 @@ resource "helm_release" "person-service-application" {
   set {
     name = "oidc.enabled"
     value = local.oidc_enabled
-  }
-
-  set {
-    name = "multiTenancy.tenants"
-    value = var.multi_tenancy_tenants
   }
 
   set_sensitive {

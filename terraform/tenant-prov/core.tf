@@ -7,7 +7,7 @@ resource "helm_release" "core-provisioning" {
   timeout = var.helm_timeout
 
   values = [
-    file("${var.helm_repository}/values.yaml")
+    file("../../helm/values.yaml")
   ]
 
   set {
