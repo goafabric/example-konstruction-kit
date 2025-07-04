@@ -34,7 +34,7 @@ data:
   spring.datasource.hikari.connection-timeout: "10000"
 
   multi-tenancy.tenants: "{{ .Values.multiTenancy.tenants }}"
-  multi-tenancy.schema-prefix: "core_"
+  multi-tenancy.schema-prefix: "example_"
   database.provisioning.goals: "-migrate -import-demo-data"
 
   #adapter

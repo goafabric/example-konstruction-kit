@@ -104,6 +104,7 @@ resource "kubernetes_network_policy" "allow_core_data" {
           }
         }
       }
+
       from {
         namespace_selector {
           match_labels = {
@@ -116,6 +117,21 @@ resource "kubernetes_network_policy" "allow_core_data" {
           }
         }
       }
+
+      from {
+        namespace_selector {
+          match_labels = {
+            "kubernetes.io/metadata.name" = "example"
+          }
+        }
+        pod_selector {
+          match_labels = {
+            app = "person-service-provisioning"
+          }
+        }
+      }
+
+
     }
 
     policy_types = ["Ingress"]

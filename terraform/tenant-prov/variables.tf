@@ -3,11 +3,11 @@ variable "hostname" {
 }
 
 variable "helm_timeout" {
-  default = 90
+  default = 40
 }
 
 variable "helm_repository" {
-  default = "../../helm/core" #"https://goafabric.github.io/example-konstruction-kit/helm/charts/example/spring"
+  default = "../../helm" #"https://goafabric.github.io/example-konstruction-kit/helm/charts/example/spring"
 }
 
 locals {
@@ -16,5 +16,5 @@ locals {
 
 # terraform taint helm_release.core-application
 variable "multi_tenancy_tenants" {
-  default = "42"
+  default = "44"
 }
