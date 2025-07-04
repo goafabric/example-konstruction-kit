@@ -3,14 +3,12 @@ maxReplicas: 3
 
 ingress:
   paths: /core
-  enabled: true
 
 image:
   repository: "goafabric/core-service"
   pullPolicy: IfNotPresent #Always
   pullSecrets:
-
-
+  arch: "-native"
 
 resourcesAnnotations:
   resources:

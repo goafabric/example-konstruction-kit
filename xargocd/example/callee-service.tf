@@ -21,14 +21,6 @@ resource "kubernetes_manifest" "callee-service-application" {
               name  = "ingress.hosts"
               value = var.hostname
             },
-            {
-              name  = "image.arch"
-              value = "-native"
-            },
-            {
-              name  = "maxReplicas"
-              value = "3"
-            },
 
             {
               name  = "oidc.enabled"

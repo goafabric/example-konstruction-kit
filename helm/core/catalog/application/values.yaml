@@ -3,13 +3,12 @@ maxReplicas: 3
 
 ingress:
   paths: /catalog
-  enabled: true
 
 image:
   repository: "goafabric/catalog-batch-service"
   pullPolicy: IfNotPresent #Always
   pullSecrets:
-
+  arch: "-native"
 
 resourcesAnnotations:
   resources:

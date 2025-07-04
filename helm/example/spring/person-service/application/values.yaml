@@ -10,6 +10,7 @@ image:
   repository: "goafabric/person-service"
   pullPolicy: IfNotPresent #Always
   pullSecrets:
+  arch: "-native"
 
 resourcesAnnotations:
   resources:

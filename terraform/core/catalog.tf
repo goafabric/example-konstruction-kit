@@ -9,16 +9,8 @@ resource "helm_release" "catalog-application" {
   force_update = true
 
   set {
-    name  = "maxReplicas"
-    value = "3"
-  }
-  set {
     name  = "ingress.hosts"
     value = var.hostname
-  }
-  set {
-    name  = "image.arch"
-    value = "-native"
   }
 
   set_sensitive {

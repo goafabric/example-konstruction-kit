@@ -7,14 +7,6 @@ resource "helm_release" "event-dispatcher-service-application" {
   timeout = var.helm_timeout
 
   set {
-    name  = "image.arch"
-    value = "-native"
-  }
-  set {
-    name  = "maxReplicas"
-    value = "3"
-  }
-  set {
     name  = "ingress.hosts"
     value = var.hostname
   }

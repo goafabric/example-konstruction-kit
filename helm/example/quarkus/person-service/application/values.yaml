@@ -4,7 +4,6 @@ maxReplicas: 3
 tenantId: 0
 ingress:
   paths: /person
-  enabled: true
 
 image:
   repository: "goafabric/person-service-quarkus"

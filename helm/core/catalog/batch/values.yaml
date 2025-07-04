@@ -1,10 +1,10 @@
 replicaCount: 1
 
-
 image:
   repository: "goafabric/catalog-batch-service"
   pullPolicy: IfNotPresent #Always
   pullSecrets:
+  arch: "-native"
 
 podAnnotations:
   linkerd.io/inject: disabled

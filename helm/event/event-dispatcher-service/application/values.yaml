@@ -3,12 +3,12 @@ maxReplicas: 3
 
 ingress:
   paths: /event
-  enabled: true
 
 image:
   repository: "goafabric/event-dispatcher-service"
   pullPolicy: Always #IfNotPresent
-  pullSecrets: 
+  pullSecrets:
+  arch: "-native"
 
 resourcesAnnotations:
   resources:
