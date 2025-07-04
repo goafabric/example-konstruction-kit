@@ -19,7 +19,7 @@ resource "helm_release" "core-provisioning" {
   # secrets
   set {
     name  = "messageBroker.password"
-    value = "supersecret" #random_password.messageBroker_password.result
+    value = "supersecret"
   }
 
   set_sensitive {

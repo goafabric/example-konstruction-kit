@@ -1,0 +1,51 @@
+replicaCount: 1
+maxReplicas: 3
+
+tenantId: 0
+ingress:
+  paths: /person
+  enabled: true
+
+image:
+  repository: "goafabric/person-service"
+  pullPolicy: IfNotPresent #Always
+  pullSecrets:
+  arch: "-native"
+
+resourcesAnnotations:
+  resources:
+    requests:
+      memory: 256M
+      cpu: 250m
+
+  command: ["java", "-Xms256M", "-Xmx256M", "-cp", "/app/resources:/app/classes:/app/libs/*",
+            "org.goafabric.personservice.Application"]
+
+nativeAnnotations:
+  resources:
+    requests:
+      memory: 64M
+      cpu: 250m
+
+  args: ["-Xmx64M"]
+
+readinessProbe:
+  initialDelaySeconds: 5
+
+service:
+  type: ClusterIP
+  port: 8080
+
+postgresql:
+  host: postgresql.example
+
+initContainers:
+  - name: check-db-ready
+    image: postgres:17.4
+    command: ['sh', '-c','until pg_isready -h {{ .Values.postgresql.host }} -p 5432;do echo waiting for database; sleep 1; done;']
+
+oidc:
+  enabled:
+
+multiTenancy:
+  tenants: "0,5"

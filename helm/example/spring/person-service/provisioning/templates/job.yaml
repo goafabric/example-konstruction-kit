@@ -1,0 +1,63 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: {{ include "application.fullname" . }}
+  labels:
+    {{- include "application.labels" . | nindent 4 }}
+  annotations:
+    "helm.sh/hook": post-install,post-upgrade
+spec:
+  backoffLimit: 3
+  activeDeadlineSeconds: 240
+  ttlSecondsAfterFinished: 60
+  template:
+    metadata:
+      annotations:
+      labels:
+        {{- include "application.labels" . | nindent 8 }}
+        {{- include "application.selectorLabels" . | nindent 8 }}
+    spec:
+      restartPolicy: Never
+      {{- with .Values.initContainers }}
+      initContainers:
+        {{ tpl (toYaml .) $ | nindent 8 }}
+      {{- end }}
+
+      {{ if .Values.image.pullSecrets }}
+      imagePullSecrets:
+        - name: {{ .Values.image.pullSecrets }}
+      {{- end }}
+      containers:
+        - name: {{ .Chart.Name }}
+          image: "{{ .Values.image.repository }}{{ .Values.image.arch }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+
+          envFrom:
+            - configMapRef:
+                name: {{ include "application.fullname" . }}-config
+            - secretRef:
+                name: {{ include "application.fullname" . }}-secret
+          env:
+              - name: database.provisioning.goals
+                value: "-migrate -terminate"
+
+          #resources and commands and args
+          {{ if and (ne .Values.image.arch "-native") (ne .Values.image.arch "-native-arm64v8") }}
+            {{- with .Values.resourcesAnnotations }}
+            {{- toYaml . | nindent 10 }}
+            {{- end }}
+          {{- end }}
+
+          {{ if or (eq .Values.image.arch "-native") (eq .Values.image.arch "-native-arm64v8") }}
+            {{- with .Values.nativeAnnotations }}
+            {{- toYaml . | nindent 10 }}
+            {{- end }}
+          {{- end }}
+
+          volumeMounts:
+            - mountPath: /usr/share/logs
+              name: {{ include "application.fullname" . }}-applogs
+
+      volumes:
+        - name: {{ include "application.fullname" . }}-applogs
+          emptyDir: {}

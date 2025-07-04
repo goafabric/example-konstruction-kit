@@ -104,6 +104,18 @@ resource "kubernetes_network_policy" "allow_core_data" {
           }
         }
       }
+      from {
+        namespace_selector {
+          match_labels = {
+            "kubernetes.io/metadata.name" = "core"
+          }
+        }
+        pod_selector {
+          match_labels = {
+            app = "core-provisioning"
+          }
+        }
+      }
     }
 
     policy_types = ["Ingress"]
