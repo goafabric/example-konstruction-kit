@@ -1,4 +1,6 @@
 # 1.4.1
+- upgrade to cert-manager chart 1.18.2
+- upgrade to apsix chart 2.11.0
 
 # 1.4.0
 - fix for helm provider breaking change
