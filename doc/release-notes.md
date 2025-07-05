@@ -1,6 +1,7 @@
 # 1.4.1
 - upgrade to cert-manager chart 1.18.2
 - upgrade to apsix chart 2.11.0
+- upgrade to latest helm charts of postgres, s3, kafka
 - possible fixes for istio ambient for twistlock (env.ENABLE_ORIG_SRC) and apisix (reload ingress-controller)
 
 # 1.4.0

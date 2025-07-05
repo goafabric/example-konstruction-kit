@@ -21,11 +21,6 @@ resource "helm_release" "core-application" {
     value = local.oidc_enabled
   }
 
-  set {
-    name = "kafka.enabled"
-    value = local.oidc_enabled
-  }
-
   # secrets
   set_sensitive {
     name = "oidc.session.secret"

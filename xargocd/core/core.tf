@@ -28,10 +28,7 @@ resource "kubernetes_manifest" "core-application" {
               name  = "oidc.enabled"
               value = local.oidc_enabled
             },
-            {
-              name  = "kafka.enabled"
-              value = local.oidc_enabled
-            },
+      
 
             {
               name  = "oidc.session.secret"

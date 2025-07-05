@@ -41,7 +41,7 @@ postgresql:
 
 initContainers:
   - name: check-db-ready
-    image: postgres:17.4
+    image: postgres:17.5
     command: ['sh', '-c','until pg_isready -h {{ .Values.postgresql.host }} -p 5432;do echo waiting for database; sleep 1; done;']
 
 oidc:
