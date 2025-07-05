@@ -36,7 +36,7 @@ resource "helm_release" "kafka" {
   }
   set_sensitive {
     name = "sasl.client.passwords[0]"
-    value = "supersecret" #random_password.messageBroker_password.result
+    value = kubernetes_secret.kafka_secret.data["password"]
   }
   set {
     name  = "networkPolicy.enabled"
