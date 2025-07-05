@@ -50,6 +50,11 @@ resource "helm_release" "kafka" {
     name  = "commonLabels.app"
     value = "kafka"
   }
+
+  set {
+    name  = "controller.readinessProbe.initialDelaySeconds"
+    value = "5"
+  }
 }
 
 # manually remove the pvc to avoid password problems
