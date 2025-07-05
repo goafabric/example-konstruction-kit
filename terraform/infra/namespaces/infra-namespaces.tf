@@ -8,7 +8,7 @@ resource "kubernetes_namespace" "ingress-apisix" {
   metadata {
     name = "ingress-apisix"
      labels = {
-       "istio-injection" = "enabled"
+       "istio.io/dataplane-mode" = "ambient"
      }
   }
 }
