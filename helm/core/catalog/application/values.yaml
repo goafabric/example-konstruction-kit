@@ -44,3 +44,6 @@ initContainers:
 
 oidc:
   enabled:
+
+secrets:
+  - name: postgresql-secret

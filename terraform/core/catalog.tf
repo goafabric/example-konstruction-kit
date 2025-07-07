@@ -13,15 +13,11 @@ resource "helm_release" "catalog-application" {
     value = var.hostname
   }
 
-  set_sensitive {
-    name  = "database.password"
-    value = data.kubernetes_secret.postgresql_secret.data["password"]
-  }
-
   set {
     name = "oidc.enabled"
     value = local.oidc_enabled
   }
+
   set_sensitive {
     name = "oidc.session.secret"
     value = random_password.oidc_session_secret.result
@@ -40,10 +36,7 @@ resource "helm_release" "catalog-batch" {
     name  = "image.arch"
     value = "-native"
   }
-  set_sensitive {
-    name  = "database.password"
-    value = data.kubernetes_secret.postgresql_secret.data["password"]
-  }
+
   set {
     name = "oidc.enabled"
     value = local.oidc_enabled

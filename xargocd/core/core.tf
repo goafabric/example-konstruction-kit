@@ -34,19 +34,6 @@ resource "kubernetes_manifest" "core-application" {
               name  = "oidc.session.secret"
               value = random_password.oidc_session_secret.result
             },
-            {
-              name  = "database.password"
-              value = data.kubernetes_secret.postgresql_secret.data["password"]
-            },
-            {
-              name  = "s3.password"
-              value = data.kubernetes_secret.s3_secret.data["password"]
-            },
-            {
-              name  = "messageBroker.password"
-              value = "supersecret"
-            },
-
 
           ]
         }

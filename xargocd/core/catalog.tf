@@ -30,10 +30,6 @@ resource "kubernetes_manifest" "catalog-application" {
             {
               name  = "oidc.session.secret"
               value = random_password.oidc_session_secret.result
-            },
-            {
-              name  = "database.password"
-              value = data.kubernetes_secret.postgresql_secret.data["password"]
             }
 
           ]
@@ -92,12 +88,7 @@ resource "kubernetes_manifest" "catalog-batch" {
             {
               name  = "oidc.session.secret"
               value = random_password.oidc_session_secret.result
-            },
-            {
-              name  = "database.password"
-              value = data.kubernetes_secret.postgresql_secret.data["password"]
             }
-
           ]
         }
       }
