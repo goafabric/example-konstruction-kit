@@ -20,7 +20,7 @@ resource "random_password" "oidc_session_secret" {
 
 variable "namespaces" {
   type    = list(string)
-  default = ["data", "core", "event", "invoice", "example"]
+  default = ["data", "core", "event", "invoice"]
 }
 
 resource "kubernetes_secret" "postgresql_secret" {
