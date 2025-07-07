@@ -28,9 +28,5 @@ resource "helm_release" "invoice-process-application" {
     value = random_password.oidc_session_secret.result
   }
 
-  set_sensitive {
-    name  = "redis.password"
-    value = random_password.cache_password.result
-  }
 
 }

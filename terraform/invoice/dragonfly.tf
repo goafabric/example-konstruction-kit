@@ -27,10 +27,6 @@ resource "helm_release" "dragonfly" {
     name  = "passwordFromSecret.existingSecret.name"
     value = "cache-secret"
   }
-  set {
-    name  = "passwordFromSecret.existingSecret.key"
-    value = "password"
-  }
 
   set {
     name  = "passwordFromSecret.existingSecret.key"
