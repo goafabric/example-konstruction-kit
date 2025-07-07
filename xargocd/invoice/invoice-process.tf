@@ -34,12 +34,6 @@ resource "kubernetes_manifest" "invoice-process-application" {
             {
               name  = "oidc.session.secret"
               value = random_password.oidc_session_secret.result
-            },
-
-
-            {
-              name  = "redis.password"
-              value = random_password.cache_password.result
             }
 
           ]
