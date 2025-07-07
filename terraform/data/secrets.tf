@@ -3,6 +3,11 @@ resource "random_password" "postgresql_password" {
   special          = false
 }
 
+resource "random_password" "kafka_password" {
+  length           = 32
+  special          = false
+}
+
 resource "random_password" "s3_password" {
   length           = 32
   special          = false
@@ -67,10 +72,10 @@ resource "kubernetes_secret" "kafka_secret" {
 
   data = {
     username = "admin"
-    password = "supersecret"
+    password = random_password.kafka_password.result
 
     "spring.kafka.username" = "admin"
-    "spring.kafka.password" = "supersecret"
+    "spring.kafka.password" = random_password.kafka_password.result
   }
 
   type = "Opaque"
