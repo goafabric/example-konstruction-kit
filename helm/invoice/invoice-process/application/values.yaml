@@ -46,4 +46,5 @@ oidc:
 
 secrets:
   - name: s3-secret
+  - name: redis-secret
 

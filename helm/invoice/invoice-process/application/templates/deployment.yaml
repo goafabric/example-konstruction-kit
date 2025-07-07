@@ -43,8 +43,6 @@ spec:
                 name: {{ include "application.fullname" . }}-config
             - configMapRef:
                 name: {{ include "application.fullname" . }}-config-log
-            - secretRef:
-                name: {{ include "application.fullname" . }}-secret
             {{- range .Values.secrets }}
             - secretRef:
                 name: {{ .name }}
