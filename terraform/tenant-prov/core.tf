@@ -14,23 +14,6 @@ resource "helm_release" "core-provisioning" {
     name  = "ingress.hosts"
     value = var.hostname
   }
-
-
-  # secrets
-  set {
-    name  = "messageBroker.password"
-    value = "supersecret"
-  }
-
-  set_sensitive {
-    name  = "database.password"
-    value = data.kubernetes_secret.postgresql_secret.data["password"]
-  }
-
-  set_sensitive {
-    name  = "s3.password"
-    value = data.kubernetes_secret.s3_secret.data["password"]
-  }
   
 }
 
