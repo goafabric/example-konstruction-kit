@@ -44,5 +44,6 @@ service:
 oidc:
   enabled:
 
-
+secrets:
+  - name: s3-secret
 

@@ -45,7 +45,10 @@ spec:
                 name: {{ include "application.fullname" . }}-config-log
             - secretRef:
                 name: {{ include "application.fullname" . }}-secret
-
+            {{- range .Values.secrets }}
+            - secretRef:
+                name: {{ .name }}
+            {{- end }}
           #resources and commands and args
           {{ if and (ne .Values.image.arch "-native") (ne .Values.image.arch "-native-arm64v8") }}
             {{- with .Values.resourcesAnnotations }}

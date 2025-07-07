@@ -25,14 +25,8 @@ resource "kubernetes_manifest" "event-dispatcher-service-application" {
             {
               name  = "oidc.enabled"
               value = local.oidc_enabled
-            },
-
-            {
-              name  = "messageBroker.password"
-              value = "supersecret"
-            },
+            }
             
-
           ]
         }
       }

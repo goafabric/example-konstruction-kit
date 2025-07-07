@@ -36,10 +36,7 @@ resource "kubernetes_manifest" "invoice-process-application" {
               value = random_password.oidc_session_secret.result
             },
 
-            {
-              name  = "s3.password"
-              value = data.kubernetes_secret.s3_secret.data["password"]
-            },
+
             {
               name  = "redis.password"
               value = random_password.cache_password.result
