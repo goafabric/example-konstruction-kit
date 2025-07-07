@@ -13,11 +13,11 @@ resource "helm_release" "s3-minio" {
 
   set {
     name  = "auth.rootUser"
-    value = kubernetes_secret.s3_secret.data["username"]
+    value = kubernetes_secret.s3_secret["core"].data["username"]
   }
   set_sensitive {
     name  = "auth.rootPassword"
-    value = kubernetes_secret.s3_secret.data["password"]
+    value = kubernetes_secret.s3_secret["core"].data["password"]
   }
   set {
     name  = "readinessProbe.initialDelaySeconds"

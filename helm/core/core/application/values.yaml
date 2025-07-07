@@ -53,6 +53,10 @@ initContainers:
 oidc:
   enabled:
 
-
 multiTenancy:
   tenants: "0,5"
+
+secrets:
+  - name: postgresql-secret
+  - name: kafka-secret
+  - name: s3-secret

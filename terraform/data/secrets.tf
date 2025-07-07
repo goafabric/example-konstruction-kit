@@ -13,10 +13,17 @@ resource "random_password" "oidc_session_secret" {
   special          = false
 }
 
+variable "namespaces" {
+  type    = list(string)
+  default = ["data", "core", "event", "invoice"]
+}
+
 resource "kubernetes_secret" "postgresql_secret" {
+  for_each = toset(var.namespaces)
+
   metadata {
     name      = "postgresql-secret"
-    namespace = "data"
+    namespace = each.key
   }
 
   data = {
@@ -30,10 +37,13 @@ resource "kubernetes_secret" "postgresql_secret" {
   type = "Opaque"
 }
 
+
 resource "kubernetes_secret" "s3_secret" {
+  for_each = toset(var.namespaces)
+
   metadata {
     name      = "s3-secret"
-    namespace = "data"
+    namespace = each.key
   }
 
   data = {
@@ -48,9 +58,11 @@ resource "kubernetes_secret" "s3_secret" {
 }
 
 resource "kubernetes_secret" "kafka_secret" {
+  for_each = toset(var.namespaces)
+
   metadata {
     name      = "kafka-secret"
-    namespace = "data"
+    namespace = each.key
   }
 
   data = {
