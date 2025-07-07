@@ -35,8 +35,11 @@ spec:
           envFrom:
             - configMapRef:
                 name: {{ include "application.fullname" . }}-config
+            {{- range .Values.secrets }}
             - secretRef:
-                name: {{ include "application.fullname" . }}-secret
+                name: {{ .name }}
+            {{- end }}
+
           env:
               - name: database.provisioning.goals
                 value: "-migrate -terminate"

@@ -15,8 +15,4 @@ resource "helm_release" "event-dispatcher-service-application" {
     value = local.oidc_enabled
   }
 
-  set_sensitive {
-    name  = "messageBroker.password"
-    value = "supersecret" #random_password.messageBroker_password.result
-  }
 }

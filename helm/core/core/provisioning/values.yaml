@@ -56,3 +56,6 @@ oidc:
 
 multiTenancy:
   tenants: "0,5"
+
+secrets:
+  - name: postgresql-secret
