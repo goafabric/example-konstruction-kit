@@ -62,7 +62,7 @@ resource "helm_release" "ztunnel" {
   wait       = true
 
   # set {
-  #   name  = "env.ENABLE_ORIG_SRC" # fix twistlock issue in ambient mode https://github.com/istio/istio/issues/55937, however apisix issue persists in ambient mode "failed to match any SSL certificate by SNI:"
+  #   name  = "env.ENABLE_ORIG_SRC" # fix twistlock issue in ambient mode https://github.com/istio/istio/issues/55937#issuecomment-3003898706, for the apisix issue restarting ingress controller seems to help "failed to match any SSL certificate by SNI:"
   #   value = "false"
   # }
 
