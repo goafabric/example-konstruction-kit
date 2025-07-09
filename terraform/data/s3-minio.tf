@@ -24,6 +24,12 @@ resource "helm_release" "s3-minio" {
     value = "2"
   }
   set {
+    name = "console.enabled"
+    value = false
+  }
+
+
+  set {
     name  = "extraEnvVars[0].name"
     value = "TZ"
   }
