@@ -36,6 +36,7 @@ data:
   {{ if eq .Values.cache.type "redis" }}
   spring.data.redis.sentinel.master: "master"
   spring.data.redis.sentinel.nodes: "redis.invoice:26379"
+  spring.data.redis.sentinel.password: "${spring.data.redis.password}"
   {{ else }}
   spring.data.redis.host: "dragonfly.invoice"
   spring.data.redis.port: "6379"
