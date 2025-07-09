@@ -17,6 +17,7 @@ resource "kubernetes_secret" "redis_secret" {
   data = {
     "spring.data.redis.password" = random_password.cache_password.result
 
+    # for redis only
     #"spring.data.redis.sentinel.password" = random_password.redis_password.result
   }
 
