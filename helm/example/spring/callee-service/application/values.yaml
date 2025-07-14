@@ -6,7 +6,7 @@ ingress:
 
 image:
   repository: "goafabric/callee-service" # image name
-  pullPolicy: IfNotPresent #Always
+  pullPolicy: Always #IfNotPresent #Always
   pullSecrets:
   arch: "-native"
 
