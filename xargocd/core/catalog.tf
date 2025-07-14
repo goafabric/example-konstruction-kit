@@ -104,6 +104,6 @@ resource "kubernetes_manifest" "catalog-batch" {
   }
 }
 
-# kubectl patch application catalog-batch -n argocd --type=merge -p '{"metadata":{"finalizers":null}}'
+# kubectl patch application catalog-batch -n argocd --type=merge -p '{"metadata":{"finalizers":null}}' && kubectl patch job catalog-batch -n core -p '{"metadata":{"finalizers":[]}}' --type=merge
 
 
