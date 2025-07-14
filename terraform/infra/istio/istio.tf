@@ -73,4 +73,4 @@ resource "helm_release" "ztunnel" {
 //kubectl get crd -oname | grep --color=never 'istio.io' | xargs kubectl delete
 
 //kubectl label namespace example istio-injection=enabled && kubectl label namespace example "istio.io/dataplane-mode"-
-//kubectl label namespace ingress-apisix "istio.io/dataplane-mode"=ambient && kubectl label namespace ingress-apisix istio-injection-
+//kubectl label namespace example "istio.io/dataplane-mode"=ambient && kubectl label namespace example istio-injection-
