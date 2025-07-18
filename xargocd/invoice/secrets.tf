@@ -8,10 +8,17 @@ resource "random_password" "oidc_session_secret" {
   special          = false
 }
 
-
-data "kubernetes_secret" "s3_secret" {
+resource "kubernetes_secret" "redis_secret" {
   metadata {
-    name      = "s3-secret"
-    namespace = "data"
+    name      = "redis-secret"
+    namespace = "invoice"
   }
+
+  data = {
+    "spring.data.redis.password" = random_password.cache_password.result
+
+    #"spring.data.redis.sentinel.password" = random_password.redis_password.result
+  }
+
+  type = "Opaque"
 }

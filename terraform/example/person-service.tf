@@ -5,19 +5,15 @@ resource "helm_release" "person-service-application" {
   namespace  = "example"
   create_namespace = false
   timeout = var.helm_timeout
+  depends_on = [kubernetes_secret.postgresql_secret]
 
-  set {
-    name  = "maxReplicas"
-    value = "3"
-  }
+  values = [
+    file("../../helm/values.yaml")
+  ]
 
   set {
     name  = "ingress.hosts"
     value = var.hostname
-  }
-  set {
-    name  = "image.arch"
-    value = strcontains(var.helm_repository, "spring") ? "-native" : ""
   }
 
   set {
@@ -30,15 +26,6 @@ resource "helm_release" "person-service-application" {
     value = random_password.oidc_session_secret.result
   }
 
-  set {
-    name = "multiTenancy.tenants"
-    value = var.multi_tenancy_tenants
-  }
-
-  set_sensitive {
-    name  = "database.password"
-    value = random_password.postgresql_password.result
-  }
 }
 
 

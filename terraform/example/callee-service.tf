@@ -7,17 +7,8 @@ resource "helm_release" "callee-service-application" {
   timeout = var.helm_timeout
 
   set {
-    name  = "maxReplicas"
-    value = "3"
-  }
-
-  set {
     name  = "ingress.hosts"
     value = var.hostname
-  }
-  set {
-    name  = "image.arch"
-    value = strcontains(var.helm_repository, "spring") ? "-native" : ""
   }
 
   set {

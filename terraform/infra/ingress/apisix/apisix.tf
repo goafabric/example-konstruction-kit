@@ -2,7 +2,7 @@ resource "helm_release" "apisix" {
   name       = "apisix"
   repository = "https://apache.github.io/apisix-helm-chart"
   chart      = "apisix"
-  version    = "2.9.0"
+  version    = "2.11.0"
   namespace  = "ingress-apisix"
   timeout    = "300"
   create_namespace = false
@@ -106,6 +106,13 @@ resource "helm_release" "apisix" {
     name  = "apisix.nginx.logs.errorLogLevel"
     value = "warn"
   }
+
+  # set {
+  #   name  = "apisix.ssl.fallbackSNI"
+  #   value = var.hostname
+  # }
+
+
 }
 
 
@@ -131,5 +138,14 @@ resource "helm_release" "apisix-tls" {
             namespace: cert-manager
     EOF
   ]
+}
+
+# reload ingress-controller in case it is already up and etcds crashed, to avoid browser "ERR_SSL_PROTOCOL_ERROR" / failed to find SNI
+resource "terraform_data" "re-init_ingress_controller" {
+  depends_on = [helm_release.apisix]
+  provisioner "local-exec" {
+    when    = create
+    command = "kubectl delete pod -l app.kubernetes.io/name=ingress-controller -n ingress-apisix"
+  }
 }
 

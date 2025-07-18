@@ -3,7 +3,7 @@ resource "helm_release" "s3-minio" {
   repository = "oci://registry-1.docker.io/bitnamicharts"
   chart      = "minio"
   namespace  = "data"
-  version    = "16.0.8"
+  version    = "17.0.9"
   timeout = 60
 
   set {
@@ -13,16 +13,22 @@ resource "helm_release" "s3-minio" {
 
   set {
     name  = "auth.rootUser"
-    value = kubernetes_secret.s3_secret.data["username"]
+    value = kubernetes_secret.s3_secret["core"].data["username"]
   }
   set_sensitive {
     name  = "auth.rootPassword"
-    value = kubernetes_secret.s3_secret.data["password"]
+    value = kubernetes_secret.s3_secret["core"].data["password"]
   }
   set {
     name  = "readinessProbe.initialDelaySeconds"
     value = "2"
   }
+  set {
+    name = "console.enabled"
+    value = false
+  }
+
+
   set {
     name  = "extraEnvVars[0].name"
     value = "TZ"

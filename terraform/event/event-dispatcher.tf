@@ -7,14 +7,6 @@ resource "helm_release" "event-dispatcher-service-application" {
   timeout = var.helm_timeout
 
   set {
-    name  = "image.arch"
-    value = "-native"
-  }
-  set {
-    name  = "maxReplicas"
-    value = "3"
-  }
-  set {
     name  = "ingress.hosts"
     value = var.hostname
   }
@@ -23,8 +15,4 @@ resource "helm_release" "event-dispatcher-service-application" {
     value = local.oidc_enabled
   }
 
-  set_sensitive {
-    name  = "messageBroker.password"
-    value = "supersecret" #random_password.messageBroker_password.result
-  }
 }

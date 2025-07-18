@@ -23,6 +23,11 @@ resource "helm_release" "postgresql" {
     value = false
   }
 
+  set {
+    name  = "primary.resources.limits.cpu"
+    value = "2000m"
+  }
+
 }
 
 # manually remove the pvc to avoid password problems

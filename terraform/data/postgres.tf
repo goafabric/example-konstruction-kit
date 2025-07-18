@@ -3,7 +3,7 @@ resource "helm_release" "postgresql" {
   name       = "postgresql"
   repository = "oci://registry-1.docker.io/bitnamicharts"
   chart      = "postgresql"
-  version    = "16.5.2"
+  version    = "16.7.15"
   namespace  = "data"
 
   set {
@@ -27,11 +27,11 @@ resource "helm_release" "postgresql" {
   }
   set_sensitive {
     name  = "global.postgresql.auth.username"
-    value = kubernetes_secret.postgresql_secret.data["username"]
+    value = kubernetes_secret.postgresql_secret["core"].data["username"]
   }
   set_sensitive {
     name  = "global.postgresql.auth.password"
-    value = kubernetes_secret.postgresql_secret.data["password"]
+    value = kubernetes_secret.postgresql_secret["core"].data["password"]
   }
   set {
     name  = "primary.networkPolicy.enabled"

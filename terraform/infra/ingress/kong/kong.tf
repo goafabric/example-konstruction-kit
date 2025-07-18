@@ -2,7 +2,7 @@ resource "helm_release" "kong" {
   name             = "kong"
   repository       = "https://charts.konghq.com"
   chart            = "kong"
-  version          = "2.42.0"
+  version          = "2.51.0"
   namespace        = "kong"
   timeout          = "60"
   create_namespace = false
@@ -39,7 +39,7 @@ resource "helm_release" "kong" {
   }
   set {
     name  = "image.tag"
-    value = "3.8.0"
+    value = "3.9.1"
   }
 
   set {

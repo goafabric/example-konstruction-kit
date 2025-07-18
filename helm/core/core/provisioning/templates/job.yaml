@@ -1,4 +1,3 @@
-{{- if eq ((.Values.provisioning | default dict).enabled | default false) true -}}
 apiVersion: batch/v1
 kind: Job
 metadata:
@@ -21,8 +20,8 @@ spec:
       restartPolicy: Never
       {{- with .Values.initContainers }}
       initContainers:
-        {{- toYaml . | nindent 8 }}
-        {{- end }}
+        {{ tpl (toYaml .) $ | nindent 8 }}
+      {{- end }}
 
       {{ if .Values.image.pullSecrets }}
       imagePullSecrets:
@@ -36,13 +35,14 @@ spec:
           envFrom:
             - configMapRef:
                 name: {{ include "application.fullname" . }}-config
-            - configMapRef:
-                name: {{ include "application.fullname" . }}-config-log
+            {{- range .Values.secrets }}
             - secretRef:
-                name: {{ include "application.fullname" . }}-secret
+                name: {{ .name }}
+            {{- end }}
+
           env:
-            - name: database.provisioning.goals
-              value: "-migrate -terminate"
+              - name: database.provisioning.goals
+                value: "-migrate -terminate"
 
           #resources and commands and args
           {{ if and (ne .Values.image.arch "-native") (ne .Values.image.arch "-native-arm64v8") }}
@@ -64,5 +64,3 @@ spec:
       volumes:
         - name: {{ include "application.fullname" . }}-applogs
           emptyDir: {}
-
-{{- end }}

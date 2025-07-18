@@ -8,7 +8,7 @@ resource "kubernetes_namespace" "ingress-apisix" {
   metadata {
     name = "ingress-apisix"
      labels = {
-       "istio-injection" = "enabled"
+       "istio.io/dataplane-mode" = "ambient"
      }
   }
 }
@@ -25,9 +25,9 @@ resource "kubernetes_namespace" "kong" {
 resource "kubernetes_namespace" "dashboard" {
   metadata {
     name = "dashboard"
-    labels = {
-      "istio.io/dataplane-mode" = "ambient"
-    }
+    # labels = {
+    #   "istio.io/dataplane-mode" = "ambient"
+    # }
   }
 }
 
@@ -49,8 +49,8 @@ resource "kubernetes_namespace" "istio-system" {
   }
 }
 
-# resource "kubernetes_namespace" "argocd" {
-#   metadata {
-#     name = "argocd"
-#   }
-# }
+resource "kubernetes_namespace" "argocd" {
+  metadata {
+    name = "argocd"
+  }
+}

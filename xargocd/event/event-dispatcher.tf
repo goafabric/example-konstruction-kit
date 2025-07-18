@@ -21,26 +21,12 @@ resource "kubernetes_manifest" "event-dispatcher-service-application" {
               name  = "ingress.hosts"
               value = var.hostname
             },
-            {
-              name  = "image.arch"
-              value = "-native"
-            },
-            {
-              name  = "maxReplicas"
-              value = "3"
-            },
 
             {
               name  = "oidc.enabled"
               value = local.oidc_enabled
-            },
-
-            {
-              name  = "messageBroker.password"
-              value = "supersecret"
-            },
+            }
             
-
           ]
         }
       }

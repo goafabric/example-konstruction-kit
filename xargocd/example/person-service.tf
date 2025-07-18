@@ -16,18 +16,12 @@ resource "kubernetes_manifest" "person-service-application" {
         targetRevision = "develop"
         path           = "helm/example/spring/person-service/application"
         helm = {
+          valueFiles = ["../../../../../helm/values.yaml"]
+
           parameters = [
             {
               name  = "ingress.hosts"
               value = var.hostname
-            },
-            {
-              name  = "image.arch"
-              value = "-native"
-            },
-            {
-              name  = "maxReplicas"
-              value = "3"
             },
 
             {
@@ -42,12 +36,6 @@ resource "kubernetes_manifest" "person-service-application" {
               name  = "database.password"
               value = random_password.postgresql_password.result
             },
-
-            {
-              name  = "multiTenancy.tenants"
-              value = var.multi_tenancy_tenants
-            }
-
 
           ]
         }

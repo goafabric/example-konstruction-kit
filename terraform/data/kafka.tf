@@ -2,7 +2,7 @@ resource "helm_release" "kafka" {
   name       = "kafka"
   repository = "oci://registry-1.docker.io/bitnamicharts"
   chart      = "kafka"
-  version    = "32.2.8"
+  version    = "32.3.2"
   namespace  = "data"
   create_namespace = false
 
@@ -36,7 +36,7 @@ resource "helm_release" "kafka" {
   }
   set_sensitive {
     name = "sasl.client.passwords[0]"
-    value = "supersecret" #random_password.messageBroker_password.result
+    value = kubernetes_secret.kafka_secret["core"].data["password"]
   }
   set {
     name  = "networkPolicy.enabled"
@@ -49,6 +49,11 @@ resource "helm_release" "kafka" {
   set {
     name  = "commonLabels.app"
     value = "kafka"
+  }
+
+  set {
+    name  = "controller.readinessProbe.initialDelaySeconds"
+    value = "5"
   }
 }
 

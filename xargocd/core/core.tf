@@ -16,46 +16,24 @@ resource "kubernetes_manifest" "core-application" {
         targetRevision = "develop"
         path           = "helm/core/core/application"
         helm = {
+          valueFiles = ["../../../../helm/values.yaml"]
+
           parameters = [
             {
               name  = "ingress.hosts"
               value = var.hostname
-            },
-            {
-              name  = "image.arch"
-              value = "-native"
-            },
-            {
-              name  = "maxReplicas"
-              value = "3"
             },
 
             {
               name  = "oidc.enabled"
               value = local.oidc_enabled
             },
-            {
-              name  = "kafka.enabled"
-              value = local.oidc_enabled
-            },
+      
 
             {
               name  = "oidc.session.secret"
               value = random_password.oidc_session_secret.result
             },
-            {
-              name  = "database.password"
-              value = data.kubernetes_secret.postgresql_secret.data["password"]
-            },
-            {
-              name  = "s3.password"
-              value = data.kubernetes_secret.s3_secret.data["password"]
-            },
-            {
-              name  = "messageBroker.password"
-              value = "supersecret"
-            },
-
 
           ]
         }

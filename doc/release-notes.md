@@ -1,3 +1,11 @@
+# 1.4.1
+- upgrade to cert-manager chart 1.18.2
+- upgrade to apsix chart 2.11.0
+- upgrade to kong 3.9.1 / chart 2.5.1
+- upgrade to latest helm charts of postgres, s3, kafka
+- possible fixes for istio ambient for twistlock (env.ENABLE_ORIG_SRC) and apisix (reload ingress-controller)
+- upgrade of all service to spring boot 3.5.3 + now using liveness and readiness actuator endpoints
+
 # 1.4.0
 - fix for helm provider breaking change
 

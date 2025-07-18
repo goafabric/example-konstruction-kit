@@ -1,0 +1,2 @@
+multiTenancy:
+  tenants: "0,5,42"

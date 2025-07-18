@@ -21,14 +21,6 @@ resource "kubernetes_manifest" "catalog-application" {
               name  = "ingress.hosts"
               value = var.hostname
             },
-            {
-              name  = "image.arch"
-              value = "-native"
-            },
-            {
-              name  = "maxReplicas"
-              value = "3"
-            },
 
             {
               name  = "oidc.enabled"
@@ -38,10 +30,6 @@ resource "kubernetes_manifest" "catalog-application" {
             {
               name  = "oidc.session.secret"
               value = random_password.oidc_session_secret.result
-            },
-            {
-              name  = "database.password"
-              value = data.kubernetes_secret.postgresql_secret.data["password"]
             }
 
           ]
@@ -100,12 +88,7 @@ resource "kubernetes_manifest" "catalog-batch" {
             {
               name  = "oidc.session.secret"
               value = random_password.oidc_session_secret.result
-            },
-            {
-              name  = "database.password"
-              value = data.kubernetes_secret.postgresql_secret.data["password"]
             }
-
           ]
         }
       }
@@ -121,6 +104,6 @@ resource "kubernetes_manifest" "catalog-batch" {
   }
 }
 
-# kubectl patch application catalog-batch -n argocd --type=merge -p '{"metadata":{"finalizers":null}}'
+# kubectl patch application catalog-batch -n argocd --type=merge -p '{"metadata":{"finalizers":null}}' && kubectl patch job catalog-batch -n core -p '{"metadata":{"finalizers":[]}}' --type=merge
 
 

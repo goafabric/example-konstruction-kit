@@ -22,8 +22,8 @@ spec:
     spec:
       {{- with .Values.initContainers }}
       initContainers:
-        {{- toYaml . | nindent 8 }}
-        {{- end }}
+        {{ tpl (toYaml .) $ | nindent 8 }}
+      {{- end }}
 
       {{ if .Values.image.pullSecrets }}
       imagePullSecrets:
@@ -43,9 +43,10 @@ spec:
                 name: {{ include "application.fullname" . }}-config
             - configMapRef:
                 name: {{ include "application.fullname" . }}-config-log
+            {{- range .Values.secrets }}
             - secretRef:
-                name: {{ include "application.fullname" . }}-secret
-
+                name: {{ .name }}
+            {{- end }}
           #resources and commands and args
           {{ if and (ne .Values.image.arch "-native") (ne .Values.image.arch "-native-arm64v8") }}
             {{- with .Values.resourcesAnnotations }}
@@ -61,7 +62,7 @@ spec:
 
           readinessProbe:
             httpGet:
-              path: /actuator/health
+              path: /actuator/health/readiness
               port: http
               scheme: {{ .Values.readinessProbe.scheme | default "HTTP" }}
             initialDelaySeconds: {{ .Values.readinessProbe.initialDelaySeconds }}
@@ -70,7 +71,7 @@ spec:
             failureThreshold: 3
           livenessProbe:
             httpGet:
-              path: /actuator/health
+              path: /actuator/health/liveness
               port: http
               scheme: {{ .Values.readinessProbe.scheme | default "HTTP" }}
             initialDelaySeconds: {{ .Values.readinessProbe.initialDelaySeconds }}

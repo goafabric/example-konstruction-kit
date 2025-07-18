@@ -4,6 +4,9 @@ terraform {
       source  = "hashicorp/helm"
       version = "2.17.0"
     }
+    kubernetes = {
+      version = "2.29.0" #workaround for crashing kubernetes provider on route.yaml
+    }
   }
 }
 
@@ -15,5 +18,4 @@ provider "helm" {
 
 provider "kubernetes" {
   config_path = "~/.kube/config"
-  version = "2.29.0" #workaround for crashing kubernetes provider on route.yaml
 }
