@@ -751,8 +751,8 @@ data:
     {\n    ringDescriptionsTable();\n  }\n}\n"
 kind: ConfigMap
 metadata:
-  creationTimestamp: "2025-05-14T05:05:36Z"
+  creationTimestamp: "2025-07-31T06:10:48Z"
   name: tech-radar-data-files
   namespace: dashboard
-  resourceVersion: "67691365"
-  uid: a526cbf5-fac1-4a1b-9dd3-39e8d4b92df6
+  resourceVersion: "91000232"
+  uid: e9c8529c-c14c-4053-8851-5277d621386f
