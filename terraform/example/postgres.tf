@@ -25,7 +25,7 @@ resource "helm_release" "postgresql" {
 
   set {
     name  = "primary.resources.limits.cpu"
-    value = "2000m"
+    value = "1000m"
   }
 
 }
