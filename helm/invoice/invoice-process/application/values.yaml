@@ -8,7 +8,7 @@ image:
   repository: "goafabric/invoice-process" # image name
   pullPolicy: Always #IfNotPresent
   pullSecrets:
-#  arch: "-native"
+  arch: "-native"
 
 resourcesAnnotations:
   resources:
