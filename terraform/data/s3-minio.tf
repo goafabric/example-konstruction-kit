@@ -41,4 +41,10 @@ resource "helm_release" "s3-minio" {
     name = "commonLabels.app"
     value = "s3-minio"
   }
+
+  set {
+    name  = "primary.networkPolicy.enabled"
+    value = false
+  }
+
 }
