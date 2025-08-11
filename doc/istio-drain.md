@@ -1,5 +1,7 @@
 # drain
-for ns in $(kubectl get ns -l istio.io/dataplane-mode=ambient -o jsonpath='{.items[*].metadata.name}'); do kubectl get pods -n $ns -o name | xargs -r -n1 -I{} kubectl label -n $ns {} istio-drain=true --overwrite; done
+#for ns in $(kubectl get ns -l istio.io/dataplane-mode=ambient -o jsonpath='{.items[*].metadata.name}'); do kubectl get pods -n $ns -o name | xargs -r -n1 -I{} kubectl label -n $ns {} istio-drain=true --overwrite; done
+
+kubectl get ns -l istio.io/dataplane-mode=ambient -o jsonpath='{.items[*].metadata.name}' | tr ' ' '\n' | grep -v '^istio-system$' | xargs -I{} sh -c 'kubectl get pods -n "{}" -o name | xargs -r -n1 -I% kubectl label -n "{}" % istio-drain=true --overwrite'
 kubectl get nodes -o jsonpath='{.items[*].metadata.name}' | xargs -n1 -I{} kubectl drain {} --ignore-daemonsets --delete-emptydir-data --timeout=30s --pod-selector=istio-drain=true
 
 kubectl get nodes -o jsonpath='{.items[*].metadata.name}' | xargs -n1 kubectl uncordon
