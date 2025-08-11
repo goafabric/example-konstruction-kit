@@ -43,7 +43,7 @@ resource "helm_release" "s3-minio" {
   }
 
   set {
-    name  = "primary.networkPolicy.enabled"
+    name  = "networkPolicy.enabled"
     value = false
   }
 
