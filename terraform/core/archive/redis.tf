@@ -6,6 +6,15 @@ resource "helm_release" "redis" {
   version    = "19.5.2"
 
   set {
+    name = "image.repository"
+    value = "bitnamilegacy/redis"
+  }
+  set {
+    name = "global.security.allowInsecureImages"
+    value = true
+  }
+
+  set {
     name  = "architecture"
     value = "replication"
   }

@@ -7,6 +7,15 @@ resource "helm_release" "postgresql" {
   namespace  = "data"
 
   set {
+    name = "image.repository"
+    value = "bitnamilegacy/postgresql"
+  }
+  set {
+    name = "global.security.allowInsecureImages"
+    value = true
+  }
+
+  set {
     name  = "postgresql.extraEnvVars[0].name"
     value = "TZ"
   }

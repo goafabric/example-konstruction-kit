@@ -7,6 +7,16 @@ resource "helm_release" "elasticsearch" {
   create_namespace = true
 
   set {
+    name = "image.repository"
+    value = "bitnamilegacy/elasticsearch"
+  }
+  set {
+    name = "global.security.allowInsecureImages"
+    value = true
+  }
+
+
+  set {
     name  = "persistence.size"
     value = "2Gi"
   }

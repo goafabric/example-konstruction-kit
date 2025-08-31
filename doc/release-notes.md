@@ -1,5 +1,6 @@
 # 1.4.2
 - uprade to istio 1.27.0
+- fixes for bitnami image depreaction                           
 
 # 1.4.1
 - upgrade to cert-manager chart 1.18.2

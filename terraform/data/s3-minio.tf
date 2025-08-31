@@ -7,6 +7,16 @@ resource "helm_release" "s3-minio" {
   timeout = 60
 
   set {
+    name = "image.repository"
+    value = "bitnamilegacy/minio"
+  }
+  set {
+    name = "global.security.allowInsecureImages"
+    value = true
+  }
+
+
+  set {
     name  = "persistence.size"
     value = "2Gi"
   }

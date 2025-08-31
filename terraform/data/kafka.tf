@@ -7,6 +7,16 @@ resource "helm_release" "kafka" {
   create_namespace = false
 
   set {
+    name = "image.repository"
+    value = "bitnamilegacy/kafka"
+  }
+  set {
+    name = "global.security.allowInsecureImages"
+    value = true
+  }
+
+
+  set {
     name = "controller.replicaCount"
     value = local.kafka_replica_count
   }
