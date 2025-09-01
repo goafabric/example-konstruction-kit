@@ -9,6 +9,15 @@ resource "helm_release" "redis" {
   timeout = var.helm_timeout
 
   set {
+    name = "image.repository"
+    value = "bitnamilegacy/redis"
+  }
+  set {
+    name = "global.security.allowInsecureImages"
+    value = true
+  }
+
+  set {
     name  = "architecture"
     value = "replication"
   }
