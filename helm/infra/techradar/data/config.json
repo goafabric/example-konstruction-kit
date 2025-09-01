@@ -1,5 +1,5 @@
 {
-  "date": "2025.1",
+  "date": "2025.3",
   "entries": [
     {
       "quadrant": 2,
@@ -115,15 +115,15 @@
     },
     {
       "quadrant": 2,
-      "ring": 1,
+      "ring": 0,
       "label": "ArchUnit",
       "active": true,
-      "moved": 0
+      "moved": 1
     },
     {
       "quadrant": 2,
       "ring": 1,
-      "label": "Architecture Decision Records",
+      "label": "Arch Decision Records",
       "active": true,
       "moved": 0
     },
@@ -232,7 +232,14 @@
       "ring": 0,
       "label": "Renovate",
       "active": true,
-      "moved": 1
+      "moved": 0
+    },
+    {
+      "quadrant": 1,
+      "ring": 2,
+      "label": "Openrewrite",
+      "active": true,
+      "moved": 0
     },
     {
       "quadrant": 1,
@@ -315,18 +322,18 @@
     },
     {
       "quadrant": 3,
-      "ring": 2,
-      "label": "Redis",
+      "ring": 1,
+      "label": "Dragonfly",
       "active": true,
-      "moved": 0
+      "moved": 1
     },
 
     {
       "quadrant": 3,
-      "ring": 1,
+      "ring": 0,
       "label": "Kafka",
       "active": true,
-      "moved": 0
+      "moved": 1
     },
     {
       "quadrant": 3,

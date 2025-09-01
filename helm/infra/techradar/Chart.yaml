@@ -6,4 +6,4 @@ type: application
 
 version: 1.4.2
 
-appVersion: "nginx:1.28-alpine3.21"
+appVersion: "1.28-alpine3.21"
