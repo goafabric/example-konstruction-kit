@@ -244,7 +244,14 @@ data:
           "ring": 2,
           "label": "Openrewrite",
           "active": true,
-          "moved": 0
+          "moved": 2
+        },
+        {
+          "quadrant": 1,
+          "ring": 2,
+          "label": "Telepresence",
+          "active": true,
+          "moved": 2
         },
         {
           "quadrant": 1,
@@ -320,10 +327,10 @@ data:
         },
         {
           "quadrant": 3,
-          "ring": 2,
+          "ring": 3,
           "label": "Elasticsearch",
           "active": true,
-          "moved": 0
+          "moved": -1
         },
         {
           "quadrant": 3,
@@ -758,8 +765,8 @@ data:
     {\n    ringDescriptionsTable();\n  }\n}\n"
 kind: ConfigMap
 metadata:
-  creationTimestamp: "2025-09-01T12:24:09Z"
+  creationTimestamp: "2025-09-01T12:32:20Z"
   name: tech-radar-data-files
   namespace: dashboard
-  resourceVersion: "100649054"
-  uid: 5de3cbdd-beca-488b-bf76-15e4dfc7c486
+  resourceVersion: "100651153"
+  uid: 9bf32753-e6e0-424e-a511-a9b472309426

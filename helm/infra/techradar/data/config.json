@@ -239,7 +239,14 @@
       "ring": 2,
       "label": "Openrewrite",
       "active": true,
-      "moved": 0
+      "moved": 2
+    },
+    {
+      "quadrant": 1,
+      "ring": 2,
+      "label": "Telepresence",
+      "active": true,
+      "moved": 2
     },
     {
       "quadrant": 1,
@@ -315,10 +322,10 @@
     },
     {
       "quadrant": 3,
-      "ring": 2,
+      "ring": 3,
       "label": "Elasticsearch",
       "active": true,
-      "moved": 0
+      "moved": -1
     },
     {
       "quadrant": 3,
