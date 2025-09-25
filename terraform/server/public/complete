@@ -43,7 +43,6 @@ function down() {
     destroy ../../infra/ingress/cert-manager
     destroy ../../infra/network-policies/
     destroy ../../infra/namespaces/
-    )
 }
 
 if   [ "${COMMAND}" = "init" ]; then up;
