@@ -22,6 +22,7 @@ function up() {
     apply ../../infra/grafana
     apply ../../infra/oidc
 #    apply ../../example
+    apply ../../data
     apply ../../core
     apply ../../event
     apply ../../invoice
@@ -34,6 +35,7 @@ function down() {
     destroy ../../event
     destroy ../../core
     destroy ../../example
+    destroy ../../data
     destroy ../../infra/oidc
     destroy ../../infra/dashboard
     destroy ../../infra/grafana
