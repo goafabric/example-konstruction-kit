@@ -1,51 +1,48 @@
 resource "helm_release" "postgresql" {
 
   name       = "postgresql"
-  repository = "oci://registry-1.docker.io/bitnamicharts"
-  chart      = "postgresql"
-  version    = "16.7.15"
+  repository = "oci://registry-1.docker.io/cloudpirates"
+  chart      = "postgres"
+  version    = "0.8.0"
   namespace  = "data"
+  
+  # set {
+  #   name  = "extraEnv[0].name"
+  #   value = "TZ"
+  # }
+  #
+  # set {
+  #   name  = "extraEnv[0].value"
+  #   value = "Europe/Berlin"
+  # }
 
   set {
-    name = "image.repository"
-    value = "bitnamilegacy/postgresql"
-  }
-  set {
-    name = "global.security.allowInsecureImages"
-    value = true
-  }
-
-  set {
-    name  = "postgresql.extraEnvVars[0].name"
-    value = "TZ"
-  }
-
-  set {
-    name  = "postgresql.extraEnvVars[0].value"
-    value = "Europe/Berlin"
-  }
-
-  set {
-    name  = "postgresql.initdbScripts.00_pg_statements\\.sql"
+    name  = "initdb.scripts.00_pg_statements\\.sql"
     value = "CREATE EXTENSION pg_stat_statements;"
   }
   
   set {
-    name  = "global.postgresql.auth.database"
+    name  = "auth.database"
     value = "main"
   }
   set_sensitive {
-    name  = "global.postgresql.auth.username"
+    name  = "auth.username"
     value = kubernetes_secret.postgresql_secret["core"].data["username"]
   }
   set_sensitive {
-    name  = "global.postgresql.auth.password"
+    name  = "auth.password"
     value = kubernetes_secret.postgresql_secret["core"].data["password"]
   }
-  set {
-    name  = "primary.networkPolicy.enabled"
-    value = false
-  }
+
+  # set {
+  #   name  = "readinessProbe.initialDelaySeconds"
+  #   value = "2"
+  # }
+  #
+  # set {
+  #   name  = "livenessProbe.initialDelaySeconds"
+  #   value = "2"
+  # }
 
 }
 
@@ -54,6 +51,6 @@ resource "terraform_data" "remove_postgres_pvc" {
 
   provisioner "local-exec" {
     when = destroy
-    command = "kubectl delete pvc -l app.kubernetes.io/name=postgresql -n data"
+    command = "kubectl delete pvc data-postgresql-0 -n data"
   }
 }
