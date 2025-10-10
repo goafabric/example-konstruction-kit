@@ -39,3 +39,12 @@ resource "helm_release" "s3-minio" {
   }
 
 }
+
+# manually remove the pvc to avoid password problems
+resource "terraform_data" "remove_s3_pvc" {
+
+  provisioner "local-exec" {
+    when = destroy
+    command = "kubectl delete pvc s3-minio -n data"
+  }
+}
