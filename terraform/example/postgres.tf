@@ -1,41 +1,32 @@
 resource "helm_release" "postgresql" {
 
   name       = "postgresql"
-  repository = "oci://registry-1.docker.io/bitnamicharts"
-  chart      = "postgresql"
-  version    = "16.5.2"
+  repository = "oci://registry-1.docker.io/cloudpirates"
+  chart      = "postgres"
+  version    = "0.8.0"
   namespace  = "example"
 
   set {
-    name = "image.repository"
-    value = "bitnamilegacy/postgresql"
-  }
-  set {
-    name = "global.security.allowInsecureImages"
-    value = true
+    name  = "extraEnv.TZ"
+    value = "Europe/Berlin"
   }
 
-
   set {
-    name  = "global.postgresql.auth.database"
+    name  = "initdb.scripts.00_pg_statements\\.sql"
+    value = "CREATE EXTENSION pg_stat_statements;"
+  }
+  
+  set {
+    name  = "auth.database"
     value = "main"
   }
   set_sensitive {
-    name  = "global.postgresql.auth.username"
+    name  = "auth.username"
     value = "main"
   }
   set_sensitive {
-    name  = "global.postgresql.auth.password"
+    name  = "auth.password"
     value = random_password.postgresql_password.result
-  }
-  set {
-    name  = "primary.networkPolicy.enabled"
-    value = false
-  }
-
-  set {
-    name  = "primary.resources.limits.cpu"
-    value = "1000m"
   }
 
 }
@@ -45,6 +36,6 @@ resource "terraform_data" "remove_postgres_pvc" {
 
   provisioner "local-exec" {
     when = destroy
-    command = "kubectl delete pvc -l app.kubernetes.io/name=postgresql -n example"
+    command = "kubectl delete pvc data-postgresql-0 -n example"
   }
 }
