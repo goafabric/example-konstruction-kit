@@ -1,20 +1,19 @@
 resource "helm_release" "s3-minio" {
   name       = "s3-minio"
-  repository = "oci://registry-1.docker.io/bitnamicharts"
+  repository = "oci://registry-1.docker.io/cloudpirates"
   chart      = "minio"
   namespace  = "data"
-  version    = "17.0.9"
+  version    = "0.4.0"
   timeout = 60
 
   set {
-    name = "image.repository"
-    value = "bitnamilegacy/minio"
+    name  = "config.extraEnvVars[0].name"
+    value = "TZ"
   }
   set {
-    name = "global.security.allowInsecureImages"
-    value = true
+    name  = "config.extraEnvVars[0].value"
+    value = "Europe/Berlin"
   }
-
 
   set {
     name  = "persistence.size"
@@ -33,28 +32,10 @@ resource "helm_release" "s3-minio" {
     name  = "readinessProbe.initialDelaySeconds"
     value = "2"
   }
-  set {
-    name = "console.enabled"
-    value = false
-  }
-
 
   set {
-    name  = "extraEnvVars[0].name"
-    value = "TZ"
-  }
-  set {
-    name  = "extraEnvVars[0].value"
-    value = "Europe/Berlin"
-  }
-  set {
-    name = "commonLabels.app"
+    name = "podLabels.app"
     value = "s3-minio"
-  }
-
-  set {
-    name  = "networkPolicy.enabled"
-    value = false
   }
 
 }
