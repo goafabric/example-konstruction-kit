@@ -5,16 +5,11 @@ resource "helm_release" "postgresql" {
   chart      = "postgres"
   version    = "0.8.0"
   namespace  = "data"
-  
-  # set {
-  #   name  = "extraEnv[0].name"
-  #   value = "TZ"
-  # }
-  #
-  # set {
-  #   name  = "extraEnv[0].value"
-  #   value = "Europe/Berlin"
-  # }
+
+  set {
+    name  = "extraEnv.TZ"
+    value = "Europe/Berlin"
+  }
 
   set {
     name  = "initdb.scripts.00_pg_statements\\.sql"
@@ -33,16 +28,6 @@ resource "helm_release" "postgresql" {
     name  = "auth.password"
     value = kubernetes_secret.postgresql_secret["core"].data["password"]
   }
-
-  # set {
-  #   name  = "readinessProbe.initialDelaySeconds"
-  #   value = "2"
-  # }
-  #
-  # set {
-  #   name  = "livenessProbe.initialDelaySeconds"
-  #   value = "2"
-  # }
 
 }
 
