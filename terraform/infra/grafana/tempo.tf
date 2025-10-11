@@ -4,7 +4,7 @@ resource "helm_release" "tempo" {
 #  chart      = "tempo-distributed"
 #  version    = "1.8.5"
   chart      = "tempo"
-  version    = "1.7.2"
+  version    = "1.23.3"
   namespace  = "grafana"
   timeout    = "120"
   create_namespace = false
@@ -24,28 +24,28 @@ resource "helm_release" "tempo" {
     value = "local" #"s3"
   }
 
-  set {
-    name  = "storage.trace.s3.bucket"
-    value = "tempo"
-  }
-
-  set {
-    name  = "storage.trace.s3.endpoint"
-    value = "s3-minio:9000"
-  }
-
-  set {
-    name  = "storage.trace.s3.access_key"
-    value = "minioadmin"
-  }
-
-  set {
-    name  = "storage.trace.s3.secret_key"
-    value = "minioadmin"
-  }
-
-  set {
-    name  = "storage.trace.s3.insecure"
-    value = true
-  }
+  # set {
+  #   name  = "storage.trace.s3.bucket"
+  #   value = "tempo"
+  # }
+  #
+  # set {
+  #   name  = "storage.trace.s3.endpoint"
+  #   value = "s3-minio:9000"
+  # }
+  #
+  # set {
+  #   name  = "storage.trace.s3.access_key"
+  #   value = "minioadmin"
+  # }
+  #
+  # set {
+  #   name  = "storage.trace.s3.secret_key"
+  #   value = "minioadmin"
+  # }
+  #
+  # set {
+  #   name  = "storage.trace.s3.insecure"
+  #   value = true
+  # }
 }
