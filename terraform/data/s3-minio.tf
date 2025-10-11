@@ -16,11 +16,6 @@ resource "helm_release" "s3-minio" {
   }
 
   set {
-    name  = "persistence.size"
-    value = "2Gi"
-  }
-
-  set {
     name  = "auth.rootUser"
     value = kubernetes_secret.s3_secret["core"].data["username"]
   }
