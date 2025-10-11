@@ -10,4 +10,15 @@ resource "helm_release" "backstage" {
     name  = "ingress.hosts"
     value = var.hostname
   }
+
+  set {
+    name  = "argocd.auth.token"
+    value = var.argocd_auth_token
+  }
+
+  set_sensitive {
+    name = "oidc.session.secret"
+    value = random_password.oidc_session_secret.result
+  }
+
 }
