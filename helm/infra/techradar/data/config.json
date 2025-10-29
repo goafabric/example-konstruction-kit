@@ -316,7 +316,7 @@
     {
       "quadrant": 3,
       "ring": 0,
-      "label": "S3",
+      "label": "S3 / Blob Storage",
       "active": true,
       "moved": 0
     },
