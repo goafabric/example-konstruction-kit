@@ -1,6 +1,7 @@
 configs:
   cm:
     accounts.backstage: "login,apiKey"
+    statusbadge.enabled: true
   rbac:
     policy.csv: |
       p, backstage, applications, get, *, allow

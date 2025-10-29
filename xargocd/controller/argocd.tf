@@ -51,6 +51,7 @@ resource "helm_release" "argocd" {
     value = "false"
   }
 
+
   values = [file("${path.module}/argocd-values.yaml")]
 
 }
