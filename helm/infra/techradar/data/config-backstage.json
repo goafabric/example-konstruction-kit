@@ -58,7 +58,7 @@
       "key": "webpack",
       "id": "webpack",
       "title": "Webpack",
-      "quadrant": "frameworks"
+      "quadrant": "infrastructure"
     },
     {
       "timeline": [
@@ -77,7 +77,7 @@
       "key": "react",
       "id": "react",
       "title": "React",
-      "quadrant": "frameworks"
+      "quadrant": "infrastructure"
     },
     {
       "timeline": [
@@ -90,7 +90,7 @@
       "key": "code-reviews",
       "id": "code-reviews",
       "title": "Code Reviews",
-      "quadrant": "process"
+      "quadrant": "data"
     },
     {
       "timeline": [
@@ -103,7 +103,7 @@
       "key": "mob-programming",
       "id": "mob-programming",
       "title": "Mob Programming",
-      "quadrant": "process"
+      "quadrant": "data"
     },
     {
       "timeline": [
@@ -116,7 +116,7 @@
       "key": "docs-like-code",
       "id": "docs-like-code",
       "title": "Docs-like-code",
-      "quadrant": "process"
+      "quadrant": "data"
     },
     {
       "timeline": [
@@ -128,7 +128,7 @@
       "key": "force-push",
       "id": "force-push",
       "title": "Force push to master",
-      "quadrant": "process"
+      "quadrant": "data"
     },
     {
       "timeline": [
@@ -161,16 +161,16 @@
       "name": "security"
     },
     {
-      "id": "frameworks",
-      "name": "Frameworks"
+      "id": "infrastructure",
+      "name": "infrastructure"
     },
     {
       "id": "languages",
       "name": "Languages"
     },
     {
-      "id": "process",
-      "name": "Process"
+      "id": "data",
+      "name": "data"
     }
   ],
   "rings": [
