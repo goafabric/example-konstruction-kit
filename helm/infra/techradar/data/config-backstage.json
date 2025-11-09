@@ -158,15 +158,15 @@
   "quadrants": [
     {
       "id": "security",
-      "name": "security"
+      "name": "Security"
     },
     {
       "id": "infrastructure",
-      "name": "infrastructure"
+      "name": "Infrastructure"
     },
     {
       "id": "languages",
-      "name": "Languages"
+      "name": "Languages & Frameworks"
     },
     {
       "id": "data",
