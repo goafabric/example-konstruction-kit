@@ -152,13 +152,13 @@
       "key": "github-actions",
       "id": "github-actions",
       "title": "GitHub Actions",
-      "quadrant": "infrastructure"
+      "quadrant": "security"
     }
   ],
   "quadrants": [
     {
-      "id": "infrastructure",
-      "name": "Infrastructure"
+      "id": "security",
+      "name": "security"
     },
     {
       "id": "frameworks",
