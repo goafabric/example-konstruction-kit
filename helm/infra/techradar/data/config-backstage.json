@@ -247,24 +247,43 @@
       "id": "springintegration",
       "title": "Spring Integration",
       "quadrant": "languages"
+    },
+
+
+
+
+    {
+      "timeline": [
+        {
+          "moved": 0,
+          "ringId": "adopt",
+          "date": "2025-11-01T00:00:00.000Z"
+        }
+      ],
+      "key": "apisix",
+      "id": "apisix",
+      "title": "Apisix Gateway",
+      "quadrant": "infrastructure"
     }
+
+
   ],
   "quadrants": [
     {
-      "id": "security",
-      "name": "Security"
+      "id": "languages",
+      "name": "Languages & Frameworks"
     },
     {
       "id": "infrastructure",
       "name": "Infrastructure"
     },
     {
-      "id": "languages",
-      "name": "Languages & Frameworks"
-    },
-    {
       "id": "data",
       "name": "Data"
+    },
+    {
+      "id": "security",
+      "name": "Security"
     }
   ],
   "rings": [
