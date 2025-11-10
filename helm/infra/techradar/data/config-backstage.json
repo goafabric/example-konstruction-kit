@@ -592,7 +592,7 @@
       "key": "postgres",
       "id": "postgres",
       "title": "Postgres",
-      "quadrant": "infrastructure"
+      "quadrant": "data"
     },
     {
       "timeline": [
@@ -604,8 +604,8 @@
       ],
       "key": "s3",
       "id": "s3",
-      "title": "S3 / Blob Storage",
-      "quadrant": "infrastructure"
+      "title": "S3 / Blob",
+      "quadrant": "data"
     },
     {
       "timeline": [
@@ -618,7 +618,7 @@
       "key": "dragonfly",
       "id": "dragonfly",
       "title": "dragonfly",
-      "quadrant": "infrastructure"
+      "quadrant": "data"
     },
 
     {
@@ -632,33 +632,33 @@
       "key": "elasticsearch",
       "id": "elasticsearch",
       "title": "Elasticsearch",
-      "quadrant": "infrastructure"
+      "quadrant": "data"
     },
     {
       "timeline": [
         {
           "moved": 0,
-          "ringId": "trial",
+          "ringId": "hold",
           "date": "2025-11-01T00:00:00.000Z"
         }
       ],
       "key": "nats",
       "id": "nats",
       "title": "Nats",
-      "quadrant": "infrastructure"
+      "quadrant": "data"
     },
     {
       "timeline": [
         {
           "moved": 0,
-          "ringId": "trial",
+          "ringId": "hold",
           "date": "2025-11-01T00:00:00.000Z"
         }
       ],
       "key": "rabbitmq",
       "id": "rabbitmq",
       "title": "RabbitMQ",
-      "quadrant": "infrastructure"
+      "quadrant": "data"
     },
 
 
