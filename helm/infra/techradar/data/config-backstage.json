@@ -7,6 +7,18 @@
           "ringId": "adopt"
         }
       ],
+      "key": "archunit",
+      "id": "archunit",
+      "title": "Archunit",
+      "quadrant": "languages"
+    },
+    {
+      "timeline": [
+        {
+          "moved": 0,
+          "ringId": "adopt"
+        }
+      ],
       "key": "java",
       "id": "java",
       "title": "Java",
