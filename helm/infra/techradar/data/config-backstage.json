@@ -52,6 +52,84 @@
       "id": "openapi",
       "title": "OpenAPI",
       "quadrant": "languages"
+    },
+    {
+      "timeline": [
+        {
+          "moved": 0,
+          "ringId": "adopt",
+          "date": "2025-11-01T00:00:00.000Z"
+        }
+      ],
+      "key": "opentelemetry",
+      "id": "opentelemetry",
+      "title": "Opentelemetry",
+      "quadrant": "languages"
+    },
+    {
+      "timeline": [
+        {
+          "moved": 0,
+          "ringId": "adopt",
+          "date": "2025-11-01T00:00:00.000Z"
+        }
+      ],
+      "key": "reactjs",
+      "id": "reactjs",
+      "title": "ReactJS",
+      "quadrant": "languages"
+    },
+    {
+      "timeline": [
+        {
+          "moved": 0,
+          "ringId": "adopt",
+          "date": "2025-11-01T00:00:00.000Z"
+        }
+      ],
+      "key": "springbatch",
+      "id": "springbatch",
+      "title": "Spring Batch",
+      "quadrant": "languages"
+    },
+    {
+      "timeline": [
+        {
+          "moved": 0,
+          "ringId": "adopt",
+          "date": "2025-11-01T00:00:00.000Z"
+        }
+      ],
+      "key": "springboot",
+      "id": "springboot",
+      "title": "Spring Boot",
+      "quadrant": "languages"
+    },
+    {
+      "timeline": [
+        {
+          "moved": 0,
+          "ringId": "adopt",
+          "date": "2025-11-01T00:00:00.000Z"
+        }
+      ],
+      "key": "springdata",
+      "id": "springdata",
+      "title": "Spring Data",
+      "quadrant": "languages"
+    },
+    {
+      "timeline": [
+        {
+          "moved": 0,
+          "ringId": "adopt",
+          "date": "2025-11-01T00:00:00.000Z"
+        }
+      ],
+      "key": "typescript",
+      "id": "typescript",
+      "title": "Typescript",
+      "quadrant": "languages"
     }
   ],
   "quadrants": [
