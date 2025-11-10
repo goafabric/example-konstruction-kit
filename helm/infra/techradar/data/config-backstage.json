@@ -19,12 +19,38 @@
         {
           "moved": 0,
           "ringId": "adopt",
-          "date": "2020-08-06T00:00:00.000Z"
+          "date": "2025-11-01T00:00:00.000Z"
         }
       ],
       "key": "java",
       "id": "java",
-      "title": "JavaXX",
+      "title": "Java",
+      "quadrant": "languages"
+    },
+    {
+      "timeline": [
+        {
+          "moved": 0,
+          "ringId": "adopt",
+          "date": "2025-11-01T00:00:00.000Z"
+        }
+      ],
+      "key": "kotlin",
+      "id": "kotlin",
+      "title": "Kotlin",
+      "quadrant": "languages"
+    },
+    {
+      "timeline": [
+        {
+          "moved": 0,
+          "ringId": "adopt",
+          "date": "2025-11-01T00:00:00.000Z"
+        }
+      ],
+      "key": "openapi",
+      "id": "openapi",
+      "title": "OpenAPI",
       "quadrant": "languages"
     }
   ],
