@@ -5,25 +5,13 @@
         {
           "moved": 0,
           "ringId": "adopt",
-          "date": "2020-08-06T00:00:00.000Z",
-          "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
+          "date": "2020-08-06T00:00:00.000Z"
         }
       ],
-      "key": "javascript",
-      "id": "javascript",
-      "title": "MY JavaScript",
-      "quadrant": "languages",
-      "links": [
-        {
-          "url": "https://www.javascript.com/",
-          "title": "Learn more"
-        },
-        {
-          "url": "https://www.typescriptlang.org/",
-          "title": "TypeScript"
-        }
-      ],
-      "description": "Excepteur **sint** occaecat *cupidatat* non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n\n```ts\nconst x = \"3\";\n```\n"
+      "key": "java",
+      "id": "java",
+      "title": "Java",
+      "quadrant": "languages"
     },
     {
       "timeline": [
