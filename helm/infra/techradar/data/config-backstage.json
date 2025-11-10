@@ -130,6 +130,123 @@
       "id": "typescript",
       "title": "Typescript",
       "quadrant": "languages"
+    },
+    {
+      "timeline": [
+        {
+          "moved": 0,
+          "ringId": "trial",
+          "date": "2025-11-01T00:00:00.000Z"
+        }
+      ],
+      "key": "adr",
+      "id": "adr",
+      "title": "Arch Decision Records",
+      "quadrant": "languages"
+    },
+    {
+      "timeline": [
+        {
+          "moved": 0,
+          "ringId": "assess",
+          "date": "2025-11-01T00:00:00.000Z"
+        }
+      ],
+      "key": "jobrunr",
+      "id": "jobrunr",
+      "title": "JobRunr",
+      "quadrant": "languages"
+    },
+    {
+      "timeline": [
+        {
+          "moved": 0,
+          "ringId": "assess",
+          "date": "2025-11-01T00:00:00.000Z"
+        }
+      ],
+      "key": "langchain4j",
+      "id": "langchain4j",
+      "title": "Langchain4J",
+      "quadrant": "languages"
+    },
+    {
+      "timeline": [
+        {
+          "moved": 0,
+          "ringId": "assess",
+          "date": "2025-11-01T00:00:00.000Z"
+        }
+      ],
+      "key": "quarkus",
+      "id": "quarkus",
+      "title": "Quarkus",
+      "quadrant": "languages"
+    },
+    {
+      "timeline": [
+        {
+          "moved": 0,
+          "ringId": "hold",
+          "date": "2025-11-01T00:00:00.000Z"
+        }
+      ],
+      "key": "graphql",
+      "id": "graphql",
+      "title": "GraphQL",
+      "quadrant": "languages"
+    },
+    {
+      "timeline": [
+        {
+          "moved": 0,
+          "ringId": "hold",
+          "date": "2025-11-01T00:00:00.000Z"
+        }
+      ],
+      "key": "lombok",
+      "id": "lombok",
+      "title": "Lombok",
+      "quadrant": "languages"
+    },
+    {
+      "timeline": [
+        {
+          "moved": 0,
+          "ringId": "hold",
+          "date": "2025-11-01T00:00:00.000Z"
+        }
+      ],
+      "key": "springai",
+      "id": "springai",
+      "title": "SpringAI",
+      "quadrant": "languages"
+    },
+    {
+      "timeline": [
+        {
+          "moved": 0,
+          "ringId": "hold",
+          "date": "2025-11-01T00:00:00.000Z"
+        }
+      ],
+      "key": "springcloud",
+      "id": "springcloud",
+      "title": "Spring Cloud",
+      "quadrant": "languages"
+    },
+    {
+      "timeline": [
+        {
+          "moved": 0,
+          "ringId": "hold",
+          "date": "2025-11-01T00:00:00.000Z"
+        }
+      ],
+      "key": "springintegration",
+      "id": "springintegration",
+      "title": "Spring Integration",
+      "quadrant": "languages"
     }
   ],
   "quadrants": [
@@ -147,7 +264,7 @@
     },
     {
       "id": "data",
-      "name": "data"
+      "name": "Data"
     }
   ],
   "rings": [
