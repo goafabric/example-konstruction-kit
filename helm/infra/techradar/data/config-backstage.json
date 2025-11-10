@@ -659,8 +659,127 @@
       "id": "rabbitmq",
       "title": "RabbitMQ",
       "quadrant": "infrastructure"
-    }
+    },
 
+
+
+    {
+      "timeline": [
+        {
+          "moved": 0,
+          "ringId": "adopt",
+          "date": "2025-11-01T00:00:00.000Z"
+        }
+      ],
+      "key": "azurevault",
+      "id": "azurevault",
+      "title": "(Azure) Vault",
+      "quadrant": "security"
+    },
+    {
+      "timeline": [
+        {
+          "moved": 0,
+          "ringId": "adopt",
+          "date": "2025-11-01T00:00:00.000Z"
+        }
+      ],
+      "key": "certificatemanager",
+      "id": "certificatemanager",
+      "title": "Certificate Manager",
+      "quadrant": "security"
+    },
+    {
+      "timeline": [
+        {
+          "moved": 0,
+          "ringId": "adopt",
+          "date": "2025-11-01T00:00:00.000Z"
+        }
+      ],
+      "key": "networkpolicies",
+      "id": "networkpolicies",
+      "title": "Network Policies",
+      "quadrant": "security"
+    },
+    {
+      "timeline": [
+        {
+          "moved": 0,
+          "ringId": "adopt",
+          "date": "2025-11-01T00:00:00.000Z"
+        }
+      ],
+      "key": "openidconnect",
+      "id": "openidconnect",
+      "title": "OpenID connect",
+      "quadrant": "security"
+    },
+    {
+      "timeline": [
+        {
+          "moved": 0,
+          "ringId": "adopt",
+          "date": "2025-11-01T00:00:00.000Z"
+        }
+      ],
+      "key": "sonarqube",
+      "id": "sonarqube",
+      "title": "Sonarqube",
+      "quadrant": "security"
+    },
+    {
+      "timeline": [
+        {
+          "moved": 0,
+          "ringId": "adopt",
+          "date": "2025-11-01T00:00:00.000Z"
+        }
+      ],
+      "key": "volumeencryption",
+      "id": "volumeencryption",
+      "title": "Volume Encryption",
+      "quadrant": "security"
+    },
+    {
+      "timeline": [
+        {
+          "moved": 0,
+          "ringId": "trial",
+          "date": "2025-11-01T00:00:00.000Z"
+        }
+      ],
+      "key": "istiomtls",
+      "id": "istiomtls",
+      "title": "Istio Servicemesh mTLS",
+      "quadrant": "security"
+    },
+    {
+      "timeline": [
+        {
+          "moved": 0,
+          "ringId": "trial",
+          "date": "2025-11-01T00:00:00.000Z"
+        }
+      ],
+      "key": "sbom",
+      "id": "sbom",
+      "title": "Software Bill Of Materials",
+      "quadrant": "security"
+    },
+    {
+      "timeline": [
+        {
+          "moved": 0,
+          "ringId": "asssess",
+          "date": "2025-11-01T00:00:00.000Z"
+        }
+      ],
+      "key": "owaspzap",
+      "id": "owaspzap",
+      "title": "Owasp Zap",
+      "quadrant": "security"
+    }
 
   ],
   "quadrants": [
