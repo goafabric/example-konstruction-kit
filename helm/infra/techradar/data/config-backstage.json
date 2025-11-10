@@ -394,8 +394,272 @@
       "id": "tempo",
       "title": "Tempo",
       "quadrant": "infrastructure"
-    }
+    },
+    {
+      "timeline": [
+        {
+          "moved": 0,
+          "ringId": "adopt",
+          "date": "2025-11-01T00:00:00.000Z"
+        }
+      ],
+      "key": "terraform",
+      "id": "terraform",
+      "title": "Terraform",
+      "quadrant": "infrastructure"
+    },
+    {
+      "timeline": [
+        {
+          "moved": 0,
+          "ringId": "trial",
+          "date": "2025-11-01T00:00:00.000Z"
+        }
+      ],
+      "key": "backstage",
+      "id": "backstage",
+      "title": "Backstage",
+      "quadrant": "infrastructure"
+    },
+    {
+      "timeline": [
+        {
+          "moved": 0,
+          "ringId": "trial",
+          "date": "2025-11-01T00:00:00.000Z"
+        }
+      ],
+      "key": "istio",
+      "id": "istio",
+      "title": "Istio Abmbient Mesh",
+      "quadrant": "infrastructure"
+    },
+    {
+      "timeline": [
+        {
+          "moved": 0,
+          "ringId": "trial",
+          "date": "2025-11-01T00:00:00.000Z"
+        }
+      ],
+      "key": "k6",
+      "id": "k6",
+      "title": "K6",
+      "quadrant": "infrastructure"
+    },
+    {
+      "timeline": [
+        {
+          "moved": 0,
+          "ringId": "trial",
+          "date": "2025-11-01T00:00:00.000Z"
+        }
+      ],
+      "key": "kong",
+      "id": "kong",
+      "title": "Kong Gateway",
+      "quadrant": "infrastructure"
+    },
+    {
+      "timeline": [
+        {
+          "moved": 0,
+          "ringId": "assess",
+          "date": "2025-11-01T00:00:00.000Z"
+        }
+      ],
+      "key": "openrewrite",
+      "id": "openrewrite",
+      "title": "Openrewrite",
+      "quadrant": "infrastructure"
+    },
+    {
+      "timeline": [
+        {
+          "moved": 0,
+          "ringId": "assess",
+          "date": "2025-11-01T00:00:00.000Z"
+        }
+      ],
+      "key": "telepresence",
+      "id": "telepresence",
+      "title": "Telepresence",
+      "quadrant": "infrastructure"
+    },
+    {
+      "timeline": [
+        {
+          "moved": 0,
+          "ringId": "hold",
+          "date": "2025-11-01T00:00:00.000Z"
+        }
+      ],
+      "key": "ansible",
+      "id": "ansible",
+      "title": "Ansible",
+      "quadrant": "infrastructure"
+    },
+    {
+      "timeline": [
+        {
+          "moved": 0,
+          "ringId": "hold",
+          "date": "2025-11-01T00:00:00.000Z"
+        }
+      ],
+      "key": "jaeger",
+      "id": "jaeger",
+      "title": "Jaeger",
+      "quadrant": "infrastructure"
+    },
+    {
+      "timeline": [
+        {
+          "moved": 0,
+          "ringId": "hold",
+          "date": "2025-11-01T00:00:00.000Z"
+        }
+      ],
+      "key": "jenkins",
+      "id": "jenkins",
+      "title": "Jenkins",
+      "quadrant": "infrastructure"
+    },
+    {
+      "timeline": [
+        {
+          "moved": 0,
+          "ringId": "hold",
+          "date": "2025-11-01T00:00:00.000Z"
+        }
+      ],
+      "key": "jmeter",
+      "id": "jmeter",
+      "title": "Jmeter",
+      "quadrant": "infrastructure"
+    },
+    {
+      "timeline": [
+        {
+          "moved": 0,
+          "ringId": "hold",
+          "date": "2025-11-01T00:00:00.000Z"
+        }
+      ],
+      "key": "linkerd",
+      "id": "linkerd",
+      "title": "Linkerd",
+      "quadrant": "infrastructure"
+    },
+    {
+      "timeline": [
+        {
+          "moved": 0,
+          "ringId": "hold",
+          "date": "2025-11-01T00:00:00.000Z"
+        }
+      ],
+      "key": "maven",
+      "id": "maven",
+      "title": "Maven",
+      "quadrant": "infrastructure"
+    },
 
+
+
+
+    {
+      "timeline": [
+        {
+          "moved": 0,
+          "ringId": "adopt",
+          "date": "2025-11-01T00:00:00.000Z"
+        }
+      ],
+      "key": "kafka",
+      "id": "kafka",
+      "title": "Kafka",
+      "quadrant": "data"
+    },
+    {
+      "timeline": [
+        {
+          "moved": 0,
+          "ringId": "adopt",
+          "date": "2025-11-01T00:00:00.000Z"
+        }
+      ],
+      "key": "postgres",
+      "id": "postgres",
+      "title": "Postgres",
+      "quadrant": "infrastructure"
+    },
+    {
+      "timeline": [
+        {
+          "moved": 0,
+          "ringId": "adopt",
+          "date": "2025-11-01T00:00:00.000Z"
+        }
+      ],
+      "key": "s3",
+      "id": "s3",
+      "title": "S3 / Blob Storage",
+      "quadrant": "infrastructure"
+    },
+    {
+      "timeline": [
+        {
+          "moved": 0,
+          "ringId": "trial",
+          "date": "2025-11-01T00:00:00.000Z"
+        }
+      ],
+      "key": "dragonfly",
+      "id": "dragonfly",
+      "title": "dragonfly",
+      "quadrant": "infrastructure"
+    },
+
+    {
+      "timeline": [
+        {
+          "moved": 0,
+          "ringId": "hold",
+          "date": "2025-11-01T00:00:00.000Z"
+        }
+      ],
+      "key": "elasticsearch",
+      "id": "elasticsearch",
+      "title": "Elasticsearch",
+      "quadrant": "infrastructure"
+    },
+    {
+      "timeline": [
+        {
+          "moved": 0,
+          "ringId": "trial",
+          "date": "2025-11-01T00:00:00.000Z"
+        }
+      ],
+      "key": "nats",
+      "id": "nats",
+      "title": "Nats",
+      "quadrant": "infrastructure"
+    },
+    {
+      "timeline": [
+        {
+          "moved": 0,
+          "ringId": "trial",
+          "date": "2025-11-01T00:00:00.000Z"
+        }
+      ],
+      "key": "rabbitmq",
+      "id": "rabbitmq",
+      "title": "RabbitMQ",
+      "quadrant": "infrastructure"
+    }
 
 
   ],
