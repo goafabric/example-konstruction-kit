@@ -780,26 +780,29 @@
       "title": "Owasp Zap",
       "quadrant": "security"
     }
-
   ],
+
+
+
   "quadrants": [
     {
-      "id": "languages",
-      "name": "Languages & Frameworks"
+      "id": "security",
+      "name": "Security"
     },
     {
       "id": "infrastructure",
       "name": "Infrastructure"
     },
     {
-      "id": "data",
-      "name": "Data"
+      "id": "languages",
+      "name": "Languages & Frameworks"
     },
     {
-      "id": "security",
-      "name": "Security"
+      "id": "data",
+      "name": "data"
     }
   ],
+
   "rings": [
     {
       "id": "adopt",
