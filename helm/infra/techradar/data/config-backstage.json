@@ -798,7 +798,7 @@
       "name": "Languages & Frameworks"
     },
     {
-      "id": "data",
+      "id": "Data",
       "name": "data"
     }
   ],
@@ -807,26 +807,22 @@
     {
       "id": "adopt",
       "name": "ADOPT",
-      "color": "#5BA300",
-      "description": "Commodi accusantium culpa sed itaque excepturi rem eum nulla possimus."
+      "color": "#5BA300"
     },
     {
       "id": "trial",
       "name": "TRIAL",
-      "color": "#009EB0",
-      "description": "Recusandae possimus ipsum dolores."
+      "color": "#009EB0"
     },
     {
       "id": "assess",
       "name": "ASSESS",
-      "color": "#C7BA00",
-      "description": "In asperiores repellat error recusandae et adipisci laborum porro."
+      "color": "#C7BA00"
     },
     {
       "id": "hold",
       "name": "HOLD",
-      "color": "#E09B96",
-      "description": "Esse mollitia in."
+      "color": "#E09B96"
     }
   ]
 }
