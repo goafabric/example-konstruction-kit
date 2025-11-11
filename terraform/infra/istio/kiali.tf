@@ -4,7 +4,7 @@ resource "helm_release" "kiali" {
   chart      = "kiali-server"
   namespace  = "istio-system"
   create_namespace = false
-  version    = "2.12.0"
+  version    = "2.17.0"
   wait       = true
 
   depends_on = [helm_release.istio-base, helm_release.istio-cni, helm_release.istio-istiod, helm_release.ztunnel]
