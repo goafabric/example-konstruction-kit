@@ -1,8 +1,9 @@
 # 1.4.2
-- uprade to istio 1.27.0
+- uprade to istio 1.28.0
 - replaced most bitnami charts with alternatives
 - fixes for helm chart provider, needs terraform init upgrade
-- upgraded grafana + tempo to latest versions
+- upgrade to grafana 12.1.1 
+- upgrade to tempo 2.8.2
 
 # 1.4.1
 - upgrade to cert-manager chart 1.18.2
