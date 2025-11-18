@@ -5,7 +5,7 @@ resource "helm_release" "apisix" {
   version    = "2.11.0"
   namespace  = "ingress-apisix"
   timeout    = "120"
-  create_namespace = true
+  create_namespace = false
   depends_on = [helm_release.etcd]
 
 
