@@ -146,7 +146,7 @@ resource "helm_release" "apisix-tls" {
   ]
 }
 
-#reload ingress-controller to avoid browser "ERR_SSL_PROTOCOL_ERROR" / failed to find SNI, could be due to connection errors to etcd or ingress-apisix -> apisix in istio ambient mode
+#reload ingress-controller to avoid browser "ERR_SSL_PROTOCOL_ERROR" / failed to find SNI, could be due to connection errors to etcd or ingress-apisix -> apisix(-admin) in istio ambient mode
 resource "terraform_data" "re-init_ingress_controller" {
   depends_on = [helm_release.apisix]
   provisioner "local-exec" {
