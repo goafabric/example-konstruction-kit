@@ -120,11 +120,16 @@ resource "helm_release" "apisix" {
     value = ""
   }
 
+  # super secret flag required for apisix helm chart 2.12+, https://github.com/apache/apisix-ingress-controller/issues/2508
+  set {
+    name = "ingress-controller.gatewayProxy.createDefault"
+    value = true
+  }
+
 }
 
-
 resource "helm_release" "apisix-tls" {
-  depends_on = [helm_release.apisix]
+  depends_on = [terraform_data.re-init_ingress_controller]
   name       = "apisix-tls"
   repository = "https://wiremind.github.io/wiremind-helm-charts/"
   chart      = "raw"
@@ -138,6 +143,7 @@ resource "helm_release" "apisix-tls" {
           name: apisix-tls
           namespace: ingress-apisix
         spec:
+          ingressClassName: apisix
           hosts:
             - ${var.hostname}
           secret:
