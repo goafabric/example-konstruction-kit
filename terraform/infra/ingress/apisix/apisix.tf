@@ -146,12 +146,12 @@ resource "helm_release" "apisix-tls" {
   ]
 }
 
-# reload ingress-controller in case it is already up and etcds crashed, to avoid browser "ERR_SSL_PROTOCOL_ERROR" / failed to find SNI
-# resource "terraform_data" "re-init_ingress_controller" {
-#   depends_on = [helm_release.apisix]
-#   provisioner "local-exec" {
-#     when    = create
-#     command = "kubectl delete pod -l app.kubernetes.io/name=ingress-controller -n ingress-apisix"
-#   }
-# }
+#reload ingress-controller to avoid browser "ERR_SSL_PROTOCOL_ERROR" / failed to find SNI, could be due to connection errors to etcd or ingress-apisix -> apisix in istio ambient mode
+resource "terraform_data" "re-init_ingress_controller" {
+  depends_on = [helm_release.apisix]
+  provisioner "local-exec" {
+    when    = create
+    command = "kubectl delete pod -l app.kubernetes.io/name=ingress-controller -n ingress-apisix"
+  }
+}
 
