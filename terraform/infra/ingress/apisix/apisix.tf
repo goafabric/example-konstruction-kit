@@ -4,8 +4,10 @@ resource "helm_release" "apisix" {
   chart      = "apisix"
   version    = "2.11.0"
   namespace  = "ingress-apisix"
-  timeout    = "300"
-  create_namespace = false
+  timeout    = "120"
+  create_namespace = true
+  depends_on = [helm_release.etcd]
+
 
   set {
     name  = "service.type"
@@ -93,11 +95,6 @@ resource "helm_release" "apisix" {
   }
 
   set {
-    name  = "etcd.replicaCount"
-    value = "2"
-  }
-
-  set {
     name  = "ingress-controller.enabled"
     value = "true"
   }
@@ -107,11 +104,20 @@ resource "helm_release" "apisix" {
     value = "warn"
   }
 
-  # set {
-  #   name  = "apisix.ssl.fallbackSNI"
-  #   value = var.hostname
-  # }
+  set {
+    name  = "etcd.enabled"
+    value = false
+  }
 
+  set {
+    name  = "externalEtcd.host[0]"
+    value = "http://etcd.ingress-apisix:2379"
+  }
+
+  set {
+    name = "externalEtcd.user"
+    value = ""
+  }
 
 }
 
