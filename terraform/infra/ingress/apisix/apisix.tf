@@ -104,6 +104,7 @@ resource "helm_release" "apisix" {
     value = "warn"
   }
 
+  # etcd
   set {
     name  = "etcd.enabled"
     value = false
