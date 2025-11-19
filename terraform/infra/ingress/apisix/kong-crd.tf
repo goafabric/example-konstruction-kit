@@ -1,9 +1,10 @@
 # resource "terraform_data" "destroy_crd" {
 #   provisioner "local-exec" {
 #     when    = create
-#     command = "k delete pod -l app.kubernetes.io/name=ingress-controller -n ingress-apisix"
+#     command = "kubectl delete crd kongplugins.configuration.konghq.com"
 #   }
 # }
+
 
 resource "kubernetes_manifest" "kong-fake-crsd" {
   manifest   = yamldecode(<<-EOF
