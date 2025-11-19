@@ -1,4 +1,6 @@
-# 1.4.2
+# 1.4.3
+
+# 1.4.3
 - uprade to istio 1.28.0
 - replaced most bitnami charts with alternatives
 - fixes for helm chart provider, needs terraform init upgrade
