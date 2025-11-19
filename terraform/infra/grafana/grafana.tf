@@ -26,7 +26,7 @@ resource "helm_release" "grafana" {
   }
 }
 
-resource "kubernetes_manifest" "grafana-gateway" {
+resource "kubernetes_manifest" "grafana-route" {
   manifest   = yamldecode(<<-EOF
   kind: ApisixRoute
   apiVersion: apisix.apache.org/v2
