@@ -103,54 +103,6 @@ resource "kubernetes_manifest" "kiali-route" {
   )
 }
 
-# resource "kubernetes_manifest" "kiali-gateway" {
-#   manifest   = yamldecode(<<-EOF
-#   apiVersion: gateway.networking.k8s.io/v1
-#   kind: Gateway
-#   metadata:
-#     name: kiali-gateway
-#     namespace: istio-system
-#   spec:
-#     gatewayClassName: kong
-#     listeners:
-#       - name: https
-#         port: 443
-#         protocol: HTTPS
-#         hostname: kind.local
-#         tls:
-#           mode: Terminate
-#           certificateRefs:
-#             - kind: Secret
-#               name: root-certificate
-#   EOF
-#   )
-# }
-#
-# resource "kubernetes_manifest" "kiali-httproute" {
-#   manifest   = yamldecode(<<-EOF
-#   apiVersion: gateway.networking.k8s.io/v1
-#   kind: HTTPRoute
-#   metadata:
-#     name: kiali-route
-#     namespace: istio-system
-#   spec:
-#     parentRefs:
-#       - name: kiali-gateway
-#         sectionName: https
-#     hostnames:
-#       - kind.local
-#     rules:
-#       - matches:
-#           - path:
-#               type: PathPrefix
-#               value: /kiali
-#         backendRefs:
-#           - name: kiali
-#             port: 20001
-#   EOF
-#   )
-# }
-
 resource "kubernetes_manifest" "kiali-ingress" {
   manifest   = yamldecode(<<-EOF
   kind: Ingress
