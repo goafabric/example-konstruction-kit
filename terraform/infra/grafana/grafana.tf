@@ -55,8 +55,8 @@ resource "kubernetes_manifest" "grafana-route" {
             enable: true
             config:
               regex_uri:
-                - /grafana/(.*)
-                - /$1
+              - ^/grafana/?(.*)
+              - /grafana/$1
   EOF
   )
 }

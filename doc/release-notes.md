@@ -4,6 +4,7 @@
 - fixes for helm chart provider, needs terraform init upgrade
 - upgrade to grafana 12.1.1 
 - upgrade to tempo 2.8.2
+- switched default ingress to apisx, due to kongs move to not publish community images any more
 
 # 1.4.1
 - upgrade to cert-manager chart 1.18.2
