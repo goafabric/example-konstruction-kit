@@ -2,7 +2,7 @@ replicaCount: 1
 
 image:
   repository: "goafabric/catalog-batch-service"
-  pullPolicy: IfNotPresent #Always
+  pullPolicy: Always #IfNotPresent
   pullSecrets:
   arch: "-native"
 

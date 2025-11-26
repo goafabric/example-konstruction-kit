@@ -6,7 +6,7 @@ ingress:
 
 image:
   repository: "goafabric/core-fe" # image name
-  pullPolicy: IfNotPresent #Always
+  pullPolicy: Always #IfNotPresent
   pullSecrets: 
 
 resourcesAnnotations:
