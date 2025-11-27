@@ -31,7 +31,7 @@ data:
   management.tracing.sampling.probability: "1.0"
 
   #cache
-  spring.profiles.active: "redis"
+  spring.profiles.active: "caffeine"
 
   {{ if eq .Values.cache.type "redis" }}
   spring.data.redis.sentinel.master: "master"
@@ -48,7 +48,7 @@ data:
   adapter.timeout: "10000"
 
   #s3
-  spring.cloud.aws.s3.endpoint: {{ .Values.s3.endpoint }}
+  #spring.cloud.aws.s3.endpoint: {{ .Values.s3.endpoint }}
 
   #resilience4j
   resilience4j.circuitbreaker.configs.default.slowCallDurationThreshold: "10000"
