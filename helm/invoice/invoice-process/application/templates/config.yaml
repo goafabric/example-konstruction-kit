@@ -48,7 +48,8 @@ data:
   adapter.timeout: "10000"
 
   #s3
-  #spring.cloud.aws.s3.endpoint: {{ .Values.s3.endpoint }}
+  spring.cloud.aws.s3.endpoint: {{ .Values.s3.endpoint }}
+  spring.cloud.aws.s3.enabled: "true"
 
   #resilience4j
   resilience4j.circuitbreaker.configs.default.slowCallDurationThreshold: "10000"
