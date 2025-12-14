@@ -2,7 +2,7 @@ resource "helm_release" "apisix" {
   name       = "apisix"
   repository = "https://apache.github.io/apisix-helm-chart"
   chart      = "apisix"
-  version    = "2.12.4"
+  version    = "2.11.0"
   namespace  = "ingress-apisix"
   timeout    = "120"
   create_namespace = false
@@ -61,7 +61,7 @@ resource "helm_release" "apisix" {
 
   set {
     name  = "apisix.pluginAttrs.opentelemetry.collector.address"
-    value = "tempo-distributor.grafana:4318"
+    value = "tempo.grafana:4318"
   }
 
   set {
