@@ -3,7 +3,7 @@ resource "helm_release" "postgresql" {
   name       = "postgresql"
   repository = "oci://registry-1.docker.io/cloudpirates"
   chart      = "postgres"
-  version    = "0.8.0"
+  version    = "0.13.4"
   namespace  = "example"
 
   set {
@@ -15,7 +15,12 @@ resource "helm_release" "postgresql" {
     name  = "initdb.scripts.00_pg_statements\\.sql"
     value = "CREATE EXTENSION pg_stat_statements;"
   }
-  
+
+  set {
+    name  = "startupProbe.enabled"
+    value = false
+  }
+
   set {
     name  = "auth.database"
     value = "main"
@@ -28,6 +33,7 @@ resource "helm_release" "postgresql" {
     name  = "auth.password"
     value = random_password.postgresql_password.result
   }
+
 
 }
 
