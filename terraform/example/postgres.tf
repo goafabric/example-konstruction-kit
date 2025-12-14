@@ -25,15 +25,16 @@ resource "helm_release" "postgresql" {
     name  = "auth.database"
     value = "main"
   }
+
   set_sensitive {
     name  = "auth.username"
     value = "main"
   }
+
   set_sensitive {
     name  = "auth.password"
     value = random_password.postgresql_password.result
   }
-
 
 }
 
