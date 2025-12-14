@@ -1,4 +1,6 @@
 # 1.4.3
+- upgrade to kind kubernetes 1.34
+- upgrade to postgres 18.1
 
 # 1.4.3
 - uprade to istio 1.28.0
