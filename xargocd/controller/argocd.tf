@@ -57,37 +57,37 @@ resource "helm_release" "argocd" {
 }
 
 
-resource "kubernetes_manifest" "argocd-ingress" {
-  depends_on = [helm_release.argocd]
-  manifest   = yamldecode(<<-EOF
-  kind: Ingress
-  apiVersion: networking.k8s.io/v1
-  metadata:
-    name: argocd-ingress
-    namespace: argocd
-    annotations:
-      cert-manager.io/cluster-issuer: my-cluster-issuer
-      konghq.com/strip-path: 'true'
-  spec:
-    ingressClassName: kong
-    tls:
-      - hosts:
-          - ${var.hostname}
-        secretName: root-certificate
-    rules:
-      - host: ${var.hostname}
-        http:
-          paths:
-            - path: /argocd
-              pathType: ImplementationSpecific
-              backend:
-                service:
-                  name: argocd-server
-                  port:
-                    number: 80
-  EOF
-  )
-}
+# resource "kubernetes_manifest" "argocd-ingress" {
+#   depends_on = [helm_release.argocd]
+#   manifest   = yamldecode(<<-EOF
+#   kind: Ingress
+#   apiVersion: networking.k8s.io/v1
+#   metadata:
+#     name: argocd-ingress
+#     namespace: argocd
+#     annotations:
+#       cert-manager.io/cluster-issuer: my-cluster-issuer
+#       konghq.com/strip-path: 'true'
+#   spec:
+#     ingressClassName: kong
+#     tls:
+#       - hosts:
+#           - ${var.hostname}
+#         secretName: root-certificate
+#     rules:
+#       - host: ${var.hostname}
+#         http:
+#           paths:
+#             - path: /argocd
+#               pathType: ImplementationSpecific
+#               backend:
+#                 service:
+#                   name: argocd-server
+#                   port:
+#                     number: 80
+#   EOF
+#   )
+# }
 
 resource "kubernetes_manifest" "argocd-route" {
   manifest   = yamldecode(<<-EOF
