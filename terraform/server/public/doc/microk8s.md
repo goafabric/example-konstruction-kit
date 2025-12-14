@@ -2,7 +2,7 @@
 multipass launch --name microk8s --memory 8G --cpus 6 --disk 10G
 
 # Microk8s Install
-sudo snap install microk8s --classic --channel=1.32/stable
+sudo snap install microk8s --classic --channel=1.34/stable
 
 # Microk8s Addons
 sudo microk8s enable hostpath-storage

@@ -16,12 +16,12 @@ function up() {
     time(
     apply ../../infra/namespaces/
     apply ../../infra/network-policies/
-
-    apply ../../infra/istio
-
     apply ../../infra/ingress/cert-manager
     apply ../../infra/ingress/$INGRESS_TYPE
     apply ../../infra/dashboard
+
+    apply ../../infra/istio
+
     apply ../../infra/grafana
     apply ../../infra/oidc
 
