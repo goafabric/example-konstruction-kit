@@ -4,10 +4,9 @@ resource "helm_release" "apisix" {
   chart      = "apisix"
   version    = "2.11.0"
   namespace  = "ingress-apisix"
-  timeout    = "120"
+  timeout    = "90"
   create_namespace = false
   #depends_on = [helm_release.etcd]
-
 
   set {
     name  = "service.type"
@@ -112,18 +111,12 @@ resource "helm_release" "apisix" {
 
   set {
     name  = "externalEtcd.host[0]"
-    value = "http://etcd.ingress-apisix:2379"
+    value = "http://apisix-etcd.ingress-apisix:2379"
   }
 
   set {
     name = "externalEtcd.user"
     value = ""
-  }
-
-  # super secret flag required for apisix helm chart 2.12+, https://github.com/apache/apisix-ingress-controller/issues/2508
-  set {
-    name = "ingress-controller.gatewayProxy.createDefault"
-    value = true
   }
 
   # initcontainer
@@ -133,10 +126,16 @@ resource "helm_release" "apisix" {
       image = "curlimages/curl:8.5.0"
       command = ["sh", "-c"]
       args = [
-        "echo waiting for etcd...; until curl -sf http://etcd.ingress-apisix:2379/health; do sleep 2; done; echo etcd is healthy"
+        "echo waiting for etcd...; until curl -sf http://apisix-etcd.ingress-apisix:2379/health; do sleep 2; done; echo etcd is healthy"
       ]
     }]
   })]
+
+  # super secret flag required for apisix helm chart 2.12+, https://github.com/apache/apisix-ingress-controller/issues/2508
+  set {
+    name = "ingress-controller.gatewayProxy.createDefault"
+    value = true
+  }
 
 }
 

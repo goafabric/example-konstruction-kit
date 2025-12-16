@@ -1,9 +1,9 @@
-resource "helm_release" "etcd" {
-  name       = "etcd"
+resource "helm_release" "apisix-etcd" {
+  name       = "apisix-etcd"
   repository = "oci://registry-1.docker.io/cloudpirates"
   chart      = "etcd"
   namespace  = "ingress-apisix"
-  version    = "0.3.2"
+  version    = "0.4.0"
   timeout = 60
 
   set {
