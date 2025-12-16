@@ -24,6 +24,17 @@ resource "helm_release" "apisix" {
   }
 
   set {
+    name  = "ingress-controller.enabled"
+    value = "true"
+  }
+
+  set {
+    name  = "apisix.nginx.logs.errorLogLevel"
+    value = "warn"
+  }
+
+  # tls /ssl
+  set {
     name  = "apisix.ssl.enabled"
     value = "true"
   }
@@ -42,6 +53,19 @@ resource "helm_release" "apisix" {
     name  = "apisix.pluginAttrs.redirect.https_port"
     value = "443"
   }
+
+  set {
+    name  = "podSecurityContext.sysctls[0].name"
+    value = "net.ipv4.ip_unprivileged_port_start"
+  }
+
+  set {
+    name  = "podSecurityContext.sysctls[0].value"
+    value = "0"
+    type  = "string"
+  }
+
+  # plugins
 
   set_list {
     name  = "apisix.plugins"
@@ -63,6 +87,7 @@ resource "helm_release" "apisix" {
     value = "tempo.grafana:4318"
   }
 
+  # http config mainly for oidc / jwt to work
   set {
     name  = "apisix.nginx.configurationSnippet.httpStart"
     value = <<-EOF
@@ -82,27 +107,6 @@ resource "helm_release" "apisix" {
     EOF
   }
 
-  set {
-    name  = "podSecurityContext.sysctls[0].name"
-    value = "net.ipv4.ip_unprivileged_port_start"
-  }
-
-  set {
-    name  = "podSecurityContext.sysctls[0].value"
-    value = "0"
-    type  = "string"
-  }
-
-  set {
-    name  = "ingress-controller.enabled"
-    value = "true"
-  }
-
-  set {
-    name  = "apisix.nginx.logs.errorLogLevel"
-    value = "warn"
-  }
-
   # etcd
   set {
     name  = "etcd.enabled"
@@ -119,7 +123,7 @@ resource "helm_release" "apisix" {
     value = ""
   }
 
-  # initcontainer
+  # initcontainer to wait for etcd, uses curl to work also in ambient mode
   values = [yamlencode({
     extraInitContainers = [{
       name  = "wait-for-etcd"
