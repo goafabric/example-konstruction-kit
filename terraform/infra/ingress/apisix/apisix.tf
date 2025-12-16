@@ -6,7 +6,7 @@ resource "helm_release" "apisix" {
   namespace  = "ingress-apisix"
   timeout    = "120"
   create_namespace = false
-  depends_on = [helm_release.etcd]
+  #depends_on = [helm_release.etcd]
 
 
   set {
@@ -125,6 +125,18 @@ resource "helm_release" "apisix" {
     name = "ingress-controller.gatewayProxy.createDefault"
     value = true
   }
+
+  # initcontainer
+  values = [yamlencode({
+    extraInitContainers = [{
+      name  = "wait-for-etcd"
+      image = "curlimages/curl:8.5.0"
+      command = ["sh", "-c"]
+      args = [
+        "echo waiting for etcd...; until curl -sf http://etcd.ingress-apisix:2379/health; do sleep 2; done; echo etcd is healthy"
+      ]
+    }]
+  })]
 
 }
 
