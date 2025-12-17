@@ -2,6 +2,835 @@ apiVersion: v1
 binaryData:
   favicon.ico: iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2JpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0idXVpZDpFRTE2MTIxNzQ3RUVERTExQkM5RkE3MDBBNkY0RDhDMSIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDpGMUMxRDM5QjBGNzAxMUUzODE3RkU5MEMxMzBDODE2MCIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpGMUMxRDM5QTBGNzAxMUUzODE3RkU5MEMxMzBDODE2MCIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M2IChNYWNpbnRvc2gpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6MkRDNDcwNzY0NDIwNjgxMTgyMkFFRkMyQjhBOEY0MEIiIHN0UmVmOmRvY3VtZW50SUQ9InV1aWQ6RUUxNjEyMTc0N0VFREUxMUJDOUZBNzAwQTZGNEQ4QzEiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz4SMlYtAAACRUlEQVR42oyTXUiTYRTH/+9a9jGTZvMjZZuVzhGrnEmNGmkZVFBESFdhgpYX4VUlUSnRVRfSRVIXQkJB1EWRUFBUOC1mRSNyi+xDg2hbCzc/2ObXyK3/8/a+gZXmgR/PeT7+D+c55zlSzfUy/GFrSS3ZRQpIggyQDnKFxMhe8oIMaYTi2mGPGLSkhbwlJ4iNpJNMsolcIF6yjlwkx4ROUiKQyG1Shf/bhC4tY8lYIhqkb9Ioi2fmKYYQH995CQs02nxOneICE2mejzg3w4ymPe1YY7DBlucQS5Xi3TVk0VzC/OWrsa1wPyqtB6HVLJTXNpoq4A24nVolozPMqC+C3ViO4pwSmPQWLFusn7GfSiVRmLVeuFZxwSp1Y4VuJeqd5ym0zxpNOP4NBl0uDOl5YmrQKKWSrXbL2TnFE4k4fMEeSJJGfUpSXBBQDxTnlM4qHhoL4fLTUyg1VvyKJCaqiC/igpfqocFY4C/hdPIHXB/voPn+IWy3VEG/NEtef+3vEoNL5OAqqRazjt42HNl6Tg5xMOpHb8CN7v67GB2P8HlNKDPvkMWxyRE8fHdDuLfUn3iP7CvK3sC3peH9d8/vCES2qzc3wpxpleeReAit3SfxdfjTB9E3WuVcnSXb/ur07rYCib+65UkDopPDOFBSL+dlfCqGN/5n8AbdeP75ARLTU0lqGtgLKa3STOGBsK+ObqdcZyThH+lHa1fjv/I5So5S06l2oBqqi4PjUd9NR1/II2pZrnxzkegI8ZHHpJ3iiKr7KcAAO/GrgtdfsmsAAAAASUVORK5CYII=
 data:
+  config-backstage.json: |
+    {
+      "entries": [
+
+        {
+          "timeline": [
+            {
+              "moved": 0,
+              "ringId": "adopt",
+              "date": "2025-11-01T00:00:00.000Z"
+            }
+          ],
+          "key": "archunit",
+          "id": "archunit",
+          "title": "Archunit",
+          "quadrant": "languages"
+        },
+        {
+          "timeline": [
+            {
+              "moved": 0,
+              "ringId": "adopt",
+              "date": "2025-11-01T00:00:00.000Z"
+            }
+          ],
+          "key": "java",
+          "id": "java",
+          "title": "Java",
+          "quadrant": "languages"
+        },
+        {
+          "timeline": [
+            {
+              "moved": 0,
+              "ringId": "adopt",
+              "date": "2025-11-01T00:00:00.000Z"
+            }
+          ],
+          "key": "kotlin",
+          "id": "kotlin",
+          "title": "Kotlin",
+          "quadrant": "languages"
+        },
+        {
+          "timeline": [
+            {
+              "moved": 0,
+              "ringId": "adopt",
+              "date": "2025-11-01T00:00:00.000Z"
+            }
+          ],
+          "key": "openapi",
+          "id": "openapi",
+          "title": "OpenAPI",
+          "quadrant": "languages"
+        },
+        {
+          "timeline": [
+            {
+              "moved": 0,
+              "ringId": "adopt",
+              "date": "2025-11-01T00:00:00.000Z"
+            }
+          ],
+          "key": "opentelemetry",
+          "id": "opentelemetry",
+          "title": "Opentelemetry",
+          "quadrant": "languages"
+        },
+        {
+          "timeline": [
+            {
+              "moved": 0,
+              "ringId": "adopt",
+              "date": "2025-11-01T00:00:00.000Z"
+            }
+          ],
+          "key": "reactjs",
+          "id": "reactjs",
+          "title": "ReactJS",
+          "quadrant": "languages"
+        },
+        {
+          "timeline": [
+            {
+              "moved": 0,
+              "ringId": "adopt",
+              "date": "2025-11-01T00:00:00.000Z"
+            }
+          ],
+          "key": "springbatch",
+          "id": "springbatch",
+          "title": "Spring Batch",
+          "quadrant": "languages"
+        },
+        {
+          "timeline": [
+            {
+              "moved": 0,
+              "ringId": "adopt",
+              "date": "2025-11-01T00:00:00.000Z"
+            }
+          ],
+          "key": "springboot",
+          "id": "springboot",
+          "title": "Spring Boot",
+          "quadrant": "languages"
+        },
+        {
+          "timeline": [
+            {
+              "moved": 0,
+              "ringId": "adopt",
+              "date": "2025-11-01T00:00:00.000Z"
+            }
+          ],
+          "key": "springdata",
+          "id": "springdata",
+          "title": "Spring Data",
+          "quadrant": "languages"
+        },
+        {
+          "timeline": [
+            {
+              "moved": 0,
+              "ringId": "adopt",
+              "date": "2025-11-01T00:00:00.000Z"
+            }
+          ],
+          "key": "typescript",
+          "id": "typescript",
+          "title": "Typescript",
+          "quadrant": "languages"
+        },
+        {
+          "timeline": [
+            {
+              "moved": 0,
+              "ringId": "trial",
+              "date": "2025-11-01T00:00:00.000Z"
+            }
+          ],
+          "key": "adr",
+          "id": "adr",
+          "title": "Arch Decision Records",
+          "quadrant": "languages"
+        },
+        {
+          "timeline": [
+            {
+              "moved": 0,
+              "ringId": "assess",
+              "date": "2025-11-01T00:00:00.000Z"
+            }
+          ],
+          "key": "jobrunr",
+          "id": "jobrunr",
+          "title": "JobRunr",
+          "quadrant": "languages"
+        },
+        {
+          "timeline": [
+            {
+              "moved": 0,
+              "ringId": "assess",
+              "date": "2025-11-01T00:00:00.000Z"
+            }
+          ],
+          "key": "langchain4j",
+          "id": "langchain4j",
+          "title": "Langchain4J",
+          "quadrant": "languages"
+        },
+        {
+          "timeline": [
+            {
+              "moved": 0,
+              "ringId": "assess",
+              "date": "2025-11-01T00:00:00.000Z"
+            }
+          ],
+          "key": "quarkus",
+          "id": "quarkus",
+          "title": "Quarkus",
+          "quadrant": "languages"
+        },
+        {
+          "timeline": [
+            {
+              "moved": 0,
+              "ringId": "hold",
+              "date": "2025-11-01T00:00:00.000Z"
+            }
+          ],
+          "key": "graphql",
+          "id": "graphql",
+          "title": "GraphQL",
+          "quadrant": "languages"
+        },
+        {
+          "timeline": [
+            {
+              "moved": 0,
+              "ringId": "hold",
+              "date": "2025-11-01T00:00:00.000Z"
+            }
+          ],
+          "key": "lombok",
+          "id": "lombok",
+          "title": "Lombok",
+          "quadrant": "languages"
+        },
+        {
+          "timeline": [
+            {
+              "moved": 0,
+              "ringId": "hold",
+              "date": "2025-11-01T00:00:00.000Z"
+            }
+          ],
+          "key": "springai",
+          "id": "springai",
+          "title": "SpringAI",
+          "quadrant": "languages"
+        },
+        {
+          "timeline": [
+            {
+              "moved": 0,
+              "ringId": "hold",
+              "date": "2025-11-01T00:00:00.000Z"
+            }
+          ],
+          "key": "springcloud",
+          "id": "springcloud",
+          "title": "Spring Cloud",
+          "quadrant": "languages"
+        },
+        {
+          "timeline": [
+            {
+              "moved": 0,
+              "ringId": "hold",
+              "date": "2025-11-01T00:00:00.000Z"
+            }
+          ],
+          "key": "springintegration",
+          "id": "springintegration",
+          "title": "Spring Integration",
+          "quadrant": "languages"
+        },
+
+
+
+
+        {
+          "timeline": [
+            {
+              "moved": 0,
+              "ringId": "adopt",
+              "date": "2025-11-01T00:00:00.000Z"
+            }
+          ],
+          "key": "apisix",
+          "id": "apisix",
+          "title": "Apisix Gateway",
+          "quadrant": "infrastructure"
+        },
+        {
+          "timeline": [
+            {
+              "moved": 0,
+              "ringId": "adopt",
+              "date": "2025-11-01T00:00:00.000Z"
+            }
+          ],
+          "key": "argocd",
+          "id": "argocd",
+          "title": "ArgoCD",
+          "quadrant": "infrastructure"
+        },
+        {
+          "timeline": [
+            {
+              "moved": 0,
+              "ringId": "adopt",
+              "date": "2025-11-01T00:00:00.000Z"
+            }
+          ],
+          "key": "azureaks",
+          "id": "azureaks",
+          "title": "Azure AKS",
+          "quadrant": "infrastructure"
+        },
+        {
+          "timeline": [
+            {
+              "moved": 0,
+              "ringId": "adopt",
+              "date": "2025-11-01T00:00:00.000Z"
+            }
+          ],
+          "key": "docker",
+          "id": "docker",
+          "title": "Docker",
+          "quadrant": "infrastructure"
+        },
+        {
+          "timeline": [
+            {
+              "moved": 0,
+              "ringId": "adopt",
+              "date": "2025-11-01T00:00:00.000Z"
+            }
+          ],
+          "key": "gradle",
+          "id": "gradle",
+          "title": "Gradle",
+          "quadrant": "infrastructure"
+        },
+        {
+          "timeline": [
+            {
+              "moved": 0,
+              "ringId": "adopt",
+              "date": "2025-11-01T00:00:00.000Z"
+            }
+          ],
+          "key": "grafana",
+          "id": "grafana",
+          "title": "Grafana",
+          "quadrant": "infrastructure"
+        },
+        {
+          "timeline": [
+            {
+              "moved": 0,
+              "ringId": "adopt",
+              "date": "2025-11-01T00:00:00.000Z"
+            }
+          ],
+          "key": "helm",
+          "id": "helm",
+          "title": "Helm",
+          "quadrant": "infrastructure"
+        },
+        {
+          "timeline": [
+            {
+              "moved": 0,
+              "ringId": "adopt",
+              "date": "2025-11-01T00:00:00.000Z"
+            }
+          ],
+          "key": "kubernetes",
+          "id": "kubernetes",
+          "title": "Kubernetes",
+          "quadrant": "infrastructure"
+        },
+        {
+          "timeline": [
+            {
+              "moved": 0,
+              "ringId": "adopt",
+              "date": "2025-11-01T00:00:00.000Z"
+            }
+          ],
+          "key": "loki",
+          "id": "loki",
+          "title": "Loki",
+          "quadrant": "infrastructure"
+        },
+        {
+          "timeline": [
+            {
+              "moved": 0,
+              "ringId": "adopt",
+              "date": "2025-11-01T00:00:00.000Z"
+            }
+          ],
+          "key": "renovate",
+          "id": "renovate",
+          "title": "Renovate",
+          "quadrant": "infrastructure"
+        },
+        {
+          "timeline": [
+            {
+              "moved": 0,
+              "ringId": "adopt",
+              "date": "2025-11-01T00:00:00.000Z"
+            }
+          ],
+          "key": "tempo",
+          "id": "tempo",
+          "title": "Tempo",
+          "quadrant": "infrastructure"
+        },
+        {
+          "timeline": [
+            {
+              "moved": 0,
+              "ringId": "adopt",
+              "date": "2025-11-01T00:00:00.000Z"
+            }
+          ],
+          "key": "terraform",
+          "id": "terraform",
+          "title": "Terraform",
+          "quadrant": "infrastructure"
+        },
+        {
+          "timeline": [
+            {
+              "moved": 0,
+              "ringId": "trial",
+              "date": "2025-11-01T00:00:00.000Z"
+            }
+          ],
+          "key": "backstage",
+          "id": "backstage",
+          "title": "Backstage",
+          "quadrant": "infrastructure"
+        },
+        {
+          "timeline": [
+            {
+              "moved": 0,
+              "ringId": "trial",
+              "date": "2025-11-01T00:00:00.000Z"
+            }
+          ],
+          "key": "istio",
+          "id": "istio",
+          "title": "Istio Abmbient Mesh",
+          "quadrant": "infrastructure"
+        },
+        {
+          "timeline": [
+            {
+              "moved": 0,
+              "ringId": "trial",
+              "date": "2025-11-01T00:00:00.000Z"
+            }
+          ],
+          "key": "k6",
+          "id": "k6",
+          "title": "K6",
+          "quadrant": "infrastructure"
+        },
+        {
+          "timeline": [
+            {
+              "moved": 0,
+              "ringId": "hold",
+              "date": "2025-11-01T00:00:00.000Z"
+            }
+          ],
+          "key": "kong",
+          "id": "kong",
+          "title": "Kong Gateway",
+          "quadrant": "infrastructure"
+        },
+        {
+          "timeline": [
+            {
+              "moved": 0,
+              "ringId": "assess",
+              "date": "2025-11-01T00:00:00.000Z"
+            }
+          ],
+          "key": "openrewrite",
+          "id": "openrewrite",
+          "title": "Openrewrite",
+          "quadrant": "infrastructure"
+        },
+        {
+          "timeline": [
+            {
+              "moved": 0,
+              "ringId": "assess",
+              "date": "2025-11-01T00:00:00.000Z"
+            }
+          ],
+          "key": "telepresence",
+          "id": "telepresence",
+          "title": "Telepresence",
+          "quadrant": "infrastructure"
+        },
+        {
+          "timeline": [
+            {
+              "moved": 0,
+              "ringId": "hold",
+              "date": "2025-11-01T00:00:00.000Z"
+            }
+          ],
+          "key": "ansible",
+          "id": "ansible",
+          "title": "Ansible",
+          "quadrant": "infrastructure"
+        },
+        {
+          "timeline": [
+            {
+              "moved": 0,
+              "ringId": "hold",
+              "date": "2025-11-01T00:00:00.000Z"
+            }
+          ],
+          "key": "jaeger",
+          "id": "jaeger",
+          "title": "Jaeger",
+          "quadrant": "infrastructure"
+        },
+        {
+          "timeline": [
+            {
+              "moved": 0,
+              "ringId": "hold",
+              "date": "2025-11-01T00:00:00.000Z"
+            }
+          ],
+          "key": "jenkins",
+          "id": "jenkins",
+          "title": "Jenkins",
+          "quadrant": "infrastructure"
+        },
+        {
+          "timeline": [
+            {
+              "moved": 0,
+              "ringId": "hold",
+              "date": "2025-11-01T00:00:00.000Z"
+            }
+          ],
+          "key": "jmeter",
+          "id": "jmeter",
+          "title": "Jmeter",
+          "quadrant": "infrastructure"
+        },
+        {
+          "timeline": [
+            {
+              "moved": 0,
+              "ringId": "hold",
+              "date": "2025-11-01T00:00:00.000Z"
+            }
+          ],
+          "key": "linkerd",
+          "id": "linkerd",
+          "title": "Linkerd",
+          "quadrant": "infrastructure"
+        },
+        {
+          "timeline": [
+            {
+              "moved": 0,
+              "ringId": "hold",
+              "date": "2025-11-01T00:00:00.000Z"
+            }
+          ],
+          "key": "maven",
+          "id": "maven",
+          "title": "Maven",
+          "quadrant": "infrastructure"
+        },
+
+
+
+
+        {
+          "timeline": [
+            {
+              "moved": 0,
+              "ringId": "adopt",
+              "date": "2025-11-01T00:00:00.000Z"
+            }
+          ],
+          "key": "kafka",
+          "id": "kafka",
+          "title": "Kafka",
+          "quadrant": "data"
+        },
+        {
+          "timeline": [
+            {
+              "moved": 0,
+              "ringId": "adopt",
+              "date": "2025-11-01T00:00:00.000Z"
+            }
+          ],
+          "key": "postgres",
+          "id": "postgres",
+          "title": "Postgres",
+          "quadrant": "data"
+        },
+        {
+          "timeline": [
+            {
+              "moved": 0,
+              "ringId": "adopt",
+              "date": "2025-11-01T00:00:00.000Z"
+            }
+          ],
+          "key": "s3",
+          "id": "s3",
+          "title": "S3 / Blob Storage",
+          "quadrant": "data"
+        },
+        {
+          "timeline": [
+            {
+              "moved": 0,
+              "ringId": "adopt",
+              "date": "2025-11-01T00:00:00.000Z"
+            }
+          ],
+          "key": "dragonfly",
+          "id": "dragonfly",
+          "title": "Dragonfly",
+          "quadrant": "data"
+        },
+
+        {
+          "timeline": [
+            {
+              "moved": 0,
+              "ringId": "hold",
+              "date": "2025-11-01T00:00:00.000Z"
+            }
+          ],
+          "key": "elasticsearch",
+          "id": "elasticsearch",
+          "title": "Elasticsearch",
+          "quadrant": "data"
+        },
+        {
+          "timeline": [
+            {
+              "moved": 0,
+              "ringId": "hold",
+              "date": "2025-11-01T00:00:00.000Z"
+            }
+          ],
+          "key": "nats",
+          "id": "nats",
+          "title": "Nats",
+          "quadrant": "data"
+        },
+        {
+          "timeline": [
+            {
+              "moved": 0,
+              "ringId": "hold",
+              "date": "2025-11-01T00:00:00.000Z"
+            }
+          ],
+          "key": "rabbitmq",
+          "id": "rabbitmq",
+          "title": "RabbitMQ",
+          "quadrant": "data"
+        },
+
+
+
+        {
+          "timeline": [
+            {
+              "moved": 0,
+              "ringId": "adopt",
+              "date": "2025-11-01T00:00:00.000Z"
+            }
+          ],
+          "key": "azurevault",
+          "id": "azurevault",
+          "title": "(Azure) Vault",
+          "quadrant": "security"
+        },
+        {
+          "timeline": [
+            {
+              "moved": 0,
+              "ringId": "adopt",
+              "date": "2025-11-01T00:00:00.000Z"
+            }
+          ],
+          "key": "certificatemanager",
+          "id": "certificatemanager",
+          "title": "Certificate Manager",
+          "quadrant": "security"
+        },
+        {
+          "timeline": [
+            {
+              "moved": 0,
+              "ringId": "adopt",
+              "date": "2025-11-01T00:00:00.000Z"
+            }
+          ],
+          "key": "networkpolicies",
+          "id": "networkpolicies",
+          "title": "Network Policies",
+          "quadrant": "security"
+        },
+        {
+          "timeline": [
+            {
+              "moved": 0,
+              "ringId": "adopt",
+              "date": "2025-11-01T00:00:00.000Z"
+            }
+          ],
+          "key": "openidconnect",
+          "id": "openidconnect",
+          "title": "OpenID connect",
+          "quadrant": "security"
+        },
+        {
+          "timeline": [
+            {
+              "moved": 0,
+              "ringId": "adopt",
+              "date": "2025-11-01T00:00:00.000Z"
+            }
+          ],
+          "key": "sonarqube",
+          "id": "sonarqube",
+          "title": "Sonarqube",
+          "quadrant": "security"
+        },
+        {
+          "timeline": [
+            {
+              "moved": 0,
+              "ringId": "adopt",
+              "date": "2025-11-01T00:00:00.000Z"
+            }
+          ],
+          "key": "volumeencryption",
+          "id": "volumeencryption",
+          "title": "Volume Encryption",
+          "quadrant": "security"
+        },
+        {
+          "timeline": [
+            {
+              "moved": 0,
+              "ringId": "trial",
+              "date": "2025-11-01T00:00:00.000Z"
+            }
+          ],
+          "key": "istiomtls",
+          "id": "istiomtls",
+          "title": "Istio Servicemesh mTLS",
+          "quadrant": "security"
+        },
+        {
+          "timeline": [
+            {
+              "moved": 0,
+              "ringId": "trial",
+              "date": "2025-11-01T00:00:00.000Z"
+            }
+          ],
+          "key": "sbom",
+          "id": "sbom",
+          "title": "Software Bill Of Materials",
+          "quadrant": "security"
+        },
+        {
+          "timeline": [
+            {
+              "moved": 0,
+              "ringId": "assess",
+              "date": "2025-11-01T00:00:00.000Z"
+            }
+          ],
+          "key": "owaspzap",
+          "id": "owaspzap",
+          "title": "Owasp Zap",
+          "quadrant": "security"
+        }
+      ],
+
+
+
+      "quadrants": [
+        {
+          "id": "security",
+          "name": "Security"
+        },
+        {
+          "id": "infrastructure",
+          "name": "Infrastructure"
+        },
+        {
+          "id": "languages",
+          "name": "Languages & Frameworks"
+        },
+        {
+          "id": "data",
+          "name": "Data"
+        }
+      ],
+
+      "rings": [
+        {
+          "id": "adopt",
+          "name": "ADOPT",
+          "color": "#5BA300"
+        },
+        {
+          "id": "trial",
+          "name": "TRIAL",
+          "color": "#009EB0"
+        },
+        {
+          "id": "assess",
+          "name": "ASSESS",
+          "color": "#C7BA00"
+        },
+        {
+          "id": "hold",
+          "name": "HOLD",
+          "color": "#E09B96"
+        }
+      ]
+    }
   config.json: |
     {
       "date": "2025.3",
@@ -206,7 +1035,7 @@ data:
         },
         {
           "quadrant": 1,
-          "ring": 1,
+          "ring": 3,
           "label": "Kong Gateway",
           "active": true,
           "moved": 0
@@ -321,7 +1150,7 @@ data:
         {
           "quadrant": 3,
           "ring": 0,
-          "label": "S3",
+          "label": "S3 / Blob Storage",
           "active": true,
           "moved": 0
         },
@@ -334,7 +1163,7 @@ data:
         },
         {
           "quadrant": 3,
-          "ring": 1,
+          "ring": 0,
           "label": "Dragonfly",
           "active": true,
           "moved": 1
@@ -765,8 +1594,8 @@ data:
     {\n    ringDescriptionsTable();\n  }\n}\n"
 kind: ConfigMap
 metadata:
-  creationTimestamp: "2025-09-01T12:32:20Z"
+  creationTimestamp: "2025-12-17T07:26:23Z"
   name: tech-radar-data-files
   namespace: dashboard
-  resourceVersion: "100651153"
-  uid: 9bf32753-e6e0-424e-a511-a9b472309426
+  resourceVersion: "844226"
+  uid: 1d3cb476-d92a-4c25-99d8-8ccdfe9544c3
