@@ -6,6 +6,6 @@ type: application
 
 version: 1.4.3
 
-appVersion: "1.2.1-SNAPSHOT"
+appVersion: "1.2.1"
 
 
