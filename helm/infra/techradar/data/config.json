@@ -201,7 +201,7 @@
     },
     {
       "quadrant": 1,
-      "ring": 1,
+      "ring": 3,
       "label": "Kong Gateway",
       "active": true,
       "moved": 0
@@ -329,7 +329,7 @@
     },
     {
       "quadrant": 3,
-      "ring": 1,
+      "ring": 0,
       "label": "Dragonfly",
       "active": true,
       "moved": 1
