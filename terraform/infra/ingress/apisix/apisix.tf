@@ -2,7 +2,7 @@ resource "helm_release" "apisix" {
   name       = "apisix"
   repository = "https://apache.github.io/apisix-helm-chart"
   chart      = "apisix"
-  version    = "2.12.5"
+  version    = "2.11.0" # "2.12.5"
   namespace  = "ingress-apisix"
   timeout    = "90"
   create_namespace = false
@@ -144,7 +144,7 @@ resource "helm_release" "apisix" {
 }
 
 resource "helm_release" "apisix-tls" {
-  depends_on = [helm_release.apisix]
+  depends_on = [terraform_data.re-init_ingress_controller]
   name       = "apisix-tls"
   repository = "https://wiremind.github.io/wiremind-helm-charts/"
   chart      = "raw"
@@ -170,14 +170,14 @@ resource "helm_release" "apisix-tls" {
 
 #reload ingress-controller to avoid browser "ERR_SSL_PROTOCOL_ERROR" / failed to find SNI,
 #could be due to connection errors to etcd or ingress-apisix -> apisix(-admin) in istio ambient mode, because apisix uses an init container with nc which will fail / always return true in istio ambient
-# resource "terraform_data" "re-init_ingress_controller" {
-#   depends_on = [helm_release.apisix]
-#   provisioner "local-exec" {
-#     when    = create
-#     command = "kubectl delete pod -l app.kubernetes.io/name=ingress-controller -n ingress-apisix"
-#     #command = "kubectl -n ingress-apisix patch deployment apisix-ingress-controller --type='json' -p='[{\"op\":\"replace\",\"path\":\"/spec/template/spec/initContainers/0/image\",\"value\":\"curlimages/curl:8.5.0\"},{\"op\":\"replace\",\"path\":\"/spec/template/spec/initContainers/0/command\",\"value\":[\"sh\",\"-c\",\"until curl -s -o /dev/null http://apisix-admin.ingress-apisix.svc.cluster.local:9180; do echo waiting for apisix-admin; sleep 2; done\"]}]'"
-#   }
-# }
+resource "terraform_data" "re-init_ingress_controller" {
+  depends_on = [helm_release.apisix]
+  provisioner "local-exec" {
+    when    = create
+    command = "kubectl delete pod -l app.kubernetes.io/name=ingress-controller -n ingress-apisix"
+    #command = "kubectl -n ingress-apisix patch deployment apisix-ingress-controller --type='json' -p='[{\"op\":\"replace\",\"path\":\"/spec/template/spec/initContainers/0/image\",\"value\":\"curlimages/curl:8.5.0\"},{\"op\":\"replace\",\"path\":\"/spec/template/spec/initContainers/0/command\",\"value\":[\"sh\",\"-c\",\"until curl -s -o /dev/null http://apisix-admin.ingress-apisix.svc.cluster.local:9180; do echo waiting for apisix-admin; sleep 2; done\"]}]'"
+  }
+}
 
 #kubectl -n ingress-apisix patch deployment apisix-ingress-controller --type='json' -p='[{"op":"replace","path":"/spec/template/spec/initContainers/0/image","value":"curlimages/curl:8.5.0"},{"op":"replace","path":"/spec/template/spec/initContainers/0/command","value":["sh","-c","until curl -s -o /dev/null http://apisix-admin.ingress-apisix.svc.cluster.local:9180; do echo waiting for apisix-admin; sleep 2; done"]}]'
 #kubectl -n ingress-apisix patch deployment apisix-ingress-controller --type='json' -p='[{"op":"replace","path":"/spec/template/spec/initContainers/0/image","value":"busybox:1.28"},{"op":"replace","path":"/spec/template/spec/initContainers/0/command","value":["sh","-c","until nc -z apisix-admin.ingress-apisix.svc.cluster.local 9180; do echo waiting for apisix-admin; sleep 2; done"]}]'
