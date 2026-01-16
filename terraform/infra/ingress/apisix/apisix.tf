@@ -136,10 +136,10 @@ resource "helm_release" "apisix" {
   })]
 
   # super secret flag required for apisix helm chart 2.12+, https://github.com/apache/apisix-ingress-controller/issues/2508
-  # set {
-  #   name = "ingress-controller.gatewayProxy.createDefault"
-  #   value = true
-  # }
+  set {
+    name = "ingress-controller.gatewayProxy.createDefault"
+    value = true
+  }
 
 }
 
