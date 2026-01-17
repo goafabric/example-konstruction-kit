@@ -2,7 +2,7 @@ resource "helm_release" "apisix" {
   name       = "apisix"
   repository = "https://apache.github.io/apisix-helm-chart"
   chart      = "apisix"
-  version    = "2.11.0" #"2.12.5"
+  version    = "2.12.5"
   namespace  = "ingress-apisix"
   timeout    = "90"
   create_namespace = false
@@ -175,9 +175,6 @@ resource "terraform_data" "re-init_ingress_controller" {
   provisioner "local-exec" {
     when    = create
     command = "kubectl delete pod -l app.kubernetes.io/name=ingress-controller -n ingress-apisix"
-    #command = "kubectl -n ingress-apisix patch deployment apisix-ingress-controller --type='json' -p='[{\"op\":\"replace\",\"path\":\"/spec/template/spec/initContainers/0/image\",\"value\":\"curlimages/curl:8.5.0\"},{\"op\":\"replace\",\"path\":\"/spec/template/spec/initContainers/0/command\",\"value\":[\"sh\",\"-c\",\"until curl -s -o /dev/null http://apisix-admin.ingress-apisix.svc.cluster.local:9180; do echo waiting for apisix-admin; sleep 2; done\"]}]'"
   }
 }
 
-#kubectl -n ingress-apisix patch deployment apisix-ingress-controller --type='json' -p='[{"op":"replace","path":"/spec/template/spec/initContainers/0/image","value":"curlimages/curl:8.5.0"},{"op":"replace","path":"/spec/template/spec/initContainers/0/command","value":["sh","-c","until curl -s -o /dev/null http://apisix-admin.ingress-apisix.svc.cluster.local:9180; do echo waiting for apisix-admin; sleep 2; done"]}]'
-#kubectl -n ingress-apisix patch deployment apisix-ingress-controller --type='json' -p='[{"op":"replace","path":"/spec/template/spec/initContainers/0/image","value":"busybox:1.28"},{"op":"replace","path":"/spec/template/spec/initContainers/0/command","value":["sh","-c","until nc -z apisix-admin.ingress-apisix.svc.cluster.local 9180; do echo waiting for apisix-admin; sleep 2; done"]}]'

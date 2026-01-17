@@ -19,3 +19,11 @@ resource "helm_release" "apisix-etcd" {
     value = 3
   }
 }
+
+resource "terraform_data" "remove_etc_pvc" {
+
+  provisioner "local-exec" {
+    when = destroy
+    command = "kubectl delete pvc data-apisix-etcd-0 -n ingress-apisix; kubectl delete pvc data-apisix-etcd-1 -n ingress-apisix; kubectl delete pvc data-apisix-etcd-2 -n ingress-apisix"
+  }
+}
