@@ -20,7 +20,7 @@ resource "helm_release" "apisix-etcd" {
   }
 }
 
-resource "terraform_data" "remove_etc_pvc" {
+resource "terraform_data" "remove_etcd_pvc" {
 
   provisioner "local-exec" {
     when = destroy
