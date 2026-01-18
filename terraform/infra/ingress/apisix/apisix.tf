@@ -141,6 +141,16 @@ resource "helm_release" "apisix" {
     value = true
   }
 
+  set {
+    name = "ingresscontroller.config.kubernetes.defaultIngressClass"
+    value = true
+  }
+
+  set {
+    name = "ingress-controller.config.kubernetes.defaultIngressClass"
+    value = true
+  }
+
   # set {
   #   name = "ingress-controller.apisix.adminService.namespace"
   #   value = "ingress-apisix"
