@@ -5,3 +5,5 @@ kubectl -n ingress-apisix get cm apisix -o yaml | grep key
 curl http://apisix-admin.ingress-apisix:9180/apisix/admin/routes -H "X-API-KEY: $API_KEY"
 
 curl http://apisix-admin.ingress-apisix:9180/apisix/admin/upstreams/38d90fbb -H "X-API-KEY: $API_KEY"
+
+https://apisix.apache.org/docs/ingress-controller/install/
