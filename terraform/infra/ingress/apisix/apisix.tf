@@ -2,7 +2,7 @@ resource "helm_release" "apisix" {
   name       = "apisix"
   repository = "https://apache.github.io/apisix-helm-chart"
   chart      = "apisix"
-  version    = "2.11.0" #"2.12.5"
+  version    = "2.12.5"
   namespace  = "ingress-apisix"
   timeout    = "90"
   create_namespace = false
@@ -140,6 +140,11 @@ resource "helm_release" "apisix" {
     name = "ingress-controller.gatewayProxy.createDefault"
     value = true
   }
+
+  # set {
+  #   name = "ingress-controller.apisix.adminService.namespace"
+  #   value = "ingress-apisix"
+  # }
 
 }
 
