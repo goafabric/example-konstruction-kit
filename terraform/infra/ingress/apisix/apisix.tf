@@ -141,6 +141,7 @@ resource "helm_release" "apisix" {
     value = true
   }
 
+  # and another one from a random bug .. thats ... https://github.com/apache/apisix-helm-chart/issues/881
   set {
     name = "ingress-controller.config.kubernetes.defaultIngressClass"
     value = true
