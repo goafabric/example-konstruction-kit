@@ -14,5 +14,10 @@ resource "helm_release" "event-dispatcher-service-application" {
     name = "oidc.enabled"
     value = local.oidc_enabled
   }
+  # secrets
+  set_sensitive {
+    name = "oidc.session.secret"
+    value = random_password.oidc_session_secret.result
+  }
 
 }

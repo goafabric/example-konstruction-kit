@@ -25,8 +25,14 @@ resource "kubernetes_manifest" "event-dispatcher-service-application" {
             {
               name  = "oidc.enabled"
               value = local.oidc_enabled
+            },
+
+            {
+              name  = "oidc.session.secret"
+              value = random_password.oidc_session_secret.result
             }
-            
+
+
           ]
         }
       }
