@@ -1,0 +1,33 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: GatewayClass
+metadata:
+  namespace: ingress-apisix
+  name: apisix
+spec:
+  controllerName: "apisix.apache.org/apisix-ingress-controller"    # 1
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: Gateway
+metadata:
+  namespace: ingress-apisix
+  name: apisix
+spec:
+  gatewayClassName: apisix
+  listeners:
+    - name: http
+      protocol: HTTP
+      port: 80                    # 2
+    - name: https
+      port: 443
+      protocol: HTTPS
+      hostname: kind.local
+      tls:
+        mode: Terminate
+        certificateRefs:
+          - kind: Secret
+            name: root-certificate
+  infrastructure:
+    parametersRef:
+      group: apisix.apache.org  # 3
+      kind: GatewayProxy        # 4
+      name: apisix-config       # 5
