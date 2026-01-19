@@ -22,4 +22,4 @@ spec:
               replacePrefixMatch: /
       backendRefs:
         - name: {{ include "application.fullname" . }}
-          port: 80
+          port: 8080

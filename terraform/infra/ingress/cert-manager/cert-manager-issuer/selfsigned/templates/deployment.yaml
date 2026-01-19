@@ -8,11 +8,9 @@ spec:
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: cluster-ca
-  namespace: cert-manager
+  name: apisix-gateway-tls
+  namespace: ingress-apisix
 spec:
-  isCA: true
-
   commonName: {{ .Values.ingress.hosts}}
   dnsNames:
     - {{ .Values.ingress.hosts}}
