@@ -20,13 +20,11 @@ spec:
             path:
               type: ReplacePrefixMatch
               replacePrefixMatch: /
-        {{ if .Values.oidc.enabled }}
         - type: ExtensionRef
           extensionRef:
             group: apisix.apache.org
             kind: PluginConfig
             name: {{ include "application.fullname" . }}-oidc
-        {{- end }}
       backendRefs:
         - name: {{ include "application.fullname" . }}
           port: 8080
@@ -43,7 +41,7 @@ spec:
       #enable: {{ .Values.oidc.enabled }}
       config:
         _meta:
-          enable: {{ .Values.oidc.enabled }}
+          disable: {{ not .Values.oidc.enabled }}
         client_id: oauth2-proxy
         client_secret: none
         discovery: https://{{ .Values.ingress.hosts }}/oidc/realms/tenant-0/.well-known/openid-configuration
