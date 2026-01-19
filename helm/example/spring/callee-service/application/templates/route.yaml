@@ -20,6 +20,36 @@ spec:
             path:
               type: ReplacePrefixMatch
               replacePrefixMatch: /
+        {{ if .Values.oidc.enabled }}
+        - type: ExtensionRef
+          extensionRef:
+            group: apisix.apache.org
+            kind: PluginConfig
+            name: {{ include "application.fullname" . }}-oidc
+        {{- end }}
       backendRefs:
         - name: {{ include "application.fullname" . }}
           port: 8080
+
+---
+apiVersion: apisix.apache.org/v1alpha1
+kind: PluginConfig
+metadata:
+  #namespace: ingress-apisix
+  name: {{ include "application.fullname" . }}-oidc
+spec:
+  plugins:
+    - name: openid-connect
+      #enable: {{ .Values.oidc.enabled }}
+      config:
+        client_id: oauth2-proxy
+        client_secret: none
+        discovery: https://{{ .Values.ingress.hosts }}/oidc/realms/tenant-0/.well-known/openid-configuration
+        access_token_in_authorization_header: false
+        set_id_token_header: false
+        set_userinfo_header: true
+        ssl_verify: false
+        redirect_uri: "{{ .Values.ingress.paths }}/redirect_uri"
+        logout_path: "{{ .Values.ingress.paths }}/logout"
+        session:
+          secret: "{{ .Values.oidc.session.secret | default "" }}"
