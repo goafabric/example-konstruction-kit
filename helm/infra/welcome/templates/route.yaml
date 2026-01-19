@@ -5,6 +5,7 @@ metadata:
 spec:
   parentRefs:
     - name: apisix
+      namespace: ingress-apisix
       sectionName: https
   hostnames:
     - {{ .Values.ingress.hosts }}
