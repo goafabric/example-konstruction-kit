@@ -42,6 +42,8 @@ spec:
     - name: openid-connect
       #enable: {{ .Values.oidc.enabled }}
       config:
+        _meta:
+          enable: {{ .Values.oidc.enabled }}
         client_id: oauth2-proxy
         client_secret: none
         discovery: https://{{ .Values.ingress.hosts }}/oidc/realms/tenant-0/.well-known/openid-configuration
