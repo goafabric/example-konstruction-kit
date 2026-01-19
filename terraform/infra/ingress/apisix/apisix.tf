@@ -169,7 +169,7 @@ resource "helm_release" "apisix-tls" {
             - ${var.hostname}
           secret:
             name: root-certificate
-            namespace: cert-manager
+            namespace: ingress-apisx
     EOF
   ]
 }
