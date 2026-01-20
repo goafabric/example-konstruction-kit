@@ -1,27 +1,25 @@
-apiVersion: apisix.apache.org/v2
-kind: ApisixRoute
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
 metadata:
   name: {{ include "application.fullname" . }}
 spec:
-  http:
-    - name: {{ include "application.fullname" . }}
-      match:
-        hosts:
-          - {{ .Values.ingress.hosts }}
-        paths:
-          - {{ .Values.ingress.paths }}
-          - {{ .Values.ingress.paths }}/*
-      backends:
-        - serviceName: {{ include "application.fullname" . }}
-          servicePort: http
-      plugins:
-        - name: redirect
-          enable: true
-          config:
-            http_to_https: true
-        - name: proxy-rewrite
-          enable: true
-          config:
-            regex_uri:
-              - {{ .Values.ingress.paths }}/(.*)
-              - /$1
+  parentRefs:
+    - name: apisix
+      namespace: ingress-apisix
+      sectionName: https
+  hostnames:
+    - {{ .Values.ingress.hosts }}
+  rules:
+    - matches:
+        - path:
+            type: PathPrefix
+            value: {{ .Values.ingress.paths }}
+      filters:
+        - type: URLRewrite
+          urlRewrite:
+            path:
+              type: ReplacePrefixMatch
+              replacePrefixMatch: /
+      backendRefs:
+        - name: {{ include "application.fullname" . }}
+          port: 8080

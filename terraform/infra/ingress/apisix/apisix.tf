@@ -2,7 +2,7 @@ resource "helm_release" "apisix" {
   name       = "apisix"
   repository = "https://apache.github.io/apisix-helm-chart"
   chart      = "apisix"
-  version    = "2.12.5"
+  version    = "2.12.6"
   namespace  = "ingress-apisix"
   timeout    = "90"
   create_namespace = false
@@ -146,33 +146,62 @@ resource "helm_release" "apisix" {
     name = "ingress-controller.config.kubernetes.defaultIngressClass"
     value = true
   }
-
 }
 
-resource "helm_release" "apisix-tls" {
+resource "kubernetes_manifest" "apisix_gatewayclass" {
   depends_on = [terraform_data.re-init_ingress_controller]
-  name       = "apisix-tls"
-  repository = "https://wiremind.github.io/wiremind-helm-charts/"
-  chart      = "raw"
-  version    = "0.1.0"
-  values = [
-    <<-EOF
-    resources:
-      - apiVersion: apisix.apache.org/v2
-        kind: ApisixTls
-        metadata:
-          name: apisix-tls
-          namespace: ingress-apisix
-        spec:
-          ingressClassName: apisix
-          hosts:
-            - ${var.hostname}
-          secret:
-            name: root-certificate
-            namespace: ingress-apisx
-    EOF
-  ]
+
+  manifest = yamldecode(<<-EOF
+  apiVersion: gateway.networking.k8s.io/v1
+  kind: GatewayClass
+  metadata:
+    name: apisix
+  spec:
+    controllerName: apisix.apache.org/apisix-ingress-controller
+  EOF
+  )
 }
+
+resource "kubernetes_manifest" "apisix_gateway" {
+  depends_on = [kubernetes_manifest.apisix_gatewayclass]
+
+  manifest = yamldecode(<<-EOF
+  apiVersion: gateway.networking.k8s.io/v1
+  kind: Gateway
+  metadata:
+    namespace: ingress-apisix
+    name: apisix
+  spec:
+    gatewayClassName: apisix
+    listeners:
+      - name: http
+        protocol: HTTP
+        port: 80
+        allowedRoutes:
+          namespaces:
+            from: All
+      - name: https
+        port: 443
+        protocol: HTTPS
+        hostname: ${var.hostname}
+        allowedRoutes:
+          namespaces:
+            from: All
+        tls:
+          mode: Terminate
+          certificateRefs:
+            - kind: Secret
+              name: root-certificate
+    infrastructure:
+      parametersRef:
+        group: apisix.apache.org
+        kind: GatewayProxy
+        name: apisix-config
+  EOF
+  )
+}
+
+
 
 #reload ingress-controller to avoid browser "ERR_SSL_PROTOCOL_ERROR" / failed to find SNI,
 #could be due to connection errors to etcd or ingress-apisix -> apisix(-admin) in istio ambient mode, because apisix uses an init container with nc which will fail / always return true in istio ambient
