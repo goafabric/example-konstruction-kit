@@ -1,3 +1,4 @@
+# see: https://apisix.apache.org/docs/ingress-controller/reference/apisix-ingress-controller/examples/#define-controller-and-gateway
 resource "kubernetes_manifest" "apisix_gatewayclass" {
   depends_on = [helm_release.apisix] #[terraform_data.re-init_ingress_controller]
 
