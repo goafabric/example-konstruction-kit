@@ -36,12 +36,6 @@ spec:
         - path:
             type: PathPrefix
             value: {{ .Values.ingress.paths }}
-      filters:
-        - type: URLRewrite
-          urlRewrite:
-            path:
-              type: ReplacePrefixMatch
-              replacePrefixMatch: /
       backendRefs:
         - name: {{ include "application.fullname" . }}
           port: 8080
