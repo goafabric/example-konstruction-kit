@@ -49,7 +49,7 @@ spec:
             name: {{ include "application.fullname" . }}-oidc
       backendRefs:
         - name: {{ include "application.fullname" . }}
-          port: 8080
+          port:  {{ .Values.service.port }}
 
 ---
 apiVersion: apisix.apache.org/v1alpha1
