@@ -76,29 +76,28 @@ resource "helm_release" "kiali" {
 }
 
 resource "kubernetes_manifest" "kiali-route" {
-  manifest   = yamldecode(<<-EOF
-  kind: ApisixRoute
-  apiVersion: apisix.apache.org/v2
+  depends_on = [helm_release.kiali]
+  manifest = yamldecode(<<-EOF
+  apiVersion: gateway.networking.k8s.io/v1
+  kind: HTTPRoute
   metadata:
     name: kiali
     namespace: istio-system
   spec:
-    http:
-      - name: kiali
-        match:
-          hosts:
-            - ${var.hostname}
-          paths:
-            - /kiali
-            - /kiali/*
-        backends:
-          - serviceName: kiali
-            servicePort: 20001
-        plugins:
-          - name: redirect
-            enable: true
-            config:
-              http_to_https: true
+    parentRefs:
+      - name: apisix
+        namespace: ingress-apisix
+        sectionName: https
+    hostnames:
+      - ${var.hostname}
+    rules:
+      - matches:
+          - path:
+              type: PathPrefix
+              value: /kiali
+        backendRefs:
+          - name: kiali
+            port: 20001
   EOF
   )
 }
