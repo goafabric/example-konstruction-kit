@@ -58,34 +58,32 @@ resource "helm_release" "argocd" {
 
 resource "kubernetes_manifest" "argocd-route" {
   manifest   = yamldecode(<<-EOF
-  kind: ApisixRoute
-  apiVersion: apisix.apache.org/v2
+  apiVersion: gateway.networking.k8s.io/v1
+  kind: HTTPRoute
   metadata:
     name: argocd
     namespace: argocd
   spec:
-    http:
-      - name: argocd
-        match:
-          hosts:
-            - ${var.hostname}
-          paths:
-            - /argocd
-            - /argocd/*
-        backends:
-          - serviceName: argocd-server
-            servicePort: 80
-        plugins:
-          - name: redirect
-            enable: true
-            config:
-              http_to_https: true
-          - name: proxy-rewrite
-            enable: true
-            config:
-              regex_uri:
-                - /argocd/(.*)
-                - /$1
+    parentRefs:
+      - name: apisix
+        namespace: ingress-apisix
+        sectionName: https
+    hostnames:
+      - ${var.hostname}
+    rules:
+      - matches:
+          - path:
+              type: PathPrefix
+              value: /argocd
+        filters:
+          - type: URLRewrite
+            urlRewrite:
+              path:
+                type: ReplacePrefixMatch
+                replacePrefixMatch: /
+        backendRefs:
+          - name: argocd-server
+            port: 80
   EOF
   )
 }
