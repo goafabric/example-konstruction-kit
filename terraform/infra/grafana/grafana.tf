@@ -28,35 +28,26 @@ resource "helm_release" "grafana" {
 
 resource "kubernetes_manifest" "grafana-route" {
   manifest   = yamldecode(<<-EOF
-  kind: ApisixRoute
-  apiVersion: apisix.apache.org/v2
+  apiVersion: gateway.networking.k8s.io/v1
+  kind: HTTPRoute
   metadata:
     name: grafana
     namespace: grafana
   spec:
-    http:
-      - name: grafana
-        match:
-          hosts:
-            - ${var.hostname}
-          paths:
-            - /grafana
-            - /grafana/*
-        websocket: true
-        backends:
-          - serviceName: grafana
-            servicePort: 80
-        plugins:
-          - name: redirect
-            enable: true
-            config:
-              http_to_https: true
-          - name: proxy-rewrite
-            enable: true
-            config:
-              regex_uri:
-              - ^/grafana/?(.*)
-              - /grafana/$1
+    parentRefs:
+      - name: apisix
+        namespace: ingress-apisix
+        sectionName: https
+    hostnames:
+      - ${var.hostname}
+    rules:
+      - matches:
+          - path:
+              type: PathPrefix
+              value: /grafana
+        backendRefs:
+          - name: grafana
+            port: 80
   EOF
   )
 }
