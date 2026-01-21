@@ -38,4 +38,4 @@ spec:
             value: {{ .Values.ingress.paths }}
       backendRefs:
         - name: {{ include "application.fullname" . }}
-          port: 8080
+          port: {{ .Values.service.port }}

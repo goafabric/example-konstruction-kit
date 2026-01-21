@@ -44,4 +44,4 @@ spec:
               replacePrefixMatch: /
       backendRefs:
         - name: {{ include "application.fullname" . }}
-          port: 8080
+          port: {{ .Values.service.port }}
