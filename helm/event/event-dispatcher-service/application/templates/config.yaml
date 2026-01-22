@@ -27,6 +27,9 @@ data:
   management.tracing.sampling.probability: "1.0"
   logging.level.io.opentelemetry: "INFO"
 
+  #otel collector export
+  management.otlp.metrics.export.enabled: false
+
   #kafka
   spring.kafka.bootstrap-servers: {{ .Values.kafka.server }}:{{ .Values.kafka.port }}
   spring.kafka.properties.security.protocol: "SASL_PLAINTEXT"

@@ -30,6 +30,9 @@ data:
   management.opentelemetry.tracing.export.otlp.endpoint: "http://tempo.grafana:4318/v1/traces"
   management.tracing.sampling.probability: "1.0"
 
+  #otel collector export
+  management.otlp.metrics.export.enabled: false
+
   #cache
   spring.profiles.active: "redis"
 
