@@ -2,6 +2,8 @@
 - upgrade to kind kubernetes 1.34
 - upgrade to postgres 18.1
 - removed kong and ingress definitions
+- upgrade to apsix chart 2.12.6 with ingress controller 2.0
+- switch to gateway api
 
 # 1.4.3
 - uprade to istio 1.28.0
