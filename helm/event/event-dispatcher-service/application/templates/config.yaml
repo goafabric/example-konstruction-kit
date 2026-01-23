@@ -28,7 +28,7 @@ data:
   logging.level.io.opentelemetry: "INFO"
 
   #otel collector export
-  management.otlp.metrics.export.enabled: false
+  management.otlp.metrics.export.enabled: "false"
 
   #kafka
   spring.kafka.bootstrap-servers: {{ .Values.kafka.server }}:{{ .Values.kafka.port }}

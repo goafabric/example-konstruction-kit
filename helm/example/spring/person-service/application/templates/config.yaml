@@ -29,7 +29,7 @@ data:
   management.tracing.sampling.probability: "1.0"
 
   #otel collector export
-  management.otlp.metrics.export.enabled: false
+  management.otlp.metrics.export.enabled: "false"
 
   #persistence
   spring.datasource.url: "jdbc:postgresql://{{ .Values.postgresql.host }}:5432/main"
