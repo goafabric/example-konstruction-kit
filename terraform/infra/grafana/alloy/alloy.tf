@@ -6,11 +6,6 @@ resource "helm_release" "alloy" {
   namespace  = "grafana"
   create_namespace = true
 
-  values = [file("values.yaml")]
-
-  set {
-    name  = "alloy.configMap.content"
-    value = file("${path.module}/config/alloy.config")
-  }
+  values = [file("values.config")]
 
 }
