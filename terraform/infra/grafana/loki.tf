@@ -23,4 +23,9 @@ resource "helm_release" "loki" {
     name  = "prometheus.server.persistentVolume.enabled"
     value = "false"
   }
+
+  set {
+    name  = "promtail.enabled"
+    value = "false"
+  }
 }
