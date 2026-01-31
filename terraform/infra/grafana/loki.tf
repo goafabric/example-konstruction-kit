@@ -1,31 +1,88 @@
 resource "helm_release" "loki" {
   repository = "https://grafana.github.io/helm-charts"
   name       = "loki"
-  chart      = "loki-stack" #loki-stack is used to also get promtail
-  version    = "v2.10.2"
+  chart      = "loki" #loki-stack is used to also get promtail
+  version    = "6.51.0"
   namespace  = "grafana"
+  timeout    = "120"
   create_namespace = false
 
   set {
-    name  = "grafana.enabled"
+    name  = "deploymentMode"
+    value = "SingleBinary"
+  }
+
+  set {
+    name  = "singleBinary.replicas"
+    value = "1"
+  }
+
+  set {
+    name  = "loki.commonConfig.replication_factor"
+    value = "1"
+  }
+
+  set {
+    name  = "loki.auth_enabled"
     value = "false"
   }
-  # no prometheus is of course invalid for production
+
+
   set {
-    name  = "prometheus.enabled"
-    value = "false"
-  }
-  set {
-    name  = "prometheus.alertmanager.persistentVolume.enabled"
-    value = "false"
-  }
-  set {
-    name  = "prometheus.server.persistentVolume.enabled"
+    name  = "lokiCanary.enabled"
     value = "false"
   }
 
   set {
-    name  = "promtail.enabled"
+    name  = "chunksCache.enabled"
     value = "false"
   }
+
+  set {
+    name  = "test.enabled"
+    value = "false"
+  }
+
+  set {
+    name  = "loki.storage.type"
+    value = "filesystem"
+  }
+
+  set {
+    name  = "loki.useTestSchema"
+    value = true
+  }
+  
+
+  set {
+    name  = "backend.replicas"
+    value = "0"
+  }
+
+  set {
+    name  = "read.replicas"
+    value = "0"
+  }
+
+  set {
+    name  = "write.replicas"
+    value = "0"
+  }
+
+  set {
+    name  = "ingester.replicas"
+    value = "0"
+  }
+
+  set {
+    name  = "querier.replicas"
+    value = "0"
+  }
+
+  set {
+    name  = "queryFrontend.replicas"
+    value = "0"
+  }
+
+
 }
