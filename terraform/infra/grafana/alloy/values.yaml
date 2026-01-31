@@ -4,32 +4,3 @@ alloy:
       port: 4318
       targetPort: 4318
       protocol: "TCP"
-
-  configMap:
-    content: |-
-      // Write your Alloy config here:      
-      logging {
-        level = "info"
-      }
-    
-      otelcol.receiver.otlp "traces_in" {
-        grpc {
-          endpoint = "0.0.0.0:4317"
-        }
-    
-        http {
-          endpoint = "0.0.0.0:4318"
-        }
-    
-        output {
-          traces = [otelcol.exporter.otlphttp.tempo_traces.input]
-        }
-      }
-
-      otelcol.exporter.otlphttp "tempo_traces" {
-        client {
-          endpoint = "http://tempo.grafana:4318"
-        }
-      }
-
-

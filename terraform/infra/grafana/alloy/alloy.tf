@@ -8,5 +8,9 @@ resource "helm_release" "alloy" {
 
   values = [file("values.yaml")]
 
-  
+  set {
+    name  = "alloy.configMap.content"
+    value = file("${path.module}/config/alloy.config")
+  }
+
 }
