@@ -52,8 +52,8 @@ resource "helm_release" "loki" {
     name  = "loki.useTestSchema"
     value = true
   }
-  
 
+  # tedious manual setting of 0 replicas
   set {
     name  = "backend.replicas"
     value = "0"
