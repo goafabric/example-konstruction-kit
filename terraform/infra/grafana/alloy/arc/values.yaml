@@ -1,0 +1,54 @@
+alloy:
+  extraPorts:
+    - name: otlp-http
+      port: 4318
+      targetPort: 4318
+      protocol: "TCP"
+
+  configMap:
+    content: |-
+      // Write your Alloy config here:      
+      logging {
+        level = "info"
+      }
+    
+      otelcol.receiver.otlp "traces_in" {
+        grpc {
+          endpoint = "0.0.0.0:4317"
+        }
+    
+        http {
+          endpoint = "0.0.0.0:4318"
+        }
+    
+        output {
+          traces = [otelcol.processor.filter.tempo_filter.input] 
+        }
+      }
+      
+      otelcol.processor.filter "tempo_filter" {
+        traces {
+          span {
+            exclude {
+              match_type = "regexp"
+              attributes = [
+                { key = "http.target", value = "^/actuator.*" },
+                { key = "http.route",  value = "^/actuator.*" },
+                { key = "url.path",    value = "^/actuator.*" },
+              ]
+            }
+          }
+        }
+
+        output {
+          traces = [otelcol.exporter.otlphttp.tempo_traces.input]
+        }
+      }
+
+      otelcol.exporter.otlphttp "tempo_traces" {
+        client {
+          endpoint = "http://tempo.grafana:4318"
+        }
+      }
+
+
