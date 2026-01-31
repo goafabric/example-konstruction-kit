@@ -4,7 +4,7 @@ resource "helm_release" "tempo" {
 #  chart      = "tempo-distributed"
 #  version    = "1.8.5"
   chart      = "tempo"
-  version    = "1.23.3"
+  version    = "1.24.4"
   namespace  = "grafana"
   timeout    = "120"
   create_namespace = false
