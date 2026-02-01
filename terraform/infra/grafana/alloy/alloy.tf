@@ -6,6 +6,6 @@ resource "helm_release" "alloy" {
   namespace  = "grafana"
   create_namespace = true
 
-  values = [file("values.config")]
+  values = [file("alloy.config")]
 
 }
