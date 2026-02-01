@@ -1,5 +1,4 @@
 # grafana alloy
-- actuator filtering
 - metrics endpoint
 
 # kafka
