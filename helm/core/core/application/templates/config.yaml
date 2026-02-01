@@ -25,7 +25,7 @@ data:
 
   #tracing
   spring.application.name: "{{ include "application.fullname" . }}.{{ .Release.Namespace }}"
-  management.opentelemetry.tracing.export.otlp.endpoint: "http://tempo.grafana:4318/v1/traces"
+  management.opentelemetry.tracing.export.otlp.endpoint: "http://alloy.grafana:4318/v1/traces"
   management.tracing.sampling.probability: "1.0"
 
   #otel collector export
