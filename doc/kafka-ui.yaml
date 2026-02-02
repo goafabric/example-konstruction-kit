@@ -49,6 +49,10 @@ data:
   KAFKA_CLUSTERS_0_NAME: "kafka"
   KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: "host.docker.internal:29092"
   SERVER_SERVLET_CONTEXT_PATH: "/kafka-ui"
+
+  AUTH_TYPE: "LOGIN_FORM"
+  SPRING_SECURITY_USER_NAME: "admin"
+  SPRING_SECURITY_USER_PASSWORD: "supersecret"
   
 ---
 
@@ -75,9 +79,3 @@ spec:
           enable: true
           config:
             http_to_https: true
-        - name: basic-auth
-          enable: true
-          config:
-            username: admin
-            password: admin
-
