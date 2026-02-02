@@ -47,7 +47,7 @@ metadata:
 data:
   DYNAMIC_CONFIG_ENABLED: "true"
   KAFKA_CLUSTERS_0_NAME: "kafka"
-  KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: "host.docker.internal:29092"
+  KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: "kafka-cluster-kafka-bootstrap.kafka:9092"
   SERVER_SERVLET_CONTEXT_PATH: "/kafka-ui"
 
   AUTH_TYPE: "LOGIN_FORM"
