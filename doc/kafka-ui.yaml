@@ -1,0 +1,50 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: kafka-ui
+  namespace: kafka-ui
+spec:
+  type: ClusterIP
+  selector:
+    app: kafka-ui
+  ports:
+    - port: 8080
+      targetPort: 8080
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kafka-ui
+  namespace: kafka-ui
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kafka-ui
+  template:
+    metadata:
+      labels:
+        app: kafka-ui
+    spec:
+      containers:
+        - name: kafka-ui
+          image: ghcr.io/kafbat/kafka-ui:main
+          ports:
+            - containerPort: 8080
+          envFrom:
+            - configMapRef:
+                name: kafka-ui-config
+
+---
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: kafka-ui-config
+  namespace: kafka-ui
+data:
+  DYNAMIC_CONFIG_ENABLED: "true"
+  KAFKA_CLUSTERS_0_NAME: "kafka"
+  KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: "host.docker.internal:29092"
