@@ -13,6 +13,6 @@ kubectl run kafka-ui \
 --port=8080 \
 --env="DYNAMIC_CONFIG_ENABLED=true" \
 --env="KAFKA_CLUSTERS_0_NAME=kafka" \
---env="KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS=my-cluster-kafka-bootstrap:9092"
+--env="KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS=kafka-cluster-kafka-bootstrap:9092"
 
 kubectl -n kafka port-forward pod/kafka-ui 8080:8080
