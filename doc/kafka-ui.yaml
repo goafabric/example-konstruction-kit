@@ -48,6 +48,7 @@ data:
   DYNAMIC_CONFIG_ENABLED: "true"
   KAFKA_CLUSTERS_0_NAME: "kafka"
   KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: "host.docker.internal:29092"
+  SERVER_SERVLET_CONTEXT_PATH: "/kafka-ui"
   
 ---
 
@@ -68,18 +69,15 @@ spec:
       websocket: true
       backends:
         - serviceName: kafka-ui
-          servicePort: http
+          servicePort: 8080
       plugins:
         - name: redirect
           enable: true
           config:
             http_to_https: true
-        - name: proxy-rewrite
+        - name: basic-auth
           enable: true
           config:
-            host: kafka-ui.kafka-ui
-            regex_uri:
-              - ^/kafka-ui/?(.*)
-              - /$1
+            username: admin
+            password: admin
 
-  
