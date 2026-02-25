@@ -1,0 +1,50 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: {{ include "application.fullname" . }}-backend
+spec:
+  parentRefs:
+    - name: apisix
+      namespace: ingress-apisix
+      sectionName: https
+  hostnames:
+    - {{ .Values.ingress.hosts }}
+  rules:
+    - matches:
+        - path:
+            type: PathPrefix
+            value: {{ .Values.ingress.paths }}/backend
+      filters:
+        - type: URLRewrite
+          urlRewrite:
+            path:
+              type: ReplacePrefixMatch
+              replacePrefixMatch: /
+        - type: ExtensionRef
+          extensionRef:
+            group: apisix.apache.org
+            kind: PluginConfig
+            name: {{ include "application.fullname" . }}-oidc-backend
+      backendRefs:
+        - name: {{ include "application.fullname" . }}
+          port:  {{ .Values.service.port }}
+
+---
+apiVersion: apisix.apache.org/v1alpha1
+kind: PluginConfig
+metadata:
+  name: {{ include "application.fullname" . }}-oidc-backend
+spec:
+  plugins:
+    - name: openid-connect
+      config:
+        _meta:
+          disable: {{ not .Values.oidc.enabled }}
+        client_id: backend
+        client_secret: jbUh7EpYUNGi84ngnlYOf6qVJ8t03Als
+        discovery: https://{{ .Values.ingress.hosts }}/oidc/realms/tenant-0/.well-known/openid-configuration
+        access_token_in_authorization_header: false
+        set_id_token_header: false
+        set_userinfo_header: true
+        ssl_verify: false
+        bearer_only: true
