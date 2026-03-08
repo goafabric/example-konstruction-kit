@@ -6,7 +6,7 @@ metadata:
     {{- include "application.labels" . | nindent 4 }}
 data:
   #log levels
-  quarkus.log.level: "INFO"
-#  quarkus.log.category."org.goafabric".level: "INFO"
-#  quarkus.log.category."org.flywaydb.core".level: "INFO"
-#  quarkus.log.category."org.hibernate".level: "INFO"
+  QUARKUS_LOG_LEVEL: "INFO"
+  QUARKUS_LOG_CATEGORY__ORG_GOAFABRIC__LEVEL: "INFO"
+  QUARKUS_LOG_CATEGORY__ORG_FLYWAYDB_CORE__LEVEL: "INFO"
+  QUARKUS_LOG_CATEGORY__ORG_HIBERNATE__LEVEL: "INFO"
