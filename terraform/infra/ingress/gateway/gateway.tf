@@ -1,7 +1,5 @@
 # see: https://apisix.apache.org/docs/ingress-controller/reference/apisix-ingress-controller/examples/#define-controller-and-gateway
 resource "kubernetes_manifest" "apisix_gatewayclass" {
-  depends_on = [helm_release.apisix] #[terraform_data.re-init_ingress_controller]
-
   manifest = yamldecode(<<-EOF
   apiVersion: gateway.networking.k8s.io/v1
   kind: GatewayClass
@@ -14,8 +12,6 @@ resource "kubernetes_manifest" "apisix_gatewayclass" {
 }
 
 resource "kubernetes_manifest" "apisix_gateway" {
-  depends_on = [helm_release.apisix]
-
   manifest = yamldecode(<<-EOF
   apiVersion: gateway.networking.k8s.io/v1
   kind: Gateway
