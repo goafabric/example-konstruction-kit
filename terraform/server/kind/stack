@@ -26,7 +26,8 @@ function up() {
     apply ../../infra/namespaces/
     apply ../../infra/network-policies/
     apply ../../infra/ingress/cert-manager
-    apply ../../infra/ingress/$INGRESS_TYPE
+    apply ../../infra/ingress/apisix
+    apply ../../infra/ingress/gateway
     apply ../../infra/dashboard
     )
 }
@@ -34,7 +35,8 @@ function up() {
 function down() {
     time(
     destroy ../../infra/dashboard
-    destroy ../../infra/ingress/$INGRESS_TYPE
+    destroy ../../infra/ingress/gateway
+    destroy ../../infra/ingress/apisix
     destroy ../../infra/ingress/cert-manager
     destroy ../../infra/network-policies/
     destroy ../../infra/namespaces/
