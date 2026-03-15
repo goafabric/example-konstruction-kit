@@ -32,3 +32,8 @@ data:
   adapter.failureRate: "0.5"
   adapter.openDuration: "30000"
   adapter.circuitBreaker.enabled: "true"
+
+  #secrets compatibility
+  quarkus.datasource.username: "${spring.datasource.username}"
+  quarkus.datasource.password: "${spring.datasource.password}"
+  
