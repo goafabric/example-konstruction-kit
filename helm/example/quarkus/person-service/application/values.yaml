@@ -52,3 +52,6 @@ secrets:
   - name: postgresql-secret-example
   - name: kafka-secret
   - name: s3-secret
+
+#commandsAnnotations:
+#  args: ["-Xmx256M"]
