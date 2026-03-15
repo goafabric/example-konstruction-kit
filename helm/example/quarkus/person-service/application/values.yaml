@@ -55,3 +55,7 @@ secrets:
 
 #commandsAnnotations:
 #  args: ["-Xmx256M"]
+
+global:
+  management:
+    port:

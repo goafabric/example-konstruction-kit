@@ -10,8 +10,12 @@ data:
   quarkus.http.port: "{{ .Values.service.port }}"
   quarkus.http.io-threads: "20"
 
-  #security
-  security.authentication.enabled: "false"
+  #apisix oidc
+  quarkus.http.limits.max-header-size: "10K"
+
+  {{- if .Values.global.management.port }}
+  quarkus.management.port: "{{ .Values.global.management.port }}"
+  {{- end }}
 
   #tracing
   quarkus.otel.exporter.otlp.traces.endpoint: "http://tempo.grafana:4317"
@@ -45,4 +49,12 @@ data:
   mp.messaging.connector.smallrye-kafka.sasl.mechanism: "PLAIN" #"SCRAM-SHA-512"
   mp.messaging.connector.smallrye-kafka.sasl.jaas.config: org.apache.kafka.common.security.plain.PlainLoginModule required username="${spring.kafka.username}" password="${spring.kafka.password}";
 
-  
+  #azure blob
+  quarkus.azure.storage.blob.enabled: "true"
+  azure.storage.blob.container-name: "person"
+  quarkus.azure.storage.blob.connection-string: DefaultEndpointsProtocol=http;AccountName=${azure.storage.blob.account-name};AccountKey=${azure.storage.blob.account-key};BlobEndpoint=http://azurite.data:10000/${azure.storage.blob.account-name}
+  #quarkus.azure.storage.blob.connection-string=DefaultEndpointsProtocol=https;AccountName=${azure.storage.blob.account-name};AccountKey=${azure.storage.blob.account-key};EndpointSuffix=core.windows.net
+
+  azure.storage.blob.account-name: devstoreaccount1
+  azure.storage.blob.account-key: Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==
+
