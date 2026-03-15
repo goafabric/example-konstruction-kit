@@ -5,10 +5,10 @@ resource "helm_release" "person-service-application" {
   namespace  = "example"
   create_namespace = false
   timeout = var.helm_timeout
-  depends_on = [kubernetes_secret.postgresql_secret]
+  #depends_on = [kubernetes_secret.postgresql_secret]
 
   values = [
-    file("../../helm/values.yaml")
+    file("../../../helm/values.yaml")
   ]
 
   set {
@@ -21,10 +21,10 @@ resource "helm_release" "person-service-application" {
     value = local.oidc_enabled
   }
 
-  set_sensitive {
-    name = "oidc.session.secret"
-    value = random_password.oidc_session_secret.result
-  }
+  # set_sensitive {
+  #   name = "oidc.session.secret"
+  #   value = random_password.oidc_session_secret.result
+  # }
 
 }
 
