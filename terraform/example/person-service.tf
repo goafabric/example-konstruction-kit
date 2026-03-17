@@ -5,7 +5,7 @@ resource "helm_release" "person-service-application" {
   namespace  = "example"
   create_namespace = false
   timeout = var.helm_timeout
-  #depends_on = [kubernetes_secret.postgresql_secret]
+  depends_on = [kubernetes_secret.postgresql_secret]
 
   values = [
     file("../../helm/values.yaml")
