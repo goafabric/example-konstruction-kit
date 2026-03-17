@@ -50,8 +50,8 @@ multiTenancy:
 
 secrets:
   - name: postgresql-secret-example
-  - name: kafka-secret
-  - name: blob-storage-secret
+#  - name: kafka-secret
+#  - name: blob-storage-secret
 
 global:
   management:
