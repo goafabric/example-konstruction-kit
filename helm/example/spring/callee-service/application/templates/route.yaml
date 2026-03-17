@@ -47,7 +47,6 @@ spec:
         set_id_token_header: false
         set_userinfo_header: true
         ssl_verify: false
-        #bearer_only: true
         redirect_uri: "{{ .Values.ingress.paths }}/redirect_uri"
         logout_path: "{{ .Values.ingress.paths }}/logout"
         session:

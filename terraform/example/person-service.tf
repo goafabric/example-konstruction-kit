@@ -21,10 +21,10 @@ resource "helm_release" "person-service-application" {
     value = local.oidc_enabled
   }
 
-  # set_sensitive {
-  #   name = "oidc.session.secret"
-  #   value = random_password.oidc_session_secret.result
-  # }
+  set_sensitive {
+    name = "oidc.session.secret"
+    value = random_password.oidc_session_secret.result
+  }
 
 }
 
