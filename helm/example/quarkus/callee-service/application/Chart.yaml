@@ -6,4 +6,4 @@ type: application
 
 version: 1.4.3
 
-appVersion: "3.31.2-kotlin-SNAPSHOT"
+appVersion: "3.32.2-SNAPSHOT"

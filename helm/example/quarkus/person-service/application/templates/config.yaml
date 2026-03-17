@@ -43,7 +43,7 @@ data:
 
   #kafka
   kafka.bootstrap.servers: "{{ .Values.kafka.server }}:{{ .Values.kafka.port }}"
-  mp.messaging.outgoing.general.enabled: "true"
+  mp.messaging.outgoing.general.enabled: "false"
 
   mp.messaging.connector.smallrye-kafka.security.protocol: "SASL_PLAINTEXT"
   mp.messaging.connector.smallrye-kafka.sasl.mechanism: "PLAIN" #"SCRAM-SHA-512"
