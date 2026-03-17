@@ -3,7 +3,7 @@ variable "hostname" {
 }
 
 variable "helm_timeout" {
-  default = 90
+  default = 60
 }
 
 variable "helm_repository" {

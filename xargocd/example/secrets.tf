@@ -12,7 +12,7 @@ resource "random_password" "oidc_session_secret" {
 resource "kubernetes_secret" "postgresql_secret" {
 
   metadata {
-    name      = "postgresql-secret"
+    name      = "postgresql-secret-example"
     namespace = "example"
   }
 
@@ -23,8 +23,8 @@ resource "kubernetes_secret" "postgresql_secret" {
     "spring.datasource.username" = "main"
     "spring.datasource.password" = random_password.postgresql_password.result
 
-    "quarkus.datasource.username" = "main"
-    "quarkus.datasource.password" = random_password.postgresql_password.result
+    #"quarkus.datasource.username" = "main"
+    #"quarkus.datasource.password" = random_password.postgresql_password.result
   }
 
   type = "Opaque"
