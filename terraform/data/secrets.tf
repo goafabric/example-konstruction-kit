@@ -80,3 +80,19 @@ resource "kubernetes_secret" "kafka_secret" {
 
   type = "Opaque"
 }
+
+resource "kubernetes_secret" "blob_storage_secret" {
+  for_each = toset(var.namespaces)
+
+  metadata {
+    name      = "blob-storage-secret"
+    namespace = each.key
+  }
+
+  data = {
+    "azure.storage.blob.account-name" = "devstoreaccount1"
+    "azure.storage.blob.account-key" = "Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw=="
+  }
+
+  type = "Opaque"
+}
