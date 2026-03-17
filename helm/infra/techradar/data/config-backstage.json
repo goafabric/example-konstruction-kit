@@ -135,7 +135,7 @@
       "timeline": [
         {
           "moved": 0,
-          "ringId": "trial",
+          "ringId": "adopt",
           "date": "2025-11-01T00:00:00.000Z"
         }
       ],
@@ -147,8 +147,8 @@
     {
       "timeline": [
         {
-          "moved": 0,
-          "ringId": "assess",
+          "moved": -1,
+          "ringId": "hold",
           "date": "2025-11-01T00:00:00.000Z"
         }
       ],
@@ -173,8 +173,8 @@
     {
       "timeline": [
         {
-          "moved": 0,
-          "ringId": "assess",
+          "moved": 1,
+          "ringId": "trial",
           "date": "2025-11-01T00:00:00.000Z"
         }
       ],
@@ -246,6 +246,19 @@
       "key": "springintegration",
       "id": "springintegration",
       "title": "Spring Integration",
+      "quadrant": "languages"
+    },
+    {
+      "timeline": [
+        {
+          "moved": 1,
+          "ringId": "assess",
+          "date": "2025-11-01T00:00:00.000Z"
+        }
+      ],
+      "key": "specdriven",
+      "id": "specdriven",
+      "title": "Spec Driven Dev",
       "quadrant": "languages"
     },
 
@@ -333,6 +346,19 @@
     {
       "timeline": [
         {
+          "moved": 1,
+          "ringId": "assess",
+          "date": "2025-11-01T00:00:00.000Z"
+        }
+      ],
+      "key": "alloy",
+      "id": "alloy",
+      "title": "Grafana Alloy",
+      "quadrant": "infrastructure"
+    },
+    {
+      "timeline": [
+        {
           "moved": 0,
           "ringId": "adopt",
           "date": "2025-11-01T00:00:00.000Z"
@@ -411,8 +437,8 @@
     {
       "timeline": [
         {
-          "moved": 0,
-          "ringId": "trial",
+          "moved": 1,
+          "ringId": "adopt",
           "date": "2025-11-01T00:00:00.000Z"
         }
       ],
@@ -431,7 +457,7 @@
       ],
       "key": "istio",
       "id": "istio",
-      "title": "Istio Abmbient Mesh",
+      "title": "Istio Ambient",
       "quadrant": "infrastructure"
     },
     {
@@ -450,7 +476,7 @@
     {
       "timeline": [
         {
-          "moved": 0,
+          "moved": -1,
           "ringId": "hold",
           "date": "2025-11-01T00:00:00.000Z"
         }
@@ -463,8 +489,8 @@
     {
       "timeline": [
         {
-          "moved": 0,
-          "ringId": "assess",
+          "moved": 1,
+          "ringId": "trial",
           "date": "2025-11-01T00:00:00.000Z"
         }
       ],
@@ -602,9 +628,9 @@
           "date": "2025-11-01T00:00:00.000Z"
         }
       ],
-      "key": "s3",
-      "id": "s3",
-      "title": "S3 / Blob Storage",
+      "key": "blob",
+      "id": "blob",
+      "title": "Blob Storage",
       "quadrant": "data"
     },
     {
@@ -615,9 +641,9 @@
           "date": "2025-11-01T00:00:00.000Z"
         }
       ],
-      "key": "dragonfly",
-      "id": "dragonfly",
-      "title": "Dragonfly",
+      "key": "redis",
+      "id": "redis",
+      "title": "Redis / Dragonfly",
       "quadrant": "data"
     },
 
@@ -686,7 +712,7 @@
       ],
       "key": "certificatemanager",
       "id": "certificatemanager",
-      "title": "Certificate Manager",
+      "title": "Cert Manager",
       "quadrant": "security"
     },
     {
