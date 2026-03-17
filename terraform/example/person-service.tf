@@ -8,7 +8,7 @@ resource "helm_release" "person-service-application" {
   #depends_on = [kubernetes_secret.postgresql_secret]
 
   values = [
-    file("../../../helm/values.yaml")
+    file("../../helm/values.yaml")
   ]
 
   set {
