@@ -35,6 +35,4 @@ kubectl get nodes -o jsonpath='{.items[*].metadata.name}' | xargs -n1 -I{} kubec
 kubectl get nodes -o jsonpath='{.items[*].metadata.name}' | xargs -n1 kubectl uncordon
 
 #kubectl get ns -l istio.io/dataplane-mode=ambient -o jsonpath='{.items[*].metadata.name}' | tr ' ' '\n' | grep -v '^istio-system$' | xargs -I{} sh -c 'kubectl get pods -n "{}" -o name | xargs -r -n1 -I% kubectl label -n "{}" % istio-drain=true --overwrite'
-     
-
 
