@@ -14,8 +14,4 @@ see here why: https://istio.io/latest/docs/ambient/usage/networkpolicy/
 https://github.com/istio/istio/issues/55913
 https://github.com/istio/istio/issues/55968
 
-# rerollout (not working)
-kubectl get ns -l istio.io/dataplane-mode=ambient -o jsonpath='{range .items[*]}{.metadata.name}{"\n"}{end}' \
-| xargs -I{} sh -c 'kubectl rollout restart deploy -n {}; kubectl rollout restart statefulset -n {}'
-
 
