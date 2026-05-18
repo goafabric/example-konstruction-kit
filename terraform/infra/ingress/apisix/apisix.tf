@@ -2,7 +2,7 @@ resource "helm_release" "apisix" {
   name       = "apisix"
   repository = "https://apache.github.io/apisix-helm-chart"
   chart      = "apisix"
-  version    = "2.12.6"
+  version    = "2.14.0"
   namespace  = "ingress-apisix"
   timeout    = "90"
   create_namespace = false
@@ -151,11 +151,11 @@ resource "helm_release" "apisix" {
 
 #reload ingress-controller to avoid browser "ERR_SSL_PROTOCOL_ERROR" / failed to find SNI,
 #could be due to connection errors to etcd or ingress-apisix -> apisix(-admin) in istio ambient mode, because apisix uses an init container with nc which will fail / always return true in istio ambient
-# resource "terraform_data" "re-init_ingress_controller" {
-#   depends_on = [helm_release.apisix]
-#   provisioner "local-exec" {
-#     when    = create
-#     command = "kubectl delete pod -l app.kubernetes.io/name=ingress-controller -n ingress-apisix"
-#   }
-# }
+resource "terraform_data" "re-init_ingress_controller" {
+  depends_on = [helm_release.apisix]
+  provisioner "local-exec" {
+    when    = create
+    command = "kubectl delete pod -l app.kubernetes.io/name=ingress-controller -n ingress-apisix"
+  }
+}
 
