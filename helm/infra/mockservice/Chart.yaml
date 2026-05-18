@@ -4,6 +4,6 @@ description: mock-service
 
 type: application
 
-version: 1.4.3
+version: 1.4.4
 
 appVersion: "1.28-alpine3.21"

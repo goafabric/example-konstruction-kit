@@ -2,7 +2,7 @@ terraform {
   required_providers {
     kind = {
       source  = "tehcyx/kind"
-      version = "0.10.0"
+      version = "0.11.0"
     }
   }
 }
@@ -12,7 +12,7 @@ provider "kind" {}
 resource "kind_cluster" "kind" {
   name           = "kind"
   wait_for_ready = false
-  node_image = "kindest/node-cert:v1.34.0"
+  #node_image = "kindest/node-cert:v1.35.0"
 
   kind_config {
     kind        = "Cluster"

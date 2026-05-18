@@ -3,7 +3,7 @@ resource "helm_release" "azurite" {
   repository = "oci://ghcr.io/emberstack/helm-charts"
   chart      = "azurite"
   namespace  = "data"
-  version    = "1.0.19"
+  version    = "1.0.20"
   timeout = 60
 
   set {

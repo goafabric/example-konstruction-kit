@@ -1,5 +1,5 @@
-# 1.4.3
-- upgrade to kind kubernetes 1.34
+# 1.4.4
+- upgrade to kind kubernetes 1.35
 - upgrade to postgres 18.1
 - removed kong and ingress definitions
 - upgrade to apsix chart 2.14.0 with ingress controller 2.0
