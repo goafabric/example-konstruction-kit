@@ -12,7 +12,7 @@ provider "kind" {}
 resource "kind_cluster" "kind" {
   name           = "kind"
   wait_for_ready = false
-  # node_image = "kindest/node-cert:v1.34.0"
+  node_image = "kindest/node-cert:v1.34.0"
 
   kind_config {
     kind        = "Cluster"
