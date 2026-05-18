@@ -3,7 +3,7 @@ resource "helm_release" "postgresql" {
   name       = "postgresql"
   repository = "oci://registry-1.docker.io/cloudpirates"
   chart      = "postgres"
-  version    = "0.13.4"
+  version    = "0.19.4"
   namespace  = "example"
 
   set {
