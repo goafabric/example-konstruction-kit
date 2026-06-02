@@ -20,7 +20,3 @@ data:
   #persistence
   quarkus.datasource.jdbc.url: "jdbc:postgresql://{{ .Values.postgresql.host }}:5432/main"
   quarkus.datasource.jdbc.max-size: "10"
-
-  #secrets compatibility
-  quarkus.datasource.username: "${spring.datasource.username}"
-  quarkus.datasource.password: "${spring.datasource.password}"

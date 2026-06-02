@@ -48,7 +48,7 @@ data:
 
   #s3
   spring.cloud.aws.s3.endpoint: {{ .Values.s3.endpoint }}
-  spring.cloud.aws.s3.enabled: "true"
+  spring.cloud.aws.s3.enabled: "false"
 
   #kafka
   {{ if .Values.kafka.enabled }}spring.kafka.bootstrap-servers: {{ .Values.kafka.server }}:{{ .Values.kafka.port }}
