@@ -6,9 +6,7 @@ metadata:
     {{- include "application.labels" . | nindent 4 }}
 data:
   #log levels
-  logging.level.root: "WARN"
-  logging.level.org.goafabric: "INFO"
-
-  logging.level.org.springframework: "INFO"
-  logging.level.org.flywaydb.core: "INFO"
-  logging.level.org.hibernate.SQL: "INFO"
+  QUARKUS_LOG_LEVEL: "INFO"
+  QUARKUS_LOG_CATEGORY__ORG_GOAFABRIC__LEVEL: "INFO"
+  QUARKUS_LOG_CATEGORY__ORG_FLYWAYDB_CORE__LEVEL: "INFO"
+  QUARKUS_LOG_CATEGORY__ORG_HIBERNATE__LEVEL: "INFO"
