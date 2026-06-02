@@ -10,8 +10,8 @@ data:
   quarkus.http.port: "{{ .Values.service.port }}"
   quarkus.http.io-threads: "20"
 
-  #security
-  security.authentication.enabled: "false"
+  #apisix oidc
+  quarkus.http.limits.max-header-size: "10K"
 
   #tracing
   quarkus.otel.exporter.otlp.traces.endpoint: "http://tempo.grafana:4317"
