@@ -38,6 +38,6 @@ data:
   adapter.timeout: "10000"
 
   #azure blob
-  quarkus.azure.storage.blob.enabled: "false"
+  quarkus.azure.storage.blob.enabled: "true"
   azure.storage.blob.container-name: "invoice"
-#  quarkus.azure.storage.blob.connection-string: DefaultEndpointsProtocol=http;AccountName=${azure.storage.blob.account-name};AccountKey=${azure.storage.blob.account-key};BlobEndpoint=http://azurite.data:10000/${azure.storage.blob.account-name}
+  quarkus.azure.storage.blob.connection-string: DefaultEndpointsProtocol=http;AccountName=${azure.storage.blob.account-name};AccountKey=${azure.storage.blob.account-key};BlobEndpoint=http://azurite.data:10000/${azure.storage.blob.account-name}
