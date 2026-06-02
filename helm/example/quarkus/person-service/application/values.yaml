@@ -13,10 +13,10 @@ image:
 resourcesAnnotations:
   resources:
     requests:
-      memory: 16M
+      memory: 64M
       cpu: 250m
 
-  args: ["-Xmx32M"]
+  args: ["-Xmx64M"]
 
 
 readinessProbe:
