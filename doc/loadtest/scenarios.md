@@ -28,4 +28,7 @@ docker run --pull always --name callee-service --rm -p 50900:50900 goafabric/cal
 docker run --pull always --name callee-service --rm -p 50900:50900 goafabric/callee-service-python:1.0.1-SNAPSHOT    
 
 290 MB / 400% CPU / 4500 req/s
-
+            
+# dotnet
+docker run --pull always --name callee-service --rm -p 50900:50900 goafabric/callee-service-net:1.0.0-SNAPSHOT    
+40 MB / 150% CPU / 18000 req/s
