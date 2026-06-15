@@ -1,8 +1,11 @@
+# test scenario execution
+- start one of the containers below
+- k6 ./callee.js (loadtest via grafana k6)
+
 # spring native
 docker run --name callee-service --rm -p 50900:50900 goafabric/callee-service-native:4.0.0
          
 70 MB / 300% CPU / 13860 req/s
-
 
 # quarkus native
 docker run --name calle-service-quarkus --rm -p 50900:50900 goafabric/callee-service-quarkus:3.35.4
