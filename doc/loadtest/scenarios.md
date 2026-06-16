@@ -32,6 +32,6 @@ docker run --pull always --name callee-service --rm -p 50900:50900 goafabric/cal
 
 290 MB / 400% CPU / 4500 req/s
             
-# dotnet
+# c# dotnet
 docker run --pull always --name callee-service --rm -p 50900:50900 goafabric/callee-service-net:1.0.0-SNAPSHOT    
 40 MB / 150% CPU / 18000 req/s
