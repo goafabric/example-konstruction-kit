@@ -14,10 +14,14 @@ container build -t local/ubuntu -f Dockerfile.ubuntu
                 
 ###
 container machine create local/ubuntu --name micro --cpus 6 --memory 8g
+sleep 1
 container machine run -n micro sudo snap install microk8s --classic --channel=1.34/stable
 container machine run -n micro sudo microk8s enable hostpath-storage
-container machine run -n micro sudo microk8s enable metallb $(hostname -I | awk '{print $1}')-$(hostname -I | awk '{print $1}')
+
+container machine run -n micro sudo microk8s enable metallb:$(hostname -I | awk '{print $1}')-$(hostname -I | awk '{print $1}')
+
 container machine run -n micro sudo microk8s config view > ~/.kube.profile/.kube.micro/config        
+container machine run -n micro sudo microk8s config view > ~/.kube/config
                            
 ###
 container machine run -n micro
