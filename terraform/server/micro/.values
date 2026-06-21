@@ -1,0 +1,2 @@
+export TF_VAR_hostname=kind.local
+INGRESS_TYPE=apisix #kong
