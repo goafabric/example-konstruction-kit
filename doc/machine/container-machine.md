@@ -21,7 +21,7 @@ container machine run -n micro sudo microk8s enable hostpath-storage
 container machine run -n micro sudo microk8s config view > ~/.kube.profile/.kube.micro/config        
 container machine run -n micro sudo microk8s config view > ~/.kube/config
 
-#container machine run -n micro "sudo bash -c 'IP=\$(hostname -I | awk \"{print \\\$1}\") && sudo microk8s enable metallb:\$IP-\$IP'"
+container machine run -n micro "sudo bash -c 'IP=\$(hostname -I | awk \"{print \\\$1}\") && sudo microk8s enable metallb:\$IP-\$IP'"
 
                            
 ###
