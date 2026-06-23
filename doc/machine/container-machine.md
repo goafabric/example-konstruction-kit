@@ -27,3 +27,5 @@ container machine run -n micro sudo microk8s config view > ~/.kube/config
 container machine run -n micro
 container machine stop micro
 container machine rm micro
+
+# python3 -m http.server 8080
