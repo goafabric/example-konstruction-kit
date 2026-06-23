@@ -17,7 +17,7 @@ function up() {
     apply ../../infra/namespaces/
     apply ../../infra/network-policies/
     apply ../../infra/ingress/cert-manager
-    apply ../../infra/ingress/$INGRESS_TYPE
+    apply ../../infra/ingress/apisix
     apply ../../infra/dashboard
 
     apply ../../infra/istio
@@ -49,7 +49,7 @@ function down() {
     destroy ../../infra/grafana
     destroy ../../infra/ingress
     destroy ../../infra/ingress/cert-manager
-    destroy ../../infra/ingress/$INGRESS_TYPE
+    destroy ../../infra/ingress/apisix
     destroy ../../infra/ingress/cert-manager
 
     destroy ../../infra/istio
