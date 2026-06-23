@@ -1,2 +1,2 @@
-export TF_VAR_hostname=kind.local
+export TF_VAR_hostname=microk8s.local
 INGRESS_TYPE=apisix #kong
