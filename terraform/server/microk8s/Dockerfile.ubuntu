@@ -25,7 +25,6 @@ RUN systemctl disable \
 RUN sed -i -e 's/^AcceptEnv LANG LC_\*$/#AcceptEnv LANG LC_*/' /etc/ssh/sshd_config
 
 RUN apt install snapd -y
-#RUN sudo snap install microk8s --classic --channel=1.34/stable
 
 # Make / and /run shared mounts so that pods using mountPropagation: HostToContainer
 # (e.g. istio-cni, prometheus-node-exporter) can start without

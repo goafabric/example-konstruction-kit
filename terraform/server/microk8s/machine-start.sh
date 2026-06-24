@@ -2,10 +2,10 @@
 set -e
 
 HOSTNAME="microk8s.local"
-MACHINE="micro"
+MACHINE="microk8s"
 KUBE_CONFIG="$HOME/.kube/config"
 
-container machine stop micro
+#container machine stop micro
 
 # Start the machine if not already running
 STATE=$(container machine ls | awk -v name="$MACHINE" '$1 == name {for(i=1;i<=NF;i++) if($i ~ /^(running|stopped)$/) print $i}')

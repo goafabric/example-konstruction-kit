@@ -31,36 +31,11 @@ container machine rm micro
 
 # python3 -m http.server 8080
 
-###
+# istio fix
 
-i am having a special task and please ignore the local workspace folder
-if created a so called container machine with microk8s with apples new container machine framework
-https://github.com/apple/container/blob/main/docs/container-machine.md
-
-you can list all container machines with "container machine ls"
-and you can execute commands like this
-"container machine run -n micro <command>"
-
-to enabled metallb i did this
-container machine run -n micro sudo microk8s enable metallb:$(hostname -I | awk '{print $1}')-$(hostname -I | awk '{print $1}')
-unfortunately i cannot connect via https via its ip adress from the outside, it gives me connection refused
-please note that the ip adress might change with every restart of container machine
-
-please diagnose by executing commands inside the machine
-and outside via curl until you find a solution
-
-
-https://kind.local:32443/welcome/
-
-
-# 1. Fix MetalLB IP pool to current machine IP
-IP=$(container machine run -n micro hostname -I | awk '{print $1}')                                                                                                                                 LSP                                     
-container machine run -n micro "sudo microk8s kubectl patch ipaddresspool default-addresspool -n metallb-system --type='json' -p='[{\"op\": \"replace\", \"path\": \"/spec/addresses/0\", \         LSPs are disabled                       
-"value\": \"${IP}-${IP}\"}]'"                                                                                                                                                                                                               
-                                                                                                                                                                                                 Todo                                    
-# 2. Patch apisix-gateway to LoadBalancer (only needed once, persists across restarts)                                                                                                              [•] Diagnose MetalLB/microk8s           
-container machine run -n micro "sudo microk8s kubectl patch svc apisix-gateway -n ingress-apisix -p '{\"spec\":{\"type\":\"LoadBalancer\"}}'"                                                           connectivity issue in container     
-                                                                                                                                                                                                     machine                             
-Note: step 2 only needs to run once — the service type is stored in etcd and survives restarts. Only step 1 (MetalLB IP pool) needs to run after every restart since the IP changes.  
-
-
+# Access the VM                                                                                                                                                        ┃                       ┃    223Z
+container machine run -n micro "sudo sh -c 'printf \"[Unit]\nDescription=Make root and /run mounts shared\nDefaultDependencies=no\nAfter=local-fs.target\nBefore=kubele┃  Copied to clipboard  ┃                                            
+nType=oneshot\nExecStart=/bin/mount --make-rshared /\nExecStart=/bin/mount --make-rshared /run\nRemainAfterExit=yes\n\n[Install]\nWantedBy=multi-user.target\n\" > /etc┃                       ┃    Context                                 
+rshared.service'"                                                                                                                                                                                   29,755 tokens                           
+                                                                                                                                                                                                 0% used                                 
+container machine run -n micro "sudo systemctl daemon-reload && sudo systemctl enable --now mount-rshared.service" 
