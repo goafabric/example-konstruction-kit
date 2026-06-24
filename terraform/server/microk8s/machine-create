@@ -15,3 +15,4 @@ kubectl patch svc apisix-gateway -n ingress-apisix --type='json' -p='[{"op":"rep
 #container machine run -n microk8s "sudo bash -c 'IP=\$(hostname -I | awk \"{print \\\$1}\") && sudo microk8s enable metallb:\$IP-\$IP'"
 
 ./stack init
+./machine-start
