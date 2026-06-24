@@ -1,4 +1,4 @@
-container machine create alpine:latest --name dev --cpus 6 --memory 8g
+container machine create python:3.12-slim --name dev --cpus 6 --memory 8g
 
 container machine run -n dev
 
@@ -15,6 +15,8 @@ container build -t local/ubuntu -f Dockerfile.ubuntu
 ###
 container machine create local/ubuntu --name micro --cpus 6 --memory 8g
 sleep 1
+container machine run "sudo sh -c 'echo \"nameserver 8.8.8.8\" >> /etc/resolv.conf'"
+
 container machine run -n micro sudo snap install microk8s --classic --channel=1.34/stable
 container machine run -n micro sudo microk8s enable hostpath-storage 
 
