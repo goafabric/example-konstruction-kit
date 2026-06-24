@@ -26,10 +26,6 @@ RUN sed -i -e 's/^AcceptEnv LANG LC_\*$/#AcceptEnv LANG LC_*/' /etc/ssh/sshd_con
 
 RUN apt install snapd -y
 
-# Default DNS to Google's 8.8.8.8 so resolution works reliably out of the box.
-#RUN printf 'nameserver 8.8.8.8\nnameserver 8.8.4.4\n' > /etc/resolv.conf && mkdir -p /etc/systemd/resolved.conf.d && \
-#    printf '[Resolve]\nDNS=8.8.8.8 8.8.4.4\nFallbackDNS=8.8.8.8\n' > /etc/systemd/resolved.conf.d/google-dns.conf
-
 # Istio Ambient Fix, MicroK8s VMs default to private root mount propagation which blocks these workloads.
 RUN printf '[Unit]\nDescription=Make root and /run mounts shared (required for Istio ambient / node-exporter)\nDefaultDependencies=no\nAfter=local-fs.target\nBefore=kubelet.service\n\n[Service]\nType=oneshot\nExecStart=/bin/mount --make-rshared /\nExecStart=/bin/mount --make-rshared /run\nRemainAfterExit=yes\n\n[Install]\nWantedBy=multi-user.target\n' \
     > /etc/systemd/system/mount-rshared.service && \
