@@ -4,7 +4,7 @@ ENV container container
 
 RUN apt-get update && \
     apt-get install -y \
-    dbus systemd openssh-server net-tools iproute2 iputils-ping curl wget vim-tiny man sudo && \
+    dbus systemd openssh-server net-tools iproute2 iputils-ping curl wget vim-tiny man sudo nano && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* && \
     yes | unminimize
