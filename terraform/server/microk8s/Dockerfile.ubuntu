@@ -26,6 +26,14 @@ RUN sed -i -e 's/^AcceptEnv LANG LC_\*$/#AcceptEnv LANG LC_*/' /etc/ssh/sshd_con
 
 RUN apt install snapd -y
 
+# Default DNS to Google's 8.8.8.8 so resolution works reliably out of the box.
+# Write both resolv.conf and a resolved.conf drop-in: the former is used directly
+# by processes, the latter ensures systemd-resolved also falls back to 8.8.8.8
+# in case the runtime or DHCP overwrites resolv.conf at boot.
+RUN printf 'nameserver 8.8.8.8\nnameserver 8.8.4.4\n' > /etc/resolv.conf && \
+    mkdir -p /etc/systemd/resolved.conf.d && \
+    printf '[Resolve]\nDNS=8.8.8.8 8.8.4.4\nFallbackDNS=8.8.8.8\n' > /etc/systemd/resolved.conf.d/google-dns.conf
+
 # Make / and /run shared mounts so that pods using mountPropagation: HostToContainer
 # (e.g. istio-cni, prometheus-node-exporter) can start without
 # "path is mounted on / but it is not a shared or slave mount" errors.
