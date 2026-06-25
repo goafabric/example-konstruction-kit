@@ -4,7 +4,9 @@ container machine rm microk8s
 container machine create goafabric/microk8s:1.34 --name microk8s --cpus 6 --memory 8g
 sleep 1
 echo starting microk8s
-container machine run -n microk8s "sudo snap ack /opt/microk8s/microk8s_9058.assert && sudo snap install /opt/microk8s/microk8s_9058.snap --classic"
+container machine run "sudo sh -c 'echo \"nameserver 8.8.8.8\" >> /etc/resolv.conf'"
+container machine run -n microk8s "sudo snap ack /opt/microk8s/core22_*.assert && sudo snap install /opt/microk8s/core22_*.snap --dangerous"
+container machine run -n microk8s "sudo snap ack /opt/microk8s/microk8s_*.assert && sudo snap install /opt/microk8s/microk8s_*.snap --classic"
 container machine run -n microk8s sudo microk8s enable hostpath-storage
 
 container machine run -n microk8s sudo microk8s config view > ~/.kube.profile/.kube.micro/config
