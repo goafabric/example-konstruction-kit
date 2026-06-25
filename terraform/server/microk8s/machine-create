@@ -1,6 +1,7 @@
 #!/bin/bash
 #container build -t docker.io/goafabric/microk8s:1.34 -f Dockerfile.microk8s . && container image push docker.io/goafabric/microk8s:1.34
 container machine rm microk8s
+container image pull goafabric/microk8s:1.34
 container machine create goafabric/microk8s:1.34 --name microk8s --cpus 6 --memory 8g
 sleep 1
 echo starting microk8s
