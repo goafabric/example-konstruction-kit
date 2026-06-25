@@ -26,7 +26,7 @@ RUN sed -i -e 's/^AcceptEnv LANG LC_\*$/#AcceptEnv LANG LC_*/' /etc/ssh/sshd_con
 
 RUN apt install snapd -y
 
-RUN mkdir -p /opt/microk8s && snap download microk8s --target-directory=/opt/microk8s --channel=1.34/stable && snap download core22 --target-directory=/opt/microk8s --stable
+RUN mkdir -p /opt/microk8s && snap download microk8s --target-directory=/opt/microk8s --channel=1.34/stable
 
 # Istio Ambient Fix, MicroK8s VMs default to private root mount propagation which blocks these workloads.
 RUN printf '[Unit]\nDescription=Make root and /run mounts shared (required for Istio ambient / node-exporter)\nDefaultDependencies=no\nAfter=local-fs.target\nBefore=kubelet.service\n\n[Service]\nType=oneshot\nExecStart=/bin/mount --make-rshared /\nExecStart=/bin/mount --make-rshared /run\nRemainAfterExit=yes\n\n[Install]\nWantedBy=multi-user.target\n' \
