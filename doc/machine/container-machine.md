@@ -1,4 +1,6 @@
-container machine create python:3.12-slim --name dev --cpus 6 --memory 8g
+container machine create goafabric/microk8s:1.34 --name dev --cpus 6 --memory 8g
+
+container machine create alpine:latest --name dev --cpus 6 --memory 8g
 
 container machine run -n dev
 
