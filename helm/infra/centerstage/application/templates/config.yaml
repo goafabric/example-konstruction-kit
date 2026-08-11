@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "application.fullname" . }}-config
+  labels:
+    {{- include "application.labels" . | nindent 4 }}
+data:
+  #application
+  TZ: Europe/Berlin
+  quarkus.http.port: "{{ .Values.service.port }}"
+  quarkus.http.io-threads: "20"
+
+  #apisix oidc
+  quarkus.http.limits.max-header-size: "10K"

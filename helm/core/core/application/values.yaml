@@ -28,7 +28,7 @@ postgresql:
   host: postgresql.data
 
 kafka:
-  enabled: false
+  enabled: true
   server: "kafka.data"
   port: "9092"
 

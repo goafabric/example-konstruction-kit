@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "application.fullname" . }}-config-log
+  labels:
+    {{- include "application.labels" . | nindent 4 }}
+data:
+  #log levels
+  QUARKUS_LOG_LEVEL: "INFO"
+  QUARKUS_LOG_CATEGORY__ORG_GOAFABRIC__LEVEL: "INFO"
