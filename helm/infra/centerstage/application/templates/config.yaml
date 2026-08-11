@@ -12,3 +12,5 @@ data:
 
   #apisix oidc
   quarkus.http.limits.max-header-size: "10K"
+
+  quarkus.http.root-path: "/centerstage"

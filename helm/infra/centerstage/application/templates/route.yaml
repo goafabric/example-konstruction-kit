@@ -19,7 +19,7 @@ spec:
           urlRewrite:
             path:
               type: ReplacePrefixMatch
-              replacePrefixMatch: /
+              replacePrefixMatch: /centerstage
         - type: ExtensionRef
           extensionRef:
             group: apisix.apache.org
