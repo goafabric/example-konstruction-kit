@@ -15,11 +15,6 @@ spec:
             type: PathPrefix
             value: {{ .Values.ingress.paths }}
       filters:
-        - type: URLRewrite
-          urlRewrite:
-            path:
-              type: ReplacePrefixMatch
-              replacePrefixMatch: /centerstage
         - type: ExtensionRef
           extensionRef:
             group: apisix.apache.org
