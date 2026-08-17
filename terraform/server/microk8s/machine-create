@@ -1,5 +1,6 @@
 #!/bin/bash
 #container build -t docker.io/goafabric/microk8s:1.34 -f Dockerfile.microk8s . && container image push docker.io/goafabric/microk8s:1.34
+
 container machine rm microk8s
 container image pull goafabric/microk8s:1.34
 container machine create goafabric/microk8s:1.34 --name microk8s --cpus 6 --memory 8g
@@ -12,7 +13,5 @@ container machine run -n microk8s sudo microk8s enable hostpath-storage
 container machine run -n microk8s sudo microk8s config view > ~/.kube.profile/.kube.micro/config
 container machine run -n microk8s sudo microk8s config view > ~/.kube/config
 
-#container machine run -n microk8s "sudo bash -c 'IP=\$(hostname -I | awk \"{print \\\$1}\") && sudo microk8s enable metallb:\$IP-\$IP'"
-
-#./stack init && ./machine-start
+./stack init && ./machine-start
 kubectl patch svc apisix-gateway -n ingress-apisix --type='json' -p='[{"op":"replace","path":"/spec/ports/1/nodePort","value":32443}]'
