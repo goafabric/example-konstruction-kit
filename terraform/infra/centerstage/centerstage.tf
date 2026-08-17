@@ -4,6 +4,7 @@ resource "helm_release" "centerstage" {
   chart      = "../../../helm/infra/centerstage"
   namespace  = "dashboard"
   create_namespace = false
+  timeout = 30
 
   set {
     name  = "ingress.hosts"
@@ -12,7 +13,7 @@ resource "helm_release" "centerstage" {
 
   set {
     name  = "github.token"
-    value = var.GITHUB_TOKEN
+    value = var.github_token
   }
 
   set_sensitive {

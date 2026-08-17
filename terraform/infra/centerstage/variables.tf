@@ -2,7 +2,7 @@ variable "hostname" {
   default = "kind.local"
 }
 
-variable "GITHUB_TOKEN" {
-  default = ""
+variable "github_token" {
+  sensitive = true
 }
 
