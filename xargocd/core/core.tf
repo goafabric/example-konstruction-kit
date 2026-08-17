@@ -13,7 +13,7 @@ resource "kubernetes_manifest" "core-application" {
       project = "default"
       source = {
         repoURL        = var.helm_repository
-        targetRevision = "quarkus"
+        targetRevision = "develop"
         path           = "helm/core/core/application"
         helm = {
           valueFiles = ["../../../../helm/values.yaml"]
@@ -66,7 +66,7 @@ resource "kubernetes_manifest" "core-frontend" {
       project = "default"
       source = {
         repoURL        = var.helm_repository
-        targetRevision = "quarkus"
+        targetRevision = "develop"
         path           = "helm/core/core/frontend"
         helm = {
           parameters = [
