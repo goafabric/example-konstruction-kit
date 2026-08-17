@@ -1,23 +1,25 @@
-apiVersion: batch/v1
-kind: Job
+apiVersion: apps/v1
+kind: Deployment
 metadata:
   name: {{ include "application.fullname" . }}
   labels:
     {{- include "application.labels" . | nindent 4 }}
-  annotations:
-    "helm.sh/hook": post-install,post-upgrade
 spec:
-  backoffLimit: 3
-  activeDeadlineSeconds: 240
-  ttlSecondsAfterFinished: 60
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "application.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "{{ .Values.service.port }}"
+        prometheus.io/scheme: "http"
+        prometheus.io/path: "/actuator/prometheus"
       labels:
         {{- include "application.labels" . | nindent 8 }}
         {{- include "application.selectorLabels" . | nindent 8 }}
     spec:
-      restartPolicy: Never
       {{- with .Values.initContainers }}
       initContainers:
         {{ tpl (toYaml .) $ | nindent 8 }}
@@ -31,31 +33,51 @@ spec:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}{{ .Values.image.arch }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - name: http
+              containerPort: {{ .Values.service.port }}
+              protocol: TCP
 
           envFrom:
             - configMapRef:
                 name: {{ include "application.fullname" . }}-config
+            - configMapRef:
+                name: {{ include "application.fullname" . }}-config-log
             {{- range .Values.secrets }}
             - secretRef:
                 name: {{ .name }}
             {{- end }}
-
-          env:
-              - name: database.provisioning.goals
-                value: "-migrate -terminate"
-
           #resources and commands and args
           {{ if and (ne .Values.image.arch "-native") (ne .Values.image.arch "-native-arm64v8") }}
             {{- with .Values.resourcesAnnotations }}
-            {{- toYaml . | nindent 10 }}
-            {{- end }}
+              {{- toYaml . | nindent 10 }}
+              {{- end }}
           {{- end }}
 
           {{ if or (eq .Values.image.arch "-native") (eq .Values.image.arch "-native-arm64v8") }}
             {{- with .Values.nativeAnnotations }}
-            {{- toYaml . | nindent 10 }}
-            {{- end }}
+              {{- toYaml . | nindent 10 }}
+              {{- end }}
           {{- end }}
+
+          readinessProbe:
+            httpGet:
+              path: /actuator/health/readiness
+              port: http
+              scheme: {{ .Values.readinessProbe.scheme | default "HTTP" }}
+            initialDelaySeconds: {{ .Values.readinessProbe.initialDelaySeconds }}
+            periodSeconds: 10
+            timeoutSeconds: 10
+            failureThreshold: 3
+          livenessProbe:
+            httpGet:
+              path: /actuator/health/liveness
+              port: http
+              scheme: {{ .Values.readinessProbe.scheme | default "HTTP" }}
+            initialDelaySeconds: {{ .Values.readinessProbe.initialDelaySeconds }}
+            periodSeconds: 10
+            timeoutSeconds: 10
+            failureThreshold: 3
 
           volumeMounts:
             - mountPath: /usr/share/logs
@@ -64,3 +86,5 @@ spec:
       volumes:
         - name: {{ include "application.fullname" . }}-applogs
           emptyDir: {}
+     
+

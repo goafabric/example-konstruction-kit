@@ -33,11 +33,6 @@ resource "helm_release" "catalog-batch" {
   timeout = var.helm_timeout
 
   set {
-    name  = "image.arch"
-    value = "-native"
-  }
-
-  set {
     name = "oidc.enabled"
     value = local.oidc_enabled
   }

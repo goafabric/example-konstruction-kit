@@ -1,28 +1,15 @@
 replicaCount: 1
 
 image:
-  repository: "goafabric/catalog-batch-service"
+  repository: "goafabric/catalog-batch-service-quarkus"
   pullPolicy: Always #IfNotPresent
   pullSecrets:
-  arch: "-native"
 
-podAnnotations:
-  linkerd.io/inject: disabled
-  sidecar.istio.io/inject: "false"
 
 resourcesAnnotations:
   resources:
     requests:
-      memory: 256M
-      cpu: 250m
-
-  command: ["java", "-Xms256M", "-Xmx256M", "-cp", "/app/resources:/app/classes:/app/libs/*",
-            "org.goafabric.catalogservice.Application"]
-
-nativeAnnotations:
-  resources:
-    requests:
-      memory: 64M
+      memory: 32M
       cpu: 250m
 
   args: ["-Xmx64M"]

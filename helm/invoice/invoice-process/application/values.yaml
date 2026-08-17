@@ -5,20 +5,11 @@ ingress:
   paths: /invoice
 
 image:
-  repository: "goafabric/invoice-process" # image name
+  repository: "goafabric/invoice-process-quarkus" # image name
   pullPolicy: Always #IfNotPresent
   pullSecrets:
-  arch: "-native"
 
 resourcesAnnotations:
-  resources:
-    requests:
-      memory: 128M
-      cpu: 250m
-
-  command: ["java", "-Xms128M", "-Xmx128M", "-cp", "/app/resources:/app/classes:/app/libs/*", "org.goafabric.invoice.Application"]
-
-nativeAnnotations:
   resources:
     requests:
       memory: 32M
@@ -29,13 +20,10 @@ nativeAnnotations:
 readinessProbe:
   initialDelaySeconds: 2
 
-s3:
-  endpoint: "http://s3-minio.data:9000"
-
-initContainers:
-  - name: wait-for-redis
-    image: redis:7.2.4
-    command: ['sh', '-c', 'until redis-cli -h redis.invoice ping || redis-cli -h dragonfly.invoice ping; do echo waiting for redis; sleep 1; done;']
+#initContainers:
+#  - name: wait-for-redis
+#    image: redis:7.2.4
+#    command: ['sh', '-c', 'until redis-cli -h redis.invoice ping || redis-cli -h dragonfly.invoice ping; do echo waiting for redis; sleep 1; done;']
 
 service:
   type: ClusterIP
@@ -45,6 +33,6 @@ oidc:
   enabled:
 
 secrets:
-  - name: s3-secret
+  - name: blob-storage-secret
   - name: redis-secret
 
