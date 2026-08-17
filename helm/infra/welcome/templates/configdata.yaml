@@ -46,34 +46,33 @@ data:
     target=\"_blank\">\n                        <span>\U0001F419 Argo CD</span>\n
     \                   </a>\n                </li>\n                <p></p>\n                <li>\n
     \                   <a href=\"/oidc/\" target=\"_blank\">\n                        <span>\U0001F510
-    Keycloak</span>\n                    </a>\n                </li>\n                <p></p>\n
-    \               <!--\n                <li>\n                    <a href=\"/backstage/catalog/\"
-    target=\"_blank\">\n                        <span>\U0001F3AD Backstage</span>\n
-    \                   </a>\n                </li>\n                <li>\n                    <a
-    href=\"/backstage/tech-radar/\" target=\"_blank\">\n                        <span>\U0001F4E1
-    Tech Radar</span>\n                    </a>\n                </li>\n                -->\n
-    \               <li>\n                    <a href=\"/centerstage/\" target=\"_blank\">\n
-    \                       <span>\U0001F3AD Centerstage</span>\n                    </a>\n
-    \               </li>\n                <li>\n                    <a href=\"/centerstage/#techradar\"
+    Keycloak</span>\n                    </a>\n                </li>\n                <p></p>\n\n
+    \               <li>\n                    <a href=\"/backstage/catalog/\" target=\"_blank\">\n
+    \                       <span>\U0001F3AD Backstage</span>\n                    </a>\n
+    \               </li>\n                <li>\n                    <a href=\"/backstage/tech-radar/\"
     target=\"_blank\">\n                        <span>\U0001F4E1 Tech Radar</span>\n
-    \                   </a>\n                </li>\n            </ul>\n        </div>\n
-    \       <div class=\"links\">\n            <h6>Core</h6>\n            <ul>\n                <p></p>\n
-    \               <li>\n                    <a href=\"/core-frontend/frontend/\"
-    target=\"_blank\">\n                        <span>\U0001F30D Core</span>\n                    </a>\n
-    \                   <a href=\"/core-frontend/logout\" target=\"_blank\">\n                        <span>\U0001F513</span>\n
-    \                   </a>\n                </li>\n                <li>\n                    <a
-    href=\"/catalog/\" target=\"_blank\">\n                        <span>\U0001F4D9
-    Catalog</span>\n                    </a>\n                </li>\n                <p></p>\n
-    \               <li>\n                    <a href=\"/invoice/\" target=\"_blank\">\n
-    \                       <span>\U0001F4B0 Invoice</span>\n                    </a>\n
-    \               </li>\n                <p></p>\n                <li>\n                    <a
-    href=\"/event/\" target=\"_blank\">\n                        <span>\U0001F4E9
-    Event Dispatcher</span>\n                    </a>\n                    <!--\n
-    \                   <a href=\"/event/logout\" target=\"_blank\">\n                        <span>\U0001F513</span>\n
-    \                   </a>\n                    -->\n                </li>\n            </ul>\n
-    \       </div>\n\n        <div class=\"links\">\n            <h6>Example</h6>\n
+    \                   </a>\n                </li>\n                <!--\n                <li>\n
+    \                   <a href=\"/centerstage/\" target=\"_blank\">\n                        <span>\U0001F3AD
+    Centerstage</span>\n                    </a>\n                </li>\n                <li>\n
+    \                   <a href=\"/centerstage/#techradar\" target=\"_blank\">\n                        <span>\U0001F4E1
+    Tech Radar</span>\n                    </a>\n                </li>\n                -->\n
+    \           </ul>\n        </div>\n        <div class=\"links\">\n            <h6>Core</h6>\n
     \           <ul>\n                <p></p>\n                <li>\n                    <a
-    href=\"/person/\" target=\"_blank\">\n                        <span>\U0001F30D
+    href=\"/core-frontend/frontend/\" target=\"_blank\">\n                        <span>\U0001F30D
+    Core</span>\n                    </a>\n                    <a href=\"/core-frontend/logout\"
+    target=\"_blank\">\n                        <span>\U0001F513</span>\n                    </a>\n
+    \               </li>\n                <li>\n                    <a href=\"/catalog/\"
+    target=\"_blank\">\n                        <span>\U0001F4D9 Catalog</span>\n
+    \                   </a>\n                </li>\n                <p></p>\n                <li>\n
+    \                   <a href=\"/invoice/\" target=\"_blank\">\n                        <span>\U0001F4B0
+    Invoice</span>\n                    </a>\n                </li>\n                <p></p>\n
+    \               <li>\n                    <a href=\"/event/\" target=\"_blank\">\n
+    \                       <span>\U0001F4E9 Event Dispatcher</span>\n                    </a>\n
+    \                   <!--\n                    <a href=\"/event/logout\" target=\"_blank\">\n
+    \                       <span>\U0001F513</span>\n                    </a>\n                    -->\n
+    \               </li>\n            </ul>\n        </div>\n\n        <div class=\"links\">\n
+    \           <h6>Example</h6>\n            <ul>\n                <p></p>\n                <li>\n
+    \                   <a href=\"/person/\" target=\"_blank\">\n                        <span>\U0001F30D
     Person Service</span>\n                    </a>\n                    <a href=\"/person/logout\"
     target=\"_blank\">\n                        <span>\U0001F513</span>\n                    </a>\n
     \               </li>\n                <p></p>\n                <li>\n                    <a
@@ -84,8 +83,8 @@ data:
     \       </div>\n    </div>\n</div>\n\n</body>\n"
 kind: ConfigMap
 metadata:
-  creationTimestamp: "2026-08-17T06:14:56Z"
+  creationTimestamp: "2026-08-17T07:06:53Z"
   name: welcome-board-data-files
   namespace: dashboard
-  resourceVersion: "32009"
-  uid: 5e6815c5-dff4-408b-b9b8-6b62b2089549
+  resourceVersion: "74301589"
+  uid: 21ba07af-2037-40a8-a4c2-5a3fa23c2e7c
