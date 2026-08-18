@@ -1,0 +1,78 @@
+---
+server:
+  address: 'tcp://:9091'
+
+log:
+  level: 'info'
+
+totp:
+  issuer: 'authelia.local'
+
+identity_validation:
+  reset_password:
+    jwt_secret: 'tfqpe9BM4YlafTBPYQKjiNrd9lOcMBgDTjuNtd7bRCiN7I1GZpiuTQpU4yXaKGcb'
+
+authentication_backend:
+  file:
+    path: '/config/users_database.yml'
+
+access_control:
+  default_policy: 'one_factor'
+
+session:
+  secret: 'gzhZwe2hhkc7AR3Ms9gYOwbT8F3b0ryF'
+  cookies:
+    - name: 'authelia_session'
+      domain: 'authelia.local'
+      authelia_url: 'https://authelia.local:9091'
+      expiration: '1 hour'
+      inactivity: '5 minutes'
+
+regulation:
+  max_retries: 3
+  find_time: '2 minutes'
+  ban_time: '5 minutes'
+
+storage:
+  encryption_key: 'u0lKKl6DqMhuCzmZx5EyZjudKEHQd3DZ'
+  local:
+    path: '/config/db.sqlite3'
+
+notifier:
+  filesystem:
+    filename: '/config/notification.txt'
+
+identity_providers:
+  oidc:
+    hmac_secret: 'mQ7fgahxFsq1k8j7EcNaE66Xpu6b9eXh'
+    jwks:
+      - key_id: 'default'
+        algorithm: 'RS256'
+        use: 'sig'
+        key: {{ secret "/config/oidc.pem" | mindent 10 "|" | msquote }}
+
+    clients:
+      - client_id: 'quarkus-client'
+        client_name: 'Quarkus Application'
+        # Plain text secret: quarkus-secret
+        client_secret: '$pbkdf2-sha512$310000$Gw.9qQk4zWEXbrbOsFV86g$Tv/lTadvuirUUBMLBacueoZuIZ0qr3IjfDAbAezTBUyMhQtcQrqolsv7EfkiH5HbHEAvvW1P3MRZhP0oZTZB6A'
+        public: false
+        authorization_policy: 'one_factor'
+        redirect_uris:
+          - 'http://localhost:8080/quarkus/callback'
+          - 'http://localhost:8080/callback'
+        scopes:
+          - 'openid'
+          - 'profile'
+          - 'email'
+          - 'groups'
+          - 'offline_access'
+        grant_types:
+          - 'authorization_code'
+          - 'refresh_token'
+        response_types:
+          - 'code'
+        response_modes:
+          - 'query'
+        userinfo_signed_response_alg: 'none'
+        token_endpoint_auth_method: 'client_secret_post'

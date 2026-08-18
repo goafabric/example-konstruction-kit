@@ -1,0 +1,9 @@
+# Runtime-generated files — do not commit
+db.sqlite3
+notification.txt
+*.pub
+
+# OIDC signing key — generate once with:
+# docker run --rm -v "$PWD:/config" authelia/authelia:latest \
+#   authelia crypto pair rsa generate --file.private-key oidc.pem --file.public-key oidc.pub --directory /config
+#oidc.pem

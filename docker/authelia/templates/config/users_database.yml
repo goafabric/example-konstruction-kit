@@ -1,0 +1,25 @@
+---
+users:
+  user1:
+    displayname: User One
+    # Password: user1
+    password: "$argon2id$v=19$m=65536,t=3,p=4$RSwgVnI4kqDiwgveyuAlIQ$ylmluTsXzrjYgd6zRv7s1Td/95AMcv+Cc9QOIM3MiGg"
+    email: user1@example.com
+    groups:
+      - users
+
+  user2:
+    displayname: User Two
+    # Password: user2
+    password: "$argon2id$v=19$m=65536,t=3,p=4$9LE0v8sfhGGECjl8b2brgA$iHCx8DlSC1GQcLlELZpM6oCtQ/1FnCA/QV8wa1+BIOs"
+    email: user2@example.com
+    groups:
+      - users
+
+  user3:
+    displayname: User Three
+    # Password: user3
+    password: "$argon2id$v=19$m=65536,t=3,p=4$rFiK3JEMgRvN8S0izhT+YQ$bFYklBgOQr0PGEJLmrCdgY2/CAQu9Ttwc1piVIv8llc"
+    email: user3@example.com
+    groups:
+      - users

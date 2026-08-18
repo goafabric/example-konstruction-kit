@@ -1,0 +1,41 @@
+#!/bin/bash
+source .values
+export COMMAND=$1
+export OPTION=$2
+export _Values_host_docker_internal="${_Values_host_docker_internal:-host.docker.internal}"
+
+function func_compose {
+    echo Going $1 ...
+    docker-compose -p ${_Values_root_name} -f ./templates/docker-compose.yml $LOKI_COMPOSE --env-file .values $1 $2 $3 $4 $5
+}
+
+if [ "${COMMAND}" = "up" ]
+then
+    func_compose up -d
+elif [ "${COMMAND}" = "down" ]
+then
+    func_compose down
+elif [ "${COMMAND}" = "restart" ]
+then
+    func_compose down
+    func_compose up -d
+elif [ "${COMMAND}" = "pull" ]
+then
+    func_compose down
+    func_compose pull
+elif [ "${COMMAND}" = "build" ]
+then
+    func_compose build
+elif [ "${COMMAND}" = "prune" ]
+then
+    func_compose down --volumes
+elif [ "${COMMAND}" = "update" ]
+then
+    func_compose down --volumes
+    func_compose pull
+    func_compose up -d
+else
+    echo Doing nothing !
+fi
+
+#CleanUp: docker volume prune

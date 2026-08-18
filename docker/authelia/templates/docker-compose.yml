@@ -1,0 +1,21 @@
+services:
+  authelia:
+    image: authelia/authelia:latest
+    container_name: authelia
+    restart: unless-stopped
+    ports:
+      - "9091:9091"
+    volumes:
+      - ./config:/config
+    command:
+      - authelia
+      - --config=/config/configuration.yml
+      - --config.experimental.filters=template
+    environment:
+      TZ: Europe/Berlin
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:9091/api/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
