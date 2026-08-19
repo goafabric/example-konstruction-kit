@@ -72,10 +72,6 @@ resource "kubernetes_manifest" "catalog-batch" {
               value = var.hostname
             },
             {
-              name  = "image.arch"
-              value = "-native"
-            },
-            {
               name  = "maxReplicas"
               value = "3"
             },
