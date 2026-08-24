@@ -5,6 +5,7 @@
 - removed kong and ingress definitions
 - upgrade to apsix chart 2.14.0 with ingress controller 2.0
 - switch to gateway api
+- changed all servies to quarkus
 
 # 1.4.3
 - uprade to istio 1.28.0
