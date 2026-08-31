@@ -1,8 +1,7 @@
 # install
 https://docs.cilium.io/en/stable/gettingstarted/k8s-install-default/#install-the-cilium-cli
 
-cilium install 1.20.1
-
+cilium install 1.20.1 
 cilium status --wait
 
 # hubble
