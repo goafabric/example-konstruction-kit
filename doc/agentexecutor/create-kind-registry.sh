@@ -16,11 +16,15 @@
 
 set -o errexit -o nounset -o pipefail
 
-ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 KIND_CLUSTER_NAME="${KIND_CLUSTER_NAME:-kind}"
 KUBECTL_CONTEXT="kind-${KIND_CLUSTER_NAME}"
 reg_name="kind-registry"
 reg_port="${KIND_REGISTRY_PORT:-5001}"
+
+# kind runs each node as a docker container labeled with its cluster name.
+kind_nodes() {
+  docker ps -a --filter "label=io.x-k8s.kind.cluster=${KIND_CLUSTER_NAME}" --format '{{.Names}}'
+}
 
 if [[ $# -gt 0 ]]; then
   case "$1" in
@@ -74,7 +78,7 @@ fi
 # safe to run repeatedly against a cluster you don't want kind to recreate.
 echo "Ensuring podcertcontroller feature gates are enabled on kind nodes..."
 FEATURE_GATES="ClusterTrustBundle=true,ClusterTrustBundleProjection=true,PodCertificateRequest=true"
-for node in $("${ROOT}"/hack/kind.sh get nodes --name "${KIND_CLUSTER_NAME}"); do
+for node in $(kind_nodes); do
   needs_kubelet_restart=false
 
   # kubelet's own gate: needed on every node that might run a pod projecting
@@ -114,7 +118,7 @@ fi
 # 3. Add the registry config to the nodes
 echo "Adding registry config to kind nodes..."
 REGISTRY_DIR="/etc/containerd/certs.d/localhost:${reg_port}"
-for node in $("${ROOT}"/hack/kind.sh get nodes --name "${KIND_CLUSTER_NAME}"); do
+for node in $(kind_nodes); do
   docker exec "${node}" mkdir -p "${REGISTRY_DIR}"
   cat <<EOF | docker exec -i "${node}" cp /dev/stdin "${REGISTRY_DIR}/hosts.toml"
 [host."http://${reg_name}:5000"]

@@ -2,7 +2,7 @@
 # substrate
 https://github.com/agent-substrate/substrate#quickstart-development
 
-hack/create-kind-registry.sh => needs to be copied inside ./hack directory && after execution removed !
+create-kind-registry.sh 
 
 hack/install-ate-kind.sh --deploy-ate-system --credential-provider='{"name":"k8s.io"}'
 
