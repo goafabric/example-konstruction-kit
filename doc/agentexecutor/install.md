@@ -18,14 +18,10 @@ kubectl ate get workers
 kubectl ate create actor my-counter-1 -a ate-demo-counter --template counter
 
 kubectl ate resume actor my-counter-1 -a ate-demo-counter
-
-kubectl ate get actor my-counter-1 -a ate-demo-counter
-                          
+ 
 ## suspend actor
 
 kubectl ate suspend actor my-counter-1 -a ate-demo-counter
-
-kubectl ate get actor my-counter-1 -a ate-demo-counter
  
 ## wake up suspended actor via http
 
