@@ -32,12 +32,15 @@ curl -X POST \
 http://localhost:8000
 
 kubectl ate suspend actor my-counter-1 -a ate-demo-counter
-
-                        
+ 
 ## delete actor
 
 kubectl ate delete actor my-counter-1 -a ate-demo-counter
-              
+ 
+## kill demo pods after kind restart
+
+kubectl delete pods -n ate-demo-counter --all && kubectl ate delete actor my-counter-1 -a ate-demo-counter && kubectl ate create actor my-counter-1 -a ate-demo-counter --template counter
+
 # ax
 https://agentexecutor.io/
 
