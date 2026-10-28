@@ -1,9 +1,9 @@
 # 1.4.4
-- upgrade to kind kubernetes 1.35
+- upgrade to kind kubernetes 1.37
 - uprade to istio 1.30.0
 - upgrade to postgres 18.3
 - removed kong and ingress definitions
-- upgrade to apsix chart 2.14.0 with ingress controller 2.0
+- upgrade to apsix chart 2.18.2 with ingress controller 2.0
 - switch to gateway api
 - changed all servies to quarkus
 
