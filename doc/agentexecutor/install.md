@@ -4,13 +4,13 @@ https://github.com/agent-substrate/substrate#quickstart-development
 
 create-kind-registry.sh 
 
-hack/install-ate-kind.sh --deploy-ate-system --credential-provider='{"name":"k8s.io"}'
+hack/install-ate-kind.sh deploy ate-system --credential-provider='{"name":"k8s.io"}' 
 
 go install ./cmd/kubectl-ate
                                     
 # demo
 
-hack/install-ate-kind.sh --deploy-demo-counter
+hack/install-ate-kind.sh deploy demo counter
 
 kubectl ate get workers
                           
