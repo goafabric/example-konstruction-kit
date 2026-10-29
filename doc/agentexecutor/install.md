@@ -6,11 +6,11 @@ hack/create-kind-registry.sh
 
 hack/install-ate-kind.sh deploy ate-system --credential-provider='{"name":"k8s.io"}' --ingress-allowed-spiffe-ids=spiffe://cluster.local/ns/ate-system/sa/atenet-client 
 
+hack/install-ate-kind.sh deploy demo counter
+
 go install ./cmd/kubectl-ate
                                     
 # demo
-
-hack/install-ate-kind.sh deploy demo counter
 
 kubectl ate get workers
                           
