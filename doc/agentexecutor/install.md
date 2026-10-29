@@ -2,9 +2,9 @@
 # substrate
 https://github.com/agent-substrate/substrate#quickstart-development
 
-create-kind-registry.sh 
+hack/create-kind-registry.sh 
 
-hack/install-ate-kind.sh deploy ate-system --credential-provider='{"name":"k8s.io"}' 
+hack/install-ate-kind.sh deploy ate-system --credential-provider='{"name":"k8s.io"}' --ingress-allowed-spiffe-ids=spiffe://cluster.local/ns/ate-system/sa/atenet-client 
 
 go install ./cmd/kubectl-ate
                                     
