@@ -10,7 +10,7 @@ function create-user {
     echo retrieving access token ..
 
     export access_token=$(\
-    curl -v -s -X POST $baseurl/oidc/realms/master/protocol/openid-connect/token \
+    curl -s -X POST $baseurl/oidc/realms/master/protocol/openid-connect/token \
     -d "client_id=admin-cli" \
     -d "username=admin" \
     -d "password=admin" \
@@ -29,12 +29,14 @@ function create-user {
     \"username\": \"$user\",
     \"email\": \"$user@example.com\",
     \"enabled\": true,
+    \"firstName\": \"$user\",
+    \"lastName\": \"$realm\",
     \"credentials\": [{
-    \"type\": \"$user\",
+    \"type\": \"password\",
     \"value\": \"$password\",
     \"temporary\": false
     }],
-    \"requiredActions\": [\"$requiredActions\"]
+    \"requiredActions\": [${requiredActions:+\"$requiredActions\"}]
     }"
 
     echo setting email verified ...

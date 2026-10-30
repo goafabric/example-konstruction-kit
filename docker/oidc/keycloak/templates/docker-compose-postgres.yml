@@ -1,7 +1,7 @@
 services:
   keycloak:
     container_name: ${_Values_root_name}-application
-    image:  quay.io/keycloak/keycloak:24.0.1
+    image:  quay.io/keycloak/keycloak:26.8.1
 
     restart: 'no'
     ports:
@@ -15,13 +15,13 @@ services:
       - TZ=Europe/Berlin
       - JAVA_OPTS=-Xmx256m
       - KC_HTTP_RELATIVE_PATH=oidc
-      - KC_PROXY=edge
-      - KC_HOSTNAME_STRICT_HTTPS=false
-      - KC_HOSTNAME=localhost:30200
+      - KC_HTTP_ENABLED=true
+      - KC_HOSTNAME=http://localhost:30200/oidc
+      - KC_HOSTNAME_BACKCHANNEL_DYNAMIC=true
 
       #user
-      - KEYCLOAK_ADMIN=admin
-      - KEYCLOAK_ADMIN_PASSWORD=admin
+      - KC_BOOTSTRAP_ADMIN_USERNAME=admin
+      - KC_BOOTSTRAP_ADMIN_PASSWORD=admin
 
       #database
       - KC_DB=postgres
