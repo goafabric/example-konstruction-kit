@@ -1,0 +1,813 @@
+{
+  "info": {
+    "_postman_id": "c7b24fad-5980-415b-9614-8edb6b56ebd4",
+    "name": "Elasticsearch",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "29832927"
+  },
+  "item": [
+    {
+      "name": "Person",
+      "item": [
+        {
+          "name": "Create",
+          "item": [
+            {
+              "name": "PUT Hans",
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"orgunitId\": \"1\",\n    \"firstName\": \"Hans\",\n    \"lastName\": \"Müller\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/person_names/_doc/1",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "person_names",
+                    "_doc",
+                    "1"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "PUT Erich",
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"firstName\": \"Erich\",\n    \"lastName\": \"Meyer\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/person_names/_doc/2",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "person_names",
+                    "_doc",
+                    "2"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "GET Hans",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/person_names/_doc/1",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "person_names",
+                    "_doc",
+                    "1"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Search",
+          "item": [
+            {
+              "name": "Search All",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/person_names/_search",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "person_names",
+                    "_search"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Match",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"query\": {\n        \"match\": {\n            \"lastName\": {\n                \"query\": \"Müller\"\n            }\n        }\n    }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/person_names/_search",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "person_names",
+                    "_search"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Wildcard",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"query\": {\n        \"wildcard\": {\n            \"lastName.keyword\": {\n                \"value\": \"M*\"\n            }\n        }\n    }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/person_names/_search",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "person_names",
+                    "_search"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Fuzzy",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"query\": {\n        \"fuzzy\": {\n            \"lastName.keyword\": {\n                \"value\": \"Mueller\"\n            }\n        }\n    }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/person_names/_search",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "person_names",
+                    "_search"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Fuzzy + Wildcard",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"query\": {\n        \"bool\": {\n            \"should\": [\n                {\n                    \"wildcard\": {\n                        \"lastName.keyword\": {\n                            \"value\": \"Mü*\"\n                        }\n                    }\n                },\n                {\n                    \"fuzzy\": {\n                        \"lastName.keyword\": {\n                            \"value\": \"Mu\"\n                        }\n                    }\n                }\n            ]\n        }\n    }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/person_names/_search",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "person_names",
+                    "_search"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Medical Record",
+      "item": [
+        {
+          "name": "Create",
+          "item": [
+            {
+              "name": "Sugar",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"type\" : \"ANAMNESIS\",\n    \"display\": \"shows the tendency to eat a lot of sweets with sugar\",\n    \"code\": \"none\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/medica_record/_doc",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "medica_record",
+                    "_doc"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Fat",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"type\" : \"ANAMNESIS\",\n    \"display\": \"shows the behaviour to eat a lot of fast food with fat\",\n    \"code\": \"none\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/medical_record/_doc",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "medical_record",
+                    "_doc"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Fire",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"type\" : \"ANAMNESIS\",\n    \"display\": \"hears strange voices of Michael Meyers, who tells him to set a fire\",\n    \"code\": \"none\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/medical_record/_doc",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "medical_record",
+                    "_doc"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Search",
+          "item": [
+            {
+              "name": "Search All",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/medical_record/_search",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "medical_record",
+                    "_search"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Match",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"query\": {\n        \"match\": {\n            \"display\": {\n                \"query\": \"food\"\n            }\n        }\n    }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/medical_record/_search",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "medical_record",
+                    "_search"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Wildcard",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"query\": {\n        \"wildcard\": {\n            \"display\": {\n                \"value\": \"foo*\"\n            }\n        }\n    }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/medical_record/_search",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "medical_record",
+                    "_search"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Fuzzy",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"query\": {\n        \"fuzzy\": {\n            \"display\": {\n                \"value\": \"meiers\"\n            }\n        }\n    }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/medical_record/_search",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "medical_record",
+                    "_search"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Fuzzy + Wildcard Copy",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"query\": {\n        \"bool\": {\n            \"should\": [\n                {\n                    \"wildcard\": {\n                        \"display\": {\n                            \"value\": \"mei*\"\n                        }\n                    }\n                },\n                {\n                    \"fuzzy\": {\n                        \"display\": {\n                            \"value\": \"meiers\"\n                        }\n                    }\n                }\n            ]\n        }\n    }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/medical_record/_search",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "medical_record",
+                    "_search"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Encounter",
+      "item": [
+        {
+          "name": "Create",
+          "item": [
+            {
+              "name": "Create",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"orgunitId\": \"1\",\n    \"patientId\": \"1\",\n    \"encounterName\": \"encounter 0\",\n    \"medicalRecords\": [\n        {\n            \"type\": \"ANAMNESIS\",\n            \"display\": \"shows the tendency to eat a lot of sweets with sugar\",\n            \"code\": \"none\"\n        },\n        {\n            \"type\": \"ANAMNESIS\",\n            \"display\": \"shows the behaviour to eat a lot of fast food with fat\",\n            \"code\": \"none\"\n        },\n        {\n            \"type\": \"ANAMNESIS\",\n            \"display\": \"hears strange voices of Michael Meyers, who tells him to set a fire\",\n            \"code\": \"none\"\n        }\n    ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/encounter/_doc",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "encounter",
+                    "_doc"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Search",
+          "item": [
+            {
+              "name": "Search All",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/encounter/_search",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "encounter",
+                    "_search"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Match",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"query\": {\n        \"match\": {\n            \"medicalRecords.display\": {\n                \"query\": \"food\"\n            }\n        }\n    }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/encounter/_search",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "encounter",
+                    "_search"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Match Copy",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"query\": {\n        \"bool\": {\n            \"filter\": [\n                {\n                    \"term\": {\n                        \"medicalRecords.display\": \"food\"\n                    }\n                }\n            ]\n        }\n    }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/encounter/_search",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "encounter",
+                    "_search"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Wildcard",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"query\": {\n        \"wildcard\": {\n            \"medicalRecords.display\": {\n                \"value\": \"foo*\"\n            }\n        }\n    }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/encounter/_search",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "encounter",
+                    "_search"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Fuzzy",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"query\": {\n        \"fuzzy\": {\n            \"medicalRecords.display\": {\n                \"value\": \"meiers\"\n            }\n        }\n    }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/encounter/_search",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "encounter",
+                    "_search"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Books",
+      "item": [
+        {
+          "name": "Create",
+          "item": [
+            {
+              "name": "index",
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"mappings\": {\n    \"properties\": {\n      \"title\": {\n        \"type\": \"text\"\n      },\n      \"genre\": {\n            \"type\": \"keyword\"\n      },\n      \"authors\": {\n        \"type\": \"nested\",\n        \"properties\": {\n          \"name\": {\n            \"type\": \"text\"\n          },\n          \"country\": {\n            \"type\": \"keyword\"\n          }\n        }\n      }\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/books",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "books"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "USA",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"Sample Book 2\",\n  \"genre\": \"Non-fiction\",\n  \"authors\": [\n    {\n      \"name\": \"Author 3\",\n      \"country\": \"USA\"\n    },\n    {\n      \"name\": \"Author 4\",\n      \"country\": \"Germany\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/books/_doc",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "books",
+                    "_doc"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Brazil",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "\n{\n  \"title\": \"Sample Book 3\",\n  \"genre\": \"Non-fiction\",\n  \"authors\": [\n    {\n      \"name\": \"Author 3\",\n      \"country\": \"Brazil\"\n    },\n    {\n      \"name\": \"Author 4\",\n      \"country\": \"Brazil\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/books/_doc",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "books",
+                    "_doc"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Search All",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/books/_search",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "books",
+                "_search"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Search USA",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"query\": {\n    \"nested\": {\n      \"path\": \"authors\",\n      \"query\": {\n        \"terms\": {\n          \"authors.country\": [\"USA\"]\n        }\n      }\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/books/_search",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "books",
+                "_search"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Indices",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/_cat/indices",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "_cat",
+            "indices"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Root",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            ""
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:9200",
+      "type": "string"
+    }
+  ]
+}
