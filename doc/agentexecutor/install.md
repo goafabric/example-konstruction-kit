@@ -2,18 +2,15 @@
 # substrate
 https://github.com/agent-substrate/substrate#quickstart-development
 
-hack/create-kind-registry.sh 
-
-hack/install-ate-kind.sh deploy ate-system --credential-provider='{"name":"k8s.io"}' --ingress-allowed-spiffe-ids=spiffe://cluster.local/ns/ate-system/sa/atenet-client 
-
-hack/install-ate-kind.sh deploy demo counter
+./create-kind-registry.sh 
 
 go install ./cmd/kubectl-ate
-                                    
-# demo
 
-kubectl ate get workers
-                          
+export ATE_INSTALL_KIND=true && go run ./cmd/ate-setup deploy ate-system --credential-provider='{"name":"k8s.io"}' --ingress-allowed-spiffe-ids=spiffe://cluster.local/ns/ate-system/sa/atenet-client
+
+export ATE_INSTALL_KIND=true && go run ./cmd/ate-setup deploy demo counter
+
+
 ## create and resume actor
 kubectl ate create actor my-counter-1 -a ate-demo-counter --template counter
 
@@ -25,7 +22,7 @@ kubectl ate suspend actor my-counter-1 -a ate-demo-counter
  
 ## wake up suspended actor via http
 
-kubectl port-forward -n ate-system svc/atenet-router 8000:80
+kubectl ate proxy actor my-counter-1 -a ate-demo-counter
 
 curl -X POST \
 -H "ate-target-actor: ate-demo-counter/my-counter-1" \
