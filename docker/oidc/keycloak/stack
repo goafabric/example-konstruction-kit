@@ -2,6 +2,7 @@
 source .values
 export COMMAND=$1
 export _Values_image_native=$2
+export _Values_host_docker_internal="${_Values_host_docker_internal:-host.docker.internal}"
 
 [[ "$(uname -m)" == "arm64" || "$(uname -m)" == "aarch64" ]] && export _Values_server_arch="-arm64v8"
 
