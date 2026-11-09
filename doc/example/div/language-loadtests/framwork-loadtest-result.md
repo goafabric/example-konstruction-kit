@@ -46,9 +46,9 @@ docker run --name callee-service --rm -p 50900:50900 goafabric/callee-service-ru
 | Framework          |  Req/s | CPU Usage | Memory Usage | Req/s per CPU % | Req/s per MB |
 | ------------------ | -----: | --------: | -----------: | --------------: | -----------: |
 | Rust               | 18,500 |      200% |        7 MB  |        **92**    |    **2642** |
-| Go                 |18,684  |      172% |        20 MB |        **108**   |    **934**  |
-| C# (.NET)          | 20,000 |      150% |        40 MB |       **120**    |       450.0 |
-| Quarkus Native     |17,054  |      300% |        35 MB |            56.84 |       487,0 |
+| Go                 | 18,684 |      172% |        20 MB |        **108**   |    **934**  |
+| C# (.NET)          | 20,000 |      150% |        40 MB |        **120**   |    **450**  |
+| Quarkus Native     | 17,054 |      300% |        35 MB |            56.84 |       487,0 |
 | Spring Native      | 16,391 |      300% |        70 MB |            54.63 |       234.0 |
 | Spring JVM         | 18,737 |      260% |       220 MB |            72.0  |        85.0 |
 | Python (1 worker)  |  1,804 |      100% |        66 MB |            18.0  |        27.3 |
