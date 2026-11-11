@@ -5,7 +5,6 @@
 
 # quarkus agentic
 - chatmem with REDIS, https://quarkus.io/quarkus-workshop-langchain4j/requirements/
-
 - vectorsearch port over
 - rag
 - guardrails
