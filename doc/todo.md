@@ -9,8 +9,9 @@
 - vectorsearch port over
 - rag
 - guardrails
-- graphrag neo4j
+- otel
 
 # div
 - n8n, neo4j
 - Kafka Registry, Pact
+- kagent
