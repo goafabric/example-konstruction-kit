@@ -4,13 +4,16 @@
 - oidc
 
 # quarkus agentic
+- tutorial
 - chatmem with REDIS, https://quarkus.io/quarkus-workshop-langchain4j/requirements/
 - vectorsearch port over
 - rag
 - guardrails
 - otel
 
+- kagent
+
 # div
 - n8n, neo4j
 - Kafka Registry, Pact
-- kagent
+- AWS, Datalake
