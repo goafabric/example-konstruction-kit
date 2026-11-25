@@ -1,4 +1,5 @@
 # ollama
+https://ollama.com/blog/speech-models
 
 ollama pull phonon:40m-en
 ollama pull phonon:40m-de
