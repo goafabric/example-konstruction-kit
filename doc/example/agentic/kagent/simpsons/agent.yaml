@@ -1,0 +1,58 @@
+# Runnable agents. Each AgentTemplate needs an Agent to be scheduled and
+# exposed in the kagent UI. The scene Agent uses the simpsons-scene template,
+# which binds the other three templates as subagents.
+apiVersion: api.kagent.dev/v1alpha3
+kind: Agent
+metadata:
+  name: simpsons-character
+  namespace: kagent
+  labels:
+    app.kubernetes.io/part-of: simpsons
+spec:
+  harnessRef:
+    name: kagent-default
+  template:
+    ref:
+      name: simpsons-character
+---
+apiVersion: api.kagent.dev/v1alpha3
+kind: Agent
+metadata:
+  name: simpsons-location
+  namespace: kagent
+  labels:
+    app.kubernetes.io/part-of: simpsons
+spec:
+  harnessRef:
+    name: kagent-default
+  template:
+    ref:
+      name: simpsons-location
+---
+apiVersion: api.kagent.dev/v1alpha3
+kind: Agent
+metadata:
+  name: simpsons-art
+  namespace: kagent
+  labels:
+    app.kubernetes.io/part-of: simpsons
+spec:
+  harnessRef:
+    name: kagent-default
+  template:
+    ref:
+      name: simpsons-art
+---
+apiVersion: api.kagent.dev/v1alpha3
+kind: Agent
+metadata:
+  name: simpsons-scene
+  namespace: kagent
+  labels:
+    app.kubernetes.io/part-of: simpsons
+spec:
+  harnessRef:
+    name: kagent-default
+  template:
+    ref:
+      name: simpsons-scene

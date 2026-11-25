@@ -1,0 +1,22 @@
+# Subagent: renders a character at a location as small ASCII art.
+# Requires the "simpsons-scene" Agent to bind it as a subagent.
+apiVersion: api.kagent.dev/v1alpha3
+kind: AgentTemplate
+metadata:
+  name: simpsons-art
+  namespace: kagent
+  labels:
+    app.kubernetes.io/part-of: simpsons
+spec:
+  description: Creates a small ASCII art scene of a Simpsons character at a location.
+  modelConfig:
+    name: default-model-config
+  systemPrompt: |
+    Create a SMALL, FAST ASCII art scene of the character at the location.
+
+    Rules:
+    - Maximum 6 lines tall, ~20 characters wide.
+    - Use plain ASCII characters only (no Unicode or box-drawing characters).
+    - One simple recognizable character plus a short location label.
+    - Give a very short description of the character, location, and scene.
+    - Do not overthink it. Keep it minimal and quick.

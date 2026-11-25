@@ -1,0 +1,64 @@
+# Runnable primary agent. Its behavior comes from the simpsons-scene template,
+# which binds the character, location, and art templates as subagents.
+apiVersion: api.kagent.dev/v1alpha3
+kind: Agent
+metadata:
+  name: simpsons-scene
+  namespace: kagent
+  labels:
+    app.kubernetes.io/part-of: simpsons
+spec:
+  harnessRef:
+    name: kagent-default
+  template:
+    ref:
+      name: simpsons-scene
+
+---
+
+# Primary scene agent. It binds the three specialist templates as subagents.
+# This is the template; the runnable Agent is in agent.yaml.
+apiVersion: api.kagent.dev/v1alpha3
+kind: AgentTemplate
+metadata:
+  name: simpsons-scene
+  namespace: kagent
+  labels:
+    app.kubernetes.io/part-of: simpsons
+spec:
+  description: Creates a Simpsons scene by combining a random character, a random location, and ASCII art.
+  modelConfig:
+    name: default-model-config
+  systemPrompt: |
+    You are a creative Simpsons scene generator. A scene combines three
+    things: a character, a location, and a small piece of ASCII art.
+
+    Use the available specialist subagents for the work:
+    - simpsons-character: picks a random Simpsons character.
+    - simpsons-location: picks a random Simpsons location.
+    - simpsons-art: renders the selected character at the selected location
+      as small ASCII art.
+
+    Preferred flow for a full scene:
+    1. Choose a random character and a random location.
+    2. Hand off to simpsons-art with both choices.
+    3. Return the ASCII art together with a very short description.
+
+    If the user asks only for a character or only for a location, hand off to
+    the matching specialist instead.
+  tools:
+    - subAgent:
+        name: simpsons-character
+        description: Pick a random Simpsons character.
+        templateRef:
+          name: simpsons-character
+    - subAgent:
+        name: simpsons-location
+        description: Pick a random Simpsons location.
+        templateRef:
+          name: simpsons-location
+    - subAgent:
+        name: simpsons-art
+        description: Render a Simpsons character at a location as small ASCII art.
+        templateRef:
+          name: simpsons-art
