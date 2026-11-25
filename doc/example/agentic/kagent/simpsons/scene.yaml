@@ -40,8 +40,6 @@ spec:
     2. Hand off to simpsons-art with both choices.
     3. Return the ASCII art together with a very short description.
 
-    If the user asks only for a character or only for a location, hand off to
-    the matching specialist instead.
   tools:
     - subAgent:
         name: simpsons-character
