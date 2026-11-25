@@ -1,5 +1,4 @@
-# Runnable primary agent. Its behavior comes from the simpsons-scene template,
-# which binds the character, location, and art templates as subagents.
+# Runnable primary scene agent.
 apiVersion: api.kagent.dev/v1alpha3
 kind: Agent
 metadata:
@@ -13,11 +12,8 @@ spec:
   template:
     ref:
       name: simpsons-scene
-
 ---
-
-# Primary scene agent. It binds the three specialist templates as subagents.
-# This is the template; the runnable Agent is in agent.yaml.
+# AgentTemplate for the scene. It binds the three specialist templates as subagents.
 apiVersion: api.kagent.dev/v1alpha3
 kind: AgentTemplate
 metadata:

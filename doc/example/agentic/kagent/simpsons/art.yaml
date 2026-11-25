@@ -1,5 +1,20 @@
-# Subagent: renders a character at a location as small ASCII art.
-# Requires the "simpsons-scene" Agent to bind it as a subagent.
+# Runnable agent for the simpsons-art behavior.
+apiVersion: api.kagent.dev/v1alpha3
+kind: Agent
+metadata:
+  name: simpsons-art
+  namespace: kagent
+  labels:
+    app.kubernetes.io/part-of: simpsons
+spec:
+  harnessRef:
+    name: kagent-default
+  template:
+    ref:
+      name: simpsons-art
+---
+# AgentTemplate: renders a character at a location as small ASCII art.
+# The "simpsons-scene" Agent binds it as a subagent.
 apiVersion: api.kagent.dev/v1alpha3
 kind: AgentTemplate
 metadata:

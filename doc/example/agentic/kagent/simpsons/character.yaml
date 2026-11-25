@@ -1,5 +1,20 @@
-# Subagent: picks a random Simpsons character.
-# Requires the "simpsons-scene" Agent to bind it as a subagent.
+# Runnable agent for the simpsons-character behavior.
+apiVersion: api.kagent.dev/v1alpha3
+kind: Agent
+metadata:
+  name: simpsons-character
+  namespace: kagent
+  labels:
+    app.kubernetes.io/part-of: simpsons
+spec:
+  harnessRef:
+    name: kagent-default
+  template:
+    ref:
+      name: simpsons-character
+---
+# AgentTemplate: picks a random Simpsons character.
+# The "simpsons-scene" Agent binds it as a subagent.
 apiVersion: api.kagent.dev/v1alpha3
 kind: AgentTemplate
 metadata:
