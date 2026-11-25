@@ -29,4 +29,4 @@ ollama run qwen3:1.7b --hidethinking "Tell me a fun fact about owls in two sente
 
 while true; do printf "\nYou: "; read -r prompt; ollama run qwen3:1.7b --hidethinking "$prompt - keep the answer short" | ollama run phonon:40m-en --voice Zoey; done
 
-while true; do prompt=$(hear -m -t 1 | sed $'s/\033\\[[0-9;]*[[:alpha:]]//g' | tr -d '\r'); [[ -z "$prompt" ]] && continue; echo "You: $prompt"; ollama run qwen3:1.7b --hidethinking "$prompt" | ollama run phonon:40m-en; done
+while true; do prompt=$(hear -m -t 2 | sed $'s/\033\\[[0-9;]*[[:alpha:]]//g' | tr -d '\r'); [[ -z "$prompt" ]] && continue; echo "You: $prompt"; ollama run qwen3:1.7b --hidethinking "$prompt - keep the answer short" | ollama run phonon:40m-en --voice Zoey; done
