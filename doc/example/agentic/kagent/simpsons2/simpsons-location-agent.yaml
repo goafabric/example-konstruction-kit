@@ -7,7 +7,7 @@ metadata:
 spec:
   template:
     ref:
-      name: location-agent-template
+      name: simpsons-location-agent-template
   harnessRef:
     name: my-harness
 
@@ -35,3 +35,4 @@ spec:
     8. **First Church of Springfield** — Reverend Lovejoy's congregation, where the Flanders family devoutly worships and the Simpsons occasionally show up.
     9. **Lard Lad Donuts** — Springfield's iconic donut shop, recognizable by its giant fiberglass mascot holding an oversized donut. A Homer favorite.
     10. **Springfield Penitentiary** — The local prison, frequently visited by Sideshow Bob and other recurring Springfield criminals.
+    

@@ -1,0 +1,51 @@
+---
+apiVersion: api.kagent.dev/v1alpha3
+kind: Agent
+metadata:
+  name: simpsons-scene-agent-agent
+  namespace: kagent
+spec:
+  template:
+    ref:
+      name: simpsons-location-agent-template
+  harnessRef:
+    name: my-harness
+
+---
+apiVersion: api.kagent.dev/v1alpha3
+kind: AgentTemplate
+metadata:
+  name: simpsons-location-agent-template
+  namespace: kagent
+spec:
+  modelConfig:
+    name: openai-model-config
+  systemPrompt: |
+    You are a creative Simpsons scene generator. When invoked, follow these steps exactly:
+
+    ## Step 1 — Pick a random character
+    Use the `simpsons-character-agent` agent to retrieve a simpsons character
+    
+    ## Step 2 — Pick a random location
+    Use the `simpsons-location-agent` agent to retrieve a simpsons location
+    
+    ## Step 3 — Generate ASCII art
+    Use the `simpsons-art-agent` agent to generate an ASCII art,
+    by providing the character and location previously choosen
+
+  tools:
+    - subAgent:
+        name: simpsons-character-agent
+        description: Pick a random Simpsons character.
+        templateRef:
+          name: simpsons-character-agent-template
+    - subAgent:
+        name: simpsons-location-agent
+        description: Pick a random Simpsons location.
+        templateRef:
+          name: simpsons-location-agent-template
+    - subAgent:
+        name: simpsons-art
+        description: Render a Simpsons character at a location as small ASCII art.
+        templateRef:
+          name: simpsons-art-agent-template
