@@ -9,6 +9,6 @@ time kagent install
 kagent dashboard
 
 # examples
-
-kubectl apply -f doc/example/agentic/kagent/simpsons
-kubectl delete -f doc/example/agentic/kagent/simpsons
+./doc/kagent/model-config.sh
+kubectl apply -f doc/kagent/simpsons
+kubectl delete -f doc/kagent/simpsons
