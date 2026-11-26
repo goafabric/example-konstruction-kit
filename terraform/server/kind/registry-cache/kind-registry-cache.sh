@@ -156,6 +156,18 @@ ensure_network() {
   docker network create kind >/dev/null
 }
 
+ensure_volumes() {
+  # compose declares the cache volumes as external, so they must exist first
+  local r vol
+  for r in $(enabled_registries); do
+    vol="kind-cache-${r}-data"
+    if ! docker volume inspect "${vol}" >/dev/null 2>&1; then
+      info "creating cache volume ${vol}"
+      docker volume create "${vol}" >/dev/null
+    fi
+  done
+}
+
 write_node_mirror() {
   # write /etc/containerd/certs.d/<host>/hosts.toml inside one node
   local node="$1" host="$2" cname="$3" server="$4"
@@ -271,6 +283,7 @@ print_summary() {
 up() {
   require_docker
   ensure_network
+  ensure_volumes
 
   local enabled r args=()
   enabled="$(enabled_registries)"

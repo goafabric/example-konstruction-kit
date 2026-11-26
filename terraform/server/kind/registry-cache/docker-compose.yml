@@ -85,14 +85,20 @@ services:
       - istio-data:/var/lib/registry
 
 volumes:
-  # Explicit names keep the cache when the Compose project is recreated.
+  # Owned by kind-registry-cache.sh (external), so cached layers survive and
+  # Compose does not try to manage/delete them. When using Compose directly,
+  # create them first: docker volume create kind-cache-<profile>-data
   dockerhub-data:
+    external: true
     name: kind-cache-dockerhub-data
   ghcr-data:
+    external: true
     name: kind-cache-ghcr-data
   quay-data:
+    external: true
     name: kind-cache-quay-data
   istio-data:
+    external: true
     name: kind-cache-istio-data
 
 networks:
