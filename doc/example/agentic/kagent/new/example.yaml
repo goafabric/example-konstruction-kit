@@ -1,0 +1,23 @@
+---
+apiVersion: api.kagent.dev/v1alpha3
+kind: Agent
+metadata:
+  name: my-agent
+  namespace: kagent
+spec:
+  template:
+    ref:
+      name: my-agent-template
+  harnessRef:
+    name: my-harness
+
+---
+apiVersion: api.kagent.dev/v1alpha3
+kind: AgentTemplate
+metadata:
+  name: my-agent-template
+  namespace: kagent
+spec:
+  modelConfig:
+    name: openai-model-config
+  systemPrompt: You are a concise, helpful assistant.

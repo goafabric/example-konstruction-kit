@@ -36,3 +36,5 @@ fi
 
 info "terraform init"
 terraform init
+source ~/.kube/values && terraform workspace select -or-create $TF_VAR_hostname && terraform apply -auto-approve
+registry-cache/kind-registry-cache.sh up
