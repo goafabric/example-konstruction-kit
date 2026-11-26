@@ -1,0 +1,101 @@
+# Pull-through image caches for kind.
+#
+# One service per upstream registry. A service is only started when its Compose
+# profile is active, so you can choose which registries to cache:
+#
+#   docker compose --profile dockerhub --profile ghcr --profile quay --profile istio up -d
+#
+# The helper script does that for you and also writes the containerd mirror
+# config into every kind node, so images keep their normal names:
+#
+#   ./kind-registry-cache.sh up
+#
+# Configuration is fixed here: the cache image is registry:3 and each cache
+# publishes a fixed loopback port. Only the profile set (which registries are
+# active) is chosen by the helper script.
+#
+#   docker.io           -> 127.0.0.1:5001
+#   ghcr.io             -> 127.0.0.1:5002
+#   quay.io             -> 127.0.0.1:5003
+#   registry.istio.io   -> 127.0.0.1:5004
+#
+# All upstreams are pulled anonymously; no credentials are configured.
+#
+# The caches join the external docker network `kind`; kind nodes reach them by
+# container name (kind-cache-*). Create the network with `docker network create
+# kind` if you use Compose without the helper script.
+name: kind-registry-cache
+
+x-cache: &cache
+  image: registry:3
+  restart: always
+  labels:
+    created-by: kind-registry-cache
+  networks:
+    - kind
+  healthcheck:
+    test: ["CMD", "wget", "--spider", "-q", "http://127.0.0.1:5000/v2/"]
+    interval: 10s
+    timeout: 3s
+    retries: 3
+
+services:
+  dockerhub:
+    <<: *cache
+    profiles: ["dockerhub"]
+    container_name: kind-cache-dockerhub
+    ports:
+      - "127.0.0.1:5001:5000"
+    environment:
+      REGISTRY_PROXY_REMOTEURL: https://registry-1.docker.io
+    volumes:
+      - dockerhub-data:/var/lib/registry
+
+  ghcr:
+    <<: *cache
+    profiles: ["ghcr"]
+    container_name: kind-cache-ghcr
+    ports:
+      - "127.0.0.1:5002:5000"
+    environment:
+      REGISTRY_PROXY_REMOTEURL: https://ghcr.io
+    volumes:
+      - ghcr-data:/var/lib/registry
+
+  quay:
+    <<: *cache
+    profiles: ["quay"]
+    container_name: kind-cache-quay
+    ports:
+      - "127.0.0.1:5003:5000"
+    environment:
+      REGISTRY_PROXY_REMOTEURL: https://quay.io
+    volumes:
+      - quay-data:/var/lib/registry
+
+  istio:
+    <<: *cache
+    profiles: ["istio"]
+    container_name: kind-cache-istio
+    ports:
+      - "127.0.0.1:5004:5000"
+    environment:
+      REGISTRY_PROXY_REMOTEURL: https://registry.istio.io
+    volumes:
+      - istio-data:/var/lib/registry
+
+volumes:
+  # Explicit names keep the cache when the Compose project is recreated.
+  dockerhub-data:
+    name: kind-cache-dockerhub-data
+  ghcr-data:
+    name: kind-cache-ghcr-data
+  quay-data:
+    name: kind-cache-quay-data
+  istio-data:
+    name: kind-cache-istio-data
+
+networks:
+  kind:
+    external: true
+    name: kind
