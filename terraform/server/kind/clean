@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+#
+# purge.sh - reset the local kind stack and start from scratch.
+#
+# - deletes the terraform state (keeps .terraform and the provider lock file)
+# - removes the kind node container(s) together with their volumes
+# - runs terraform init
+#
+# The registry caches in registry-cache/ are not touched; purge them
+# separately with: registry-cache/kind-registry-cache.sh purge
+#
+set -euo pipefail
+
+cd "$(dirname "$0")"
+
+KIND_CLUSTER_NAME="${KIND_CLUSTER_NAME:-kind}"
+
+info() { echo "==> $*"; }
+
+docker info >/dev/null 2>&1 || { echo "error: docker is not running" >&2; exit 1; }
+
+info "removing terraform state"
+rm -f terraform.tfstate terraform.tfstate.backup .terraform.tfstate.lock.info
+rm -rf terraform.tfstate.d
+
+info "removing kind containers and volumes"
+containers="$(docker ps -aq --filter "label=io.x-k8s.kind.cluster=${KIND_CLUSTER_NAME}")"
+if [ -n "${containers}" ]; then
+  docker rm -fv ${containers} >/dev/null
+fi
+
+volumes="$(docker volume ls -q --filter "label=io.x-k8s.kind.cluster=${KIND_CLUSTER_NAME}")"
+if [ -n "${volumes}" ]; then
+  docker volume rm ${volumes} >/dev/null
+fi
+
+info "terraform init"
+terraform init
