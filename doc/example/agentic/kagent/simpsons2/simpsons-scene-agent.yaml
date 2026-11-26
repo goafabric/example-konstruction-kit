@@ -2,12 +2,12 @@
 apiVersion: api.kagent.dev/v1alpha3
 kind: Agent
 metadata:
-  name: simpsons-scene-agent-agent
+  name: simpsons-scene-agent
   namespace: kagent
 spec:
   template:
     ref:
-      name: simpsons-location-agent-template
+      name: simpsons-scene-agent-template
   harnessRef:
     name: my-harness
 
@@ -15,7 +15,7 @@ spec:
 apiVersion: api.kagent.dev/v1alpha3
 kind: AgentTemplate
 metadata:
-  name: simpsons-location-agent-template
+  name: simpsons-scene-agent-template
   namespace: kagent
 spec:
   modelConfig:
