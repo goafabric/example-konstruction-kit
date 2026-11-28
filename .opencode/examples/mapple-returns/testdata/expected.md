@@ -9,7 +9,7 @@ selected case file, never this table.
 | `case-02-bart` | `REJECTED` | `INCIDENT_DAMAGE` | Skateboard impact at 5 months; incident wins over the 6-month window. |
 | `case-03-marge` | `ACCEPTED` | `PRODUCTION_DEFECT_IN_WARRANTY` | Pixel errors at 7 months; no incident. |
 | `case-04-lisa` | `REJECTED` | `OUT_OF_WARRANTY` | Purchased 30 months ago. |
-| `case-05-burns` | `VALIDATION_FAILED` | `VALIDATION_FAILED` | Missing customer number, unknown product (`MyPhone 16 Ultra`), and missing purchase age. |
+| `case-05-burns` | `INFORMATION_MISSING` | `INFORMATION_MISSING` | Missing customer number, unknown product (`MyPhone 16 Ultra`), and missing purchase age. |
 
 ## Case 5 expected issues
 

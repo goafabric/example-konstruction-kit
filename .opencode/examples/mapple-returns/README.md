@@ -24,7 +24,7 @@ agent reads the product catalog from `catalog/products.md` before validating.
 
 ```text
 INTAKE
-  |-- validation failed -------------------------> OUTPUT (VALIDATION_FAILED)
+  |-- validation failed -------------------------> OUTPUT (INFORMATION_MISSING)
   |
   `-- validation passed -> GUARANTEE
                             |-- accepted -------> OUTPUT (ACCEPTED)
@@ -51,8 +51,12 @@ From the shell:
 
 ```sh
 opencode run --agent mapple-returns \
+  --model openrouter/deepseek/deepseek-v4.1-flash-1017 \
   "Process .opencode/examples/mapple-returns/testdata/cases/case-01-homer.md"
 ```
+
+Use the explicit `--model` flag. Without it, `opencode run` can fall back to a
+default or free model instead of the intended OpenRouter DeepSeek model.
 
 The agent writes the result to:
 
@@ -60,7 +64,7 @@ The agent writes the result to:
 .opencode/examples/mapple-returns/results/<caseId>.md
 ```
 
-Each report contains the final status, the customer reply, and the agent trace.
+Each report contains the final status and the customer reply.
 
 ## Run all cases
 
@@ -79,7 +83,7 @@ each report.
 | `case-02-bart` | Bart Simpson | mapbook Pro 14 | 5 months | `REJECTED` / `INCIDENT_DAMAGE` |
 | `case-03-marge` | Marge Simpson | mapple Watch Series 9 41 mm | 7 months | `ACCEPTED` / `PRODUCTION_DEFECT_IN_WARRANTY` |
 | `case-04-lisa` | Lisa Simpson | mapbook 13 | 30 months | `REJECTED` / `OUT_OF_WARRANTY` |
-| `case-05-burns` | Montgomery Burns | `MyPhone 16 Ultra` (unknown) | not stated | `VALIDATION_FAILED` |
+| `case-05-burns` | Montgomery Burns | `MyPhone 16 Ultra` (unknown) | not stated | `INFORMATION_MISSING` |
 
 Expected outcomes are documented in `testdata/expected.md`. The orchestrator
 never reads that file.

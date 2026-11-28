@@ -74,7 +74,7 @@ START
   |
   v
 INTAKE
-  |-- validation failed -------------------------> OUTPUT (VALIDATION_FAILED)
+  |-- validation failed -------------------------> OUTPUT (INFORMATION_MISSING)
   |
   `-- validation passed -> GUARANTEE
                             |-- accepted -------> OUTPUT (ACCEPTED)
@@ -106,15 +106,13 @@ The orchestrator must never apply policy itself. It only routes data.
 
 ## 4. Agent reports
 
-Workers do not exchange JSON. Each returns a short Markdown report with a few
+Workers do not exchange JSON. Each returns a short plain-text report with a few
 fixed labels. The labels are a naming convention, not a schema: they let the
 orchestrator find the routing line without parsing a document format.
 
 ### 4.1 Intake report
 
-```markdown
-## Intake report
-
+```text
 Validation: passed
 Issues: none
 Customer number: C-100234
@@ -127,9 +125,7 @@ Incident mentioned: no
 
 Failure example:
 
-```markdown
-## Intake report
-
+```text
 Validation: failed
 Issues: MISSING_CUSTOMER_NUMBER, UNKNOWN_PRODUCT, MISSING_PURCHASE_AGE
 Customer number: not provided
@@ -156,13 +152,11 @@ Intake rules:
 
 ### 4.2 Guarantee report
 
-```markdown
-## Guarantee decision
-
+```text
 Decision: accepted
 Reason: PRODUCTION_DEFECT_EARLY
 Explanation: Purchased 3 months ago; battery swelling is a production-related defect.
-Policy: within the first 6 months, production-related damage, no incident mentioned
+Policy: rule 4, production defect within the first 6 months
 ```
 
 Reason codes:
@@ -177,34 +171,31 @@ Reason codes:
 
 ### 4.3 Final report
 
-The orchestrator writes this Markdown file to
+The orchestrator writes this report file to
 `.opencode/examples/mapple-returns/results/<caseId>.md`:
 
-```markdown
-# Return result — case-01-homer
-
+```text
 Status: ACCEPTED
 Reason: PRODUCTION_DEFECT_EARLY
 Customer: Homer Simpson
 Product: myphone 15 Pro Max
 
-## Customer reply
-
+Customer reply:
 Dear Mr. Simpson,
-...
 
-## Agent trace
+Thank you for contacting Mapple. We have reviewed your request and accepted it.
 
-1. mapple-intake — done — validation passed
-2. mapple-guarantee — done — accepted, production defect within 6 months
-3. mapple-output — done — reply written
+Our support team will contact you shortly with the next steps.
+
+Kind regards,
+Mapple Customer Support
 ```
 
 Customer-visible statuses:
 
 | Status | Trigger |
 | --- | --- |
-| `VALIDATION_FAILED` | Intake validation failed; ask for missing information. |
+| `INFORMATION_MISSING` | Intake could not validate; ask for the missing information. |
 | `REJECTED` | Guarantee rejected; state the reason politely. |
 | `ACCEPTED` | Guarantee accepted; explain next steps. |
 
@@ -307,7 +298,7 @@ never sees them.
 - Customer number: missing.
 - Product: "MyPhone 16 Ultra" — not in the catalog.
 - Purchase age: "recently" — no number of months.
-- Expected: `VALIDATION_FAILED`, issues
+- Expected: `INFORMATION_MISSING`, issues
   `MISSING_CUSTOMER_NUMBER`, `UNKNOWN_PRODUCT`, `MISSING_PURCHASE_AGE`.
 - Purpose: proves that the intake agent reports all problems at once and that
   the guarantee agent is skipped.
@@ -360,7 +351,7 @@ easy to try in OpenCode without adding top-level folders.
 - Subagents return text, so there is no JSON parser. The orchestrator reads the
   `Validation:` and `Decision:` lines and passes the full report along.
 - Run a case manually:
-  `opencode run --agent mapple-returns "Process .opencode/examples/mapple-returns/testdata/cases/case-01-homer.md"`
+  `opencode run --agent mapple-returns --model openrouter/deepseek/deepseek-v4.1-flash-1017 --auto "Process .opencode/examples/mapple-returns/testdata/cases/case-01-homer.md"`
 - The optional command `/mapple-return <case-file>` wraps the same call.
 - Pin a model in the agent frontmatter once the flow works; until then use the
   session model. Use a model variant for determinism if needed, because V2 does
@@ -403,8 +394,8 @@ Deliverable: agreed scope, assumptions, policy, catalog, and test cases.
 
 - Write the 3 worker agents with policy and labeled Markdown output. The intake
   agent reads the catalog file.
-- Write the orchestrator with routing, one retry on a missing label, report
-  writing, and trace output.
+- Write the orchestrator with routing, one retry on a missing label, and report
+  writing.
 - Add the optional command and `run-cases.sh`.
 
 ### Phase 4 — Test and tune
@@ -429,8 +420,10 @@ Deliverable: agreed scope, assumptions, policy, catalog, and test cases.
   `Status:`) and are easy to read.
 - No JSON parsing or schema validation is required in the OpenCode run.
 - No agent invents customer data, SKUs, or purchase ages.
-- The output agent's reply is polite and consistent with the decision.
-- The trace shows the correct agent order and the skipped guarantee step.
+- The output agent's reply is polite, consistent with the decision, and written
+  as multiple short paragraphs.
+- The result file contains the status fields and the customer reply, with no
+  agent trace.
 - Only the intake worker uses a tool (`read` for the catalog); guarantee and
   output only transform text.
 - A reader can follow `README.md` and reproduce the run.
