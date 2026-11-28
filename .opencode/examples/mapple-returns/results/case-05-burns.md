@@ -1,7 +1,7 @@
 # Return result — case-05-burns
 
 Status: VALIDATION_FAILED
-Reason: MISSING_CUSTOMER_NUMBER, UNKNOWN_PRODUCT, MISSING_PURCHASE_AGE
+Reason: VALIDATION_FAILED
 Customer: Montgomery Burns
 Product: not found in catalog
 
@@ -9,13 +9,13 @@ Product: not found in catalog
 
 Dear Montgomery Burns,
 
-Thank you for contacting Mapple. We need a little more information to review your return request. Please provide your customer number, the exact product and variation, and the purchase age. We will continue processing your request once we receive these details.
+Thank you for contacting Mapple. We could not validate your return request yet. Please provide your customer number, the exact product name and variation, and the purchase age or original purchase date. Once we receive this information, we will continue reviewing your request; this is not a rejection.
 
 Kind regards,
 Mapple Customer Support
 
 ## Agent trace
 
-1. mapple-intake — done — validation failed; missing customer number, unknown product, missing purchase age
+1. mapple-intake — done — validation failed: MISSING_CUSTOMER_NUMBER, UNKNOWN_PRODUCT, MISSING_PURCHASE_AGE
 2. mapple-guarantee — skipped — intake validation failed
 3. mapple-output — done — reply written

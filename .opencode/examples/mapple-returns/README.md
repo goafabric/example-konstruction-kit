@@ -17,7 +17,8 @@ schema, and no database.
 | `mapple-output` | subagent | Writes the customer reply and final status. |
 
 The workers return short labeled Markdown reports, not JSON. The orchestrator
-reads only the routing labels (`Validation:`, `Decision:`, `Status:`).
+reads only the routing labels (`Validation:`, `Decision:`, `Status:`). The intake
+agent reads the product catalog from `catalog/products.md` before validating.
 
 ## Flow
 

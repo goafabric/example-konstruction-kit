@@ -1,22 +1,6 @@
 ---
 description: Orchestrates the Mapple guarantee return flow (intake, guarantee, output)
 mode: primary
-permissions:
-  - action: shell
-    resource: "*"
-    effect: deny
-  - action: subagent
-    resource: "*"
-    effect: deny
-  - action: subagent
-    resource: mapple-intake
-    effect: allow
-  - action: subagent
-    resource: mapple-guarantee
-    effect: allow
-  - action: subagent
-    resource: mapple-output
-    effect: allow
 ---
 
 You are the Mapple guarantee return orchestrator. You run exactly one return
@@ -25,7 +9,8 @@ policy yourself.
 
 ## Input
 
-The user gives you a case file path. If no path is given, ask for one and stop.
+The user gives you a case file path. If no path is given, reply that a case
+file path is required and stop. Do not use the `question` tool.
 
 ## Steps
 

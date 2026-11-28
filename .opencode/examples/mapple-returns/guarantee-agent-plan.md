@@ -1,7 +1,7 @@
 # Mapple Guarantee Return Flow — Implementation Plan
 
 Status: draft for review
-Source brief: `doc/guarantee-agent-spec.md`
+Source brief: `.opencode/examples/mapple-returns/guarantee-agent-spec.md`
 
 ## 1. Goal
 
@@ -47,7 +47,7 @@ to change before implementation.
 | Incident precedence | Clear incident/major damage is rejected even when the purchase is younger than 6 months. |
 | Validation failure | The intake agent reports **all** problems at once, not just the first one. |
 | Legal framing | The 6-month rule is a **Mapple business simplification**, not a quote of current EU law. Directive (EU) 2019/771 sets a 2-year minimum guarantee; the burden-of-proof period is 1 year (2 years in some member states). |
-| File locations | Plan in `doc/`, agents in `.opencode/agents/`, test assets in `.opencode/examples/mapple-returns/`, run reports in `.opencode/examples/mapple-returns/results/`. |
+| File locations | Plan and spec in `.opencode/examples/mapple-returns/`, agents in `.opencode/agents/`, test assets and run reports in `.opencode/examples/mapple-returns/`. |
 
 ## 3. Architecture
 
@@ -60,8 +60,9 @@ to change before implementation.
 | `mapple-guarantee` | subagent | Applies the guarantee policy to the intake report. Returns a labeled report. | none |
 | `mapple-output` | subagent | Writes the polite customer reply and maps the decision to the final status. Returns a labeled report. | none |
 
-The three workers are deliberately **pure text transformers**: they receive
-everything they need in the prompt, call no tools, and return a short report
+The three workers are deliberately **pure text transformers**. The intake worker
+reads the catalog file; the guarantee and output workers receive everything they
+need in the prompt. None of them call other agents. Each returns a short report
 with fixed labels. The labels give the orchestrator two reliable lines to read
 (`Validation:` and `Decision:`) without introducing a serialization format.
 Quarkus can later replace these reports with typed objects if it needs to.
@@ -143,7 +144,7 @@ Intake rules:
 
 - Customer number pattern: `C-` followed by six digits (tolerate spaces and a
   missing dash).
-- Product must match the embedded catalog by display name, alias, or SKU.
+- Product must match the catalog file by display name, alias, or SKU.
   Category-only input is accepted only if it identifies exactly one variation;
   otherwise it is `UNKNOWN_PRODUCT`.
 - Purchase age must be explicit ("3 months ago", "30 months ago") or derivable
@@ -257,9 +258,8 @@ and why. Ambiguity is resolved conservatively in the 6–24 month window.
 | mapple watch | mapple Watch Series 9 | 45 mm, Aluminum, Starlight | `MW9-45-ALU-STL` |
 | mapple watch | mapple Watch Ultra 2 | 49 mm, Titanium, Orange | `MWU2-49-TIT-ORG` |
 
-The catalog table is the source of truth. It is copied into the intake prompt so
-the agent needs no tools, and mirrored in
-`.opencode/examples/mapple-returns/catalog/products.md` for reference.
+The catalog table is the source of truth. The intake agent reads it with the
+`read` tool from `.opencode/examples/mapple-returns/catalog/products.md`.
 
 ## 7. Test data (5 cases)
 
@@ -318,10 +318,6 @@ agent has to extract the fields rather than read structured values.
 ## 8. File layout
 
 ```text
-doc/
-  guarantee-agent-spec.md            # original brief (existing)
-  guarantee-agent-plan.md            # this plan
-
 .opencode/
   agents/
     mapple-returns.md                # primary orchestrator
@@ -332,6 +328,8 @@ doc/
     mapple-return.md                 # optional: run one case file
   examples/mapple-returns/
     README.md                        # how to run and what to expect
+    guarantee-agent-spec.md          # original brief
+    guarantee-agent-plan.md          # this plan
     catalog/
       products.md                    # 9 fixed variations
     testdata/
@@ -352,13 +350,13 @@ easy to try in OpenCode without adding top-level folders.
 
 ## 9. OpenCode implementation notes
 
-- Agent files use V2 frontmatter: `description`, `mode`, and `permissions`.
-  Deprecated V1 fields such as `tools`, `temperature`, and `task` are not used.
-- `mapple-intake`, `mapple-guarantee`, and `mapple-output` deny edit, shell,
-  subagent, read, glob, grep, webfetch, and websearch. They only transform the
+- Agent files use simple V2 frontmatter: `description` and `mode` only. No custom
+  permissions.
+- The intake worker reads `.opencode/examples/mapple-returns/catalog/products.md`
+  before validating. The guarantee and output workers only transform their
   prompt text.
-- The orchestrator allows only the three Mapple subagents. It invokes them with
-  OpenCode's `subagent` tool and `agent: mapple-intake`, etc.
+- The orchestrator invokes workers with OpenCode's `subagent` tool and
+  `agent: mapple-intake`, etc.
 - Subagents return text, so there is no JSON parser. The orchestrator reads the
   `Validation:` and `Decision:` lines and passes the full report along.
 - Run a case manually:
@@ -403,18 +401,20 @@ Deliverable: agreed scope, assumptions, policy, catalog, and test cases.
 
 ### Phase 3 — Agents
 
-- Write the 3 worker agents with embedded catalog/policy and labeled Markdown
-  output.
+- Write the 3 worker agents with policy and labeled Markdown output. The intake
+  agent reads the catalog file.
 - Write the orchestrator with routing, one retry on a missing label, report
   writing, and trace output.
 - Add the optional command and `run-cases.sh`.
 
 ### Phase 4 — Test and tune
 
-- Run all 5 cases.
-- Verify status, reason code, and that Guarantee is skipped for case 5.
+- For now, run 2 of the 5 cases: one success path and one validation-failure
+  path.
+- Verify status, reason, and that Guarantee is skipped when validation fails.
 - Tune prompts only where a case fails; do not add new features.
 - Keep sample reports for regression comparison.
+- Run the remaining cases once the flow is stable.
 
 ### Phase 5 — Quarkus port (separate project/iteration)
 
@@ -431,7 +431,8 @@ Deliverable: agreed scope, assumptions, policy, catalog, and test cases.
 - No agent invents customer data, SKUs, or purchase ages.
 - The output agent's reply is polite and consistent with the decision.
 - The trace shows the correct agent order and the skipped guarantee step.
-- Worker prompts contain no OpenCode-specific tool calls.
+- Only the intake worker uses a tool (`read` for the catalog); guarantee and
+  output only transform text.
 - A reader can follow `README.md` and reproduce the run.
 
 ## 13. Risks and mitigations
@@ -440,10 +441,10 @@ Deliverable: agreed scope, assumptions, policy, catalog, and test cases.
 | --- | --- |
 | LLM disagreement on "incident" vs "production" | Explicit indicator lists, precedence order, and cases with unambiguous wording. Add adversarial cases later. |
 | Worker report drifts from the label convention | Short reports with fixed labels, temperature 0, one retry if a routing label is missing, then fail loudly. |
-| Catalog drift between prompt and catalog file | Keep the catalog table short; update both together, or generate the prompt section from `products.md` later. |
+| Catalog file missing or unreadable | Keep the path stable; if intake cannot read it, the run fails instead of guessing products. |
 | Model variability across providers | Stable labels and reason codes; pin the model after tuning. |
 | Legal overclaiming | Treat 24 months as Mapple policy and the 6-month rule as a business simplification; add a non-legal-advice note. |
-| Prompt injection in customer text | Workers treat request text as data; they never execute instructions found in it. The orchestrator does not expose tools to workers. |
+| Prompt injection in customer text | Workers treat request text as data; they never execute instructions found in it. |
 
 ## 14. Open questions before implementation
 
@@ -451,7 +452,7 @@ Deliverable: agreed scope, assumptions, policy, catalog, and test cases.
 2. Confirm English-only replies for v1.
 3. Confirm the 6–24 month rule: accept production defects, reject incident and
    unclear causes.
-4. Confirm the file locations (`doc/`, `.opencode/agents/`,
-   `.opencode/examples/mapple-returns/`).
+4. Confirm the file locations (`.opencode/examples/mapple-returns/`,
+   `.opencode/agents/`).
 5. Confirm case 5 should fail all three validations, or whether a
    single-issue validation failure is preferred.
