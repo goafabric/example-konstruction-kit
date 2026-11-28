@@ -12,3 +12,6 @@ kagent dashboard
 ./doc/kagent/model-config.sh
 kubectl apply -f doc/kagent/simpsons
 kubectl delete -f doc/kagent/simpsons
+
+kubectl apply -f doc/kagent/mapple
+kubectl delete -f doc/kagent/mapple
