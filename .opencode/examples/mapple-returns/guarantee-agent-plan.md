@@ -56,7 +56,7 @@ to change before implementation.
 | Agent | OpenCode mode | Responsibility | Tools |
 | --- | --- | --- | --- |
 | `mapple-returns` | primary | Runs the workers in a fixed sequence, passes text between them, writes the result report, prints a summary. | read, write, task |
-| `mapple-intake` | subagent | Extracts fields and validates customer number, product, and purchase age. Returns a labeled report. | none |
+| `mapple-intake` | subagent | Extracts fields and validates customer number, product, and purchase age. Returns a labeled report. | read |
 | `mapple-guarantee` | subagent | Applies the guarantee policy to the intake report. Returns a labeled report. | none |
 | `mapple-output` | subagent | Writes the polite customer reply and maps the decision to the final status. Returns a labeled report. | none |
 
