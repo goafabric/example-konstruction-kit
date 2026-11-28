@@ -1,6 +1,6 @@
 # Expected results
 
-These expectations are for the human tester. The orchestrator reads only the
+These expectations are for the human tester. The runner reads only the
 selected case file, never this table.
 
 | Case | Expected status | Expected reason | Notes |
@@ -19,4 +19,4 @@ The intake report should list all three issues in one line:
 Issues: MISSING_CUSTOMER_NUMBER, UNKNOWN_PRODUCT, MISSING_PURCHASE_AGE
 ```
 
-The guarantee agent must be skipped for this case.
+The guarantee agent returns `Decision: not applicable` for this case.

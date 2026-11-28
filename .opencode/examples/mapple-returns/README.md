@@ -11,27 +11,26 @@ schema, and no database.
 
 | Agent | Mode | Job |
 | --- | --- | --- |
-| `mapple-returns` | primary | Orchestrates the flow and writes the final report. |
+| `mapple-returns` | primary | Runs the three workers in sequence and writes the final report. |
 | `mapple-intake` | subagent | Extracts and validates the request. |
 | `mapple-guarantee` | subagent | Applies the guarantee policy. |
 | `mapple-output` | subagent | Writes the customer reply and final status. |
 
-The workers return short labeled Markdown reports, not JSON. The orchestrator
-reads only the routing labels (`Validation:`, `Decision:`, `Status:`). The intake
-agent reads the product catalog from `catalog/products.md` before validating.
+The workers return short labeled Markdown reports, not JSON. The runner
+passes each report to the next worker unchanged and reads only the output labels
+when writing the final report. The intake agent reads the product catalog from
+`catalog/products.md` before validating.
 
 ## Flow
 
 ```text
-INTAKE
-  |-- validation failed -------------------------> OUTPUT (INFORMATION_MISSING)
-  |
-  `-- validation passed -> GUARANTEE
-                            |-- accepted -------> OUTPUT (ACCEPTED)
-                            `-- rejected -------> OUTPUT (REJECTED)
+INTAKE -> GUARANTEE -> OUTPUT
 ```
 
-The guarantee agent is skipped when intake validation fails.
+The flow is a plain sequence: every case runs all three agents, with no routing
+or skipping. When intake validation fails, the guarantee agent returns
+`Decision: not applicable` and the output agent turns that into
+`INFORMATION_MISSING`. This maps directly to a Quarkus `SequenceAgent`.
 
 ## Run one case
 
@@ -85,8 +84,8 @@ each report.
 | `case-04-lisa` | Lisa Simpson | mapbook 13 | 30 months | `REJECTED` / `OUT_OF_WARRANTY` |
 | `case-05-burns` | Montgomery Burns | `MyPhone 16 Ultra` (unknown) | not stated | `INFORMATION_MISSING` |
 
-Expected outcomes are documented in `testdata/expected.md`. The orchestrator
-never reads that file.
+Expected outcomes are documented in `testdata/expected.md`. The runner never
+reads that file.
 
 ## Policy summary
 

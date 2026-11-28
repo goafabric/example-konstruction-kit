@@ -20,7 +20,7 @@ typed contracts when that port happens; this plan does not pre-build them.
 
 ### In scope
 
-- 3 worker agents + 1 OpenCode orchestrator.
+- 3 worker agents + 1 OpenCode sequence runner.
 - A fixed product catalog with 9 variations.
 - 5 test cases built around Simpsons characters.
 - Plain-text/Markdown handoffs between agents and human-readable result files.
@@ -39,8 +39,8 @@ to change before implementation.
 
 | Topic | Assumption |
 | --- | --- |
-| Agents | 3 required workers plus a 4th **primary orchestrator** (`mapple-returns`), because OpenCode subagents cannot reliably call each other in a fixed sequence. |
-| Handoffs | Short labeled Markdown reports. No JSON, no schema. The orchestrator reads only the routing labels. |
+| Agents | 3 workers plus a 4th **primary runner** (`mapple-returns`), because OpenCode has no built-in sequence agent. The runner calls the workers in a fixed order; Quarkus replaces it with a `SequenceAgent`. |
+| Handoffs | Short labeled Markdown reports. No JSON, no schema. The runner passes each report along unchanged. |
 | Language | Customer replies and test cases in English. A language convention can be added later. |
 | 6–24 months | Accept production-related defects; reject clear incident damage and unclear causes. This mirrors the EU burden-of-proof idea without claiming to be legal advice. |
 | 24-month rule | A purchase **older than 24 months** is rejected. Exactly 24 months is still inside the window. |
@@ -55,7 +55,7 @@ to change before implementation.
 
 | Agent | OpenCode mode | Responsibility | Tools |
 | --- | --- | --- | --- |
-| `mapple-returns` | primary | Orchestrates the flow, reads the case file, passes text between agents, writes the result report, prints a summary. | read, write, task |
+| `mapple-returns` | primary | Runs the workers in a fixed sequence, passes text between them, writes the result report, prints a summary. | read, write, task |
 | `mapple-intake` | subagent | Extracts fields and validates customer number, product, and purchase age. Returns a labeled report. | none |
 | `mapple-guarantee` | subagent | Applies the guarantee policy to the intake report. Returns a labeled report. | none |
 | `mapple-output` | subagent | Writes the polite customer reply and maps the decision to the final status. Returns a labeled report. | none |
@@ -63,52 +63,39 @@ to change before implementation.
 The three workers are deliberately **pure text transformers**. The intake worker
 reads the catalog file; the guarantee and output workers receive everything they
 need in the prompt. None of them call other agents. Each returns a short report
-with fixed labels. The labels give the orchestrator two reliable lines to read
-(`Validation:` and `Decision:`) without introducing a serialization format.
-Quarkus can later replace these reports with typed objects if it needs to.
+with fixed labels. The runner passes each report to the next worker unchanged
+and reads only the output labels (`Status:`, `Reason:`, `Customer:`, `Product:`)
+when writing the result. Quarkus can later replace these reports with typed
+objects if it needs to.
 
-### 3.2 State machine
+### 3.2 Sequence
 
 ```text
-START
-  |
-  v
-INTAKE
-  |-- validation failed -------------------------> OUTPUT (INFORMATION_MISSING)
-  |
-  `-- validation passed -> GUARANTEE
-                            |-- accepted -------> OUTPUT (ACCEPTED)
-                            `-- rejected -------> OUTPUT (REJECTED)
-                                                   |
-                                                   v
-                                                  END
+START -> INTAKE -> GUARANTEE -> OUTPUT -> END
 ```
 
-The guarantee decision is binary in v1: `accepted` or `rejected`. No
-`needs_info` branch, because the brief defines exactly three customer-visible
-statuses.
+The flow has no branches and skips nothing. When intake validation fails, the
+guarantee worker returns `Decision: not applicable` and the output worker maps
+that to `INFORMATION_MISSING`. This is exactly the shape a Quarkus
+`SequenceAgent` needs.
 
-### 3.3 Orchestration rules
+### 3.3 Sequence rules
 
 1. Read the case file given by the user.
-2. Call `mapple-intake` with the raw request text and the fixed catalog.
-3. If the intake report says `Validation: failed`, skip `mapple-guarantee` and
-   call `mapple-output` with the intake report.
-4. Otherwise call `mapple-guarantee`, then `mapple-output`.
-5. Check that each report contains the expected labels (`Validation:` for
-   intake, `Decision:` for guarantee, `Status:` for output). If a label is
-   missing, ask the same agent once to redo its report; on a second failure,
-   stop and report an internal error.
-6. Write `.opencode/examples/mapple-returns/results/<caseId>.md` and print a
+2. Call `mapple-intake` with the raw request text.
+3. Call `mapple-guarantee` with the intake report.
+4. Call `mapple-output` with both the intake and guarantee reports.
+5. Write `.opencode/examples/mapple-returns/results/<caseId>.md` and print a
    short summary.
 
-The orchestrator must never apply policy itself. It only routes data.
+The runner must never apply policy itself. It only passes data along.
 
 ## 4. Agent reports
 
 Workers do not exchange JSON. Each returns a short plain-text report with a few
-fixed labels. The labels are a naming convention, not a schema: they let the
-orchestrator find the routing line without parsing a document format.
+fixed labels. The labels are a naming convention, not a schema; they let each
+worker and the final report reference the same fields without parsing a
+document format.
 
 ### 4.1 Intake report
 
@@ -171,7 +158,7 @@ Reason codes:
 
 ### 4.3 Final report
 
-The orchestrator writes this report file to
+The runner writes this report file to
 `.opencode/examples/mapple-returns/results/<caseId>.md`:
 
 ```text
@@ -255,7 +242,7 @@ The catalog table is the source of truth. The intake agent reads it with the
 ## 7. Test data (5 cases)
 
 Each case is a Markdown file containing only the raw customer request. Expected
-outcomes live in a separate `testdata/expected.md` table so the orchestrator
+outcomes live in a separate `testdata/expected.md` table so the runner
 never sees them.
 
 ### Case 1 — Homer Simpson (accepted)
@@ -301,7 +288,7 @@ never sees them.
 - Expected: `INFORMATION_MISSING`, issues
   `MISSING_CUSTOMER_NUMBER`, `UNKNOWN_PRODUCT`, `MISSING_PURCHASE_AGE`.
 - Purpose: proves that the intake agent reports all problems at once and that
-  the guarantee agent is skipped.
+  the guarantee agent returns `Decision: not applicable`.
 
 The full request texts will be written verbatim into the case files so the intake
 agent has to extract the fields rather than read structured values.
@@ -311,7 +298,7 @@ agent has to extract the fields rather than read structured values.
 ```text
 .opencode/
   agents/
-    mapple-returns.md                # primary orchestrator
+    mapple-returns.md                # primary sequence runner
     mapple-intake.md                 # subagent
     mapple-guarantee.md              # subagent
     mapple-output.md                 # subagent
@@ -346,10 +333,10 @@ easy to try in OpenCode without adding top-level folders.
 - The intake worker reads `.opencode/examples/mapple-returns/catalog/products.md`
   before validating. The guarantee and output workers only transform their
   prompt text.
-- The orchestrator invokes workers with OpenCode's `subagent` tool and
-  `agent: mapple-intake`, etc.
-- Subagents return text, so there is no JSON parser. The orchestrator reads the
-  `Validation:` and `Decision:` lines and passes the full report along.
+- The runner invokes workers with OpenCode's `subagent` tool and
+  `agent: mapple-intake`, etc., in a fixed order.
+- Subagents return text, so there is no JSON parser. The runner passes each
+  full report along unchanged.
 - Run a case manually:
   `opencode run --agent mapple-returns --model openrouter/deepseek/deepseek-v4.1-flash-1017 --auto "Process .opencode/examples/mapple-returns/testdata/cases/case-01-homer.md"`
 - The optional command `/mapple-return <case-file>` wraps the same call.
@@ -362,7 +349,7 @@ easy to try in OpenCode without adding top-level folders.
 | OpenCode artifact | Quarkus / Agentic equivalent |
 | --- | --- |
 | Worker agent prompt (plain Markdown) | `src/main/resources/prompts/*.md`, loaded by a LangChain4j `@RegisterAiService` or agent definition. |
-| `mapple-returns` orchestrator prompt | `ReturnsWorkflow` bean or Quarkus Flow process; no LLM needed for routing. |
+| `mapple-returns` runner prompt | Quarkus `SequenceAgent`; no routing logic and no extra prompt needed. |
 | `subagent` tool calls | Direct method calls / workflow steps; deterministic Java code. |
 | Product catalog Markdown | Classpath resource or database table behind a `ProductCatalog` repository. |
 | `results/*.md` | Persisted report or audit record. |
@@ -370,13 +357,13 @@ easy to try in OpenCode without adding top-level folders.
 Portability rules:
 
 - Keep all policy text and catalog data in the worker prompts, not in the
-  orchestrator.
-- Keep the routing labels (`Validation:`, `Decision:`, `Status:`) stable. Quarkus
+  runner.
+- Keep the report labels (`Validation:`, `Decision:`, `Status:`) stable. Quarkus
   can map them to typed fields or ignore them and use its own model.
 - Reuse the prompts, policy, catalog, and test cases. Quarkus will define its own
-  request/response types and workflow.
-- Keep the orchestrator prompt free of policy; it is the only OpenCode-specific
-  file and will be replaced by Java routing.
+  request/response types and sequence.
+- Keep the runner prompt free of policy; it is the only OpenCode-specific file
+  and will be replaced by the Quarkus `SequenceAgent`.
 - Avoid OpenCode-only syntax inside worker prompts.
 
 ## 11. Implementation phases
@@ -394,15 +381,16 @@ Deliverable: agreed scope, assumptions, policy, catalog, and test cases.
 
 - Write the 3 worker agents with policy and labeled Markdown output. The intake
   agent reads the catalog file.
-- Write the orchestrator with routing, one retry on a missing label, and report
-  writing.
+- Write the primary runner as a fixed intake -> guarantee -> output sequence
+  with report writing.
 - Add the optional command and `run-cases.sh`.
 
 ### Phase 4 — Test and tune
 
 - For now, run 2 of the 5 cases: one success path and one validation-failure
   path.
-- Verify status, reason, and that Guarantee is skipped when validation fails.
+- Verify status, reason, and that the guarantee agent returns
+  `Decision: not applicable` when validation fails.
 - Tune prompts only where a case fails; do not add new features.
 - Keep sample reports for regression comparison.
 - Run the remaining cases once the flow is stable.
@@ -410,12 +398,13 @@ Deliverable: agreed scope, assumptions, policy, catalog, and test cases.
 ### Phase 5 — Quarkus port (separate project/iteration)
 
 - Reuse prompts, policy, catalog, and cases.
-- Define native Quarkus request/response types and the workflow there.
+- Define native Quarkus request/response types and a `SequenceAgent` there.
 
 ## 12. Acceptance criteria
 
 - 5/5 cases return the expected status and reason.
-- Case 5 lists all three validation issues and never calls the guarantee agent.
+- Case 5 lists all three validation issues and the guarantee agent returns
+  `Decision: not applicable`.
 - Worker reports contain the expected labels (`Validation:`, `Decision:`,
   `Status:`) and are easy to read.
 - No JSON parsing or schema validation is required in the OpenCode run.
@@ -433,7 +422,7 @@ Deliverable: agreed scope, assumptions, policy, catalog, and test cases.
 | Risk | Mitigation |
 | --- | --- |
 | LLM disagreement on "incident" vs "production" | Explicit indicator lists, precedence order, and cases with unambiguous wording. Add adversarial cases later. |
-| Worker report drifts from the label convention | Short reports with fixed labels, temperature 0, one retry if a routing label is missing, then fail loudly. |
+| Worker report drifts from the label convention | Short reports with fixed labels, temperature 0, and fail loudly if a label is missing. |
 | Catalog file missing or unreadable | Keep the path stable; if intake cannot read it, the run fails instead of guessing products. |
 | Model variability across providers | Stable labels and reason codes; pin the model after tuning. |
 | Legal overclaiming | Treat 24 months as Mapple policy and the 6-month rule as a business simplification; add a non-legal-advice note. |
@@ -441,7 +430,7 @@ Deliverable: agreed scope, assumptions, policy, catalog, and test cases.
 
 ## 14. Open questions before implementation
 
-1. Confirm the 4th orchestrator agent is acceptable (recommended).
+1. Confirm the 4th sequence runner agent is acceptable (recommended).
 2. Confirm English-only replies for v1.
 3. Confirm the 6–24 month rule: accept production defects, reject incident and
    unclear causes.

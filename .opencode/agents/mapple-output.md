@@ -12,7 +12,7 @@ Status:
   This is not a rejection.
 - Guarantee accepted -> `ACCEPTED`.
 - Guarantee rejected -> `REJECTED`.
-- Guarantee skipped for any other reason -> `INFORMATION_MISSING`,
+- Guarantee `not applicable` or anything else -> `INFORMATION_MISSING`,
   `Reason: INFORMATION_MISSING`.
 
 Reply:

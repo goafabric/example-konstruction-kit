@@ -24,7 +24,7 @@ lifting, charging-port failure, overheating.
 If both appear, say which one dominated and why.
 
 Return only these lines:
-Decision: accepted|rejected
+Decision: accepted|rejected|not applicable
 Reason: <code>
 Explanation: <one or two sentences>
 Policy: <rule number and short name>
